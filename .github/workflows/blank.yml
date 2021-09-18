@@ -34,4 +34,4 @@ jobs:
           # GitHub Pages 读取的分支
           BRANCH: gh-pages
           # 静态文件所在目录
-          FOLDER: dist
+          FOLDER: vuepress
