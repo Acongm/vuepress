@@ -11,7 +11,9 @@
     "lint:lint-staged": "lint-staged",
     "postinstall": "husky install",
     "commit": "git-cz",
-    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "deploy": "gh-pages -d dist -m deploy",
+    "deploy:build": "npm run build && npm run deploy"
   },
   "lint-staged": {
     "*.{js,ts,scss,md,json}": [
@@ -27,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/acongm"
   },
-  "homepage": "https://github.com/acongm",
+  "homepage": "https://acongm.github.io/github-actions-vuepress",
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.22",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.22",
@@ -35,6 +37,7 @@
     "@vuepress/plugin-search": "^2.0.0-beta.22",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2",

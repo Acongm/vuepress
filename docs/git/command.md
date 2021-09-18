@@ -68,6 +68,9 @@ git branch [分支名]
 # 新建一个分支，并切换到该分支
 git checkout -b [分支名]
 
+# push 分支
+# git push --set-upstream origin test/acongm-0919-text-git
+
 # 新建一个分支，指向指定commit
 git branch [分支名] [commit id]
 
