@@ -24,6 +24,40 @@ Header部分只有一行，包括三个字段：type（必需）、scope（可�
 - refactor：重构（即不是新增功能，也不是修改bug的代码变动）
 - test：增加测试
 - chore：构建过程或辅助工具的变动
+  
+- feat: 
+  * `一个新特性` 
+  * A new feature 
+- fix:
+  * `一个bug修复` 
+  * A bug fix 
+- docs: 
+  * `只修改文档`
+  * Documentation only changes 
+- style: 
+  * `不影响代码含义的更改(空白、格式、缺少分号等)` 
+  * Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) 
+- refactor: 
+  * `既不修复bug也不添加特性的代码更改` 
+  * A code change that neither fixes a bug nor adds a feature 
+- perf: 
+  * `提高性能的代码修改` 
+  * A code change that improves performance 
+- test: 
+  * `添加缺失的测试或纠正现有测试`
+  * Adding missing tests or correcting existing tests 
+- build:
+  * `影响构建系统或外部依赖的更改(例如作用域:gulp, broccoli, npm)` 
+  * Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm) 
+- ci: 
+  * `更改ci配置文件和脚本(示例范围:Travis, Circle, BrowserStack, SauceLabs)`
+  * Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) 
+- chore: 
+  * `其他不修改src或测试文件的更改` 
+  * Other changes that don't modify src or test files 
+- revert: 
+  * `恢复前一个提交` 
+  * Reverts a previous commit 
 
 如果type为feat和fix，则该 commit 将肯定出现在 Change log 之中。其他情况（docs、chore、style、refactor、test）由你决定，要不要放入 Change log，建议是不要。
 
@@ -105,6 +139,48 @@ commitizen init cz-conventional-changelog --save --save-exact
 ```
 以后，凡是用到git commit命令，一律改为使用git cz。这时，就会出现选项，用来生成符合格式的 Commit message。
 ![Image text](https://upload-images.jianshu.io/upload_images/3827973-39053e8f0259dfda.png?imageMogr2/auto-orient/strip|imageView2/2/w/557/format/webp)
+
+### cz-conventional-changelog用来规范提交信息。
+```sh
+npm install cz-conventional-changelog -D
+```
+### package.json 配置
+```json
+{
+"script":{
+  "commit": "git-cz"
+},
+"config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
+```
+### 说明
+当运行 npm run commit时，出现交互选项：
+- （1） 选择type
+  * Select the type of change that you're committing:
+- （2）这一变化的范围是什么?
+  * What is the scope of this change (e.g. component or file name): (press enter to skip) 
+本修改影响的是内容（范围）？可以填文件名
+- （3）写一个简短的介绍
+  * Write a short, imperative tense description of the change (max 85 chars):
+- （4）提供一个长的介绍
+  * Provide a longer description of the change: (press enter to skip)
+- （5）有什么突破性的变化吗?
+  * Are there any breaking changes? (y/N) 
+- （6）本修改是否实现了某个issues？
+  * Does this change affect any open issues?
+
+> 对应结构
+```html
+<type(1)>(<scope(2)>): <subject(3)>
+<BLANK LINE>
+<body(4)>
+<BLANK LINE>
+<footer(5)(6)>
+
 
 ## validate-commit-msg
 validate-commit-msg 用于检查项目的 Commit message 是否符合Angular规范。
