@@ -28,7 +28,7 @@ jobs:
 
       # 部署
       - name: Deploy
-        uses: acongm.github.io/github-actions-vuepress
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           # GitHub 密钥
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
