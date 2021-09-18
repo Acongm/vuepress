@@ -1,5 +1,4 @@
-name: GitHub Actions Build and Deploy
-
+name: GitHub Actions Build and Deploy Demo
 # 触发条件: push 到 master 分支后
 on:
   push:
@@ -18,14 +17,14 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
         with:
           persist-credentials: false
-
       # 打包静态文件
-      - name: Build
-        run: npm install && npm run build
-
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script build
       # 部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
