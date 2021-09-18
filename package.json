@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/acongm"
   },
-  "homepage": "https://acongm.github.io/github-actions-vuepress",
+  "homepage": "https://acongm.github.io/vuepress",
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.22",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.22",
