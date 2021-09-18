@@ -14,9 +14,8 @@
 
 ### vercel
 
-- <https://notes.fe-mm.com>
-- <https://mm-notes.fe-mm.vercel.app>
+- <https://www.acongm.com>
 
 ### Github
 
-- <https://maomao1996.github.io/mm-notes>
+- <https://github.com/Acongm/vuepress.git>
