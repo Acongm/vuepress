@@ -5,11 +5,11 @@ const { path } = require('@vuepress/utils')
 const isProduction = process.env.NODE_ENV === 'production'
 
 // 兼容 GitHub Pages 和 vercel 部署
-const base = process.env.BUILD_ENV ? process.env.BUILD_ENV : '/'
+const base = process.env.BUILD_ENV ? process.env.BUILD_ENV : '/vuepress/'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base,
-  dest: './dist',
+  dest: './vuepress',
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
   title: 'Acongm',
@@ -76,16 +76,14 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/software/webstorm.md',
               '/software/zsh.md'
             ]
-          },
+          }
         ]
       },
       {
         text: '面试',
-        children: [
-          '/theory/',
-        ]
+        children: ['/theory/']
       },
-      
+
       {
         text: 'JavaScript / TypeScript',
         children: [
@@ -97,16 +95,14 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/JavaScript/执行上下文-作用域链-闭包.md',
               '/JavaScript/call、apply与bind.md',
               '/JavaScript/js模拟bind方法.md',
-              '/JavaScript/js模拟new操作.md',
+              '/JavaScript/js模拟new操作.md'
             ]
           },
           {
             text: 'TypeScript',
-            children: [
-            '/TypeScript/',
-          ]
-          },
-        ],
+            children: ['/TypeScript/']
+          }
+        ]
       },
       {
         text: 'Vue / React',
@@ -117,36 +113,32 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/vue/',
               '/vue/vue_theory.md',
               '/vue/vue_interview.md',
-              '/vue/vue3.md',
+              '/vue/vue3.md'
             ]
           },
           {
             text: 'React',
-            children: [
-              '/react/class-hooks.md'
-            ]
-          },
-        ],
+            children: ['/react/class-hooks.md']
+          }
+        ]
       },
       {
         text: 'Webpack / Node',
         children: [
           {
             text: 'Webpack',
-            children: [
-              '/webpack/知识梳理.md',
-            ]
+            children: ['/webpack/知识梳理.md']
           },
           {
             text: 'Node 相关',
             children: ['/node/npm.md', '/node/toolkit.md']
           },
-          
+
           {
             text: '疑难杂症',
             children: ['/issue/h5.md', '/issue/pc.md']
           }
-        ],
+        ]
       },
       {
         text: 'Html / CSS ',
@@ -162,11 +154,10 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/css/skill.md',
               '/css/scss.md'
             ]
-          },
-          
+          }
         ]
       },
-      
+
       // {
       //   text: '在线音乐',
       //   children: [
@@ -199,12 +190,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           ]
         }
       ],
-      '/theory/':[
+      '/theory/': [
         {
           text: 'theory',
-          children: [
-            '/theory/',
-          ]
+          children: ['/theory/']
         }
       ],
       '/JavaScript/': [
@@ -216,16 +205,14 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/JavaScript/执行上下文-作用域链-闭包.md',
             '/JavaScript/call、apply与bind.md',
             '/JavaScript/js模拟bind方法.md',
-            '/JavaScript/js模拟new操作.md',
+            '/JavaScript/js模拟new操作.md'
           ]
         }
       ],
       '/TypeScript/': [
         {
           text: 'TypeScript',
-          children: [
-            '/TypeScript/',
-          ]
+          children: ['/TypeScript/']
         }
       ],
       '/vue/': [
@@ -242,17 +229,13 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/react/': [
         {
           text: 'React',
-          children: [
-          '/react/class-hooks.md'
-          ]
+          children: ['/react/class-hooks.md']
         }
       ],
       '/webpack/': [
         {
           text: 'Webpack',
-          children: [
-            '/webpack/知识梳理.md',
-          ]
+          children: ['/webpack/知识梳理.md']
         }
       ],
       '/css/': [
@@ -291,7 +274,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
     lastUpdatedText: '上次更新',
     contributors: false,
-    darkMode: false,
+    darkMode: false
   },
   plugins: [
     [
