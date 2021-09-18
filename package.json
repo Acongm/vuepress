@@ -13,7 +13,7 @@
     "commit": "git-cz",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "deploy": "gh-pages -d dist -m deploy",
-    "deploy:build": "npm run build && npm run deploy",
+    "deploy:build": "npm run build && npm run deploy"
   },
   "lint-staged": {
     "*.{js,ts,scss,md,json}": [
