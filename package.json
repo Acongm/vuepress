@@ -9,7 +9,9 @@
     "build:github": "cross-env BUILD_ENV=/mm-notes/ npm run build",
     "lint": "prettier --write **/*.{js,ts,scss,md,json}",
     "lint:lint-staged": "lint-staged",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "commit": "git-cz",
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "lint-staged": {
     "*.{js,ts,scss,md,json}": [
@@ -32,10 +34,19 @@
     "@vuepress/plugin-pwa-popup": "^2.0.0-beta.22",
     "@vuepress/plugin-search": "^2.0.0-beta.22",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2",
     "vue-scriptx": "^0.2.5",
     "vuepress": "^2.0.0-beta.22"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "conventional-changelog-cli": "^2.1.1"
   }
 }
