@@ -30,7 +30,7 @@
 
 - 核心 api Object.defineproperty
   - vue 双向数据绑定是通过 数据劫持 结合 发布订阅模式的方式来实现的， 也就是说数据和视图同步，数据发生变化，视图跟着变化，视图变化，数据也随之发生改变；
-  - [Object.defineproperty 核心代码 自定义实现](./vue/code/Object.defineproperty.md)
+  - [Object.defineproperty 核心代码 自定义实现](/vue/code/Object.defineproperty.md)
 - 监听对象（深度），监听数组
 - Object.defineproperty 的缺点（vue3 用 Proxy）
   - 深度监听，需要递归到底，一次性计算量大
