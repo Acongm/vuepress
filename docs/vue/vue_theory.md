@@ -36,7 +36,7 @@
   - 深度监听，需要递归到底，一次性计算量大
   - 无法监听新增属性/删除属性（Vue.set Vue.delete）
   - [Proxy 核心代码 自定义实现](/vue/code/Proxy.html)
-  - [proxy-observe 核心代码 自定义实现](/vue/code/proxy-observe.html)
+  - [proxy-observe 核心代码 自定义实现](/vue/code/proxy-observe.md)
 
 Object.defineproperty.html
 
