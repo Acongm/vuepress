@@ -50,7 +50,7 @@ define('./service-worker.js', ['./workbox-f7715658'], function (s) {
   }),
     s.precacheAndRoute(
       [
-        { url: '404.html', revision: 'aaacf20be20b91add92596b924cb186c' },
+        { url: '404.html', revision: '3ad918c425c29b282ae82ac784161f12' },
         { url: 'assets/css/7339.styles.efb6fd39.css', revision: null },
         { url: 'assets/css/styles.715acfc1.css', revision: null },
         { url: 'assets/img/back-to-top.8b37f773.svg', revision: null },
@@ -61,8 +61,8 @@ define('./service-worker.js', ['./workbox-f7715658'], function (s) {
         { url: 'assets/js/3616.923c7839.js', revision: null },
         { url: 'assets/js/5205.d8806728.js', revision: null },
         { url: 'assets/js/9363.1015719a.js', revision: null },
-        { url: 'assets/js/app.6dc342fa.js', revision: null },
-        { url: 'assets/js/runtime~app.b2fe5ccd.js', revision: null },
+        { url: 'assets/js/app.f36ab19c.js', revision: null },
+        { url: 'assets/js/runtime~app.c684472e.js', revision: null },
         { url: 'assets/js/v-02b49bb5.9a8f508b.js', revision: null },
         { url: 'assets/js/v-1128ff8f.c720f63a.js', revision: null },
         { url: 'assets/js/v-134daec4.26694552.js', revision: null },
@@ -73,7 +73,7 @@ define('./service-worker.js', ['./workbox-f7715658'], function (s) {
         { url: 'assets/js/v-2ab098c0.13d8c9b1.js', revision: null },
         { url: 'assets/js/v-2d633f67.cdd21da6.js', revision: null },
         { url: 'assets/js/v-3448eb71.79074e3f.js', revision: null },
-        { url: 'assets/js/v-349853b9.e24ee99b.js', revision: null },
+        { url: 'assets/js/v-349853b9.0eb1a044.js', revision: null },
         { url: 'assets/js/v-3706649a.b5e9cbac.js', revision: null },
         { url: 'assets/js/v-3a1bce8b.3a1a4d8b.js', revision: null },
         { url: 'assets/js/v-3b303508.e9a0ebfb.js', revision: null },
@@ -105,137 +105,137 @@ define('./service-worker.js', ['./workbox-f7715658'], function (s) {
         { url: 'assets/js/v-dd6edac6.6e22722f.js', revision: null },
         { url: 'assets/js/v-eb8ea600.ee70f399.js', revision: null },
         { url: 'assets/js/v-f20d4d92.bbbfa957.js', revision: null },
-        { url: 'css/index.html', revision: '07d5d0c1be319a62d4ab1a953a0f250f' },
-        { url: 'css/scss.html', revision: '6f4b181be7e140d336a6dd8ffbf2a414' },
-        { url: 'css/skill.html', revision: '86befb8876e60d841c0da5f0b3739955' },
+        { url: 'css/index.html', revision: '72bd05db5e2a6e1b6ae575aa2161baff' },
+        { url: 'css/scss.html', revision: '78fd94fe77038d83d244a36e7e1ca9dc' },
+        { url: 'css/skill.html', revision: 'fffc08c09b009b0abcf69cde310d7d4f' },
         {
           url: 'git/command.html',
-          revision: 'd94a9b23e8e7d09fd28be0ea210f0696'
+          revision: 'e1c672e188fc31114b41c4d75cfd59ee'
         },
         {
           url: 'git/commit.html',
-          revision: '570361b34cfb7817c59c3fabd72b5169'
+          revision: 'b6e1bf304bcb6c66655fa2bb5068f841'
         },
-        { url: 'git/index.html', revision: '2ded7cef29dec3ad765753eccb9e984c' },
-        { url: 'index.html', revision: '7991263d49d26754978d9fac2a5d1a49' },
-        { url: 'issue/h5.html', revision: '53ed9de79d463c4f746a20735861da52' },
-        { url: 'issue/pc.html', revision: '7c2e8e13a23bbf16457feb215f7d35be' },
+        { url: 'git/index.html', revision: 'cdeaa3a65dfb2ca3b0227bfcd75bb284' },
+        { url: 'index.html', revision: 'f455b89e834253aaccdf9a221ad129d5' },
+        { url: 'issue/h5.html', revision: '80ecee2b65488245c6705871105d9544' },
+        { url: 'issue/pc.html', revision: '03d2f4765e1c0569ef7d645ddecfd33b' },
         {
           url: 'JavaScript/call、apply与bind.html',
-          revision: 'd45b77667492f09e8317e9cf9526eeaa'
+          revision: '33341b6f1b9835b5b041e2b96763975a'
         },
         {
           url: 'JavaScript/index.html',
-          revision: '35cfd39bc6ded1376cc97db01305fe3f'
+          revision: 'fbe91722e36ea57fcd6b338fe0cc04e7'
         },
         {
           url: 'JavaScript/js模拟bind方法.html',
-          revision: 'a22c818dba3984b528f8136df5d29478'
+          revision: '3d7d6313e33fc1c42c444533d9a537e8'
         },
         {
           url: 'JavaScript/js模拟new操作.html',
-          revision: 'aa9afcde3c1416d4d00140837c270f2a'
+          revision: 'd4e086f9070b5e2db1436d93139c97db'
         },
         {
           url: 'JavaScript/执行上下文-作用域链-闭包.html',
-          revision: '94d79abe0f769d3646b27fda204fa713'
+          revision: '5478a772c5d09bddef2b7c8f3362399f'
         },
         {
           url: 'JavaScript/经典闭包处理.html',
-          revision: '844271f177e09861ff5ee4b88a5cf9ab'
+          revision: '3bf4739080d00670d600fbde91fc8757'
         },
         { url: 'logo.jpg', revision: 'bc708b3d27886ad0589bf5ea7ea96a2f' },
-        { url: 'node/npm.html', revision: '8bdccd89ae0155dec868fe650b5b46f2' },
+        { url: 'node/npm.html', revision: '0c71f5b7f795b9bdd2b2961095f0b642' },
         {
           url: 'node/toolkit.html',
-          revision: '81b2e8d287bc3f94d5eda935f9d3f2a7'
+          revision: '738bb4b5ef2de39709d6a910058476a9'
         },
         {
           url: 'online-tools/bookmark-scripts.html',
-          revision: 'b66780e2cecd51379dc48601c78747ea'
+          revision: '155b0b4619c0608db667af8510e4cd73'
         },
         {
           url: 'online-tools/index.html',
-          revision: 'ab6f18d75ed854ed6bccff8a8a3badf7'
+          revision: '2186a3486c28ec8c3ee2bbec8351b029'
         },
         {
           url: 'react/class-hooks.html',
-          revision: '70fae1400e17ef095745a0595b0264bd'
+          revision: '7bf365752870bffc268a10fc1e025e19'
         },
         {
           url: 'software/browser.html',
-          revision: 'c4da295a571834de28951da7202c884e'
+          revision: 'aec01a5c2c11c9562a6d59a54c1d0f28'
         },
         {
           url: 'software/cross-platform.html',
-          revision: 'c8e2936f315373ad8e08b63976022006'
+          revision: '6e6c42166beaec51677c353a4477e46c'
         },
         {
           url: 'software/mac.html',
-          revision: 'adcb7c60e1cb3a75419e9ca7a52b7682'
+          revision: 'cdb581bb17a65f0c7acc8136c88af0ae'
         },
         {
           url: 'software/vscode.html',
-          revision: '3c5fdde467ffee18c6a9a5675da76f4b'
+          revision: 'eb89fdb4a7640d594bbd659c4514b3ff'
         },
         {
           url: 'software/webstorm.html',
-          revision: 'd7a2d7e86f42defbe34b1a236cdc1001'
+          revision: '5415311b033421bce55d72af015cba09'
         },
         {
           url: 'software/windows.html',
-          revision: '51a73a9da3b57bb360b04816763ea39d'
+          revision: 'dee9d845aa1a88c006c83e02c44febce'
         },
         {
           url: 'software/zsh.html',
-          revision: '218963423dcc64609619ae632877f6ee'
+          revision: '53e087b300dec22302e8f6982f92d51b'
         },
         {
           url: 'theory/index.html',
-          revision: '2fac01bac0da576b5ecd95949985565b'
+          revision: '70835c02df6eb3c997d6c6d3e30036ac'
         },
         {
           url: 'TypeScript/index.html',
-          revision: '2d105a4adb5937144b1801c21a203f81'
+          revision: '2ed72161a307145c2a4924689e901714'
         },
         {
           url: 'utils/function.html',
-          revision: '804f02e486cfc7466f9829401efeabd9'
+          revision: '98bc70162ded362d5f7ef8d6a36ce7b1'
         },
         {
           url: 'utils/library.html',
-          revision: '0e0c17203fe5f16e0fde5e4d9a3a0af1'
+          revision: '868a2ee5429e8048dd676955a27721d8'
         },
         {
           url: 'utils/regexp.html',
-          revision: '84ee2ce7d360acfea6177a9fe17a5f74'
+          revision: '1aae857238a092796c1675f1e6dd2001'
         },
         {
           url: 'vue/code/Object.defineproperty.html',
-          revision: 'c3e1c128f3474c9c058f42285ab4ed39'
+          revision: '21f07c64d111a48358d99647838e1a07'
         },
         {
           url: 'vue/code/proxy-observe.html',
-          revision: '6ff5f28211abb72bbe5c2a610443eeeb'
+          revision: '313380416c0323a91156cd1e35a88282'
         },
         {
           url: 'vue/code/Proxy.html',
-          revision: 'b9bc52fe1413c9dd8d430128cd0a7d90'
+          revision: '9f5f660967280a36a42d4189581791af'
         },
-        { url: 'vue/index.html', revision: 'f378d141f38ff3f5dbffade6cf9c5bb4' },
+        { url: 'vue/index.html', revision: '696f18ba5327a2023acae842dd957603' },
         {
           url: 'vue/vue_interview.html',
-          revision: '03a873162e9bb7aaa05fc0c57c55de2d'
+          revision: '841141a33e8b9a8c77d5dd463ecc32c3'
         },
         {
           url: 'vue/vue_theory.html',
-          revision: '26b9232df0cd78f07ededd8a2453ae5d'
+          revision: 'c145e924213dbfe3f08f67e7100ded1a'
         },
-        { url: 'vue/vue2.html', revision: '711e2ea2beb2b3cf5a425cd6bdc5a230' },
-        { url: 'vue/vue3.html', revision: 'b3ff2befb5ca7c8fafe3e12c592877b1' },
+        { url: 'vue/vue2.html', revision: '39d1f7aa2c1bf56114938d0e8f9545d4' },
+        { url: 'vue/vue3.html', revision: '61d34247bf9817e263461691cf4a0025' },
         {
           url: 'webpack/知识梳理.html',
-          revision: 'be6329f202ca6e2ff94efc9c34ba68f1'
+          revision: 'd38fe86e35b28344a894fec7b0145e43'
         }
       ],
       {}

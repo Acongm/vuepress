@@ -12,7 +12,7 @@
     "postinstall": "husky install",
     "commit": "git-cz",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "deploy": "gh-pages -d dist -m deploy",
+    "deploy": "gh-pages -d vuepress -m deploy",
     "deploy:build": "npm run build && npm run deploy"
   },
   "lint-staged": {
