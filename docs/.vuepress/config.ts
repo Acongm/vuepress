@@ -273,8 +273,8 @@ export default defineUserConfig<DefaultThemeOptions>({
       ]
     },
     lastUpdatedText: '上次更新',
-    contributors: false,
-    darkMode: false
+    contributors: false
+    // darkMode: false
   },
   plugins: [
     [
