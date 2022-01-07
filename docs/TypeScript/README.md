@@ -1,6 +1,6 @@
 # TypeScript
 
-## 什么是 Typescript？
+## 什么是 Typescript？ -- 介绍
 
 > Typescript 是强类型的 Javascript 超集，支持 ES6 语法，支持面向对象编程的概念，如类、接口、继承、泛型等。Typescript 并不直接在浏览器上运行，需要编译器编译成纯 Javascript 来运行。
 

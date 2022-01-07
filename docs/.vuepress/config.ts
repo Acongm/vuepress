@@ -100,7 +100,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'TypeScript',
-            children: ['/TypeScript/']
+            children: ['/TypeScript/', '/TypeScript/Study.md']
           }
         ]
       },
@@ -212,7 +212,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/TypeScript/': [
         {
           text: 'TypeScript',
-          children: ['/TypeScript/']
+          children: ['/TypeScript/', '/TypeScript/Study.md']
         }
       ],
       '/vue/': [
