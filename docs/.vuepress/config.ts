@@ -30,7 +30,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       'script',
       {
         src: isProduction
-          ? 'https://hm.baidu.com/hm.js?8092fab2f2adfc7938ba5b8885aef5b4'
+          ? 'https://hm.baidu.com/hm.js?8e5be87f55d52e1115a38afce593d2bb'
           : ''
       }
     ]
@@ -290,7 +290,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/plugin-google-analytics',
       {
-        id: 'UA-153242456-1'
+        id: 'G-B5CNYTFPMD'
       }
     ],
     ['@vuepress/plugin-pwa'],
