@@ -5,14 +5,14 @@ const { path } = require('@vuepress/utils')
 const isProduction = process.env.NODE_ENV === 'production'
 
 // 兼容 GitHub Pages 和 vercel 部署
-const base = process.env.BUILD_ENV ? process.env.BUILD_ENV : '/vuepress/'
+const base = process.env.BUILD_ENV ? process.env.BUILD_ENV : '/'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
-  title: 'Acongm',
+  title: '天空之城',
   description: '前端常用知识、踩坑记录、软件推荐等',
   head: [
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],

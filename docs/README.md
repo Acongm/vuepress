@@ -1,6 +1,6 @@
 ---
 home: true
-title: Acongm
+title: 天空之城
 heroImage: /logo.jpg
 actions:
   - text: 在线工具
@@ -16,5 +16,5 @@ features:
     details: 各种兼容问题
   - title: 软件推荐
     details: 记录好用的软件、浏览器扩展、编辑器插件等
-footer: MIT Licensed | Copyright © 2019-present maomao1996
+footer: 粤ICP备16105234号-1 Copyright © 2022-present Acongm
 ---
