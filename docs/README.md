@@ -16,5 +16,11 @@ features:
     details: 各种兼容问题
   - title: 软件推荐
     details: 记录好用的软件、浏览器扩展、编辑器插件等
-footer: 粤ICP备16105234号-1 Copyright © 2022-present Acongm
+# footer:  //
 ---
+
+---
+
+<div align=center >
+<a target=_blank href=http://beian.miit.gov.cn/ >粤ICP备16105234号-1</a > Copyright © 2022-present Acongm
+</div>
