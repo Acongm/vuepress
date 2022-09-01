@@ -118,7 +118,11 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'React',
-            children: ['/react/class-hooks.md']
+            children: [
+              '/react/class-hooks.md',
+              '/react/react17.md',
+              '/react/react18.md'
+            ]
           }
         ]
       },
@@ -229,7 +233,11 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/react/': [
         {
           text: 'React',
-          children: ['/react/class-hooks.md']
+          children: [
+            '/react/class-hooks.md',
+            '/react/react17.md',
+            '/react/react18.md'
+          ]
         }
       ],
       '/webpack/': [
