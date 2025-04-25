@@ -31,6 +31,7 @@ jobs:
         with:
           # GitHub 密钥
           ACCESS_TOKEN: ${{ secrets.ACONGM_VUEPRESS }}
+          force_orphan: true  # 强制覆盖历史
           # GitHub Pages 读取的分支
           BRANCH: gh-pages
           # 静态文件所在目录
