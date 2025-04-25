@@ -1,54 +1,37 @@
-name: Deploy VuePress to GitHub Pages
-
+name: GitHub Actions Build and Deploy Demo
+# 触发条件: push 到 master 分支后
 on:
   push:
-    branches: [ "master" ]
-  workflow_dispatch:  # 允许手动触发
+    branches:
+      - master
 
+# 设置上海时区
 env:
-  TZ: Asia/Shanghai  # 时区设置保留
+  TZ: Asia/Shanghai
 
+# 任务
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-22.04  # 更新到新版系统
-    permissions:
-      contents: write     # 关键权限
-      pages: write
-      id-token: write
-
+    # 服务器环境：最新版 ubuntu
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4  # 升级到最新稳定版
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
         with:
-          fetch-depth: 0  # 获取完整提交历史
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "14"  # VuePress 推荐 Node 18+
-          cache: npm  # 自动缓存依赖
-
-      - name: Install dependencies
+          persist-credentials: false
+      # 打包静态文件
+      - name: Install and Build
         run: |
-          npm ci --prefer-offline  # 更严格的依赖安装
-
-      - name: Build project
-        run: npm run build
-        env:
-          NODE_ENV: production  # 明确生产环境
-
-      - name: Verify build output
-        uses: actions/upload-artifact@v3
+          npm install
+          npm run-script build
+      # 部署
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          name: build-output
-          path: |
-            vuepress/​**​  # 验证你的实际构建目录
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # 更流行的部署方案
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成无需配置
-          publish_dir: ./vuepress  # 保持与你原配置一致
-          force_orphan: true  # 保持 gh-pages 分支干净
-          user_name: "GitHub Actions"
-          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          # GitHub 密钥
+          ACCESS_TOKEN: ${{ secrets.ACONGM_VUEPRESS }}
+          # GitHub Pages 读取的分支
+          BRANCH: gh-pages
+          # 静态文件所在目录
+          FOLDER: vuepress
