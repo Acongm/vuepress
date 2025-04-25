@@ -12,7 +12,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   dest: './vuepress',
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
-  title: 'Acongm',
+  title: 'acongm',
   description: '前端常用知识、踩坑记录、软件推荐等',
   head: [
     ['link', { rel: 'apple-touch-icon', href: '/favicon.ico' }],
@@ -120,7 +120,11 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'React',
-            children: ['/react/class-hooks.md']
+            children: [
+              '/react/class-hooks.md',
+              '/react/react17.md',
+              '/react/react18.md'
+            ]
           }
         ]
       },
@@ -159,11 +163,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           }
         ]
       },
-
-      // {
       //   text: '在线音乐',
-      //   children: [
-      //     { text: 'PC 端', link: 'https://netease-music.fe-mm.com' },
       //     { text: '移动端', link: 'https://reactmusic.fe-mm.com' }
       //   ]
       // },
@@ -171,7 +171,12 @@ export default defineUserConfig<DefaultThemeOptions>({
         text: '主页',
         children: [
           { text: 'Blog', link: 'https://www.acongm.com' },
-          { text: 'Github', link: 'https://github.com/Acongm' }
+          { text: 'Github', link: 'https://github.com/Acongm' },
+          {
+            text: '简历',
+            link: '/job-description/',
+            activeMatch: '/job-description/$'
+          }
         ]
       }
     ],
@@ -231,7 +236,11 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/react/': [
         {
           text: 'React',
-          children: ['/react/class-hooks.md']
+          children: [
+            '/react/class-hooks.md',
+            '/react/react17.md',
+            '/react/react18.md'
+          ]
         }
       ],
       '/webpack/': [
@@ -250,6 +259,13 @@ export default defineUserConfig<DefaultThemeOptions>({
         {
           text: 'Node 相关',
           children: ['/node/npm.md', '/node/toolkit.md']
+        }
+      ],
+      '/job-description/': [
+        {
+          text: '简历',
+          children: ['/job-description/web前端开发工程师-彭聪.md']
+          // children: ['/job-description/web前端开发工程师-彭聪.md', '/job-description/web前端开发工程师-彭聪.jpeg', '/job-description/web前端开发工程师-彭聪.pdf']
         }
       ],
       '/git/': ['/git/', '/git/command.md'],
@@ -275,8 +291,8 @@ export default defineUserConfig<DefaultThemeOptions>({
       ]
     },
     lastUpdatedText: '上次更新',
-    contributors: false
-    // darkMode: false
+    contributors: false,
+    darkMode: false
   },
   plugins: [
     [

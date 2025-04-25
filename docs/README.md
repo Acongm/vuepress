@@ -1,6 +1,6 @@
 ---
 home: true
-title: Acongm
+title: 天空之城
 heroImage: /logo.jpg
 actions:
   - text: 在线工具
@@ -18,3 +18,9 @@ features:
     details: 记录好用的软件、浏览器扩展、编辑器插件等
 footer: MIT Licensed | Copyright © 2021-present acongm
 ---
+
+---
+
+<div align=center >
+<a target=_blank href=http://beian.miit.gov.cn/ >粤ICP备16105234号-1</a > Copyright © 2022-present Acongm
+</div>

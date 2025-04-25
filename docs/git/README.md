@@ -6,7 +6,7 @@
 - [Github](https://github.com/git/git)
 - [Windows 版 Github](https://github.com/git-for-windows/git)
 - [Windows 版下载镜像站](https://npm.taobao.org/mirrors/git-for-windows/)
-- [下载技巧 - 使用 jsdelivr 加速 Github 仓库资源](https://github.com/maomao1996/daily-notes/issues/7)
+- [下载技巧 - 使用 jsdelivr 加速 Github 仓库资源](https://github.com/acongm/vuepress/issues)
 
 ## 常用 Git 命令
 
