@@ -1,0 +1,32 @@
+#write h1 {
+  font-size: 2rem;
+}
+
+#write h2 {
+  font-size: 1.5rem;
+}
+
+#write h3 {
+  font-size: 1.4rem;
+}
+
+#write h4 {
+  font-size: 1.2rem;
+}
+
+#write h5 {
+  font-size: 1.1rem;
+}
+
+#write h6 {
+  font-size: 1.1rem;
+}
+
+#write h1 {
+  padding-top: 0;
+  /* margin-bottom: 2.3rem; */
+}
+hr {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
