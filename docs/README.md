@@ -16,7 +16,7 @@ features:
     details: 各种兼容问题
   - title: 软件推荐
     details: 记录好用的软件、浏览器扩展、编辑器插件等
-footer: MIT Licensed | Copyright © 2021-present acongm
+# footer: MIT Licensed | Copyright © 2021-present acongm
 ---
 
 ---
