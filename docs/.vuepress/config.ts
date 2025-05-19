@@ -268,6 +268,12 @@ export default defineUserConfig<DefaultThemeOptions>({
           // children: ['/job-description/web前端开发工程师-彭聪.md', '/job-description/web前端开发工程师-彭聪.jpeg', '/job-description/web前端开发工程师-彭聪.pdf']
         }
       ],
+      '/interview/': [
+        {
+          text: '面试题',
+          children: ['/interview/']
+        }
+      ],
       '/git/': ['/git/', '/git/command.md'],
       '/software/': [
         {
