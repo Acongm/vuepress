@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UMD vs ESM</title>
+  </head>
+  <body>
+    <h1>UMD vs ESM</h1>
+    <script src="./umd.js"></script>
+    <script type="module">
+      import { add } from './esm.mjs'
+      console.log('[browser][esm] add(1,2)=', add(1, 2))
+      console.log('[browser][umd] add(1,2)=', window.UMD_LIB.add(1, 2))
+    </script>
+  </body>
+</html>
+
+
