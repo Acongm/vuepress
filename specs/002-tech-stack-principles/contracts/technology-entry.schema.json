@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TechnologyEntry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "category",
+    "proficiency",
+    "principles",
+    "patterns",
+    "bestPractices",
+    "alternatives",
+    "tradeOffs",
+    "boundaries",
+    "verification",
+    "cpsol",
+    "refs",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "proficiency": {
+      "type": "string",
+      "enum": ["core", "strong", "working", "aware"]
+    },
+    "principles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "patterns": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "bestPractices": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "alternatives": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "tradeOffs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "boundaries": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "howToRun", "successSignal", "failureSignal"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["test", "script", "example", "checklist"]
+        },
+        "howToRun": { "type": "string", "minLength": 1 },
+        "successSignal": { "type": "string", "minLength": 1 },
+        "failureSignal": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "cpsol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context", "problem", "solution", "outcome", "learnings"],
+      "properties": {
+        "context": { "type": "string", "minLength": 1 },
+        "problem": { "type": "string", "minLength": 1 },
+        "solution": { "type": "string", "minLength": 1 },
+        "outcome": { "type": "string", "minLength": 1 },
+        "learnings": { "type": "string", "minLength": 1 }
+      }
+    },
+    "uxNotes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "perfNotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "metric",
+          "baseline",
+          "budget",
+          "method",
+          "risks",
+          "rollback"
+        ],
+        "properties": {
+          "metric": { "type": "string", "minLength": 1 },
+          "baseline": { "type": "string", "minLength": 1 },
+          "budget": { "type": "string", "minLength": 1 },
+          "method": { "type": "string", "minLength": 1 },
+          "risks": { "type": "string", "minLength": 1 },
+          "rollback": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "updatedAt": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+  }
+}

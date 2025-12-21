@@ -3,7 +3,7 @@
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+**Note**: This template is filled in by the `/speckit.plan` command.
 
 ## Summary
 
@@ -36,8 +36,10 @@ _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 - **上下文绑定**：是否绑定简历项目或明确的业务/团队约束？（禁止纯模板化回答）
 - **原理拆解**：是否覆盖“是什么 → 为什么用 → 替代方案 → 性能/体验权衡 → 项目中的定制/优化”？
 - **可手写实现**：是否提供至少 1 段核心逻辑/简化实现（含输入输出、边界与失败路径）？
+- **可验证性（必需）**：是否提供可自动化执行的验证？（自动化测试 或 可一键执行的替代验证脚本/可运行示例）
 - **表达结构**：是否按 CP-SO-L（Context/Problem/Solution/Outcome/Learnings）组织，并声明边界前提？
-- **性能责任**：如主题涉及性能，是否给出指标口径（如 Bundle Size/FCP/LCP/TTI 等）+ 验证方式 + 副作用兜底？
+- **用户体验一致性**：如涉及 UI/交互/文档信息架构，是否对齐一致性（术语/命名/结构/a11y/错误态/空状态）？
+- **性能要求与预算**：如主题涉及性能，是否给出指标口径 + 基线 + 目标/预算 + 验证方式 + 副作用兜底？
 
 ## Project Structure
 

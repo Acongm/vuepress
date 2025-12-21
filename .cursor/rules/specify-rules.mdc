@@ -1,0 +1,29 @@
+# vuepress Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2025-12-21
+
+## Active Technologies
+
+- Markdown + Node.js (>= 18) + 无外部依赖（仅 Node 标准库；如需校验以脚本/规则实现） (002-tech-stack-principles)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+# Add commands for Markdown + Node.js (>= 18)
+
+## Code Style
+
+Markdown + Node.js (>= 18): Follow standard conventions
+
+## Recent Changes
+
+- 002-tech-stack-principles: Added Markdown + Node.js (>= 18) + 无外部依赖（仅 Node 标准库；如需校验以脚本/规则实现）
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->

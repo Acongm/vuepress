@@ -14,9 +14,27 @@
   - `reorder`：调整 `INDEX.md` 的优先级顺序
   - `blindspots`：生成/更新 `interview-prep/BLINDSPOTS.md`
   - `validate`：校验扁平规则与 frontmatter 必填字段
+- `validate-tech-profile.mjs`
+  - 校验 `interview-prep/tech-profile__entries.json` 的结构完整性与证据口径
+  - 支持 `--strict`（warnings 也视为失败）
 
 ## 运行方式
 
 ```bash
 node tools/generate-interview-prep.mjs --help
 ```
+
+## Tech Profile Validation（技术画像校验）
+
+```bash
+# 快速校验（warnings 不失败）
+node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries.json
+
+# 严格校验（warnings 也失败）
+node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries.json --strict
+```
+
+## Pass/Fail Signals（验收信号）
+
+- **PASS**：exit code = 0，输出包含 `RESULT: PASS`
+- **FAIL**：exit code = 1，输出包含 `ERRORS:`（或 `--strict` 下 `WARNINGS:` 触发失败）

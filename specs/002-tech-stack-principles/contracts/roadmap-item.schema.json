@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoadmapItem",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "theme",
+    "timebox",
+    "focusAreas",
+    "deliverables",
+    "verification",
+    "reflection"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "theme": { "type": "string", "minLength": 1 },
+    "timebox": { "type": "string", "minLength": 1 },
+    "focusAreas": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "deliverables": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "verification": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "howToRun", "successSignal", "failureSignal"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["test", "script", "example", "checklist"]
+          },
+          "howToRun": { "type": "string", "minLength": 1 },
+          "successSignal": { "type": "string", "minLength": 1 },
+          "failureSignal": { "type": "string", "minLength": 1 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "reflection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["whatWentWell", "gaps", "nextActions"],
+      "properties": {
+        "whatWentWell": { "type": "string" },
+        "gaps": { "type": "string" },
+        "nextActions": { "type": "string" }
+      }
+    }
+  }
+}

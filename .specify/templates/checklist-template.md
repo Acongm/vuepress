@@ -34,10 +34,10 @@
 
 <!--
   推荐分类（可按需要替换）：
-  - Code Quality First：类型安全/错误边界/可维护性/回归风险
+  - Code Quality + Verifiability：类型安全/错误边界/可维护性/回归风险 + 测试/替代验证（可自动化执行）
   - Principle-Driven Understanding：是什么/为什么/替代/权衡/项目实践 + 选型矩阵
-  - Consistent UX in Communication：CP-SO-L 结构 + 边界声明 + 图示/伪代码
-  - Performance as a Responsibility：指标口径/基线/验证/副作用兜底
+  - User Experience Consistency：信息架构/术语命名一致性 + CP-SO-L 结构 + 边界声明 + a11y/错误态/空状态
+  - Performance Requirements & Budgets：指标口径/基线/目标(预算)/验证/副作用兜底
 -->
 
 ## Notes

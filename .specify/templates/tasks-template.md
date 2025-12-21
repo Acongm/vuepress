@@ -7,7 +7,9 @@ description: 'Task list template for feature implementation'
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Tests**: The examples below include test tasks. Tests are OPTIONAL unless the feature spec requires them.
+However, **verification is REQUIRED**: if you do not include automated tests, you MUST include alternative
+verification tasks (runnable scripts/examples/check commands) with clear pass/fail signals.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -15,6 +17,8 @@ description: 'Task list template for feature implementation'
 
 - 每个 US 相关任务说明 SHOULD 指向真实上下文（简历项目/明确约束）
 - 关键实现任务 MUST 包含：类型安全、错误边界、回归风险控制（必要时补充自测/验证任务）
+- 关键路径 MUST 有可自动化执行的验证（测试 或 替代验证脚本/可运行示例），并在任务描述里写清口径与失败信号
+- 涉及 UX/UI/交互的任务 SHOULD 写清一致性要求（术语/命名/结构/a11y/错误态/空状态）
 - 涉及性能的任务 MUST 写清：指标口径、基线、验证方式、潜在副作用与兜底
 
 ## Format: `[ID] [P?] [Story] Description`

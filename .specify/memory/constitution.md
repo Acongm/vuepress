@@ -1,10 +1,13 @@
 <!--
 Sync Impact Report
 
-- Version change: (template placeholders) → 1.0.0
-- Modified principles: N/A (first ratification)
-- Added sections: Core Principles (formalized), Scope & Artifacts, Workflow & Quality Gates, Governance
-- Removed sections: Removed unused placeholder-only principle slot (#5) to match defined 4 principles
+- Version change: 1.0.0 → 1.1.0
+- Modified principles:
+  - 代码质量优先（Code Quality First）→ 代码质量与可验证性（Code Quality + Verifiability）
+  - 表达一致性（Consistent UX in Communication）→ 用户体验一致性（User Experience Consistency）
+  - 性能即责任（Performance as a Responsibility）→ 性能要求与预算（Performance Requirements & Budgets）
+- Added sections: N/A (expanded existing principles + gates)
+- Removed sections: N/A
 - Templates requiring updates:
   - ✅ .specify/templates/plan-template.md
   - ✅ .specify/templates/spec-template.md
@@ -18,15 +21,16 @@ Sync Impact Report
 
 ## Core Principles
 
-### 代码质量优先（Code Quality First）
+### 代码质量与可验证性（Code Quality + Verifiability）
 
-- 所有复习/产出 MUST 基于**真实项目上下文**（来自简历项目或明确假设的业务约束），禁止“背模板式”
-  回答。
-- 技术解释 MUST 体现工程思维：可维护性、可扩展性、错误边界处理、TypeScript 类型安全与回归风险
-  控制贯穿始终。
-- 针对简历涉及的关键技术（React、Ant Design、Webpack、微前端等），每个主题 MUST 至少配套一段
-  **可手写的简化实现/核心逻辑片段**（可为伪代码，但必须可落地、可运行路径清晰）。
-- 任何实现/伪代码 MUST 明确输入/输出、边界条件与失败路径（错误处理、兜底策略、可观测性点位）。
+- 所有产出 MUST 基于**真实上下文**（简历项目/明确的业务与团队约束）；不允许“脱离约束的模板化答案”。
+- 所有实现（含伪代码）MUST 具备：清晰输入/输出、边界条件、失败路径（错误处理/兜底策略/可观测性点位）。
+- TypeScript 类型安全/边界防御/回归风险控制 MUST 贯穿关键逻辑与关键接口（尤其是跨模块边界、I/O 边界）。
+- **测试/验证标准**（二选一且必须可自动化执行）：
+  - **自动化测试**：为关键逻辑提供 unit/integration/contract/e2e 中合适的组合；测试 MUST 可重复、可确定。
+  - **替代验证**：当不引入测试框架（或不适用）时，MUST 提供可一键执行的验证（如无依赖脚本、可运行示例、
+    或可复现的验收脚本），并明确验证口径与失败信号。
+- 任何“完成/优化”声明 MUST 附带可验证证据：命令、输出、对比数据或可复现步骤。
 
 ### 原理驱动的理解标准（Principle-Driven Understanding）
 
@@ -37,20 +41,22 @@ Sync Impact Report
   - 结论与边界（什么条件下会改选）
 - 本体系 MUST 至少维护 2 个“技术选型对比表”（构建工具、状态管理、表单方案等），并随复盘迭代。
 
-### 表达一致性（Consistent UX in Communication）
+### 用户体验一致性（User Experience Consistency）
 
-- 面试回答 MUST 结构化输出：**Context → Problem → Solution → Outcome → Learnings**。
-- 术语 MUST 精准；对不确定内容 MUST 主动声明边界与前提（例如“在 RMS 项目中采用 X；若 SSR/边缘
-  渲染场景则可能改选 Y，并说明原因”）。
-- 架构设计类题目 SHOULD 使用图示/伪代码表达（例如打包产物 ESM/UMD 流程、插件加载机制、微前端隔离
-  策略），并明确关键接口与依赖方向。
+- 所有对外输出（文档/页面/示例/口述稿）MUST 遵循一致的信息架构与命名规范（标题、术语、文件命名、目录结构、
+  链接方式、模板字段），避免同义混用与风格漂移。
+- 关键内容 MUST 结构化：**Context → Problem → Solution → Outcome → Learnings**；并对不确定内容明确声明前提与
+  边界（“在 X 约束下选择 Y；若约束改变则可能改选 Z，并说明原因”）。
+- 涉及 UI/交互的变更 MUST 对齐统一的体验准则：视觉与交互一致性、可访问性（a11y）基础、错误态与空状态一致、
+  文案风格一致（如适用）。
+- 架构/流程类内容 SHOULD 使用图示/伪代码表达，并明确关键接口、依赖方向与职责边界。
 
-### 性能即责任（Performance as a Responsibility）
+### 性能要求与预算（Performance Requirements & Budgets）
 
-- 所有项目描述/技术方案 MUST 附带关键指标与验收口径（如 Bundle Size、FCP/LCP、TTI、Hydration Time、
-  运行时 FPS、长任务、可访问性指标等）。
-- 性能优化 MUST 分层描述：加载性能、运行时性能、感知性能、可访问性；并给出权衡与回归风险控制。
-- 任何“性能收益”叙述 MUST 给出：基线、手段、对比结果、潜在副作用与兜底方案。
+- 所有涉及性能的方案 MUST 给出：**指标口径**（测什么）、**基线**（当前值）、**目标/预算**（期望阈值）与
+  **验证方式**（如何测、在何处测、失败信号）。
+- 性能优化 MUST 分层描述：加载性能、运行时性能、感知性能、可访问性；并明确权衡、回归风险与回滚策略。
+- 任何“性能收益”叙述 MUST 给出：基线、手段、对比结果、潜在副作用与兜底方案（含监控/验证入口）。
 
 ## Scope & Artifacts（范围与交付物标准）
 
@@ -63,7 +69,8 @@ Sync Impact Report
   - CP-SO-L 结构化答案（可用于口述）
   - 1 段简化实现/核心逻辑片段（或关键流程图）
   - 1 组边界/异常场景清单
-  - 1 组性能/体验指标与验证方式（若主题涉及性能）
+  - 1 份可自动化执行的验证方式（测试或替代验证脚本/可运行示例）
+  - 1 组性能/体验指标与验证方式（若主题涉及性能或 UX）
 
 ## Workflow & Quality Gates（流程与质量门禁）
 
@@ -74,6 +81,8 @@ Sync Impact Report
   - 是否绑定真实上下文与约束（不能“空中楼阁”）
   - 是否覆盖“是什么/为什么/替代/权衡/项目实践”
   - 是否提供可手写的核心实现（含边界与错误处理）
+  - 是否提供可自动化执行的验证（测试或替代验证）并明确口径
+  - 如涉及 UX，是否对齐一致性要求（结构/命名/交互/a11y/错误态）
   - 是否包含指标、口径与验证方法（涉及性能时）
   - 是否用 CP-SO-L 结构组织表达，且边界声明清晰
 
@@ -90,4 +99,4 @@ Sync Impact Report
 - 合规检查：
   - 每次生成 plan/spec/tasks/checklist 时 MUST 显式对齐本宪章门禁点。
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-20 | **Last Amended**: 2025-12-20
+**Version**: 1.1.0 | **Ratified**: 2025-12-20 | **Last Amended**: 2025-12-21

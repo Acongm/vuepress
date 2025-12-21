@@ -103,7 +103,7 @@ _Example of marking unclear requirements:_
 ## 技术点拆解与选型对比 _(mandatory)_
 
 <!--
-  本区块用于对齐项目宪章（constitution）中的“原理驱动理解 + 表达一致性 + 性能责任 + 可手写实现”。
+  本区块用于对齐项目宪章（constitution）中的“原理驱动理解 + 用户体验一致性 + 性能要求与预算 + 代码质量与可验证性”。
   输出必须可用于口述面试，并可被他人复述/验证。
 -->
 
@@ -122,6 +122,7 @@ _Example of marking unclear requirements:_
 ### 可手写核心实现（至少 1 段）
 
 要求：明确输入/输出、边界条件、错误处理与兜底策略；允许伪代码，但必须可落地。
+并且 MUST 提供可自动化执行的验证（自动化测试 或 可一键执行的替代验证脚本/可运行示例），写清验证口径与失败信号。
 
 ## Success Criteria _(mandatory)_
 
