@@ -319,6 +319,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/vue/',
             '/vue/vue_theory.md',
             '/vue/vue_interview.md',
+            '/vue/vue-render.md',
             '/vue/vue3.md'
           ]
         }
@@ -339,6 +340,10 @@ export default defineUserConfig<DefaultThemeOptions>({
         {
           text: 'React18',
           children: ['/react/react18.md']
+        },
+        {
+          text: 'React-render',
+          children: ['/react/react-render.md']
         }
       ],
       '/webpack/': [
