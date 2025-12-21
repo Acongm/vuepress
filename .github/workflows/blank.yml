@@ -1,38 +1,35 @@
 name: GitHub Actions Build and Deploy Demo
-# 触发条件: push 到 master 分支后
+
 on:
   push:
     branches:
       - master
 
-# 设置上海时区
 env:
   TZ: Asia/Shanghai
 
-# 任务
 jobs:
   build-and-deploy:
-    # 服务器环境：最新版 ubuntu
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@v4  # 升级到 v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
-      # 打包静态文件
+          node-version: '20'
+          cache: 'npm'
+
       - name: Install and Build
         run: |
           npm install
-          npm run-script build
-      # 部署
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+          npm run build  # 确保输出目录是 vuepress
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # GitHub 密钥
-          ACCESS_TOKEN: ${{ secrets.ACONGM_VUEPRESS }}
-          force_orphan: true  # 强制覆盖历史
-          # GitHub Pages 读取的分支
-          BRANCH: gh-pages
-          # 静态文件所在目录
-          FOLDER: vuepress
+          token: ${{ secrets.ACONGM_VUEPRESS }}  # 使用 PAT
+          branch: gh-pages
+          folder: vuepress
+          force: true  # 替代 force_orphan
