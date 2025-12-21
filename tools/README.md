@@ -38,3 +38,14 @@ node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries
 
 - **PASS**：exit code = 0，输出包含 `RESULT: PASS`
 - **FAIL**：exit code = 1，输出包含 `ERRORS:`（或 `--strict` 下 `WARNINGS:` 触发失败）
+  <<<<<<< Current (Your changes)
+  =======
+
+## Examples as Evidence（用示例做证据）
+
+当不引入测试框架时，允许用“可复现步骤 + 明确验收信号”的 README 作为条目证据：
+
+- `examples/perf-lcp-skeleton/README.md`：LCP/首屏（骨架/预渲染）的验证口径与回滚策略
+- `examples/bundling-treeshake/README.md`：tree-shaking 与体积预算（<15KB）的验证步骤
+- `examples/micro-frontend-isolation/README.md`：qiankun 微前端隔离/通信/发布协同检查清单
+  > > > > > > > Incoming (Background Agent changes)

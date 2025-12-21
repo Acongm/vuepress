@@ -83,7 +83,25 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
       {
         text: '面试',
-        children: ['/theory/']
+        link: '/interview-prep/INDEX.md',
+        activeMatch: '/interview-prep/',
+        children: [
+          {
+            text: '知识列表（面试准备）',
+            link: '/interview-prep/INDEX.md',
+            activeMatch: '/interview-prep/'
+          },
+          {
+            text: '面试题汇总',
+            link: '/theory/',
+            activeMatch: '/theory/'
+          },
+          {
+            text: '面试题（记录）',
+            link: '/interview/2025-04-28.md',
+            activeMatch: '/interview/'
+          }
+        ]
       },
 
       {
@@ -201,6 +219,16 @@ export default defineUserConfig<DefaultThemeOptions>({
         {
           text: 'theory',
           children: ['/theory/']
+        }
+      ],
+      '/interview-prep/': [
+        {
+          text: '面试准备（知识列表）',
+          children: [
+            '/interview-prep/INDEX.md',
+            '/interview-prep/BLINDSPOTS.md',
+            '/interview-prep/README.md'
+          ]
         }
       ],
       '/JavaScript/': [

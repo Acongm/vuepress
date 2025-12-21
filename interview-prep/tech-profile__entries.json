@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "updatedAt": "2025-12-21",
+    "notes": [
+      "本文件用于沉淀 TechnologyEntry 条目（可复述 + 可验证 + 可回滚）。",
+      "字段约定见 specs/002-tech-stack-principles/contracts/technology-entry.schema.json。",
+      "必须至少包含 1 个 resume anchor（refs 中以 resume:* 表示），绑定真实项目上下文。",
+      "refs 支持 md:interview-prep/<file>.md 形式以便脚本做 link 校验。"
+    ]
+  },
+  "entries": [
+    {
+      "id": "react18-arch-state",
+      "name": "React 18 架构与状态治理",
+      "category": "framework",
+      "proficiency": "core",
+      "principles": [
+        "状态变化必须可追踪：数据流向明确、来源可解释",
+        "副作用与渲染解耦：把副作用放到边界层（effects/async actions）",
+        "复杂页面先拆边界：路由/权限/数据/视图分层，避免巨型组件"
+      ],
+      "patterns": [
+        "容器/展示分离（Container/Presenter）",
+        "Feature-based 分层（按领域拆分）",
+        "React Error Boundary + fallback 策略"
+      ],
+      "bestPractices": [
+        "优先使用组合而非继承；优先抽 Hook 而非抽 HOC（除非确实需要横切）",
+        "稳定的 key 与 memo 策略：避免无意义 re-render 与列表抖动",
+        "边界层统一做：权限校验、数据校验、错误兜底、埋点"
+      ],
+      "alternatives": [
+        "Vue 3（Composition API）",
+        "Preact（更小体积，适合插件/SDK 场景）",
+        "服务端渲染/同构（当首屏/SEO 压力更强时）"
+      ],
+      "tradeOffs": [
+        "工程分层越清晰，初期改造成本越高；但可显著降低后续迭代风险",
+        "memo/缓存会增加心智负担；必须以 profile 数据驱动，而非“凭感觉优化”"
+      ],
+      "boundaries": [
+        "当页面数据依赖极复杂且频繁更新时，需要引入更强的数据层约束（例如状态机/领域模型）",
+        "当业务需要 SSR/RSC 时，组件与数据获取策略需要重新设计"
+      ],
+      "verification": {
+        "type": "script",
+        "howToRun": "node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries.json",
+        "successSignal": "exit code 0 and summary contains PASS",
+        "failureSignal": "exit code 1 and outputs ERROR list"
+      },
+      "cpsol": {
+        "context": "在 RMS（React18 + TS + Webpack + Antd，100+ 页面、多权限、多模块）中需要稳定支撑高并发工单处理与多人协作。",
+        "problem": "页面复杂度上升导致状态分散、组件过大、回归风险高；同时需要保证错误兜底与可维护性。",
+        "solution": "按领域拆分模块与状态边界，容器/展示分离；关键边界加 Error Boundary；副作用集中管理；以 profile 驱动优化。",
+        "outcome": "协作效率提升（交叉开发提效），回归风险下降（BUG 率下降），关键页面性能与稳定性可控。",
+        "learnings": "复杂系统最重要的是边界与可验证性：把数据流、错误路径、回滚策略写出来并能验证。"
+      },
+      "refs": [
+        "resume:dji-rms",
+        "resume:xdr",
+        "md:interview-prep/tech__react.md"
+      ],
+      "updatedAt": "2025-12-21"
+    }
+  ]
+}

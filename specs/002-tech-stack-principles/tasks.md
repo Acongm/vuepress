@@ -39,16 +39,16 @@ with clear pass/fail signals.
 
 **Purpose**: 建立“技术画像 + 路线图 + 对比矩阵 + 验证入口”的最小骨架
 
-- [ ] T001 Create/confirm target docs in `interview-prep/` per plan (`interview-prep/tech-profile__index.md`, `interview-prep/roadmap__skill-growth.md`, `interview-prep/matrix__tech-compare-*.md`)
-- [ ] T002 [P] Create `interview-prep/tech-profile__index.md` (目录骨架：分组/熟练度分层/导航/条目清单/证据入口约定)
-- [ ] T003 [P] Create `interview-prep/roadmap__skill-growth.md` (周迭代模板 + 月/季度复盘机制 + 验收口径)
-- [ ] T004 Create `interview-prep/tech-profile__entries.json` (TechnologyEntry 数组容器，后续由脚本校验)
-- [ ] T005 [P] Create `interview-prep/matrix__tech-compare-bundlers.md` (Webpack/Rollup/Vite/Rspack 选型矩阵骨架)
-- [ ] T006 [P] Create `interview-prep/matrix__tech-compare-micro-frontend.md` (qiankun/iframe/web-component/module-federation 对比矩阵骨架)
-- [ ] T007 Add cross-links between `interview-prep/tech-profile__index.md` and the 2 matrix files (互相引用，避免孤岛)
-- [ ] T008 Create `tools/validate-tech-profile.mjs` placeholder with CLI usage comment (node >=18)
-- [ ] T009 Update `tools/README.md` adding a “Tech Profile Validation” section with command `node tools/validate-tech-profile.mjs`
-- [ ] T010 Define “pass/fail signals” in `tools/README.md` (e.g., exit code 0/1 + stdout summary)
+- [x] T001 Create/confirm target docs in `interview-prep/` per plan (`interview-prep/tech-profile__index.md`, `interview-prep/roadmap__skill-growth.md`, `interview-prep/matrix__tech-compare-*.md`)
+- [x] T002 [P] Create `interview-prep/tech-profile__index.md` (目录骨架：分组/熟练度分层/导航/条目清单/证据入口约定)
+- [x] T003 [P] Create `interview-prep/roadmap__skill-growth.md` (周迭代模板 + 月/季度复盘机制 + 验收口径)
+- [x] T004 Create `interview-prep/tech-profile__entries.json` (TechnologyEntry 数组容器，后续由脚本校验)
+- [x] T005 [P] Create `interview-prep/matrix__tech-compare-bundlers.md` (Webpack/Rollup/Vite/Rspack 选型矩阵骨架)
+- [x] T006 [P] Create `interview-prep/matrix__tech-compare-micro-frontend.md` (qiankun/iframe/web-component/module-federation 对比矩阵骨架)
+- [x] T007 Add cross-links between `interview-prep/tech-profile__index.md` and the 2 matrix files (互相引用，避免孤岛)
+- [x] T008 Create `tools/validate-tech-profile.mjs` placeholder with CLI usage comment (node >=18)
+- [x] T009 Update `tools/README.md` adding a “Tech Profile Validation” section with command `node tools/validate-tech-profile.mjs`
+- [x] T010 Define “pass/fail signals” in `tools/README.md` (e.g., exit code 0/1 + stdout summary)
 
 ---
 
@@ -58,14 +58,14 @@ with clear pass/fail signals.
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T011 Implement JSON loading + basic schema-like validation in `tools/validate-tech-profile.mjs` (required fields, enums, date format; no external deps)
-- [ ] T012 Implement link validation in `tools/validate-tech-profile.mjs` for referenced markdown files under `interview-prep/` (missing file => fail)
-- [ ] T013 Implement “evidence validation” in `tools/validate-tech-profile.mjs` (howToRun non-empty + success/failure signal non-empty)
-- [ ] T014 Implement “resume anchor validation” in `tools/validate-tech-profile.mjs` (each entry must cite a resume section id string like `resume:dji-rms` or `resume:user-center`)
-- [ ] T015 Add a runnable help/usage output in `tools/validate-tech-profile.mjs` (e.g., `--help`, default file paths)
-- [ ] T016 Add a fast smoke-check command in `tools/README.md` (e.g., `node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries.json`)
-- [ ] T017 Add “non-negotiable rules” comment block at top of `interview-prep/tech-profile__entries.json` (字段含义 + 如何扩展)
-- [ ] T018 Add a minimal example entry in `interview-prep/tech-profile__entries.json` that references resume + matrix (用作模板)
+- [x] T011 Implement JSON loading + basic schema-like validation in `tools/validate-tech-profile.mjs` (required fields, enums, date format; no external deps)
+- [x] T012 Implement link validation in `tools/validate-tech-profile.mjs` for referenced markdown files under `interview-prep/` (missing file => fail)
+- [x] T013 Implement “evidence validation” in `tools/validate-tech-profile.mjs` (howToRun non-empty + success/failure signal non-empty)
+- [x] T014 Implement “resume anchor validation” in `tools/validate-tech-profile.mjs` (each entry must cite a resume section id string like `resume:dji-rms` or `resume:user-center`)
+- [x] T015 Add a runnable help/usage output in `tools/validate-tech-profile.mjs` (e.g., `--help`, default file paths)
+- [x] T016 Add a fast smoke-check command in `tools/README.md` (e.g., `node tools/validate-tech-profile.mjs --file interview-prep/tech-profile__entries.json`)
+- [x] T017 Add “non-negotiable rules” comment block at top of `interview-prep/tech-profile__entries.json` (字段含义 + 如何扩展)
+- [x] T018 Add a minimal example entry in `interview-prep/tech-profile__entries.json` that references resume + matrix (用作模板)
 
 **Checkpoint**: 运行 `node tools/validate-tech-profile.mjs` 可对空/半成品给出明确失败原因
 
@@ -80,24 +80,24 @@ with clear pass/fail signals.
 
 ### Implementation for User Story 1
 
-- [ ] T019 [US1] Define categories + proficiency rubric in `interview-prep/tech-profile__index.md` (core/strong/working/aware 的判定标准)
-- [ ] T020 [US1] Add resume anchors in `interview-prep/tech-profile__index.md` (映射：用户中心、RMS、公告插件、DevOps、XDR)
+- [x] T019 [US1] Define categories + proficiency rubric in `interview-prep/tech-profile__index.md` (core/strong/working/aware 的判定标准)
+- [x] T020 [US1] Add resume anchors in `interview-prep/tech-profile__index.md` (映射：用户中心、RMS、公告插件、DevOps、XDR)
 
-- [ ] T021 [P] [US1] Add TechnologyEntry “React 18 架构与状态治理” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms` and `resume:xdr`
-- [ ] T022 [P] [US1] Add TechnologyEntry “TypeScript 类型安全与边界设计” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
-- [ ] T023 [P] [US1] Add TechnologyEntry “Webpack 构建与发布治理” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
-- [ ] T024 [P] [US1] Add TechnologyEntry “Vite 迁移与性能体验” to `interview-prep/tech-profile__entries.json` referencing `resume:user-center`
-- [ ] T025 [P] [US1] Add TechnologyEntry “Rollup 打包与 Tree Shaking” to `interview-prep/tech-profile__entries.json` referencing `resume:announce-plugin`
-- [ ] T026 [P] [US1] Add TechnologyEntry “微前端 qiankun 治理” to `interview-prep/tech-profile__entries.json` referencing `resume:devops`
-- [ ] T027 [P] [US1] Add TechnologyEntry “性能优化（LCP/首屏/万级数据秒开）” to `interview-prep/tech-profile__entries.json` referencing `resume:user-center`
-- [ ] T028 [P] [US1] Add TechnologyEntry “组件体系与 Ant Design 二次封装” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
-- [ ] T029 [P] [US1] Add TechnologyEntry “低代码平台工程实践” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms` and `resume:xdr`
-- [ ] T030 [P] [US1] Add TechnologyEntry “CI/CD 与 Docker 流水线” to `interview-prep/tech-profile__entries.json` referencing `resume:devops`
-- [ ] T031 [P] [US1] Add TechnologyEntry “NestJS 全栈交付与定时任务” to `interview-prep/tech-profile__entries.json` referencing `resume:xdr`
-- [ ] T032 [P] [US1] Add TechnologyEntry “ECharts 可视化与大屏性能” to `interview-prep/tech-profile__entries.json` referencing `resume:xdr`
+- [x] T021 [P] [US1] Add TechnologyEntry “React 18 架构与状态治理” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms` and `resume:xdr`
+- [x] T022 [P] [US1] Add TechnologyEntry “TypeScript 类型安全与边界设计” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
+- [x] T023 [P] [US1] Add TechnologyEntry “Webpack 构建与发布治理” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
+- [x] T024 [P] [US1] Add TechnologyEntry “Vite 迁移与性能体验” to `interview-prep/tech-profile__entries.json` referencing `resume:user-center`
+- [x] T025 [P] [US1] Add TechnologyEntry “Rollup 打包与 Tree Shaking” to `interview-prep/tech-profile__entries.json` referencing `resume:announce-plugin`
+- [x] T026 [P] [US1] Add TechnologyEntry “微前端 qiankun 治理” to `interview-prep/tech-profile__entries.json` referencing `resume:devops`
+- [x] T027 [P] [US1] Add TechnologyEntry “性能优化（LCP/首屏/万级数据秒开）” to `interview-prep/tech-profile__entries.json` referencing `resume:user-center`
+- [x] T028 [P] [US1] Add TechnologyEntry “组件体系与 Ant Design 二次封装” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms`
+- [x] T029 [P] [US1] Add TechnologyEntry “低代码平台工程实践” to `interview-prep/tech-profile__entries.json` referencing `resume:dji-rms` and `resume:xdr`
+- [x] T030 [P] [US1] Add TechnologyEntry “CI/CD 与 Docker 流水线” to `interview-prep/tech-profile__entries.json` referencing `resume:devops`
+- [x] T031 [P] [US1] Add TechnologyEntry “NestJS 全栈交付与定时任务” to `interview-prep/tech-profile__entries.json` referencing `resume:xdr`
+- [x] T032 [P] [US1] Add TechnologyEntry “ECharts 可视化与大屏性能” to `interview-prep/tech-profile__entries.json` referencing `resume:xdr`
 
-- [ ] T033 [US1] Populate `interview-prep/tech-profile__index.md` with links to the 12 entries (按类别分组 + Top 5 面试高频清单)
-- [ ] T034 [US1] Add a “2-minute drill” section to `interview-prep/tech-profile__index.md` listing Top 5 entries + rehearsal checklist
+- [x] T033 [US1] Populate `interview-prep/tech-profile__index.md` with links to the 12 entries (按类别分组 + Top 5 面试高频清单)
+- [x] T034 [US1] Add a “2-minute drill” section to `interview-prep/tech-profile__index.md` listing Top 5 entries + rehearsal checklist
 
 **Checkpoint**: `node tools/validate-tech-profile.mjs` 对 US1 条目通过；目录可在 60 秒内定位任意条目
 
@@ -111,17 +111,17 @@ with clear pass/fail signals.
 
 ### Implementation for User Story 2
 
-- [ ] T035 [P] [US2] For entries that mention performance, add perfNotes (metric/baseline/budget/method/risks/rollback) in `interview-prep/tech-profile__entries.json` referencing resume metrics (e.g., LCP 2.3s→1.4s, 首屏<1.5s)
-- [ ] T036 [P] [US2] For entries that mention UX/UI, add uxNotes (a11y/错误态/空状态/一致性) in `interview-prep/tech-profile__entries.json`
-- [ ] T037 [US2] Add a “review checklist” section in `interview-prep/tech-profile__index.md` (结构完整性/边界声明/证据可复现/风险与回滚)
-- [ ] T038 [US2] Implement “summary report” output in `tools/validate-tech-profile.mjs` (counts by proficiency/category + missing fields list)
-- [ ] T039 [US2] Add `--strict` mode to `tools/validate-tech-profile.mjs` (any warning => fail; default: warnings allowed)
+- [x] T035 [P] [US2] For entries that mention performance, add perfNotes (metric/baseline/budget/method/risks/rollback) in `interview-prep/tech-profile__entries.json` referencing resume metrics (e.g., LCP 2.3s→1.4s, 首屏<1.5s)
+- [x] T036 [P] [US2] For entries that mention UX/UI, add uxNotes (a11y/错误态/空状态/一致性) in `interview-prep/tech-profile__entries.json`
+- [x] T037 [US2] Add a “review checklist” section in `interview-prep/tech-profile__index.md` (结构完整性/边界声明/证据可复现/风险与回滚)
+- [x] T038 [US2] Implement “summary report” output in `tools/validate-tech-profile.mjs` (counts by proficiency/category + missing fields list)
+- [x] T039 [US2] Add `--strict` mode to `tools/validate-tech-profile.mjs` (any warning => fail; default: warnings allowed)
 
-- [ ] T040 [P] [US2] Create `examples/perf-lcp-skeleton/README.md` describing skeleton prerender approach + measurement method + rollback note
-- [ ] T041 [P] [US2] Create `examples/bundling-treeshake/README.md` describing Rollup tree-shaking verification steps + size budget (<15KB) note
-- [ ] T042 [P] [US2] Create `examples/micro-frontend-isolation/README.md` describing qiankun isolation checklist (css/js/global side effects) + verification steps
+- [x] T040 [P] [US2] Create `examples/perf-lcp-skeleton/README.md` describing skeleton prerender approach + measurement method + rollback note
+- [x] T041 [P] [US2] Create `examples/bundling-treeshake/README.md` describing Rollup tree-shaking verification steps + size budget (<15KB) note
+- [x] T042 [P] [US2] Create `examples/micro-frontend-isolation/README.md` describing qiankun isolation checklist (css/js/global side effects) + verification steps
 
-- [ ] T043 [US2] Update `tools/README.md` with “Examples as Evidence” section pointing to `examples/*/README.md` and how they satisfy verification
+- [x] T043 [US2] Update `tools/README.md` with “Examples as Evidence” section pointing to `examples/*/README.md` and how they satisfy verification
 
 **Checkpoint**: `node tools/validate-tech-profile.mjs --strict` 对所有条目通过；每条目有可复现证据入口
 
@@ -135,11 +135,11 @@ with clear pass/fail signals.
 
 ### Implementation for User Story 3
 
-- [ ] T044 [US3] Fill `interview-prep/matrix__tech-compare-bundlers.md` with dimensions + constraints + conclusion + rollback (link to related entries ids)
-- [ ] T045 [US3] Fill `interview-prep/matrix__tech-compare-micro-frontend.md` with isolation/communication/deploy/perf dimensions + conclusion + rollback
-- [ ] T046 [P] [US3] Add “testing strategy matrix” section to `interview-prep/matrix__tech-compare-bundlers.md` (what to verify at build-time/runtime)
-- [ ] T047 [P] [US3] Add “org/process constraints” section to both matrix files (团队规模/遗留系统/插件生态/合规/发布频率)
-- [ ] T048 [US3] Update `interview-prep/tech-profile__index.md` to link matrices under a “Decision Playbooks” heading
+- [x] T044 [US3] Fill `interview-prep/matrix__tech-compare-bundlers.md` with dimensions + constraints + conclusion + rollback (link to related entries ids)
+- [x] T045 [US3] Fill `interview-prep/matrix__tech-compare-micro-frontend.md` with isolation/communication/deploy/perf dimensions + conclusion + rollback
+- [x] T046 [P] [US3] Add “testing strategy matrix” section to `interview-prep/matrix__tech-compare-bundlers.md` (what to verify at build-time/runtime)
+- [x] T047 [P] [US3] Add “org/process constraints” section to both matrix files (团队规模/遗留系统/插件生态/合规/发布频率)
+- [x] T048 [US3] Update `interview-prep/tech-profile__index.md` to link matrices under a “Decision Playbooks” heading
 
 **Checkpoint**: 2 张矩阵都能在 3 分钟内被复述（约束 → 维度 → 结论 → 风险/回滚），并与条目互链
 
@@ -149,11 +149,11 @@ with clear pass/fail signals.
 
 **Purpose**: 让任务体系可持续迭代、可复盘、可升级
 
-- [ ] T049 Add monthly review template to `interview-prep/roadmap__skill-growth.md` (新增/淘汰条目、趋势追踪、薄弱项变化)
-- [ ] T050 Add quarterly retro template to `interview-prep/roadmap__skill-growth.md` (Top5 变更原因、证据质量、回滚案例)
-- [ ] T051 Add “practice log” section to `interview-prep/roadmap__skill-growth.md` (每周一次 2 分钟口述演练记录)
-- [ ] T052 Add a “naming conventions” section to `interview-prep/tech-profile__index.md` (术语一致性、文件命名、引用规范)
-- [ ] T053 Run validation and record output snapshot in `interview-prep/tech-profile__index.md` (粘贴一次 summary 结果作为基线证据)
+- [x] T049 Add monthly review template to `interview-prep/roadmap__skill-growth.md` (新增/淘汰条目、趋势追踪、薄弱项变化)
+- [x] T050 Add quarterly retro template to `interview-prep/roadmap__skill-growth.md` (Top5 变更原因、证据质量、回滚案例)
+- [x] T051 Add “practice log” section to `interview-prep/roadmap__skill-growth.md` (每周一次 2 分钟口述演练记录)
+- [x] T052 Add a “naming conventions” section to `interview-prep/tech-profile__index.md` (术语一致性、文件命名、引用规范)
+- [x] T053 Run validation and record output snapshot in `interview-prep/tech-profile__index.md` (粘贴一次 summary 结果作为基线证据)
 
 ---
 
