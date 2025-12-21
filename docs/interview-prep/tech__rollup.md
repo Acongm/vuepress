@@ -32,27 +32,88 @@ updated_at: 2025-12-20
 
 <!-- AUTO-GENERATED:END -->
 
+## 关联卡片
+
+- 项目：
+  - [`project__announce-plugin`](./project__announce-plugin.md#原理简述)
+- 对比：
+  - [`matrix__bundler-webpack-vite-rollup`](./matrix__bundler-webpack-vite-rollup.md#对比表格)
+
 ## 在我项目中的角色与使用场景
 
-（写清“你在哪个项目、为什么用、解决什么约束”）
+- 典型场景：做“跨平台公告插件/SDK/组件库”这类**要被外部系统集成**的产物。
+  - 目标：产物要小、格式要全（esm/cjs/umd）、tree-shaking 友好、外部依赖可控（external）。
+- 我在项目里的落地：
+  - 设计多产物输出（ESM + CJS + UMD），并约定 `exports` 字段与类型声明输出。
+  - 控制 breaking change：版本化、变更记录、以及验证“被集成方”的兼容性矩阵。
 
 ## 原理简述
 
-（是什么 → 为什么用 → 替代方案 → 权衡 → 项目定制/优化）
+Rollup 的核心优势是：以 ESM 为中心做静态分析，天然适合 **tree-shaking** 与高质量库产物。
+
+- **模块解析**：对 ESM import/export 做静态分析，构建依赖图。
+- **tree-shaking**：
+  - 能删除“未被引用的导出”，前提是代码可静态分析且无副作用（side effects）。
+  - 关键开关：`treeshake`、`moduleSideEffects`、以及 `package.json` 的 `sideEffects` 声明。
+- **external**：库构建常把 `react` 这类依赖标记为外部，避免打进产物导致重复依赖与体积膨胀。
+- **插件体系**：同样有 transform/resolve/load/generateBundle 等生命周期，生态成熟。
+
+权衡点：
+
+- Rollup 不以 Dev Server/HMR 为核心；做应用构建往往需要更多配套。
+- 对 CJS/动态 require 的处理，需要插件与约束（尽量写成 ESM）。
 
 ## 对比表格
 
-（至少 2 个替代方案 + 你的决策依据，包含风险与回滚/迁移策略）
+| 维度          | Rollup             | Webpack            | Vite               |
+| ------------- | ------------------ | ------------------ | ------------------ |
+| 最适合        | **库/SDK**         | 应用（全能）       | 应用（DX 优先）    |
+| tree-shaking  | **强**（ESM 优先） | 依赖配置与写法     | 生产同 Rollup      |
+| external 控制 | 强（库场景友好）   | 也可做，但更偏应用 | 可做               |
+| 多格式输出    | **一等公民**       | 可做但较繁琐       | 生产可做（Rollup） |
+
+我的选型口径：
+
+- “被别人引入”的库：优先 Rollup（产物质量、体积、格式完整）。
+- “自己运行”的应用：Webpack/Vite 更合适。
 
 ## 模拟问答
 
-- [ ] Q1：……
-  - 推荐回答结构：Context → Problem → Solution → Outcome → Learnings
-- [ ] Q2：……
+- [ ] Q1：tree-shaking 为什么有时不生效？
+  - 常见原因：
+    - 产物是 CJS（静态分析弱），或混用了动态 `require`。
+    - 包声明有副作用（未正确配置 `sideEffects`），Rollup 不敢删。
+    - 写法导致引用不可静态确定（比如 `export *` + 动态访问）。
+  - 解决：保持 ESM、配置 `moduleSideEffects`、把副作用代码（polyfill/全局注入）显式隔离。
+- [ ] Q2：为什么库构建要 external？
+  - 避免把 `react`/`lodash` 打进包导致重复依赖、版本冲突与体积膨胀；
+  - 让使用方用自己的依赖版本，符合生态预期。
 
 ## 手写代码区
 
-（给出最小可运行代码片段或伪代码，明确输入/输出、边界与失败路径）
+一个“ESM + CJS 双产物 + external + d.ts”思路示例：
+
+```ts
+import typescript from '@rollup/plugin-typescript'
+
+/** @type {import('rollup').RollupOptions} */
+export default {
+  input: 'src/index.ts',
+  external: ['react', 'react-dom'],
+  plugins: [
+    typescript({
+      tsconfig: './tsconfig.json',
+      declaration: true,
+      declarationDir: 'dist/types',
+      rootDir: 'src'
+    })
+  ],
+  output: [
+    { file: 'dist/index.mjs', format: 'esm', sourcemap: true },
+    { file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'named' }
+  ]
+}
+```
 
 ## 我的补充（Manual）
 

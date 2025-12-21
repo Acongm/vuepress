@@ -1,5 +1,10 @@
 # 十五分钟读懂 React 17
 
+## 关联面试卡（快速跳转）
+
+- 技术卡：[`tech__react`](../interview-prep/tech__react.md#原理简述)
+- 性能方法论：[`tech__performance`](../interview-prep/tech__performance.md#原理简述)
+
 作为时下最火的前端框架之一，React 每次发版都会带来创新的改变，如 React 最早提出虚拟 DOM、React 16 引入 fiber 架构，再到后来 React 16.8 提出令人耳目一新的 Hooks，这些创新也是很多人推崇 React 的一个重要原因。然而，到了 React 17，rc 发布日志上竟然说这次版本最大的特点就是**无新特性**，从目前来说，这个日志是让很多人失望了。
 
 这么多人对这次发版失望，那 React 17 就真的没什么好说的吗？显然不是，至少我认为不是的，从长远来看，无论是项目角度，还是源码学习角度，作为一个资深 reactress，我还是有很多东西要学习的。

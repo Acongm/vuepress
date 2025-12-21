@@ -83,12 +83,12 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
       {
         text: '面试',
-        link: '/interview-prep/INDEX.md',
+        link: '/interview-prep/',
         activeMatch: '/interview-prep/',
         children: [
           {
             text: '知识列表（面试准备）',
-            link: '/interview-prep/INDEX.md',
+            link: '/interview-prep/',
             activeMatch: '/interview-prep/'
           },
           {
@@ -121,6 +121,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'TypeScript',
             children: ['/TypeScript/', '/TypeScript/Study.md']
+          },
+          {
+            text: 'Performance',
+            children: ['/Performance/']
           }
         ]
       },
@@ -138,11 +142,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'React',
-            children: [
-              '/react/class-hooks.md',
-              '/react/react17.md',
-              '/react/react18.md'
-            ]
+            children: ['/react/class-hooks.md']
           }
         ]
       },
@@ -151,7 +151,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         children: [
           {
             text: 'Webpack',
-            children: ['/webpack/知识梳理.md']
+            children: ['/webpack/知识梳理.md', '/webpack/vite-知识梳理.md']
           },
           {
             text: 'Node 相关',
@@ -223,12 +223,45 @@ export default defineUserConfig<DefaultThemeOptions>({
       ],
       '/interview-prep/': [
         {
-          text: '面试准备（知识列表）',
+          text: '面试准备（总览）',
+          children: ['/interview-prep/INDEX.md', '/interview-prep/README.md']
+        },
+        {
+          text: 'Projects（项目卡）',
           children: [
-            '/interview-prep/INDEX.md',
-            '/interview-prep/BLINDSPOTS.md',
-            '/interview-prep/README.md'
+            '/interview-prep/project__dji-rms.md',
+            '/interview-prep/project__dji-user-center.md',
+            '/interview-prep/project__announce-plugin.md',
+            '/interview-prep/project__dji-devops.md',
+            '/interview-prep/project__xdr-dashboard-report.md'
           ]
+        },
+        {
+          text: 'Tech（技术卡）',
+          children: [
+            '/interview-prep/tech__webpack.md',
+            '/interview-prep/tech__react.md',
+            '/interview-prep/tech__typescript.md',
+            '/interview-prep/tech__eslint-engineering.md',
+            '/interview-prep/tech__micro-frontend-qiankun.md',
+            '/interview-prep/tech__rollup.md',
+            '/interview-prep/tech__vite.md',
+            '/interview-prep/tech__performance.md'
+          ]
+        },
+        {
+          text: 'Matrix（对比卡）',
+          children: [
+            '/interview-prep/matrix__bundler-webpack-vite-rollup.md',
+            '/interview-prep/matrix__monorepo-lerna-nx.md',
+            '/interview-prep/matrix__form-formily-rjsf-custom.md',
+            '/interview-prep/matrix__lowcode-ssr-csr-export.md',
+            '/interview-prep/matrix__cicd-release-strategy.md'
+          ]
+        },
+        {
+          text: 'Blindspots（盲区清单）',
+          children: ['/interview-prep/BLINDSPOTS.md']
         }
       ],
       '/JavaScript/': [
@@ -242,6 +275,12 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/JavaScript/js模拟bind方法.md',
             '/JavaScript/js模拟new操作.md'
           ]
+        }
+      ],
+      Performance: [
+        {
+          text: 'Performance',
+          children: ['/Performance/']
         }
       ],
       '/TypeScript/': [
@@ -264,17 +303,45 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/react/': [
         {
           text: 'React',
-          children: [
-            '/react/class-hooks.md',
-            '/react/react17.md',
-            '/react/react18.md'
-          ]
+          children: ['/react/class-hooks.md']
+        },
+        {
+          text: 'React16',
+          children: ['/react/react16.md']
+        },
+        {
+          text: 'React17',
+          children: ['/react/react17.md']
+        },
+        {
+          text: 'React18',
+          children: ['/react/react18.md']
         }
       ],
       '/webpack/': [
         {
-          text: 'Webpack',
+          text: 'Webpack-知识梳理',
           children: ['/webpack/知识梳理.md']
+        },
+        {
+          text: 'Webpack-架构及原理',
+          children: ['/webpack/架构及原理.md']
+        },
+        {
+          text: 'Webpack-打包工具',
+          children: ['/webpack/打包工具.md']
+        },
+        {
+          text: 'webpack-vite-rollup',
+          children: ['/webpack/webpack-vite-rollup.md']
+        },
+        {
+          text: 'vite-知识梳理',
+          children: ['/webpack/vite-知识梳理.md']
+        },
+        {
+          text: 'vite-架构及原理',
+          children: ['/webpack/vite-架构及原理.md']
         }
       ],
       '/css/': [

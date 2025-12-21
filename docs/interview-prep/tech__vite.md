@@ -32,27 +32,79 @@ updated_at: 2025-12-20
 
 <!-- AUTO-GENERATED:END -->
 
+## 关联卡片
+
+- 项目：
+  - [`project__dji-user-center`](./project__dji-user-center.md#原理简述)
+- 对比：
+  - [`matrix__bundler-webpack-vite-rollup`](./matrix__bundler-webpack-vite-rollup.md#对比表格)
+  - [`tech__webpack`](./tech__webpack.md#原理简述)
+
 ## 在我项目中的角色与使用场景
 
-（写清“你在哪个项目、为什么用、解决什么约束”）
+- 使用场景：当项目“冷启动慢、HMR 慢、开发体验差”时，用 Vite 的 ESM Dev Server 提升迭代效率。
+- 我在项目里的落地重点：
+  - 评估迁移成本：插件生态、历史 Webpack loader 能否替代、老旧依赖是否支持 ESM。
+  - 统一 `env`、代理、别名、静态资源处理与 sourcemap 策略，避免“开发好用，上线翻车”。
+  - 对大依赖做 `optimizeDeps`/拆分，避免 dev 期频繁预构建导致的抖动。
 
 ## 原理简述
 
-（是什么 → 为什么用 → 替代方案 → 权衡 → 项目定制/优化）
+一句话：Vite 开发期走“**原生 ESM**”，构建期走“**Rollup**”。
+
+- **Dev Server（快的原因）**：
+  - 不再把全量依赖打包成一个 bundle 才启动；浏览器按需请求模块（ESM import）。
+  - 对第三方依赖做一次性预构建（esbuild）：把 commonjs/大量小文件依赖变成更适合浏览器的形式，提升启动与 HMR 稳定性。
+  - HMR 基于模块依赖图精确失效，常见场景下比“全量重打包”更快。
+- **Build（Rollup）**：
+  - 产物优化（tree-shaking、code-splitting、chunk 命名、manifest）主要由 Rollup 完成。
+  - 插件体系大体沿用 Rollup 插件生态（同时提供 Vite 专属 hook）。
+
+权衡点（面试表达）：
+
+- Vite 的优势在“开发期”，但**生产构建链路**也需要完整评估（legacy 浏览器、依赖 ESM 兼容、CSS 处理差异）。
+- 复杂存量系统迁移要分阶段：先保证“构建产物一致性”，再追求“开发期极致速度”。
 
 ## 对比表格
 
-（至少 2 个替代方案 + 你的决策依据，包含风险与回滚/迁移策略）
+| 维度     | Vite                         | Webpack                   |
+| -------- | ---------------------------- | ------------------------- |
+| Dev 启动 | **快**（ESM 按需）           | 依赖 bundling，冷启动更慢 |
+| HMR      | 通常更快                     | 成熟但大项目易慢          |
+| 生态     | 快速增长（复用 Rollup）      | **最成熟**                |
+| 迁移成本 | 中（需核对插件/loader/兼容） | 低（存量）                |
+| 适合场景 | 新项目/中等存量、追求 DX     | 大存量/强定制/生态依赖深  |
+| 回滚策略 | 旁路构建、按子模块迁移       | 原地演进                  |
 
 ## 模拟问答
 
-- [ ] Q1：……
-  - 推荐回答结构：Context → Problem → Solution → Outcome → Learnings
-- [ ] Q2：……
+- [ ] Q1：Vite 为什么快？快在哪一段？
+  - 关键点：开发期不做全量 bundle，利用浏览器 ESM；依赖预构建用 esbuild；HMR 失效范围更小。
+- [ ] Q2：`optimizeDeps` 是什么？什么时候要调？
+  - 本质：把依赖“预打包/扁平化”，减少 dev 期模块请求与 CJS 转换成本。
+  - 需要调的信号：启动抖动、某些依赖反复被预构建、依赖解析失败或 HMR 不稳定。
+- [ ] Q3：迁移 Webpack → Vite 最大坑是什么？
+  - loader 生态差异（尤其是非常定制的 loader）、某些依赖的 CJS/UMD 兼容、生产环境 polyfill/legacy。
 
 ## 手写代码区
 
-（给出最小可运行代码片段或伪代码，明确输入/输出、边界与失败路径）
+一个最小 Vite 插件（构建期注入版本信息）：
+
+```ts
+import type { Plugin } from 'vite'
+
+export function injectBuildMeta(): Plugin {
+  const buildId = new Date().toISOString()
+  return {
+    name: 'inject-build-meta',
+    transform(code, id) {
+      if (!id.endsWith('.ts') && !id.endsWith('.tsx')) return null
+      if (!code.includes('__BUILD_ID__')) return null
+      return code.replaceAll('__BUILD_ID__', JSON.stringify(buildId))
+    }
+  }
+}
+```
 
 ## 我的补充（Manual）
 

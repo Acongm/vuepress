@@ -1,5 +1,9 @@
 # 每天学一点 TS
 
+## 关联面试卡（快速跳转）
+
+- 技术卡：[`tech__typescript`](../interview-prep/tech__typescript.md#原理简述)
+
 ## Parameters`<T>`获取构造函数的参数类型
 
 ```js

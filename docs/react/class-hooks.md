@@ -1,5 +1,10 @@
 # react
 
+## 关联面试卡（快速跳转）
+
+- 技术卡：[`tech__react`](../interview-prep/tech__react.md#原理简述)
+- 性能方法论：[`tech__performance`](../interview-prep/tech__performance.md#原理简述)
+
 ## 为什么要合成事件机制
 
 - 1、更好的兼容性和跨平台

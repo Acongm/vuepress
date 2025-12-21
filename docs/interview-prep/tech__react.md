@@ -32,27 +32,103 @@ updated_at: 2025-12-20
 
 <!-- AUTO-GENERATED:END -->
 
+## 关联卡片
+
+- 项目：
+  - [`project__dji-user-center`](./project__dji-user-center.md#原理简述)
+  - [`project__dji-rms`](./project__dji-rms.md#原理简述)
+  - [`project__xdr-dashboard-report`](./project__xdr-dashboard-report.md#原理简述)
+- 性能方法论：
+  - [`tech__performance`](./tech__performance.md#原理简述)
+
 ## 在我项目中的角色与使用场景
 
-（写清“你在哪个项目、为什么用、解决什么约束”）
+- 用户中心 / 中后台复杂表单：关注“**渲染性能 + 可维护性**”，避免组件树失控导致的频繁重渲染与状态错乱。
+- 大屏/报表：关注“**高频更新 + 大量可视化组件**”，重点治理长任务、列表/图表渲染与内存增长。
+- 我负责的落地：
+  - 组件分层（容器/展示/领域组件）、状态归属（本地/全局/服务端缓存）与边界约束。
+  - 性能治理：渲染链路定位、memo 策略、虚拟列表、分片渲染、事件与订阅收敛。
+  - 工程实践：错误边界、日志上报、可观测性埋点与“可回滚”的发布策略。
 
 ## 原理简述
 
-（是什么 → 为什么用 → 替代方案 → 权衡 → 项目定制/优化）
+React 的关键能力可以用“**声明式 UI + 可预测更新 + 可组合抽象**”来概括。
+
+- **声明式**：你描述“状态 → UI”的映射，React 负责把变化映射到 DOM 更新。
+- **Diff/Reconciliation**：通过对比前后两棵虚拟树，找出最小更新集（关键是“同层比较 + key 决定身份”）。
+- **Fiber**（React 16+）：把渲染拆成可中断/可恢复的工作单元（work），为并发与优先级调度提供基础。
+- **并发特性（React 18）**：
+  - 自动批处理（batching）减少无意义的多次 render。
+  - `startTransition` 把“非紧急更新”降级，提升交互响应。
+  - `Suspense` 让数据/代码加载可以用一致的“等待边界”表达。
+
+性能的核心心智：
+
+- render 不是坏事，**“无效 render”** 才是问题（render 频率、render 成本、commit 成本）。
+- 优化顺序：先定位（Profiler/Performance）→ 再缩小影响面（状态归属/订阅）→ 再降成本（memo/虚拟化/分片）。
 
 ## 对比表格
 
-（至少 2 个替代方案 + 你的决策依据，包含风险与回滚/迁移策略）
+| 维度     | React                               | Vue                  | Svelte                    |
+| -------- | ----------------------------------- | -------------------- | ------------------------- |
+| 核心模型 | 声明式 + 组件组合                   | 模板 + 响应式        | 编译期消解框架运行时      |
+| 性能手段 | Fiber/并发、memo、虚拟化            | 响应式依赖追踪       | 编译输出更贴近原生        |
+| 工程生态 | **最丰富**（状态/路由/组件库/测试） | 完整、上手快         | 生态相对小                |
+| 适用场景 | 中大型应用、团队协作复杂            | 中小到中大型均可     | 对体积/性能极致且可控场景 |
+| 风险点   | 心智复杂（hooks/并发/性能）         | 模板约束/TS 体验差异 | 生态与招聘面更窄          |
+
+在我面试表达里的“决策口径”：
+
+- 团队与存量决定上限：已有 React 生态 + 组件资产，React 是最稳的选择。
+- 若重点是“把性能治理体系做起来”，React 需要更强的**边界与规范**（状态归属、渲染订阅、memo 策略）。
 
 ## 模拟问答
 
-- [ ] Q1：……
-  - 推荐回答结构：Context → Problem → Solution → Outcome → Learnings
-- [ ] Q2：……
+- [ ] Q1：为什么 `key` 不能用 index？什么时候可以用？
+  - 结论：当列表会插入/删除/排序时，index 会让 React 误判“身份”，导致状态错位与额外 DOM 操作。
+  - 可以用的例外：静态列表（不会增删改顺序）且无局部状态依赖。
+- [ ] Q2：`useEffect` 为什么会“执行两次”？怎么解释给面试官？
+  - React 18 开发模式下 `StrictMode` 会对部分副作用做“额外调用”以暴露不纯副作用（生产不会）。
+  - 正确做法：把副作用写成幂等，或把“仅一次初始化”移动到更合理的抽象（例如上层状态、服务端缓存层）。
+- [ ] Q3：你怎么定位并解决“无效渲染”？
+  - 定位：React Profiler 看 commit 次数与耗时；再用 why-did-you-render/自定义日志定位触发源。
+  - 处理顺序：状态下沉/拆分 context → 订阅收敛（selector）→ `memo/useMemo/useCallback` → 虚拟列表/分片渲染。
+- [ ] Q4：`startTransition` 解决的是什么问题？怎么用？
+  - 把“非紧急的 UI 更新”标注为 transition，让紧急交互（输入/点击反馈）优先。
 
 ## 手写代码区
 
-（给出最小可运行代码片段或伪代码，明确输入/输出、边界与失败路径）
+一个“可解释”的渲染订阅收敛示例（用 `useSyncExternalStore` 表达“按需订阅”）：
+
+```tsx
+import { useSyncExternalStore } from 'react'
+
+type State = { count: number; text: string }
+let state: State = { count: 0, text: '' }
+const listeners = new Set<() => void>()
+
+export function setState(patch: Partial<State>) {
+  state = { ...state, ...patch }
+  listeners.forEach((l) => l())
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
+}
+
+function getSnapshot() {
+  return state
+}
+
+export function useStoreSelector<T>(selector: (s: State) => T) {
+  const snap = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
+  return selector(snap)
+}
+
+// 用法：组件只订阅自己需要的字段，减少无效渲染
+// const count = useStoreSelector((s) => s.count);
+```
 
 ## 我的补充（Manual）
 

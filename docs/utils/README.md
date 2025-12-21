@@ -1,0 +1,5 @@
+# 工具方法（INDEX）
+
+- [`regexp.md`](./regexp.md)
+- [`function.md`](./function.md)
+- [`library.md`](./library.md)

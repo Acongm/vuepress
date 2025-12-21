@@ -1,0 +1,9 @@
+# 软件相关（INDEX）
+
+- [`cross-platform.md`](./cross-platform.md)
+- [`mac.md`](./mac.md)
+- [`windows.md`](./windows.md)
+- [`browser.md`](./browser.md)
+- [`vscode.md`](./vscode.md)
+- [`webstorm.md`](./webstorm.md)
+- [`zsh.md`](./zsh.md)

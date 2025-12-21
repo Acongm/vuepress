@@ -1,5 +1,10 @@
 # React 18 新特性
 
+## 关联面试卡（快速跳转）
+
+- 技术卡：[`tech__react`](../interview-prep/tech__react.md#原理简述)
+- 性能方法论：[`tech__performance`](../interview-prep/tech__performance.md#原理简述)
+
 ## React 18 带来了什么
 
 react 18 的新 API 最大的特点 就是 `Concurrent rendering` 机制。

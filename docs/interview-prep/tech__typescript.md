@@ -40,25 +40,99 @@ updated_at: 2025-12-20
 
 ## 在我项目中的角色与使用场景
 
-（写清“你在哪个项目、为什么用、解决什么约束”）
+## 关联卡片
+
+- 项目：
+  - [`project__dji-rms`](./project__dji-rms.md#原理简述)
+  - [`project__dji-user-center`](./project__dji-user-center.md#原理简述)
+  - [`project__dji-devops`](./project__dji-devops.md#原理简述)
+  - [`project__xdr-dashboard-report`](./project__xdr-dashboard-report.md#原理简述)
+
+## 在我项目中的角色与使用场景
+
+- 目标：在多人协作、快速迭代下，把“隐性错误”前置到编译期，降低线上事故与回归成本。
+- 典型场景：
+  - 表单/接口字段复杂：用类型表达“可选/互斥/依赖关系”，减少运行时分支与 if-else。
+  - 跨模块协作：用类型做“契约”（DTO/Domain Model），配合 lint/CI 门禁保证一致性。
+  - 可维护性治理：拆分类型层（api types / domain types / ui props），避免类型污染。
 
 ## 原理简述
 
-（是什么 → 为什么用 → 替代方案 → 权衡 → 项目定制/优化）
+TypeScript = JavaScript + 类型系统 + 编译器（tsc）。
+
+- **结构化类型（Structural Typing）**：看“形状”而不是“名义”，这使得类型更易组合，但也需要警惕过宽类型。
+- **类型推断（Inference）**：减少显式类型声明，让类型更贴近真实代码；但“边界处”要显式（函数入参/返回、公共 API）。
+- **联合与交叉**：
+  - 联合（`A | B`）表达“多态输入”，要配合**类型收窄**（type guard）。
+  - 交叉（`A & B`）表达“能力叠加”，常用于 HOC/混入能力。
+- **泛型（Generics）**：让类型随输入变化（如 `Promise<T>`），避免 `any`。
+- **条件类型/映射类型**：用于构建更强表达能力的工具类型（`Pick/Partial/ReturnType` 等）。
+
+工程化落地的关键点：
+
+- **tsconfig 分层**：`base`（通用）+ `app`（运行时）+ `node`（脚本/构建），减少互相影响。
+- **类型边界治理**：
+  - 入口（API 层）做校验（zod/io-ts/自研校验）把 unknown 变成 domain type。
+  - 业务层尽量不出现 `any`，必要时用 `unknown` + guard。
+- **增量构建**：`incremental`/`composite`（大仓/多包）提升 CI 与本地速度。
 
 ## 对比表格
 
-（至少 2 个替代方案 + 你的决策依据，包含风险与回滚/迁移策略）
+| 维度     | TypeScript                      | JSDoc + JS           | Flow           |
+| -------- | ------------------------------- | -------------------- | -------------- |
+| 类型能力 | **最强**（生态最全）            | 弱（靠注释约束）     | 中（生态萎缩） |
+| 工程生态 | **事实标准**（tsserver/工具链） | 依赖 IDE/规则        | 较少维护       |
+| 迁移成本 | 中（可渐进）                    | 低                   | 中             |
+| 风险点   | 心智/类型复杂度                 | 约束不足，线上风险高 | 社区与招聘风险 |
+
+渐进迁移策略（我常用）：
+
+- 先从“边界模块”开始：接口层/工具层/公共组件。
+- 开启 `noImplicitAny`、`strictNullChecks` 采用“先 warning 后 error”门禁。
+- 关键路径引入运行时校验（避免“类型正确但数据脏”）。
 
 ## 模拟问答
 
-- [ ] Q1：……
-  - 推荐回答结构：Context → Problem → Solution → Outcome → Learnings
-- [ ] Q2：……
+- [ ] Q1：`any` 和 `unknown` 的区别？你为什么更偏向 `unknown`？
+  - `any`：关闭类型检查，风险是“污染链路”，错误扩散。
+  - `unknown`：要求你显式收窄（guard），让风险收敛在边界。
+- [ ] Q2：如何实现一个类型安全的请求封装？
+  - 把 “请求参数/响应体/错误体” 都类型化：`request<TRes, TReq>()`。
+  - 在 API 层做 runtime 校验，把 `unknown` 变成 `TRes`（否则 TS 只能保证编译期）。
+- [ ] Q3：`interface` vs `type` 你怎么选？
+  - `interface`：更适合对象结构与可声明合并（声明扩展）。
+  - `type`：更适合联合/交叉/条件类型表达。
+  - 团队规则：公共 API 层对象优先 `interface`，复杂组合优先 `type`。
+- [ ] Q4：TS 性能变慢你怎么治理？
+  - 拆分 `tsconfig`、减少 `include` 范围、避免巨型类型体操、开启 `incremental`，对 monorepo 用 `project references`。
 
 ## 手写代码区
 
-（给出最小可运行代码片段或伪代码，明确输入/输出、边界与失败路径）
+一个最小的“类型安全请求封装”（强调边界与失败路径）：
+
+```ts
+type ApiError = { code: string; message: string }
+
+async function request<
+  TRes,
+  TReq extends Record<string, any> | undefined = undefined
+>(url: string, req?: TReq): Promise<TRes> {
+  const res = await fetch(url, {
+    method: req ? 'POST' : 'GET',
+    headers: { 'content-type': 'application/json' },
+    body: req ? JSON.stringify(req) : undefined
+  })
+
+  if (!res.ok) {
+    // 失败路径：把错误体限制成已知结构，避免 throw any
+    const err = (await res.json().catch(() => null)) as ApiError | null
+    throw new Error(err?.message ?? `Request failed: ${res.status}`)
+  }
+
+  // 边界：这里仍是 unknown（真实项目建议加 zod 校验）
+  return (await res.json()) as TRes
+}
+```
 
 ## 我的补充（Manual）
 
