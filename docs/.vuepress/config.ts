@@ -83,27 +83,41 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
       {
         text: '面试',
-        link: '/interview-prep/',
-        activeMatch: '/interview-prep/',
+        // link: '/interview-prep/',
+        // activeMatch: '/interview-prep/',
         children: [
           {
-            text: '知识列表（面试准备）',
-            link: '/interview-prep/',
-            activeMatch: '/interview-prep/'
+            text: '知识库',
+            children: [
+              {
+                text: '知识列表（面试准备）',
+                link: '/interview-prep/',
+                activeMatch: '/interview-prep/'
+              }
+            ]
           },
           {
-            text: '面试题汇总',
-            link: '/theory/',
-            activeMatch: '/theory/'
+            text: '知识库',
+            children: [
+              {
+                text: '面试题专项',
+                link: '/theory/',
+                activeMatch: '/theory/'
+              }
+            ]
           },
           {
-            text: '面试题（记录）',
-            link: '/interview/2025-04-28.md',
-            activeMatch: '/interview/'
+            text: '知识库',
+            children: [
+              {
+                text: '面试题（记录）',
+                link: '/interview/2025-04-28.md',
+                activeMatch: '/interview/'
+              }
+            ]
           }
         ]
       },
-
       {
         text: 'JavaScript / TypeScript',
         children: [
@@ -192,7 +206,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           { text: 'Github', link: 'https://github.com/Acongm' },
           {
             text: '简历',
-            link: '/job-description/',
+            link: '/job-description/web前端开发工程师-彭聪.md',
             activeMatch: '/job-description/$'
           }
         ]
@@ -218,7 +232,16 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/theory/': [
         {
           text: 'theory',
-          children: ['/theory/']
+          children: [
+            '/theory/',
+            '/theory/interview-question/2025-04-28.md',
+            '/theory/job-description-lib/Framework.md',
+            '/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md',
+            '/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md',
+            '/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md',
+            '/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md',
+            '/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md'
+          ]
         }
       ],
       '/interview-prep/': [
@@ -277,7 +300,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           ]
         }
       ],
-      Performance: [
+      '/Performance/': [
         {
           text: 'Performance',
           children: ['/Performance/']
