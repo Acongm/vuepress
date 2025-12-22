@@ -240,7 +240,13 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md',
             '/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md',
             '/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md',
-            '/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md'
+            '/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md',
+            '/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md',
+            '/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md',
+            '/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md',
+            '/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md',
+            '/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md',
+            '/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md'
           ]
         }
       ],
