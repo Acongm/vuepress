@@ -1,0 +1,2433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.32">
+    <link rel="apple-touch-icon" href="/favicon.ico"><link rel="mask-icon" href="/favicon.ico" color="#3eaf7c"><meta name="msapplication-TileImage" content="/favicon.ico"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="msapplication-TileColor" content="#000000"><script src="https://hm.baidu.com/hm.js?8e5be87f55d52e1115a38afce593d2bb"></script><title>微前端对比 & 各方案实现原理 | acongm</title><meta name="description" content="前端常用知识、踩坑记录、软件推荐等">
+    <link rel="preload" href="/vuepress/assets/js/runtime~app.b1eaadf2.js" as="script"><link rel="preload" href="/vuepress/assets/css/styles.fc93d6da.css" as="style"><link rel="preload" href="/vuepress/assets/js/5316.94e78182.js" as="script"><link rel="preload" href="/vuepress/assets/js/app.602933f0.js" as="script">
+    <link rel="stylesheet" href="/vuepress/assets/css/styles.fc93d6da.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header ref_key="navbar" class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/vuepress/" class=""><img class="logo" src="/vuepress/logo.jpg" alt="acongm"><span class="site-name can-hide">acongm</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="工具"><span class="title">工具</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="工具"><span class="title">工具</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>在线工具</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/online-tools/" class="" aria-label="网页工具"><!--[--><!--]--> 网页工具 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/online-tools/bookmark-scripts.html" class="" aria-label="书签脚本"><!--[--><!--]--> 书签脚本 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>工具方法</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/regexp.html" class="" aria-label="常用正则"><!--[--><!--]--> 常用正则 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/function.html" class="" aria-label="常用方法"><!--[--><!--]--> 常用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/library.html" class="" aria-label="库收集"><!--[--><!--]--> 库收集 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><a href="/vuepress/git/README.md" class="" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>软件相关</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/software/cross-platform.html" class="" aria-label="多平台"><!--[--><!--]--> 多平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/mac.html" class="" aria-label="Mac 平台"><!--[--><!--]--> Mac 平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/windows.html" class="" aria-label="Windows 平台"><!--[--><!--]--> Windows 平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/browser.html" class="" aria-label="浏览器扩展"><!--[--><!--]--> 浏览器扩展 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/vscode.html" class="" aria-label="Visual Studio Code 扩展"><!--[--><!--]--> Visual Studio Code 扩展 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/webstorm.html" class="" aria-label="WebStorm 配置"><!--[--><!--]--> WebStorm 配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/zsh.html" class="" aria-label="zsh"><!--[--><!--]--> zsh <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="专题"><span class="title">专题</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="专题"><span class="title">专题</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><a href="/vuepress/mack/" class="router-link-active" aria-label="技能提炼"><!--[--><!--]--> 技能提炼 <!--[--><!--]--></a></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.html" class="" aria-label="React 16+ 各版本区别 &amp; React 核心原理"><!--[--><!--]--> React 16+ 各版本区别 &amp; React 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/02-Webpack%E4%B8%8E%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.html" class="" aria-label="Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理"><!--[--><!--]--> Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/03-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" class="" aria-label="性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot;"><!--[--><!--]--> 性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot; <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html" class="router-link-active router-link-exact-active router-link-active" aria-label="微前端对比 &amp; 各方案实现原理"><!--[--><!--]--> 微前端对比 &amp; 各方案实现原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/05-%E4%BD%8E%E4%BB%A3%E7%A0%81.html" class="" aria-label="低代码 &amp; 核心原理"><!--[--><!--]--> 低代码 &amp; 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/06-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F.html" class="" aria-label="热插拔插件系统对比 &amp; 各方案实现原理差异"><!--[--><!--]--> 热插拔插件系统对比 &amp; 各方案实现原理差异 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/07-NestJS%E4%B8%8ESSR.html" class="" aria-label="从 NestJS 全栈开发到 SSR &amp; SSR 核心原理"><!--[--><!--]--> 从 NestJS 全栈开发到 SSR &amp; SSR 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/08-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" class="" aria-label="代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地"><!--[--><!--]--> 代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/09-Promise%E5%8E%9F%E7%90%86.html" class="" aria-label="JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise"><!--[--><!--]--> JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/10-%E9%AA%A8%E6%9E%B6%E5%B1%8F.html" class="" aria-label="骨架屏怎么提升性能的？骨架屏的原理及实现"><!--[--><!--]--> 骨架屏怎么提升性能的？骨架屏的原理及实现 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/11-HTTP%E4%B8%8E%E7%BC%93%E5%AD%98.html" class="" aria-label="从性能优化到 HTTP 变化及缓存"><!--[--><!--]--> 从性能优化到 HTTP 变化及缓存 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><a href="/vuepress/mack/" class="router-link-active" aria-label="技能提炼-补充"><!--[--><!--]--> 技能提炼-补充 <!--[--><!--]--></a></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86-%E8%A1%A5%E5%85%85.html" class="" aria-label="React 19 新特性详解 &amp; useMemo/useCallback 深度解析"><!--[--><!--]--> React 19 新特性详解 &amp; useMemo/useCallback 深度解析 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/React%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3.html" class="" aria-label="React 更新流程详解"><!--[--><!--]--> React 更新流程详解 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="面试"><span class="title">面试</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="面试"><span class="title">面试</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/interview-prep/" class="" aria-label="知识列表（面试准备）"><!--[--><!--]--> 知识列表（面试准备） <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/theory/" class="" aria-label="面试题专项"><!--[--><!--]--> 面试题专项 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/interview/2025-04-28.md" class="" aria-label="面试题（记录）"><!--[--><!--]--> 面试题（记录） <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="JavaScript / TypeScript"><span class="title">JavaScript / TypeScript</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="JavaScript / TypeScript"><span class="title">JavaScript / TypeScript</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>JavaScript</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/" class="" aria-label="js 基础知识"><!--[--><!--]--> js 基础知识 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/%E7%BB%8F%E5%85%B8%E9%97%AD%E5%8C%85%E5%A4%84%E7%90%86.html" class="" aria-label="经典闭包处理"><!--[--><!--]--> 经典闭包处理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E9%97%AD%E5%8C%85.html" class="" aria-label="执行上下文-作用域链-闭包"><!--[--><!--]--> 执行上下文-作用域链-闭包 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/call%E3%80%81apply%E4%B8%8Ebind.html" class="" aria-label="call、apply 与 bind"><!--[--><!--]--> call、apply 与 bind <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/js%E6%A8%A1%E6%8B%9Fbind%E6%96%B9%E6%B3%95.html" class="" aria-label="js 模拟 bind 方法"><!--[--><!--]--> js 模拟 bind 方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/js%E6%A8%A1%E6%8B%9Fnew%E6%93%8D%E4%BD%9C.html" class="" aria-label="能否模拟实现 JS 的 new 操作符"><!--[--><!--]--> 能否模拟实现 JS 的 new 操作符 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>TypeScript</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/TypeScript/" class="" aria-label="TypeScript"><!--[--><!--]--> TypeScript <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/TypeScript/Study.html" class="" aria-label="每天学一点 TS"><!--[--><!--]--> 每天学一点 TS <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Performance</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/Performance/" class="" aria-label="用户中心前端性能优化实战文档"><!--[--><!--]--> 用户中心前端性能优化实战文档 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Vue / React"><span class="title">Vue / React</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Vue / React"><span class="title">Vue / React</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Vue</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/" class="" aria-label="Vue"><!--[--><!--]--> Vue <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue_theory.html" class="" aria-label="vue 原理"><!--[--><!--]--> vue 原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue_interview.html" class="" aria-label="vue 面试题"><!--[--><!--]--> vue 面试题 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue3.html" class="" aria-label="vue3 原理 - 总结"><!--[--><!--]--> vue3 原理 - 总结 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>React</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/react/class-hooks.html" class="" aria-label="react"><!--[--><!--]--> react <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Webpack / Node"><span class="title">Webpack / Node</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Webpack / Node"><span class="title">Webpack / Node</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Webpack</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/webpack/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86.html" class="" aria-label="Webpack - 介绍"><!--[--><!--]--> Webpack - 介绍 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/webpack/vite-%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86.html" class="" aria-label="vite - 知识梳理"><!--[--><!--]--> vite - 知识梳理 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Node 相关</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/node/npm.html" class="" aria-label="npm 相关"><!--[--><!--]--> npm 相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/node/toolkit.html" class="" aria-label="常用工具包"><!--[--><!--]--> 常用工具包 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>疑难杂症</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/issue/h5.html" class="" aria-label="H5 相关"><!--[--><!--]--> H5 相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/issue/pc.html" class="" aria-label="PC 相关"><!--[--><!--]--> PC 相关 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Html / CSS "><span class="title">Html / CSS </span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Html / CSS "><span class="title">Html / CSS </span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>CSS</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/css/" class="" aria-label="CSS 语法相关"><!--[--><!--]--> CSS 语法相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/css/skill.html" class="" aria-label="CSS 奇淫技巧"><!--[--><!--]--> CSS 奇淫技巧 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/css/scss.html" class="" aria-label="常用 SCSS 宏"><!--[--><!--]--> 常用 SCSS 宏 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="主页"><span class="title">主页</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="主页"><span class="title">主页</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://www.acongm.com" rel="noopener noreferrer" target="_blank" aria-label="Blog"><!--[--><!--]--> Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://github.com/Acongm" rel="noopener noreferrer" target="_blank" aria-label="Github"><!--[--><!--]--> Github <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/vuepress/job-description/web前端开发工程师-彭聪.md" class="" aria-label="简历"><!--[--><!--]--> 简历 <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><!--]--></nav><!--[--><!--]--><!----><form class="search-box" role="search"><input type="search" placeholder="搜索" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="工具"><span class="title">工具</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="工具"><span class="title">工具</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>在线工具</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/online-tools/" class="" aria-label="网页工具"><!--[--><!--]--> 网页工具 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/online-tools/bookmark-scripts.html" class="" aria-label="书签脚本"><!--[--><!--]--> 书签脚本 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>工具方法</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/regexp.html" class="" aria-label="常用正则"><!--[--><!--]--> 常用正则 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/function.html" class="" aria-label="常用方法"><!--[--><!--]--> 常用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/utils/library.html" class="" aria-label="库收集"><!--[--><!--]--> 库收集 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><a href="/vuepress/git/README.md" class="" aria-label="Git"><!--[--><!--]--> Git <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>软件相关</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/software/cross-platform.html" class="" aria-label="多平台"><!--[--><!--]--> 多平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/mac.html" class="" aria-label="Mac 平台"><!--[--><!--]--> Mac 平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/windows.html" class="" aria-label="Windows 平台"><!--[--><!--]--> Windows 平台 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/browser.html" class="" aria-label="浏览器扩展"><!--[--><!--]--> 浏览器扩展 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/vscode.html" class="" aria-label="Visual Studio Code 扩展"><!--[--><!--]--> Visual Studio Code 扩展 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/webstorm.html" class="" aria-label="WebStorm 配置"><!--[--><!--]--> WebStorm 配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/software/zsh.html" class="" aria-label="zsh"><!--[--><!--]--> zsh <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="专题"><span class="title">专题</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="专题"><span class="title">专题</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><a href="/vuepress/mack/" class="router-link-active" aria-label="技能提炼"><!--[--><!--]--> 技能提炼 <!--[--><!--]--></a></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.html" class="" aria-label="React 16+ 各版本区别 &amp; React 核心原理"><!--[--><!--]--> React 16+ 各版本区别 &amp; React 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/02-Webpack%E4%B8%8E%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.html" class="" aria-label="Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理"><!--[--><!--]--> Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/03-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" class="" aria-label="性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot;"><!--[--><!--]--> 性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot; <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html" class="router-link-active router-link-exact-active router-link-active" aria-label="微前端对比 &amp; 各方案实现原理"><!--[--><!--]--> 微前端对比 &amp; 各方案实现原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/05-%E4%BD%8E%E4%BB%A3%E7%A0%81.html" class="" aria-label="低代码 &amp; 核心原理"><!--[--><!--]--> 低代码 &amp; 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/06-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F.html" class="" aria-label="热插拔插件系统对比 &amp; 各方案实现原理差异"><!--[--><!--]--> 热插拔插件系统对比 &amp; 各方案实现原理差异 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/07-NestJS%E4%B8%8ESSR.html" class="" aria-label="从 NestJS 全栈开发到 SSR &amp; SSR 核心原理"><!--[--><!--]--> 从 NestJS 全栈开发到 SSR &amp; SSR 核心原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/08-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" class="" aria-label="代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地"><!--[--><!--]--> 代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/09-Promise%E5%8E%9F%E7%90%86.html" class="" aria-label="JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise"><!--[--><!--]--> JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/10-%E9%AA%A8%E6%9E%B6%E5%B1%8F.html" class="" aria-label="骨架屏怎么提升性能的？骨架屏的原理及实现"><!--[--><!--]--> 骨架屏怎么提升性能的？骨架屏的原理及实现 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/11-HTTP%E4%B8%8E%E7%BC%93%E5%AD%98.html" class="" aria-label="从性能优化到 HTTP 变化及缓存"><!--[--><!--]--> 从性能优化到 HTTP 变化及缓存 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><a href="/vuepress/mack/" class="router-link-active" aria-label="技能提炼-补充"><!--[--><!--]--> 技能提炼-补充 <!--[--><!--]--></a></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86-%E8%A1%A5%E5%85%85.html" class="" aria-label="React 19 新特性详解 &amp; useMemo/useCallback 深度解析"><!--[--><!--]--> React 19 新特性详解 &amp; useMemo/useCallback 深度解析 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/mack/React%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3.html" class="" aria-label="React 更新流程详解"><!--[--><!--]--> React 更新流程详解 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="面试"><span class="title">面试</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="面试"><span class="title">面试</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/interview-prep/" class="" aria-label="知识列表（面试准备）"><!--[--><!--]--> 知识列表（面试准备） <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/theory/" class="" aria-label="面试题专项"><!--[--><!--]--> 面试题专项 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>知识库</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/interview/2025-04-28.md" class="" aria-label="面试题（记录）"><!--[--><!--]--> 面试题（记录） <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="JavaScript / TypeScript"><span class="title">JavaScript / TypeScript</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="JavaScript / TypeScript"><span class="title">JavaScript / TypeScript</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>JavaScript</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/" class="" aria-label="js 基础知识"><!--[--><!--]--> js 基础知识 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/%E7%BB%8F%E5%85%B8%E9%97%AD%E5%8C%85%E5%A4%84%E7%90%86.html" class="" aria-label="经典闭包处理"><!--[--><!--]--> 经典闭包处理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-%E9%97%AD%E5%8C%85.html" class="" aria-label="执行上下文-作用域链-闭包"><!--[--><!--]--> 执行上下文-作用域链-闭包 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/call%E3%80%81apply%E4%B8%8Ebind.html" class="" aria-label="call、apply 与 bind"><!--[--><!--]--> call、apply 与 bind <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/js%E6%A8%A1%E6%8B%9Fbind%E6%96%B9%E6%B3%95.html" class="" aria-label="js 模拟 bind 方法"><!--[--><!--]--> js 模拟 bind 方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/JavaScript/js%E6%A8%A1%E6%8B%9Fnew%E6%93%8D%E4%BD%9C.html" class="" aria-label="能否模拟实现 JS 的 new 操作符"><!--[--><!--]--> 能否模拟实现 JS 的 new 操作符 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>TypeScript</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/TypeScript/" class="" aria-label="TypeScript"><!--[--><!--]--> TypeScript <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/TypeScript/Study.html" class="" aria-label="每天学一点 TS"><!--[--><!--]--> 每天学一点 TS <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Performance</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/Performance/" class="" aria-label="用户中心前端性能优化实战文档"><!--[--><!--]--> 用户中心前端性能优化实战文档 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Vue / React"><span class="title">Vue / React</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Vue / React"><span class="title">Vue / React</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Vue</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/" class="" aria-label="Vue"><!--[--><!--]--> Vue <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue_theory.html" class="" aria-label="vue 原理"><!--[--><!--]--> vue 原理 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue_interview.html" class="" aria-label="vue 面试题"><!--[--><!--]--> vue 面试题 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/vue/vue3.html" class="" aria-label="vue3 原理 - 总结"><!--[--><!--]--> vue3 原理 - 总结 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>React</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/react/class-hooks.html" class="" aria-label="react"><!--[--><!--]--> react <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Webpack / Node"><span class="title">Webpack / Node</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Webpack / Node"><span class="title">Webpack / Node</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Webpack</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/webpack/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86.html" class="" aria-label="Webpack - 介绍"><!--[--><!--]--> Webpack - 介绍 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/webpack/vite-%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86.html" class="" aria-label="vite - 知识梳理"><!--[--><!--]--> vite - 知识梳理 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>Node 相关</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/node/npm.html" class="" aria-label="npm 相关"><!--[--><!--]--> npm 相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/node/toolkit.html" class="" aria-label="常用工具包"><!--[--><!--]--> 常用工具包 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>疑难杂症</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/issue/h5.html" class="" aria-label="H5 相关"><!--[--><!--]--> H5 相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/issue/pc.html" class="" aria-label="PC 相关"><!--[--><!--]--> PC 相关 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="Html / CSS "><span class="title">Html / CSS </span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="Html / CSS "><span class="title">Html / CSS </span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>CSS</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/vuepress/css/" class="" aria-label="CSS 语法相关"><!--[--><!--]--> CSS 语法相关 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/css/skill.html" class="" aria-label="CSS 奇淫技巧"><!--[--><!--]--> CSS 奇淫技巧 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/vuepress/css/scss.html" class="" aria-label="常用 SCSS 宏"><!--[--><!--]--> 常用 SCSS 宏 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="主页"><span class="title">主页</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="主页"><span class="title">主页</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="https://www.acongm.com" rel="noopener noreferrer" target="_blank" aria-label="Blog"><!--[--><!--]--> Blog <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://github.com/Acongm" rel="noopener noreferrer" target="_blank" aria-label="Github"><!--[--><!--]--> Github <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/vuepress/job-description/web前端开发工程师-彭聪.md" class="" aria-label="简历"><!--[--><!--]--> 简历 <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p class="sidebar-item sidebar-heading active">技能提炼 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86.html" class="sidebar-item" aria-label="React 16+ 各版本区别 &amp; React 核心原理"><!--[--><!--]--> React 16+ 各版本区别 &amp; React 核心原理 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/02-Webpack%E4%B8%8E%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7.html" class="sidebar-item" aria-label="Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理"><!--[--><!--]--> Webpack 架构 &amp; 与 Rollup、Vite 对比 &amp; 核心原理 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/03-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" class="sidebar-item" aria-label="性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot;"><!--[--><!--]--> 性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot; <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="微前端对比 &amp; 各方案实现原理"><!--[--><!--]--> 微前端对比 &amp; 各方案实现原理 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#笔试题-6-题" class="router-link-active router-link-exact-active sidebar-item" aria-label="笔试题（6 题）"><!--[--><!--]--> 笔试题（6 题） <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_1-微前端核心问题" class="router-link-active router-link-exact-active sidebar-item" aria-label="1. 微前端核心问题"><!--[--><!--]--> 1. 微前端核心问题 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_2-微前端方案对比" class="router-link-active router-link-exact-active sidebar-item" aria-label="2. 微前端方案对比"><!--[--><!--]--> 2. 微前端方案对比 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#面试题-4-题" class="router-link-active router-link-exact-active sidebar-item" aria-label="面试题（4 题）"><!--[--><!--]--> 面试题（4 题） <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_1-微前端适用性判断" class="router-link-active router-link-exact-active sidebar-item" aria-label="1. 微前端适用性判断"><!--[--><!--]--> 1. 微前端适用性判断 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_2-微前端基础设施" class="router-link-active router-link-exact-active sidebar-item" aria-label="2. 微前端基础设施"><!--[--><!--]--> 2. 微前端基础设施 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_3-微前端部署与发布" class="router-link-active router-link-exact-active sidebar-item" aria-label="3. 微前端部署与发布"><!--[--><!--]--> 3. 微前端部署与发布 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/vuepress/mack/04-%E5%BE%AE%E5%89%8D%E7%AB%AF.html#_4-子应用性能治理" class="router-link-active router-link-exact-active sidebar-item" aria-label="4. 子应用性能治理"><!--[--><!--]--> 4. 子应用性能治理 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><li><a href="/vuepress/mack/05-%E4%BD%8E%E4%BB%A3%E7%A0%81.html" class="sidebar-item" aria-label="低代码 &amp; 核心原理"><!--[--><!--]--> 低代码 &amp; 核心原理 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/06-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F.html" class="sidebar-item" aria-label="热插拔插件系统对比 &amp; 各方案实现原理差异"><!--[--><!--]--> 热插拔插件系统对比 &amp; 各方案实现原理差异 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/07-NestJS%E4%B8%8ESSR.html" class="sidebar-item" aria-label="从 NestJS 全栈开发到 SSR &amp; SSR 核心原理"><!--[--><!--]--> 从 NestJS 全栈开发到 SSR &amp; SSR 核心原理 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/08-%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" class="sidebar-item" aria-label="代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地"><!--[--><!--]--> 代码规范 &amp; Umi/ESLint 规范为什么这样设计 &amp; 如何落地 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/09-Promise%E5%8E%9F%E7%90%86.html" class="sidebar-item" aria-label="JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise"><!--[--><!--]--> JS 为什么会设计 Promise &amp; 如何手写实现一个 Promise <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/10-%E9%AA%A8%E6%9E%B6%E5%B1%8F.html" class="sidebar-item" aria-label="骨架屏怎么提升性能的？骨架屏的原理及实现"><!--[--><!--]--> 骨架屏怎么提升性能的？骨架屏的原理及实现 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/11-HTTP%E4%B8%8E%E7%BC%93%E5%AD%98.html" class="sidebar-item" aria-label="从性能优化到 HTTP 变化及缓存"><!--[--><!--]--> 从性能优化到 HTTP 变化及缓存 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><p class="sidebar-item sidebar-heading">技能提炼-补充 <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a href="/vuepress/mack/01-React%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86-%E8%A1%A5%E5%85%85.html" class="sidebar-item" aria-label="React 19 新特性详解 &amp; useMemo/useCallback 深度解析"><!--[--><!--]--> React 19 新特性详解 &amp; useMemo/useCallback 深度解析 <!--[--><!--]--></a><!----></li><li><a href="/vuepress/mack/React%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3.html" class="sidebar-item" aria-label="React 更新流程详解"><!--[--><!--]--> React 更新流程详解 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="微前端对比-各方案实现原理" tabindex="-1"><a class="header-anchor" href="#微前端对比-各方案实现原理" aria-hidden="true">#</a> 微前端对比 &amp; 各方案实现原理</h1><h2 id="笔试题-6-题" tabindex="-1"><a class="header-anchor" href="#笔试题-6-题" aria-hidden="true">#</a> 笔试题（6 题）</h2><h3 id="_1-微前端核心问题" tabindex="-1"><a class="header-anchor" href="#_1-微前端核心问题" aria-hidden="true">#</a> 1. 微前端核心问题</h3><p>微前端要解决什么问题？它引入了哪些新的复杂度？适用和不适用的场景分别是什么？</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>要解决的问题：
+
+1. 团队协作问题：
+   - 多团队并行开发，避免代码冲突
+   - 不同团队技术栈独立（React、Vue、Angular 可共存）
+   - 降低团队间的沟通成本和依赖
+
+2. 代码膨胀问题：
+   - 单体应用代码量过大（10万+行代码）
+   - 构建时间长（5-10分钟）
+   - 开发体验差（热更新慢）
+
+3. 发布部署问题：
+   - 单体应用牵一发动全身，任何改动都需要全量发布
+   - 发布风险高，回滚代价大
+   - 无法做到按模块独立部署
+
+4. 业务隔离问题：
+   - 核心业务与边缘业务耦合
+   - 不同业务线需要独立迭代
+   - 历史代码重构成本高
+
+5. 技术债务问题：
+   - 老代码技术栈无法升级（如 React 15 → React 18）
+   - 新老代码共存，逐步迁移
+
+引入的新复杂度：
+
+1. 技术复杂度：
+   - JS 隔离（沙箱机制）
+   - CSS 隔离（样式冲突）
+   - 路由劫持与同步
+   - 应用间通信机制
+   - 公共依赖管理与版本冲突
+
+2. 工程复杂度：
+   - 构建配置复杂（主应用 + 多个子应用）
+   - 联调困难（本地开发需要启动多个应用）
+   - 部署流程复杂（独立部署 + 资源加载）
+   - 版本管理复杂（多仓库/Monorepo）
+
+3. 运维复杂度：
+   - 资源加载性能（多个应用的 JS/CSS 加载）
+   - 错误边界与降级（某个子应用挂了不能影响主应用）
+   - 监控与日志（需要区分不同应用的错误）
+   - 灰度发布与回滚（多应用协同）
+
+4. 开发体验复杂度：
+   - 调试困难（跨应用调试）
+   - 本地开发环境搭建复杂
+   - 需要学习微前端框架（qiankun、Module Federation）
+
+适用场景：
+
+✅ 大型中后台系统：
+   - 多个业务模块（订单、库存、财务、CRM 等）
+   - 多团队协作（5+ 团队）
+   - 代码量大（10万+ 行）
+   - 示例：企业 ERP、电商后台、政务系统
+
+✅ 跨技术栈整合：
+   - 历史系统是 Vue，新系统用 React
+   - 逐步迁移技术栈，新老系统共存
+   - 收购的第三方系统需要整合
+
+✅ 独立业务模块：
+   - 业务模块相对独立（低耦合）
+   - 各模块独立部署需求强烈
+   - 不同模块由不同供应商开发
+
+✅ 多租户 SaaS 平台：
+   - 不同租户可能需要不同的定制模块
+   - 插件化需求（可动态加载/卸载模块）
+
+不适用场景：
+
+❌ 小型项目：
+   - 代码量 &lt; 5万行
+   - 团队 &lt; 5 人
+   - 引入微前端收益 &lt; 成本
+
+❌ 高性能要求场景：
+   - C端应用对首屏性能要求极高（如电商首页）
+   - 微前端额外的 JS 加载会影响性能
+   - 应优先考虑代码分割、懒加载
+
+❌ 强交互应用：
+   - 子应用间需要频繁通信（如实时协作工具）
+   - 组件级复用需求强（应考虑组件库，而非微前端）
+   - 状态共享复杂（Redux/MobX 全局状态）
+
+❌ 移动端 H5：
+   - 移动端性能敏感
+   - 额外的框架代码和沙箱机制会影响性能
+   - 应优先考虑 PWA、离线化
+
+❌ 技术栈统一的团队：
+   - 团队已经统一技术栈（如全部 React）
+   - 使用 Monorepo + 模块化即可解决问题
+   - 不需要微前端的隔离能力
+
+决策原则：
+- 收益 &gt; 成本：解决的问题价值 &gt; 引入的复杂度
+- 团队规模：5+ 团队才考虑
+- 代码规模：10万+ 行代码才考虑
+- 独立部署：如果不需要独立部署，不要用微前端
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br></div></div><hr><h3 id="_2-微前端方案对比" tabindex="-1"><a class="header-anchor" href="#_2-微前端方案对比" aria-hidden="true">#</a> 2. 微前端方案对比</h3><p>主流方案对比：iframe / single-spa / qiankun / Module Federation 的核心差异，优缺点对比表。</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>iframe:
+优点：
+  ✅ 天然隔离（JS、CSS、DOM 完全隔离）
+  ✅ 实现简单，零技术门槛
+  ✅ 浏览器原生支持，稳定性好
+  ✅ 可以加载任意第三方页面
+
+缺点：
+  ❌ 性能差（每个 iframe 是独立的浏览器上下文）
+  ❌ 路由同步困难（iframe 内部路由无法同步到主应用 URL）
+  ❌ 弹窗/遮罩层体验差（受 iframe 边界限制）
+  ❌ 白屏时间长（独立加载所有资源）
+  ❌ 内存占用高（多个完整的浏览器上下文）
+  ❌ 通信复杂（postMessage，不同域需要 CORS）
+  ❌ SEO 不友好
+
+适用场景：
+  - 嵌入第三方页面（如支付页面、BI 报表）
+  - 对性能要求不高的后台管理系统
+  - 需要强隔离的场景（安全性要求高）
+
+---
+
+single-spa:
+优点：
+k/
+   - 各应用独立的组件
+   - 原因：独立迭代、避免耦合
+
+2. 治理策略：
+
+   策略1：Monorepo 统一管理
+   - 所有应用在一个仓库
+   - package.json 统一版本
+   - 好处：版本强制统一
+
+   project/
+   ├── packages/
+   │   ├── main-app/        (主应用)
+   │   ├── sub-app-1/       (子应用1)
+   │   └── sub-app-2/       (子应用2)
+   └── package.json         (统一依赖版本)
+
+   策略2：依赖版本清单
+   - 维护一份依赖版本清单（versions.json）
+   - 所有应用遵循清单版本
+
+   // versions.json
+   {
+     &quot;react&quot;: &quot;18.2.0&quot;,
+     &quot;react-dom&quot;: &quot;18.2.0&quot;,
+     &quot;antd&quot;: &quot;5.0.0&quot;
+   }
+
+   策略3：CI 检查
+   - 在 CI 阶段检查依赖版本
+   - 不符合规范则阻止部署
+
+   // 检查脚本
+   const checkVersions = () =&gt; {
+     const pkg = require(&#39;./package.json&#39;)
+     if (pkg.dependencies.react !== &#39;18.2.0&#39;) {
+       throw new Error(&#39;React 版本不符合规范&#39;)
+     }
+   }
+
+   策略4：公共依赖中心化
+   - 主应用统一管理公共依赖
+   - 子应用通过主应用获取
+
+   // 主应用暴露依赖
+   window.__SHARED_LIBS__ = {
+     react: React,
+     reactDOM: ReactDOM,
+     antd: antd
+   }
+
+   // 子应用使用
+   const React = window.__SHARED_LIBS__.react
+
+3. 依赖升级流程：
+
+   步骤1：评估影响范围
+   - 哪些应用使用了该依赖
+   - 升级是否有 Breaking Changes
+
+   步骤2：统一升级
+   - 所有应用同步升级
+   - 避免版本碎片化
+
+   步骤3：测试验证
+   - 主应用测试
+   - 所有子应用测试
+
+   步骤4：灰度发布
+   - 先发布一个子应用
+   - 验证无问题后全量发布
+
+---
+
+external（外部化）：
+
+定义：
+- 将依赖标记为外部依赖
+- 不打包到 bundle 中
+- 运行时从外部获取（如 CDN、window 全局变量）
+
+配置方式：
+// webpack.config.js
+module.exports = {
+  externals: {
+    react: &#39;React&#39;,          // window.React
+    &#39;react-dom&#39;: &#39;ReactDOM&#39;, // window.ReactDOM
+    jquery: &#39;jQuery&#39;         // window.jQuery
+  }
+}
+
+使用场景：
+1. CDN 加载：
+   - 通过 CDN 加载 React
+   - 所有应用共享同一个 CDN 资源
+
+   &lt;!-- index.html --&gt;
+   &lt;script src=&quot;https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js&quot;&gt;&lt;/script&gt;
+
+2. 主应用提供：
+   - 主应用加载依赖到 window
+   - 子应用通过 external 使用
+
+   // 主应用
+   import React from &#39;react&#39;
+   window.React = React
+
+   // 子应用 webpack 配置
+   externals: {
+     react: &#39;React&#39;
+   }
+
+优点：
+✅ 减少子应用体积
+✅ 利用浏览器缓存（CDN）
+✅ 强制版本统一（都用同一个 window.React）
+
+缺点：
+❌ 需要手动管理加载顺序
+❌ CDN 不稳定可能影响可用性
+❌ 调试困难（CDN 压缩代码）
+❌ 无法按需加载（必须全量加载）
+
+最佳实践：
+- 适合稳定的大型依赖（React、Vue）
+- 生产环境使用，开发环境关闭（便于调试）
+- 配合 CDN fallback（CDN 失败时本地加载）
+
+---
+
+shared（共享依赖，Module Federation）：
+
+定义：
+- Webpack 5 Module Federation 的共享机制
+- 运行时动态协商依赖版本
+- 自动去重，按需加载
+
+配置方式：
+new ModuleFederationPlugin({
+  shared: {
+    // 简单配置
+    react: &#39;^18.0.0&#39;,
+
+    // 详细配置
+    &#39;react-dom&#39;: {
+      singleton: true,           // 单例模式
+      requiredVersion: &#39;^18.0.0&#39;, // 版本要求
+      eager: false,              // 是否立即加载
+      strictVersion: false       // 严格版本检查
+    }
+  }
+})
+
+工作机制：
+1. 编译时：
+   - 分析依赖，生成共享清单
+   - 记录版本信息
+
+2. 运行时：
+   - 主应用和子应用协商版本
+   - 选择合适的版本（通常是最高兼容版本）
+   - 共享同一个实例
+
+优点：
+✅ 自动版本协商（无需手动管理）
+✅ 按需加载（懒加载，减少首屏时间）
+✅ 灵活性高（可配置降级策略）
+✅ 支持多版本共存（兼容性好）
+
+缺点：
+❌ 配置复杂（需要理解 singleton、eager 等概念）
+❌ 调试困难（运行时动态加载）
+❌ 版本冲突时可能加载多份（体积增加）
+
+适用场景：
+- 使用 Webpack 5 + Module Federation
+- 依赖版本可能不完全一致
+- 需要灵活的版本管理
+
+对比 external：
+| 特性       | external       | shared              |
+|-----------|----------------|---------------------|
+| 加载时机   | 编译时决定      | 运行时协商           |
+| 版本管理   | 手动           | 自动                |
+| 灵活性    | 低             | 高                  |
+| 体积优化   | 好             | 中等                |
+| 适用场景   | 稳定依赖       | 动态依赖            |
+
+---
+
+singleton（单例模式）：
+
+定义：
+- 保证全局只有一个依赖实例
+- 所有应用共享同一个实例
+- 版本冲突时强制使用一个版本
+
+配置方式：
+shared: {
+  react: {
+    singleton: true  // 开启单例
+  }
+}
+
+工作机制：
+1. 首次加载：
+   - 主应用加载 React 18.2.0
+   - 注册到全局共享作用域
+
+2. 子应用请求：
+   - 子应用需要 React 18.1.0
+   - 检测到已有 React 18.2.0
+   - 复用 18.2.0（而非加载新版本）
+
+3. 版本冲突：
+   - 如果子应用需要 React 17.0.0（不兼容）
+   - strictVersion: false → 告警，但仍使用 18.2.0
+   - strictVersion: true → 直接报错
+
+为什么需要 singleton：
+1. React 的要求：
+   - React 不支持多实例（Hooks 依赖单例）
+   - 多个 React 实例会导致 Hooks 报错
+
+   错误示例：
+   Error: Invalid hook call. Hooks can only be called inside of the body of a function component.
+
+2. 状态管理：
+   - Redux、MobX 等状态管理库需要单例
+   - 多实例会导致状态不同步
+
+3. 性能考虑：
+   - 减少重复加载
+   - 降低内存占用
+
+适用依赖：
+✅ 必须 singleton：
+   - React / React-DOM
+   - Vue
+   - Redux / MobX
+   - React-Router
+
+⚠️ 可选 singleton：
+   - Ant Design（建议单例，但多实例也能用）
+   - lodash（多实例无影响，但浪费资源）
+
+❌ 不需要 singleton：
+   - 纯工具函数
+   - 业务组件
+
+配置示例：
+shared: {
+  // 必须单例
+  react: {
+    singleton: true,
+    strictVersion: true  // 严格模式，版本不匹配报错
+  },
+
+  // 建议单例
+  antd: {
+    singleton: true,
+    strictVersion: false  // 宽松模式，版本不匹配告警
+  },
+
+  // 可选单例
+  lodash: {
+    singleton: false  // 允许多版本
+  }
+}
+
+---
+
+版本冲突处理：
+
+1. 预防策略：
+
+   策略1：版本锁定（package-lock.json）
+   - 锁定所有依赖的精确版本
+   - 避免安装时版本变化
+
+   策略2：版本规范
+   - 制定版本规范文档
+   - 统一主要依赖的版本（React、Ant Design）
+
+   策略3：依赖检查工具
+   - 开发工具检查依赖版本
+   - CI 阶段强制检查
+
+   // check-deps.js
+   const checkDeps = () =&gt; {
+     const mainPkg = require(&#39;../main-app/package.json&#39;)
+     const subPkg = require(&#39;../sub-app/package.json&#39;)
+
+     if (mainPkg.dependencies.react !== subPkg.dependencies.react) {
+       throw new Error(&#39;React 版本不一致&#39;)
+     }
+   }
+
+2. 运行时处理：
+
+   方案1：宽松模式（默认）
+   shared: {
+     react: {
+       singleton: true,
+       strictVersion: false,  // 不严格检查
+       requiredVersion: &#39;^18.0.0&#39;
+     }
+   }
+   - 版本不匹配时告警，但继续运行
+   - 风险：可能运行时错误
+
+   方案2：严格模式
+   shared: {
+     react: {
+       singleton: true,
+       strictVersion: true  // 严格检查
+     }
+   }
+   - 版本不匹配直接报错
+   - 强制修复版本问题
+
+   方案3：降级加载
+   shared: {
+     react: {
+       singleton: false  // 允许多版本
+     }
+   }
+   - 各应用加载各自版本
+   - 缺点：体积增加、多实例问题
+
+3. 监控与告警：
+
+   // 版本冲突监控
+   const monitorSharedDeps = () =&gt; {
+     const sharedScope = window.__webpack_share_scopes__.default
+
+     Object.keys(sharedScope).forEach(dep =&gt; {
+       const versions = Object.keys(sharedScope[dep])
+       if (versions.length &gt; 1) {
+         console.warn(`${dep} 存在多个版本:`, versions)
+         // 上报监控系统
+         reportVersionConflict(dep, versions)
+       }
+     })
+   }
+
+4. 实际案例与解决方案：
+
+   案例1：React 版本冲突
+   问题：主应用 React 18，子应用 React 17
+
+   方案：升级子应用
+   ✅ 推荐：升级子应用到 React 18
+   ⚠️ 临时：singleton: false，加载两份（可能 Hooks 报错）
+
+   案例2：Ant Design 版本冲突
+   问题：不同子应用使用 Ant Design 4 和 5
+
+   方案1：统一升级到 Ant Design 5
+   方案2：各自加载（不共享 antd）
+
+   shared: {
+     // antd 不共享，各自打包
+   }
+
+   案例3：工具库版本冲突
+   问题：lodash 4.17.20 和 4.17.21
+
+   方案：允许多版本（影响小）
+   shared: {
+     lodash: {
+       singleton: false
+     }
+   }
+
+5. 最佳实践总结：
+
+   ✅ 核心依赖必须统一版本（React、Vue）
+   ✅ 使用 Monorepo 或版本清单管理
+   ✅ CI 阶段检查依赖版本
+   ✅ 建立版本升级机制（定期统一升级）
+   ✅ 监控运行时版本冲突
+
+   ❌ 避免过度使用 strictVersion（容易报错）
+   ❌ 避免版本碎片化（每个应用版本都不同）
+   ❌ 避免手动修改 package-lock.json
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br></div></div><hr><h2 id="面试题-4-题" tabindex="-1"><a class="header-anchor" href="#面试题-4-题" aria-hidden="true">#</a> 面试题（4 题）</h2><h3 id="_1-微前端适用性判断" tabindex="-1"><a class="header-anchor" href="#_1-微前端适用性判断" aria-hidden="true">#</a> 1. 微前端适用性判断</h3><p>你的业务适不适合微前端？给出判断标准、评估维度与反例（什么情况下不应该用）。</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>判断标准（评分表）：
+
+维度1：团队规模（权重 30%）
+├─ 5+ 个独立团队：+30分 ✅ 强烈推荐
+├─ 3-4 个团队：+20分 ⚠️ 可以考虑
+├─ 1-2 个团队：+5分 ❌ 不推荐
+└─ 理由：微前端主要解决多团队协作问题
+
+维度2：代码规模（权重 25%）
+├─ 10万+ 行代码：+25分 ✅ 强烈推荐
+├─ 5-10万 行代码：+15分 ⚠️ 可以考虑
+├─ &lt; 5万 行代码：+5分 ❌ 不推荐
+└─ 理由：代码量大才有拆分价值
+
+维度3：独立部署需求（权重 25%）
+├─ 必须独立部署：+25分 ✅ 强烈推荐
+├─ 偶尔独立部署：+15分 ⚠️ 可以考虑
+├─ 不需要独立部署：+0分 ❌ 不推荐
+└─ 理由：独立部署是微前端的核心价值
+
+维度4：技术栈差异（权重 15%）
+├─ 多技术栈（React+Vue）：+15分 ✅ 推荐
+├─ 单技术栈，但需要渐进式迁移：+10分 ⚠️ 可以考虑
+├─ 单技术栈统一：+0分 ⚠️ 收益不明显
+└─ 理由：技术栈统一可用 Monorepo
+
+维度5：业务耦合度（权重 5%）
+├─ 业务模块独立（低耦合）：+5分 ✅ 推荐
+├─ 业务有一定依赖：+3分 ⚠️ 可以考虑
+├─ 业务高度耦合：-10分 ❌ 不推荐
+└─ 理由：高耦合会导致频繁跨应用通信
+
+评分规则：
+- 80-100分：✅ 强烈推荐微前端
+- 60-79分：⚠️ 可以考虑，需评估收益成本
+- &lt; 60分：❌ 不推荐，收益 &lt; 成本
+
+---
+
+评估维度（详细）：
+
+1. 团队维度：
+   ✅ 适合：
+   - 多团队并行开发（5+ 团队）
+   - 团队地域分散（不同城市）
+   - 团队技术栈不同
+   - 团队独立性强（各自负责一块业务）
+
+   ❌ 不适合：
+   - 单一小团队（&lt; 5人）
+   - 团队紧密协作（频繁跨团队开发）
+   - 团队技术能力弱（学习成本高）
+
+2. 业务维度：
+   ✅ 适合：
+   - 多个独立业务模块（订单、库存、财务）
+   - 业务模块相对独立（低耦合）
+   - 不同业务迭代节奏不同
+   - 中后台系统（ToB）
+
+   ❌ 不适合：
+   - 单一业务（如单纯的博客系统）
+   - 业务高度耦合（频繁跨模块调用）
+   - C端高性能要求（首屏性能敏感）
+   - 强交互应用（实时协作）
+
+3. 技术维度：
+   ✅ 适合：
+   - 历史技术栈迁移（Vue 2 → Vue 3 / React）
+   - 多技术栈并存需求
+   - 大型单体应用重构
+   - 需要独立升级技术栈
+
+   ❌ 不适合：
+   - 技术栈统一且稳定
+   - 团队对微前端不熟悉
+   - 对性能要求极高（额外开销不可接受）
+
+4. 部署维度：
+   ✅ 适合：
+   - 需要独立部署（高频发布）
+   - 不同模块发布周期不同
+   - 需要灰度发布
+   - 回滚风险隔离
+
+   ❌ 不适合：
+   - 统一发布即可
+   - 发布频率低（月度发布）
+   - 部署流程复杂度不可接受
+
+5. 规模维度：
+   ✅ 适合：
+   - 代码量 &gt; 10万行
+   - 构建时间 &gt; 5分钟
+   - 应用启动时间 &gt; 30秒
+   - 团队 &gt; 10人
+
+   ❌ 不适合：
+   - 小型项目（&lt; 5万行）
+   - 构建时间可接受（&lt; 2分钟）
+   - 团队小（&lt; 5人）
+
+---
+
+反例（不应该用微前端的场景）：
+
+反例1：个人博客系统
+- 代码量：5000 行
+- 团队：1 人
+- 业务：单一博客功能
+- 结论：❌ 完全没必要，用 Next.js 单体应用即可
+- 理由：引入微前端纯属过度设计
+
+反例2：创业公司 MVP 产品
+- 代码量：2 万行
+- 团队：3 人
+- 业务：快速迭代验证
+- 结论：❌ 不适合，浪费时间
+- 理由：
+  · 团队小，不存在协作问题
+  · 业务变化快，架构复杂度是负担
+  · 应优先验证产品，而非过度工程化
+
+反例3：C端电商首页
+- 场景：首屏性能要求极高（&lt; 1秒）
+- 用户：百万级 DAU
+- 结论：❌ 不适合
+- 理由：
+  · 微前端额外的 JS 加载影响首屏
+  · 应优先考虑 SSR、代码分割、CDN
+  · 可以用微前端做中后台管理，但不做C端
+
+反例4：强交互应用（实时协作工具）
+- 场景：在线文档编辑（类 Google Docs）
+- 特点：组件间频繁通信、状态高度共享
+- 结论：❌ 不适合
+- 理由：
+  · 应用间通信成本高
+  · 状态同步复杂
+  · 应优先考虑组件化，而非应用化
+
+反例5：技术栈统一的团队
+- 团队：全部使用 React
+- 规模：10 人
+- 代码：8 万行
+- 结论：⚠️ 不一定需要微前端
+- 理由：
+  · 使用 Monorepo + 代码分割可能更合适
+  · 微前端的技术栈隔离能力用不上
+  · 除非有强烈的独立部署需求
+
+反例6：移动端 H5 应用
+- 场景：移动端商城
+- 特点：性能敏感、流量成本高
+- 结论：❌ 不适合
+- 理由：
+  · 额外的框架代码影响性能
+  · 移动端网络不稳定，加载多个应用慢
+  · 应优先考虑 PWA、离线化
+
+---
+
+决策流程图：
+
+第一步：基础判断
+Q1: 团队 &gt;= 5 人？
+  ├─ 否 → ❌ 不建议（考虑 Monorepo）
+  └─ 是 → 继续
+
+Q2: 代码 &gt;= 10 万行？
+  ├─ 否 → ❌ 不建议（考虑模块化）
+  └─ 是 → 继续
+
+Q3: 需要独立部署？
+  ├─ 否 → ❌ 不建议（微前端核心价值缺失）
+  └─ 是 → 继续
+
+第二步：收益评估
+Q4: 是否存在以下痛点（2个以上）？
+  □ 多团队代码冲突频繁
+  □ 构建时间过长（&gt; 5分钟）
+  □ 技术栈迁移困难
+  □ 发布风险大（牵一发动全身）
+  □ 业务模块耦合严重
+
+  ├─ 是（2+ 痛点）→ ✅ 推荐微前端
+  └─ 否 → ❌ 不建议
+
+第三步：成本评估
+Q5: 团队是否能承受？
+  □ 学习成本（qiankun / Module Federation）
+  □ 改造成本（子应用需要改造）
+  □ 维护成本（多应用联调、部署）
+
+  ├─ 能承受 → ✅ 可以尝试
+  └─ 不能承受 → ❌ 暂缓
+
+---
+
+实际案例分析：
+
+案例1：某大型电商后台（适合）
+- 团队：15 人，3 个业务组
+- 代码：30 万行
+- 业务：订单、库存、财务、CRM
+- 技术栈：React 为主，历史遗留 jQuery
+- 痛点：
+  · 构建时间 8 分钟
+  · 任何改动都需要全量发布
+  · 新人上手困难（代码太多）
+- 方案：✅ 使用 qiankun 微前端
+- 效果：
+  · 构建时间降至 2 分钟（各子应用独立构建）
+  · 独立部署，发布频率从月度到周度
+  · 新人只需关注自己的子应用
+
+案例2：某政务系统（适合）
+- 团队：多个外包团队（技术能力参差不齐）
+- 代码：50 万行+
+- 业务：审批、公文、档案、统计等20+ 模块
+- 技术栈：不统一（有 Vue、React、Angular）
+- 方案：✅ 使用 qiankun，iframe 兜底
+- 收益：
+  · 各团队独立开发，减少冲突
+  · 技术栈隔离，各团队自主选择
+  · 模块独立部署，降低风险
+
+案例3：某创业公司 ToC 产品（不适合）
+- 团队：5 人
+- 代码：3 万行
+- 业务：社交 App
+- 方案：❌ 不使用微前端
+- 理由：
+  · 团队小，不存在协作问题
+  · 代码量小，模块化即可
+  · 性能敏感，不能接受额外开销
+  · 应专注于产品迭代
+
+---
+
+决策建议：
+
+何时应该用微前端：
+✅ 大型中后台系统（ERP、CRM、政务）
+✅ 多团队协作（5+ 团队）
+✅ 代码量大（10万+ 行）
+✅ 需要独立部署
+✅ 技术栈迁移需求
+✅ 收益明显 &gt; 成本
+
+何时不应该用微前端：
+❌ 小型项目（&lt; 5万行）
+❌ 小团队（&lt; 5人）
+❌ C端高性能要求
+❌ 强交互应用
+❌ 不需要独立部署
+❌ 技术栈统一且稳定
+❌ 团队技术能力不足
+
+中间地带（谨慎评估）：
+⚠️ 中型项目（5-10 万行）
+⚠️ 中型团队（5-10 人）
+⚠️ 有独立部署需求，但频率不高
+⚠️ 技术栈统一，但有少量历史代码
+
+建议：先从简单的方案开始（Monorepo、代码分割），问题严重时再引入微前端。
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br></div></div><hr><h3 id="_2-微前端基础设施" tabindex="-1"><a class="header-anchor" href="#_2-微前端基础设施" aria-hidden="true">#</a> 2. 微前端基础设施</h3><p>微前端下如何做&quot;统一登录态/权限/埋点/错误上报&quot;？如何设计主子应用的通信机制？</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>一、统一登录态
+
+问题：
+- 各子应用都需要获取用户信息
+- Token 需要统一管理
+- 登录状态需要同步
+
+方案设计：
+
+1. 主应用统一管理（推荐）：
+
+   架构：
+   ┌──────────────────────────┐
+   │      主应用（Main App）    │
+   │  ├─ 登录页面              │
+   │  ├─ Token 存储(LocalStorage)│
+   │  ├─ 用户信息缓存           │
+   │  └─ 登出逻辑              │
+   └──────────────────────────┘
+              ↓ props传递
+   ┌──────────────────────────┐
+   │      子应用（Sub App）     │
+   │  ├─ 接收 token           │
+   │  ├─ 接收 user info       │
+   │  └─ 接收 logout 方法      │
+   └──────────────────────────┘
+
+   实现（qiankun）：
+   // 主应用
+   import { registerMicroApps, start } from &#39;qiankun&#39;
+
+   const getToken = () =&gt; localStorage.getItem(&#39;token&#39;)
+   const getUserInfo = () =&gt; JSON.parse(localStorage.getItem(&#39;userInfo&#39;))
+   const logout = () =&gt; {
+     localStorage.removeItem(&#39;token&#39;)
+     window.location.href = &#39;/login&#39;
+   }
+
+   registerMicroApps([
+     {
+       name: &#39;app1&#39;,
+       entry: &#39;//localhost:8081&#39;,
+       container: &#39;#container&#39;,
+       activeRule: &#39;/app1&#39;,
+       props: {
+         getToken,
+         getUserInfo,
+         logout,
+         // 或者直接传递
+         token: getToken(),
+         userInfo: getUserInfo()
+       }
+     }
+   ])
+
+   // 子应用
+   export async function mount(props) {
+     const { getToken, getUserInfo, logout } = props
+
+     // 使用 token
+     axios.defaults.headers.common[&#39;Authorization&#39;] = `Bearer ${getToken()}`
+
+     // 使用用户信息
+     const userInfo = getUserInfo()
+     store.commit(&#39;SET_USER&#39;, userInfo)
+
+     // 登出
+     &lt;Button onClick={logout}&gt;退出登录&lt;/Button&gt;
+   }
+
+2. 共享 Token 存储：
+
+   方案1：LocalStorage 命名空间
+   // 主应用设置
+   localStorage.setItem(&#39;global:token&#39;, token)
+   localStorage.setItem(&#39;global:userInfo&#39;, JSON.stringify(userInfo))
+
+   // 子应用读取
+   const token = localStorage.getItem(&#39;global:token&#39;)
+
+   方案2：Cookie（跨域需要配置）
+   // 主应用设置 cookie（设置 domain）
+   document.cookie = `token=${token}; path=/; domain=.example.com`
+
+   // 子应用自动携带（同域）
+
+3. SSO 单点登录（企业级）：
+
+   流程：
+   1. 用户访问子应用
+   2. 子应用检测无 token，跳转 SSO 登录页
+   3. SSO 登录成功，颁发 token
+   4. 回调到子应用，携带 token
+   5. 子应用保存 token
+
+   优点：
+   - 多系统统一认证
+   - 安全性高
+   - 支持第三方应用
+
+   缺点：
+   - 需要独立的 SSO 服务
+   - 实现复杂度高
+
+---
+
+二、统一权限管理
+
+问题：
+- 不同用户权限不同（菜单、按钮、路由）
+- 各子应用都需要权限控制
+
+方案设计：
+
+1. 主应用统一权限（推荐）：
+
+   // 主应用
+   const permissions = {
+     menu: [&#39;order&#39;, &#39;inventory&#39;, &#39;finance&#39;],  // 菜单权限
+     button: [&#39;order:create&#39;, &#39;order:delete&#39;], // 按钮权限
+     api: [&#39;/api/order/*&#39;]                      // 接口权限
+   }
+
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     props: {
+       permissions,
+       hasPermission: (code) =&gt; permissions.button.includes(code)
+     }
+   }])
+
+   // 子应用使用
+   export function mount(props) {
+     const { hasPermission } = props
+
+     // 按钮权限控制
+     {hasPermission(&#39;order:create&#39;) &amp;&amp; &lt;Button&gt;创建订单&lt;/Button&gt;}
+
+     // 路由权限控制
+     &lt;Route path=&quot;/order/create&quot;
+            render={() =&gt; hasPermission(&#39;order:create&#39;)
+              ? &lt;CreateOrder /&gt;
+              : &lt;NoPermission /&gt;
+            }
+     /&gt;
+   }
+
+2. 权限路由自动生成：
+
+   // 主应用
+   const routes = [
+     { path: &#39;/app1&#39;, app: &#39;app1&#39;, permission: &#39;app1:access&#39; },
+     { path: &#39;/app2&#39;, app: &#39;app2&#39;, permission: &#39;app2:access&#39; }
+   ]
+
+   const accessibleRoutes = routes.filter(route =&gt;
+     hasPermission(route.permission)
+   )
+
+   // 根据权限动态注册子应用
+   registerMicroApps(accessibleRoutes.map(route =&gt; ({
+     name: route.app,
+     activeRule: route.path,
+   })))
+
+3. 菜单权限过滤：
+
+   // 主应用菜单配置
+   const menuConfig = [
+     { title: &#39;订单管理&#39;, path: &#39;/app1&#39;, permission: &#39;order:view&#39; },
+     { title: &#39;库存管理&#39;, path: &#39;/app2&#39;, permission: &#39;inventory:view&#39; },
+     { title: &#39;财务管理&#39;, path: &#39;/app3&#39;, permission: &#39;finance:view&#39; }
+   ]
+
+   const filteredMenu = menuConfig.filter(menu =&gt;
+     hasPermission(menu.permission)
+   )
+
+---
+
+三、统一埋点
+
+问题：
+- 需要收集用户行为（页面访问、按钮点击）
+- 各子应用需要统一埋点标准
+
+方案设计：
+
+1. 主应用提供埋点SDK（推荐）：
+
+   // 主应用初始化埋点
+   import Track from &#39;@company/track-sdk&#39;
+
+   const tracker = new Track({
+     appId: &#39;main-app&#39;,
+     userId: getUserId()
+   })
+
+   // 注入到子应用
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     props: {
+       tracker,
+       track: (event, data) =&gt; tracker.track(event, data)
+     }
+   }])
+
+   // 子应用使用
+   export function mount(props) {
+     const { track } = props
+
+     // 页面访问埋点
+     useEffect(() =&gt; {
+       track(&#39;page_view&#39;, { page: &#39;/order/list&#39; })
+     }, [])
+
+     // 按钮点击埋点
+     &lt;Button onClick={() =&gt; {
+       track(&#39;button_click&#39;, { button: &#39;create_order&#39; })
+       createOrder()
+     }}&gt;创建订单&lt;/Button&gt;
+   }
+
+2. 路由切换自动埋点：
+
+   // 主应用监听路由变化
+   import { addGlobalUncaughtErrorHandler } from &#39;qiankun&#39;
+
+   window.addEventListener(&#39;popstate&#39;, () =&gt; {
+     tracker.track(&#39;route_change&#39;, {
+       from: prevPath,
+       to: location.pathname,
+       app: getCurrentApp()
+     })
+   })
+
+3. 全局事件自动采集（无侵入）：
+
+   // 主应用全局监听
+   document.addEventListener(&#39;click&#39;, (e) =&gt; {
+     const target = e.target
+     const trackData = target.dataset.track
+
+     if (trackData) {
+       tracker.track(&#39;auto_click&#39;, JSON.parse(trackData))
+     }
+   }, true)
+
+   // 子应用使用 data 属性
+   &lt;Button data-track=&#39;{&quot;type&quot;:&quot;create_order&quot;}&#39;&gt;创建&lt;/Button&gt;
+
+4. 性能监控埋点：
+
+   // 主应用
+   const performance = {
+     appLoad: (app, time) =&gt; {
+       tracker.track(&#39;app_load&#39;, { app, time })
+     },
+     apiRequest: (url, time) =&gt; {
+       tracker.track(&#39;api_request&#39;, { url, time })
+     }
+   }
+
+   // qiankun 生命周期埋点
+   addGlobalUncaughtErrorHandler((event, app) =&gt; {
+     tracker.track(&#39;app_load_time&#39;, {
+       app,
+       time: performance.now()
+     })
+   })
+
+---
+
+四、统一错误上报
+
+问题：
+- 子应用错误需要捕获
+- 错误需要区分来源（哪个子应用）
+- 不能让子应用错误影响主应用
+
+方案设计：
+
+1. 全局错误捕获（主应用）：
+
+   // 主应用
+   import { addGlobalUncaughtErrorHandler } from &#39;qiankun&#39;
+
+   // JS 错误捕获
+   window.addEventListener(&#39;error&#39;, (event) =&gt; {
+     const currentApp = getCurrentApp()
+
+     reportError({
+       type: &#39;js_error&#39;,
+       app: currentApp,
+       message: event.message,
+       stack: event.error?.stack,
+       url: location.href
+     })
+   })
+
+   // Promise 错误捕获
+   window.addEventListener(&#39;unhandledrejection&#39;, (event) =&gt; {
+     reportError({
+       type: &#39;promise_error&#39;,
+       app: getCurrentApp(),
+       reason: event.reason
+     })
+   })
+
+   // qiankun 应用加载错误
+   addGlobalUncaughtErrorHandler((event, app) =&gt; {
+     reportError({
+       type: &#39;app_load_error&#39;,
+       app: app.name,
+       error: event
+     })
+   })
+
+2. 子应用错误边界：
+
+   // React 子应用
+   class ErrorBoundary extends React.Component {
+     componentDidCatch(error, errorInfo) {
+       // 通过 props 上报错误
+       this.props.reportError({
+         type: &#39;react_error&#39;,
+         error: error.toString(),
+         componentStack: errorInfo.componentStack
+       })
+     }
+
+     render() {
+       if (this.state.hasError) {
+         return &lt;h1&gt;子应用出错了&lt;/h1&gt;
+       }
+       return this.props.children
+     }
+   }
+
+   // mount 时包裹
+   export function mount(props) {
+     const { reportError } = props
+
+     ReactDOM.render(
+       &lt;ErrorBoundary reportError={reportError}&gt;
+         &lt;App /&gt;
+       &lt;/ErrorBoundary&gt;,
+       container
+     )
+   }
+
+3. 错误隔离与降级：
+
+   // 主应用
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     entry: &#39;//localhost:8081&#39;,
+     loader: (loading) =&gt; {
+       if (loading) {
+         showLoading()
+       } else {
+         hideLoading()
+       }
+     }
+   }], {
+     // 错误处理
+     errorBoundary: (error, app) =&gt; {
+       // 显示降级UI
+       showErrorPage(app.name, error)
+
+       // 上报错误
+       reportError({ app: app.name, error })
+
+       // 阻止错误冒泡，保护主应用
+       return true
+     }
+   })
+
+4. 错误上报服务：
+
+   // 错误上报 SDK
+   class ErrorReporter {
+     report(error) {
+       const errorData = {
+         ...error,
+         timestamp: Date.now(),
+         userAgent: navigator.userAgent,
+         url: location.href,
+         userId: getUserId(),
+         // 区分应用来源
+         source: error.app || &#39;main-app&#39;
+       }
+
+       // 上报到监控平台（Sentry、阿里云 ARMS）
+       fetch(&#39;/api/error-report&#39;, {
+         method: &#39;POST&#39;,
+         body: JSON.stringify(errorData)
+       })
+     }
+   }
+
+---
+
+五、主子应用通信机制设计
+
+问题：
+- 主应用需要通知子应用（如登出、权限变更）
+- 子应用需要通知主应用（如标题变更、badge 更新）
+- 子应用间需要通信（如数据共享）
+
+方案对比：
+
+1. Props 传递（单向，简单场景）：
+
+   适用：主→子单向传递
+
+   // 主应用
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     props: {
+       data: { user: {} },
+       onEvent: (type, data) =&gt; { /* 主应用处理子应用事件 */ }
+     }
+   }])
+
+   // 子应用
+   export function mount(props) {
+     const { data, onEvent } = props
+
+     // 使用数据
+     console.log(props.data.user)
+
+     // 通知主应用
+     onEvent(&#39;badge-update&#39;, { count: 5 })
+   }
+
+   优点：简单直接
+   缺点：只能主→子，子应用无法主动获取最新数据
+
+2. Actions 通信（qiankun 推荐）：
+
+   适用：主↔子双向通信，状态共享
+
+   // 主应用
+   import { initGlobalState } from &#39;qiankun&#39;
+
+   const actions = initGlobalState({
+     user: { name: &#39;张三&#39; },
+     token: &#39;xxx&#39;,
+     theme: &#39;dark&#39;
+   })
+
+   // 监听变化
+   actions.onGlobalStateChange((state, prev) =&gt; {
+     console.log(&#39;状态变化&#39;, state, prev)
+   })
+
+   // 修改状态
+   actions.setGlobalState({ user: { name: &#39;李四&#39; } })
+
+   // 传递给子应用
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     props: { actions }
+   }])
+
+   // 子应用
+   let globalActions
+
+   export function mount(props) {
+     globalActions = props.actions
+
+     // 监听变化
+     globalActions.onGlobalStateChange((state, prev) =&gt; {
+       // 更新本地状态
+       store.commit(&#39;SET_USER&#39;, state.user)
+     })
+
+     // 修改全局状态
+     globalActions.setGlobalState({ theme: &#39;light&#39; })
+   }
+
+   优点：双向通信，状态同步
+   缺点：耦合度较高
+
+3. EventBus（自定义事件）：
+
+   适用：松耦合通信，跨应用事件
+
+   // 事件总线（主应用创建）
+   class EventBus {
+     constructor() {
+       this.events = {}
+     }
+
+     on(event, callback) {
+       if (!this.events[event]) {
+         this.events[event] = []
+       }
+       this.events[event].push(callback)
+     }
+
+     emit(event, data) {
+       if (this.events[event]) {
+         this.events[event].forEach(cb =&gt; cb(data))
+       }
+     }
+
+     off(event, callback) {
+       if (this.events[event]) {
+         this.events[event] = this.events[event].filter(cb =&gt; cb !== callback)
+       }
+     }
+   }
+
+   const eventBus = new EventBus()
+
+   // 主应用
+   eventBus.on(&#39;logout&#39;, () =&gt; {
+     // 处理登出
+   })
+
+   registerMicroApps([{
+     props: { eventBus }
+   }])
+
+   // 子应用1发布
+   export function mount(props) {
+     const { eventBus } = props
+     eventBus.emit(&#39;logout&#39;)
+   }
+
+   // 子应用2订阅
+   export function mount(props) {
+     const { eventBus } = props
+     eventBus.on(&#39;logout&#39;, () =&gt; {
+       // 响应登出
+     })
+   }
+
+   优点：松耦合，灵活
+   缺点：难以追踪，调试困难
+
+4. SharedWorker（跨标签页通信）：
+
+   适用：多标签页数据同步
+
+   const worker = new SharedWorker(&#39;/shared-worker.js&#39;)
+
+   // 发送消息
+   worker.port.postMessage({ type: &#39;update&#39;, data: {} })
+
+   // 接收消息
+   worker.port.onmessage = (e) =&gt; {
+     console.log(e.data)
+   }
+
+5. LocalStorage + 监听（简单场景）：
+
+   // 主应用
+   localStorage.setItem(&#39;global_message&#39;, JSON.stringify({ type: &#39;logout&#39; }))
+
+   // 子应用监听
+   window.addEventListener(&#39;storage&#39;, (e) =&gt; {
+     if (e.key === &#39;global_message&#39;) {
+       const message = JSON.parse(e.newValue)
+       handleMessage(message)
+     }
+   })
+
+---
+
+通信机制选择建议：
+
+| 场景 | 推荐方案 | 理由 |
+|------|---------|------|
+| 主→子传递初始数据 | Props | 简单直接 |
+| 主↔子双向通信 | Actions | 官方推荐，状态同步 |
+| 子→主事件通知 | Props回调 | 简单场景 |
+| 子↔子通信 | EventBus | 解耦 |
+| 跨标签页通信 | SharedWorker / BroadcastChannel | 浏览器原生能力 |
+| 复杂状态管理 | Redux + 共享store | 统一状态管理 |
+
+最佳实践：
+✅ 优先使用 qiankun Actions（官方方案）
+✅ 状态最小化（只共享必要的状态）
+✅ 单向数据流（主应用是唯一数据源）
+✅ 避免频繁通信（性能开销）
+✅ 清理监听器（unmount 时off）
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br><span class="line-number">569</span><br><span class="line-number">570</span><br><span class="line-number">571</span><br><span class="line-number">572</span><br><span class="line-number">573</span><br><span class="line-number">574</span><br><span class="line-number">575</span><br><span class="line-number">576</span><br><span class="line-number">577</span><br><span class="line-number">578</span><br><span class="line-number">579</span><br><span class="line-number">580</span><br><span class="line-number">581</span><br><span class="line-number">582</span><br><span class="line-number">583</span><br><span class="line-number">584</span><br><span class="line-number">585</span><br><span class="line-number">586</span><br><span class="line-number">587</span><br><span class="line-number">588</span><br><span class="line-number">589</span><br></div></div><hr><h3 id="_3-微前端部署与发布" tabindex="-1"><a class="header-anchor" href="#_3-微前端部署与发布" aria-hidden="true">#</a> 3. 微前端部署与发布</h3><p>讲清楚&quot;资源加载、预加载、灰度发布、回滚&quot;在微前端架构里的方案设计。</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>一、资源加载方案
+
+问题：
+- 子应用资源如何加载（JS、CSS、图片）
+- 资源路径如何处理（相对路径 vs 绝对路径）
+- 如何避免资源404
+
+方案设计：
+
+1. HTML Entry（qiankun 推荐）：
+
+   原理：加载子应用的 HTML，提取其中的 JS/CSS
+
+   优点：
+   ✅ 与子应用部署方式一致
+   ✅ 支持相对路径自动转换
+   ✅ 支持动态脚本、样式
+
+   // qiankun 使用
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     entry: &#39;http://localhost:8081&#39;,  // HTML 地址
+     container: &#39;#container&#39;
+   }])
+
+   加载流程：
+   1. 主应用请求 http://localhost:8081/index.html
+   2. qiankun 解析 HTML，提取 \&lt;script\&gt;、&lt;link&gt;
+   3. 提取的资源相对路径转绝对路径
+   4. 按顺序加载 JS/CSS
+   5. 执行 JS，调用生命周期函数
+
+2. JS Entry（传统方案）：
+
+   原理：直接加载子应用的 JS 入口文件
+
+   // single-spa 使用
+   registerApplication({
+     name: &#39;app1&#39;,
+     app: () =&gt; System.import(&#39;http://localhost:8081/main.js&#39;)
+   })
+
+   要求：
+   - 子应用必须打包为 UMD 格式
+   - 需要手动处理 CSS 加载
+   - 需要配置 publicPath（资源路径）
+
+   // webpack.config.js（子应用）
+   output: {
+     library: &#39;app1&#39;,
+     libraryTarget: &#39;umd&#39;,
+     publicPath: &#39;http://localhost:8081/&#39;  // 必须配置
+   }
+
+3. 资源路径处理：
+
+   问题：子应用使用相对路径导致 404
+
+   // 子应用代码
+   &lt;img src=&quot;./assets/logo.png&quot; /&gt;
+   ↓ 实际请求
+   http://main.com/assets/logo.png  // ❌ 错误（主应用域名）
+
+   解决方案：
+
+   方案1：配置 publicPath（编译时）
+   // webpack.config.js
+   output: {
+     publicPath: process__.env.NODE_ENV === &#39;production&#39;
+       ? &#39;https://cdn.app1.com/&#39;
+       : &#39;http://localhost:8081/&#39;
+   }
+
+   方案2：动态 publicPath（运行时）
+   // 子应用入口文件
+   if (window.__POWERED_BY_QIANKUN__) {
+     __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+   }
+
+   方案3：使用绝对路径（推荐）
+   &lt;img src=&quot;https://cdn.app1.com/assets/logo.png&quot; /&gt;
+
+4. 按需加载：
+
+   // React 懒加载
+   const OrderList = React.lazy(() =&gt; import(&#39;./OrderList&#39;))
+
+   &lt;Suspense fallback={&lt;Loading /&gt;}&gt;
+     &lt;OrderList /&gt;
+   &lt;/Suspense&gt;
+
+   注意：路由懒加载也需要配置 publicPath
+
+---
+
+二、预加载方案
+
+问题：
+- 首次进入子应用白屏时间长
+- 用户体验差
+
+方案设计：
+
+1. qiankun 预加载（prefetch）：
+
+   // 启动时配置
+   start({
+     prefetch: true  // 默认 true
+   })
+
+   策略：
+   - prefetch: true
+     → 第一个子应用加载完成后，自动预加载其他子应用
+
+   - prefetch: &#39;all&#39;
+     → 主应用 mounted 后，立即预加载所有子应用
+
+   - prefetch: [&#39;app1&#39;, &#39;app2&#39;]
+     → 只预加载指定子应用
+
+   - prefetch: (apps) =&gt; { /* 自定义策略 */ }
+     → 自定义预加载逻辑
+
+2. 手动预加载：
+
+   import { prefetchApps } from &#39;qiankun&#39;
+
+   // 鼠标悬停时预加载
+   &lt;MenuItem
+     onMouseEnter={() =&gt; prefetchApps([&#39;app1&#39;])}
+     onClick={() =&gt; navigateTo(&#39;/app1&#39;)}
+   &gt;
+     订单管理
+   &lt;/MenuItem&gt;
+
+   // 空闲时预加载
+   if (&#39;requestIdleCallback&#39; in window) {
+     requestIdleCallback(() =&gt; {
+       prefetchApps([&#39;app1&#39;, &#39;app2&#39;])
+     })
+   }
+
+3. 预加载优化策略：
+
+   策略1：核心应用优先
+   prefetchApps([&#39;order-app&#39;], {
+     fetch: (url) =&gt; fetch(url, { priority: &#39;high&#39; })
+   })
+
+   策略2：网络状况判断
+   if (navigator.connection.effectiveType === &#39;4g&#39;) {
+     prefetchApps([&#39;app1&#39;, &#39;app2&#39;])
+   } else {
+     // 弱网不预加载
+   }
+
+   策略3：分时预加载
+   setTimeout(() =&gt; prefetchApps([&#39;app1&#39;]), 3000)  // 3秒后
+   setTimeout(() =&gt; prefetchApps([&#39;app2&#39;]), 6000)  // 6秒后
+
+4. Service Worker 缓存：
+
+   // sw.js
+   self.addEventListener(&#39;install&#39;, (event) =&gt; {
+     event.waitUntil(
+       caches.open(&#39;micro-app-cache&#39;).then((cache) =&gt; {
+         return cache.addAll([
+           &#39;http://localhost:8081/main.js&#39;,
+           &#39;http://localhost:8081/vendor.js&#39;
+         ])
+       })
+     )
+   })
+
+   // 拦截请求
+   self.addEventListener(&#39;fetch&#39;, (event) =&gt; {
+     event.respondWith(
+       caches.match(event.request).then((response) =&gt; {
+         return response || fetch(event.request)
+       })
+     )
+   })
+
+5. HTTP/2 Server Push：
+
+   // Nginx 配置
+   location / {
+     http2_push /app1/main.js;
+     http2_push /app1/vendor.js;
+   }
+
+---
+
+三、灰度发布方案
+
+问题：
+- 新版本需要灰度测试
+- 出问题需要快速回滚
+- 不同用户看到不同版本
+
+方案设计：
+
+1. 基于用户的灰度（推荐）：
+
+   架构：
+   ┌─────────────┐
+   │  用户访问    │
+   └──────┬──────┘
+          ↓
+   ┌─────────────┐
+   │ 主应用       │
+   │ ├─ 灰度规则  │  ← 从配置中心获取
+   │ └─ 动态路由  │
+   └──────┬──────┘
+          ↓
+     根据规则加载不同版本
+          ↓
+   ┌──────────────────┐
+   │ 10% 用户 → V2    │  新版本
+   │ 90% 用户 → V1    │  老版本
+   └──────────────────┘
+
+   实现：
+   // 主应用
+   const getAppEntry = (appName) =&gt; {
+     const userId = getUserId()
+     const grayConfig = await fetch(&#39;/api/gray-config&#39;).then(r =&gt; r.json())
+
+     // 判断用户是否在灰度名单
+     if (isInGrayList(userId, grayConfig)) {
+       return `https://app1-v2.example.com`  // 新版本
+     } else {
+       return `https://app1-v1.example.com`  // 老版本
+     }
+   }
+
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     entry: await getAppEntry(&#39;app1&#39;),
+     container: &#39;#container&#39;
+   }])
+
+   灰度规则（配置中心）：
+   {
+     &quot;app1&quot;: {
+       &quot;version&quot;: &quot;v2&quot;,
+       &quot;grayType&quot;: &quot;user&quot;,
+       &quot;grayList&quot;: [&quot;user_1&quot;, &quot;user_2&quot;],  // 白名单
+       &quot;grayPercent&quot;: 10  // 10% 流量
+     }
+   }
+
+2. 基于流量百分比：
+
+   // 主应用
+   const getAppEntry = (appName) =&gt; {
+     const random = Math.random() * 100
+     const grayPercent = getGrayPercent(appName)  // 从配置中心获取
+
+     if (random &lt; grayPercent) {
+       return `https://app1-v2.example.com`  // 10% 流量
+     } else {
+       return `https://app1-v1.example.com`  // 90% 流量
+     }
+   }
+
+3. 基于特征的灰度（AB测试）：
+
+   const getAppEntry = (appName) =&gt; {
+     const user = getUserInfo()
+
+     // 灰度规则
+     const rules = {
+       // VIP 用户优先体验新版本
+       vip: user.vip &amp;&amp; random() &lt; 0.5,
+       // 特定城市灰度
+       city: user.city === &#39;北京&#39;,
+       // 特定浏览器灰度
+       browser: /Chrome/.test(navigator.userAgent)
+     }
+
+     if (Object.values(rules).some(v =&gt; v)) {
+       return `https://app1-v2.example.com`
+     }
+     return `https://app1-v1.example.com`
+   }
+
+4. Nginx 层灰度（运维方案）：
+
+   # nginx.conf
+   upstream app1_v1 {
+     server app1-v1.example.com;
+   }
+
+   upstream app1_v2 {
+     server app1-v2.example.com;
+   }
+
+   # 根据 cookie 分流
+   map $cookie_version $app1_backend {
+     &quot;v2&quot; app1_v2;
+     default app1_v1;
+   }
+
+   location /app1/ {
+     proxy_pass http://$app1_backend;
+   }
+
+5. CDN 灰度（阿里云 CDN）：
+
+   - 配置 CDN 灰度规则
+   - 根据 IP、地域、比例分流
+   - 无需修改代码
+
+---
+
+四、回滚方案
+
+问题：
+- 新版本有 Bug 需要快速回滚
+- 不能影响用户体验
+
+方案设计：
+
+1. 配置中心秒级回滚（推荐）：
+
+   架构：
+   ┌──────────────┐
+   │ 配置中心      │  ← 修改配置
+   │ app1: v2 → v1 │
+   └───────┬──────┘
+           ↓ 实时推送（WebSocket）
+   ┌──────────────┐
+   │ 主应用        │
+   │ ├─ 监听配置   │
+   │ └─ 动态切换   │
+   └───────┬──────┘
+           ↓
+   重新加载子应用（使用 v1）
+
+   实现：
+   // 主应用
+   let currentVersion = {}
+
+   // 监听配置变化（WebSocket）
+   ws.on(&#39;config-change&#39;, (config) =&gt; {
+     const { app, version } = config
+
+     if (currentVersion[app] !== version) {
+       // 卸载旧版本
+       unmountMicroApp(app)
+
+       // 加载新版本
+       const entry = `https://${app}-${version}.example.com`
+       registerMicroApps([{
+         name: app,
+         entry,
+         container: &#39;#container&#39;
+       }])
+
+       // 刷新当前页面
+       if (isAppActive(app)) {
+         location.reload()
+       }
+
+       currentVersion[app] = version
+     }
+   })
+
+   // 配置中心（管理后台）
+   回滚操作：
+   1. 点击&quot;回滚&quot;按钮
+   2. 配置中心修改配置：app1.version = &quot;v1&quot;
+   3. WebSocket 推送到所有主应用
+   4. 主应用自动切换到 v1
+
+   耗时：&lt; 5秒
+
+2. CDN 回滚：
+
+   方案1：切换CDN源
+   // 修改 CDN 回源地址
+   app1.example.com → app1-v1.example.com
+
+   方案2：修改 DNS
+   app1.example.com A 记录
+   1.2.3.4 (v2) → 5.6.7.8 (v1)
+
+   缺点：DNS 生效时间长（TTL）
+
+3. 版本管理策略：
+
+   策略1：保留历史版本（推荐）
+   ├── app1-v1.0.0/
+   ├── app1-v1.0.1/
+   ├── app1-v1.1.0/  ← 当前版本
+   └── app1-v1.2.0/  ← 灰度版本
+
+   回滚：修改配置指向 v1.1.0
+
+   策略2：蓝绿部署
+   ├── app1-blue/  ← 当前生产版本
+   └── app1-green/ ← 新版本
+
+   发布：切换流量 blue → green
+   回滚：切换流量 green → blue
+
+   策略3：金丝雀发布
+   10% 流量 → v2
+   90% 流量 → v1
+
+   如果 v2 有问题，停止灰度，100% 流量 → v1
+
+4. 应用级回滚：
+
+   // 主应用提供降级UI
+   const FallbackApp = () =&gt; (
+     &lt;div&gt;
+       &lt;h1&gt;子应用加载失败&lt;/h1&gt;
+       &lt;Button onClick={() =&gt; loadBackupVersion()}&gt;
+         加载备用版本
+       &lt;/Button&gt;
+     &lt;/div&gt;
+   )
+
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     entry: &#39;https://app1-v2.example.com&#39;,
+     loader: (loading) =&gt; {
+       if (error) {
+         // 自动降级到 v1
+         return loadApp(&#39;https://app1-v1.example.com&#39;)
+       }
+     }
+   }])
+
+5. 监控与自动回滚：
+
+   // 监控错误率
+   const errorRate = getErrorRate(&#39;app1&#39;)
+
+   if (errorRate &gt; 5%) {  // 错误率超过5%
+     // 自动回滚
+     rollback(&#39;app1&#39;, &#39;v1&#39;)
+
+     // 告警通知
+     notify(&#39;app1 错误率过高，已自动回滚&#39;)
+   }
+
+---
+
+最佳实践总结：
+
+资源加载：
+✅ 使用 HTML Entry（qiankun）
+✅ 配置 publicPath 避免 404
+✅ 使用 CDN 加速
+✅ 启用 HTTP/2
+
+预加载：
+✅ qiankun prefetch 开启
+✅ 核心应用优先预加载
+✅ 使用 Service Worker 缓存
+✅ 弱网环境不预加载
+
+灰度发布：
+✅ 配置中心管理灰度规则
+✅ 支持用户维度 + 流量百分比
+✅ 小流量开始（1% → 10% → 50% → 100%）
+✅ 实时监控灰度效果
+
+回滚：
+✅ 配置中心秒级回滚
+✅ 保留历史版本
+✅ 监控自动回滚
+✅ 降级预案
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br></div></div><hr><h3 id="_4-子应用性能治理" tabindex="-1"><a class="header-anchor" href="#_4-子应用性能治理" aria-hidden="true">#</a> 4. 子应用性能治理</h3><p>如果子应用性能差拖垮主应用，你会怎么隔离与治理？如何监控、降级、容错？</p><p><strong>【作答】：</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>一、性能隔离方案
+
+问题：
+- 子应用 JS 执行慢，阻塞主应用
+- 子应用内存泄漏
+- 子应用频繁触发重渲染
+
+隔离策略：
+
+1. 时间片隔离（防止长任务阻塞）：
+
+   // 主应用：限制子应用 JS 执行时间
+   const executeWithTimeLimit = (fn, timeout = 50) =&gt; {
+     return new Promise((resolve, reject) =&gt; {
+       const timer = setTimeout(() =&gt; {
+         reject(new Error(&#39;子应用执行超时&#39;))
+       }, timeout)
+
+       try {
+         const result = fn()
+         clearTimeout(timer)
+         resolve(result)
+       } catch (e) {
+         clearTimeout(timer)
+         reject(e)
+       }
+     })
+   }
+
+   // 监控子应用挂载时间
+   const startTime = performance.now()
+   await mount()
+   const mountTime = performance.now() - startTime
+
+   if (mountTime &gt; 3000) {  // 超过3秒
+     reportPerformance({
+       app: &#39;app1&#39;,
+       type: &#39;slow_mount&#39;,
+       time: mountTime
+     })
+   }
+
+2. CPU 隔离（Web Worker）：
+
+   // 将子应用耗时计算放到 Worker
+   // main.js
+   const worker = new Worker(&#39;heavy-compute.worker.js&#39;)
+
+   worker.postMessage({ data: largeData })
+   worker.onmessage = (e) =&gt; {
+     console.log(&#39;计算结果:&#39;, e.data)
+   }
+
+   // heavy-compute.worker.js
+   self.onmessage = (e) =&gt; {
+     const result = expensiveCompute(e.data)
+     self.postMessage(result)
+   }
+
+3. 内存隔离（iframe）：
+
+   // 对于性能特别差的子应用，降级使用 iframe
+   const loadAppInIframe = (app) =&gt; {
+     const iframe = document.createElement(&#39;iframe&#39;)
+     iframe.src = app.entry
+     iframe.style.width = &#39;100%&#39;
+     iframe.style.height = &#39;100%&#39;
+     document.getElementById(&#39;container&#39;).appendChild(iframe)
+   }
+
+   // 卸载时销毁 iframe（释放内存）
+   const destroyIframe = () =&gt; {
+     iframe.remove()
+     iframe = null
+   }
+
+4. 资源隔离（限流）：
+
+   // 限制子应用同时请求数
+   class RequestLimiter {
+     constructor(maxConcurrent = 6) {
+       this.maxConcurrent = maxConcurrent
+       this.currentCount = 0
+       this.queue = []
+     }
+
+     async request(url) {
+       if (this.currentCount &gt;= this.maxConcurrent) {
+         await new Promise(resolve =&gt; this.queue.push(resolve))
+       }
+
+       this.currentCount++
+       try {
+         const response = await fetch(url)
+         return response
+       } finally {
+         this.currentCount--
+         if (this.queue.length &gt; 0) {
+           this.queue.shift()()
+         }
+       }
+     }
+   }
+
+   const limiter = new RequestLimiter(3)  // 限制3个并发
+
+---
+
+二、性能监控方案
+
+1. 加载性能监控：
+
+   // qiankun 生命周期监控
+   registerMicroApps([{
+     name: &#39;app1&#39;,
+     entry: &#39;//localhost:8081&#39;,
+     loader: (loading) =&gt; {
+       if (loading) {
+         window.__APP_LOAD_START__ = performance.now()
+       } else {
+         const loadTime = performance.now() - window.__APP_LOAD_START__
+
+         // 上报加载时间
+         reportMetric({
+           app: &#39;app1&#39;,
+           metric: &#39;load_time&#39;,
+           value: loadTime,
+           level: loadTime &gt; 3000 ? &#39;error&#39; : &#39;info&#39;
+         })
+       }
+     }
+   }])
+
+2. 运行时性能监控：
+
+   // FPS 监控
+   class FPSMonitor {
+     constructor() {
+       this.fps = 0
+       this.lastTime = performance.now()
+       this.frames = 0
+     }
+
+     tick() {
+       this.frames++
+       const now = performance.now()
+
+       if (now &gt;= this.lastTime + 1000) {
+         this.fps = Math.round((this.frames * 1000) / (now - this.lastTime))
+         this.frames = 0
+         this.lastTime = now
+
+         // FPS 过低告警
+         if (this.fps &lt; 30) {
+           reportPerformance({
+             type: &#39;low_fps&#39;,
+             fps: this.fps,
+             app: getCurrentApp()
+           })
+         }
+       }
+
+       requestAnimationFrame(() =&gt; this.tick())
+     }
+   }
+
+   const fpsMonitor = new FPSMonitor()
+   fpsMonitor.tick()
+
+3. 内存监控：
+
+   // 监控子应用内存占用
+   const monitorMemory = () =&gt; {
+     if (performance.memory) {
+       const { usedJSHeapSize, totalJSHeapSize } = performance.memory
+       const usage = (usedJSHeapSize / totalJSHeapSize * 100).toFixed(2)
+
+       // 内存占用过高告警
+       if (usage &gt; 90) {
+         reportPerformance({
+           type: &#39;high_memory&#39;,
+           usage,
+           app: getCurrentApp()
+         })
+       }
+     }
+   }
+
+   setInterval(monitorMemory, 10000)  // 每10秒检测
+
+4. 长任务监控：
+
+   // PerformanceObserver 监控长任务
+   const observer = new PerformanceObserver((list) =&gt; {
+     for (const entry of list.getEntries()) {
+       // 超过50ms的任务被认为是长任务
+       if (entry.duration &gt; 50) {
+         reportPerformance({
+           type: &#39;long_task&#39;,
+           duration: entry.duration,
+           app: getCurrentApp(),
+           startTime: entry.startTime
+         })
+       }
+     }
+   })
+
+   observer.observe({ entryTypes: [&#39;longtask&#39;] })
+
+5. 接口性能监控：
+
+   // 拦截子应用请求，监控接口性能
+   const originalFetch = window.fetch
+   window.fetch = async (...args) =&gt; {
+     const startTime = performance.now()
+     const url = args[0]
+
+     try {
+       const response = await originalFetch(...args)
+       const duration = performance.now() - startTime
+
+       // 慢接口告警（&gt; 3秒）
+       if (duration &gt; 3000) {
+         reportPerformance({
+           type: &#39;slow_api&#39;,
+           url,
+           duration,
+           app: getCurrentApp()
+         })
+       }
+
+       return response
+     } catch (error) {
+       reportPerformance({
+         type: &#39;api_error&#39;,
+         url,
+         error: error.message,
+         app: getCurrentApp()
+       })
+       throw error
+     }
+   }
+
+6. 用户体验监控（Web Vitals）：
+
+   import { getCLS, getFID, getFCP, getLCP, getTTFB } from &#39;web-vitals&#39;
+
+   // 监控核心性能指标
+   getCLS(metric =&gt; reportMetric(&#39;CLS&#39;, metric.value))  // 累计布局偏移
+   getFID(metric =&gt; reportMetric(&#39;FID&#39;, metric.value))  // 首次输入延迟
+   getFCP(metric =&gt; reportMetric(&#39;FCP&#39;, metric.value))  // 首次内容绘制
+   getLCP(metric =&gt; reportMetric(&#39;LCP&#39;, metric.value))  // 最大内容绘制
+   getTTFB(metric =&gt; reportMetric(&#39;TTFB&#39;, metric.value)) // 首字节时间
+
+---
+
+三、降级方案
+
+1. 超时降级：
+
+   // 子应用加载超时，显示降级UI
+   const loadAppWithTimeout = async (app, timeout = 10000) =&gt; {
+     return Promise.race([
+       loadMicroApp(app),
+       new Promise((_, reject) =&gt; {
+         setTimeout(() =&gt; reject(new Error(&#39;加载超时&#39;)), timeout)
+       })
+     ]).catch((error) =&gt; {
+       // 降级：显示静态页面
+       showFallbackUI(app.name)
+
+       reportError({
+         app: app.name,
+         type: &#39;load_timeout&#39;,
+         error
+       })
+     })
+   }
+
+   const showFallbackUI = (appName) =&gt; {
+     const container = document.getElementById(&#39;container&#39;)
+     container.innerHTML = `
+       &lt;div class=&quot;fallback&quot;&gt;
+         &lt;h2&gt;${appName} 加载失败&lt;/h2&gt;
+         &lt;button onclick=&quot;retryLoad()&quot;&gt;重试&lt;/button&gt;
+         &lt;button onclick=&quot;useBasicVersion()&quot;&gt;使用基础版本&lt;/button&gt;
+       &lt;/div&gt;
+     `
+   }
+
+2. 错误降级：
+
+   // 子应用运行时错误，降级处理
+   addGlobalUncaughtErrorHandler((event, app) =&gt; {
+     const errorCount = getErrorCount(app.name)
+
+     if (errorCount &gt; 3) {  // 错误次数超过3次
+       // 降级：卸载子应用
+       unmountMicroApp(app.name)
+
+       // 显示降级UI
+       showDegradedUI(app.name)
+
+       // 告警
+       alertDevelopers({
+         app: app.name,
+         reason: &#39;错误率过高，已自动降级&#39;
+       })
+     }
+   })
+
+3. 性能降级：
+
+   // 根据性能指标动态降级
+   const performanceGrade = getPerformanceGrade()
+
+   if (performanceGrade === &#39;poor&#39;) {
+     // 降级策略
+     - 禁用动画
+     - 减少轮询频率
+     - 延迟加载非核心模块
+     - 降低渲染精度
+
+     registerMicroApps([{
+       name: &#39;app1&#39;,
+       props: {
+         enableAnimation: false,  // 禁用动画
+         pollingInterval: 10000,  // 轮询间隔延长
+         lazyLoad: true           // 懒加载
+       }
+     }])
+   }
+
+4. 设备降级：
+
+   // 低端设备降级
+   const isLowEndDevice = () =&gt; {
+     // 内存小于4GB
+     const memory = navigator.deviceMemory
+     if (memory &amp;&amp; memory &lt; 4) return true
+
+     // CPU核心数少于4
+     const cores = navigator.hardwareConcurrency
+     if (cores &amp;&amp; cores &lt; 4) return true
+
+     return false
+   }
+
+   if (isLowEndDevice()) {
+     // 降级：使用轻量版本
+     registerMicroApps([{
+       name: &#39;app1&#39;,
+       entry: &#39;https://app1-lite.example.com&#39;  // 轻量版
+     }])
+   }
+
+---
+
+四、容错方案
+
+1. 错误边界（React）：
+
+   // 主应用错误边界
+   class MicroAppErrorBoundary extends React.Component {
+     constructor(props) {
+       super(props)
+       this.state = { hasError: false, error: null }
+     }
+
+     static getDerivedStateFromError(error) {
+       return { hasError: true, error }
+     }
+
+     componentDidCatch(error, errorInfo) {
+       // 上报错误
+       reportError({
+         app: this.props.appName,
+         error: error.toString(),
+         errorInfo
+       })
+
+       // 尝试重新加载
+       this.retryCount = (this.retryCount || 0) + 1
+       if (this.retryCount &lt; 3) {
+         setTimeout(() =&gt; {
+           this.setState({ hasError: false })
+           this.forceUpdate()
+         }, 2000)
+       }
+     }
+
+     render() {
+       if (this.state.hasError) {
+         return (
+           &lt;div&gt;
+             &lt;h2&gt;子应用出错了&lt;/h2&gt;
+             &lt;button onClick={() =&gt; location.reload()}&gt;刷新页面&lt;/button&gt;
+           &lt;/div&gt;
+         )
+       }
+       return this.props.children
+     }
+   }
+
+2. 资源加载容错：
+
+   // 子应用 JS 加载失败，尝试备用CDN
+   const loadScriptWithFallback = (src, fallbackSrc) =&gt; {
+     return new Promise((resolve, reject) =&gt; {
+       const script = document.createElement(&#39;script&#39;)
+       script.src = src
+
+       script.onload = resolve
+       script.onerror = () =&gt; {
+         console.log(&#39;主CDN加载失败，尝试备用CDN&#39;)
+
+         // 移除失败的script
+         script.remove()
+
+         // 尝试备用CDN
+         const fallbackScript = document.createElement(&#39;script&#39;)
+         fallbackScript.src = fallbackSrc
+         fallbackScript.onload = resolve
+         fallbackScript.onerror = reject
+         document.head.appendChild(fallbackScript)
+       }
+
+       document.head.appendChild(script)
+     })
+   }
+
+   // 使用
+   loadScriptWithFallback(
+     &#39;https://cdn1.example.com/app1.js&#39;,
+     &#39;https://cdn2.example.com/app1.js&#39;  // 备用CDN
+   )
+
+3. 接口容错：
+
+   // 子应用接口失败，重试机制
+   const fetchWithRetry = async (url, options = {}, retries = 3) =&gt; {
+     for (let i = 0; i &lt; retries; i++) {
+       try {
+         const response = await fetch(url, options)
+         if (response.ok) {
+           return response
+         }
+       } catch (error) {
+         if (i === retries - 1) throw error
+
+         // 指数退避
+         await new Promise(r =&gt; setTimeout(r, Math.pow(2, i) * 1000))
+       }
+     }
+   }
+
+4. 状态容错：
+
+   // 子应用状态异常，自动恢复
+   const recoverState = (app) =&gt; {
+     try {
+       // 尝试从 localStorage 恢复状态
+       const savedState = localStorage.getItem(`${app}_state`)
+       if (savedState) {
+         return JSON.parse(savedState)
+       }
+     } catch (error) {
+       // 恢复失败，使用默认状态
+       return getDefaultState()
+     }
+   }
+
+5. 自动重启：
+
+   // 子应用崩溃自动重启
+   let crashCount = 0
+   const MAX_CRASH_COUNT = 3
+
+   addGlobalUncaughtErrorHandler((event, app) =&gt; {
+     crashCount++
+
+     if (crashCount &lt; MAX_CRASH_COUNT) {
+       // 自动重启
+       setTimeout(() =&gt; {
+         unmountMicroApp(app.name)
+         loadMicroApp({
+           name: app.name,
+           entry: app.entry,
+           container: app.container
+         })
+
+         console.log(`子应用 ${app.name} 已自动重启`)
+       }, 1000)
+     } else {
+       // 重启次数过多，放弃
+       showFatalError(app.name)
+     }
+   })
+
+---
+
+五、性能优化建议
+
+1. 子应用优化：
+
+   ✅ 代码分割（React.lazy、Vue异步组件）
+   ✅ 按需加载（路由懒加载）
+   ✅ Tree Shaking（移除未使用代码）
+   ✅ 压缩打包（Gzip、Brotli）
+   ✅ CDN 加速
+   ✅ 图片懒加载、压缩
+   ✅ 减少依赖体积（使用 lodash-es、day.js）
+   ✅ Service Worker 缓存
+
+2. 主应用优化：
+
+   ✅ 预加载核心子应用
+   ✅ 虚拟滚动（大列表）
+   ✅ 防抖节流（高频事件）
+   ✅ Web Worker（耗时计算）
+   ✅ CSS 隔离（避免样式冲突）
+
+3. 通信优化：
+
+   ✅ 减少跨应用通信频率
+   ✅ 批量更新（合并多次setState）
+   ✅ 使用 throttle/debounce
+
+---
+
+完整的性能治理体系：
+
+┌─────────────────────────────────┐
+│        监控层（Monitoring）       │
+│  ├─ 加载性能（Load Time）         │
+│  ├─ 运行时性能（FPS、Memory）     │
+│  ├─ 接口性能（API Time）          │
+│  └─ 用户体验（Web Vitals）        │
+└────────────┬────────────────────┘
+             ↓ 发现问题
+┌─────────────────────────────────┐
+│        告警层（Alerting）         │
+│  ├─ 性能告警（超时、卡顿）         │
+│  ├─ 错误告警（崩溃、404）          │
+│  └─ 自动通知（钉钉、邮件）         │
+└────────────┬────────────────────┘
+             ↓ 触发策略
+┌─────────────────────────────────┐
+│        降级层（Degradation）      │
+│  ├─ 超时降级（静态页面）           │
+│  ├─ 错误降级（基础版本）           │
+│  ├─ 性能降级（减少动画）           │
+│  └─ 设备降级（轻量版）             │
+└────────────┬────────────────────┘
+             ↓ 保障可用性
+┌─────────────────────────────────┐
+│        容错层（Fault Tolerance）  │
+│  ├─ 错误边界（Error Boundary）    │
+│  ├─ 自动重试（Retry）             │
+│  ├─ 备用方案（Fallback）          │
+│  └─ 自动恢复（Recovery）          │
+└─────────────────────────────────┘
+
+最终目标：
+✅ 子应用问题不影响主应用
+✅ 用户无感知降级
+✅ 问题自动发现、自动降级、自动恢复
+✅ 开发者及时收到告警
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br></div></div><hr><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><!----></div><!----></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/vuepress/mack/03-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" class="" aria-label="性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot;"><!--[--><!--]--> 性能优化流程 &amp; 从浏览器请求链路解释&quot;为什么这么优化&quot; <!--[--><!--]--></a></span><span class="next"><a href="/vuepress/mack/05-%E4%BD%8E%E4%BB%A3%E7%A0%81.html" class="" aria-label="低代码 &amp; 核心原理"><!--[--><!--]--> 低代码 &amp; 核心原理 <!--[--><!--]--></a></span></p></nav><!--[--><!--[--><div style="display:none"></div><div class="adsbygoogle-box"><ins class="adsbygoogle" style="display:block;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-6846038091720568" data-ad-slot="1554369026"></ins></div><div style="display:none"> (adsbygoogle = window.adsbygoogle || []).push({}); </div><!--]--><!--]--></main><!--]--></div><!----><!----><!--]--></div>
+    <script src="/vuepress/assets/js/runtime~app.b1eaadf2.js" defer></script><script src="/vuepress/assets/js/5316.94e78182.js" defer></script><script src="/vuepress/assets/js/app.602933f0.js" defer></script>
+  </body>
+</html>
