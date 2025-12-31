@@ -82,6 +82,36 @@ export default defineUserConfig<DefaultThemeOptions>({
         ]
       },
       {
+        text: '专题',
+        children: [
+          {
+            text: '技能提炼',
+            link: '/mack/',
+            children: [
+              '/mack/01-React核心原理.md',
+              '/mack/02-Webpack与构建工具.md',
+              '/mack/03-性能优化.md',
+              '/mack/04-微前端.md',
+              '/mack/05-低代码.md',
+              '/mack/06-插件系统.md',
+              '/mack/07-NestJS与SSR.md',
+              '/mack/08-代码规范.md',
+              '/mack/09-Promise原理.md',
+              '/mack/10-骨架屏.md',
+              '/mack/11-HTTP与缓存.md'
+            ]
+          },
+          {
+            text: '技能提炼-补充',
+            link: '/mack/',
+            children: [
+              '/mack/01-React核心原理-补充.md',
+              '/mack/React更新流程详解.md'
+            ]
+          }
+        ]
+      },
+      {
         text: '面试',
         // link: '/interview-prep/',
         // activeMatch: '/interview-prep/',
@@ -247,6 +277,31 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md',
             '/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md',
             '/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md'
+          ]
+        }
+      ],
+      '/mack/': [
+        {
+          text: '技能提炼',
+          children: [
+            '/mack/01-React核心原理.md',
+            '/mack/02-Webpack与构建工具.md',
+            '/mack/03-性能优化.md',
+            '/mack/04-微前端.md',
+            '/mack/05-低代码.md',
+            '/mack/06-插件系统.md',
+            '/mack/07-NestJS与SSR.md',
+            '/mack/08-代码规范.md',
+            '/mack/09-Promise原理.md',
+            '/mack/10-骨架屏.md',
+            '/mack/11-HTTP与缓存.md'
+          ]
+        },
+        {
+          text: '技能提炼-补充',
+          children: [
+            '/mack/01-React核心原理-补充.md',
+            '/mack/React更新流程详解.md'
           ]
         }
       ],
