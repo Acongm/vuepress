@@ -11,13 +11,197 @@ const legacyWrapperMap = new Map<
   WeakMap<Function, ProxyStoreSubscriber>
 >()
 
+// ========== Vue3 风格：最小可用的响应式内核（依赖收集/触发） ==========
+
+type Dep = Set<ReactiveEffect>
+
+type ReactiveEffect = {
+  active: boolean
+  deps: Dep[]
+  run: () => any
+  stop: () => void
+}
+
+let activeEffect: ReactiveEffect | null = null
+const effectStack: ReactiveEffect[] = []
+
+const targetMap = new WeakMap<object, Map<PropertyKey, Dep>>()
+
+function cleanupEffect(effect: ReactiveEffect): void {
+  for (const dep of effect.deps) {
+    dep.delete(effect)
+  }
+  effect.deps.length = 0
+}
+
+function track(target: object, key: PropertyKey): void {
+  if (!activeEffect || !activeEffect.active) return
+
+  let depsMap = targetMap.get(target)
+  if (!depsMap) {
+    depsMap = new Map<PropertyKey, Dep>()
+    targetMap.set(target, depsMap)
+  }
+
+  let dep = depsMap.get(key)
+  if (!dep) {
+    dep = new Set<ReactiveEffect>()
+    depsMap.set(key, dep)
+  }
+
+  if (!dep.has(activeEffect)) {
+    dep.add(activeEffect)
+    activeEffect.deps.push(dep)
+  }
+}
+
+function trigger(target: object, key: PropertyKey): void {
+  const depsMap = targetMap.get(target)
+  const dep = depsMap?.get(key)
+  if (!dep || dep.size === 0) return
+
+  // clone 避免迭代过程中集合被修改
+  const effects = Array.from(dep)
+  for (const eff of effects) {
+    if (eff.active) eff.run()
+  }
+}
+
+function effect(fn: () => any): () => any {
+  const reactiveEffect: ReactiveEffect = {
+    active: true,
+    deps: [],
+    run: () => {
+      if (!reactiveEffect.active) return fn()
+      cleanupEffect(reactiveEffect)
+      try {
+        activeEffect = reactiveEffect
+        effectStack.push(reactiveEffect)
+        return fn()
+      } finally {
+        effectStack.pop()
+        activeEffect = effectStack[effectStack.length - 1] ?? null
+      }
+    },
+    stop: () => {
+      if (!reactiveEffect.active) return
+      reactiveEffect.active = false
+      cleanupEffect(reactiveEffect)
+    }
+  }
+
+  reactiveEffect.run()
+  return () => reactiveEffect.stop()
+}
+
+/**
+ * Vue3 风格：reactive
+ *
+ * 说明：这是一个“够用版”的 reactive，只做浅层 key 的依赖追踪。
+ */
+export function reactive<T extends object>(raw: T): T {
+  return new Proxy(raw, {
+    get(target, key, receiver) {
+      track(target, key)
+      return Reflect.get(target, key, receiver)
+    },
+    set(target, key, value, receiver) {
+      const oldValue = (target as any)[key]
+      const result = Reflect.set(target, key, value, receiver)
+      if (oldValue !== value) {
+        trigger(target, key)
+      }
+      return result
+    },
+    deleteProperty(target, key) {
+      const hadKey = Object.prototype.hasOwnProperty.call(target, key)
+      const result = Reflect.deleteProperty(target, key)
+      if (hadKey) {
+        trigger(target, key)
+      }
+      return result
+    }
+  })
+}
+
+/**
+ * Vue3 风格：ref（简化版）
+ */
+export function ref<T>(value: T): { value: T } {
+  return reactive({ value })
+}
+
+/**
+ * Vue3 风格：computed（简化版）
+ *
+ * 返回一个只读 ref：通过 watchEffect 保持 value 最新。
+ */
+export function computed<T>(getter: () => T): { readonly value: T } {
+  const r = ref<T>(getter())
+  watchEffect(() => {
+    r.value = getter()
+  })
+  return r as { readonly value: T }
+}
+
+type WatchOptions = {
+  immediate?: boolean
+}
+
+/**
+ * Vue3 风格：watch（简化版）
+ *
+ * 支持：watch(() => state.xxx, (next, prev) => {})
+ */
+export function watch<T>(
+  source: () => T,
+  cb: (value: T, oldValue: T | undefined) => void,
+  options: WatchOptions = {}
+): () => void {
+  let oldValue: T | undefined = undefined
+  let inited = false
+
+  const stop = effect(() => {
+    const newValue = source()
+    if (!inited) {
+      inited = true
+      if (options.immediate) {
+        cb(newValue, oldValue)
+      }
+      oldValue = newValue
+      return
+    }
+    if (newValue !== oldValue) {
+      const prev = oldValue
+      oldValue = newValue
+      cb(newValue, prev)
+    }
+  })
+
+  return stop
+}
+
+/**
+ * Vue3 风格：watchEffect（简化版）
+ */
+export function watchEffect(fn: () => void): () => void {
+  return effect(fn)
+}
+
 // ========== 类型导出 ==========
 export type { ProxyStoreSubscriber }
 export type SharedDataSubscriber<T = any> = (data: T) => void
 
-// ========== 最推荐的调用方式（state + subscribe） ==========
+// ========== 最推荐的调用方式（Vue3 reactive state） ==========
 
-export const state = store.proxy
+/**
+ * 单例响应式状态（Vue3 风格）
+ *
+ * 用法：
+ * watch(() => state.count, (v) => console.log(v));
+ * state.count++;
+ */
+export const state = reactive(store.proxy)
 
 export const subscribe = (
   key: string,

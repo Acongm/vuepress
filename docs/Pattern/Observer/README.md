@@ -40,6 +40,35 @@ subject.notify(42)
 // Observer 2: 42
 ```
 
+## 同一需求最小示例：Counter（更像“手动发布”）
+
+需求：多个地方监听 `count`，任意地方更新时通知所有监听者。
+
+```typescript
+import { Subject } from './Subject'
+
+const counter$ = new Subject<number>()
+
+const observerA = (value: number) => {
+  console.log('A count =', value)
+}
+
+const observerB = (value: number) => {
+  console.log('B count =', value)
+}
+
+counter$.attach(observerA)
+counter$.attach(observerB)
+
+// ✅ 需要你“手动发布”一次更新
+counter$.notify(1)
+counter$.notify(10)
+
+// 取消订阅
+counter$.detach(observerA)
+counter$.detach(observerB)
+```
+
 ### SubjectManager
 
 多主题管理器，按 key 管理多个 Subject。

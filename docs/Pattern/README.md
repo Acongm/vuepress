@@ -307,10 +307,14 @@ on('button:clicked', (data) => {
 **原理**：ES6 Proxy 拦截读写操作，自动触发响应。
 
 ```typescript
-import { state, subscribe } from './ProxyStore/ProxyStoreSingleton'
+import { state, watch } from './ProxyStore/ProxyStoreSingleton'
 
-// 订阅
-subscribe('count', (value) => console.log('Count:', value))
+// Vue3 风格监听
+watch(
+  () => state.count,
+  (value) => console.log('Count:', value),
+  { immediate: true }
+)
 
 // 直接赋值，自动触发订阅
 state.count = 10 // 输出: Count: 10

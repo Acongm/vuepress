@@ -65,13 +65,15 @@ const snapshot = store.getSnapshot()
 
 ## API 文档
 
-### 推荐用法（Proxy state 风格）
+### 推荐用法（Vue 3 Composition API 风格）
 
 ```typescript
 import {
   state,
-  subscribe,
-  subscribeAll,
+  watch,
+  watchEffect,
+  computed,
+  ref,
   getSnapshot,
   batchUpdate,
   resetStore
@@ -80,7 +82,7 @@ import {
 
 #### state
 
-单例代理对象：直接读写即可。
+单例响应式对象（`reactive` 包装）：直接读写即可，并且支持依赖收集。
 
 ```typescript
 state.theme = 'dark'
@@ -88,17 +90,42 @@ console.log(state.theme)
 delete state.temp
 ```
 
-#### subscribe(key, callback)
+#### watch(source, callback, options?)
 
-订阅某个 key 的变化（返回取消订阅函数）。
+监听响应式数据变化（返回停止函数）。
 
 ```typescript
-const unsubscribe = subscribe('theme', (value, key, prevValue) => {
-  console.log(`[${key}] ${prevValue} -> ${value}`)
+const stop = watch(
+  () => state.theme,
+  (next, prev) => {
+    console.log('theme:', prev, '->', next)
+  },
+  { immediate: true }
+)
+
+// 停止监听
+stop()
+```
+
+#### watchEffect(effect)
+
+自动追踪 effect 中读取到的响应式依赖。
+
+```typescript
+const stop = watchEffect(() => {
+  console.log('count is', state.count)
 })
 
-// 取消订阅
-unsubscribe()
+stop()
+```
+
+#### computed(getter)
+
+派生状态（简化版 computed）。
+
+```typescript
+const double = computed(() => (state.count ?? 0) * 2)
+console.log(double.value)
 ```
 
 ### 扩展 API
@@ -142,7 +169,7 @@ batchUpdate({
 
 #### subscribeAll(callback)
 
-订阅所有变化。
+订阅所有变化（仍然可用，偏底层/事件风格）。
 
 ```typescript
 const unsubscribe = subscribeAll((value, key, prevValue) => {
@@ -159,7 +186,11 @@ function useProxyState<T>(key: string): [T | undefined, (value: T) => void] {
   const [value, setValue] = useState<T | undefined>(() => (state as any)[key])
 
   useEffect(() => {
-    return subscribe(key, (next) => setValue(next as T))
+    return watch(
+      () => (state as any)[key],
+      (next) => setValue(next as T),
+      { immediate: true }
+    )
   }, [key])
 
   const setProxyValue = useCallback(
@@ -192,7 +223,11 @@ function useProxy<T extends object>(): T {
   const [, forceUpdate] = useState({})
 
   useEffect(() => {
-    return subscribeAll(() => forceUpdate({}))
+    return watchEffect(() => {
+      // 读取一次以建立依赖（简化版）
+      void proxy
+      forceUpdate({})
+    })
   }, [])
 
   return proxy
@@ -233,10 +268,8 @@ state.count++ // 自动响应
 当前实现只支持一层代理。如需深层响应式：
 
 ```typescript
-// 方案 1：手动触发
-const user = getSharedData('user')
-user.name = 'John'
-publishSharedData('user', { ...user }) // 重新发布
+// 方案 1：整体替换（推荐）
+state.user = { ...state.user, name: 'John' }
 
 // 方案 2：使用 Valtio 等成熟库
 ```
