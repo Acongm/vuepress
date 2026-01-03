@@ -162,9 +162,24 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/JavaScript/js模拟new操作.md'
             ]
           },
+
           {
             text: 'TypeScript',
             children: ['/TypeScript/', '/TypeScript/Study.md']
+          },
+          {
+            text: '通信模式',
+            children: [
+              '/Pattern/模式来源与类比.md',
+              '/Pattern/'
+              // '/Pattern/ServiceRequest/',
+              // '/Pattern/Observer/',
+              // '/Pattern/EventBus/',
+              // '/Pattern/Store/',
+              // '/Pattern/BroadcastChannel/',
+              // '/Pattern/CustomEvent/',
+              // '/Pattern/ProxyStore/'
+            ]
           },
           {
             text: 'Performance',
@@ -358,6 +373,22 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/JavaScript/call、apply与bind.md',
             '/JavaScript/js模拟bind方法.md',
             '/JavaScript/js模拟new操作.md'
+          ]
+        }
+      ],
+      '/Pattern/': [
+        {
+          text: '通信模式',
+          children: [
+            '/Pattern/模式来源与类比.md',
+            '/Pattern/',
+            '/Pattern/ServiceRequest/',
+            '/Pattern/Observer/',
+            '/Pattern/EventBus/',
+            '/Pattern/Store/',
+            '/Pattern/BroadcastChannel/',
+            '/Pattern/CustomEvent/',
+            '/Pattern/ProxyStore/'
           ]
         }
       ],
