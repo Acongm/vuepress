@@ -391,7 +391,7 @@ code {
 <h2 id="%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86">项目经历</h2>
 <h3 id="%E5%A4%A7%E7%96%86%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83%E9%87%8D%E6%9E%84202202-20229">大疆用户中心重构（2022.02-2022.9）</h3>
 <p>​<strong>角色：项目前端负责人</strong>​<br>
-​<strong>技术栈</strong>​：Vue3 + TypeScript + Vite + Pinia</p>
+​<strong>技术栈</strong>​：Vue + TypeScript + webpack</p>
 <p>​<strong>项目规模</strong>​：</p>
 <ul>
 <li>服务 1000W+注册用户 | 日均登录量 120W+</li>
@@ -408,27 +408,27 @@ code {
 </ul>
 <p>​<strong>业务价值</strong>​：</p>
 <ul>
-<li>响应式架构实现一套代码多端适配，维护成本降低50%</li>
-<li>登录转化率提升18%，客诉率下降12%</li>
+<li>响应式架构实现一套代码多端适配，维护成本降低 50%</li>
+<li>登录转化率提升 18%，客诉率下降 12%</li>
 </ul>
 <hr>
 <h3 id="%E5%A4%A7%E7%96%86%E5%94%AE%E5%90%8E-rms-%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%9E%84202210-202404">大疆售后 RMS 系统重构（2022.10-2024.04）</h3>
-<p>​<strong>角色：项目前端负责人</strong>​<br>
-​<strong>技术栈</strong>​：React 18 + TypeScript + Webpack + Ant Design</p>
+<p>​<strong>角色：项目前端负责人</strong>​
+​<strong>技术栈</strong>​：React 18 + TypeScript + umi + dui(Ant Design)</p>
 <p>​<strong>系统复杂度</strong>​：</p>
 <ul>
 <li>支撑全球服务售后体系 | 日均处理工单 1W+</li>
 <li>包含公告插件子系统（跨 5 个业务系统接入）</li>
 <li>100+页面开发，多模块多权限相连</li>
 </ul>
-<p>​<strong>工程化建设</strong>​：</p>
-<p>🔸 制定 ESLint 规范（多人开发代码风格统一，交叉开发提效 30%）<br>
+<p>​<strong>工程化建设</strong>​：
+🔸 制定 ESLint 规范（多人开发代码风格统一，交叉开发提效 30%）<br>
 🔸 低代码平台落地（页面开发效率+40%）<br>
 🔸 业务组件高可用</p>
 <p>​<strong>管理成果</strong>​：</p>
 <ul>
-<li>建立Code Review机制，输出多份技术文档</li>
-<li>团队BUG率下降25%</li>
+<li>建立 Code Review 机制，输出多份技术文档</li>
+<li>团队 BUG 率下降 25%</li>
 </ul>
 <hr>
 <h3 id="%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%85%AC%E5%91%8A%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F202302-202303">跨平台公告插件系统（2023.02-2023.03）</h3>
@@ -441,16 +441,17 @@ code {
 🔸 多模式植入方案（CDN/Iframe/Web Component）</p>
 <p>​<strong>业务价值</strong>​：</p>
 <ul>
-<li>跨5个业务系统标准化接入，维护成本大幅降低</li>
-<li>紧急公告触达率100%</li>
+<li>跨系统标准化接入，维护成本大幅降低</li>
+<li>紧急公告触达率 100%</li>
 </ul>
 <hr>
 <h3 id="%E5%A4%A7%E7%96%86-devops-%E5%B9%B3%E5%8F%B0%E7%BB%B4%E6%8A%A4202403-202504">大疆 DevOps 平台维护（2024.03-2025.04）</h3>
 <p>​<strong>角色：核心开发者</strong>​<br>
-​<strong>技术栈</strong>​：Vue3 + TypeScript + qiankun 微前端</p>
+​<strong>技术栈</strong>​：Vue/react + TypeScript</p>
 <p>​<strong>系统模块</strong>​：权限管理 | 需求管理 | 自动化测试 | 文档中心</p>
 <p>​<strong>技术亮点</strong>​：<br>
 🔸 Jira 插件开发（打通需求与工单流程）<br>
+🔸 疆小猫迭代开发 全平台热插拔项目评分插件改造
 🔸 Docker 流水线自动化部署（CI/CD 优化）<br>
 🔸 Workspace 自定义审批流程</p>
 <p>​<strong>业务价值</strong>​：</p>
@@ -458,9 +459,10 @@ code {
 <li>流程审批效率提升，部署效率大幅优化</li>
 <li>测试用例平台满意度显著提升</li>
 </ul>
+<hr>
 <h3 id="xdr-%E7%B3%BB%E7%BB%9F---%E9%AD%94%E6%96%B9%E5%A4%A7%E5%B1%8F--%E6%8A%A5%E8%A1%A8202505-202512">XDR 系统 - 魔方大屏 + 报表（2025.05-2025.12）</h3>
 <p>​<strong>角色：核心开发者</strong>​<br>
-​<strong>技术栈</strong>​：React + ECharts + NestJS + mongoose</p>
+​<strong>技术栈</strong>​：Vue3 + ECharts + NestJS + mongoose</p>
 <p>​<strong>系统模块</strong>​：低代码组件 | 报表系统 | Node 定时任务</p>
 <p>​<strong>技术亮点</strong>​：<br>
 🔸 NestJS 全栈开发（前后端一体化）<br>
@@ -474,11 +476,11 @@ code {
 </ul>
 <hr>
 <h2 id="%E5%B7%A5%E4%BD%9C%E7%BB%8F%E5%8E%86">工作经历</h2>
-<p>​<strong>英特利普 ​</strong>​ | ​<strong>高级前端工程师</strong>​（2025.12-至今）</p>
-<p>​<strong>软通动力 ​</strong>​ | ​<strong>高级前端工程师</strong>​（2021.09-2025.12）</p>
+<p>​<strong>英特利普 ​</strong>​ | ​<strong>前端开发</strong>​（2025.12-至今）</p>
+<p>​<strong>软通动力 ​</strong>​ | ​<strong>前端开发</strong>​（2021.09-2025.12）</p>
 <ul>
-<li>主导用户中心+RMS两大核心系统重构</li>
-<li>2022年获大疆「技术突破奖」（TOP10%）</li>
+<li>同时主导用户中心+RMS 两大核心系统重构</li>
+<li>2022 年获大疆「技术突破奖」（TOP10%）</li>
 </ul>
 <p>​<strong>深圳讯锡科技 ​</strong>​ | 前端负责人（2019.07-2021.09）<br>
 ​<strong>深圳市小寒科技</strong>​ | 前端负责人（2019.03-2019.07）<br>
@@ -486,8 +488,8 @@ code {
 <hr>
 <h2 id="%E6%8A%80%E6%9C%AF%E5%BD%B1%E5%93%8D%E5%8A%9B">技术影响力</h2>
 <ul>
-<li>获2023低代码大赛<strong>特等奖</strong>及<strong>团队三等奖</strong>，实现自定义低代码组件桥接，攻克边界场景</li>
-<li>技术分享《CI/CD流水线部署指南》，推动业务组件库落地5个项目（React/Vue双框架兼容层设计，节省<strong>144h/季度</strong>）</li>
+<li>获 2023 低代码大赛<strong>特等奖</strong>及<strong>团队三等奖</strong>，实现自定义低代码组件桥接，攻克边界场景</li>
+<li>技术分享《CI/CD 流水线部署指南》，推动业务组件快速落地 5 个项目（React/Vue 双框架兼容层设计，节省<strong>144h/季度</strong>）</li>
 </ul>
 <hr>
 <h2 id="%E6%95%99%E8%82%B2%E8%83%8C%E6%99%AF">教育背景</h2>
