@@ -1315,7 +1315,6 @@ function MyComponent() {
 
 ```javascript
 import { Profiler } from 'react'
-
 ;<Profiler id="App" onRender={onRenderCallback}>
   <App />
 </Profiler>
