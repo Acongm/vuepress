@@ -258,6 +258,22 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: '简历',
             link: '/job-description/web前端开发工程师-彭聪.md',
             activeMatch: '/job-description/$'
+          },
+          {
+            text: '简历问答大纲',
+            link: '/job-description/ASK_LIST.md'
+          },
+          {
+            text: '简历问答-书面版',
+            link: '/job-description/ASK_RECORD_BOOK_AI.md'
+          },
+          {
+            text: '简历问答-口语版',
+            link: '/job-description/ASK_RECORD_SPEAK_AI.md'
+          },
+          {
+            text: '简历问答-代码版',
+            link: '/job-description/ASK_CODE_EXAMPLES.md'
           }
         ]
       }

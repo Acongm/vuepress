@@ -87,7 +87,7 @@
  🔸 Rollup 打包（包体积<15KB）  
  🔸 Preact 极简内核（毫秒级渲染）  
  🔸 热插拔架构（接入周期<0.5 人日/系统）  
- 🔸 多模式植入方案（CDN/Iframe/Web Component）
+ 🔸 多模式植入方案（CDN/Iframe/Esm）
 
 ​**业务价值**​：
 
