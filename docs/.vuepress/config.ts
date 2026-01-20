@@ -126,28 +126,44 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: [
               {
                 text: '知识列表（面试准备）',
-                link: '/interview-prep/',
-                activeMatch: '/interview-prep/'
-              }
-            ]
-          },
-          {
-            text: '知识库',
-            children: [
+                link: '/interview-prep/'
+                // activeMatch: '/interview-prep/'
+              },
+
               {
                 text: '面试题专项',
-                link: '/theory/',
-                activeMatch: '/theory/'
+                link: '/theory/'
+                // activeMatch: '/theory/'
+              },
+              {
+                text: '面试题（记录）',
+                link: '/interview/2025-04-28.md'
+                // activeMatch: '/interview/'
               }
             ]
           },
           {
-            text: '知识库',
+            text: '简历模拟面试',
             children: [
               {
-                text: '面试题（记录）',
-                link: '/interview/2025-04-28.md',
-                activeMatch: '/interview/'
+                text: '简历问答大纲',
+                link: '/job-description/ASK_LIST.md'
+              },
+              {
+                text: '简历问答-书面版',
+                link: '/job-description/ASK_RECORD_BOOK_AI.md'
+              },
+              {
+                text: '简历问答-口语版',
+                link: '/job-description/ASK_RECORD_SPEAK_AI.md'
+              },
+              {
+                text: '简历问答-代码版',
+                link: '/job-description/ASK_CODE_EXAMPLES.md'
+              },
+              {
+                text: '简历问答-知识点索引',
+                link: '/job-description/ASK_RECORD_KEY.md'
               }
             ]
           }
@@ -258,22 +274,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: '简历',
             link: '/job-description/web前端开发工程师-彭聪.md',
             activeMatch: '/job-description/$'
-          },
-          {
-            text: '简历问答大纲',
-            link: '/job-description/ASK_LIST.md'
-          },
-          {
-            text: '简历问答-书面版',
-            link: '/job-description/ASK_RECORD_BOOK_AI.md'
-          },
-          {
-            text: '简历问答-口语版',
-            link: '/job-description/ASK_RECORD_SPEAK_AI.md'
-          },
-          {
-            text: '简历问答-代码版',
-            link: '/job-description/ASK_CODE_EXAMPLES.md'
           }
         ]
       }
@@ -500,7 +500,14 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/job-description/': [
         {
           text: '简历',
-          children: ['/job-description/web前端开发工程师-彭聪.md']
+          children: [
+            '/job-description/web前端开发工程师-彭聪.md',
+            '/job-description/ASK_LIST.md',
+            '/job-description/ASK_RECORD_BOOK_AI.md',
+            '/job-description/ASK_RECORD_SPEAK_AI.md',
+            '/job-description/ASK_CODE_EXAMPLES.md',
+            '/job-description/ASK_RECORD_KEY.md'
+          ]
           // children: ['/job-description/web前端开发工程师-彭聪.md', '/job-description/web前端开发工程师-彭聪.jpeg', '/job-description/web前端开发工程师-彭聪.pdf']
         }
       ],

@@ -6,6 +6,12 @@
 > - 口语版用于“现场表达/语气自然/信息密度适中”。
 > - 代码相关的内容单独放在 [docs/job-description/ASK_CODE_EXAMPLES.md](docs/job-description/ASK_CODE_EXAMPLES.md)。
 
+- LCP（Largest Contentful Paint）：最大内容绘制时间（首屏关键内容）
+- FCP（First Contentful Paint）：首次内容绘制
+- CLS（Cumulative Layout Shift）：累积布局偏移（稳定性）
+- INP（Interaction to Next Paint）：交互响应延迟（新版替代 FID）
+- TTFB（Time to First Byte）：首字节时间（服务端+网络）
+
 ---
 
 ## B. 口语版（面试现场口播）
