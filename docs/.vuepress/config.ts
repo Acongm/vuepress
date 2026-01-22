@@ -150,10 +150,6 @@ export default defineUserConfig<DefaultThemeOptions>({
                 link: '/job-description/ASK_LIST.md'
               },
               {
-                text: '简历问答-书面版',
-                link: '/job-description/ASK_RECORD_BOOK_AI.md'
-              },
-              {
                 text: '简历问答-口语版',
                 link: '/job-description/ASK_RECORD_SPEAK_AI.md'
               },
@@ -164,6 +160,10 @@ export default defineUserConfig<DefaultThemeOptions>({
               {
                 text: '简历问答-知识点索引',
                 link: '/job-description/ASK_RECORD_KEY.md'
+              },
+              {
+                text: '简历问答-书面版',
+                link: '/job-description/ASK_RECORD_BOOK_AI.md'
               }
             ]
           }
