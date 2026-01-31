@@ -48,7 +48,12 @@
             "/vue/",
             "/vue/vue_theory.md",
             "/vue/vue_interview.md",
-            "/vue/vue3.md"
+            "/vue/vue3.md",
+            "/vue/code/Object.defineproperty.md",
+            "/vue/code/Proxy.md",
+            "/vue/code/proxy-observe.md",
+            "/vue/vue-render.md",
+            "/vue/vue2.md"
           ]
         },
         {
@@ -67,7 +72,12 @@
             "/webpack/架构及原理.md",
             "/webpack/vite-知识梳理.md",
             "/webpack/vite-架构及原理.md",
-            "/webpack/webpack-vite-rollup.md"
+            "/webpack/webpack-vite-rollup.md",
+            "/webpack/install/ni.md",
+            "/webpack/install/npm.md",
+            "/webpack/install/pnpm.md",
+            "/webpack/install/yarn.md",
+            "/webpack/打包工具.md"
           ]
         },
         {
@@ -102,7 +112,8 @@
             "/mark/08-代码规范.md",
             "/mark/09-Promise原理.md",
             "/mark/10-骨架屏.md",
-            "/mark/11-HTTP与缓存.md"
+            "/mark/11-HTTP与缓存.md",
+            "/mark/React更新流程详解.md"
           ]
         },
         {
@@ -139,7 +150,8 @@
             "/software/browser.md",
             "/software/vscode.md",
             "/software/webstorm.md",
-            "/software/zsh.md"
+            "/software/zsh.md",
+            "/software/claude-skills-guide.md"
           ]
         }
       ]
@@ -150,15 +162,27 @@
         {
           "text": "面试准备",
           "children": [
-            { "text": "知识列表", "link": "/interview-prep/" },
-            { "text": "面试题库", "link": "/theory/" },
-            { "text": "面试记录", "link": "/interview/2025-04-28.md" }
+            {
+              "text": "知识列表",
+              "link": "/interview-prep/"
+            },
+            {
+              "text": "面试题库",
+              "link": "/theory/"
+            },
+            {
+              "text": "面试记录",
+              "link": "/interview/2025-04-28.md"
+            }
           ]
         },
         {
           "text": "简历问答",
           "children": [
-            { "text": "问答大纲", "link": "/job-description/ASK_LIST.md" },
+            {
+              "text": "问答大纲",
+              "link": "/job-description/ASK_LIST.md"
+            },
             {
               "text": "口语版",
               "link": "/job-description/ASK_RECORD_SPEAK_AI.md"
@@ -182,9 +206,18 @@
     {
       "text": "主页",
       "children": [
-        { "text": "Blog", "link": "https://www.acongm.com" },
-        { "text": "Github", "link": "https://github.com/Acongm" },
-        { "text": "简历", "link": "/job-description/web前端开发工程师-彭聪.md" }
+        {
+          "text": "Blog",
+          "link": "https://www.acongm.com"
+        },
+        {
+          "text": "Github",
+          "link": "https://github.com/Acongm"
+        },
+        {
+          "text": "简历",
+          "link": "/job-description/web前端开发工程师-彭聪.md"
+        }
       ]
     }
   ],
@@ -209,7 +242,10 @@
       }
     ],
     "/css/": [
-      { "text": "CSS", "children": ["/css/", "/css/skill.md", "/css/scss.md"] }
+      {
+        "text": "CSS",
+        "children": ["/css/", "/css/skill.md", "/css/scss.md"]
+      }
     ],
     "/react/": [
       {
@@ -230,7 +266,12 @@
           "/vue/",
           "/vue/vue_theory.md",
           "/vue/vue_interview.md",
-          "/vue/vue3.md"
+          "/vue/vue3.md",
+          "/vue/code/Object.defineproperty.md",
+          "/vue/code/Proxy.md",
+          "/vue/code/proxy-observe.md",
+          "/vue/vue-render.md",
+          "/vue/vue2.md"
         ]
       }
     ],
@@ -310,12 +351,20 @@
           "/webpack/架构及原理.md",
           "/webpack/vite-知识梳理.md",
           "/webpack/vite-架构及原理.md",
-          "/webpack/webpack-vite-rollup.md"
+          "/webpack/webpack-vite-rollup.md",
+          "/webpack/install/ni.md",
+          "/webpack/install/npm.md",
+          "/webpack/install/pnpm.md",
+          "/webpack/install/yarn.md",
+          "/webpack/打包工具.md"
         ]
       }
     ],
     "/node/": [
-      { "text": "Node.js", "children": ["/node/npm.md", "/node/toolkit.md"] }
+      {
+        "text": "Node.js",
+        "children": ["/node/npm.md", "/node/toolkit.md"]
+      }
     ],
     "/git/": [
       {
@@ -323,7 +372,12 @@
         "children": ["/git/", "/git/command.md", "/git/commit.md"]
       }
     ],
-    "/performance/": [{ "text": "性能优化", "children": ["/performance/"] }],
+    "/performance/": [
+      {
+        "text": "性能优化",
+        "children": ["/performance/"]
+      }
+    ],
     "/mark/": [
       {
         "text": "技能提炼",
@@ -340,13 +394,22 @@
           "/mark/08-代码规范.md",
           "/mark/09-Promise原理.md",
           "/mark/10-骨架屏.md",
-          "/mark/11-HTTP与缓存.md"
+          "/mark/11-HTTP与缓存.md",
+          "/mark/React更新流程详解.md"
         ]
       }
     ],
-    "/ai/": [{ "text": "AI 开发", "children": ["/ai/"] }],
+    "/ai/": [
+      {
+        "text": "AI 开发",
+        "children": ["/ai/"]
+      }
+    ],
     "/issue/": [
-      { "text": "踩坑记录", "children": ["/issue/h5.md", "/issue/pc.md"] }
+      {
+        "text": "踩坑记录",
+        "children": ["/issue/h5.md", "/issue/pc.md"]
+      }
     ],
     "/utils/": [
       {
@@ -374,12 +437,23 @@
           "/software/browser.md",
           "/software/vscode.md",
           "/software/webstorm.md",
-          "/software/zsh.md"
+          "/software/zsh.md",
+          "/software/claude-skills-guide.md"
         ]
       }
     ],
-    "/interview-prep/": [{ "text": "面试准备", "link": "/interview-prep/" }],
-    "/theory/": [{ "text": "面试题库", "link": "/theory/" }],
+    "/interview-prep/": [
+      {
+        "text": "面试准备",
+        "link": "/interview-prep/"
+      }
+    ],
+    "/theory/": [
+      {
+        "text": "面试题库",
+        "link": "/theory/"
+      }
+    ],
     "/interview/": [
       {
         "text": "面试记录",
@@ -404,25 +478,85 @@
     ]
   },
   "categoryMapping": {
-    "JavaScript": { "navbarGroup": "基础语言", "navbarIndex": 0 },
-    "TypeScript": { "navbarGroup": "基础语言", "navbarIndex": 0 },
-    "css": { "navbarGroup": "基础语言", "navbarIndex": 0 },
-    "react": { "navbarGroup": "框架生态", "navbarIndex": 1 },
-    "vue": { "navbarGroup": "框架生态", "navbarIndex": 1 },
-    "Pattern": { "navbarGroup": "框架生态", "navbarIndex": 1 },
-    "webpack": { "navbarGroup": "工程化", "navbarIndex": 2 },
-    "node": { "navbarGroup": "工程化", "navbarIndex": 2 },
-    "git": { "navbarGroup": "工程化", "navbarIndex": 2 },
-    "performance": { "navbarGroup": "工程化", "navbarIndex": 2 },
-    "mark": { "navbarGroup": "进阶专题", "navbarIndex": 3 },
-    "ai": { "navbarGroup": "进阶专题", "navbarIndex": 3 },
-    "issue": { "navbarGroup": "进阶专题", "navbarIndex": 3 },
-    "utils": { "navbarGroup": "工具箱", "navbarIndex": 4 },
-    "online-tools": { "navbarGroup": "工具箱", "navbarIndex": 4 },
-    "software": { "navbarGroup": "工具箱", "navbarIndex": 4 },
-    "interview-prep": { "navbarGroup": "面试", "navbarIndex": 5 },
-    "theory": { "navbarGroup": "面试", "navbarIndex": 5 },
-    "interview": { "navbarGroup": "面试", "navbarIndex": 5 },
-    "job-description": { "navbarGroup": "面试", "navbarIndex": 5 }
+    "JavaScript": {
+      "navbarGroup": "基础语言",
+      "navbarIndex": 0
+    },
+    "TypeScript": {
+      "navbarGroup": "基础语言",
+      "navbarIndex": 0
+    },
+    "css": {
+      "navbarGroup": "基础语言",
+      "navbarIndex": 0
+    },
+    "react": {
+      "navbarGroup": "框架生态",
+      "navbarIndex": 1
+    },
+    "vue": {
+      "navbarGroup": "框架生态",
+      "navbarIndex": 1
+    },
+    "Pattern": {
+      "navbarGroup": "框架生态",
+      "navbarIndex": 1
+    },
+    "webpack": {
+      "navbarGroup": "工程化",
+      "navbarIndex": 2
+    },
+    "node": {
+      "navbarGroup": "工程化",
+      "navbarIndex": 2
+    },
+    "git": {
+      "navbarGroup": "工程化",
+      "navbarIndex": 2
+    },
+    "performance": {
+      "navbarGroup": "工程化",
+      "navbarIndex": 2
+    },
+    "mark": {
+      "navbarGroup": "进阶专题",
+      "navbarIndex": 3
+    },
+    "ai": {
+      "navbarGroup": "进阶专题",
+      "navbarIndex": 3
+    },
+    "issue": {
+      "navbarGroup": "进阶专题",
+      "navbarIndex": 3
+    },
+    "utils": {
+      "navbarGroup": "工具箱",
+      "navbarIndex": 4
+    },
+    "online-tools": {
+      "navbarGroup": "工具箱",
+      "navbarIndex": 4
+    },
+    "software": {
+      "navbarGroup": "工具箱",
+      "navbarIndex": 4
+    },
+    "interview-prep": {
+      "navbarGroup": "面试",
+      "navbarIndex": 5
+    },
+    "theory": {
+      "navbarGroup": "面试",
+      "navbarIndex": 5
+    },
+    "interview": {
+      "navbarGroup": "面试",
+      "navbarIndex": 5
+    },
+    "job-description": {
+      "navbarGroup": "面试",
+      "navbarIndex": 5
+    }
   }
 }

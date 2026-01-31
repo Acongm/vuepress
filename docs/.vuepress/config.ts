@@ -86,7 +86,12 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/vue/',
               '/vue/vue_theory.md',
               '/vue/vue_interview.md',
-              '/vue/vue3.md'
+              '/vue/vue3.md',
+              '/vue/code/Object.defineproperty.md',
+              '/vue/code/Proxy.md',
+              '/vue/code/proxy-observe.md',
+              '/vue/vue-render.md',
+              '/vue/vue2.md'
             ]
           },
           {
@@ -106,7 +111,12 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/webpack/架构及原理.md',
               '/webpack/vite-知识梳理.md',
               '/webpack/vite-架构及原理.md',
-              '/webpack/webpack-vite-rollup.md'
+              '/webpack/webpack-vite-rollup.md',
+              '/webpack/install/ni.md',
+              '/webpack/install/npm.md',
+              '/webpack/install/pnpm.md',
+              '/webpack/install/yarn.md',
+              '/webpack/打包工具.md'
             ]
           },
           {
@@ -142,7 +152,8 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/mark/08-代码规范.md',
               '/mark/09-Promise原理.md',
               '/mark/10-骨架屏.md',
-              '/mark/11-HTTP与缓存.md'
+              '/mark/11-HTTP与缓存.md',
+              '/mark/React更新流程详解.md'
             ]
           },
           {
@@ -180,7 +191,8 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/software/browser.md',
               '/software/vscode.md',
               '/software/webstorm.md',
-              '/software/zsh.md'
+              '/software/zsh.md',
+              '/software/claude-skills-guide.md'
             ]
           }
         ]
@@ -270,7 +282,12 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/vue/',
             '/vue/vue_theory.md',
             '/vue/vue_interview.md',
-            '/vue/vue3.md'
+            '/vue/vue3.md',
+            '/vue/code/Object.defineproperty.md',
+            '/vue/code/Proxy.md',
+            '/vue/code/proxy-observe.md',
+            '/vue/vue-render.md',
+            '/vue/vue2.md'
           ]
         }
       ],
@@ -350,7 +367,12 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/webpack/架构及原理.md',
             '/webpack/vite-知识梳理.md',
             '/webpack/vite-架构及原理.md',
-            '/webpack/webpack-vite-rollup.md'
+            '/webpack/webpack-vite-rollup.md',
+            '/webpack/install/ni.md',
+            '/webpack/install/npm.md',
+            '/webpack/install/pnpm.md',
+            '/webpack/install/yarn.md',
+            '/webpack/打包工具.md'
           ]
         }
       ],
@@ -388,7 +410,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/mark/08-代码规范.md',
             '/mark/09-Promise原理.md',
             '/mark/10-骨架屏.md',
-            '/mark/11-HTTP与缓存.md'
+            '/mark/11-HTTP与缓存.md',
+            '/mark/React更新流程详解.md'
           ]
         }
       ],
@@ -430,7 +453,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/software/browser.md',
             '/software/vscode.md',
             '/software/webstorm.md',
-            '/software/zsh.md'
+            '/software/zsh.md',
+            '/software/claude-skills-guide.md'
           ]
         }
       ],
