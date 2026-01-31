@@ -8,6 +8,13 @@
 
 ## 脚本
 
+- `ai-doc.mjs` - **AI 文档整理工具**
+  - `update-config`：更新 `docs/.vuepress/config.ts`（sidebar + navbar）
+  - `changelog`：追加 `AI_CHANGELOG.md`
+  - `commit`：git add + commit + push
+  - `full`：一键执行以上全部
+  - `categories`：列出所有可用分类
+  - 配套配置：`knowledge-map.json`（前端知识图谱）
 - `generate-interview-prep.mjs`
   - `generate`：从简历与面试大纲提取信息，增量更新知识单元（仅改写 AUTO-GENERATED 区块）
   - `index`：生成/更新 `interview-prep/INDEX.md`
@@ -21,7 +28,28 @@
 ## 运行方式
 
 ```bash
+node tools/ai-doc.mjs --help
 node tools/generate-interview-prep.mjs --help
+```
+
+## AI 文档整理（/ai-doc 工作流）
+
+```bash
+# 查看所有可用分类
+node tools/ai-doc.mjs categories
+
+# 更新 config.ts（sidebar + navbar）
+node tools/ai-doc.mjs update-config \
+  --category JavaScript \
+  --file /JavaScript/promise-chain.md
+
+# 一键完成：更新配置 + 日志 + git commit + push
+node tools/ai-doc.mjs full \
+  --category JavaScript \
+  --file /JavaScript/promise-chain.md \
+  --title "Promise链式调用" \
+  --questions "Promise如何链式调用,then返回值" \
+  --model "Claude Opus 4.5"
 ```
 
 ## Tech Profile Validation（技术画像校验）

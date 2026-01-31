@@ -528,7 +528,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/software/browser.md',
             '/software/vscode.md',
             '/software/webstorm.md',
-            '/software/zsh.md'
+            '/software/zsh.md',
+            '/software/claude-skills-guide.md'
           ]
         }
       ],
