@@ -1,0 +1,2177 @@
+{
+  "_meta": {
+    "generatedAt": "2026-01-31T16:24:41.362Z",
+    "totalFiles": 174,
+    "docsRoot": "docs/"
+  },
+  "categories": {
+    "JavaScript": {
+      "count": 6,
+      "files": [
+        "/JavaScript/README.md",
+        "/JavaScript/call、apply与bind.md",
+        "/JavaScript/js模拟bind方法.md",
+        "/JavaScript/js模拟new操作.md",
+        "/JavaScript/执行上下文-作用域链-闭包.md",
+        "/JavaScript/经典闭包处理.md"
+      ]
+    },
+    "Pattern": {
+      "count": 26,
+      "files": [
+        "/Pattern/BroadcastChannel/BroadcastBridge.md",
+        "/Pattern/BroadcastChannel/BroadcastSingleton.md",
+        "/Pattern/BroadcastChannel/README.md",
+        "/Pattern/COMPARISON.md",
+        "/Pattern/CustomEvent/CustomEventBridge.md",
+        "/Pattern/CustomEvent/CustomEventSingleton.md",
+        "/Pattern/CustomEvent/README.md",
+        "/Pattern/EventBus/EventBus.md",
+        "/Pattern/EventBus/EventBusSingleton.md",
+        "/Pattern/EventBus/README.md",
+        "/Pattern/Observer/ObserverSingleton.md",
+        "/Pattern/Observer/README.md",
+        "/Pattern/Observer/Subject.md",
+        "/Pattern/ProxyStore/ProxyStore.md",
+        "/Pattern/ProxyStore/ProxyStoreSingleton.md",
+        "/Pattern/ProxyStore/README.md",
+        "/Pattern/README.md",
+        "/Pattern/ServiceRequest/README.md",
+        "/Pattern/ServiceRequest/Registry.md",
+        "/Pattern/ServiceRequest/ServiceRequestRegistry.md",
+        "/Pattern/ServiceRequest/SharedStateBridge.md",
+        "/Pattern/ServiceRequest/SharedStateBridgeSingleton.md",
+        "/Pattern/Store/README.md",
+        "/Pattern/Store/Store.md",
+        "/Pattern/Store/StoreSingleton.md",
+        "/Pattern/模式来源与类比.md"
+      ]
+    },
+    ".": {
+      "count": 1,
+      "files": ["/README.md"]
+    },
+    "TypeScript": {
+      "count": 2,
+      "files": ["/TypeScript/README.md", "/TypeScript/Study.md"]
+    },
+    "ai": {
+      "count": 1,
+      "files": ["/ai/README.md"]
+    },
+    "css": {
+      "count": 3,
+      "files": ["/css/README.md", "/css/scss.md", "/css/skill.md"]
+    },
+    "git": {
+      "count": 3,
+      "files": ["/git/README.md", "/git/command.md", "/git/commit.md"]
+    },
+    "interview": {
+      "count": 3,
+      "files": [
+        "/interview/2025-04-28-analysis.md",
+        "/interview/2025-04-28.md",
+        "/interview/README.md"
+      ]
+    },
+    "interview-prep": {
+      "count": 21,
+      "files": [
+        "/interview-prep/BLINDSPOTS.md",
+        "/interview-prep/INDEX.md",
+        "/interview-prep/README.md",
+        "/interview-prep/matrix__bundler-webpack-vite-rollup.md",
+        "/interview-prep/matrix__cicd-release-strategy.md",
+        "/interview-prep/matrix__form-formily-rjsf-custom.md",
+        "/interview-prep/matrix__lowcode-ssr-csr-export.md",
+        "/interview-prep/matrix__monorepo-lerna-nx.md",
+        "/interview-prep/project__announce-plugin.md",
+        "/interview-prep/project__dji-devops.md",
+        "/interview-prep/project__dji-rms.md",
+        "/interview-prep/project__dji-user-center.md",
+        "/interview-prep/project__xdr-dashboard-report.md",
+        "/interview-prep/tech__eslint-engineering.md",
+        "/interview-prep/tech__micro-frontend-qiankun.md",
+        "/interview-prep/tech__performance.md",
+        "/interview-prep/tech__react.md",
+        "/interview-prep/tech__rollup.md",
+        "/interview-prep/tech__typescript.md",
+        "/interview-prep/tech__vite.md",
+        "/interview-prep/tech__webpack.md"
+      ]
+    },
+    "issue": {
+      "count": 3,
+      "files": ["/issue/README.md", "/issue/h5.md", "/issue/pc.md"]
+    },
+    "job-description": {
+      "count": 29,
+      "files": [
+        "/job-description/ASK.md",
+        "/job-description/ASK_CODE_EXAMPLES.md",
+        "/job-description/ASK_LIST.md",
+        "/job-description/ASK_RECORD.md",
+        "/job-description/ASK_RECORD_AI.md",
+        "/job-description/ASK_RECORD_BOOK_AI.md",
+        "/job-description/ASK_RECORD_KEY.md",
+        "/job-description/ASK_RECORD_SPEAK_AI.md",
+        "/job-description/README.md",
+        "/job-description/history/README.md",
+        "/job-description/history/web前端开发工程师-彭聪-软通.md",
+        "/job-description/history/简历.md",
+        "/job-description/lib/01-大疆用户中心重构-面试技术大纲.md",
+        "/job-description/lib/02-大疆售后RMS系统重构-面试技术大纲.md",
+        "/job-description/lib/03-跨平台公告插件系统-面试技术大纲.md",
+        "/job-description/lib/04-大疆DevOps平台维护-面试技术大纲.md",
+        "/job-description/lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
+        "/job-description/lib/06-大疆用户中心重构-hard-mode-面试题.md",
+        "/job-description/lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
+        "/job-description/lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
+        "/job-description/lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
+        "/job-description/lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
+        "/job-description/lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
+        "/job-description/lib/Framework.md",
+        "/job-description/web前端开发工程师-彭聪-面试技术大纲.md",
+        "/job-description/web前端开发工程师-彭聪.md",
+        "/job-description/web前端开发工程师-彭聪2.md",
+        "/job-description/简历分析-彭聪.md",
+        "/job-description/高级前端面试题-基于简历.md"
+      ]
+    },
+    "mark": {
+      "count": 14,
+      "files": [
+        "/mark/01-React核心原理-补充.md",
+        "/mark/01-React核心原理.md",
+        "/mark/02-Webpack与构建工具.md",
+        "/mark/03-性能优化.md",
+        "/mark/04-微前端.md",
+        "/mark/05-低代码.md",
+        "/mark/06-插件系统.md",
+        "/mark/07-NestJS与SSR.md",
+        "/mark/08-代码规范.md",
+        "/mark/09-Promise原理.md",
+        "/mark/10-骨架屏.md",
+        "/mark/11-HTTP与缓存.md",
+        "/mark/README.md",
+        "/mark/React更新流程详解.md"
+      ]
+    },
+    "node": {
+      "count": 3,
+      "files": ["/node/README.md", "/node/npm.md", "/node/toolkit.md"]
+    },
+    "online-tools": {
+      "count": 2,
+      "files": ["/online-tools/README.md", "/online-tools/bookmark-scripts.md"]
+    },
+    "performance": {
+      "count": 1,
+      "files": ["/performance/README.md"]
+    },
+    "react": {
+      "count": 6,
+      "files": [
+        "/react/README.md",
+        "/react/class-hooks.md",
+        "/react/react-render.md",
+        "/react/react16.md",
+        "/react/react17.md",
+        "/react/react18.md"
+      ]
+    },
+    "software": {
+      "count": 9,
+      "files": [
+        "/software/README.md",
+        "/software/browser.md",
+        "/software/claude-skills-guide.md",
+        "/software/cross-platform.md",
+        "/software/mac.md",
+        "/software/vscode.md",
+        "/software/webstorm.md",
+        "/software/windows.md",
+        "/software/zsh.md"
+      ]
+    },
+    "theory": {
+      "count": 16,
+      "files": [
+        "/theory/README.md",
+        "/theory/interview-question/2025-04-28-analysis.md",
+        "/theory/interview-question/2025-04-28.md",
+        "/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md",
+        "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md",
+        "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md",
+        "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md",
+        "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
+        "/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md",
+        "/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
+        "/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
+        "/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
+        "/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
+        "/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
+        "/theory/job-description-lib/Framework copy.md",
+        "/theory/job-description-lib/Framework.md"
+      ]
+    },
+    "utils": {
+      "count": 4,
+      "files": [
+        "/utils/README.md",
+        "/utils/function.md",
+        "/utils/library.md",
+        "/utils/regexp.md"
+      ]
+    },
+    "vue": {
+      "count": 9,
+      "files": [
+        "/vue/README.md",
+        "/vue/code/Object.defineproperty.md",
+        "/vue/code/Proxy.md",
+        "/vue/code/proxy-observe.md",
+        "/vue/vue-render.md",
+        "/vue/vue2.md",
+        "/vue/vue3.md",
+        "/vue/vue_interview.md",
+        "/vue/vue_theory.md"
+      ]
+    },
+    "webpack": {
+      "count": 12,
+      "files": [
+        "/webpack/README.md",
+        "/webpack/install/README.md",
+        "/webpack/install/ni.md",
+        "/webpack/install/npm.md",
+        "/webpack/install/pnpm.md",
+        "/webpack/install/yarn.md",
+        "/webpack/vite-架构及原理.md",
+        "/webpack/vite-知识梳理.md",
+        "/webpack/webpack-vite-rollup.md",
+        "/webpack/打包工具.md",
+        "/webpack/架构及原理.md",
+        "/webpack/知识梳理.md"
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "/JavaScript/README.md",
+      "title": "js 基础知识",
+      "category": "JavaScript",
+      "tags": ["index", "javascript", "language"],
+      "size": 4266,
+      "hasContent": true
+    },
+    {
+      "path": "/JavaScript/call、apply与bind.md",
+      "title": "call、apply 与 bind",
+      "category": "JavaScript",
+      "tags": ["apply", "bind", "call", "javascript", "language", "this"],
+      "size": 365,
+      "hasContent": true
+    },
+    {
+      "path": "/JavaScript/js模拟bind方法.md",
+      "title": "js 模拟 bind 方法",
+      "category": "JavaScript",
+      "tags": ["bind", "javascript", "language", "this"],
+      "size": 2801,
+      "hasContent": true
+    },
+    {
+      "path": "/JavaScript/js模拟new操作.md",
+      "title": "能否模拟实现 JS 的 new 操作符",
+      "category": "JavaScript",
+      "tags": ["constructor", "javascript", "language", "new"],
+      "size": 2222,
+      "hasContent": true
+    },
+    {
+      "path": "/JavaScript/执行上下文-作用域链-闭包.md",
+      "title": "执行上下文-作用域链-闭包",
+      "category": "JavaScript",
+      "tags": ["javascript", "language"],
+      "size": 1739,
+      "hasContent": true
+    },
+    {
+      "path": "/JavaScript/经典闭包处理.md",
+      "title": "经典闭包处理",
+      "category": "JavaScript",
+      "tags": ["javascript", "language"],
+      "size": 2088,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/BroadcastChannel/BroadcastBridge.md",
+      "title": "BroadcastBridge.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 52,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/BroadcastChannel/BroadcastSingleton.md",
+      "title": "BroadcastSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 58,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/BroadcastChannel/README.md",
+      "title": "广播通道 (Broadcast Channel)",
+      "category": "Pattern",
+      "tags": ["architecture", "index", "pattern"],
+      "size": 3812,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/COMPARISON.md",
+      "title": "观察者模式 vs 代理模式状态容器",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern", "reactive", "vue"],
+      "size": 2297,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/CustomEvent/CustomEventBridge.md",
+      "title": "CustomEventBridge.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 56,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/CustomEvent/CustomEventSingleton.md",
+      "title": "CustomEventSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 62,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/CustomEvent/README.md",
+      "title": "原生自定义事件 (Custom Events)",
+      "category": "Pattern",
+      "tags": ["architecture", "effect", "hooks", "index", "pattern", "state"],
+      "size": 3566,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/EventBus/EventBus.md",
+      "title": "EventBus.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 38,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/EventBus/EventBusSingleton.md",
+      "title": "EventBusSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 56,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/EventBus/README.md",
+      "title": "事件总线 (Event Bus)",
+      "category": "Pattern",
+      "tags": ["architecture", "effect", "hooks", "index", "pattern", "state"],
+      "size": 2170,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/Observer/ObserverSingleton.md",
+      "title": "ObserverSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 56,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/Observer/README.md",
+      "title": "观察者模式 (Observer Pattern)",
+      "category": "Pattern",
+      "tags": ["architecture", "index", "pattern"],
+      "size": 2558,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/Observer/Subject.md",
+      "title": "Subject.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 36,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/ProxyStore/ProxyStore.md",
+      "title": "ProxyStore.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 103,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/ProxyStore/ProxyStoreSingleton.md",
+      "title": "ProxyStoreSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 60,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/ProxyStore/README.md",
+      "title": "代理模式状态容器 (Proxy Store)",
+      "category": "Pattern",
+      "tags": [
+        "architecture",
+        "composition-api",
+        "index",
+        "pattern",
+        "reactive",
+        "vue",
+        "vue3"
+      ],
+      "size": 4408,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/README.md",
+      "title": "跨组件通信模式合集",
+      "category": "Pattern",
+      "tags": ["architecture", "index", "pattern"],
+      "size": 10529,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/ServiceRequest/README.md",
+      "title": "ServiceRequest 模式使用文档",
+      "category": "Pattern",
+      "tags": ["architecture", "index", "pattern"],
+      "size": 5040,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/ServiceRequest/Registry.md",
+      "title": "Registry.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 38,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/ServiceRequest/ServiceRequestRegistry.md",
+      "title": "ServiceRequestRegistry.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 66,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/ServiceRequest/SharedStateBridge.md",
+      "title": "SharedStateBridge.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 149,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/ServiceRequest/SharedStateBridgeSingleton.md",
+      "title": "SharedStateBridgeSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 74,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/Store/README.md",
+      "title": "单例状态容器 (Singleton Store)",
+      "category": "Pattern",
+      "tags": ["architecture", "effect", "hooks", "index", "pattern", "state"],
+      "size": 3133,
+      "hasContent": true
+    },
+    {
+      "path": "/Pattern/Store/Store.md",
+      "title": "Store.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 32,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/Store/StoreSingleton.md",
+      "title": "StoreSingleton.ts",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern"],
+      "size": 50,
+      "hasContent": false
+    },
+    {
+      "path": "/Pattern/模式来源与类比.md",
+      "title": "这些跨组件通信模式，你可能在哪见过？（来源与类比）",
+      "category": "Pattern",
+      "tags": ["architecture", "pattern", "redux", "state-management"],
+      "size": 6792,
+      "hasContent": true
+    },
+    {
+      "path": "/README.md",
+      "title": "acongm",
+      "category": ".",
+      "tags": ["index"],
+      "size": 537,
+      "hasContent": true
+    },
+    {
+      "path": "/TypeScript/README.md",
+      "title": "TypeScript",
+      "category": "TypeScript",
+      "tags": ["index", "language", "typescript"],
+      "size": 916,
+      "hasContent": true
+    },
+    {
+      "path": "/TypeScript/Study.md",
+      "title": "每天学一点 TS",
+      "category": "TypeScript",
+      "tags": ["language", "typescript"],
+      "size": 2500,
+      "hasContent": true
+    },
+    {
+      "path": "/ai/README.md",
+      "title": "AI 相关",
+      "category": "ai",
+      "tags": ["ai", "emerging", "index"],
+      "size": 141,
+      "hasContent": true
+    },
+    {
+      "path": "/css/README.md",
+      "title": "CSS 语法相关",
+      "category": "css",
+      "tags": ["css", "index", "language", "style"],
+      "size": 678,
+      "hasContent": true
+    },
+    {
+      "path": "/css/scss.md",
+      "title": "常用 SCSS 宏",
+      "category": "css",
+      "tags": ["css", "language", "preprocessor", "scss", "style"],
+      "size": 804,
+      "hasContent": true
+    },
+    {
+      "path": "/css/skill.md",
+      "title": "CSS 奇淫技巧",
+      "category": "css",
+      "tags": ["ai", "css", "language", "skill", "style"],
+      "size": 533,
+      "hasContent": true
+    },
+    {
+      "path": "/git/README.md",
+      "title": "Git",
+      "category": "git",
+      "tags": ["engineering", "git", "index", "tooling"],
+      "size": 4988,
+      "hasContent": true
+    },
+    {
+      "path": "/git/command.md",
+      "title": "Git 命令清单",
+      "category": "git",
+      "tags": [
+        "cli",
+        "command",
+        "diff-algorithm",
+        "engineering",
+        "git",
+        "tooling"
+      ],
+      "size": 3331,
+      "hasContent": true
+    },
+    {
+      "path": "/git/commit.md",
+      "title": "Git commit 规范",
+      "category": "git",
+      "tags": ["commit", "engineering", "git", "tooling"],
+      "size": 4874,
+      "hasContent": true
+    },
+    {
+      "path": "/interview/2025-04-28-analysis.md",
+      "title": "2025-04-28-面试题演练",
+      "category": "interview",
+      "tags": ["career", "interview", "plugin", "reactive", "vue"],
+      "size": 6459,
+      "hasContent": true
+    },
+    {
+      "path": "/interview/2025-04-28.md",
+      "title": "2025-04-28-面试题演练",
+      "category": "interview",
+      "tags": [
+        "babel",
+        "career",
+        "eslint",
+        "interview",
+        "linter",
+        "optimization",
+        "pinia",
+        "reactive",
+        "state-management",
+        "transpiler",
+        "tree-shaking",
+        "vue",
+        "vuex"
+      ],
+      "size": 2678,
+      "hasContent": true
+    },
+    {
+      "path": "/interview/README.md",
+      "title": "面试记录（INDEX）",
+      "category": "interview",
+      "tags": ["career", "index", "interview"],
+      "size": 107,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/BLINDSPOTS.md",
+      "title": "盲区清单（BLINDSPOTS）",
+      "category": "interview-prep",
+      "tags": [
+        "career",
+        "eslint",
+        "formatter",
+        "interview",
+        "linter",
+        "plugin",
+        "prettier"
+      ],
+      "size": 3199,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/INDEX.md",
+      "title": "面试准备（入口）",
+      "category": "interview-prep",
+      "tags": ["career", "interview"],
+      "size": 159,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/README.md",
+      "title": "面试准备总纲（INDEX）",
+      "category": "interview-prep",
+      "tags": ["career", "eslint", "index", "interview", "linter", "plugin"],
+      "size": 4403,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/matrix__bundler-webpack-vite-rollup.md",
+      "title": "构建工具选型：Webpack vs Vite vs Rollup",
+      "category": "interview-prep",
+      "tags": [
+        "analysis",
+        "bundler",
+        "career",
+        "comparison",
+        "hmr",
+        "hot-reload",
+        "interview",
+        "loader",
+        "plugin",
+        "rollup",
+        "vite",
+        "webpack"
+      ],
+      "size": 4442,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/matrix__cicd-release-strategy.md",
+      "title": "CI/CD 与发布策略：门禁 / 镜像缓存 / 蓝绿&金丝雀 / 可追溯与回滚",
+      "category": "interview-prep",
+      "tags": ["analysis", "career", "comparison", "interview"],
+      "size": 3279,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/matrix__form-formily-rjsf-custom.md",
+      "title": "表单方案选型：Formily vs RJSF vs 自研无依赖表单",
+      "category": "interview-prep",
+      "tags": ["analysis", "career", "comparison", "interview"],
+      "size": 4477,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/matrix__lowcode-ssr-csr-export.md",
+      "title": "低代码与报表选型：Schema 渲染 / SSR vs CSR / 导出策略",
+      "category": "interview-prep",
+      "tags": [
+        "analysis",
+        "career",
+        "comparison",
+        "interview",
+        "server-rendering",
+        "ssr"
+      ],
+      "size": 4467,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/matrix__monorepo-lerna-nx.md",
+      "title": "Monorepo 选型：Lerna vs Nx",
+      "category": "interview-prep",
+      "tags": ["analysis", "career", "comparison", "interview"],
+      "size": 3815,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/project__announce-plugin.md",
+      "title": "跨平台公告插件系统",
+      "category": "interview-prep",
+      "tags": ["career", "case-study", "interview", "plugin", "project"],
+      "size": 6103,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/project__dji-devops.md",
+      "title": "大疆 DevOps 平台维护",
+      "category": "interview-prep",
+      "tags": ["career", "case-study", "interview", "project"],
+      "size": 5401,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/project__dji-rms.md",
+      "title": "大疆售后 RMS 系统重构",
+      "category": "interview-prep",
+      "tags": [
+        "career",
+        "case-study",
+        "eslint",
+        "interview",
+        "linter",
+        "project"
+      ],
+      "size": 5076,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/project__dji-user-center.md",
+      "title": "大疆用户中心重构",
+      "category": "interview-prep",
+      "tags": ["career", "case-study", "interview", "project"],
+      "size": 6667,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/project__xdr-dashboard-report.md",
+      "title": "XDR 系统（魔方大屏 + 报表）",
+      "category": "interview-prep",
+      "tags": ["career", "case-study", "interview", "project"],
+      "size": 5009,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__eslint-engineering.md",
+      "title": "工程化规范（ESLint/Prettier/Husky/CI 门禁）",
+      "category": "interview-prep",
+      "tags": [
+        "career",
+        "eslint",
+        "formatter",
+        "interview",
+        "linter",
+        "prettier",
+        "tech-stack"
+      ],
+      "size": 3300,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__micro-frontend-qiankun.md",
+      "title": "微前端（qiankun 原理/隔离/通信）",
+      "category": "interview-prep",
+      "tags": [
+        "career",
+        "interview",
+        "micro-frontend",
+        "qiankun",
+        "tech-stack"
+      ],
+      "size": 4087,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__performance.md",
+      "title": "前端性能（指标体系与优化方法论）",
+      "category": "interview-prep",
+      "tags": ["career", "interview", "tech-stack"],
+      "size": 5184,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__react.md",
+      "title": "React（机制/性能/工程实践）",
+      "category": "interview-prep",
+      "tags": [
+        "career",
+        "diff-algorithm",
+        "fiber",
+        "interview",
+        "react-internals",
+        "tech-stack"
+      ],
+      "size": 4256,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__rollup.md",
+      "title": "Rollup（库构建与 tree-shaking）",
+      "category": "interview-prep",
+      "tags": [
+        "bundler",
+        "career",
+        "hmr",
+        "hot-reload",
+        "interview",
+        "plugin",
+        "rollup",
+        "tech-stack"
+      ],
+      "size": 3432,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__typescript.md",
+      "title": "TypeScript（类型安全与工程治理）",
+      "category": "interview-prep",
+      "tags": ["career", "interview", "tech-stack"],
+      "size": 4203,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__vite.md",
+      "title": "Vite（ESM Dev Server 与构建取舍）",
+      "category": "interview-prep",
+      "tags": [
+        "bundler",
+        "career",
+        "hmr",
+        "hot-reload",
+        "interview",
+        "loader",
+        "tech-stack",
+        "vite",
+        "webpack"
+      ],
+      "size": 3341,
+      "hasContent": true
+    },
+    {
+      "path": "/interview-prep/tech__webpack.md",
+      "title": "Webpack（构建流程/产物/性能优化）",
+      "category": "interview-prep",
+      "tags": [
+        "bundler",
+        "career",
+        "interview",
+        "loader",
+        "plugin",
+        "tech-stack",
+        "webpack"
+      ],
+      "size": 8913,
+      "hasContent": true
+    },
+    {
+      "path": "/issue/README.md",
+      "title": "疑难杂症（INDEX）",
+      "category": "issue",
+      "tags": ["debug", "index", "issue", "troubleshooting"],
+      "size": 57,
+      "hasContent": false
+    },
+    {
+      "path": "/issue/h5.md",
+      "title": "H5 相关",
+      "category": "issue",
+      "tags": ["debug", "h5", "issue", "mobile", "troubleshooting"],
+      "size": 368,
+      "hasContent": true
+    },
+    {
+      "path": "/issue/pc.md",
+      "title": "PC 相关",
+      "category": "issue",
+      "tags": ["debug", "desktop", "issue", "pc", "troubleshooting"],
+      "size": 320,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK.md",
+      "title": "模拟面试",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2424,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_CODE_EXAMPLES.md",
+      "title": "可展示代码示例（用于面试展示/复盘）",
+      "category": "job-description",
+      "tags": ["career", "resume"],
+      "size": 4143,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_LIST.md",
+      "title": "模拟面试 - 大纲",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2501,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_RECORD.md",
+      "title": "ASK_RECORD",
+      "category": "job-description",
+      "tags": ["career", "eslint", "linter", "resume"],
+      "size": 1361,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_RECORD_AI.md",
+      "title": "模拟面试回答稿（书面版 + 口语版）",
+      "category": "job-description",
+      "tags": [
+        "babel",
+        "career",
+        "diff-algorithm",
+        "optimization",
+        "resume",
+        "transpiler",
+        "tree-shaking"
+      ],
+      "size": 12226,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_RECORD_BOOK_AI.md",
+      "title": "模拟面试回答稿 - 书面版",
+      "category": "job-description",
+      "tags": [
+        "babel",
+        "career",
+        "diff-algorithm",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "transpiler",
+        "tree-shaking"
+      ],
+      "size": 14014,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_RECORD_KEY.md",
+      "title": "知识点索引",
+      "category": "job-description",
+      "tags": [
+        "babel",
+        "career",
+        "diff-algorithm",
+        "optimization",
+        "resume",
+        "transpiler",
+        "tree-shaking"
+      ],
+      "size": 9160,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/ASK_RECORD_SPEAK_AI.md",
+      "title": "模拟面试回答稿 - 口语版",
+      "category": "job-description",
+      "tags": ["career", "diff-algorithm", "eslint", "linter", "resume"],
+      "size": 4222,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/README.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "index",
+        "linter",
+        "optimization",
+        "pinia",
+        "resume",
+        "state-management",
+        "tree-shaking"
+      ],
+      "size": 2661,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/history/README.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "index",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2426,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/history/web前端开发工程师-彭聪-软通.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2428,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/history/简历.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": ["career", "eslint", "linter", "resume"],
+      "size": 1722,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/01-大疆用户中心重构-面试技术大纲.md",
+      "title": "大疆用户中心重构（2022.02-2022.09）- 面试技术大纲",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "loader",
+        "pinia",
+        "plugin",
+        "resume",
+        "state-management",
+        "webpack"
+      ],
+      "size": 3053,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/02-大疆售后RMS系统重构-面试技术大纲.md",
+      "title": "大疆售后 RMS 系统重构（2022.10-2024.04）- 面试技术大纲",
+      "category": "job-description",
+      "tags": ["career", "eslint", "formatter", "linter", "prettier", "resume"],
+      "size": 2044,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/03-跨平台公告插件系统-面试技术大纲.md",
+      "title": "跨平台公告插件系统（2023.02-2023.03）- 面试技术大纲",
+      "category": "job-description",
+      "tags": [
+        "architecture",
+        "career",
+        "optimization",
+        "plugin",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 1244,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/04-大疆DevOps平台维护-面试技术大纲.md",
+      "title": "大疆 DevOps 平台维护（2024.03-2025.04）- 面试技术大纲",
+      "category": "job-description",
+      "tags": ["career", "resume"],
+      "size": 926,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
+      "title": "XDR 系统 - 魔方大屏 + 报表（2025.05-2025.12）- 面试技术大纲",
+      "category": "job-description",
+      "tags": ["career", "resume"],
+      "size": 945,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/06-大疆用户中心重构-hard-mode-面试题.md",
+      "title": "大疆用户中心重构 - Hard-Mode 面试题",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "hmr",
+        "hot-reload",
+        "optimization",
+        "pinia",
+        "resume",
+        "state-management",
+        "tree-shaking"
+      ],
+      "size": 2385,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
+      "title": "大疆售后 RMS 系统重构 - Hard-Mode 面试题",
+      "category": "job-description",
+      "tags": ["career", "eslint", "formatter", "linter", "prettier", "resume"],
+      "size": 1567,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
+      "title": "跨平台公告插件系统 - Hard-Mode 面试题",
+      "category": "job-description",
+      "tags": [
+        "architecture",
+        "career",
+        "diff-algorithm",
+        "optimization",
+        "plugin",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 1670,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
+      "title": "DevOps 平台（qiankun 微前端）- Hard-Mode 面试题",
+      "category": "job-description",
+      "tags": ["career", "micro-frontend", "qiankun", "resume"],
+      "size": 1278,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
+      "title": "XDR 系统（魔方大屏 + 报表）- NestJS 全栈 Hard-Mode 面试题",
+      "category": "job-description",
+      "tags": ["backend", "career", "nestjs", "resume"],
+      "size": 1357,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
+      "title": "frontend-hard-mode-interview 原题提取（基于简历）",
+      "category": "job-description",
+      "tags": ["career", "resume"],
+      "size": 44592,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/lib/Framework.md",
+      "title": "技术点",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "code-splitting",
+        "diff-algorithm",
+        "fiber",
+        "hmr",
+        "hooks",
+        "hot-reload",
+        "loader",
+        "memoization",
+        "optimization",
+        "plugin",
+        "react-internals",
+        "resume",
+        "webpack"
+      ],
+      "size": 5414,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/web前端开发工程师-彭聪-面试技术大纲.md",
+      "title": "Web 前端开发工程师（彭聪）- 面试技术大纲",
+      "category": "job-description",
+      "tags": ["career", "loader", "plugin", "resume", "webpack"],
+      "size": 7747,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/web前端开发工程师-彭聪.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2655,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/web前端开发工程师-彭聪2.md",
+      "title": "彭聪",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "eslint",
+        "linter",
+        "optimization",
+        "resume",
+        "tree-shaking"
+      ],
+      "size": 2664,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/简历分析-彭聪.md",
+      "title": "简历分析报告 - 彭聪",
+      "category": "job-description",
+      "tags": ["career", "resume"],
+      "size": 4850,
+      "hasContent": true
+    },
+    {
+      "path": "/job-description/高级前端面试题-基于简历.md",
+      "title": "高级前端面试题 - 基于彭聪简历",
+      "category": "job-description",
+      "tags": [
+        "career",
+        "composition-api",
+        "eslint",
+        "formatter",
+        "linter",
+        "optimization",
+        "pinia",
+        "prettier",
+        "resume",
+        "state-management",
+        "tree-shaking",
+        "vue3",
+        "vuex"
+      ],
+      "size": 7980,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/01-React核心原理-补充.md",
+      "title": "React 19 新特性详解 & useMemo/useCallback 深度解析",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "babel",
+        "core-principle",
+        "hooks",
+        "memoization",
+        "plugin",
+        "react",
+        "state",
+        "summary",
+        "transpiler"
+      ],
+      "size": 13966,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/01-React核心原理.md",
+      "title": "React 16+ 各版本区别 & React 核心原理",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "core-principle",
+        "effect",
+        "fiber",
+        "hooks",
+        "react",
+        "react-internals",
+        "state",
+        "summary"
+      ],
+      "size": 19384,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/02-Webpack与构建工具.md",
+      "title": "Webpack 架构 & 与 Rollup、Vite 对比 & 核心原理",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "babel",
+        "bundler",
+        "loader",
+        "plugin",
+        "summary",
+        "transpiler",
+        "webpack"
+      ],
+      "size": 74371,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/03-性能优化.md",
+      "title": "性能优化流程 & 从浏览器请求链路解释\"为什么这么优化\"",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "optimization",
+        "performance",
+        "summary",
+        "tree-shaking"
+      ],
+      "size": 15827,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/04-微前端.md",
+      "title": "微前端对比 & 各方案实现原理",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "micro-frontend",
+        "redux",
+        "state-management",
+        "summary"
+      ],
+      "size": 43624,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/05-低代码.md",
+      "title": "低代码 & 核心原理",
+      "category": "mark",
+      "tags": ["advanced", "lowcode", "summary"],
+      "size": 23787,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/06-插件系统.md",
+      "title": "热插拔插件系统对比 & 各方案实现原理差异",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "architecture",
+        "babel",
+        "plugin",
+        "summary",
+        "transpiler"
+      ],
+      "size": 37711,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/07-NestJS与SSR.md",
+      "title": "从 NestJS 全栈开发到 SSR & SSR 核心原理",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "backend",
+        "nestjs",
+        "server-rendering",
+        "ssr",
+        "summary"
+      ],
+      "size": 6732,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/08-代码规范.md",
+      "title": "代码规范 & Umi/ESLint 规范为什么这样设计 & 如何落地",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "eslint",
+        "formatter",
+        "hooks",
+        "linter",
+        "memoization",
+        "prettier",
+        "summary"
+      ],
+      "size": 42472,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/09-Promise原理.md",
+      "title": "JS 为什么会设计 Promise & 如何手写实现一个 Promise",
+      "category": "mark",
+      "tags": ["advanced", "async", "promise", "summary"],
+      "size": 19100,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/10-骨架屏.md",
+      "title": "骨架屏怎么提升性能的？骨架屏的原理及实现",
+      "category": "mark",
+      "tags": ["advanced", "loading", "skeleton", "summary"],
+      "size": 13283,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/11-HTTP与缓存.md",
+      "title": "从性能优化到 HTTP 变化及缓存",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "cache",
+        "http",
+        "network",
+        "optimization",
+        "summary"
+      ],
+      "size": 16216,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/README.md",
+      "title": "自我面试",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "index",
+        "optimization",
+        "plugin",
+        "summary",
+        "tree-shaking"
+      ],
+      "size": 19231,
+      "hasContent": true
+    },
+    {
+      "path": "/mark/React更新流程详解.md",
+      "title": "React 更新流程详解",
+      "category": "mark",
+      "tags": [
+        "advanced",
+        "diff-algorithm",
+        "effect",
+        "fiber",
+        "hooks",
+        "react-internals",
+        "state",
+        "summary"
+      ],
+      "size": 30911,
+      "hasContent": true
+    },
+    {
+      "path": "/node/README.md",
+      "title": "Node 相关（INDEX）",
+      "category": "node",
+      "tags": ["engineering", "index", "node", "server"],
+      "size": 72,
+      "hasContent": false
+    },
+    {
+      "path": "/node/npm.md",
+      "title": "npm 相关",
+      "category": "node",
+      "tags": ["engineering", "node", "npm", "package-manager", "server"],
+      "size": 1033,
+      "hasContent": true
+    },
+    {
+      "path": "/node/toolkit.md",
+      "title": "常用工具包",
+      "category": "node",
+      "tags": ["engineering", "node", "server"],
+      "size": 1921,
+      "hasContent": true
+    },
+    {
+      "path": "/online-tools/README.md",
+      "title": "网页工具",
+      "category": "online-tools",
+      "tags": ["babel", "index", "resources", "tools", "transpiler"],
+      "size": 1846,
+      "hasContent": true
+    },
+    {
+      "path": "/online-tools/bookmark-scripts.md",
+      "title": "书签脚本",
+      "category": "online-tools",
+      "tags": ["resources", "tools"],
+      "size": 594,
+      "hasContent": true
+    },
+    {
+      "path": "/performance/README.md",
+      "title": "用户中心前端性能优化实战文档",
+      "category": "performance",
+      "tags": [
+        "index",
+        "optimization",
+        "performance",
+        "plugin",
+        "state-management",
+        "vuex"
+      ],
+      "size": 5383,
+      "hasContent": true
+    },
+    {
+      "path": "/react/README.md",
+      "title": "React（INDEX）",
+      "category": "react",
+      "tags": ["framework", "index", "react"],
+      "size": 117,
+      "hasContent": true
+    },
+    {
+      "path": "/react/class-hooks.md",
+      "title": "react",
+      "category": "react",
+      "tags": [
+        "class-component",
+        "diff-algorithm",
+        "fiber",
+        "framework",
+        "hooks",
+        "react",
+        "react-internals",
+        "redux",
+        "state-management"
+      ],
+      "size": 3339,
+      "hasContent": true
+    },
+    {
+      "path": "/react/react-render.md",
+      "title": "React 的渲染流程",
+      "category": "react",
+      "tags": [
+        "diff-algorithm",
+        "effect",
+        "fiber",
+        "framework",
+        "hooks",
+        "react",
+        "react-internals",
+        "rendering"
+      ],
+      "size": 7483,
+      "hasContent": true
+    },
+    {
+      "path": "/react/react16.md",
+      "title": "十五分钟读懂 React 16",
+      "category": "react",
+      "tags": [
+        "diff-algorithm",
+        "fiber",
+        "framework",
+        "react",
+        "react-internals"
+      ],
+      "size": 4209,
+      "hasContent": true
+    },
+    {
+      "path": "/react/react17.md",
+      "title": "十五分钟读懂 React 17",
+      "category": "react",
+      "tags": ["fiber", "framework", "react", "react-internals"],
+      "size": 6865,
+      "hasContent": true
+    },
+    {
+      "path": "/react/react18.md",
+      "title": "React 18 新特性",
+      "category": "react",
+      "tags": ["framework", "hooks", "react", "state"],
+      "size": 15101,
+      "hasContent": true
+    },
+    {
+      "path": "/software/README.md",
+      "title": "软件相关（INDEX）",
+      "category": "software",
+      "tags": ["index", "software", "tooling"],
+      "size": 230,
+      "hasContent": true
+    },
+    {
+      "path": "/software/browser.md",
+      "title": "浏览器扩展",
+      "category": "software",
+      "tags": ["software", "tooling"],
+      "size": 4988,
+      "hasContent": true
+    },
+    {
+      "path": "/software/claude-skills-guide.md",
+      "title": "Claude Skills 基础原理与编写指南",
+      "category": "software",
+      "tags": ["ai", "skill", "software", "tooling"],
+      "size": 5274,
+      "hasContent": true
+    },
+    {
+      "path": "/software/cross-platform.md",
+      "title": "多平台",
+      "category": "software",
+      "tags": ["software", "tooling"],
+      "size": 922,
+      "hasContent": true
+    },
+    {
+      "path": "/software/mac.md",
+      "title": "Mac 平台",
+      "category": "software",
+      "tags": ["software", "tooling"],
+      "size": 2802,
+      "hasContent": true
+    },
+    {
+      "path": "/software/vscode.md",
+      "title": "Visual Studio Code 扩展",
+      "category": "software",
+      "tags": [
+        "babel",
+        "redux",
+        "software",
+        "state-management",
+        "tooling",
+        "transpiler"
+      ],
+      "size": 8398,
+      "hasContent": true
+    },
+    {
+      "path": "/software/webstorm.md",
+      "title": "WebStorm 配置",
+      "category": "software",
+      "tags": ["formatter", "plugin", "prettier", "software", "tooling"],
+      "size": 2039,
+      "hasContent": true
+    },
+    {
+      "path": "/software/windows.md",
+      "title": "Windows 平台",
+      "category": "software",
+      "tags": ["software", "tooling"],
+      "size": 3628,
+      "hasContent": true
+    },
+    {
+      "path": "/software/zsh.md",
+      "title": "zsh",
+      "category": "software",
+      "tags": ["plugin", "software", "tooling"],
+      "size": 1940,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/README.md",
+      "title": "面试题汇总",
+      "category": "theory",
+      "tags": ["index", "interview", "theory"],
+      "size": 13,
+      "hasContent": false
+    },
+    {
+      "path": "/theory/interview-question/2025-04-28-analysis.md",
+      "title": "2025-04-28-面试题演练",
+      "category": "theory",
+      "tags": ["interview", "plugin", "reactive", "theory", "vue"],
+      "size": 6459,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/interview-question/2025-04-28.md",
+      "title": "2025-04-28-面试题",
+      "category": "theory",
+      "tags": ["interview", "theory"],
+      "size": 1878,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md",
+      "title": "大疆用户中心重构（2022.02-2022.09）- 面试技术大纲",
+      "category": "theory",
+      "tags": [
+        "interview",
+        "loader",
+        "pinia",
+        "plugin",
+        "state-management",
+        "theory",
+        "webpack"
+      ],
+      "size": 3053,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md",
+      "title": "大疆售后 RMS 系统重构（2022.10-2024.04）- 面试技术大纲",
+      "category": "theory",
+      "tags": [
+        "eslint",
+        "formatter",
+        "interview",
+        "linter",
+        "prettier",
+        "theory"
+      ],
+      "size": 2044,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md",
+      "title": "跨平台公告插件系统（2023.02-2023.03）- 面试技术大纲",
+      "category": "theory",
+      "tags": [
+        "architecture",
+        "interview",
+        "optimization",
+        "plugin",
+        "theory",
+        "tree-shaking"
+      ],
+      "size": 1244,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md",
+      "title": "大疆 DevOps 平台维护（2024.03-2025.04）- 面试技术大纲",
+      "category": "theory",
+      "tags": ["interview", "theory"],
+      "size": 926,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
+      "title": "XDR 系统 - 魔方大屏 + 报表（2025.05-2025.12）- 面试技术大纲",
+      "category": "theory",
+      "tags": ["interview", "theory"],
+      "size": 945,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md",
+      "title": "大疆用户中心重构 - Hard-Mode 面试题",
+      "category": "theory",
+      "tags": [
+        "hmr",
+        "hot-reload",
+        "interview",
+        "optimization",
+        "pinia",
+        "state-management",
+        "theory",
+        "tree-shaking"
+      ],
+      "size": 2385,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
+      "title": "大疆售后 RMS 系统重构 - Hard-Mode 面试题",
+      "category": "theory",
+      "tags": [
+        "eslint",
+        "formatter",
+        "interview",
+        "linter",
+        "prettier",
+        "theory"
+      ],
+      "size": 1567,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
+      "title": "跨平台公告插件系统 - Hard-Mode 面试题",
+      "category": "theory",
+      "tags": [
+        "architecture",
+        "diff-algorithm",
+        "interview",
+        "optimization",
+        "plugin",
+        "theory",
+        "tree-shaking"
+      ],
+      "size": 1670,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
+      "title": "DevOps 平台（qiankun 微前端）- Hard-Mode 面试题",
+      "category": "theory",
+      "tags": ["interview", "micro-frontend", "qiankun", "theory"],
+      "size": 1278,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
+      "title": "XDR 系统（魔方大屏 + 报表）- NestJS 全栈 Hard-Mode 面试题",
+      "category": "theory",
+      "tags": ["backend", "interview", "nestjs", "theory"],
+      "size": 1357,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
+      "title": "frontend-hard-mode-interview 原题提取（基于简历）",
+      "category": "theory",
+      "tags": ["interview", "theory"],
+      "size": 44592,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/Framework copy.md",
+      "title": "技术点",
+      "category": "theory",
+      "tags": [
+        "code-splitting",
+        "diff-algorithm",
+        "fiber",
+        "hmr",
+        "hooks",
+        "hot-reload",
+        "interview",
+        "loader",
+        "memoization",
+        "optimization",
+        "plugin",
+        "react-internals",
+        "theory",
+        "webpack"
+      ],
+      "size": 5414,
+      "hasContent": true
+    },
+    {
+      "path": "/theory/job-description-lib/Framework.md",
+      "title": "技术点",
+      "category": "theory",
+      "tags": [
+        "code-splitting",
+        "diff-algorithm",
+        "fiber",
+        "hmr",
+        "hooks",
+        "hot-reload",
+        "interview",
+        "loader",
+        "memoization",
+        "optimization",
+        "plugin",
+        "react-internals",
+        "theory",
+        "webpack"
+      ],
+      "size": 5414,
+      "hasContent": true
+    },
+    {
+      "path": "/utils/README.md",
+      "title": "工具方法（INDEX）",
+      "category": "utils",
+      "tags": ["index", "tooling", "utils"],
+      "size": 108,
+      "hasContent": true
+    },
+    {
+      "path": "/utils/function.md",
+      "title": "常用方法",
+      "category": "utils",
+      "tags": ["tooling", "utils"],
+      "size": 2028,
+      "hasContent": true
+    },
+    {
+      "path": "/utils/library.md",
+      "title": "库收集",
+      "category": "utils",
+      "tags": ["plugin", "tooling", "utils"],
+      "size": 2521,
+      "hasContent": true
+    },
+    {
+      "path": "/utils/regexp.md",
+      "title": "常用正则",
+      "category": "utils",
+      "tags": ["tooling", "utils"],
+      "size": 902,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/README.md",
+      "title": "Vue",
+      "category": "vue",
+      "tags": ["framework", "index", "vue"],
+      "size": 657,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/code/Object.defineproperty.md",
+      "title": "Object.defineproperty 核心代码 自定义实现",
+      "category": "vue",
+      "tags": ["framework", "reactive", "vue"],
+      "size": 1739,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/code/Proxy.md",
+      "title": "Proxy 核心代码 自定义实现",
+      "category": "vue",
+      "tags": ["framework", "vue"],
+      "size": 903,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/code/proxy-observe.md",
+      "title": "proxy-observe 核心代码 自定义实现",
+      "category": "vue",
+      "tags": ["framework", "reactive", "vue"],
+      "size": 1524,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/vue-render.md",
+      "title": "Vue 的渲染流程",
+      "category": "vue",
+      "tags": ["composition-api", "framework", "rendering", "vue", "vue3"],
+      "size": 6176,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/vue2.md",
+      "title": "vue 原理",
+      "category": "vue",
+      "tags": [
+        "diff-algorithm",
+        "framework",
+        "state-management",
+        "vue",
+        "vuex"
+      ],
+      "size": 3100,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/vue3.md",
+      "title": "vue3 原理 - 总结",
+      "category": "vue",
+      "tags": ["composition-api", "framework", "vue", "vue3"],
+      "size": 275,
+      "hasContent": true
+    },
+    {
+      "path": "/vue/vue_interview.md",
+      "title": "vue 面试题",
+      "category": "vue",
+      "tags": ["framework", "vue"],
+      "size": 95,
+      "hasContent": false
+    },
+    {
+      "path": "/vue/vue_theory.md",
+      "title": "vue 原理",
+      "category": "vue",
+      "tags": ["diff-algorithm", "framework", "vue"],
+      "size": 4708,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/README.md",
+      "title": "Webpack（INDEX）",
+      "category": "webpack",
+      "tags": ["bundler", "engineering", "index", "webpack"],
+      "size": 277,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/install/README.md",
+      "title": "THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.",
+      "category": "webpack",
+      "tags": [
+        "babel",
+        "bundler",
+        "engineering",
+        "index",
+        "transpiler",
+        "webpack"
+      ],
+      "size": 6984,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/install/ni.md",
+      "title": "install",
+      "category": "webpack",
+      "tags": ["bundler", "engineering", "webpack"],
+      "size": 530,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/install/npm.md",
+      "title": "npm",
+      "category": "webpack",
+      "tags": ["bundler", "engineering", "npm", "package-manager", "webpack"],
+      "size": 1212,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/install/pnpm.md",
+      "title": "pnpm",
+      "category": "webpack",
+      "tags": [
+        "bundler",
+        "engineering",
+        "npm",
+        "package-manager",
+        "pnpm",
+        "webpack"
+      ],
+      "size": 12719,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/install/yarn.md",
+      "title": "install",
+      "category": "webpack",
+      "tags": ["bundler", "engineering", "package-manager", "webpack", "yarn"],
+      "size": 530,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/vite-架构及原理.md",
+      "title": "vite - 架构及原理",
+      "category": "webpack",
+      "tags": [
+        "bundler",
+        "engineering",
+        "hmr",
+        "hot-reload",
+        "plugin",
+        "vite",
+        "webpack"
+      ],
+      "size": 4820,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/vite-知识梳理.md",
+      "title": "vite - 知识梳理",
+      "category": "webpack",
+      "tags": [
+        "bundler",
+        "engineering",
+        "hmr",
+        "hot-reload",
+        "plugin",
+        "vite",
+        "webpack"
+      ],
+      "size": 3777,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/webpack-vite-rollup.md",
+      "title": "Webpack、Vite、Rollup",
+      "category": "webpack",
+      "tags": [
+        "bundler",
+        "code-splitting",
+        "engineering",
+        "hmr",
+        "hot-reload",
+        "loader",
+        "optimization",
+        "plugin",
+        "rollup",
+        "tree-shaking",
+        "vite",
+        "webpack"
+      ],
+      "size": 6247,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/打包工具.md",
+      "title": "install",
+      "category": "webpack",
+      "tags": ["bundler", "engineering", "webpack"],
+      "size": 530,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/架构及原理.md",
+      "title": "Webpack - 架构及原理",
+      "category": "webpack",
+      "tags": [
+        "bundler",
+        "code-splitting",
+        "engineering",
+        "loader",
+        "optimization",
+        "plugin",
+        "webpack"
+      ],
+      "size": 4704,
+      "hasContent": true
+    },
+    {
+      "path": "/webpack/知识梳理.md",
+      "title": "Webpack - 介绍",
+      "category": "webpack",
+      "tags": [
+        "babel",
+        "bundler",
+        "code-splitting",
+        "engineering",
+        "loader",
+        "optimization",
+        "plugin",
+        "transpiler",
+        "tree-shaking",
+        "webpack"
+      ],
+      "size": 2445,
+      "hasContent": true
+    }
+  ]
+}

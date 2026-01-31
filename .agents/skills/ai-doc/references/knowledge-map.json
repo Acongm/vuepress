@@ -2,13 +2,22 @@
   "_meta": {
     "description": "前端知识图谱 - 用于 AI 自动分类文档",
     "lastUpdated": "2026-01-31",
-    "usage": "AI 根据对话内容匹配 keywords，选择最相关的 category（仅 archivable: true）"
+    "usage": "AI 根据对话内容匹配 keywords，选择最相关的 category（仅 archivable: true）",
+    "navbarStructure": {
+      "0": "基础语言 (JavaScript, TypeScript, CSS)",
+      "1": "框架生态 (React, Vue, 设计模式)",
+      "2": "工程化 (构建工具, Node.js, Git, 性能优化)",
+      "3": "进阶专题 (技能提炼, AI开发, 踩坑记录)",
+      "4": "工具箱 (工具函数, 在线工具, 软件推荐)",
+      "5": "面试 (面试准备, 简历问答)",
+      "6": "主页"
+    }
   },
   "categories": {
     "JavaScript": {
       "path": "docs/JavaScript",
       "navbarPath": "/JavaScript/",
-      "navbarLocation": "navbar[3].children[0].children",
+      "navbarLocation": "navbar[0].children[0].children",
       "sidebarKey": "/JavaScript/",
       "description": "JavaScript 核心语法、ES6+、异步编程、原型链等",
       "archivable": true,
@@ -65,7 +74,7 @@
     "TypeScript": {
       "path": "docs/TypeScript",
       "navbarPath": "/TypeScript/",
-      "navbarLocation": "navbar[3].children[1].children",
+      "navbarLocation": "navbar[0].children[1].children",
       "sidebarKey": "/TypeScript/",
       "description": "TypeScript 类型系统、泛型、工具类型等",
       "archivable": true,
@@ -113,7 +122,7 @@
     "react": {
       "path": "docs/react",
       "navbarPath": "/react/",
-      "navbarLocation": "navbar[4].children[1].children",
+      "navbarLocation": "navbar[1].children[0].children",
       "sidebarKey": "/react/",
       "description": "React 框架、Hooks、状态管理、性能优化等",
       "archivable": true,
@@ -167,7 +176,7 @@
     "vue": {
       "path": "docs/vue",
       "navbarPath": "/vue/",
-      "navbarLocation": "navbar[4].children[0].children",
+      "navbarLocation": "navbar[1].children[1].children",
       "sidebarKey": "/vue/",
       "description": "Vue 框架、组合式 API、响应式原理等",
       "archivable": true,
@@ -212,7 +221,7 @@
     "webpack": {
       "path": "docs/webpack",
       "navbarPath": "/webpack/",
-      "navbarLocation": "navbar[5].children[0].children",
+      "navbarLocation": "navbar[2].children[0].children",
       "sidebarKey": "/webpack/",
       "description": "构建工具 Webpack、Vite、Rollup 等",
       "archivable": true,
@@ -258,7 +267,7 @@
     "css": {
       "path": "docs/css",
       "navbarPath": "/css/",
-      "navbarLocation": "navbar[6].children[0].children",
+      "navbarLocation": "navbar[0].children[2].children",
       "sidebarKey": "/css/",
       "description": "CSS、SCSS、布局、动画等样式相关",
       "archivable": true,
@@ -311,7 +320,7 @@
     "node": {
       "path": "docs/node",
       "navbarPath": "/node/",
-      "navbarLocation": "navbar[5].children[1].children",
+      "navbarLocation": "navbar[2].children[1].children",
       "sidebarKey": "/node/",
       "description": "Node.js、npm、包管理、CLI 工具等",
       "archivable": true,
@@ -353,7 +362,7 @@
     "performance": {
       "path": "docs/performance",
       "navbarPath": "/performance/",
-      "navbarLocation": "navbar[3].children[3].children",
+      "navbarLocation": "navbar[2].children[3].children",
       "sidebarKey": "/Performance/",
       "description": "性能优化、监控、指标等",
       "archivable": true,
@@ -397,7 +406,7 @@
     "Pattern": {
       "path": "docs/Pattern",
       "navbarPath": "/Pattern/",
-      "navbarLocation": "navbar[3].children[2].children",
+      "navbarLocation": "navbar[1].children[2].children",
       "sidebarKey": "/Pattern/",
       "description": "设计模式、通信模式、架构模式",
       "archivable": true,
@@ -434,8 +443,7 @@
     "git": {
       "path": "docs/git",
       "navbarPath": "/git/",
-      "navbarLocation": null,
-      "navbarNote": "navbar[0].children[2] 是单独 link，无 children 数组，仅更新 sidebar",
+      "navbarLocation": "navbar[2].children[2].children",
       "sidebarKey": "/git/",
       "description": "Git 版本控制、工作流、命令等",
       "archivable": true,
@@ -476,7 +484,7 @@
     "utils": {
       "path": "docs/utils",
       "navbarPath": "/utils/",
-      "navbarLocation": "navbar[0].children[1].children",
+      "navbarLocation": "navbar[4].children[0].children",
       "sidebarKey": "/utils/",
       "description": "工具函数、正则、常用库等",
       "archivable": true,
@@ -509,7 +517,7 @@
     "issue": {
       "path": "docs/issue",
       "navbarPath": "/issue/",
-      "navbarLocation": "navbar[5].children[2].children",
+      "navbarLocation": "navbar[3].children[2].children",
       "sidebarKey": "/issue/",
       "description": "踩坑记录、疑难杂症、兼容性问题",
       "archivable": true,
@@ -537,7 +545,7 @@
     "software": {
       "path": "docs/software",
       "navbarPath": "/software/",
-      "navbarLocation": "navbar[0].children[3].children",
+      "navbarLocation": "navbar[4].children[2].children",
       "sidebarKey": "/software/",
       "description": "开发工具、软件配置、效率提升",
       "archivable": true,
@@ -565,7 +573,7 @@
     "mark": {
       "path": "docs/mark",
       "navbarPath": "/mark/",
-      "navbarLocation": "navbar[1].children[0].children",
+      "navbarLocation": "navbar[3].children[0].children",
       "sidebarKey": "/mark/",
       "description": "技能提炼、知识总结、专题整理",
       "archivable": true,
@@ -579,6 +587,45 @@
         "核心原理",
         "最佳实践",
         "架构"
+      ]
+    },
+    "ai": {
+      "path": "docs/ai",
+      "navbarPath": "/ai/",
+      "navbarLocation": "navbar[3].children[1].children",
+      "sidebarKey": "/ai/",
+      "description": "AI 工具、Skill、Agent、Prompt 工程等",
+      "archivable": true,
+      "keywords": [
+        "ai",
+        "人工智能",
+        "skill",
+        "agent",
+        "copilot",
+        "claude",
+        "chatgpt",
+        "gpt",
+        "llm",
+        "大模型",
+        "prompt",
+        "提示词",
+        "prompt engineering",
+        "ai 工作流",
+        "ai workflow",
+        "mcp",
+        "model context protocol",
+        "ai 辅助",
+        "ai 编程",
+        "ai coding",
+        "cursor",
+        "windsurf",
+        "ai agent",
+        "智能体",
+        "rag",
+        "embedding",
+        "向量",
+        "langchain",
+        "ai 应用"
       ]
     },
     "interview-prep": {

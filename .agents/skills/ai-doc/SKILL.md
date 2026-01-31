@@ -58,6 +58,7 @@ description: 将 AI 对话整理成知识库文档。当用户说 "/ai-doc"、"�
 | issue | 踩坑, bug, 兼容性, 调试 |
 | software | vscode, 终端, zsh, 浏览器插件 |
 | mark | 技能提炼, 专题总结, 核心原理 |
+| ai | skill, agent, copilot, claude, prompt, llm, mcp |
 
 **不可归档**：`interview-prep`、`theory`（由专门脚本管理）
 
@@ -77,6 +78,7 @@ ai_generated: true
 ai_model: Claude Opus 4.5
 ai_conversation_summary: { 对话主题简述 }
 tags:
+  - ai
   - { category }
   - { 相关标签 }
 ---

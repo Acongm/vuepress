@@ -6,6 +6,15 @@
 
 ## 2026-01-31
 
+### 标题
+
+- **文件**: `/JavaScript/xxx.md`
+- **分类**: JavaScript
+- **来源问题**:
+  - "(未记录)"
+- **AI 模型**: Claude Opus 4.5
+- **Commit**: `pending`
+
 ### Claude Skills 基础原理与编写指南
 
 - **文件**: `/software/claude-skills-guide.md`

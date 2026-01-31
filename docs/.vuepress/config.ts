@@ -41,54 +41,98 @@ export default defineUserConfig<DefaultThemeOptions>({
   themeConfig: {
     logo: '/logo.jpg',
     navbar: [
+      // ==================== 基础语言 ====================
       {
-        text: '工具',
+        text: '基础语言',
         children: [
           {
-            text: '在线工具',
+            text: 'JavaScript',
             children: [
-              {
-                text: '网页工具',
-                link: '/online-tools/',
-                activeMatch: '/online-tools/$'
-              },
-              '/online-tools/bookmark-scripts.md'
+              '/JavaScript/',
+              '/JavaScript/经典闭包处理.md',
+              '/JavaScript/执行上下文-作用域链-闭包.md',
+              '/JavaScript/call、apply与bind.md',
+              '/JavaScript/js模拟bind方法.md',
+              '/JavaScript/js模拟new操作.md'
             ]
           },
           {
-            text: '工具方法',
-            children: [
-              '/utils/regexp.md',
-              '/utils/function.md',
-              '/utils/library.md'
-            ]
+            text: 'TypeScript',
+            children: ['/TypeScript/', '/TypeScript/Study.md']
           },
           {
-            text: 'Git',
-            link: '/git/README.md'
-          },
-          {
-            text: '软件相关',
-            children: [
-              '/software/cross-platform.md',
-              '/software/mac.md',
-              '/software/windows.md',
-              '/software/browser.md',
-              '/software/vscode.md',
-              '/software/webstorm.md',
-              '/software/zsh.md'
-            ]
+            text: 'CSS',
+            children: ['/css/', '/css/skill.md', '/css/scss.md']
           }
         ]
       },
+      // ==================== 框架生态 ====================
       {
-        text: '专题',
+        text: '框架生态',
+        children: [
+          {
+            text: 'React',
+            children: [
+              '/react/class-hooks.md',
+              '/react/react16.md',
+              '/react/react17.md',
+              '/react/react18.md',
+              '/react/react-render.md'
+            ]
+          },
+          {
+            text: 'Vue',
+            children: [
+              '/vue/',
+              '/vue/vue_theory.md',
+              '/vue/vue_interview.md',
+              '/vue/vue3.md'
+            ]
+          },
+          {
+            text: '设计模式',
+            children: ['/Pattern/模式来源与类比.md', '/Pattern/']
+          }
+        ]
+      },
+      // ==================== 工程化 ====================
+      {
+        text: '工程化',
+        children: [
+          {
+            text: '构建工具',
+            children: [
+              '/webpack/知识梳理.md',
+              '/webpack/架构及原理.md',
+              '/webpack/vite-知识梳理.md',
+              '/webpack/vite-架构及原理.md',
+              '/webpack/webpack-vite-rollup.md'
+            ]
+          },
+          {
+            text: 'Node.js',
+            children: ['/node/npm.md', '/node/toolkit.md']
+          },
+          {
+            text: 'Git',
+            children: ['/git/', '/git/command.md', '/git/commit.md']
+          },
+          {
+            text: '性能优化',
+            children: ['/performance/']
+          }
+        ]
+      },
+      // ==================== 进阶专题 ====================
+      {
+        text: '进阶专题',
         children: [
           {
             text: '技能提炼',
-            link: '/mark/',
             children: [
+              '/mark/',
               '/mark/01-React核心原理.md',
+              '/mark/01-React核心原理-补充.md',
               '/mark/02-Webpack与构建工具.md',
               '/mark/03-性能优化.md',
               '/mark/04-微前端.md',
@@ -102,288 +146,86 @@ export default defineUserConfig<DefaultThemeOptions>({
             ]
           },
           {
-            text: '技能提炼-补充',
-            link: '/mark/',
-            children: [
-              '/mark/01-React核心原理-补充.md',
-              '/mark/React更新流程详解.md'
-            ]
+            text: 'AI 开发',
+            children: ['/ai/']
           },
           {
-            text: '技能Mark',
-            link: '/mark/',
-            children: ['/mark/README.md']
-          }
-        ]
-      },
-      {
-        text: '面试',
-        // link: '/interview-prep/',
-        // activeMatch: '/interview-prep/',
-        children: [
-          {
-            text: '知识库',
-            children: [
-              {
-                text: '知识列表（面试准备）',
-                link: '/interview-prep/'
-                // activeMatch: '/interview-prep/'
-              },
-
-              {
-                text: '面试题专项',
-                link: '/theory/'
-                // activeMatch: '/theory/'
-              },
-              {
-                text: '面试题（记录）',
-                link: '/interview/2025-04-28.md'
-                // activeMatch: '/interview/'
-              }
-            ]
-          },
-          {
-            text: '简历模拟面试',
-            children: [
-              {
-                text: '简历问答大纲',
-                link: '/job-description/ASK_LIST.md'
-              },
-              {
-                text: '简历问答-口语版',
-                link: '/job-description/ASK_RECORD_SPEAK_AI.md'
-              },
-              {
-                text: '简历问答-代码版',
-                link: '/job-description/ASK_CODE_EXAMPLES.md'
-              },
-              {
-                text: '简历问答-知识点索引',
-                link: '/job-description/ASK_RECORD_KEY.md'
-              },
-              {
-                text: '简历问答-书面版',
-                link: '/job-description/ASK_RECORD_BOOK_AI.md'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        text: 'JavaScript / TypeScript',
-        children: [
-          {
-            text: 'JavaScript',
-            children: [
-              '/JavaScript/',
-              '/JavaScript/经典闭包处理.md',
-              '/JavaScript/执行上下文-作用域链-闭包.md',
-              '/JavaScript/call、apply与bind.md',
-              '/JavaScript/js模拟bind方法.md',
-              '/JavaScript/js模拟new操作.md'
-            ]
-          },
-
-          {
-            text: 'TypeScript',
-            children: ['/TypeScript/', '/TypeScript/Study.md']
-          },
-          {
-            text: '通信模式',
-            children: [
-              '/Pattern/模式来源与类比.md',
-              '/Pattern/'
-              // '/Pattern/ServiceRequest/',
-              // '/Pattern/Observer/',
-              // '/Pattern/EventBus/',
-              // '/Pattern/Store/',
-              // '/Pattern/BroadcastChannel/',
-              // '/Pattern/CustomEvent/',
-              // '/Pattern/ProxyStore/'
-            ]
-          },
-          {
-            text: 'Performance',
-            children: ['/Performance/']
-          }
-        ]
-      },
-      {
-        text: 'Vue / React',
-        children: [
-          {
-            text: 'Vue',
-            children: [
-              '/vue/',
-              '/vue/vue_theory.md',
-              '/vue/vue_interview.md',
-              '/vue/vue3.md'
-            ]
-          },
-          {
-            text: 'React',
-            children: ['/react/class-hooks.md']
-          }
-        ]
-      },
-      {
-        text: 'Webpack / Node',
-        children: [
-          {
-            text: 'Webpack',
-            children: ['/webpack/知识梳理.md', '/webpack/vite-知识梳理.md']
-          },
-          {
-            text: 'Node 相关',
-            children: ['/node/npm.md', '/node/toolkit.md']
-          },
-
-          {
-            text: '疑难杂症',
+            text: '踩坑记录',
             children: ['/issue/h5.md', '/issue/pc.md']
           }
         ]
       },
+      // ==================== 工具箱 ====================
       {
-        text: 'Html / CSS ',
+        text: '工具箱',
         children: [
           {
-            text: 'CSS',
+            text: '工具函数',
             children: [
-              {
-                text: 'CSS 语法相关',
-                link: '/css/',
-                activeMatch: '/css/$'
-              },
-              '/css/skill.md',
-              '/css/scss.md'
+              '/utils/regexp.md',
+              '/utils/function.md',
+              '/utils/library.md'
+            ]
+          },
+          {
+            text: '在线工具',
+            children: ['/online-tools/', '/online-tools/bookmark-scripts.md']
+          },
+          {
+            text: '软件推荐',
+            children: [
+              '/software/cross-platform.md',
+              '/software/mac.md',
+              '/software/windows.md',
+              '/software/browser.md',
+              '/software/vscode.md',
+              '/software/webstorm.md',
+              '/software/zsh.md'
             ]
           }
         ]
       },
-      //   text: '在线音乐',
-      //     { text: '移动端', link: 'https://reactmusic.fe-mm.com' }
-      //   ]
-      // },
+      // ==================== 面试 ====================
+      {
+        text: '面试',
+        children: [
+          {
+            text: '面试准备',
+            children: [
+              { text: '知识列表', link: '/interview-prep/' },
+              { text: '面试题库', link: '/theory/' },
+              { text: '面试记录', link: '/interview/2025-04-28.md' }
+            ]
+          },
+          {
+            text: '简历问答',
+            children: [
+              { text: '问答大纲', link: '/job-description/ASK_LIST.md' },
+              {
+                text: '口语版',
+                link: '/job-description/ASK_RECORD_SPEAK_AI.md'
+              },
+              { text: '代码版', link: '/job-description/ASK_CODE_EXAMPLES.md' },
+              {
+                text: '知识点索引',
+                link: '/job-description/ASK_RECORD_KEY.md'
+              },
+              { text: '书面版', link: '/job-description/ASK_RECORD_BOOK_AI.md' }
+            ]
+          }
+        ]
+      },
+      // ==================== 主页 ====================
       {
         text: '主页',
         children: [
           { text: 'Blog', link: 'https://www.acongm.com' },
           { text: 'Github', link: 'https://github.com/Acongm' },
-          {
-            text: '简历',
-            link: '/job-description/web前端开发工程师-彭聪.md',
-            activeMatch: '/job-description/$'
-          }
+          { text: '简历', link: '/job-description/web前端开发工程师-彭聪.md' }
         ]
       }
     ],
     sidebar: {
-      '/online-tools/': [
-        {
-          text: '在线工具',
-          children: ['/online-tools/', '/online-tools/bookmark-scripts.md']
-        }
-      ],
-      '/utils/': [
-        {
-          text: '工具方法',
-          children: [
-            '/utils/regexp.md',
-            '/utils/function.md',
-            '/utils/library.md'
-          ]
-        }
-      ],
-      '/theory/': [
-        {
-          text: 'theory',
-          children: [
-            '/theory/',
-            '/theory/interview-question/2025-04-28.md',
-            '/theory/job-description-lib/Framework.md',
-            '/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md',
-            '/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md',
-            '/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md',
-            '/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md',
-            '/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md',
-            '/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md',
-            '/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md',
-            '/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md',
-            '/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md',
-            '/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md',
-            '/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md'
-          ]
-        }
-      ],
-      '/mark/': [
-        {
-          text: '技能提炼',
-          children: [
-            '/mark/01-React核心原理.md',
-            '/mark/02-Webpack与构建工具.md',
-            '/mark/03-性能优化.md',
-            '/mark/04-微前端.md',
-            '/mark/05-低代码.md',
-            '/mark/06-插件系统.md',
-            '/mark/07-NestJS与SSR.md',
-            '/mark/08-代码规范.md',
-            '/mark/09-Promise原理.md',
-            '/mark/10-骨架屏.md',
-            '/mark/11-HTTP与缓存.md'
-          ]
-        },
-        {
-          text: '技能提炼-补充',
-          children: [
-            '/mark/01-React核心原理-补充.md',
-            '/mark/React更新流程详解.md'
-          ]
-        }
-      ],
-      '/interview-prep/': [
-        {
-          text: '面试准备（总览）',
-          children: ['/interview-prep/INDEX.md', '/interview-prep/README.md']
-        },
-        {
-          text: 'Projects（项目卡）',
-          children: [
-            '/interview-prep/project__dji-rms.md',
-            '/interview-prep/project__dji-user-center.md',
-            '/interview-prep/project__announce-plugin.md',
-            '/interview-prep/project__dji-devops.md',
-            '/interview-prep/project__xdr-dashboard-report.md'
-          ]
-        },
-        {
-          text: 'Tech（技术卡）',
-          children: [
-            '/interview-prep/tech__webpack.md',
-            '/interview-prep/tech__react.md',
-            '/interview-prep/tech__typescript.md',
-            '/interview-prep/tech__eslint-engineering.md',
-            '/interview-prep/tech__micro-frontend-qiankun.md',
-            '/interview-prep/tech__rollup.md',
-            '/interview-prep/tech__vite.md',
-            '/interview-prep/tech__performance.md'
-          ]
-        },
-        {
-          text: 'Matrix（对比卡）',
-          children: [
-            '/interview-prep/matrix__bundler-webpack-vite-rollup.md',
-            '/interview-prep/matrix__monorepo-lerna-nx.md',
-            '/interview-prep/matrix__form-formily-rjsf-custom.md',
-            '/interview-prep/matrix__lowcode-ssr-csr-export.md',
-            '/interview-prep/matrix__cicd-release-strategy.md'
-          ]
-        },
-        {
-          text: 'Blindspots（盲区清单）',
-          children: ['/interview-prep/BLINDSPOTS.md']
-        }
-      ],
       '/JavaScript/': [
         {
           text: 'JavaScript',
@@ -397,92 +239,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           ]
         }
       ],
-      '/Pattern/': [
-        {
-          text: '通信模式',
-          children: [
-            '/Pattern/模式来源与类比.md',
-            '/Pattern/',
-            '/Pattern/ServiceRequest/',
-            '/Pattern/Observer/',
-            '/Pattern/EventBus/',
-            '/Pattern/Store/',
-            '/Pattern/BroadcastChannel/',
-            '/Pattern/CustomEvent/',
-            '/Pattern/ProxyStore/'
-          ]
-        }
-      ],
-      '/Performance/': [
-        {
-          text: 'Performance',
-          children: ['/Performance/']
-        }
-      ],
       '/TypeScript/': [
         {
           text: 'TypeScript',
           children: ['/TypeScript/', '/TypeScript/Study.md']
-        }
-      ],
-      '/vue/': [
-        {
-          text: 'vue',
-          children: [
-            '/vue/',
-            '/vue/vue_theory.md',
-            '/vue/vue_interview.md',
-            '/vue/vue-render.md',
-            '/vue/vue3.md'
-          ]
-        }
-      ],
-      '/react/': [
-        {
-          text: 'React',
-          children: ['/react/class-hooks.md']
-        },
-        {
-          text: 'React16',
-          children: ['/react/react16.md']
-        },
-        {
-          text: 'React17',
-          children: ['/react/react17.md']
-        },
-        {
-          text: 'React18',
-          children: ['/react/react18.md']
-        },
-        {
-          text: 'React-render',
-          children: ['/react/react-render.md']
-        }
-      ],
-      '/webpack/': [
-        {
-          text: 'Webpack-知识梳理',
-          children: ['/webpack/知识梳理.md']
-        },
-        {
-          text: 'Webpack-架构及原理',
-          children: ['/webpack/架构及原理.md']
-        },
-        {
-          text: 'Webpack-打包工具',
-          children: ['/webpack/打包工具.md']
-        },
-        {
-          text: 'webpack-vite-rollup',
-          children: ['/webpack/webpack-vite-rollup.md']
-        },
-        {
-          text: 'vite-知识梳理',
-          children: ['/webpack/vite-知识梳理.md']
-        },
-        {
-          text: 'vite-架构及原理',
-          children: ['/webpack/vite-架构及原理.md']
         }
       ],
       '/css/': [
@@ -491,36 +251,178 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: ['/css/', '/css/skill.md', '/css/scss.md']
         }
       ],
+      '/react/': [
+        {
+          text: 'React',
+          children: [
+            '/react/class-hooks.md',
+            '/react/react16.md',
+            '/react/react17.md',
+            '/react/react18.md',
+            '/react/react-render.md'
+          ]
+        }
+      ],
+      '/vue/': [
+        {
+          text: 'Vue',
+          children: [
+            '/vue/',
+            '/vue/vue_theory.md',
+            '/vue/vue_interview.md',
+            '/vue/vue3.md'
+          ]
+        }
+      ],
+      '/Pattern/': [
+        {
+          text: '设计模式',
+          children: [
+            '/Pattern/',
+            '/Pattern/模式来源与类比.md',
+            '/Pattern/COMPARISON.md'
+          ]
+        },
+        {
+          text: 'EventBus',
+          children: [
+            '/Pattern/EventBus/',
+            '/Pattern/EventBus/EventBus.md',
+            '/Pattern/EventBus/EventBusSingleton.md'
+          ]
+        },
+        {
+          text: 'Observer',
+          children: [
+            '/Pattern/Observer/',
+            '/Pattern/Observer/Subject.md',
+            '/Pattern/Observer/ObserverSingleton.md'
+          ]
+        },
+        {
+          text: 'Store',
+          children: [
+            '/Pattern/Store/',
+            '/Pattern/Store/Store.md',
+            '/Pattern/Store/StoreSingleton.md'
+          ]
+        },
+        {
+          text: 'ProxyStore',
+          children: [
+            '/Pattern/ProxyStore/',
+            '/Pattern/ProxyStore/ProxyStore.md',
+            '/Pattern/ProxyStore/ProxyStoreSingleton.md'
+          ]
+        },
+        {
+          text: 'CustomEvent',
+          children: [
+            '/Pattern/CustomEvent/',
+            '/Pattern/CustomEvent/CustomEventBridge.md',
+            '/Pattern/CustomEvent/CustomEventSingleton.md'
+          ]
+        },
+        {
+          text: 'BroadcastChannel',
+          children: [
+            '/Pattern/BroadcastChannel/',
+            '/Pattern/BroadcastChannel/BroadcastBridge.md',
+            '/Pattern/BroadcastChannel/BroadcastSingleton.md'
+          ]
+        },
+        {
+          text: 'ServiceRequest',
+          children: [
+            '/Pattern/ServiceRequest/',
+            '/Pattern/ServiceRequest/Registry.md',
+            '/Pattern/ServiceRequest/ServiceRequestRegistry.md',
+            '/Pattern/ServiceRequest/SharedStateBridge.md',
+            '/Pattern/ServiceRequest/SharedStateBridgeSingleton.md'
+          ]
+        }
+      ],
+      '/webpack/': [
+        {
+          text: 'Webpack',
+          children: [
+            '/webpack/知识梳理.md',
+            '/webpack/架构及原理.md',
+            '/webpack/vite-知识梳理.md',
+            '/webpack/vite-架构及原理.md',
+            '/webpack/webpack-vite-rollup.md'
+          ]
+        }
+      ],
       '/node/': [
         {
-          text: 'Node 相关',
+          text: 'Node.js',
           children: ['/node/npm.md', '/node/toolkit.md']
         }
       ],
-      '/job-description/': [
+      '/git/': [
         {
-          text: '简历',
+          text: 'Git',
+          children: ['/git/', '/git/command.md', '/git/commit.md']
+        }
+      ],
+      '/performance/': [
+        {
+          text: '性能优化',
+          children: ['/performance/']
+        }
+      ],
+      '/mark/': [
+        {
+          text: '技能提炼',
           children: [
-            '/job-description/web前端开发工程师-彭聪.md',
-            '/job-description/ASK_LIST.md',
-            '/job-description/ASK_RECORD_BOOK_AI.md',
-            '/job-description/ASK_RECORD_SPEAK_AI.md',
-            '/job-description/ASK_CODE_EXAMPLES.md',
-            '/job-description/ASK_RECORD_KEY.md'
+            '/mark/',
+            '/mark/01-React核心原理.md',
+            '/mark/01-React核心原理-补充.md',
+            '/mark/02-Webpack与构建工具.md',
+            '/mark/03-性能优化.md',
+            '/mark/04-微前端.md',
+            '/mark/05-低代码.md',
+            '/mark/06-插件系统.md',
+            '/mark/07-NestJS与SSR.md',
+            '/mark/08-代码规范.md',
+            '/mark/09-Promise原理.md',
+            '/mark/10-骨架屏.md',
+            '/mark/11-HTTP与缓存.md'
           ]
-          // children: ['/job-description/web前端开发工程师-彭聪.md', '/job-description/web前端开发工程师-彭聪.jpeg', '/job-description/web前端开发工程师-彭聪.pdf']
         }
       ],
-      '/interview/': [
+      '/ai/': [
         {
-          text: '面试题',
-          children: ['/interview/']
+          text: 'AI 开发',
+          children: ['/ai/']
         }
       ],
-      '/git/': ['/git/', '/git/command.md'],
+      '/issue/': [
+        {
+          text: '踩坑记录',
+          children: ['/issue/h5.md', '/issue/pc.md']
+        }
+      ],
+      '/utils/': [
+        {
+          text: '工具函数',
+          children: [
+            '/utils/regexp.md',
+            '/utils/function.md',
+            '/utils/library.md'
+          ]
+        }
+      ],
+      '/online-tools/': [
+        {
+          text: '在线工具',
+          children: ['/online-tools/', '/online-tools/bookmark-scripts.md']
+        }
+      ],
       '/software/': [
         {
-          text: '软件相关',
+          text: '软件推荐',
           children: [
             '/software/cross-platform.md',
             '/software/mac.md',
@@ -528,15 +430,32 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/software/browser.md',
             '/software/vscode.md',
             '/software/webstorm.md',
-            '/software/zsh.md',
-            '/software/claude-skills-guide.md'
+            '/software/zsh.md'
           ]
         }
       ],
-      '/issue/': [
+      '/interview-prep/': [{ text: '面试准备', link: '/interview-prep/' }],
+      '/theory/': [{ text: '面试题库', link: '/theory/' }],
+      '/interview/': [
         {
-          text: '疑难杂症',
-          children: ['/issue/h5.md', '/issue/pc.md']
+          text: '面试记录',
+          children: [
+            '/interview/2025-04-28.md',
+            '/interview/2025-04-28-analysis.md'
+          ]
+        }
+      ],
+      '/job-description/': [
+        {
+          text: '简历问答',
+          children: [
+            '/job-description/ASK_LIST.md',
+            '/job-description/ASK_RECORD_SPEAK_AI.md',
+            '/job-description/ASK_CODE_EXAMPLES.md',
+            '/job-description/ASK_RECORD_KEY.md',
+            '/job-description/ASK_RECORD_BOOK_AI.md',
+            '/job-description/web前端开发工程师-彭聪.md'
+          ]
         }
       ]
     },

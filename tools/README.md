@@ -6,30 +6,46 @@
 
 - Node.js >= 18
 
-## 脚本
+## 脚本结构
 
-- `ai-doc.mjs` - **AI 文档整理工具**
-  - `update-config`：更新 `docs/.vuepress/config.ts`（sidebar + navbar）
-  - `changelog`：追加 `AI_CHANGELOG.md`
-  - `commit`：git add + commit + push
-  - `full`：一键执行以上全部
-  - `categories`：列出所有可用分类
-  - 配套配置：`knowledge-map.json`（前端知识图谱）
-- `generate-interview-prep.mjs`
-  - `generate`：从简历与面试大纲提取信息，增量更新知识单元（仅改写 AUTO-GENERATED 区块）
-  - `index`：生成/更新 `interview-prep/INDEX.md`
-  - `reorder`：调整 `INDEX.md` 的优先级顺序
-  - `blindspots`：生成/更新 `interview-prep/BLINDSPOTS.md`
-  - `validate`：校验扁平规则与 frontmatter 必填字段
-- `validate-tech-profile.mjs`
-  - 校验 `interview-prep/tech-profile__entries.json` 的结构完整性与证据口径
-  - 支持 `--strict`（warnings 也视为失败）
+大部分脚本已移至 `.agents/skills/ai-doc/scripts/`，本目录保留入口和基础工具。
+
+### 本目录脚本
+
+| 脚本                          | 说明                      |
+| ----------------------------- | ------------------------- |
+| `ai-doc.mjs`                  | AI 文档整理工具（主入口） |
+| `knowledge-map.json`          | 前端知识图谱配置          |
+| `generate-interview-prep.mjs` | 面试准备知识单元生成      |
+| `validate-tech-profile.mjs`   | 技术档案校验              |
+| `extract-fhmi-by-resume.mjs`  | 从简历提取面试题          |
+
+### Skill 脚本（.agents/skills/ai-doc/scripts/）
+
+| 脚本                     | 说明                 | 用法                                          |
+| ------------------------ | -------------------- | --------------------------------------------- |
+| `sync-nav-config.mjs`    | 从 JSON 同步导航配置 | `node ...scripts/sync-nav-config.mjs --write` |
+| `generate-doc-index.mjs` | 生成文档索引和标签   | `node ...scripts/generate-doc-index.mjs`      |
+
+### Skill 配置（.agents/skills/ai-doc/references/）
+
+| 文件                        | 说明                           |
+| --------------------------- | ------------------------------ |
+| `nav-config.json`           | 导航配置源（navbar + sidebar） |
+| `docs-index.json`           | 文档索引（自动生成）           |
+| `docs-index.md`             | 文档索引报告（自动生成）       |
+| `frontend-knowledge-map.md` | 独立前端知识图谱               |
 
 ## 运行方式
 
 ```bash
+# 本目录脚本
 node tools/ai-doc.mjs --help
 node tools/generate-interview-prep.mjs --help
+
+# Skill 脚本
+node .agents/skills/ai-doc/scripts/sync-nav-config.mjs --help
+node .agents/skills/ai-doc/scripts/generate-doc-index.mjs
 ```
 
 ## AI 文档整理（/ai-doc 工作流）
