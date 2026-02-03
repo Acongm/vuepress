@@ -11,6 +11,8 @@
 - 🎯 **智能分类推荐**：基于内容的自动分类
 - ✅ **文档质量验证**：自动检查文档规范
 - 🔄 **动态菜单管理**：自动更新导航和侧边栏
+- 🚀 **GitHub Actions 集成**：CI/CD 自动化部署
+- 🔐 **安全 API 调用**：支持 GLM-4 AI 密钥管理
 
 ## 📋 知识分类
 
@@ -119,9 +121,50 @@ npm run kb:add /tmp/react-hooks-guide.md
 
 ## 📚 详细文档
 
+- **快速开始指南**：[QUICK_START.md](./QUICK_START.md)
 - **知识库系统指南**：[KNOWLEDGE_BASE_GUIDE.md](./KNOWLEDGE_BASE_GUIDE.md)
+- **GitHub Actions 集成**：[GITHUB_ACTIONS_GUIDE.md](./GITHUB_ACTIONS_GUIDE.md) 🆕
 - **工具使用文档**：[lib/README.md](./lib/README.md)
 - **AI 文档工具**：[tools/README.md](./tools/README.md)
+
+## 🚀 GitHub Actions 自动化
+
+### 自动部署
+
+项目使用 GitHub Actions 自动部署到 GitHub Pages：
+
+- **触发**：推送到 `master` 分支
+- **构建**：VuePress 自动构建
+- **部署**：自动发布到 `gh-pages` 分支
+
+### AI 文档生成（新增）
+
+通过 GitHub Actions 使用 GLM-4 AI 自动生成文档：
+
+#### 方式 1：通过 Issues
+
+1. 创建 Issue，标题为文档主题
+2. 添加标签 `ai-doc`
+3. 自动生成文档并创建 Pull Request
+
+#### 方式 2：Issue 评论
+
+在任意 Issue 评论：`/ai-doc 文档主题`
+
+#### 方式 3：手动触发
+
+1. 进入 Actions 标签
+2. 选择 `AI 文档生成工作流`
+3. 填写主题和参数
+4. 运行工作流
+
+#### API 密钥配置
+
+1. 获取 GLM API Key：[智谱 AI 开放平台](https://open.bigmodel.cn/)
+2. 在仓库设置中添加 Secret：`GLM_API_KEY`
+3. 密钥自动用于 CI/CD，无需担心泄露
+
+详细说明请查看：[GITHUB_ACTIONS_GUIDE.md](./GITHUB_ACTIONS_GUIDE.md)
 
 ## 🔧 可用命令
 
@@ -161,6 +204,13 @@ npm run kb:add /tmp/react-hooks-guide.md
 - 自动分类推荐
 - 质量验证
 - Dry-run 测试
+
+### GLM-4 API 工具 (`lib/glm-api.mjs`) 🆕
+- 安全的 API 调用封装
+- 支持 GLM-4 全系列模型
+- 自动重试和错误处理
+- 密钥脱敏和日志安全
+- GitHub Actions 友好
 
 ## 访问地址
 
