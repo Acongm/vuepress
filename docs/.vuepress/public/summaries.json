@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "generatedAt": "2026-02-03T15:46:00.000Z",
+    "totalFiles": 0,
+    "enabled": false,
+    "message": "AI 摘要功能未启用。请在 GitHub Actions 中配置 GLM_API_KEY Secret。"
+  },
+  "summaries": {}
+}
