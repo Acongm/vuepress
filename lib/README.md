@@ -155,9 +155,78 @@ const result2 = validateDocument(content, {
 
 ---
 
+### 3. ai-doc-integration.mjs - AI 文档集成工具
+
+**一键完成**文档验证和提交的完整工作流。
+
+**功能：**
+- ✅ 智能推荐分类（基于内容分析）
+- ✅ 自动验证文档质量
+- ✅ 一键提交到知识库
+- ✅ 支持 dry-run 模式
+
+**使用示例：**
+
+```bash
+# 完全自动化（推荐分类 + 验证 + 提交）
+node lib/ai-doc-integration.mjs /tmp/new-doc.md
+
+# 指定分类
+node lib/ai-doc-integration.mjs /tmp/new-doc.md --category react
+
+# 试运行（不实际提交）
+node lib/ai-doc-integration.mjs /tmp/new-doc.md --dry-run
+
+# 完整参数
+node lib/ai-doc-integration.mjs /tmp/new-doc.md \
+  --category react \
+  --title "React Hooks 指南" \
+  --questions "useState怎么用,useEffect依赖" \
+  --model "Claude Opus 4.5"
+```
+
+**工作流程：**
+
+1. 检查文件存在
+2. 智能推荐分类（可选）
+3. 验证文档质量
+4. 提取文档标题
+5. 提交到知识库
+
+---
+
 ## 集成到工作流
 
 ### AI 文档生成工作流
+
+**推荐方式：使用集成工具（最简单）**
+
+```bash
+# 1. AI 对话生成文档并保存
+cat > /tmp/new-doc.md << 'EOF'
+---
+title: React Hooks 最佳实践
+date: 2026-02-03
+ai_generated: true
+ai_model: Claude Opus 4.5
+tags: [react, hooks]
+---
+
+# React Hooks 最佳实践
+...
+EOF
+
+# 2. 使用集成工具（一键完成：推荐 + 验证 + 提交）
+node lib/ai-doc-integration.mjs /tmp/new-doc.md
+
+# 或者指定参数
+node lib/ai-doc-integration.mjs /tmp/new-doc.md \
+  --category react \
+  --model "Claude Opus 4.5" \
+  --questions "useState优化,useEffect依赖"
+```
+
+**完整方式：分步执行（更可控）**
 
 ```bash
 # 1. AI 对话生成文档
