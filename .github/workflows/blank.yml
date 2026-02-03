@@ -22,8 +22,15 @@ jobs:
           cache: 'npm'
 
       - name: Install and Build
+        env:
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}  # 从 Secrets 读取 API Key
         run: |
           npm install
+          
+          # 生成 AI 摘要（如果配置了 GLM_API_KEY）
+          # 如果未配置，会创建空的摘要文件，不影响构建
+          node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 GLM_API_KEY）"
+          
           npm run build  # 确保输出目录是 vuepress
 
       - name: Deploy to GitHub Pages

@@ -19,6 +19,9 @@
       <scriptx type="text/javascript">
         (adsbygoogle = window.adsbygoogle || []).push({});
       </scriptx>
+      
+      <!-- AI 内容提炼按钮 -->
+      <AISummaryButton />
     </template>
   </Layout>
 </template>
