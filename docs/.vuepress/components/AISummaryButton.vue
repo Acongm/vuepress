@@ -143,7 +143,9 @@ export default {
         }
         
         // 加载预生成的摘要
-        const response = await fetch('/summaries.json')
+        // 使用 $withBase 方法确保路径正确（兼容 base 配置）
+        const summariesUrl = this.$withBase('/summaries.json')
+        const response = await fetch(summariesUrl)
         if (!response.ok) {
           throw new Error('无法加载摘要数据')
         }
