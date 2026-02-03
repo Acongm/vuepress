@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - copilot/organize-knowledge-base  # AI 功能分支
 
 env:
   TZ: Asia/Shanghai
