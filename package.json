@@ -13,7 +13,11 @@
     "commit": "git-cz",
     "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "deploy": "gh-pages -d vuepress -m deploy",
-    "deploy:build": "npm run build && npm run deploy"
+    "deploy:build": "npm run build && npm run deploy",
+    "kb:query": "node lib/kb-query.mjs",
+    "kb:validate": "node lib/doc-validator.mjs",
+    "kb:add": "node lib/ai-doc-integration.mjs",
+    "kb:stats": "node lib/kb-query.mjs stats"
   },
   "lint-staged": {
     "*.{js,ts,scss,md,json}": [
