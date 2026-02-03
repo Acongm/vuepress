@@ -229,3 +229,7 @@ MIT
 ---
 
 **技术栈**：VuePress 2 + Node.js + Zero Dependencies
+
+---
+
+**部署状态**: 配置完成，等待部署 | 查看 [部署故障排查指南](./DEPLOYMENT_TROUBLESHOOTING.md)
