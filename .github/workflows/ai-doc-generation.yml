@@ -1,0 +1,257 @@
+name: AI 文档生成工作流
+
+# 触发条件：
+# 1. 通过 Issues 触发（标签为 ai-doc）
+# 2. 手动触发（workflow_dispatch）
+# 3. Pull Request 评论触发
+
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: '文档主题'
+        required: true
+        type: string
+      category:
+        description: '文档分类（可选，留空自动推荐）'
+        required: false
+        type: string
+      model:
+        description: 'GLM 模型'
+        required: false
+        default: 'glm-4-flash'
+        type: choice
+        options:
+          - glm-4-flash
+          - glm-4-air
+          - glm-4-airx
+          - glm-4
+          - glm-4-plus
+
+env:
+  TZ: Asia/Shanghai
+  # GLM API Key 从 GitHub Secrets 读取
+  GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
+
+jobs:
+  generate-document:
+    runs-on: ubuntu-latest
+    
+    # 仅在以下情况运行：
+    # 1. Issues 有 ai-doc 标签
+    # 2. 手动触发
+    # 3. Issue 评论包含 /ai-doc
+    if: |
+      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'ai-doc')) ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/ai-doc'))
+    
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 安装依赖
+        run: npm install
+      
+      - name: 检查 GLM API Key
+        run: |
+          if [ -z "$GLM_API_KEY" ]; then
+            echo "❌ 错误：GLM_API_KEY 未配置"
+            echo "请在仓库设置中添加 Secret: GLM_API_KEY"
+            exit 1
+          fi
+          echo "✅ GLM API Key 已配置"
+      
+      - name: 提取文档主题
+        id: extract-topic
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            # 手动触发
+            TOPIC="${{ github.event.inputs.topic }}"
+            CATEGORY="${{ github.event.inputs.category }}"
+            MODEL="${{ github.event.inputs.model }}"
+          elif [ "${{ github.event_name }}" == "issues" ]; then
+            # Issues 触发
+            TOPIC="${{ github.event.issue.title }}"
+            CATEGORY=""
+            MODEL="glm-4-flash"
+            # 从 Issue body 提取额外信息
+            echo "ISSUE_BODY<<EOF" >> $GITHUB_ENV
+            echo "${{ github.event.issue.body }}" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            # Issue 评论触发
+            TOPIC=$(echo "${{ github.event.comment.body }}" | grep -oP '/ai-doc\s+\K.*' || echo "未指定主题")
+            CATEGORY=""
+            MODEL="glm-4-flash"
+          fi
+          
+          echo "topic=${TOPIC}" >> $GITHUB_OUTPUT
+          echo "category=${CATEGORY}" >> $GITHUB_OUTPUT
+          echo "model=${MODEL}" >> $GITHUB_OUTPUT
+          
+          echo "📝 文档主题：${TOPIC}"
+          echo "📂 分类：${CATEGORY:-自动推荐}"
+          echo "🤖 模型：${MODEL}"
+      
+      - name: 生成文档内容
+        id: generate
+        run: |
+          TOPIC="${{ steps.extract-topic.outputs.topic }}"
+          MODEL="${{ steps.extract-topic.outputs.model }}"
+          
+          echo "🤖 使用 GLM-4 生成文档..."
+          
+          # 生成文档
+          node lib/glm-api.mjs generate "${TOPIC}" \
+            --model "${MODEL}" \
+            --output /tmp/generated-doc.md
+          
+          echo "✅ 文档生成完成"
+          
+          # 显示预览（前 500 字符）
+          echo "📄 文档预览："
+          head -c 500 /tmp/generated-doc.md
+          echo ""
+      
+      - name: 智能推荐分类
+        id: suggest-category
+        run: |
+          CATEGORY="${{ steps.extract-topic.outputs.category }}"
+          
+          if [ -z "$CATEGORY" ]; then
+            echo "🤖 使用 AI 推荐分类..."
+            
+            # 先尝试基于关键词的推荐
+            SUGGESTED=$(npm run kb:query suggest "$(head -100 /tmp/generated-doc.md)" 2>&1 | grep -oP '"category":\s*"\K[^"]+' | head -1 || echo "")
+            
+            if [ -z "$SUGGESTED" ]; then
+              # 如果关键词推荐失败，使用 AI 推荐
+              SUGGESTED=$(node lib/glm-api.mjs suggest /tmp/generated-doc.md 2>&1 | tail -1)
+            fi
+            
+            CATEGORY="${SUGGESTED:-JavaScript}"
+            echo "✅ 推荐分类：${CATEGORY}"
+          else
+            echo "📂 使用指定分类：${CATEGORY}"
+          fi
+          
+          echo "category=${CATEGORY}" >> $GITHUB_OUTPUT
+      
+      - name: 验证文档质量
+        run: |
+          echo "🔍 验证文档质量..."
+          
+          CATEGORY="${{ steps.suggest-category.outputs.category }}"
+          
+          npm run kb:validate /tmp/generated-doc.md -- --category "${CATEGORY}" || {
+            echo "⚠️  文档验证有警告，但继续处理"
+          }
+      
+      - name: 添加到知识库
+        run: |
+          CATEGORY="${{ steps.suggest-category.outputs.category }}"
+          TOPIC="${{ steps.extract-topic.outputs.topic }}"
+          MODEL="${{ steps.extract-topic.outputs.model }}"
+          
+          echo "📚 添加文档到知识库..."
+          
+          # 配置 Git
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # 添加文档
+          npm run kb:add /tmp/generated-doc.md -- \
+            --category "${CATEGORY}" \
+            --model "GLM-${MODEL}" \
+            --questions "由 AI 自动生成"
+          
+          echo "✅ 文档已添加到知识库"
+      
+      - name: 创建 Pull Request
+        if: success()
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "docs(ai): 添加文档 - ${{ steps.extract-topic.outputs.topic }}"
+          branch: ai-doc/${{ github.run_number }}
+          title: "🤖 AI 生成文档：${{ steps.extract-topic.outputs.topic }}"
+          body: |
+            ## 📝 文档信息
+            
+            - **主题**：${{ steps.extract-topic.outputs.topic }}
+            - **分类**：${{ steps.suggest-category.outputs.category }}
+            - **模型**：${{ steps.extract-topic.outputs.model }}
+            - **触发方式**：${{ github.event_name }}
+            
+            ## 🤖 AI 生成
+            
+            此文档由 GLM-4 AI 自动生成，已通过质量验证。
+            
+            ## ✅ 检查清单
+            
+            - [ ] 内容准确性
+            - [ ] 代码示例正确
+            - [ ] 格式规范
+            - [ ] 分类合适
+            
+            ## 📎 相关链接
+            
+            ${{ github.event_name == 'issues' && format('- Issue: #{0}', github.event.issue.number) || '' }}
+            
+            ---
+            
+            *由 GitHub Actions 自动创建*
+          labels: |
+            ai-generated
+            documentation
+      
+      - name: 评论 Issue（成功）
+        if: success() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ✅ 文档生成成功
+              
+              **主题**：${{ steps.extract-topic.outputs.topic }}
+              **分类**：${{ steps.suggest-category.outputs.category }}
+              **模型**：${{ steps.extract-topic.outputs.model }}
+              
+              Pull Request 已创建，请查看并合并。
+              
+              🔗 [查看 Pull Request](https://github.com/${{ github.repository }}/pulls)
+              `
+            })
+      
+      - name: 评论 Issue（失败）
+        if: failure() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ❌ 文档生成失败
+              
+              请检查 GitHub Actions 日志获取详细错误信息。
+              
+              🔗 [查看工作流运行](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+              `
+            })

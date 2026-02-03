@@ -18,6 +18,18 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Temporary files
+/tmp
+*.tmp
+*.bak
 vuepress/404.html
 vuepress/ads.txt
 vuepress/favicon.ico
