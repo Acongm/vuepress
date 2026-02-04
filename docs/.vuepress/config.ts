@@ -411,7 +411,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/mark/09-Promise原理.md',
             '/mark/10-骨架屏.md',
             '/mark/11-HTTP与缓存.md',
-            '/mark/React更新流程详解.md'
+            '/mark/React更新流程详解.md',
+            '/mark/ai-doc-content-enhancement.md'
           ]
         }
       ],
