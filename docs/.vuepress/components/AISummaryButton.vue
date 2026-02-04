@@ -40,13 +40,78 @@
               <p>AI 正在分析文档内容...</p>
             </div>
             
-            <!-- 摘要内容 -->
-            <div v-else-if="summary" class="summary-content">
-              <div class="summary-text">
-                <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-                </svg>
-                <p>{{ summary }}</p>
+            <!-- 增强摘要内容 -->
+            <div v-else-if="summaryData" class="summary-content">
+              <!-- 标签页导航 -->
+              <div v-if="isEnhanced" class="tabs">
+                <button 
+                  :class="['tab', { active: activeTab === 'summary' }]" 
+                  @click="activeTab = 'summary'"
+                >
+                  📝 摘要
+                </button>
+                <button 
+                  :class="['tab', { active: activeTab === 'details' }]" 
+                  @click="activeTab = 'details'"
+                >
+                  💡 详情
+                </button>
+              </div>
+              
+              <!-- 摘要标签页 -->
+              <div v-show="activeTab === 'summary'" class="tab-content">
+                <div class="summary-text">
+                  <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                  </svg>
+                  <p>{{ getSummaryText }}</p>
+                </div>
+                
+                <!-- 元标签 -->
+                <div v-if="isEnhanced && (summaryData.difficulty || summaryData.contentType)" class="meta-tags">
+                  <span v-if="summaryData.difficulty" class="tag difficulty">
+                    {{ getDifficultyIcon }} {{ summaryData.difficulty }}
+                  </span>
+                  <span v-if="summaryData.contentType" class="tag type">
+                    📚 {{ summaryData.contentType }}
+                  </span>
+                </div>
+              </div>
+              
+              <!-- 详情标签页（仅增强模式） -->
+              <div v-if="isEnhanced" v-show="activeTab === 'details'" class="tab-content details-content">
+                <!-- 核心要点 -->
+                <div v-if="summaryData.keyPoints && summaryData.keyPoints.length > 0" class="section">
+                  <h4>💡 核心要点</h4>
+                  <ul class="key-points">
+                    <li v-for="(point, index) in summaryData.keyPoints" :key="index">
+                      <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                      </svg>
+                      {{ point }}
+                    </li>
+                  </ul>
+                </div>
+                
+                <!-- 关键词 -->
+                <div v-if="summaryData.keywords && summaryData.keywords.length > 0" class="section">
+                  <h4>🔑 关键词</h4>
+                  <div class="keyword-tags">
+                    <span v-for="keyword in summaryData.keywords" :key="keyword" class="keyword-tag">
+                      {{ keyword }}
+                    </span>
+                  </div>
+                </div>
+                
+                <!-- 技术栈 -->
+                <div v-if="summaryData.techStack && summaryData.techStack.length > 0" class="section">
+                  <h4>🛠️ 技术栈</h4>
+                  <div class="tech-tags">
+                    <span v-for="tech in summaryData.techStack" :key="tech" class="tech-tag">
+                      {{ tech }}
+                    </span>
+                  </div>
+                </div>
               </div>
               
               <div class="panel-footer">
@@ -54,7 +119,7 @@
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
                   </svg>
-                  GLM-4 生成
+                  {{ isEnhanced ? 'GLM-4 增强' : 'GLM-4 生成' }}
                 </span>
               </div>
             </div>
@@ -91,9 +156,11 @@ export default {
     return {
       showPanel: false,
       loading: false,
-      summary: '',
+      summaryData: null,
       error: null,
-      enabled: true
+      enabled: true,
+      activeTab: 'summary',
+      isEnhanced: false
     }
   },
   
@@ -101,6 +168,24 @@ export default {
     shouldShow() {
       // 仅在文档页面显示
       return this.$page && this.$page.path && this.$page.path.endsWith('.html')
+    },
+    
+    getSummaryText() {
+      if (!this.summaryData) return ''
+      // 兼容旧格式（字符串）和新格式（对象）
+      return typeof this.summaryData === 'string' 
+        ? this.summaryData 
+        : this.summaryData.summary || ''
+    },
+    
+    getDifficultyIcon() {
+      const icons = {
+        '入门': '🟢',
+        '进阶': '🟡',
+        '高级': '🔴',
+        '未分级': '⚪'
+      }
+      return icons[this.summaryData?.difficulty] || '⚪'
     }
   },
   
@@ -120,7 +205,7 @@ export default {
       // 保存面板状态
       sessionStorage.setItem('aiSummaryPanelOpen', this.showPanel)
       
-      if (this.showPanel && !this.summary && !this.loading && !this.error) {
+      if (this.showPanel && !this.summaryData && !this.loading && !this.error) {
         this.loadSummary()
       }
     },
@@ -128,7 +213,7 @@ export default {
     async loadSummary() {
       this.loading = true
       this.error = null
-      this.summary = ''
+      this.summaryData = null
       
       try {
         // 获取当前页面路径
@@ -145,7 +230,8 @@ export default {
         // 检查 localStorage 缓存
         const cached = this.getCachedSummary(pagePath)
         if (cached) {
-          this.summary = cached
+          this.summaryData = cached
+          this.checkIfEnhanced()
           this.loading = false
           return
         }
@@ -163,8 +249,10 @@ export default {
         // 调试：输出 JSON 数据
         console.log('[AI Summary Debug] JSON data:', {
           enabled: data._meta?.enabled,
+          enhanced: data._meta?.enhanced,
+          version: data._meta?.version,
           totalFiles: data._meta?.totalFiles,
-          availableKeys: Object.keys(data.summaries || {})
+          availableKeys: Object.keys(data.summaries || {}).slice(0, 5)
         })
         
         // 检查是否启用
@@ -174,29 +262,43 @@ export default {
           return
         }
         
+        // 检查是否是增强版本
+        this.isEnhanced = data._meta?.enhanced || false
+        
         // 获取摘要 - 使用新的查找方法尝试多种路径变体
-        const summary = this.findSummaryByPath(data.summaries, pagePath)
+        const summaryData = this.findSummaryByPath(data.summaries, pagePath)
         
         console.log('[AI Summary Debug] Summary lookup result:', {
           searchKey: pagePath,
-          found: !!summary,
-          summary: summary ? summary.slice(0, 50) + '...' : null
+          found: !!summaryData,
+          isEnhanced: this.isEnhanced,
+          hasKeyPoints: summaryData && typeof summaryData === 'object' && summaryData.keyPoints?.length > 0
         })
         
-        if (!summary) {
+        if (!summaryData) {
           throw new Error('当前文档暂无摘要')
         }
         
-        this.summary = summary
+        this.summaryData = summaryData
+        this.checkIfEnhanced()
         
         // 缓存到 localStorage
-        this.setCachedSummary(pagePath, summary)
+        this.setCachedSummary(pagePath, summaryData)
         
       } catch (error) {
         console.error('加载摘要失败:', error)
         this.error = error.message || '加载失败，请稍后重试'
       } finally {
         this.loading = false
+      }
+    },
+    
+    checkIfEnhanced() {
+      // 检查数据是否为增强格式
+      if (typeof this.summaryData === 'object' && this.summaryData.summary) {
+        this.isEnhanced = true
+      } else {
+        this.isEnhanced = false
       }
     },
     
@@ -495,6 +597,157 @@ export default {
 
 .retry-btn:hover {
   background: #5568d3;
+}
+
+/* 标签页样式 */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.2s;
+  margin-bottom: -10px;
+}
+
+.tab:hover {
+  color: #667eea;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  font-weight: 500;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 元标签 */
+.meta-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tag.difficulty {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag.type {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* 详情内容 */
+.details-content {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 核心要点 */
+.key-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  color: #667eea;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* 关键词和技术栈标签 */
+.keyword-tags,
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-tag,
+.tech-tag {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.keyword-tag {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffe0b2;
+}
+
+.tech-tag {
+  background: #e8eaf6;
+  color: #3f51b5;
+  border: 1px solid #c5cae9;
+}
+
+.keyword-tag:hover,
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 动画 */

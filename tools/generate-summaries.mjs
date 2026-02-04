@@ -96,15 +96,34 @@ async function generateSummary(content, apiKey) {
         messages: [
           {
             role: 'system',
-            content: '你是一个技术文档摘要助手。请用 2-3 句话（不超过 100 字）概括文档的核心内容，突出重点和关键技术点。'
+            content: `你是一个技术文档分析专家。请对技术文档进行全面的内容提炼和分析。
+
+输出要求：
+1. 返回 JSON 格式
+2. summary: 详细摘要（150-200字），包含核心概念、关键特性和应用场景
+3. keyPoints: 3-5个核心要点，每个要点简洁明了
+4. keywords: 3-5个关键技术词
+5. techStack: 相关技术栈（如：React、TypeScript、Node.js等）
+6. difficulty: 难度等级（入门/进阶/高级）
+7. contentType: 内容类型（概念/实践/原理/工具）
+
+返回格式示例：
+{
+  "summary": "React 16 引入了革命性的 Fiber 架构...",
+  "keyPoints": ["要点1", "要点2", "要点3"],
+  "keywords": ["React", "Fiber", "Hooks"],
+  "techStack": ["React", "JavaScript"],
+  "difficulty": "进阶",
+  "contentType": "原理 + 实践"
+}`
           },
           {
             role: 'user',
-            content: `请概括以下技术文档的核心内容：\n\n${content}`
+            content: `请分析以下技术文档并提炼关键信息，以 JSON 格式返回：\n\n${content}`
           }
         ],
         temperature: 0.3,
-        max_tokens: 150
+        max_tokens: 800
       })
     })
     
@@ -119,16 +138,59 @@ async function generateSummary(content, apiKey) {
       throw new Error(`API 返回错误: ${JSON.stringify(data.error)}`)
     }
     
-    const summary = data.choices[0]?.message?.content?.trim()
+    const rawContent = data.choices[0]?.message?.content?.trim()
     
-    if (!summary) {
+    if (!rawContent) {
       throw new Error('API 未返回摘要内容')
     }
     
-    return summary
+    // 尝试解析 JSON
+    try {
+      // 提取 JSON 内容（可能被 markdown 代码块包裹）
+      let jsonStr = rawContent
+      const jsonMatch = rawContent.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/)
+      if (jsonMatch) {
+        jsonStr = jsonMatch[1]
+      }
+      
+      const parsed = JSON.parse(jsonStr)
+      
+      // 验证必需字段
+      if (!parsed.summary) {
+        throw new Error('缺少 summary 字段')
+      }
+      
+      // 设置默认值
+      return {
+        summary: parsed.summary,
+        keyPoints: parsed.keyPoints || [],
+        keywords: parsed.keywords || [],
+        techStack: parsed.techStack || [],
+        difficulty: parsed.difficulty || '未分级',
+        contentType: parsed.contentType || '综合'
+      }
+    } catch (parseError) {
+      log(`JSON 解析失败，使用原始内容: ${parseError.message}`, 'warning')
+      // 如果解析失败，返回基础格式
+      return {
+        summary: rawContent,
+        keyPoints: [],
+        keywords: [],
+        techStack: [],
+        difficulty: '未分级',
+        contentType: '综合'
+      }
+    }
   } catch (error) {
     log(`生成摘要失败: ${error.message}`, 'error')
-    return '暂无摘要'
+    return {
+      summary: '暂无摘要',
+      keyPoints: [],
+      keywords: [],
+      techStack: [],
+      difficulty: '未分级',
+      contentType: '综合'
+    }
   }
 }
 
@@ -201,15 +263,22 @@ async function generateAllSummaries() {
       
       if (!content || content.length < 50) {
         log(`  内容太短，跳过`, 'warning')
-        summaries[path] = '内容太短，暂无摘要'
+        summaries[path] = {
+          summary: '内容太短，暂无摘要',
+          keyPoints: [],
+          keywords: [],
+          techStack: [],
+          difficulty: '未分级',
+          contentType: '综合'
+        }
         continue
       }
       
       // 生成摘要
-      const summary = await generateSummary(content, apiKey)
-      summaries[path] = summary
+      const summaryData = await generateSummary(content, apiKey)
+      summaries[path] = summaryData
       
-      log(`  ✓ 生成成功: ${summary.slice(0, 50)}...`, 'success')
+      log(`  ✓ 生成成功: ${summaryData.summary.slice(0, 50)}...`, 'success')
       successCount++
       
       // 延迟避免限流
@@ -219,7 +288,14 @@ async function generateAllSummaries() {
       
     } catch (error) {
       log(`  ✗ 失败: ${error.message}`, 'error')
-      summaries[path] = '生成失败，请稍后重试'
+      summaries[path] = {
+        summary: '生成失败，请稍后重试',
+        keyPoints: [],
+        keywords: [],
+        techStack: [],
+        difficulty: '未分级',
+        contentType: '综合'
+      }
       errorCount++
     }
   }
@@ -232,12 +308,15 @@ async function generateAllSummaries() {
   
   const data = {
     _meta: {
+      version: '2.0',
       generatedAt: new Date().toISOString(),
       totalFiles: files.length,
       successCount,
       errorCount,
       enabled: true,
-      model: MODEL
+      model: MODEL,
+      enhanced: true,
+      features: ['summary', 'keyPoints', 'keywords', 'techStack', 'difficulty', 'contentType']
     },
     summaries
   }
