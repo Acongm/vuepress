@@ -134,6 +134,14 @@ export default {
         // 获取当前页面路径
         const pagePath = this.getPagePath()
         
+        // 调试：输出当前页面信息
+        console.log('[AI Summary Debug] Current page info:', {
+          rawPath: this.$page.path,
+          regularPath: this.$page.regularPath,
+          key: this.$page.key,
+          convertedPath: pagePath
+        })
+        
         // 检查 localStorage 缓存
         const cached = this.getCachedSummary(pagePath)
         if (cached) {
@@ -152,6 +160,13 @@ export default {
         
         const data = await response.json()
         
+        // 调试：输出 JSON 数据
+        console.log('[AI Summary Debug] JSON data:', {
+          enabled: data._meta?.enabled,
+          totalFiles: data._meta?.totalFiles,
+          availableKeys: Object.keys(data.summaries || {})
+        })
+        
         // 检查是否启用
         if (!data._meta || !data._meta.enabled) {
           this.enabled = false
@@ -159,8 +174,14 @@ export default {
           return
         }
         
-        // 获取摘要
-        const summary = data.summaries[pagePath]
+        // 获取摘要 - 使用新的查找方法尝试多种路径变体
+        const summary = this.findSummaryByPath(data.summaries, pagePath)
+        
+        console.log('[AI Summary Debug] Summary lookup result:', {
+          searchKey: pagePath,
+          found: !!summary,
+          summary: summary ? summary.slice(0, 50) + '...' : null
+        })
         
         if (!summary) {
           throw new Error('当前文档暂无摘要')
@@ -180,12 +201,54 @@ export default {
     },
     
     getPagePath() {
-      // 将 .html 路径转换为 .md 路径
+      // 获取页面路径并转换为 .md 格式
       let path = this.$page.path
+      
+      // 移除 base 前缀（如果有）
+      const base = this.$site.base || '/'
+      if (base !== '/' && path.startsWith(base)) {
+        path = path.slice(base.length - 1) // 保留开头的 /
+      }
+      
+      // 将 .html 转换为 .md
       if (path.endsWith('.html')) {
         path = path.replace(/\.html$/, '.md')
       }
+      
+      // 处理 index.html -> README.md 的情况
+      if (path.endsWith('/index.md') || path === '/index.md') {
+        // 不处理 README，因为 generate-summaries.mjs 跳过了 README.md
+      }
+      
       return path
+    },
+    
+    findSummaryByPath(summaries, pagePath) {
+      // 尝试多种路径变体来匹配摘要
+      const variations = [
+        pagePath,                                    // 原始路径：/react/react16.md
+        pagePath.replace(/\.md$/, '.html'),          // HTML 版本：/react/react16.html
+        pagePath.replace(/^\//, ''),                 // 无前导斜杠：react/react16.md
+        pagePath.replace(/\.md$/, ''),               // 无扩展名：/react/react16
+      ]
+      
+      // 如果是 index 页面，尝试 README
+      if (pagePath.endsWith('/index.md')) {
+        const dirPath = pagePath.replace(/\/index\.md$/, '')
+        variations.push(dirPath + '/README.md')
+      }
+      
+      console.log('[AI Summary Debug] Trying path variations:', variations)
+      
+      // 尝试所有变体
+      for (const variant of variations) {
+        if (summaries[variant]) {
+          console.log('[AI Summary Debug] Found match with variant:', variant)
+          return summaries[variant]
+        }
+      }
+      
+      return null
     },
     
     getCachedSummary(path) {
