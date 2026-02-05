@@ -200,7 +200,7 @@
                 </div>
                 <p v-if="authError" class="auth-error">{{ authError }}</p>
                 <div v-if="!hasApiKey" class="chat-hint">
-                  未配置 AI_API_KEY，无法发起对话请求
+                  未检测到 AI_API_KEY（构建时注入），请设置后重启构建
                 </div>
                 <p class="chat-warning">
                   ⚠️ 前端直连会暴露 API Key
@@ -528,7 +528,7 @@ export default {
         return
       }
       if (!this.hasApiKey) {
-        this.chatError = '未配置 AI_API_KEY，无法请求'
+        this.chatError = '未检测到 AI_API_KEY，请设置后重新构建'
         return
       }
       this.chatInput = ''
