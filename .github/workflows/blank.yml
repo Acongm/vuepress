@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - copilot/add-ai-toggle-and-config  # AI test 功能分支1
+      - copilot/add-ai-toggle-and-config  # AI test 功能分支
 
 env:
   TZ: Asia/Shanghai
