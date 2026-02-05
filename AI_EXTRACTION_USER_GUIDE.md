@@ -17,24 +17,30 @@
 
 ### ✨ 核心特性
 
-#### 1. 📝 详细摘要 (150-200字)
+#### 1. 📝 详细摘要 (150-200 字)
+
 不仅说明"是什么"，还解释"为什么重要"和"如何应用"
 
-#### 2. 💡 核心要点 (3-5个)
+#### 2. 💡 核心要点 (3-5 个)
+
 快速抓住文档的关键信息点
 
 #### 3. 🔑 关键词提取
+
 识别文档中的核心技术术语
 
 #### 4. 🛠️ 技术栈识别
+
 自动标记涉及的技术和框架
 
 #### 5. 📊 难度评级
+
 - 🟢 入门：适合初学者
 - 🟡 进阶：需要一定基础
 - 🔴 高级：深入技术细节
 
 #### 6. 📚 内容类型
+
 - 概念：理论和基础概念
 - 实践：实际应用和示例
 - 原理：深入的技术原理
@@ -73,11 +79,13 @@
 ### 标签页切换
 
 #### 📝 摘要标签页
+
 - 完整的文档摘要
 - 难度和内容类型标签
 - 快速了解文档概况
 
 #### 💡 详情标签页
+
 - **核心要点**：列表形式展示关键信息
 - **关键词**：技术术语标签
 - **技术栈**：相关技术标记
@@ -145,13 +153,16 @@ npm run dev
 ### 在浏览器中查看
 
 1. **打开文档页面**
+
    - 访问任意文档，如 `/react/react16.html`
 
 2. **点击 AI 提炼按钮**
+
    - 位于页面右下角
    - 紫色渐变按钮，带有灯泡图标
 
 3. **查看摘要标签页**
+
    - 阅读详细摘要
    - 查看难度和内容类型
 
@@ -167,6 +178,7 @@ npm run dev
 **文档**: React 16 新特性
 
 **摘要内容**:
+
 > React 16 是 React 框架的重大版本更新，引入了革命性的 Fiber 架构，从根本上改变了组件的渲染机制。通过时间切片和优先级调度，实现了可中断的异步渲染，显著提升了大型应用的用户体验。新增的 Hooks API 让函数组件拥有了状态管理和生命周期能力，使组件逻辑更加简洁和可复用。这些特性特别适用于需要高性能和复杂状态管理的现代 Web 应用。
 
 **难度**: 🟡 进阶  
@@ -197,6 +209,7 @@ npm run dev
 摘要会自动缓存在浏览器本地存储（localStorage），有效期 7 天。
 
 #### 优势
+
 - ✅ 快速加载，无需重复请求
 - ✅ 离线可用（如果之前访问过）
 - ✅ 节省带宽
@@ -292,12 +305,14 @@ localStorage.removeItem('ai-summary:/react/react16.md')
 ### Q1: 为什么某些文档没有摘要？
 
 **A:** 可能的原因：
+
 1. 文档内容太短（少于 50 字符）
 2. 文档是 README.md（自动跳过）
 3. 生成时 API 调用失败
 4. 文档是新添加的，还未生成摘要
 
 **解决方法**：
+
 - 重新运行 `node tools/generate-summaries.mjs`
 - 检查文档内容是否充足
 
@@ -306,6 +321,7 @@ localStorage.removeItem('ai-summary:/react/react16.md')
 **A:** AI 生成的摘要可能存在不准确的情况。
 
 **改进方法**：
+
 1. 优化文档结构和内容
 2. 在文档开头添加明确的概述
 3. 删除缓存的摘要重新生成
@@ -316,6 +332,7 @@ localStorage.removeItem('ai-summary:/react/react16.md')
 **A:** 有两种方法：
 
 **方法 1：删除缓存并重新生成**
+
 ```bash
 # 删除 summaries.json
 rm docs/.vuepress/public/summaries.json
@@ -325,6 +342,7 @@ node tools/generate-summaries.mjs
 ```
 
 **方法 2：手动编辑 summaries.json**
+
 ```bash
 # 直接编辑 JSON 文件
 vim docs/.vuepress/public/summaries.json
@@ -337,6 +355,7 @@ vim docs/.vuepress/public/summaries.json
 **A:** 首次加载会请求 `summaries.json` 文件。
 
 **优化建议**：
+
 - 启用 CDN 加速
 - 压缩 JSON 文件
 - 利用浏览器缓存
@@ -346,6 +365,7 @@ vim docs/.vuepress/public/summaries.json
 **A:** 如果暂时不需要此功能：
 
 **方法 1：不生成摘要**
+
 ```bash
 # 在 GitHub Actions 中注释掉生成步骤
 # .github/workflows/blank.yml
@@ -353,6 +373,7 @@ vim docs/.vuepress/public/summaries.json
 ```
 
 **方法 2：创建空的 summaries.json**
+
 ```json
 {
   "_meta": {
@@ -370,17 +391,20 @@ vim docs/.vuepress/public/summaries.json
 **A:** 检查以下几点：
 
 1. **验证 API Key**
+
    ```bash
    echo $GLM_API_KEY
    # 应该显示您的 API Key
    ```
 
 2. **检查网络连接**
+
    ```bash
    curl -I https://open.bigmodel.cn
    ```
 
 3. **检查 API 配额**
+
    - 登录智谱 AI 平台
    - 查看 API 调用次数和余额
 
@@ -401,9 +425,31 @@ vim docs/.vuepress/public/summaries.json
 - 月构建 12 次：约 ¥5
 
 **节省成本的方法**：
+
 - 启用缓存（默认已启用）
 - 减少构建频率
 - 只为新文档或更新的文档生成摘要
+
+### Q8: 如何启用前端 AI 对话（固定密码验证）？
+
+**⚠️ WARNING:** 以下方案会把 **API Key 和访问密码** 打包到前端代码中，任何人都可以查看。
+
+**A:** 仅建议用于临时测试或低成本场景，生产环境请使用服务端代理。
+
+配置方法：
+
+```bash
+AI_API_KEY=your-api-key-here
+AI_PASSWORD=访问密码
+AI_AUTH_STORAGE=session  # session 或 local
+```
+
+说明：
+
+- `AI_PASSWORD` 用于前端验证，验证成功后会缓存到 `sessionStorage` 或 `localStorage`
+- `AI_AUTH_STORAGE` 可切换缓存位置（默认 session）
+- 不要使用生产 API Key
+- 如需更安全方案，请参考 `AI_EXTRACTION_CUSTOM_KEY_IMPLEMENTATION.md` 的服务端代理示例
 
 ---
 
