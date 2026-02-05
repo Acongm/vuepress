@@ -448,6 +448,7 @@ AI_AUTH_STORAGE=session  # session 或 local
 
 - `AI_PASSWORD` 用于前端验证，验证成功后会缓存到 `sessionStorage` 或 `localStorage`
 - `AI_AUTH_STORAGE` 可切换缓存位置（默认 session）
+- 若构建时未注入 `AI_API_KEY`，可在面板内输入并保存（同样会写入 storage）
 - 不要使用生产 API Key
 - 如需更安全方案，请参考 `AI_EXTRACTION_CUSTOM_KEY_IMPLEMENTATION.md` 的服务端代理示例
 

@@ -202,9 +202,26 @@
                 <div v-if="!hasApiKey" class="chat-hint">
                   未检测到 AI_API_KEY（构建时注入），请设置后重启构建
                 </div>
+                <div v-if="!hasApiKey" class="api-key-section">
+                  <input
+                    v-model="apiKeyInput"
+                    type="password"
+                    class="api-key-input"
+                    placeholder="输入 AI API Key（仅本地缓存）"
+                    @keydown.enter="saveApiKey"
+                  />
+                  <button class="api-key-save" @click="saveApiKey">保存</button>
+                </div>
+                <p v-if="apiKeyError" class="api-key-error">
+                  {{ apiKeyError }}
+                </p>
                 <p class="chat-warning">
                   ⚠️ 前端直连会暴露 API Key
                   与密码，仅用于测试/演示，不具备安全性
+                </p>
+                <p class="api-key-note">
+                  <strong>警告：</strong>API Key 明文存储在浏览器中，扩展和脚本可读取；存储位置由
+                  AI_AUTH_STORAGE 决定（sessionStorage/localStorage）。
                 </p>
                 <div
                   v-if="chatMessages.length"
@@ -334,6 +351,9 @@ export default {
       activeTab: 'summary',
       isEnhanced: false,
       aiConfig: AI_CONFIG,
+      runtimeApiKey: '',
+      apiKeyInput: '',
+      apiKeyError: null,
       authPasswordInput: '',
       authVerified: false,
       authError: null,
@@ -377,8 +397,12 @@ export default {
       return Boolean(this.aiConfig.password)
     },
 
+    effectiveApiKey() {
+      return this.runtimeApiKey || this.aiConfig.apiKey
+    },
+
     hasApiKey() {
-      return Boolean(this.aiConfig.apiKey)
+      return Boolean(this.effectiveApiKey)
     },
 
     canSendChat() {
@@ -395,6 +419,7 @@ export default {
     }
 
     this.restoreAuthState()
+    this.restoreApiKey()
     this.warnIfExposedSecrets()
   },
 
@@ -415,12 +440,17 @@ export default {
         this.authVerified = true
         return
       }
-      try {
-        const storage = this.getAuthStorage()
-        this.authVerified = storage.getItem(this.getAuthCacheKey()) === 'true'
-      } catch (error) {
-        this.authVerified = false
-      }
+      const cachedAuth = this.getStorageItem(
+        this.getAuthCacheKey(),
+        'false',
+        'auth state'
+      )
+      this.authVerified = cachedAuth === 'true'
+    },
+
+    restoreApiKey() {
+      const cachedKey = this.getStorageItem(this.getApiKeyCacheKey(), '', 'api key')
+      this.runtimeApiKey = cachedKey || ''
     },
 
     warnIfExposedSecrets() {
@@ -470,14 +500,86 @@ export default {
       return true
     },
 
+    saveApiKey() {
+      this.apiKeyError = null
+      const value = this.apiKeyInput.trim()
+      if (!value) {
+        this.apiKeyError = '请输入 API Key'
+        return
+      }
+      this.runtimeApiKey = value
+      this.apiKeyInput = ''
+      try {
+        const storage = this.getAuthStorage()
+        storage.setItem(this.getApiKeyCacheKey(), value)
+      } catch (error) {
+        console.warn(`${AI_LOG_PREFIX} Failed to save API key`, {
+          name: error?.name,
+          message: error?.message
+        })
+        const { reason, hint } = this.getStorageErrorMessage(error)
+        this.apiKeyError = `保存失败：${reason}。${hint}（刷新后可能失效）`
+      }
+    },
+
     getAuthStorage() {
       return this.aiConfig.authStorage === 'local'
         ? localStorage
         : sessionStorage
     },
 
+    /**
+     * Read a value from the configured browser storage.
+     * @param {string} key Storage key.
+     * @param {string} fallback Fallback value on error or missing key.
+     * @param {string} label Label used for error logging context (defaults to "storage").
+     * @returns {string} The stored value or fallback.
+     */
+    getStorageItem(key, fallback, label = 'storage') {
+      try {
+        const storage = this.getAuthStorage()
+        const value = storage.getItem(key)
+        return value ?? fallback
+      } catch (error) {
+        console.warn(`${AI_LOG_PREFIX} Failed to read ${label} from storage`, {
+          name: error?.name,
+          message: error?.message
+        })
+        return fallback
+      }
+    },
+
+    /**
+     * Resolve a storage error to a user-friendly reason and hint.
+     * @param {Error} error Storage error instance.
+     * @returns {{ reason: string, hint: string }} User-facing reason and hint.
+     */
+    getStorageErrorMessage(error) {
+      const name = error?.name || ''
+      if (name === 'QuotaExceededError') {
+        return {
+          reason: '存储空间不足',
+          hint: '请清理浏览器存储后重试'
+        }
+      }
+      if (name === 'SecurityError') {
+        return {
+          reason: '浏览器禁止访问存储',
+          hint: '请检查浏览器隐私或安全设置'
+        }
+      }
+      return {
+        reason: error?.message || '未知错误',
+        hint: '请检查浏览器存储设置'
+      }
+    },
+
     getAuthCacheKey() {
       return 'ai-summary-auth-verified'
+    },
+
+    getApiKeyCacheKey() {
+      return 'ai-summary-api-key'
     },
 
     handlePrompt(prompt) {
@@ -528,7 +630,7 @@ export default {
         return
       }
       if (!this.hasApiKey) {
-        this.chatError = '未检测到 AI_API_KEY，请设置后重新构建'
+        this.chatError = '未检测到 AI_API_KEY，请在上方输入或重新构建'
         return
       }
       this.chatInput = ''
@@ -568,7 +670,7 @@ export default {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${this.aiConfig.apiKey}`
+          Authorization: `Bearer ${this.effectiveApiKey}`
         },
         body: JSON.stringify({
           model: this.aiConfig.model,
@@ -1120,6 +1222,44 @@ export default {
 .chat-hint {
   font-size: 12px;
   color: #909399;
+}
+
+.api-key-section {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.api-key-input {
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.api-key-save {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.api-key-error {
+  color: #f56c6c;
+  font-size: 12px;
+  margin: 0;
+}
+
+.api-key-note {
+  color: #909399;
+  font-size: 12px;
+  margin: 0;
 }
 
 .chat-warning {
