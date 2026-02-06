@@ -11,6 +11,9 @@ export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
+  define: {
+    __AI_PASSWORD__: JSON.stringify(process.env.AI_PASSWORD || '')
+  },
   lang: 'zh-CN',
   title: 'acongm',
   description: '前端常用知识、踩坑记录、软件推荐等',

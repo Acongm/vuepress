@@ -34,8 +34,22 @@
           </div>
           
           <div class="panel-body">
+            <!-- 密码验证 -->
+            <div v-if="needsPassword" class="auth-state">
+              <p class="auth-title">请输入 AI_PASSWORD 以启用 AI 功能</p>
+              <input
+                v-model="passwordInput"
+                type="password"
+                class="auth-input"
+                placeholder="请输入访问密码"
+                @keyup.enter="verifyPassword"
+              />
+              <p v-if="passwordError" class="auth-error">{{ passwordError }}</p>
+              <button class="auth-btn" @click="verifyPassword">验证并启用</button>
+            </div>
+
             <!-- 加载中 -->
-            <div v-if="loading" class="loading-state">
+            <div v-else-if="loading" class="loading-state">
               <div class="spinner"></div>
               <p>AI 正在分析文档内容...</p>
             </div>
@@ -160,7 +174,10 @@ export default {
       error: null,
       enabled: true,
       activeTab: 'summary',
-      isEnhanced: false
+      isEnhanced: false,
+      passwordInput: '',
+      passwordError: '',
+      isVerified: false
     }
   },
   
@@ -186,6 +203,10 @@ export default {
         '未分级': '⚪'
       }
       return icons[this.summaryData?.difficulty] || '⚪'
+    },
+
+    needsPassword() {
+      return Boolean(__AI_PASSWORD__) && !this.isVerified
     }
   },
   
@@ -194,8 +215,12 @@ export default {
     const panelState = sessionStorage.getItem('aiSummaryPanelOpen')
     if (panelState === 'true') {
       this.showPanel = true
-      this.loadSummary()
+      if (this.restoreVerifiedState()) {
+        this.loadSummary()
+      }
     }
+
+    this.restoreVerifiedState()
   },
   
   methods: {
@@ -205,12 +230,48 @@ export default {
       // 保存面板状态
       sessionStorage.setItem('aiSummaryPanelOpen', this.showPanel)
       
-      if (this.showPanel && !this.summaryData && !this.loading && !this.error) {
+      if (this.showPanel && !this.needsPassword && !this.summaryData && !this.loading && !this.error) {
+        this.loadSummary()
+      }
+    },
+
+    restoreVerifiedState() {
+      if (!__AI_PASSWORD__) {
+        this.isVerified = true
+        return true
+      }
+
+      const cached = localStorage.getItem('ai-summary:verified')
+      this.isVerified = cached === 'true'
+      return this.isVerified
+    },
+
+    verifyPassword() {
+      this.passwordError = ''
+
+      if (!__AI_PASSWORD__) {
+        this.isVerified = true
+      } else if (this.passwordInput === __AI_PASSWORD__) {
+        this.isVerified = true
+        localStorage.setItem('ai-summary:verified', 'true')
+      } else {
+        this.isVerified = false
+        this.passwordError = '密码错误，请重试'
+        return
+      }
+
+      this.passwordInput = ''
+      if (!this.summaryData && !this.loading && !this.error) {
         this.loadSummary()
       }
     },
     
     async loadSummary() {
+      if (this.needsPassword) {
+        this.loading = false
+        return
+      }
+
       this.loading = true
       this.error = null
       this.summaryData = null
@@ -451,6 +512,45 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.auth-state {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-title {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.auth-input {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.auth-input:focus {
+  border-color: #667eea;
+}
+
+.auth-btn {
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: #fff;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.auth-error {
+  margin: 0;
+  color: #d93025;
+  font-size: 12px;
 }
 
 .header-icon {
