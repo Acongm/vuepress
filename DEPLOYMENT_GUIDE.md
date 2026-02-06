@@ -59,6 +59,12 @@
 - **配置位置**：Settings → Secrets → Actions → New repository secret
 - **注意**：如果不配置，AI 摘要功能将被禁用（不影响网站正常运行）
 
+### 3. `AI_API_KEY` (可选，推荐生产注入)
+- **用途**：前端 AI 对话（构建时注入到前端配置）
+- **类型**：智谱 AI GLM-4 API Key（可与 `GLM_API_KEY` 相同）
+- **配置位置**：Settings → Secrets → Actions → New repository secret
+- **默认回退**：若未配置 `AI_API_KEY`，工作流会自动回退使用 `GLM_API_KEY`
+
 ## 📝 本地测试
 
 在推送到远程分支前，可以先本地测试：
