@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - copilot/organize-knowledge-base  # AI test 功能分支
+      - copilot/add-ai-toggle-and-config  # AI test 功能分支
 
 env:
   TZ: Asia/Shanghai
@@ -25,6 +25,8 @@ jobs:
       - name: Install and Build
         env:
           GLM_API_KEY: ${{ secrets.GLM_API_KEY }}  # 从 Secrets 读取 API Key
+          # 前端 AI 对话使用 AI_API_KEY；默认复用 GLM_API_KEY，支持单独覆盖
+          AI_API_KEY: ${{ secrets.AI_API_KEY || secrets.GLM_API_KEY }}
         run: |
           npm install
           
