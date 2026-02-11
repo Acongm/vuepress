@@ -227,13 +227,14 @@ async function processSingleUrl(url, options) {
     mkdirSync(tempDir, { recursive: true })
   }
   
-  // 生成文件名
+  // 生成文件名（使用时间戳确保唯一性）
   const slug = result.metadata.title
     .toLowerCase()
     .replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .substring(0, 50)
   
+  // 时间戳用于避免文件名冲突，实际文档日期由 frontmatter 中的 date 字段控制
   const filename = `clawra-${Date.now()}-${slug}.md`
   const filepath = resolve(tempDir, filename)
   
