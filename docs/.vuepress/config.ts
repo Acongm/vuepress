@@ -162,7 +162,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: '每日资讯',
-            children: ['/daily-news/2026-04-09.md']
+            children: ['/daily-news/README.md']
           },
           {
             text: '踩坑记录',
@@ -429,7 +429,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/daily-news/': [
         {
           text: '每日资讯',
-          children: ['/daily-news/2026-04-09.md']
+          children: ['/daily-news/']
         }
       ],
       '/issue/': [
