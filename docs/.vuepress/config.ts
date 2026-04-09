@@ -161,14 +161,15 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: ['/ai/']
           },
           {
-            text: '每日资讯',
-            children: ['/daily-news/README.md']
-          },
-          {
             text: '踩坑记录',
             children: ['/issue/h5.md', '/issue/pc.md']
           }
         ]
+      },
+      // ==================== 每日资讯 ====================
+      {
+        text: '每日资讯',
+        link: '/daily-news/'
       },
       // ==================== 工具箱 ====================
       {
