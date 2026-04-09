@@ -161,6 +161,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: ['/ai/']
           },
           {
+            text: '每日资讯',
+            children: ['/daily-news/2026-04-09.md']
+          },
+          {
             text: '踩坑记录',
             children: ['/issue/h5.md', '/issue/pc.md']
           }
@@ -420,6 +424,12 @@ export default defineUserConfig<DefaultThemeOptions>({
         {
           text: 'AI 开发',
           children: ['/ai/']
+        }
+      ],
+      '/daily-news/': [
+        {
+          text: '每日资讯',
+          children: ['/daily-news/2026-04-09.md']
         }
       ],
       '/issue/': [
