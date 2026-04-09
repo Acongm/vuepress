@@ -169,7 +169,18 @@ export default defineUserConfig<DefaultThemeOptions>({
       // ==================== 每日资讯 ====================
       {
         text: '每日资讯',
-        link: '/daily-news/'
+        children: [
+          {
+            text: '索引',
+            link: '/daily-news/'
+          },
+          {
+            text: '2026年',
+            children: [
+              { text: '4月', link: '/daily-news/2026/04/2026-04-09.html' }
+            ]
+          }
+        ]
       },
       // ==================== 工具箱 ====================
       {
@@ -430,7 +441,15 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/daily-news/': [
         {
           text: '每日资讯',
-          children: ['/daily-news/']
+          children: [
+            { text: '索引', link: '/daily-news/' },
+            {
+              text: '2026年',
+              children: [
+                { text: '4月', link: '/daily-news/2026/04/2026-04-09.html' }
+              ]
+            }
+          ]
         }
       ],
       '/issue/': [
