@@ -158,7 +158,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'AI 开发',
-            children: ['/ai/']
+            children: ['/ai/', '/ai/2026-05-02-tech-news-meeting-briefing.md']
           },
           {
             text: '每日资讯',
@@ -423,7 +423,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/ai/': [
         {
           text: 'AI 开发',
-          children: ['/ai/']
+          children: ['/ai/', '/ai/2026-05-02-tech-news-meeting-briefing.md']
         }
       ],
       '/daily-news/': [

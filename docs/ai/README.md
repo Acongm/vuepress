@@ -2,6 +2,10 @@
 
 AI 工具、工作流、Prompt 工程、Agent 开发等内容。
 
+## 最近新增
+
+- [2026-05-02 科技新闻会议分享稿](./2026-05-02-tech-news-meeting-briefing.md)
+
 ## 主题
 
 - AI Agent / Skill 开发
