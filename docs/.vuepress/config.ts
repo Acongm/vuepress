@@ -158,11 +158,11 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: 'AI 开发',
-            children: ['/ai/', '/ai/2026-05-02-tech-news-meeting-briefing.md']
+            children: ['/ai/']
           },
           {
             text: '每日资讯',
-            children: ['/daily-news/2026-04-09.md']
+            children: ['/daily-news/2026-05-02.md', '/daily-news/2026-04-09.md']
           },
           {
             text: '踩坑记录',
@@ -423,13 +423,13 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/ai/': [
         {
           text: 'AI 开发',
-          children: ['/ai/', '/ai/2026-05-02-tech-news-meeting-briefing.md']
+          children: ['/ai/']
         }
       ],
       '/daily-news/': [
         {
           text: '每日资讯',
-          children: ['/daily-news/2026-04-09.md']
+          children: ['/daily-news/2026-05-02.md', '/daily-news/2026-04-09.md']
         }
       ],
       '/issue/': [
