@@ -162,7 +162,11 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
           {
             text: '每日资讯',
-            children: ['/daily-news/2026-05-02.md', '/daily-news/2026-04-09.md']
+            children: [
+              '/daily-news/2026-05-03.md',
+              '/daily-news/2026-05-02.md',
+              '/daily-news/2026-04-09.md'
+            ]
           },
           {
             text: '踩坑记录',
@@ -429,7 +433,11 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/daily-news/': [
         {
           text: '每日资讯',
-          children: ['/daily-news/2026-05-02.md', '/daily-news/2026-04-09.md']
+          children: [
+            '/daily-news/2026-05-03.md',
+            '/daily-news/2026-05-02.md',
+            '/daily-news/2026-04-09.md'
+          ]
         }
       ],
       '/issue/': [
