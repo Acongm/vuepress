@@ -17,7 +17,8 @@
     "kb:query": "node lib/kb-query.mjs",
     "kb:validate": "node lib/doc-validator.mjs",
     "kb:add": "node lib/ai-doc-integration.mjs",
-    "kb:stats": "node lib/kb-query.mjs stats"
+    "kb:stats": "node lib/kb-query.mjs stats",
+    "kb:crawl": "node tools/web-crawler-cli.mjs"
   },
   "lint-staged": {
     "*.{js,ts,scss,md,json}": [
