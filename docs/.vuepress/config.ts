@@ -7,9 +7,26 @@ const isProduction = process.env.NODE_ENV === 'production'
 // 兼容 GitHub Pages 和 vercel 部署
 const base = '/vuepress/'
 
+const aiAuthStorage =
+  process.env.AI_AUTH_STORAGE === 'local' ? 'local' : 'session'
+
+const aiConfig = {
+  apiKey: process.env.AI_API_KEY || '',
+  model: process.env.AI_MODEL || process.env.GLM_MODEL || 'glm-4-flash',
+  endpoint:
+    process.env.AI_API_ENDPOINT ||
+    'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+  password: process.env.AI_PASSWORD || '',
+  authStorage: aiAuthStorage,
+  environment: process.env.NODE_ENV || 'production'
+}
+
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
+  define: {
+    __AI_CONFIG__: JSON.stringify(aiConfig)
+  },
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
   title: 'acongm',
