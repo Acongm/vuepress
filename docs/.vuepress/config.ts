@@ -3,9 +3,10 @@ import { defineUserConfig } from 'vuepress'
 const { path } = require('@vuepress/utils')
 
 const isProduction = process.env.NODE_ENV === 'production'
+const isVercel = process.env.VERCEL === '1'
 
-// 兼容 GitHub Pages 和 vercel 部署
-const base = '/vuepress/'
+// Vercel 使用根路径；GitHub Pages 继续使用仓库子路径。
+const base = isVercel ? '/' : process.env.BUILD_ENV || '/vuepress/'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base,
