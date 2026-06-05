@@ -164,6 +164,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: '每日资讯',
             children: [
+              '/daily-news/2026-06-05.md',
               '/daily-news/2026-06-04.md',
               '/daily-news/2026-06-03.md',
               '/daily-news/2026-06-02.md',
@@ -461,6 +462,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         {
           text: '每日资讯',
           children: [
+            '/daily-news/2026-06-05.md',
             '/daily-news/2026-06-04.md',
             '/daily-news/2026-06-03.md',
             '/daily-news/2026-06-02.md',
