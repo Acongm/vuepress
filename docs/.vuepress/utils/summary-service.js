@@ -11,6 +11,7 @@ function normalizeApiUrl(url, fallback) {
   const cleaned = String(url || '')
     .trim()
     .replace(/^['"]+|['"]+$/g, '')
+    .replace(/^(https?):\/(?!\/)/i, '$1://')
 
   if (/^https?:\/\//i.test(cleaned)) {
     return cleaned

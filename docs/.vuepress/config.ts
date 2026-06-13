@@ -13,6 +13,7 @@ function sanitizeEnvUrl(value: string | undefined, fallback: string) {
   return String(value || fallback)
     .trim()
     .replace(/^['"]+|['"]+$/g, '')
+    .replace(/^(https?):\/(?!\/)/i, '$1://')
 }
 
 export default defineUserConfig<DefaultThemeOptions>({

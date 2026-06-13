@@ -88,7 +88,7 @@
         v-model="inputText"
         rows="2"
         :placeholder="inputPlaceholder"
-        :disabled="chatLoading || isTyping || summaryLoading"
+        :disabled="chatLoading || summaryLoading"
         @keydown.enter.exact.prevent="sendMessage"
       />
       <button type="button" :disabled="!canSend" @click="sendMessage">
@@ -124,6 +124,7 @@ import {
 } from '../../utils/resolve-module.js'
 
 const TYPEWRITER_INTERVAL_MS = 16
+const TYPEWRITER_MAX_MS = 8000
 
 export default {
   name: 'AIChatPanel',
@@ -175,7 +176,6 @@ export default {
       return (
         Boolean(this.inputText.trim()) &&
         !this.chatLoading &&
-        !this.isTyping &&
         !this.summaryLoading &&
         Boolean(this.pageContext)
       )
@@ -278,7 +278,10 @@ export default {
 
     presentSummaryMessage(summaryData, pagePath, source) {
       const text = formatSummaryMessage(summaryData, sourceLabel(source))
-      const showTypewriter = !hasShownSummaryTypewriter(pagePath)
+      const showTypewriter =
+        !hasShownSummaryTypewriter(pagePath) &&
+        typeof document !== 'undefined' &&
+        !document.hidden
       const messageIndex = this.messages.length
 
       this.messages.push({
@@ -388,11 +391,16 @@ export default {
         enableWebSearch: this.enableWebSearch
       }
 
-      const response = await fetch(getAiChatApiUrl(), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
+      let response
+      try {
+        response = await fetch(getAiChatApiUrl(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+      } catch {
+        throw new Error('网络请求失败，请刷新页面后重试')
+      }
 
       if (!response.ok) {
         let message = '对话请求失败'
@@ -430,16 +438,20 @@ export default {
 
       let cursor = 0
       const fullText = message.content
+      const startedAt = Date.now()
 
       this.typewriterTimer = setInterval(() => {
+        if (Date.now() - startedAt > TYPEWRITER_MAX_MS) {
+          this.clearTypewriter()
+          return
+        }
+
         cursor += 1
         message.displayText = fullText.slice(0, cursor)
         this.scrollToBottom()
 
         if (cursor >= fullText.length) {
           this.clearTypewriter()
-          message.typing = false
-          message.displayText = fullText
         }
       }, TYPEWRITER_INTERVAL_MS)
     },
