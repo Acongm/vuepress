@@ -2,6 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "node tools/generate-summaries.mjs && npm run build",
   "installCommand": "npm ci",
-  "outputDirectory": "vuepress",
-  "cacheDirectories": [".cache/ai-summaries"]
+  "outputDirectory": "vuepress"
 }
