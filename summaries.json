@@ -1,7 +1,7 @@
 {
   "_meta": {
     "version": "2.0",
-    "generatedAt": "2026-06-13T09:39:36.393Z",
+    "generatedAt": "2026-06-13T12:54:07.076Z",
     "totalFiles": 183,
     "successCount": 182,
     "errorCount": 1,
@@ -10,7 +10,7 @@
     "provider": "deepseek",
     "enhanced": true,
     "incremental": true,
-    "lastCommitSha": "31635e1f4555c3e02c18c85a4f166bc27253d073",
+    "lastCommitSha": "bccf0d29b922df467f7d04216374fce9d6c84c5c",
     "processedThisRun": 10,
     "skippedThisRun": 172,
     "deletedThisRun": 0,
@@ -546,28 +546,23 @@
       "contentType": "综合"
     },
     "/daily-news/2026-05-05.md": {
-      "summary": "2026年5月5日的前端技术动态聚焦于浏览器平台对性能观测与团队协作的增强。Chrome为Container Timing API启动Origin Trial，使开发者能以组件级粒度衡量卡片、侧栏等复合UI何时对用户真正可用，推动性能诊断从单元素走向用户感知。同时Chrome Web Store扩展开发者后台新增成员角色，改善扩展发布中的团队协作模型。这两项更新体现出平台能力正在贴近真实工作流，不再停留于概念展示。",
+      "summary": "2026年5月5日的技术动态显示，平台厂商正将新能力深入实际工作流。前端侧，Chrome 启动 Container Timing API 原点试用，将性能观测从单元素提升到组件级可用性，同时扩展 Chrome Web Store 发布后台的成员角色以优化团队协作。DevOps 领域，Kubernetes v1.36 继续细化 Pod 级资源预算，使复杂负载的在线调整更便捷。AI 方面，模型平台与开发工具将“可生产”作为核心标准，强化账户安全并推进代理式开发集成。整体趋势是工具链更加贴近真实开发与运维场景。",
       "keyPoints": [
-        "Chrome为Container Timing API启动Origin Trial，支持测量内容容器级可用性",
-        "API适用于卡片、侧栏等复合UI块，帮助诊断用户可交互时间",
-        "前端性能观测从单元素渲染向组件级用户感知进化",
-        "Chrome Web Store扩展后台增加成员角色，提升团队发布协作"
+        "Chrome 启动 Container Timing API 原点试用，实现组件级可用性测量，改进前端性能诊断粒度。",
+        "Chrome Web Store 扩展开发者后台增加成员角色，提升发布流程的团队协作能力。",
+        "Kubernetes v1.36 推进 Pod 级资源预算，使复杂工作负载的资源管理更灵活、可在线调整。",
+        "AI 平台和 IDE 强化生产环境适配，聚焦安全与代理式开发工作流。"
       ],
       "keywords": [
         "Container Timing API",
-        "Chrome",
-        "Origin Trial",
+        "Kubernetes",
         "性能观测",
-        "团队协作"
+        "代理式开发",
+        "Chrome Web Store"
       ],
-      "techStack": [
-        "Chrome",
-        "Web API",
-        "Chrome Web Store",
-        "性能监控"
-      ],
-      "difficulty": "进阶",
-      "contentType": "实践 + 概念"
+      "techStack": [],
+      "difficulty": "未分级",
+      "contentType": "综合"
     },
     "/daily-news/2026-05-06.md": {
       "summary": "{\n  \"summary\": \"2026年5月6日技术动态集中体现平台能力深入真实开发链路。前端方面，Chrome 148 带来 CSS name-only container queries 与 video/audio 懒加载，直接提升响应式布局与首屏性能；DevTools 148 强化无障碍树、投机规则及 agent 调试。DevOps 侧，GitHub 将依赖漏洞检查与代码安全风险前移到开发阶段，安全治理更融入流程。AI 方面，OpenAI 更新 ChatGPT 默认模型并公开低延迟语音架构演进，模型",
@@ -670,10 +665,28 @@
       "contentType": "综合"
     },
     "/daily-news/2026-05-12.md": {
-      "summary": "{\n  \"summary\": \"2026年5月12日科技动态显示，行业重点从“快速发布功能”转向“将能力深度接入工作流”，强调可持续接入、可治理与批量部署。Safari 26.5 引入 :open 伪类、element-scoped random()、ToggleEvent.source 等新特性，并修复63个 bug，推进跨浏览器一致性与渲染质量；Chrome Beta 继续释放平台演进信号。Kubernetes 增强存储与控制面成熟",
-      "keyPoints": [],
-      "keywords": [],
-      "techStack": [],
+      "summary": "本文汇总了2026年5月12日前后的技术动态，核心趋势是软件平台从盲目堆砌功能转向将能力深度嵌入工作流，强调可接入性、可治理与可规模化部署。前端侧，Safari 26.5带来了:open伪类、element-scoped的random()、SVG渐变增强等新能力，并密集修复了63个跨栈缺陷，体现“工程可用性”优先；DevOps方面，Kubernetes强化存储与控制面成熟度，GitHub将AI agent配置治理提升至组织级；AI领域，OpenAI正式推出企业级部署与coding agent安全运行服务，标志行业重点从模型能力转向生产化落地。整体展现了平台级技术从单点突破到系统化集成的演进路径。",
+      "keyPoints": [
+        "行业重点从‘多发功能’转向‘将能力接入工作流’，强调可持续、可治理与批量部署",
+        "Safari 26.5新增:open伪类、element-scoped random()等特性，并修复63个兼容性与渲染问题",
+        "OpenAI同时发布企业部署服务与coding agent安全运行方法，AI进入生产化落地阶段",
+        "Kubernetes持续优化存储与控制面，GitHub推出组织级AI agent配置治理"
+      ],
+      "keywords": [
+        "Safari 26.5",
+        "WebKit",
+        "工作流集成",
+        "AI Agent",
+        "Kubernetes"
+      ],
+      "techStack": [
+        "WebKit",
+        "CSS",
+        "SVG",
+        "Kubernetes",
+        "GitHub Actions",
+        "OpenAI API"
+      ],
       "difficulty": "未分级",
       "contentType": "综合"
     },
@@ -829,30 +842,30 @@
       "contentType": "概念"
     },
     "/daily-news/2026-05-24.md": {
-      "summary": "过去72小时的技术动态显示，浏览器、工程平台与AI编码工具正协同推动开发工作流向自动化协作演进。前端方面，Chrome 推进 passkeys、数字凭证及声明式局部内容更新等底层身份与交互能力；DevOps 领域，npm 强化供应链控制，GitHub 开放结构化工程元数据；AI 侧，OpenAI 持续用企业案例验证 Codex，GitHub Copilot 引入多模型自动路由。这些变化表明，身份认证回归平台底层、供应链治理深入发布环节、编码代理走向流程化嵌入，开发工具栈正从界面、平台与模型三层被重新定义。",
+      "summary": "近期技术动态围绕浏览器、工程平台与AI编码工具的自动化协作展开。前端方面，Chrome推进passkeys和数字凭证等现代身份认证，为登录体验与流式更新奠定基础；DevOps方面，npm加强供应链控制，GitHub开放结构化工程元数据；AI方面，OpenAI Codex通过企业案例强化工程价值，GitHub Copilot实现基于任务的自动模型路由。这些更新协同推动开发工作流从界面层、平台层到模型层全面进化，提升安全性、智能度与协作效率。",
       "keyPoints": [
-        "Chrome 通过 passkeys 和数字凭证推进现代身份认证，将登录体验重新嵌入浏览器平台底层",
-        "Chrome 开放声明式局部更新能力，为流式页面与服务端渲染场景补全基础交互接口",
-        "npm 加强发布与安装阶段的供应链治理，GitHub 将结构化工程元数据推广至更多组织",
-        "OpenAI 深耕 Codex 企业场景，GitHub Copilot 引入多模型自动路由，AI 编码从可选变为默认嵌入流程",
-        "界面、平台与模型层同步驱动开发工作流自动化，三者融合趋势明显"
+        "Chrome通过passkeys和数字凭证强化身份认证底层能力，影响登录流程与跨设备安全策略",
+        "npm增强供应链治理，提升发布与安装阶段的安全性",
+        "GitHub开放结构化工程元数据，简化组织级协作与工程洞察",
+        "OpenAI Codex结合企业案例证明工程实用性，推动AI编码落地",
+        "GitHub Copilot引入基于任务的自动模型路由，提升编码代理的智能调度"
       ],
       "keywords": [
         "passkeys",
-        "浏览器底层能力",
-        "供应链治理",
-        "AI编码代理",
-        "多模型路由"
+        "供应链控制",
+        "Codex",
+        "模型路由",
+        "自动化协作"
       ],
       "techStack": [
         "Chrome",
         "npm",
         "GitHub",
-        "OpenAI",
-        "Copilot"
+        "OpenAI (Copilot/Codex)",
+        "Web Identity"
       ],
       "difficulty": "进阶",
-      "contentType": "趋势分析 + 技术动态"
+      "contentType": "综合"
     },
     "/daily-news/2026-05-25.md": {
       "summary": "2026年5月25日技术动态显示，浏览器平台、DevOps基础设施和AI编码工具共同向真实生产协作方向演进。Chrome推进passkeys与数字凭证等原生身份能力，Safari Technology Preview通过预览版持续打磨平台实现。DevOps领域聚焦包分发治理与集群核心组件可靠性，将安全控制前移至上线前。AI编码代理的竞争重点从单点能力转向企业可落地性、生态覆盖与协作方式。整体趋势是基础能力下沉、工程可控性增强，为企业研发协作提供更稳健的技术支撑。",
@@ -904,7 +917,7 @@
       "contentType": "综合"
     },
     "/daily-news/2026-06-03.md": {
-      "summary": "{\n  \"summary\": \"本文概述了2026年6月3日的技术动态，核心趋势是平台能力从“可体验”迈向“可接入、可治理、可规模化使用”。前端领域Chrome 149与DevTools 149同步发布，新增CSS gap decorations、bfcache场景WebSocket断开机制、Intl.Locale variants等国际化与布局能力，同时智能体调试通过WebMCP和CSS补全持续深化。DevOps侧重集群可视化入口迁移与安全隔离，AI则将智能体能力包装为可嵌入工具链和跨岗位工作流的基础组件。整体反映出浏览器、开发工具与智能体能力的协同演进，推动前端工程化与生产化升级。\",\n  \"keyPoints\": [\n    \"Chrome 149发布，重点推出CSS gap decorations、bfcache中WebSocket断开优化及Intl.Locale variants等国际化增强\",",
+      "summary": "生成失败，请稍后重试",
       "keyPoints": [],
       "keywords": [],
       "techStack": [],
@@ -936,30 +949,28 @@
       "contentType": "综合"
     },
     "/daily-news/2026-06-07.md": {
-      "summary": "本文分析了最近72小时内前端、DevOps和AI领域的官方更新趋势，指出平台能力正加速“接口化”和“可编排化”。Chrome 150 Beta和149正式版带来CSS系统颜色、资源请求修饰符等新特性，推动浏览器能力向工程实践转化；GitHub平台密集发布Copilot相关编程接口和企业管理功能，提升工具链可编排性；OpenAI推进ChatGPT长期记忆系统，微软发布自研MAI模型家族，AI生态呈现多极化发展。这些更新共同体现了将人工操作入口转变为可编程调用、可集中管理、可持久记忆的系统行为这一核心趋势。",
+      "summary": "本日技术动态聚焦于Web平台能力向接口化、可编排化演进，特别是Chrome 150 Beta带来了多项CSS新特性，包括AccentColor/AccentColorText系统颜色、url()请求修饰符、background-clip: border-area、CSS image()函数以及light-dark()对图片值的支持，这些更新将直接提升设计系统与资源加载策略的实施效率。同时Chrome 149正式版持续优化布局样式与页面恢复体验，降低新能力到工程实践的转化摩擦。整体趋势反映了浏览器平台在稳定迭代中加速将人工操作入口转变为可编程、可管理的系统行为，为前端工程化提供更强大的底层支撑。",
       "keyPoints": [
-        "Chrome 150 Beta引入系统强调色、CSS image()函数等能力，145正式版巩固布局与页面恢复体验，加速新特性落地。",
-        "GitHub推出Copilot可编程接口与企业级插件管理，显著增强DevOps工具链的可编排性。",
-        "OpenAI为ChatGPT加入长期记忆系统，AI交互从单次响应转向持久化上下文。",
-        "微软Build大会发布自研MAI模型家族，AI生态多极化格局进一步明朗。",
-        "整体趋势：平台功能从人工操作界面转向可编程、可编排的系统级能力。"
+        "Chrome 150 Beta引入AccentColor等系统颜色和CSS url()请求修饰符，强化样式与资源控制",
+        "CSS image()函数和light-dark()扩展支持图片主题切换，改善设计系统适配能力",
+        "background-clip: border-area等新属性拓展布局样式表达",
+        "Chrome 149正式版落地页面恢复体验优化，减少工程实践摩擦",
+        "平台能力整体从人工操作向可编程调用和集中管理演变"
       ],
       "keywords": [
-        "Chrome CSS",
-        "可编排性",
-        "AI长期记忆",
-        "平台接口化",
-        "多模型生态"
+        "Chrome Beta",
+        "CSS系统颜色",
+        "url修饰符",
+        "light-dark主题",
+        "页面恢复"
       ],
       "techStack": [
         "Chrome",
         "CSS",
-        "GitHub Copilot",
-        "OpenAI",
-        "Microsoft MAI"
+        "Web Platform"
       ],
-      "difficulty": "入门",
-      "contentType": "动态 + 趋势分析"
+      "difficulty": "进阶",
+      "contentType": "概念 + 实践"
     },
     "/daily-news/2026-06-08.md": {
       "summary": "{\n  \"summary\": \"2026 年 6 月 8 日科技动态聚焦三大趋势：AI 与平台能力正从附加功能变为默认基础设施。WWDC 2026 开幕，苹果 AI 战略即将揭晓；GitHub Copilot 正式切换为 AI Credits 用量计费，并停用 GPT‑5.2 系列模型；OpenAI 全量上线",
@@ -1216,26 +1227,26 @@
       "contentType": "实践 + 原理"
     },
     "/interview-prep/matrix__cicd-release-strategy.md": {
-      "summary": "本文档围绕CI/CD流水线的核心实践展开，将交付过程拆解为构建、测试、安全扫描、打包和部署等阶段，通过质量门禁与安全门禁保障交付质量。重点介绍了Docker分层构建与缓存命中机制，以优化CI资源并缩短构建时间。同时对比了蓝绿、金丝雀和滚动三种发布策略，阐述了基于健康检查和观测指标的自动回滚与降级能力，并建立了从代码提交到镜像发布的全链路可追溯体系。适用于多团队并行交付、高频发布且对质量和合规性有严格要求的场景。",
+      "summary": "本文档系统阐述了现代 CI/CD 流水线的核心设计思路，将流程拆解为构建、测试、扫描、打包和部署等阶段，强调通过 Docker 分层缓存与构建元数据（commit hash/buildId）实现高效构建与可追溯性。文中对比了蓝绿、金丝雀和滚动三种发布策略，并说明健康检查、自动回滚及基于错误率/性能的灰度观测机制。文档适用于多团队高频交付场景，目标是确保质量可控、安全合规（SAST/依赖漏洞扫描）以及快速可靠的回滚能力。",
       "keyPoints": [
-        "流水线阶段分离：将构建、测试、扫描、打包、部署解耦，嵌入质量与安全门禁，实现渐进收敛和可控交付。",
-        "Docker缓存优化：通过合理的Dockerfile分层与缓存命中，降低构建耗时，缓解CI资源压力。",
-        "发布策略对比：蓝绿部署提供快速切换，金丝雀发布支持逐步放量与观察，滚动更新实现渐进变更，需搭配健康检查和自动回滚。",
-        "全链路可追溯：从commit到构建产物、镜像标签、发布环境形成统一记录，提升问题定位与审计效率。",
-        "安全与合规集成：流水线中集成SAST、依赖漏洞扫描等安全门禁，并落实权限最小化，满足企业合规要求。"
+        "流水线阶段化，覆盖构建、测试、扫描、打包、部署全流程",
+        "利用 Docker 分层缓存与构建元数据实现快速构建与可追溯",
+        "发布策略包括蓝绿、金丝雀、滚动部署，配合健康检查和自动回滚",
+        "依赖镜像安全扫描和依赖漏洞审计满足安全合规要求",
+        "通过错误率、性能指标驱动灰度放量与回滚决策"
       ],
       "keywords": [
-        "CI/CD流水线",
+        "CI/CD",
         "Docker分层缓存",
         "蓝绿部署",
         "金丝雀发布",
-        "安全门禁"
+        "可追溯性"
       ],
       "techStack": [
         "Docker",
-        "Jenkins/GitLab CI/GitHub Actions",
-        "Kubernetes",
-        "SAST/SCA扫描工具"
+        "CI/CD Pipeline",
+        "安全扫描工具(SAST)",
+        "Git"
       ],
       "difficulty": "进阶",
       "contentType": "原理 + 实践"
@@ -1282,12 +1293,29 @@
       "contentType": "综合"
     },
     "/interview-prep/project__announce-plugin.md": {
-      "summary": "{\n  \"summary\": \"该项目构建了一套跨平台前端公告插件系统，核心特点是热插拔、灰度发布与快速回滚，重点解决了插件的生命周期管理、沙箱隔离、依赖治理与多宿主接入协议。系统借鉴了微前端（如 single-spa/qiankun）的设计心智，将公告作为独立插件进行加载、更新和卸载，通过 init 阶段统一拉取配置与策略，实现多环境下的安全、灵活、可观测的公告投放能力。\",\n  \"keyPoints\": [\n    \"采用插件化架构，支持公告热插拔、灰度发布与秒级回滚，降低上线风险\",\n    \"借鉴微前端生命周期设计，对公告插件执行 init → load → unload 的统一管控\",\n    \"通过沙箱机制隔离插件作用域，避免样式/脚本冲突，保障宿主稳定性\",\n    \"实施版本治理与依赖管理，结合配置开关实现精细化灰度策略\",\n    \"统一多宿主接入协议，使同一套公告插件可适配不同平台与框架\"\n  ],\n  \"keywords\": [\"",
-      "keyPoints": [],
-      "keywords": [],
-      "techStack": [],
-      "difficulty": "未分级",
-      "contentType": "综合"
+      "summary": "这是一个跨平台公告插件系统，核心设计目标是实现“可热插拔、可灰度、可回滚”的前端公告组件。系统重点解决生命周期管理、隔离策略、依赖治理与多宿主接入协议等工程难题。它借鉴了 single-spa/qiankun 微前端框架的生命周期理念，定义了 init、load、mount、unmount 等阶段，确保插件在不同宿主应用中安全加载与卸载。通过版本治理和灰度策略，支持按比例或按用户维度逐步放量，并在出现问题时快速回滚。该系统广泛应用于需要在多个平台（如 Web、小程序）复用同一公告组件的场景，显著降低开发维护成本。",
+      "keyPoints": [
+        "支持热插拔、灰度发布与快速回滚的插件机制",
+        "生命周期管理对齐微前端模式（init/load/mount/unmount）",
+        "严格的隔离策略确保插件不影响宿主应用稳定性",
+        "多宿主接入协议实现一套代码多平台复用",
+        "版本治理与依赖管理便于迭代和问题追溯"
+      ],
+      "keywords": [
+        "插件系统",
+        "生命周期",
+        "隔离策略",
+        "灰度发布",
+        "版本治理"
+      ],
+      "techStack": [
+        "Rollup",
+        "qiankun",
+        "微前端",
+        "JavaScript"
+      ],
+      "difficulty": "进阶",
+      "contentType": "原理 + 实践"
     },
     "/interview-prep/project__dji-devops.md": {
       "summary": "{\n  \"summary\": \"该文档总结了大疆多个核心系统的重构实践，重点包括用户中心性能优化、售后RMS系统、跨平台公告插件及DevOps平台维护。项目以微前端架构（qiankun）实现多团队独立部署与统一治理，并通过Webpack工程化、HTTP/2优化、关键渲染路径梳理、骨架屏预渲染等手段系统性提升加载性能。此外，结合CI/CD流水线提升发布效率，形成可复用的优化方法（排查-定位-选择-验证）。这些经验在面试中常被用于考察HTTP原理、性能指标及工程化架构设计。\",\n  \"keyPoints\": [\n    \"通过微前端(qiankun)实现多团队独立部署和统一治理，解决多模块交付耦合问题\",\n    \"性能优化四板斧：骨架屏预渲染降低LCP、梳理关键渲染路径（CSS/字体/首图）、压缩包体、减少无效代码\",\n    \"借助Webpack工程化手段进行分包、Tree Shaking、资源内联等优化\",\n    \"配合CI/CD流水线实现自动化构建、测试与发布，提升交付效率\",\n    \"项目实践成为面试高频考点，涵盖HTTP原理、性能指标与方法论、技术选型对比\"\n  ],\n  \"keywords\": [\"微前端\", \"性能优化\", \"Webpack\", \"独立部署\", \"CI/CD\"],\n  \"techStack\": [\"",
@@ -1366,30 +1394,12 @@
       "contentType": "实践 + 原理"
     },
     "/interview-prep/tech__micro-frontend-qiankun.md": {
-      "summary": "该文档为面试大纲与技术复盘，聚焦大疆用户中心重构项目的性能优化方法论，涵盖从排查量化、骨架屏预渲染、关键渲染路径优化、包体压缩到 Webpack 工程化改造的完整优化链。同时结合大疆 DevOps 平台维护实践，阐述微前端架构下的独立部署、统一壳能力及资源隔离与共享策略，并提及跨平台公告插件、售后 RMS 系统等场景。整体展示了从具体业务优化到底层工程架构的思考与应用。",
-      "keyPoints": [
-        "前端性能优化“四板斧”：排查量化 → 可见优化（骨架屏/LCP）→ 减阻塞（CRP）→ 降下载成本（包体/代码分层）",
-        "大疆用户中心重构通过 HTTP 原理与 Webpack 工程化实现加载速度提升，沉淀可复用的优化方法论",
-        "微前端落地实践：统一主应用壳能力（鉴权、路由、菜单），子应用独立部署与回滚，平衡样式隔离与公共依赖共享",
-        "面试常考知识点串联：从“为什么变快”倒推 HTTP 缓存、资源优先级、Tree Shaking 等原理",
-        "事故应对与架构改进思路：强调问题定位、回滚机制及工程化边界调整"
-      ],
-      "keywords": [
-        "性能优化",
-        "微前端",
-        "Webpack",
-        "关键渲染路径",
-        "骨架屏"
-      ],
-      "techStack": [
-        "Webpack",
-        "React/Vue",
-        "Micro-Frontend",
-        "DevOps",
-        "XDR"
-      ],
-      "difficulty": "进阶",
-      "contentType": "实践 + 原理"
+      "summary": "生成失败，请稍后重试",
+      "keyPoints": [],
+      "keywords": [],
+      "techStack": [],
+      "difficulty": "未分级",
+      "contentType": "综合"
     },
     "/interview-prep/tech__performance.md": {
       "summary": "文档系统梳理了现代前端性能优化的完整体系，涵盖关键性能指标（LCP、FCP、TTI、CLS、INP）和首屏/白屏时间等核心概念的解析，介绍了基于Performance/Network、Lighthouse、Web Vitals上报及Long Task分析的定位方法。重点阐述了关键渲染路径（CRP）优化、渐进式渲染（骨架屏/占位/分片）及资源优先级（preload/prefetch）等策略，并结合C端用户中心与B端RMS项目的实际落地，提出了基线建立、问题拆解（网络/资源/主线程/渲染/接口）及闭环治理（门禁+告警+复盘）的工程化方法论。",
@@ -1424,29 +1434,12 @@
       "contentType": "综合"
     },
     "/interview-prep/tech__rollup.md": {
-      "summary": "围绕大疆用户中心重构与跨平台公告插件等项目，面试大纲系统梳理了前端性能优化与工程化体系。核心包括：从量化排查到骨架屏预渲染降低LCP、梳理关键渲染路径（CRP）减少阻塞资源、压缩下载与解析成本等优化实践，并结合HTTP缓存与传输原理阐释性能提升；同时探讨Webpack多产物输出（ESM/CJS/UMD）、tree-shaking、external配置及兼容性矩阵，形成可复用的工程化方案。",
-      "keyPoints": [
-        "性能优化路径：量化排查→骨架屏降低LCP→CRP梳理→减少包体和无效代码",
-        "HTTP原理结合实践，从缓存、协商请求、传输层面解释性能提升原因",
-        "Webpack工程化：多产物输出、external控制依赖、tree-shaking与兼容性验证",
-        "方案选型需对比替代方案，明确工程化边界，记录版本与变更以控制breaking change",
-        "事故定位与回滚机制，强调可观测性和灰度策略"
-      ],
-      "keywords": [
-        "性能优化",
-        "LCP",
-        "关键渲染路径",
-        "Webpack",
-        "工程化"
-      ],
-      "techStack": [
-        "Webpack",
-        "HTTP协议",
-        "前端性能监控",
-        "跨平台插件开发"
-      ],
-      "difficulty": "进阶",
-      "contentType": "原理 + 实践"
+      "summary": "本文是面试准备材料，围绕大疆用户中心重构、售后RMS系统重构及跨平台公告插件系统等项目，提炼出性能优化和工程化面试要点。核心关注性能优化方法论：通过骨架屏预渲染降低LCP、梳理关键渲染路径减少阻塞、压缩包体与代码分割降低下载解析成本，并以“优化四板斧”串联排查、定位、选择、验证全流程。工程化方面突出Webpack架构，设计多产物输出（ESM/CJS/UMD）以适配各类集成场景，并控制外部依赖与兼容性矩阵。同时给出面试追问策略，如方案选型理由、故障定位与回滚、架构改进等，帮助候选人系统梳理项目经验，提高技术面试的应对能力。",
+      "keyPoints": [],
+      "keywords": [],
+      "techStack": [],
+      "difficulty": "未分级",
+      "contentType": "综合"
     },
     "/interview-prep/tech__typescript.md": {
       "summary": "本文围绕大疆用户中心重构等大型Web项目，系统梳理了前端性能优化的核心方法论与关键技术。内容涵盖从性能指标（如LCP）的量化排查，到骨架屏预渲染、关键渲染路径（CRP）优化的实战方案，再到通过Webpack工程化手段减少代码包体积与解析成本的具体策略。此外，还涉及HTTP协议（如缓存、连接复用）对加载性能的深层影响，以及如何将优化串联为“排查→定位→选择→验证”的闭环体系，适用于高并发、重交互场景下的性能调优与面试准备。",
@@ -1658,7 +1651,7 @@
       "contentType": "实践 + 概念"
     },
     "/job-description/ASK_RECORD_KEY.md": {
-      "summary": "生成失败，请稍后重试",
+      "summary": "本文档围绕大疆用户中心重构项目，总结前端性能优化的两个核心方案：骨架屏和core‑js/polyfill策略。骨架屏旨在解决首屏白屏感知，通过服务端预渲染或构建时生成骨架占位，保持与真实内容尺寸一致，从而提升LCP并避免CLS；验证依赖RUM指标与慢网测试。polyfill优化强调按浏览器兼容矩阵按需注入，通过browserslist固定目标范围，避免全量引入导致包体积膨胀和解析执行变慢。两者结合改善了首屏加载体验和资源效率。",
       "keyPoints": [],
       "keywords": [],
       "techStack": [],
@@ -2419,7 +2412,7 @@
       "contentType": "原理 + 实践"
     },
     "/react/react16.md": {
-      "summary": "{\n  \"summary\": \"React 16 引入了革命性的 Fiber 架构，将同步递归调和转变为可中断、可恢复的增量渲染机制，利用浏览器空闲时间分片执行，并支持优先级调度，解决了长任务阻塞主线程导致的卡顿问题。同时新增错误边界特性，通过 componentDidCatch 生命周期优雅捕获子组件错误，避免整个应用白屏。这些底层革新为后续的异步渲染、Concurrent Mode 和 Suspense 奠定了基础，是现代 React 开发的核心支柱。\",\n  \"keyPoints\": [\n    \"Fiber 架构将同步递归更新改为可中断的增量渲染，提升 UI 响应性\",\n    \"基于 Fiber 的优先级",
+      "summary": "生成失败，请稍后重试",
       "keyPoints": [],
       "keywords": [],
       "techStack": [],
