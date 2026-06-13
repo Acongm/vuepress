@@ -16,6 +16,19 @@ function sanitizeEnvUrl(value: string | undefined, fallback: string) {
     .replace(/^(https?):\/(?!\/)/i, '$1://')
 }
 
+if (isProduction) {
+  const summaryUrl = sanitizeEnvUrl(
+    process.env.VUEPRESS_AI_SUMMARY_API,
+    'https://api.acongm.com/api/ai/summary'
+  )
+  const chatUrl = sanitizeEnvUrl(
+    process.env.VUEPRESS_AI_CHAT_API,
+    'https://api.acongm.com/api/ai/chat'
+  )
+  console.log('[ai-env] summary API:', summaryUrl)
+  console.log('[ai-env] chat API:', chatUrl)
+}
+
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',

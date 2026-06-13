@@ -41,6 +41,14 @@ export default {
     }
   },
 
+  mounted() {
+    window.addEventListener('keydown', this.handleKeydown)
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKeydown)
+  },
+
   watch: {
     '$page.path'() {
       if (aiPanelState.panelOpen.value) {
@@ -52,6 +60,12 @@ export default {
   },
 
   methods: {
+    handleKeydown(event) {
+      if (event.key === 'Escape' && aiPanelState.panelOpen.value) {
+        aiPanelState.closePanel()
+      }
+    },
+
     closePanel() {
       aiPanelState.closePanel()
     },

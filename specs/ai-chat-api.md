@@ -98,3 +98,4 @@ HTTP 状态码为非 2xx。
 
 - `VUEPRESS_AI_CHAT_API`
 - `VUEPRESS_AI_SUMMARY_API`
+- 摘要接口详见 [`specs/ai-summary-api.md`](../specs/ai-summary-api.md)

@@ -4,9 +4,10 @@
       v-if="!panelOpen"
       class="ai-assist-fab"
       type="button"
-      title="AI 内容提炼"
+      :title="fabTitle"
       @click="openPanel"
     >
+      <span v-if="prefetchBadge" class="ai-assist-fab__badge" :class="prefetchBadge" />
       <svg class="ai-assist-fab__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path
           stroke-linecap="round"
@@ -22,6 +23,12 @@
 
 <script>
 import { aiPanelState } from '../../composables/useAiPanelState.js'
+import {
+  getPrefetchError,
+  getPrefetchStatus,
+  retryPrefetch
+} from '../../utils/summary-prefetch.js'
+import { getPagePath } from '../../utils/summary-service.js'
 
 export default {
   name: 'AIAssistTrigger',
@@ -32,8 +39,45 @@ export default {
     }
   },
 
+  computed: {
+    pagePath() {
+      return getPagePath(this.$page.path, this.$site.base || '/')
+    },
+
+    prefetchBadge() {
+      const state = getPrefetchStatus(this.pagePath)
+      if (state === 'loading') {
+        return 'is-loading'
+      }
+      if (state === 'ready') {
+        return 'is-ready'
+      }
+      if (state === 'error') {
+        return 'is-error'
+      }
+      return ''
+    },
+
+    fabTitle() {
+      const state = getPrefetchStatus(this.pagePath)
+      if (state === 'loading') {
+        return 'AI 内容提炼（摘要生成中…）'
+      }
+      if (state === 'ready') {
+        return 'AI 内容提炼（摘要已就绪）'
+      }
+      if (state === 'error') {
+        return `AI 内容提炼（${getPrefetchError(this.pagePath)}）`
+      }
+      return 'AI 内容提炼'
+    }
+  },
+
   methods: {
     openPanel() {
+      if (getPrefetchStatus(this.pagePath) === 'error') {
+        retryPrefetch(this)
+      }
       aiPanelState.openPanel()
     }
   }
@@ -69,6 +113,28 @@ export default {
 .ai-assist-fab__icon {
   width: 20px;
   height: 20px;
+}
+
+.ai-assist-fab__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.ai-assist-fab__badge.is-loading {
+  background: #ffd54f;
+}
+
+.ai-assist-fab__badge.is-ready {
+  background: #4caf50;
+}
+
+.ai-assist-fab__badge.is-error {
+  background: #ef5350;
 }
 
 .ai-fab-fade-enter-active,

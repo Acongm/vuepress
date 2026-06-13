@@ -1,24 +1,8 @@
+import { normalizePagePath } from './summary-service.js'
+
 let moduleIndexCache = null
 
-export function normalizePagePath(pagePath, base = '/') {
-  let path = pagePath
-  if (base !== '/' && path.startsWith(base)) {
-    path = path.slice(base.length - 1)
-  }
-  if (path.endsWith('.html')) {
-    path = path.replace(/\.html$/, '.md')
-  }
-  if (!path.endsWith('.md') && !path.endsWith('/')) {
-    path = `${path}.md`
-  }
-  if (path.endsWith('/')) {
-    path = `${path}index.md`
-  }
-  if (!path.startsWith('/')) {
-    path = `/${path}`
-  }
-  return path
-}
+export { normalizePagePath }
 
 export function resolveModuleFromPath(pagePath, moduleIndex) {
   if (!moduleIndex?.modules) {

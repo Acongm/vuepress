@@ -7,6 +7,8 @@
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
     "build:github": "cross-env BUILD_ENV=/mm-notes/ npm run build",
+    "build:ai-data": "node tools/generate-summaries.mjs && node tools/generate-module-index.mjs",
+    "smoke:ai": "node tools/smoke-ai-bundle.mjs",
     "lint": "prettier --write **/*.{js,ts,scss,md,json}",
     "lint:lint-staged": "lint-staged",
     "postinstall": "husky install",

@@ -26,6 +26,14 @@
       </label>
     </div>
 
+    <div
+      v-if="prefetchError && !summaryLoading"
+      class="ai-chat-panel__alert"
+    >
+      <span>{{ prefetchError }}</span>
+      <button type="button" @click="retrySummary">重试</button>
+    </div>
+
     <div ref="messagesEl" class="ai-chat-panel__messages">
       <div
         v-if="summaryLoading"
@@ -107,10 +115,12 @@ import {
 import { formatSummaryMessage } from '../../utils/format-summary-message.js'
 import {
   getPrefetchedSummary,
+  getPrefetchError,
   hasShownSummaryTypewriter,
   isSummaryPrefetching,
   markSummaryTypewriterShown,
   prefetchPageSummary,
+  retryPrefetch,
   waitForPrefetch
 } from '../../utils/summary-prefetch.js'
 import {
@@ -125,6 +135,7 @@ import {
 
 const TYPEWRITER_INTERVAL_MS = 16
 const TYPEWRITER_MAX_MS = 8000
+const CHAT_STORAGE_PREFIX = 'ai-chat-messages:'
 
 export default {
   name: 'AIChatPanel',
@@ -147,6 +158,7 @@ export default {
       inputText: '',
       chatLoading: false,
       summaryLoading: false,
+      chatAbortController: null,
       typewriterTimer: null,
       typewriterIndex: null
     }
@@ -168,16 +180,22 @@ export default {
       return Array.isArray(tags) ? tags : []
     },
 
-    isTyping() {
-      return this.messages.some((message) => message.typing)
+    prefetchError() {
+      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
+      return getPrefetchError(pagePath)
     },
 
     canSend() {
+      const hasContext =
+        Boolean(this.pageContext) ||
+        (this.scope === 'module' && this.moduleDocs.length > 0) ||
+        this.enableWebSearch
+
       return (
         Boolean(this.inputText.trim()) &&
         !this.chatLoading &&
         !this.summaryLoading &&
-        Boolean(this.pageContext)
+        hasContext
       )
     }
   },
@@ -193,33 +211,134 @@ export default {
     },
 
     '$page.path'() {
+      this.abortChatRequest()
       this.resetConversation()
       if (this.active) {
         this.bootstrap()
       }
     },
 
-    scope() {
+    scope(nextScope, prevScope) {
+      if (prevScope && nextScope !== prevScope) {
+        this.clearChatMessagesKeepSummary()
+      }
       this.prepareContext()
     }
   },
 
   beforeUnmount() {
     this.clearTypewriter()
+    this.abortChatRequest()
   },
 
   methods: {
     async bootstrap() {
       await this.prepareContext()
       if (this.messages.length === 0) {
+        this.restoreChatMessages()
+      }
+      if (this.messages.length === 0) {
         await this.loadSummaryAsFirstMessage()
       }
     },
 
+    getChatStorageKey() {
+      return `${CHAT_STORAGE_PREFIX}${getPagePath(
+        this.$page.path,
+        this.$site.base || '/'
+      )}`
+    },
+
+    restoreChatMessages() {
+      if (typeof sessionStorage === 'undefined') {
+        return
+      }
+
+      try {
+        const raw = sessionStorage.getItem(this.getChatStorageKey())
+        if (!raw) {
+          return
+        }
+        const saved = JSON.parse(raw)
+        if (Array.isArray(saved) && saved.length) {
+          this.messages = saved
+        }
+      } catch {
+        // ignore
+      }
+    },
+
+    persistChatMessages() {
+      if (typeof sessionStorage === 'undefined') {
+        return
+      }
+
+      try {
+        const storable = this.messages
+          .filter((message) => !message.typing)
+          .map((message) => ({
+            id: message.id,
+            role: message.role,
+            content: message.content,
+            displayText: message.content,
+            typing: false,
+            isSummary: Boolean(message.isSummary),
+            sources: message.sources || []
+          }))
+        sessionStorage.setItem(
+          this.getChatStorageKey(),
+          JSON.stringify(storable)
+        )
+      } catch {
+        // ignore
+      }
+    },
+
+    clearChatStorage() {
+      if (typeof sessionStorage === 'undefined') {
+        return
+      }
+      sessionStorage.removeItem(this.getChatStorageKey())
+    },
+
+    clearChatMessagesKeepSummary() {
+      this.clearTypewriter()
+      this.messages = this.messages.filter((message) => message.isSummary)
+      this.inputText = ''
+      this.persistChatMessages()
+    },
+
+    abortChatRequest() {
+      if (this.chatAbortController) {
+        this.chatAbortController.abort()
+        this.chatAbortController = null
+      }
+    },
+
+    retrySummary() {
+      this.summaryLoading = true
+      retryPrefetch(this)
+        .then((result) => {
+          if (!result?.summary) {
+            return
+          }
+          const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
+          const hasSummary = this.messages.some((message) => message.isSummary)
+          if (!hasSummary) {
+            this.presentSummaryMessage(result.summary, pagePath, result.source)
+          }
+        })
+        .finally(() => {
+          this.summaryLoading = false
+        })
+    },
+
     resetConversation() {
       this.clearTypewriter()
+      this.abortChatRequest()
       this.messages = []
       this.inputText = ''
+      this.clearChatStorage()
     },
 
     async prepareContext() {
@@ -303,6 +422,7 @@ export default {
       }
 
       this.scrollToBottom()
+      this.persistChatMessages()
     },
 
     async sendMessage() {
@@ -322,6 +442,7 @@ export default {
 
       this.chatLoading = true
       this.scrollToBottom()
+      this.persistChatMessages()
 
       try {
         const reply = await this.askAboutPage(question)
@@ -338,6 +459,7 @@ export default {
         this.$nextTick(() => {
           this.startTypewriter(messageIndex)
           this.scrollToBottom()
+          this.persistChatMessages()
         })
       } catch (err) {
         this.messages.push({
@@ -348,6 +470,7 @@ export default {
           typing: false
         })
         this.scrollToBottom()
+        this.persistChatMessages()
       } finally {
         this.chatLoading = false
       }
@@ -360,7 +483,9 @@ export default {
             !message.typing &&
             message.content &&
             !message.isSummary &&
-            !String(message.id).startsWith('summary-')
+            !String(message.id).startsWith('summary-') &&
+            !String(message.id).startsWith('error-') &&
+            !String(message.id).startsWith('summary-error-')
         )
         .map((message) => ({
           role: message.role,
@@ -391,15 +516,27 @@ export default {
         enableWebSearch: this.enableWebSearch
       }
 
+      this.abortChatRequest()
+      const controller = new AbortController()
+      this.chatAbortController = controller
+
       let response
       try {
         response = await fetch(getAiChatApiUrl(), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: controller.signal
         })
-      } catch {
+      } catch (err) {
+        if (err?.name === 'AbortError') {
+          throw new Error('请求已取消')
+        }
         throw new Error('网络请求失败，请刷新页面后重试')
+      } finally {
+        if (this.chatAbortController === controller) {
+          this.chatAbortController = null
+        }
       }
 
       if (!response.ok) {
@@ -443,6 +580,7 @@ export default {
       this.typewriterTimer = setInterval(() => {
         if (Date.now() - startedAt > TYPEWRITER_MAX_MS) {
           this.clearTypewriter()
+          this.persistChatMessages()
           return
         }
 
@@ -452,6 +590,7 @@ export default {
 
         if (cursor >= fullText.length) {
           this.clearTypewriter()
+          this.persistChatMessages()
         }
       }, TYPEWRITER_INTERVAL_MS)
     },
@@ -501,6 +640,29 @@ export default {
   gap: 8px;
   margin-bottom: 12px;
   flex-shrink: 0;
+}
+
+.ai-chat-panel__alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: #fff4f4;
+  border: 1px solid #ffd6d6;
+  color: #b42318;
+  font-size: 12px;
+}
+
+.ai-chat-panel__alert button {
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: #fff;
+  color: #b42318;
+  cursor: pointer;
 }
 
 .ai-chat-panel__scope {

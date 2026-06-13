@@ -1,11 +1,9 @@
-<template>
-  <AIAssistTrigger />
-  <AIAssistLayout />
-</template>
-
-<script>
 import { isDocumentPage } from '../utils/is-document-page.js'
-import { prefetchPageSummary, clearSummarySession } from '../utils/summary-prefetch.js'
+import {
+  cancelPrefetch,
+  clearSummarySession,
+  prefetchPageSummary
+} from '../utils/summary-prefetch.js'
 import { getPagePath } from '../utils/summary-service.js'
 import AIAssistTrigger from './ai/AIAssistTrigger.vue'
 import AIAssistLayout from './ai/AIAssistLayout.vue'
@@ -32,6 +30,12 @@ export default {
     }
   },
 
+  beforeUnmount() {
+    const base = this.$site.base || '/'
+    const pagePath = getPagePath(this.$page.path, base)
+    cancelPrefetch(pagePath)
+  },
+
   methods: {
     schedulePrefetch() {
       if (!isDocumentPage(this.$page)) {
@@ -44,4 +48,3 @@ export default {
     }
   }
 }
-</script>

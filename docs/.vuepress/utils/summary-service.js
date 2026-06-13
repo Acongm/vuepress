@@ -7,6 +7,8 @@ export const DEFAULT_AI_CHAT_API = 'https://api.acongm.com/api/ai/chat'
 export const LIVE_CACHE_TTL_MS = 24 * 60 * 60 * 1000
 export const STATIC_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
+let staticSummariesPromise = null
+
 function normalizeApiUrl(url, fallback) {
   const cleaned = String(url || '')
     .trim()
@@ -39,6 +41,10 @@ export function getAiChatApiUrl() {
 }
 
 export function getPagePath(pagePath, base = '/') {
+  return normalizePagePath(pagePath, base)
+}
+
+export function normalizePagePath(pagePath, base = '/') {
   let path = pagePath
   if (base !== '/' && path.startsWith(base)) {
     path = path.slice(base.length - 1)
@@ -58,8 +64,8 @@ export function getPagePath(pagePath, base = '/') {
   return path
 }
 
-export function findSummaryByPath(summaries, pagePath) {
-  const variations = [
+export function getPagePathVariants(pagePath) {
+  return [
     pagePath,
     pagePath.replace(/\.md$/, '.html'),
     pagePath.replace(/^\//, ''),
@@ -67,8 +73,17 @@ export function findSummaryByPath(summaries, pagePath) {
     pagePath.replace(/\/index\.md$/, '/README.md'),
     pagePath.replace(/\/index\.md$/, '/')
   ]
+}
 
-  for (const variant of variations) {
+export function pathsMatch(left, right) {
+  const variants = new Set(getPagePathVariants(normalizePagePath(left)))
+  return getPagePathVariants(normalizePagePath(right)).some((variant) =>
+    variants.has(variant)
+  )
+}
+
+export function findSummaryByPath(summaries, pagePath) {
+  for (const variant of getPagePathVariants(pagePath)) {
     if (summaries[variant]) {
       return normalizeSummaryData(summaries[variant])
     }
@@ -102,23 +117,47 @@ export function getCachedSummary(path) {
 }
 
 export function setCachedSummary(path, summary, source = 'static') {
-  localStorage.setItem(
-    `ai-summary:${path}`,
-    JSON.stringify({
-      summary,
-      source,
-      timestamp: Date.now()
-    })
-  )
+  try {
+    localStorage.setItem(
+      `ai-summary:${path}`,
+      JSON.stringify({
+        summary,
+        source,
+        timestamp: Date.now()
+      })
+    )
+  } catch {
+    // ignore quota errors
+  }
 }
 
-export async function loadStaticSummary(withBase, pagePath) {
-  const response = await fetch(withBase('/summaries.json'))
-  if (!response.ok) {
-    return null
+export function clearStaticSummariesCache() {
+  staticSummariesPromise = null
+}
+
+export async function fetchStaticSummaries(withBase, options = {}) {
+  if (!staticSummariesPromise) {
+    staticSummariesPromise = fetch(withBase('/summaries.json'), {
+      signal: options.signal
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          return { summaries: {} }
+        }
+        const data = await response.json()
+        return { summaries: data.summaries || {}, meta: data._meta || {} }
+      })
+      .catch((err) => {
+        staticSummariesPromise = null
+        throw err
+      })
   }
 
-  const data = await response.json()
+  return staticSummariesPromise
+}
+
+export async function loadStaticSummary(withBase, pagePath, options = {}) {
+  const data = await fetchStaticSummaries(withBase, options)
   return findSummaryByPath(data.summaries || {}, pagePath)
 }
 
@@ -130,7 +169,8 @@ export async function loadLiveSummary(options) {
       path: options.pagePath,
       title: options.title,
       content: options.content
-    })
+    }),
+    signal: options.signal
   })
 
   if (!response.ok) {

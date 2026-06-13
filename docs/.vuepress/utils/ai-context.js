@@ -1,3 +1,5 @@
+import { pathsMatch } from './summary-service.js'
+
 const MAX_ARTICLE_CHARS = 8000
 const MAX_MODULE_CHARS = 4000
 
@@ -34,13 +36,13 @@ export function buildSystemPrompt(options) {
 
     let used = 0
     for (const doc of options.moduleDocs) {
-      if (doc.path === options.pagePath) {
+      if (pathsMatch(doc.path, options.pagePath)) {
         continue
       }
       const block = [
         `- ${doc.title} (${doc.path})`,
         doc.summary || '暂无摘要',
-        doc.keywords.length ? `关键词：${doc.keywords.join('、')}` : ''
+        doc.keywords?.length ? `关键词：${doc.keywords.join('、')}` : ''
       ]
         .filter(Boolean)
         .join('\n')

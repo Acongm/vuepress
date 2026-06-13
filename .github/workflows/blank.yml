@@ -39,9 +39,12 @@ jobs:
           AI_MODEL: deepseek-v4-pro
         run: |
           npm install
+          node tools/log-ai-env.mjs
+          node tools/restore-summary-cache.mjs
           node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 AI_API_KEY）"
           node tools/generate-module-index.mjs
           npm run build
+          node tools/smoke-ai-bundle.mjs
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
