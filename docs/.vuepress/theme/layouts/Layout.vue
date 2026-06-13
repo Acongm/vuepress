@@ -1,6 +1,11 @@
 <template>
   <Layout>
+    <template #page-top>
+      <AIAssistTrigger v-if="isDocPage" />
+    </template>
+
     <template #page-bottom>
+      <AIAssistLayout v-if="isDocPage" />
       <scriptx
         type="text/javascript"
         src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
@@ -19,23 +24,27 @@
       <scriptx type="text/javascript">
         (adsbygoogle = window.adsbygoogle || []).push({});
       </scriptx>
-      
-      <!-- AI 内容提炼按钮 -->
-      <AISummaryButton />
     </template>
   </Layout>
 </template>
 
 <script>
 import Layout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
-import { useThemeLocaleData } from '@vuepress/theme-default/lib/client/composables'
+import AIAssistTrigger from '../../components/ai/AIAssistTrigger.vue'
+import AIAssistLayout from '../../components/ai/AIAssistLayout.vue'
+import { isDocumentPage } from '../../utils/is-document-page.js'
 
 export default {
   components: {
-    Layout
+    Layout,
+    AIAssistTrigger,
+    AIAssistLayout
   },
-  setup(props) {
-    const themeLocale = useThemeLocaleData()
+
+  computed: {
+    isDocPage() {
+      return isDocumentPage(this.$page)
+    }
   }
 }
 </script>

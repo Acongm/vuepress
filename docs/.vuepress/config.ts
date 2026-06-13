@@ -7,11 +7,13 @@ const isVercel = process.env.VERCEL === '1'
 
 // Vercel 使用根路径；GitHub Pages 继续使用仓库子路径。
 const base = isVercel ? '/' : process.env.BUILD_ENV || '/vuepress/'
+const GA_ID = 'G-B5CNYTFPMD'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
   define: {
+    __GA_ID__: JSON.stringify(GA_ID),
     __AI_SUMMARY_API__: JSON.stringify(
       process.env.VUEPRESS_AI_SUMMARY_API ||
         'https://api.acongm.com/api/ai/summary'
@@ -600,7 +602,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/plugin-google-analytics',
       {
-        id: 'G-B5CNYTFPMD'
+        id: GA_ID
       }
     ],
     ['@vuepress/plugin-pwa'],

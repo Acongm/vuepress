@@ -81,13 +81,43 @@ function getAiConfig() {
   }
 }
 
-function parseSummaryResponse(rawContent) {
-  let jsonStr = rawContent.trim()
-  const jsonMatch = rawContent.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/)
+function extractJsonString(rawContent) {
+  const trimmed = rawContent.trim()
+  const jsonMatch = trimmed.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/)
   if (jsonMatch) {
-    jsonStr = jsonMatch[1].trim()
+    return jsonMatch[1].trim()
   }
+  const objectMatch = trimmed.match(/\{[\s\S]*\}/)
+  if (objectMatch) {
+    return objectMatch[0]
+  }
+  return trimmed
+}
 
+function extractFieldWithRegex(rawContent, field) {
+  const pattern =
+    field === 'summary'
+      ? /"summary"\s*:\s*"((?:\\.|[^"\\])*)"/
+      : new RegExp(`"${field}"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"`)
+  const match = rawContent.match(pattern)
+  if (!match) {
+    return ''
+  }
+  return match[1].replace(/\\"/g, '"').replace(/\\n/g, '\n').trim()
+}
+
+function extractArrayWithRegex(rawContent, field) {
+  const match = rawContent.match(new RegExp(`"${field}"\\s*:\\s*\\[([\\s\\S]*?)\\]`))
+  if (!match) {
+    return []
+  }
+  return [...match[1].matchAll(/"((?:\\.|[^"\\])*)"/g)]
+    .map((item) => item[1].replace(/\\"/g, '"').trim())
+    .filter(Boolean)
+}
+
+function parseSummaryResponse(rawContent) {
+  const jsonStr = extractJsonString(rawContent)
   const parsed = JSON.parse(jsonStr)
   if (!parsed.summary) {
     throw new Error('缺少 summary 字段')
@@ -101,6 +131,21 @@ function parseSummaryResponse(rawContent) {
     difficulty: parsed.difficulty || '未分级',
     contentType: parsed.contentType || '综合',
   }
+}
+
+function salvageSummaryResponse(rawContent) {
+  const summary = extractFieldWithRegex(rawContent, 'summary')
+  if (summary) {
+    return {
+      summary,
+      keyPoints: extractArrayWithRegex(rawContent, 'keyPoints'),
+      keywords: extractArrayWithRegex(rawContent, 'keywords'),
+      techStack: extractArrayWithRegex(rawContent, 'techStack'),
+      difficulty: extractFieldWithRegex(rawContent, 'difficulty') || '未分级',
+      contentType: extractFieldWithRegex(rawContent, 'contentType') || '综合',
+    }
+  }
+  return null
 }
 
 async function generateSummary(content, config) {
@@ -142,15 +187,13 @@ async function generateSummary(content, config) {
   try {
     return parseSummaryResponse(rawContent)
   } catch (parseError) {
-    log(`JSON 解析失败，使用原始内容: ${parseError.message}`, 'warning')
-    return {
-      summary: rawContent,
-      keyPoints: [],
-      keywords: [],
-      techStack: [],
-      difficulty: '未分级',
-      contentType: '综合',
+    const salvaged = salvageSummaryResponse(rawContent)
+    if (salvaged) {
+      log(`JSON 解析失败，已正则提取字段: ${parseError.message}`, 'warning')
+      return salvaged
     }
+    log(`JSON 解析失败，写入失败占位: ${parseError.message}`, 'warning')
+    return buildFailureSummary()
   }
 }
 

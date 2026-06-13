@@ -1,0 +1,944 @@
+{
+  "_meta": {
+    "generatedAt": "2026-06-13T11:16:41.800Z",
+    "moduleCount": 17
+  },
+  "modules": {
+    "JavaScript": {
+      "sidebarKey": "/JavaScript/",
+      "description": "JavaScript 核心语法、ES6+、异步编程、原型链等",
+      "files": [
+        {
+          "path": "/JavaScript/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/JavaScript/call、apply与bind.md",
+          "title": "call、apply与bind",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/JavaScript/js模拟bind方法.md",
+          "title": "js模拟bind方法",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/JavaScript/js模拟new操作.md",
+          "title": "js模拟new操作",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/JavaScript/执行上下文-作用域链-闭包.md",
+          "title": "执行上下文-作用域链-闭包",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/JavaScript/经典闭包处理.md",
+          "title": "经典闭包处理",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "TypeScript": {
+      "sidebarKey": "/TypeScript/",
+      "description": "TypeScript 类型系统、泛型、工具类型等",
+      "files": [
+        {
+          "path": "/TypeScript/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/TypeScript/Study.md",
+          "title": "Study",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "react": {
+      "sidebarKey": "/react/",
+      "description": "React 框架、Hooks、状态管理、性能优化等",
+      "files": [
+        {
+          "path": "/react/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/react/class-hooks.md",
+          "title": "class-hooks",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/react/react-render.md",
+          "title": "react-render",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/react/react16.md",
+          "title": "react16",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/react/react17.md",
+          "title": "react17",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/react/react18.md",
+          "title": "react18",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "vue": {
+      "sidebarKey": "/vue/",
+      "description": "Vue 框架、组合式 API、响应式原理等",
+      "files": [
+        {
+          "path": "/vue/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/code/Object.defineproperty.md",
+          "title": "Object.defineproperty",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/code/Proxy.md",
+          "title": "Proxy",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/code/proxy-observe.md",
+          "title": "proxy-observe",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/vue-render.md",
+          "title": "vue-render",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/vue2.md",
+          "title": "vue2",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/vue3.md",
+          "title": "vue3",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/vue_interview.md",
+          "title": "vue_interview",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/vue/vue_theory.md",
+          "title": "vue_theory",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "webpack": {
+      "sidebarKey": "/webpack/",
+      "description": "构建工具 Webpack、Vite、Rollup 等",
+      "files": [
+        {
+          "path": "/webpack/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/install/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/install/ni.md",
+          "title": "ni",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/install/npm.md",
+          "title": "npm",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/install/pnpm.md",
+          "title": "pnpm",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/install/yarn.md",
+          "title": "yarn",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/vite-架构及原理.md",
+          "title": "vite-架构及原理",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/vite-知识梳理.md",
+          "title": "vite-知识梳理",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/webpack-vite-rollup.md",
+          "title": "webpack-vite-rollup",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/打包工具.md",
+          "title": "打包工具",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/架构及原理.md",
+          "title": "架构及原理",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/webpack/知识梳理.md",
+          "title": "知识梳理",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "css": {
+      "sidebarKey": "/css/",
+      "description": "CSS、SCSS、布局、动画等样式相关",
+      "files": [
+        {
+          "path": "/css/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/css/scss.md",
+          "title": "scss",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/css/skill.md",
+          "title": "skill",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "node": {
+      "sidebarKey": "/node/",
+      "description": "Node.js、npm、包管理、CLI 工具等",
+      "files": [
+        {
+          "path": "/node/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/node/npm.md",
+          "title": "npm",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/node/toolkit.md",
+          "title": "toolkit",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "performance": {
+      "sidebarKey": "/Performance/",
+      "description": "性能优化、监控、指标等",
+      "files": [
+        {
+          "path": "/performance/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "Pattern": {
+      "sidebarKey": "/Pattern/",
+      "description": "设计模式、通信模式、架构模式",
+      "files": [
+        {
+          "path": "/Pattern/BroadcastChannel/BroadcastBridge.md",
+          "title": "BroadcastBridge",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/BroadcastChannel/BroadcastSingleton.md",
+          "title": "BroadcastSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/BroadcastChannel/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/COMPARISON.md",
+          "title": "COMPARISON",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/CustomEvent/CustomEventBridge.md",
+          "title": "CustomEventBridge",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/CustomEvent/CustomEventSingleton.md",
+          "title": "CustomEventSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/CustomEvent/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/EventBus/EventBus.md",
+          "title": "EventBus",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/EventBus/EventBusSingleton.md",
+          "title": "EventBusSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/EventBus/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Observer/ObserverSingleton.md",
+          "title": "ObserverSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Observer/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Observer/Subject.md",
+          "title": "Subject",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ProxyStore/ProxyStore.md",
+          "title": "ProxyStore",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ProxyStore/ProxyStoreSingleton.md",
+          "title": "ProxyStoreSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ProxyStore/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ServiceRequest/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ServiceRequest/Registry.md",
+          "title": "Registry",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ServiceRequest/ServiceRequestRegistry.md",
+          "title": "ServiceRequestRegistry",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ServiceRequest/SharedStateBridge.md",
+          "title": "SharedStateBridge",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/ServiceRequest/SharedStateBridgeSingleton.md",
+          "title": "SharedStateBridgeSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Store/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Store/Store.md",
+          "title": "Store",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/Store/StoreSingleton.md",
+          "title": "StoreSingleton",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/Pattern/模式来源与类比.md",
+          "title": "模式来源与类比",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "git": {
+      "sidebarKey": "/git/",
+      "description": "Git 版本控制、工作流、命令等",
+      "files": [
+        {
+          "path": "/git/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/git/command.md",
+          "title": "command",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/git/commit.md",
+          "title": "commit",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "utils": {
+      "sidebarKey": "/utils/",
+      "description": "工具函数、正则、常用库等",
+      "files": [
+        {
+          "path": "/utils/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/utils/function.md",
+          "title": "function",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/utils/library.md",
+          "title": "library",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/utils/regexp.md",
+          "title": "regexp",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "issue": {
+      "sidebarKey": "/issue/",
+      "description": "踩坑记录、疑难杂症、兼容性问题",
+      "files": [
+        {
+          "path": "/issue/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/issue/h5.md",
+          "title": "h5",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/issue/pc.md",
+          "title": "pc",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "software": {
+      "sidebarKey": "/software/",
+      "description": "开发工具、软件配置、效率提升",
+      "files": [
+        {
+          "path": "/software/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/browser.md",
+          "title": "browser",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/claude-skills-guide.md",
+          "title": "claude-skills-guide",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/cross-platform.md",
+          "title": "cross-platform",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/mac.md",
+          "title": "mac",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/vscode.md",
+          "title": "vscode",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/webstorm.md",
+          "title": "webstorm",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/windows.md",
+          "title": "windows",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/software/zsh.md",
+          "title": "zsh",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "mark": {
+      "sidebarKey": "/mark/",
+      "description": "技能提炼、知识总结、专题整理",
+      "files": [
+        {
+          "path": "/mark/01-React核心原理-补充.md",
+          "title": "01-React核心原理-补充",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/01-React核心原理.md",
+          "title": "01-React核心原理",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/02-Webpack与构建工具.md",
+          "title": "02-Webpack与构建工具",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/03-性能优化.md",
+          "title": "03-性能优化",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/04-微前端.md",
+          "title": "04-微前端",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/05-低代码.md",
+          "title": "05-低代码",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/06-插件系统.md",
+          "title": "06-插件系统",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/07-NestJS与SSR.md",
+          "title": "07-NestJS与SSR",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/08-代码规范.md",
+          "title": "08-代码规范",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/09-Promise原理.md",
+          "title": "09-Promise原理",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/10-骨架屏.md",
+          "title": "10-骨架屏",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/11-HTTP与缓存.md",
+          "title": "11-HTTP与缓存",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/mark/React更新流程详解.md",
+          "title": "React更新流程详解",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "ai": {
+      "sidebarKey": "/ai/",
+      "description": "AI 工具、Skill、Agent、Prompt 工程等",
+      "files": [
+        {
+          "path": "/ai/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "interview-prep": {
+      "sidebarKey": "/interview-prep/",
+      "description": "面试准备、项目复盘、技术对比",
+      "files": [
+        {
+          "path": "/interview-prep/BLINDSPOTS.md",
+          "title": "BLINDSPOTS",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/INDEX.md",
+          "title": "INDEX",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/matrix__bundler-webpack-vite-rollup.md",
+          "title": "matrix__bundler-webpack-vite-rollup",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/matrix__cicd-release-strategy.md",
+          "title": "matrix__cicd-release-strategy",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/matrix__form-formily-rjsf-custom.md",
+          "title": "matrix__form-formily-rjsf-custom",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/matrix__lowcode-ssr-csr-export.md",
+          "title": "matrix__lowcode-ssr-csr-export",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/matrix__monorepo-lerna-nx.md",
+          "title": "matrix__monorepo-lerna-nx",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/project__announce-plugin.md",
+          "title": "project__announce-plugin",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/project__dji-devops.md",
+          "title": "project__dji-devops",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/project__dji-rms.md",
+          "title": "project__dji-rms",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/project__dji-user-center.md",
+          "title": "project__dji-user-center",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/project__xdr-dashboard-report.md",
+          "title": "project__xdr-dashboard-report",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__eslint-engineering.md",
+          "title": "tech__eslint-engineering",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__micro-frontend-qiankun.md",
+          "title": "tech__micro-frontend-qiankun",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__performance.md",
+          "title": "tech__performance",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__react.md",
+          "title": "tech__react",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__rollup.md",
+          "title": "tech__rollup",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__typescript.md",
+          "title": "tech__typescript",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__vite.md",
+          "title": "tech__vite",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/interview-prep/tech__webpack.md",
+          "title": "tech__webpack",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    },
+    "theory": {
+      "sidebarKey": "/theory/",
+      "description": "面试题、理论知识、原理解析",
+      "files": [
+        {
+          "path": "/theory/README.md",
+          "title": "README",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/interview-question/2025-04-28-analysis.md",
+          "title": "2025-04-28-analysis",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/interview-question/2025-04-28.md",
+          "title": "2025-04-28",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md",
+          "title": "01-大疆用户中心重构-面试技术大纲",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md",
+          "title": "02-大疆售后RMS系统重构-面试技术大纲",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md",
+          "title": "03-跨平台公告插件系统-面试技术大纲",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md",
+          "title": "04-大疆DevOps平台维护-面试技术大纲",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
+          "title": "05-XDR系统-魔方大屏+报表-面试技术大纲",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md",
+          "title": "06-大疆用户中心重构-hard-mode-面试题",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
+          "title": "07-大疆售后RMS系统重构-Hard-Mode-面试题",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
+          "title": "08-跨平台公告插件系统-Hard-Mode-面试题",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
+          "title": "09-DevOps平台-qiankun微前端-Hard-Mode-面试题",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
+          "title": "10-XDR系统-NestJS全栈-Hard-Mode-面试题",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
+          "title": "11-frontend-hard-mode-interview-原题提取-基于简历",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/Framework copy.md",
+          "title": "Framework copy",
+          "summary": "",
+          "keywords": []
+        },
+        {
+          "path": "/theory/job-description-lib/Framework.md",
+          "title": "Framework",
+          "summary": "",
+          "keywords": []
+        }
+      ]
+    }
+  }
+}

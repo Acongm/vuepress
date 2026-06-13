@@ -40,6 +40,7 @@ jobs:
         run: |
           npm install
           node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 AI_API_KEY）"
+          node tools/generate-module-index.mjs
           npm run build
 
       - name: Deploy to GitHub Pages
