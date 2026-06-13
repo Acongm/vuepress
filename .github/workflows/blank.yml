@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - copilot/organize-knowledge-base  # AI test 功能分支
+      - copilot/organize-knowledge-base
 
 env:
   TZ: Asia/Shanghai
@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  # 升级到 v4
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -22,22 +24,28 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Restore AI summary cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/ai-summaries
+          key: ai-summaries-${{ runner.os }}-${{ hashFiles('docs/**/*.md') }}
+          restore-keys: |
+            ai-summaries-${{ runner.os }}-
+
       - name: Install and Build
         env:
-          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}  # 从 Secrets 读取 API Key
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: https://api.deepseek.com
+          AI_MODEL: deepseek-v4-pro
         run: |
           npm install
-          
-          # 生成 AI 摘要（如果配置了 GLM_API_KEY）
-          # 如果未配置，会创建空的摘要文件，不影响构建
-          node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 GLM_API_KEY）"
-          
-          npm run build  # 确保输出目录是 vuepress
+          node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 AI_API_KEY）"
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.ACONGM_VUEPRESS }}  # 使用 PAT
+          token: ${{ secrets.ACONGM_VUEPRESS }}
           branch: gh-pages
           folder: vuepress
-          force: true  # 替代 force_orphan
+          force: true

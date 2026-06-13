@@ -4,6 +4,7 @@ dist
 vuepress
 .temp
 .cache
+.cache/ai-summaries
 
 # Log files
 npm-debug.log*

@@ -37,7 +37,7 @@
             <!-- 加载中 -->
             <div v-if="loading" class="loading-state">
               <div class="spinner"></div>
-              <p>AI 正在分析文档内容...</p>
+              <p>{{ loadingMessage }}</p>
             </div>
             
             <!-- 增强摘要内容 -->
@@ -138,8 +138,8 @@
               <svg class="info-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
               </svg>
-              <p>AI 摘要功能未启用</p>
-              <small>需要配置 GLM_API_KEY 环境变量</small>
+              <p>AI 摘要暂时不可用</p>
+              <small>请稍后重试，或检查 API 服务配置</small>
             </div>
           </div>
         </div>
@@ -149,6 +149,19 @@
 </template>
 
 <script>
+/* global __AI_SUMMARY_API__ */
+
+const DEFAULT_AI_SUMMARY_API = 'https://api.acongm.com/api/ai/summary'
+const LIVE_CACHE_TTL_MS = 24 * 60 * 60 * 1000
+const STATIC_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000
+
+function getAiSummaryApiUrl() {
+  if (typeof __AI_SUMMARY_API__ !== 'undefined' && __AI_SUMMARY_API__) {
+    return __AI_SUMMARY_API__
+  }
+  return DEFAULT_AI_SUMMARY_API
+}
+
 export default {
   name: 'AISummaryButton',
   
@@ -156,6 +169,7 @@ export default {
     return {
       showPanel: false,
       loading: false,
+      loadingMessage: '加载预生成摘要…',
       summaryData: null,
       error: null,
       enabled: true,
@@ -212,78 +226,30 @@ export default {
     
     async loadSummary() {
       this.loading = true
+      this.loadingMessage = '加载预生成摘要…'
       this.error = null
       this.summaryData = null
+      this.enabled = true
       
       try {
-        // 获取当前页面路径
         const pagePath = this.getPagePath()
         
-        // 调试：输出当前页面信息
-        console.log('[AI Summary Debug] Current page info:', {
-          rawPath: this.$page.path,
-          regularPath: this.$page.regularPath,
-          key: this.$page.key,
-          convertedPath: pagePath
-        })
-        
-        // 检查 localStorage 缓存
         const cached = this.getCachedSummary(pagePath)
         if (cached) {
           this.summaryData = cached
           this.checkIfEnhanced()
-          this.loading = false
           return
         }
         
-        // 加载预生成的摘要
-        // 使用 $withBase 方法确保路径正确（兼容 base 配置）
-        const summariesUrl = this.$withBase('/summaries.json')
-        const response = await fetch(summariesUrl)
-        if (!response.ok) {
-          throw new Error('无法加载摘要数据')
-        }
-        
-        const data = await response.json()
-        
-        // 调试：输出 JSON 数据
-        console.log('[AI Summary Debug] JSON data:', {
-          enabled: data._meta?.enabled,
-          enhanced: data._meta?.enhanced,
-          version: data._meta?.version,
-          totalFiles: data._meta?.totalFiles,
-          availableKeys: Object.keys(data.summaries || {}).slice(0, 5)
-        })
-        
-        // 检查是否启用
-        if (!data._meta || !data._meta.enabled) {
-          this.enabled = false
-          this.loading = false
+        const staticSummary = await this.loadStaticSummary(pagePath)
+        if (staticSummary) {
+          this.applySummary(pagePath, staticSummary, 'static')
           return
         }
         
-        // 检查是否是增强版本
-        this.isEnhanced = data._meta?.enhanced || false
-        
-        // 获取摘要 - 使用新的查找方法尝试多种路径变体
-        const summaryData = this.findSummaryByPath(data.summaries, pagePath)
-        
-        console.log('[AI Summary Debug] Summary lookup result:', {
-          searchKey: pagePath,
-          found: !!summaryData,
-          isEnhanced: this.isEnhanced,
-          hasKeyPoints: summaryData && typeof summaryData === 'object' && summaryData.keyPoints?.length > 0
-        })
-        
-        if (!summaryData) {
-          throw new Error('当前文档暂无摘要')
-        }
-        
-        this.summaryData = summaryData
-        this.checkIfEnhanced()
-        
-        // 缓存到 localStorage
-        this.setCachedSummary(pagePath, summaryData)
+        this.loadingMessage = '正在实时分析…'
+        const liveSummary = await this.loadLiveSummary(pagePath)
+        this.applySummary(pagePath, liveSummary, 'live')
         
       } catch (error) {
         console.error('加载摘要失败:', error)
@@ -291,6 +257,69 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+    
+    extractPageContent() {
+      const selectors = ['.theme-default-content', '.page-content', '.page']
+      for (const selector of selectors) {
+        const element = document.querySelector(selector)
+        if (element && element.innerText) {
+          return element.innerText.replace(/\s+/g, ' ').trim().slice(0, 8000)
+        }
+      }
+      return ''
+    },
+    
+    async loadStaticSummary(pagePath) {
+      const summariesUrl = this.$withBase('/summaries.json')
+      const response = await fetch(summariesUrl)
+      if (!response.ok) {
+        return null
+      }
+      
+      const data = await response.json()
+      this.isEnhanced = Boolean(data._meta?.enhanced)
+      return this.findSummaryByPath(data.summaries || {}, pagePath)
+    },
+    
+    async loadLiveSummary(pagePath) {
+      const content = this.extractPageContent()
+      if (!content || content.length < 50) {
+        throw new Error('页面内容太短，无法生成摘要')
+      }
+      
+      const response = await fetch(getAiSummaryApiUrl(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: pagePath,
+          title: this.$page.title,
+          content
+        })
+      })
+      
+      if (!response.ok) {
+        let message = '实时摘要请求失败'
+        try {
+          const errorBody = await response.json()
+          if (errorBody?.message) {
+            message = Array.isArray(errorBody.message)
+              ? errorBody.message.join(', ')
+              : errorBody.message
+          }
+        } catch (e) {
+          // ignore parse errors
+        }
+        throw new Error(message)
+      }
+      
+      return response.json()
+    },
+    
+    applySummary(pagePath, summaryData, source) {
+      this.summaryData = summaryData
+      this.checkIfEnhanced()
+      this.setCachedSummary(pagePath, summaryData, source)
     },
     
     checkIfEnhanced() {
@@ -360,9 +389,9 @@ export default {
       if (cached) {
         try {
           const data = JSON.parse(cached)
-          // 检查缓存是否过期（7天）
+          const ttl = data.source === 'live' ? LIVE_CACHE_TTL_MS : STATIC_CACHE_TTL_MS
           const age = Date.now() - data.timestamp
-          if (age < 7 * 24 * 60 * 60 * 1000) {
+          if (age < ttl) {
             return data.summary
           }
         } catch (e) {
@@ -373,10 +402,11 @@ export default {
       return null
     },
     
-    setCachedSummary(path, summary) {
+    setCachedSummary(path, summary, source = 'static') {
       const key = `ai-summary:${path}`
       const data = {
         summary,
+        source,
         timestamp: Date.now()
       }
       localStorage.setItem(key, JSON.stringify(data))

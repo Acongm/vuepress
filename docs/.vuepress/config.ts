@@ -11,6 +11,11 @@ const base = isVercel ? '/' : process.env.BUILD_ENV || '/vuepress/'
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
+  define: {
+    __AI_SUMMARY_API__: JSON.stringify(
+      process.env.VUEPRESS_AI_SUMMARY_API || 'https://api.acongm.com/api/ai/summary',
+    ),
+  },
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
   title: 'acongm',
