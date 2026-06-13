@@ -13,8 +13,12 @@ export default defineUserConfig<DefaultThemeOptions>({
   dest: './vuepress',
   define: {
     __AI_SUMMARY_API__: JSON.stringify(
-      process.env.VUEPRESS_AI_SUMMARY_API || 'https://api.acongm.com/api/ai/summary',
+      process.env.VUEPRESS_AI_SUMMARY_API ||
+        'https://api.acongm.com/api/ai/summary'
     ),
+    __AI_CHAT_API__: JSON.stringify(
+      process.env.VUEPRESS_AI_CHAT_API || 'https://api.acongm.com/api/ai/chat'
+    )
   },
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
