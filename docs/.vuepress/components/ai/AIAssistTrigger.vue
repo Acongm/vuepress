@@ -1,12 +1,13 @@
 <template>
-  <div class="ai-assist-trigger">
+  <Transition name="ai-fab-fade">
     <button
-      class="ai-assist-trigger__btn"
-      :class="{ 'is-active': panelOpen }"
+      v-if="!panelOpen"
+      class="ai-assist-fab"
       type="button"
-      @click="togglePanel"
+      title="AI 内容提炼"
+      @click="openPanel"
     >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+      <svg class="ai-assist-fab__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -14,10 +15,9 @@
           d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
         />
       </svg>
-      <span>{{ panelOpen ? '收起 AI 助手' : 'AI 助手' }}</span>
+      <span class="ai-assist-fab__text">AI 提炼</span>
     </button>
-    <span v-if="panelOpen" class="ai-assist-trigger__hint">文章与 AI 面板并排显示</span>
-  </div>
+  </Transition>
 </template>
 
 <script>
@@ -26,59 +26,70 @@ import { aiPanelState } from '../../composables/useAiPanelState.js'
 export default {
   name: 'AIAssistTrigger',
 
-  computed: {
-    panelOpen() {
-      return aiPanelState.panelOpen.value
+  setup() {
+    return {
+      panelOpen: aiPanelState.panelOpen
     }
   },
 
   methods: {
-    togglePanel() {
-      aiPanelState.togglePanel()
+    openPanel() {
+      aiPanelState.openPanel()
     }
   }
 }
 </script>
 
 <style scoped>
-.ai-assist-trigger {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e8ebf0;
-}
-
-.ai-assist-trigger__btn {
+.ai-assist-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 999;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border: 1px solid #d7dcf0;
-  border-radius: 999px;
-  background: #fff;
-  color: #4a56a6;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ai-assist-trigger__btn svg {
-  width: 18px;
-  height: 18px;
+.ai-assist-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
-.ai-assist-trigger__btn:hover,
-.ai-assist-trigger__btn.is-active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: transparent;
-  color: #fff;
+.ai-assist-fab__icon {
+  width: 20px;
+  height: 20px;
 }
 
-.ai-assist-trigger__hint {
-  font-size: 12px;
-  color: #7b8190;
+.ai-fab-fade-enter-active,
+.ai-fab-fade-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.ai-fab-fade-enter-from,
+.ai-fab-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+@media (max-width: 768px) {
+  .ai-assist-fab {
+    bottom: 60px;
+    right: 16px;
+  }
+
+  .ai-assist-fab__text {
+    display: none;
+  }
 }
 </style>

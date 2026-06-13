@@ -27,8 +27,16 @@
     </div>
 
     <div ref="messagesEl" class="ai-chat-panel__messages">
-      <div v-if="messages.length === 0" class="ai-chat-panel__empty">
-        基于{{ scopeLabel }}提问，我会结合文档内容回答。
+      <div
+        v-if="summaryLoading"
+        class="ai-chat-panel__message assistant"
+      >
+        <div class="ai-chat-panel__avatar">AI</div>
+        <div class="ai-chat-panel__bubble typing">
+          <span class="dot" />
+          <span class="dot" />
+          <span class="dot" />
+        </div>
       </div>
 
       <div
@@ -80,7 +88,7 @@
         v-model="inputText"
         rows="2"
         :placeholder="inputPlaceholder"
-        :disabled="chatLoading || isTyping"
+        :disabled="chatLoading || isTyping || summaryLoading"
         @keydown.enter.exact.prevent="sendMessage"
       />
       <button type="button" :disabled="!canSend" @click="sendMessage">
@@ -96,7 +104,16 @@ import {
   buildSystemPrompt,
   extractPageContent
 } from '../../utils/ai-context.js'
-import { getAiChatApiUrl, getPagePath } from '../../utils/summary-service.js'
+import { formatSummaryMessage } from '../../utils/format-summary-message.js'
+import {
+  getAiChatApiUrl,
+  getCachedSummary,
+  getPagePath,
+  loadLiveSummary,
+  loadStaticSummary,
+  setCachedSummary,
+  sourceLabel
+} from '../../utils/summary-service.js'
 import {
   loadModuleIndex,
   resolveModuleFromPath
@@ -124,6 +141,7 @@ export default {
       messages: [],
       inputText: '',
       chatLoading: false,
+      summaryLoading: false,
       typewriterTimer: null,
       typewriterIndex: null
     }
@@ -154,6 +172,7 @@ export default {
         Boolean(this.inputText.trim()) &&
         !this.chatLoading &&
         !this.isTyping &&
+        !this.summaryLoading &&
         Boolean(this.pageContext)
       )
     }
@@ -164,14 +183,16 @@ export default {
       immediate: true,
       handler(isActive) {
         if (isActive) {
-          this.prepareContext()
+          this.bootstrap()
         }
       }
     },
 
     '$page.path'() {
-      this.messages = []
-      this.prepareContext()
+      this.resetConversation()
+      if (this.active) {
+        this.bootstrap()
+      }
     },
 
     scope() {
@@ -184,6 +205,19 @@ export default {
   },
 
   methods: {
+    async bootstrap() {
+      await this.prepareContext()
+      if (this.messages.length === 0) {
+        await this.loadSummaryAsFirstMessage()
+      }
+    },
+
+    resetConversation() {
+      this.clearTypewriter()
+      this.messages = []
+      this.inputText = ''
+    },
+
     async prepareContext() {
       this.pageContext = extractPageContent()
       const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
@@ -195,6 +229,74 @@ export default {
       } else {
         this.moduleDocs = []
       }
+    },
+
+    async loadSummaryAsFirstMessage() {
+      if (this.summaryLoading) {
+        return
+      }
+
+      this.summaryLoading = true
+
+      try {
+        const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
+
+        const cached = getCachedSummary(pagePath)
+        if (cached) {
+          this.presentSummaryMessage(cached.summary, pagePath, cached.source)
+          return
+        }
+
+        const staticSummary = await loadStaticSummary(this.$withBase, pagePath)
+        if (staticSummary) {
+          this.presentSummaryMessage(staticSummary, pagePath, 'static')
+          return
+        }
+
+        const content = extractPageContent()
+        if (!content || content.length < 50) {
+          throw new Error('页面内容太短，无法生成摘要')
+        }
+
+        const liveSummary = await loadLiveSummary({
+          pagePath,
+          title: this.$page.title,
+          content
+        })
+        this.presentSummaryMessage(liveSummary, pagePath, 'live')
+      } catch (err) {
+        console.error('加载摘要失败:', err)
+        this.messages.push({
+          id: `summary-error-${Date.now()}`,
+          role: 'assistant',
+          content: err.message || '加载提炼内容失败，请稍后重试',
+          displayText: err.message || '加载提炼内容失败，请稍后重试',
+          typing: false
+        })
+        this.scrollToBottom()
+      } finally {
+        this.summaryLoading = false
+      }
+    },
+
+    presentSummaryMessage(summaryData, pagePath, source) {
+      setCachedSummary(pagePath, summaryData, source)
+      const text = formatSummaryMessage(summaryData, sourceLabel(source))
+      const messageIndex = this.messages.length
+
+      this.messages.push({
+        id: `summary-${pagePath}`,
+        role: 'assistant',
+        content: text,
+        displayText: '',
+        typing: true,
+        isSummary: true
+      })
+
+      this.$nextTick(() => {
+        this.startTypewriter(messageIndex)
+        this.scrollToBottom()
+      })
     },
 
     async sendMessage() {
@@ -247,7 +349,13 @@ export default {
 
     async askAboutPage(question) {
       const history = this.messages
-        .filter((message) => !message.typing && message.content)
+        .filter(
+          (message) =>
+            !message.typing &&
+            message.content &&
+            !message.isSummary &&
+            !String(message.id).startsWith('summary-')
+        )
         .map((message) => ({
           role: message.role,
           content: message.content
@@ -365,8 +473,10 @@ export default {
 .ai-chat-panel {
   display: flex;
   flex-direction: column;
+  flex: 1;
   min-height: 0;
-  height: 100%;
+  padding: 12px 16px 16px;
+  background: #fff;
 }
 
 .ai-chat-panel__toolbar {
@@ -375,12 +485,13 @@ export default {
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .ai-chat-panel__scope {
   display: inline-flex;
   padding: 2px;
-  border-radius: 10px;
+  border-radius: 0;
   background: #f0f2f8;
 }
 
@@ -390,7 +501,7 @@ export default {
   color: #5f6368;
   font-size: 12px;
   padding: 6px 10px;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
 }
 
@@ -410,19 +521,12 @@ export default {
 
 .ai-chat-panel__messages {
   flex: 1;
-  min-height: 180px;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding-right: 4px;
-}
-
-.ai-chat-panel__empty {
-  text-align: center;
-  color: #7b8190;
-  font-size: 13px;
-  padding: 24px 8px;
 }
 
 .ai-chat-panel__message {
@@ -455,14 +559,16 @@ export default {
 .ai-chat-panel__bubble {
   max-width: calc(100% - 40px);
   padding: 10px 12px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  background: #f5f7fb;
+  box-shadow: none;
+  border: 1px solid #e8ecf3;
 }
 
 .ai-chat-panel__message.user .ai-chat-panel__bubble {
   background: #667eea;
   color: #fff;
+  border-color: transparent;
 }
 
 .ai-chat-panel__text {
@@ -521,13 +627,14 @@ export default {
   display: flex;
   gap: 8px;
   margin-top: 12px;
+  flex-shrink: 0;
 }
 
 .ai-chat-panel__input textarea {
   flex: 1;
   resize: none;
   border: 1px solid #dfe3eb;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 8px 10px;
   font-size: 13px;
   font-family: inherit;
@@ -535,7 +642,7 @@ export default {
 
 .ai-chat-panel__input button {
   border: none;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 0 14px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;

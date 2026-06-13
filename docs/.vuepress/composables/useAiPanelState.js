@@ -1,8 +1,7 @@
 import { computed, reactive } from 'vue'
 
 const state = reactive({
-  panelOpen: false,
-  activeTab: 'summary'
+  panelOpen: false
 })
 
 const STORAGE_KEY = 'aiSummaryPanelOpen'
@@ -41,21 +40,12 @@ function createPanelApi() {
     }
   })
 
-  const activeTab = computed({
-    get: () => state.activeTab,
-    set: (value) => {
-      state.activeTab = value
-    }
-  })
-
   return {
     panelOpen,
-    activeTab,
     togglePanel() {
       panelOpen.value = !panelOpen.value
     },
-    openPanel(tab = 'summary') {
-      activeTab.value = tab
+    openPanel() {
       panelOpen.value = true
     },
     closePanel() {
@@ -63,8 +53,7 @@ function createPanelApi() {
     },
     initPanelFromStorage() {
       if (readStoredOpen()) {
-        state.panelOpen = true
-        syncPageSplitClass(true)
+        panelOpen.value = true
       }
     },
     syncPageSplitClass

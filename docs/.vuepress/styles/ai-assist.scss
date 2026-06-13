@@ -20,12 +20,6 @@
   display: none;
 }
 
-.page.ai-split-active .page-meta ~ .ai-assist-trigger,
-.page.ai-split-active .theme-default-content ~ .ai-assist-trigger,
-.page.ai-split-active .ai-assist-trigger {
-  grid-column: 1;
-}
-
 @media (max-width: 960px) {
   .page.ai-split-active {
     grid-template-columns: 1fr;

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="panelOpen" class="ai-assist-root">
+  <div v-show="panelOpen" class="ai-assist-root">
     <aside class="ai-assist-panel" aria-label="AI 阅读助手">
       <div class="ai-assist-panel__header">
         <div>
@@ -11,62 +11,32 @@
         </button>
       </div>
 
-      <div class="ai-assist-panel__tabs">
-        <button
-          type="button"
-          class="ai-assist-panel__tab"
-          :class="{ 'is-active': activeTab === 'summary' }"
-          @click="setActiveTab('summary')"
-        >
-          内容提炼
-        </button>
-        <button
-          type="button"
-          class="ai-assist-panel__tab"
-          :class="{ 'is-active': activeTab === 'chat' }"
-          @click="setActiveTab('chat')"
-        >
-          问答对话
-        </button>
-      </div>
-
-      <div class="ai-assist-panel__body">
-        <AISummaryCard v-if="activeTab === 'summary'" :active="true" />
-        <AIChatPanel v-if="activeTab === 'chat'" :active="true" />
-      </div>
+      <AIChatPanel class="ai-assist-panel__body" :active="panelOpen" />
     </aside>
   </div>
 </template>
 
 <script>
 import { aiPanelState } from '../../composables/useAiPanelState.js'
-import AISummaryCard from './AISummaryCard.vue'
 import AIChatPanel from './AIChatPanel.vue'
 
 export default {
   name: 'AIAssistLayout',
 
   components: {
-    AISummaryCard,
     AIChatPanel
+  },
+
+  setup() {
+    return {
+      panelOpen: aiPanelState.panelOpen
+    }
   },
 
   computed: {
     pageTitle() {
       return this.$page?.title || '当前文档'
-    },
-
-    panelOpen() {
-      return aiPanelState.panelOpen.value
-    },
-
-    activeTab() {
-      return aiPanelState.activeTab.value
     }
-  },
-
-  mounted() {
-    aiPanelState.initPanelFromStorage()
   },
 
   watch: {
@@ -82,10 +52,6 @@ export default {
   methods: {
     closePanel() {
       aiPanelState.closePanel()
-    },
-
-    setActiveTab(tab) {
-      aiPanelState.activeTab.value = tab
     }
   }
 }
@@ -100,11 +66,12 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-height: calc(100vh - var(--navbar-height, 3.6rem) - 24px);
+  height: calc(100vh - var(--navbar-height, 3.6rem) - 12px);
+  max-height: calc(100vh - var(--navbar-height, 3.6rem) - 12px);
   border: 1px solid #e4e8f2;
-  border-radius: 16px;
-  background: #f8f9fd;
-  box-shadow: 0 8px 24px rgba(74, 86, 166, 0.08);
+  border-radius: 0;
+  background: #f5f7fb;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
@@ -115,6 +82,7 @@ export default {
   padding: 14px 16px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
+  flex-shrink: 0;
 }
 
 .ai-assist-panel__header h3 {
@@ -130,7 +98,7 @@ export default {
 
 .ai-assist-panel__close {
   border: none;
-  border-radius: 999px;
+  border-radius: 0;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
@@ -138,33 +106,8 @@ export default {
   flex-shrink: 0;
 }
 
-.ai-assist-panel__tabs {
-  display: flex;
-  gap: 8px;
-  padding: 12px 16px 0;
-}
-
-.ai-assist-panel__tab {
-  border: none;
-  background: transparent;
-  color: #5f6368;
-  font-size: 13px;
-  padding: 8px 12px;
-  border-radius: 10px 10px 0 0;
-  cursor: pointer;
-}
-
-.ai-assist-panel__tab.is-active {
-  background: #fff;
-  color: #4a56a6;
-  font-weight: 600;
-}
-
 .ai-assist-panel__body {
   flex: 1;
-  min-height: 320px;
-  overflow: auto;
-  padding: 16px;
-  background: #fff;
+  min-height: 0;
 }
 </style>
