@@ -139,6 +139,9 @@ export function sourceLabel(source) {
   if (source === 'live') {
     return '实时生成'
   }
+  if (source === 'local') {
+    return '页面提取'
+  }
   if (source === 'cache') {
     return '本地缓存'
   }

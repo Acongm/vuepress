@@ -1,5 +1,5 @@
 <template>
-  <div v-show="panelOpen" class="ai-assist-root">
+  <div v-if="panelOpen" class="ai-assist-root">
     <aside class="ai-assist-panel" aria-label="AI 阅读助手">
       <div class="ai-assist-panel__header">
         <div>
@@ -98,7 +98,7 @@ export default {
 
 .ai-assist-panel__close {
   border: none;
-  border-radius: 0;
+  border-radius: 4px;
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.18);
   color: #fff;

@@ -106,6 +106,10 @@ import {
 } from '../../utils/ai-context.js'
 import { formatSummaryMessage } from '../../utils/format-summary-message.js'
 import {
+  buildLocalFallbackSummary,
+  shouldTryLiveSummary
+} from '../../utils/build-local-summary.js'
+import {
   getAiChatApiUrl,
   getCachedSummary,
   getPagePath,
@@ -254,6 +258,20 @@ export default {
         }
 
         const content = extractPageContent()
+        const localSummary = buildLocalFallbackSummary({
+          title: this.$page.title,
+          content,
+          tags: this.pageTags
+        })
+        if (localSummary) {
+          this.presentSummaryMessage(localSummary, pagePath, 'local')
+          return
+        }
+
+        if (!shouldTryLiveSummary()) {
+          throw new Error('暂无预生成摘要，已尝试从页面提取但内容不足')
+        }
+
         if (!content || content.length < 50) {
           throw new Error('页面内容太短，无法生成摘要')
         }
@@ -491,7 +509,7 @@ export default {
 .ai-chat-panel__scope {
   display: inline-flex;
   padding: 2px;
-  border-radius: 0;
+  border-radius: 4px;
   background: #f0f2f8;
 }
 
@@ -501,7 +519,7 @@ export default {
   color: #5f6368;
   font-size: 12px;
   padding: 6px 10px;
-  border-radius: 0;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -559,7 +577,7 @@ export default {
 .ai-chat-panel__bubble {
   max-width: calc(100% - 40px);
   padding: 10px 12px;
-  border-radius: 0;
+  border-radius: 4px;
   background: #f5f7fb;
   box-shadow: none;
   border: 1px solid #e8ecf3;
@@ -634,7 +652,7 @@ export default {
   flex: 1;
   resize: none;
   border: 1px solid #dfe3eb;
-  border-radius: 0;
+  border-radius: 4px;
   padding: 8px 10px;
   font-size: 13px;
   font-family: inherit;
@@ -642,7 +660,7 @@ export default {
 
 .ai-chat-panel__input button {
   border: none;
-  border-radius: 0;
+  border-radius: 4px;
   padding: 0 14px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;

@@ -4,20 +4,8 @@ const state = reactive({
   panelOpen: false
 })
 
-const STORAGE_KEY = 'aiSummaryPanelOpen'
-
-function readStoredOpen() {
-  if (typeof sessionStorage === 'undefined') {
-    return false
-  }
-  return sessionStorage.getItem(STORAGE_KEY) === 'true'
-}
-
-function persistOpen(open) {
-  if (typeof sessionStorage === 'undefined') {
-    return
-  }
-  sessionStorage.setItem(STORAGE_KEY, String(open))
+if (typeof sessionStorage !== 'undefined') {
+  sessionStorage.removeItem('aiSummaryPanelOpen')
 }
 
 export function syncPageSplitClass(open) {
@@ -35,7 +23,6 @@ function createPanelApi() {
     get: () => state.panelOpen,
     set: (value) => {
       state.panelOpen = value
-      persistOpen(value)
       syncPageSplitClass(value)
     }
   })
@@ -50,11 +37,6 @@ function createPanelApi() {
     },
     closePanel() {
       panelOpen.value = false
-    },
-    initPanelFromStorage() {
-      if (readStoredOpen()) {
-        panelOpen.value = true
-      }
     },
     syncPageSplitClass
   }
