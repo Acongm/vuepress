@@ -13,6 +13,7 @@ export function syncPageSplitClass(open) {
     return
   }
 
+  document.documentElement.classList.toggle('ai-assist-open', open)
   document.querySelectorAll('.page').forEach((page) => {
     page.classList.toggle('ai-split-active', open)
   })
@@ -23,7 +24,9 @@ function createPanelApi() {
     get: () => state.panelOpen,
     set: (value) => {
       state.panelOpen = value
-      syncPageSplitClass(value)
+      if (value) {
+        syncPageSplitClass(true)
+      }
     }
   })
 
@@ -37,6 +40,9 @@ function createPanelApi() {
     },
     closePanel() {
       panelOpen.value = false
+    },
+    finishPanelClose() {
+      syncPageSplitClass(false)
     },
     syncPageSplitClass
   }

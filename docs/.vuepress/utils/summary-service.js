@@ -7,18 +7,34 @@ export const DEFAULT_AI_CHAT_API = 'https://api.acongm.com/api/ai/chat'
 export const LIVE_CACHE_TTL_MS = 24 * 60 * 60 * 1000
 export const STATIC_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
-export function getAiSummaryApiUrl() {
-  if (typeof __AI_SUMMARY_API__ !== 'undefined' && __AI_SUMMARY_API__) {
-    return __AI_SUMMARY_API__
+function normalizeApiUrl(url, fallback) {
+  const cleaned = String(url || '')
+    .trim()
+    .replace(/^['"]+|['"]+$/g, '')
+
+  if (/^https?:\/\//i.test(cleaned)) {
+    return cleaned
   }
-  return DEFAULT_AI_SUMMARY_API
+
+  return fallback
+}
+
+export function getAiSummaryApiUrl() {
+  const configured =
+    typeof __AI_SUMMARY_API__ !== 'undefined' && __AI_SUMMARY_API__
+      ? __AI_SUMMARY_API__
+      : ''
+
+  return normalizeApiUrl(configured, DEFAULT_AI_SUMMARY_API)
 }
 
 export function getAiChatApiUrl() {
-  if (typeof __AI_CHAT_API__ !== 'undefined' && __AI_CHAT_API__) {
-    return __AI_CHAT_API__
-  }
-  return DEFAULT_AI_CHAT_API
+  const configured =
+    typeof __AI_CHAT_API__ !== 'undefined' && __AI_CHAT_API__
+      ? __AI_CHAT_API__
+      : ''
+
+  return normalizeApiUrl(configured, DEFAULT_AI_CHAT_API)
 }
 
 export function getPagePath(pagePath, base = '/') {

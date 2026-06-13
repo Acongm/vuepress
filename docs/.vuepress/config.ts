@@ -9,17 +9,28 @@ const isVercel = process.env.VERCEL === '1'
 const base = isVercel ? '/' : process.env.BUILD_ENV || '/vuepress/'
 const GA_ID = 'G-B5CNYTFPMD'
 
+function sanitizeEnvUrl(value: string | undefined, fallback: string) {
+  return String(value || fallback)
+    .trim()
+    .replace(/^['"]+|['"]+$/g, '')
+}
+
 export default defineUserConfig<DefaultThemeOptions>({
   base,
   dest: './vuepress',
   define: {
     __GA_ID__: JSON.stringify(GA_ID),
     __AI_SUMMARY_API__: JSON.stringify(
-      process.env.VUEPRESS_AI_SUMMARY_API ||
+      sanitizeEnvUrl(
+        process.env.VUEPRESS_AI_SUMMARY_API,
         'https://api.acongm.com/api/ai/summary'
+      )
     ),
     __AI_CHAT_API__: JSON.stringify(
-      process.env.VUEPRESS_AI_CHAT_API || 'https://api.acongm.com/api/ai/chat'
+      sanitizeEnvUrl(
+        process.env.VUEPRESS_AI_CHAT_API,
+        'https://api.acongm.com/api/ai/chat'
+      )
     )
   },
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',

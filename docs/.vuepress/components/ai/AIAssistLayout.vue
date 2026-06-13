@@ -1,19 +1,21 @@
 <template>
-  <div v-if="panelOpen" class="ai-assist-root">
-    <aside class="ai-assist-panel" aria-label="AI 阅读助手">
-      <div class="ai-assist-panel__header">
-        <div>
-          <h3>AI 阅读助手</h3>
-          <p>{{ pageTitle }}</p>
+  <Transition name="ai-panel-slide" @after-leave="handleAfterLeave">
+    <div v-if="panelOpen" class="ai-assist-root">
+      <aside class="ai-assist-panel" aria-label="AI 阅读助手">
+        <div class="ai-assist-panel__header">
+          <div>
+            <h3>AI 阅读助手</h3>
+            <p>{{ pageTitle }}</p>
+          </div>
+          <button type="button" class="ai-assist-panel__close" @click="closePanel">
+            收起
+          </button>
         </div>
-        <button type="button" class="ai-assist-panel__close" @click="closePanel">
-          收起
-        </button>
-      </div>
 
-      <AIChatPanel class="ai-assist-panel__body" :active="panelOpen" />
-    </aside>
-  </div>
+        <AIChatPanel class="ai-assist-panel__body" :active="panelOpen" />
+      </aside>
+    </div>
+  </Transition>
 </template>
 
 <script>
@@ -52,6 +54,10 @@ export default {
   methods: {
     closePanel() {
       aiPanelState.closePanel()
+    },
+
+    handleAfterLeave() {
+      aiPanelState.finishPanelClose()
     }
   }
 }

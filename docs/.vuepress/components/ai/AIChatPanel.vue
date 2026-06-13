@@ -106,16 +106,16 @@ import {
 } from '../../utils/ai-context.js'
 import { formatSummaryMessage } from '../../utils/format-summary-message.js'
 import {
-  buildLocalFallbackSummary,
-  shouldTryLiveSummary
-} from '../../utils/build-local-summary.js'
+  getPrefetchedSummary,
+  hasShownSummaryTypewriter,
+  isSummaryPrefetching,
+  markSummaryTypewriterShown,
+  prefetchPageSummary,
+  waitForPrefetch
+} from '../../utils/summary-prefetch.js'
 import {
   getAiChatApiUrl,
-  getCachedSummary,
   getPagePath,
-  loadLiveSummary,
-  loadStaticSummary,
-  setCachedSummary,
   sourceLabel
 } from '../../utils/summary-service.js'
 import {
@@ -240,48 +240,27 @@ export default {
         return
       }
 
-      this.summaryLoading = true
+      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
+      let result = getPrefetchedSummary(pagePath)
+
+      if (!result) {
+        this.summaryLoading = true
+      }
 
       try {
-        const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-
-        const cached = getCachedSummary(pagePath)
-        if (cached) {
-          this.presentSummaryMessage(cached.summary, pagePath, cached.source)
-          return
+        if (!result && isSummaryPrefetching(pagePath)) {
+          result = await waitForPrefetch(pagePath)
         }
 
-        const staticSummary = await loadStaticSummary(this.$withBase, pagePath)
-        if (staticSummary) {
-          this.presentSummaryMessage(staticSummary, pagePath, 'static')
-          return
+        if (!result) {
+          result = await prefetchPageSummary(this)
         }
 
-        const content = extractPageContent()
-        const localSummary = buildLocalFallbackSummary({
-          title: this.$page.title,
-          content,
-          tags: this.pageTags
-        })
-        if (localSummary) {
-          this.presentSummaryMessage(localSummary, pagePath, 'local')
-          return
+        if (!result?.summary) {
+          throw new Error('暂无可用摘要，请稍后重试')
         }
 
-        if (!shouldTryLiveSummary()) {
-          throw new Error('暂无预生成摘要，已尝试从页面提取但内容不足')
-        }
-
-        if (!content || content.length < 50) {
-          throw new Error('页面内容太短，无法生成摘要')
-        }
-
-        const liveSummary = await loadLiveSummary({
-          pagePath,
-          title: this.$page.title,
-          content
-        })
-        this.presentSummaryMessage(liveSummary, pagePath, 'live')
+        this.presentSummaryMessage(result.summary, pagePath, result.source)
       } catch (err) {
         console.error('加载摘要失败:', err)
         this.messages.push({
@@ -298,23 +277,29 @@ export default {
     },
 
     presentSummaryMessage(summaryData, pagePath, source) {
-      setCachedSummary(pagePath, summaryData, source)
       const text = formatSummaryMessage(summaryData, sourceLabel(source))
+      const showTypewriter = !hasShownSummaryTypewriter(pagePath)
       const messageIndex = this.messages.length
 
       this.messages.push({
         id: `summary-${pagePath}`,
         role: 'assistant',
         content: text,
-        displayText: '',
-        typing: true,
+        displayText: showTypewriter ? '' : text,
+        typing: showTypewriter,
         isSummary: true
       })
 
-      this.$nextTick(() => {
-        this.startTypewriter(messageIndex)
-        this.scrollToBottom()
-      })
+      if (showTypewriter) {
+        markSummaryTypewriterShown(pagePath)
+        this.$nextTick(() => {
+          this.startTypewriter(messageIndex)
+          this.scrollToBottom()
+        })
+        return
+      }
+
+      this.scrollToBottom()
     },
 
     async sendMessage() {
