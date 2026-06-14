@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generatedAt": "2026-06-14T09:11:04.843Z",
+    "generatedAt": "2026-06-14T14:04:37.280Z",
     "moduleCount": 17
   },
   "modules": {
@@ -11,8 +11,14 @@
         {
           "path": "/JavaScript/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档系统梳理JavaScript核心基础知识，涵盖数据类型、类型判断、this指向、相等运算符、闭包、深浅拷贝、原型链以及ES6+特性（Class、模块化、Proxy、Generator）等常考面试点，适合用于面试准备和基础巩固。",
+          "keywords": [
+            "JavaScript",
+            "ES6",
+            "原型链",
+            "闭包",
+            "异步编程"
+          ]
         },
         {
           "path": "/JavaScript/call、apply与bind.md",
@@ -83,8 +89,14 @@
         {
           "path": "/TypeScript/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档介绍 TypeScript，它是 JavaScript 的超集，支持强类型、ES6 及面向对象编程。列举了其优点（编译时错误检查、易于学习等）和缺点（编译时间长、第三方库定义文件问题），并详细列出了 12 种基础类型，如 number、string、boolean、any、void 等。",
+          "keywords": [
+            "TypeScript",
+            "强类型",
+            "基础类型",
+            "编译时检查",
+            "JavaScript超集"
+          ]
         },
         {
           "path": "/TypeScript/Study.md",
@@ -107,8 +119,14 @@
         {
           "path": "/react/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "React 技术文档索引，指引至类组件与 Hooks 对比、React 17 特性及 React 18 新特性的详细说明。",
+          "keywords": [
+            "React",
+            "Hooks",
+            "Class Components",
+            "React 17",
+            "React 18"
+          ]
         },
         {
           "path": "/react/class-hooks.md",
@@ -179,8 +197,14 @@
         {
           "path": "/vue/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档介绍了两个Vue.js实用技巧：一是在父组件中监听子组件的生命周期钩子，通过@hook:事件实现；二是在methods中使用debounce或throttle函数，避免频繁触发方法，提升性能。文档提供了代码示例和相关源码链接。",
+          "keywords": [
+            "Vue",
+            "lifecycle hooks",
+            "debounce",
+            "throttle",
+            "methods"
+          ]
         },
         {
           "path": "/vue/code/Object.defineproperty.md",
@@ -263,14 +287,26 @@
         {
           "path": "/webpack/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档是Webpack和Vite相关的知识索引，列出了涵盖Webpack知识梳理、架构原理、打包工具对比（Webpack、Vite、Rollup）以及安装指南等文档的链接，便于快速查阅和学习。",
+          "keywords": [
+            "Webpack",
+            "Vite",
+            "打包工具",
+            "架构",
+            "知识梳理"
+          ]
         },
         {
           "path": "/webpack/install/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "文档介绍了Node.js包管理工具的概念与必要性，详细说明了npm和Yarn的特点、组成及优势。npm是全球最大包注册表，包含网站、注册表和CLI三部分；Yarn通过并行安装、离线缓存和lock文件提升了速度和安装统一性，并优化了命令语义。还描述了包安装的完整流程（preinstall、确定首层依赖、递归获取模块、扁平化、安装模块、执行生命周期），以及依赖关系的嵌套与扁平化处理，帮助管理复杂依赖。",
+          "keywords": [
+            "npm",
+            "Yarn",
+            "包管理",
+            "依赖",
+            "lock文件"
+          ]
         },
         {
           "path": "/webpack/install/ni.md",
@@ -323,8 +359,14 @@
         {
           "path": "/webpack/vite-架构及原理.md",
           "title": "vite-架构及原理",
-          "summary": "",
-          "keywords": []
+          "summary": "Vite 基于原生 ESM，开发时启动 Koa 服务器并利用 esbuild 预构建依赖，按需编译模块，无需打包，实现极速启动和模块级 HMR。生产构建采用 Rollup 完成 Tree-shaking、代码分割等优化。其插件系统扩展自 Rollup，提供统一钩子，兼顾开发与生产，相比 Webpack 配置更简化，适合现代浏览器下的高性能开发体验。",
+          "keywords": [
+            "Vite",
+            "原生ESM",
+            "esbuild",
+            "Rollup",
+            "HMR"
+          ]
         },
         {
           "path": "/webpack/vite-知识梳理.md",
@@ -395,8 +437,14 @@
         {
           "path": "/css/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档简要介绍了CSS中自定义滚动条样式的方法，主要涉及::-webkit-scrollbar伪元素的使用，并提供了相关代码示例和MDN官方参考链接。",
+          "keywords": [
+            "CSS",
+            "滚动条样式",
+            "::-webkit-scrollbar",
+            "WebKit",
+            "自定义滚动条"
+          ]
         },
         {
           "path": "/css/scss.md",
@@ -431,8 +479,14 @@
         {
           "path": "/node/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档是 Node.js 相关技术的索引页面，提供了 npm.md 和 toolkit.md 两个子文档的链接，用于快速导航至 npm 及工具包相关内容。",
+          "keywords": [
+            "Node.js",
+            "npm",
+            "toolkit",
+            "索引",
+            "文档导航"
+          ]
         },
         {
           "path": "/node/npm.md",
@@ -467,8 +521,14 @@
         {
           "path": "/performance/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文针对 Vue2 + Webpack3 单页应用，在限制大幅重构条件下，通过启用 TLS 1.3、DNS 预解析、关键资源预加载、删除未用 CSS、按需引入 Polyfill、取消登录页懒加载、优化字体渲染及添加骨架屏等手段，将首屏 FCP 从 1593ms 降至 1281ms，Lighthouse 评分由 30+ 提升至 70+，实现低风险高收益的性能优化。",
+          "keywords": [
+            "性能优化",
+            "Vue2",
+            "Webpack",
+            "FCP/LCP",
+            "首屏加载"
+          ]
         }
       ]
     },
@@ -503,8 +563,14 @@
         {
           "path": "/Pattern/BroadcastChannel/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文介绍了基于浏览器原生 Broadcast Channel API 的封装库 BroadcastBridge，提供了状态缓存、自动同步、跨标签页/iframe/Worker 的同源通信能力，并展示了 API 用法、React Hook 集成、自动同步机制及多个应用场景。",
+          "keywords": [
+            "BroadcastChannel",
+            "跨标签页通信",
+            "同源",
+            "自动同步",
+            "React Hook"
+          ]
         },
         {
           "path": "/Pattern/COMPARISON.md",
@@ -544,8 +610,14 @@
         {
           "path": "/Pattern/CustomEvent/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文介绍基于浏览器原生 CustomEvent 和 dispatchEvent API 实现的跨组件、跨框架通信方案。通过封装 CustomEventBridge 类，提供缓存、类型安全及便捷的订阅/发布接口（on、off、dispatch、once 等），支持 React Hook 和微前端场景，无需任何依赖，仅限同一页面内使用。",
+          "keywords": [
+            "自定义事件",
+            "跨框架通信",
+            "CustomEvent",
+            "发布订阅",
+            "微前端"
+          ]
         },
         {
           "path": "/Pattern/EventBus/EventBus.md",
@@ -568,8 +640,14 @@
         {
           "path": "/Pattern/EventBus/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "事件总线是一种集中式事件管理机制，通过发布/订阅模式实现组件间松耦合通信。它提供 on、emit、off、once 和 clear 等 API，支持事件缓存和立即触发。文档包括核心类设计、React Hook 示例、命名规范以及适用场景，并指出字符串事件名缺乏类型约束和调试困难等缺点。",
+          "keywords": [
+            "事件总线",
+            "发布/订阅",
+            "组件通信",
+            "解耦",
+            "事件管理"
+          ]
         },
         {
           "path": "/Pattern/Observer/ObserverSingleton.md",
@@ -615,8 +693,14 @@
         {
           "path": "/Pattern/ProxyStore/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "基于 ES6 Proxy 实现的响应式状态容器，可像操作普通对象一样操作状态并自动触发订阅者更新。该方案是 Vue 3 响应式系统和 Valtio 的核心原理，支持透明操作、自动响应、细粒度订阅和批量更新，但不支持 IE 且深层嵌套需额外处理。",
+          "keywords": [
+            "Proxy",
+            "响应式状态管理",
+            "Vue 3",
+            "Valtio",
+            "细粒度订阅"
+          ]
         },
         {
           "path": "/Pattern/README.md",
@@ -627,8 +711,14 @@
         {
           "path": "/Pattern/ServiceRequest/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档介绍了基于单例模式和发布订阅模式实现的工单系统状态管理与组件通信模块。详细说明了核心类Registry<T>、SharedStateBridge及SharedStateBridgeSingleton的架构，并提供了缓存、回调、跨组件数据共享等API用法，包含React Hooks集成示例和迁移指南，帮助开发者平稳替换旧模块。",
+          "keywords": [
+            "工单系统",
+            "状态管理",
+            "发布订阅",
+            "单例模式",
+            "React Hooks"
+          ]
         },
         {
           "path": "/Pattern/ServiceRequest/Registry.md",
@@ -705,8 +795,14 @@
         {
           "path": "/git/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档提供了Git的常用命令、提交类型规范、删除历史记录、同步fork上游更新、部署到GitHub Pages以及使用GitHub Actions自动部署的指南。内容涵盖从基础使用到持续集成配置，适合开发者参考。",
+          "keywords": [
+            "Git",
+            "GitHub",
+            "命令",
+            "提交规范",
+            "GitHub Actions"
+          ]
         },
         {
           "path": "/git/command.md",
@@ -741,8 +837,14 @@
         {
           "path": "/utils/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档是一个工具方法的索引README，主要列出三个子文档链接：正则表达式（regexp.md）、函数方法（function.md）和库方法（library.md），用于快速导航至对应的工具函数说明。",
+          "keywords": [
+            "工具方法",
+            "索引",
+            "README",
+            "正则表达式",
+            "函数库"
+          ]
         },
         {
           "path": "/utils/function.md",
@@ -789,8 +891,14 @@
         {
           "path": "/issue/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档是疑难杂症索引，引导至 h5.md 与 pc.md，分别记录移动端和桌面端的常见问题与解决方案。",
+          "keywords": [
+            "疑难杂症",
+            "索引",
+            "H5",
+            "PC",
+            "问题汇总"
+          ]
         },
         {
           "path": "/issue/h5.md",
@@ -825,8 +933,14 @@
         {
           "path": "/software/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "这是一个软件相关文档索引，汇总了跨平台、macOS、Windows、浏览器、VS Code、WebStorm、Zsh 等多个主题的子文档链接，便于用户快速导航。",
+          "keywords": [
+            "软件",
+            "索引",
+            "跨平台",
+            "开发工具",
+            "Shell"
+          ]
         },
         {
           "path": "/software/browser.md",
@@ -915,8 +1029,14 @@
         {
           "path": "/software/zsh.md",
           "title": "zsh",
-          "summary": "",
-          "keywords": []
+          "summary": "介绍了使用 oh-my-zsh 自定义 Zsh 的配置，包括主题（如 powerlevel10k）和插件（autojump、z、fast-syntax-highlighting、zsh-autosuggestions）的安装与用法，并提供了解决终端图标乱码的方法。",
+          "keywords": [
+            "zsh",
+            "oh-my-zsh",
+            "插件",
+            "主题",
+            "powerlevel10k"
+          ]
         }
       ]
     },
@@ -1065,8 +1185,14 @@
         {
           "path": "/mark/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "文档以STAR法则组织回答，针对前端性能优化、webpack构建、响应式开发、加载渲染速度、骨架屏等面试问题，提供从网络层（TLS 1.3、preconnect）、资源加载（代码分割、WebP）到渲染优化（骨架屏、稳定布局）的完整方案，并补充指标归因、风险控制等追问要点。",
+          "keywords": [
+            "性能优化",
+            "响应式",
+            "webpack",
+            "STAR法则",
+            "骨架屏"
+          ]
         },
         {
           "path": "/mark/React更新流程详解.md",
@@ -1089,8 +1215,14 @@
         {
           "path": "/ai/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档是一个AI主题的索引，涵盖AI Agent开发、Prompt工程、Copilot/Claude使用技巧、AI辅助开发工作流及LLM应用开发等内容，旨在提供相关工具、方法和实践指导。",
+          "keywords": [
+            "AI Agent",
+            "Prompt Engineering",
+            "Copilot",
+            "LLM",
+            "开发工作流"
+          ]
         }
       ]
     },
@@ -1125,8 +1257,14 @@
         {
           "path": "/interview-prep/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档为前端面试准备主索引，列出5个项目经历（大疆相关系统）、8个技术专项和5个横向对比矩阵，按优先级和类别组织，支持快速跳转至各卡片详情页。",
+          "keywords": [
+            "面试索引",
+            "前端面试准备",
+            "大疆项目",
+            "技术栈梳理",
+            "优先级队列"
+          ]
         },
         {
           "path": "/interview-prep/matrix__bundler-webpack-vite-rollup.md",
@@ -1275,8 +1413,14 @@
         {
           "path": "/interview-prep/tech__performance.md",
           "title": "tech__performance",
-          "summary": "",
-          "keywords": []
+          "summary": "从Web Vitals（LCP/INP/CLS）指标入手，讲解前端性能优化方法论。结合骨架屏、preload/prefetch、关键渲染路径等策略提升感知速度；通过Performance面板、Long Task分析与RUM数据定位瓶颈；引入性能预算与CI门禁形成治理闭环，并关联项目落地案例。",
+          "keywords": [
+            "Web Vitals",
+            "关键渲染路径",
+            "性能预算",
+            "骨架屏",
+            "LCP/INP/CLS"
+          ]
         },
         {
           "path": "/interview-prep/tech__react.md",
@@ -1329,8 +1473,14 @@
         {
           "path": "/interview-prep/tech__webpack.md",
           "title": "tech__webpack",
-          "summary": "",
-          "keywords": []
+          "summary": "本文围绕Webpack在大疆用户中心重构、RMS系统等复杂中后台项目中的应用，介绍了其以模块图为核心的打包原理、Loader与Plugin的职责区分、构建流程优化（拆包、持久化缓存、关键渲染路径）以及与Vite/Rollup的对比。重点阐述了如何通过工程化配置分层、hash策略、懒加载等手段提升性能，并强调在遗留系统与多团队协作中Webpack的稳定可控优势。",
+          "keywords": [
+            "Webpack",
+            "模块打包",
+            "性能优化",
+            "构建优化",
+            "关键渲染路径"
+          ]
         }
       ]
     },
@@ -1347,8 +1497,14 @@
         {
           "path": "/theory/interview-question/2025-04-28-analysis.md",
           "title": "2025-04-28-analysis",
-          "summary": "",
-          "keywords": []
+          "summary": "本文是一份前端面试演练文档，涵盖笔试预测（框架原理、工程化、性能优化、算法）、技术面试高频考点（Vue3响应式原理、微前端沙箱、低代码设计、构建优化、性能与内存排查）及行为面试应答策略。通过具体代码示例和项目案例，指导准备框架深度追问、工程化实践、架构设计能力，并强调使用STAR法则展现技术成果和软实力。",
+          "keywords": [
+            "前端面试",
+            "性能优化",
+            "微前端",
+            "架构设计",
+            "STAR法则"
+          ]
         },
         {
           "path": "/theory/interview-question/2025-04-28.md",
@@ -1377,8 +1533,14 @@
         {
           "path": "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md",
           "title": "02-大疆售后RMS系统重构-面试技术大纲",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档为大疆售后RMS系统重构的面试技术大纲，聚焦多人协作下的工程化治理。核心包括ESLint规范制定（React/TypeScript/模块化）、Prettier与ESLint分工、Umi落地方式、提交拦截与CI门禁等闭环流程，旨在提升中后台可维护性与团队效率。",
+          "keywords": [
+            "ESLint规范",
+            "工程化治理",
+            "多人协作",
+            "模块化",
+            "CI门禁"
+          ]
         },
         {
           "path": "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md",
@@ -1395,8 +1557,14 @@
         {
           "path": "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md",
           "title": "04-大疆DevOps平台维护-面试技术大纲",
-          "summary": "",
-          "keywords": []
+          "summary": "本文为大疆DevOps平台维护岗位的面试技术大纲，重点涵盖CI/CD流水线原理、Docker部署与发布策略、微前端选型及qiankun核心实现。内容涉及流水线触发、环境管理、镜像优化、质量门禁，以及微前端的隔离机制与通信方式。",
+          "keywords": [
+            "CI/CD",
+            "Docker",
+            "qiankun",
+            "微前端",
+            "面试大纲"
+          ]
         },
         {
           "path": "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
