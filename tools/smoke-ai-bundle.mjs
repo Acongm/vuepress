@@ -14,6 +14,10 @@ const CHAT_TAGS = resolve(
   __dirname,
   '../docs/.vuepress/utils/chat-v1-tags.js'
 )
+const ASSIST_STYLES = resolve(
+  __dirname,
+  '../docs/.vuepress/styles/ai-assist.scss'
+)
 
 const BAD_PATTERNS = [/fetch\(\s*["']\\"https?:\/\/api\.acongm\.com/]
 
@@ -58,6 +62,24 @@ function main() {
   }
   if (panelSource.includes('startTypewriter') || panelSource.includes('setInterval')) {
     console.error('[smoke-ai] fake answer typewriter is still present')
+    process.exit(1)
+  }
+
+  const layoutSource = readFileSync(ASSIST_STYLES, 'utf-8')
+  const layoutMarkers = [
+    '@media (min-width: 1180px)',
+    '@media (min-width: 768px) and (max-width: 1179px)',
+    '@media (max-width: 767px)',
+    'env(safe-area-inset-bottom)',
+    'prefers-reduced-motion',
+    'min(520px, 88vw)',
+    '76vh'
+  ]
+  const missingLayout = layoutMarkers.filter(
+    (marker) => !layoutSource.includes(marker)
+  )
+  if (missingLayout.length) {
+    console.error('[smoke-ai] missing responsive layout markers:', missingLayout.join(', '))
     process.exit(1)
   }
 
