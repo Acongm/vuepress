@@ -1,43 +1,12 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T15:05:28.028Z",
+  "generatedAt": "2026-06-14T15:29:14.136Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
     "extractVersion": "markdown-v1"
   },
   "files": {
-    "/ai/README.md": {
-      "sourceHash": "sha256:3381b2eb10e5d5a954a496d418b78900b8ddc0bbd29e58ca71c64c9c70a108e7",
-      "analysisHash": "sha256:4b2564cea65e44c6a0125c126f3ac35acb00a166a49ea2e5c37824c0fb798ecd",
-      "status": "success",
-      "summary": {
-        "summary": "该文档汇总了AI相关主题，包括AI Agent与Skill开发、Prompt Engineering、Copilot与Claude使用技巧、AI辅助开发工作流以及LLM应用开发，为开发者提供全面的AI实践指南。",
-        "keyPoints": [
-          "AI Agent 与 Skill 开发",
-          "Prompt Engineering",
-          "Copilot / Claude 使用技巧",
-          "AI 辅助开发工作流",
-          "LLM 应用开发"
-        ],
-        "keywords": [
-          "AI Agent",
-          "Prompt Engineering",
-          "Copilot",
-          "Claude",
-          "LLM"
-        ],
-        "techStack": [
-          "LLM",
-          "Copilot",
-          "Claude",
-          "AI Agent Frameworks"
-        ],
-        "difficulty": "中级",
-        "contentType": "overview"
-      },
-      "processedAt": "2026-06-14T14:37:48.959Z"
-    },
     "/css/README.md": {
       "sourceHash": "sha256:bb03aa7a9615fe419d21c325efe8cb3c3656fb6a937161715efe6eb6f1410f5e",
       "analysisHash": "sha256:83508befebe7ef24d3d967b08547faeb84f4ad5fd1e3596937beb4f5ea1f120c",
@@ -6817,17 +6786,49 @@
         "contentType": "overview"
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
+    },
+    "/ai/README.md": {
+      "sourceHash": "sha256:cb1f8ed8f1dea6018331670698520342a2c0de55a0e53cd11c2310b72dfbcf4e",
+      "analysisHash": "sha256:774240c51ef97787e8d186aef947b85d079377f9034285e7073937b5612292e1",
+      "status": "success",
+      "summary": {
+        "summary": "该文档为AI相关内容的索引，涵盖AI工具、工作流、Prompt工程、Agent开发等主题，提供Copilot/Claude使用技巧和LLM应用开发指南。",
+        "keyPoints": [
+          "AI Agent与Skill开发",
+          "Prompt Engineering实践",
+          "Copilot/Claude使用技巧",
+          "AI辅助开发工作流",
+          "LLM应用开发"
+        ],
+        "keywords": [
+          "AI Agent",
+          "Prompt工程",
+          "Copilot",
+          "Claude",
+          "LLM"
+        ],
+        "techStack": [
+          "AI",
+          "LLM",
+          "Copilot",
+          "Claude",
+          "Prompt Engineering"
+        ],
+        "difficulty": "初级",
+        "contentType": "索引/目录"
+      },
+      "processedAt": "2026-06-14T15:29:14.065Z"
     }
   },
   "stats": {
     "totalFiles": 218,
-    "reusedFiles": 191,
-    "pendingFiles": 27,
+    "reusedFiles": 217,
+    "pendingFiles": 1,
     "completedFiles": 218,
     "skippedFiles": 0,
     "failedFiles": 0,
-    "aiCalls": 27,
-    "hitRate": 0.8761467889908257,
-    "durationMs": 59692
+    "aiCalls": 1,
+    "hitRate": 0.9954128440366973,
+    "durationMs": 3777
   }
 }

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generatedAt": "2026-06-14T15:23:53.359Z",
+    "generatedAt": "2026-06-14T15:29:14.520Z",
     "moduleCount": 17
   },
   "modules": {
@@ -1295,10 +1295,10 @@
         {
           "path": "/ai/README.md",
           "title": "README",
-          "summary": "该文档汇总了AI相关主题，包括AI Agent与Skill开发、Prompt Engineering、Copilot与Claude使用技巧、AI辅助开发工作流以及LLM应用开发，为开发者提供全面的AI实践指南。",
+          "summary": "该文档为AI相关内容的索引，涵盖AI工具、工作流、Prompt工程、Agent开发等主题，提供Copilot/Claude使用技巧和LLM应用开发指南。",
           "keywords": [
             "AI Agent",
-            "Prompt Engineering",
+            "Prompt工程",
             "Copilot",
             "Claude",
             "LLM"
