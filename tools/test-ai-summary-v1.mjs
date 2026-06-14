@@ -319,6 +319,48 @@ test('unchanged builds do not rewrite existing cache or public snapshots', async
   }
 })
 
+test('current committed summaries outrank newer stale cache entries', async () => {
+  const { root, docsDir } = await createFixture()
+  const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
+  const outputPath = join(root, 'public', 'summaries-v1.json')
+  try {
+    const current = await generateSnapshot({
+      docsDir,
+      model: 'model-a',
+      analyze: async ({ path }) => fakeSummary(path)
+    })
+    const stale = structuredClone(current)
+    stale.generatedAt = '2099-01-01T00:00:00.000Z'
+    stale.files['/a.md'] = {
+      ...stale.files['/a.md'],
+      analysisHash: 'sha256:stale',
+      processedAt: '2099-01-01T00:00:00.000Z'
+    }
+    await mkdir(join(root, '.cache'), { recursive: true })
+    await mkdir(join(root, 'public'), { recursive: true })
+    await writeFile(cachePath, JSON.stringify(stale))
+    await writeFile(outputPath, JSON.stringify(current))
+    let calls = 0
+
+    const rebuilt = await runSummaryBuild({
+      docsDir,
+      cachePath,
+      outputPath,
+      model: 'model-a',
+      apiKey: 'configured',
+      analyze: async () => {
+        calls += 1
+        return fakeSummary('unexpected')
+      }
+    })
+
+    assert.equal(rebuilt.stats.aiCalls, 0)
+    assert.equal(calls, 0)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
 test('full build ignores reusable cache and analyzes every Markdown file', async () => {
   const { root, docsDir } = await createFixture()
   const cachePath = join(root, '.cache', 'ai-summaries-v1.json')

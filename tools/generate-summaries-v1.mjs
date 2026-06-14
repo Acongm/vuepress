@@ -42,13 +42,20 @@ async function writeSnapshot(path, snapshot) {
   await rename(temporary, path)
 }
 
-function entryRank(entry) {
+function entryRank(entry, expected) {
+  if (
+    entry?.status === 'success' &&
+    entry.summary &&
+    entry.analysisHash === expected?.analysisHash
+  ) {
+    return 4
+  }
   if (entry?.status === 'success' && entry.summary) return 3
   if (entry?.status === 'error') return 2
   return entry ? 1 : 0
 }
 
-async function readMergedSnapshot(cachePath, outputPath) {
+async function readMergedSnapshot(cachePath, outputPath, expectedFiles) {
   const snapshots = (
     await Promise.all([readSnapshot(outputPath), readSnapshot(cachePath)])
   ).filter(Boolean)
@@ -60,9 +67,10 @@ async function readMergedSnapshot(cachePath, outputPath) {
   for (const snapshot of snapshots) {
     for (const [path, entry] of Object.entries(snapshot.files || {})) {
       const current = files[path]
+      const expected = expectedFiles.get(path)
       if (
-        entryRank(entry) > entryRank(current) ||
-        (entryRank(entry) === entryRank(current) &&
+        entryRank(entry, expected) > entryRank(current, expected) ||
+        (entryRank(entry, expected) === entryRank(current, expected) &&
           String(entry.processedAt || '') > String(current?.processedAt || ''))
       ) {
         files[path] = entry
@@ -158,7 +166,15 @@ export async function runSummaryBuild({
   analysisConcurrency = DEFAULT_ANALYSIS_CONCURRENCY,
   checkpoint = true
 }) {
-  const existing = full ? null : await readMergedSnapshot(cachePath, outputPath)
+  const expectedFiles = new Map(
+    buildAnalysisPlan({ docsDir, snapshot: null, model }).files.map(file => [
+      file.path,
+      file
+    ])
+  )
+  const existing = full
+    ? null
+    : await readMergedSnapshot(cachePath, outputPath, expectedFiles)
   const plan = buildAnalysisPlan({ docsDir, snapshot: existing, model })
 
   console.log(
