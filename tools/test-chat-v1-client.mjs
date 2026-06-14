@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { parseSseStream } from '../docs/.vuepress/utils/chat-v1-stream.js'
+import { getAiChatV1StreamUrl, parseSseStream } from '../docs/.vuepress/utils/chat-v1-stream.js'
 import {
   loadChatHistory,
   modelHistory,
@@ -10,6 +10,21 @@ import {
   deriveTagOptions,
   insertChatTag
 } from '../docs/.vuepress/utils/chat-v1-tags.js'
+
+test('getAiChatV1StreamUrl keeps relative dev proxy paths', () => {
+  global.__AI_CHAT_API__ = '/api/ai/v1/chat/stream'
+  assert.equal(getAiChatV1StreamUrl(), '/api/ai/v1/chat/stream')
+  delete global.__AI_CHAT_API__
+})
+
+test('getAiChatV1StreamUrl ignores absolute URLs on localhost', () => {
+  const originalWindow = global.window
+  global.window = { location: { hostname: 'localhost' } }
+  global.__AI_CHAT_API__ = 'https://api.acongm.com/api/ai/v1/chat/stream'
+  assert.equal(getAiChatV1StreamUrl(), '/api/ai/v1/chat/stream')
+  delete global.__AI_CHAT_API__
+  global.window = originalWindow
+})
 
 test('parses arbitrary SSE byte chunks', async () => {
   const encoder = new TextEncoder()

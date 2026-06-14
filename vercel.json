@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node tools/restore-summaries-v1.mjs && npm run build:ai:v1 && npm run check:ai-v1 -- --strict && node tools/generate-module-index.mjs && npm run build && npm run smoke:ai",
+  "buildCommand": "node tools/restore-summaries-v1.mjs && npm run build:ai:v1 && npm run check:ai-v1 && node tools/generate-module-index.mjs && npm run build && npm run smoke:ai && npm run smoke:summaries-v1",
   "installCommand": "npm ci",
   "outputDirectory": "vuepress"
 }

@@ -2,8 +2,16 @@ import { normalizeSummaryData } from './normalize-summary.js'
 
 let snapshotPromise = null
 
+function safeDecodePath(path) {
+  try {
+    return decodeURIComponent(path)
+  } catch {
+    return path
+  }
+}
+
 export function normalizeSummaryV1Path(pagePath, base = '/') {
-  let path = String(pagePath || '/').split(/[?#]/)[0]
+  let path = safeDecodePath(String(pagePath || '/').split(/[?#]/)[0])
   if (base !== '/' && path.startsWith(base)) {
     path = path.slice(base.length - 1)
   }
@@ -71,9 +79,17 @@ export async function loadSummaryV1(withBase, pagePath, options = {}) {
   return findSummaryV1ByPath(snapshot, pagePath, options.base || '/')
 }
 
-export function summaryV1StatusText(result) {
+export function summaryV1StatusText(result, options = {}) {
+  if (options.snapshotMissing) {
+    return '摘要快照未部署，请稍后刷新。'
+  }
   if (result?.status === 'short') return '本文较短，暂无独立 AI 摘要。'
-  if (result?.status === 'excluded') return '本文未纳入 AI 摘要范围。'
+  if (result?.status === 'excluded') {
+    if (result.reason === 'section-index') {
+      return '章节索引页，请打开具体文章查看摘要。'
+    }
+    return '本文未纳入 AI 摘要范围。'
+  }
   if (result?.status === 'error')
     return '本文摘要生成失败，将在后续构建自动重试。'
   return '本文暂无构建期摘要。'

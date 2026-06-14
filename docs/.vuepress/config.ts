@@ -4,10 +4,22 @@ const { path } = require('@vuepress/utils')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isVercel = process.env.VERCEL === '1'
+const defaultSummaryApi = isProduction
+  ? 'https://api.acongm.com/api/ai/summary'
+  : '/api/ai/summary'
+const defaultChatApi = isProduction
+  ? 'https://api.acongm.com/api/ai/v1/chat/stream'
+  : '/api/ai/v1/chat/stream'
 
 // Vercel 使用根路径；GitHub Pages 继续使用仓库子路径。
 const base = isVercel ? '/' : process.env.BUILD_ENV || '/vuepress/'
 const GA_ID = 'G-B5CNYTFPMD'
+const PWA_POPUP_LOCALES = {
+  '/': {
+    message: '发现新内容可用',
+    buttonText: '刷新'
+  }
+}
 
 function sanitizeEnvUrl(value: string | undefined, fallback: string) {
   return String(value || fallback)
@@ -16,17 +28,40 @@ function sanitizeEnvUrl(value: string | undefined, fallback: string) {
     .replace(/^(https?):\/(?!\/)/i, '$1://')
 }
 
-if (isProduction) {
-  const summaryUrl = sanitizeEnvUrl(
-    process.env.VUEPRESS_AI_SUMMARY_API,
-    'https://api.acongm.com/api/ai/summary'
-  )
-  const chatUrl = sanitizeEnvUrl(
-    process.env.VUEPRESS_AI_CHAT_API,
-    'https://api.acongm.com/api/ai/v1/chat/stream'
-  )
-  console.log('[ai-env] summary API:', summaryUrl)
-  console.log('[ai-env] chat API:', chatUrl)
+/** Dev always uses same-origin /api proxy; absolute env URLs cause CORS. */
+function resolveAiApiUrl(
+  envValue: string | undefined,
+  devDefault: string,
+  prodDefault: string
+) {
+  const fallback = isProduction ? prodDefault : devDefault
+  const cleaned = sanitizeEnvUrl(envValue, fallback)
+  if (!isProduction && /^https?:\/\//i.test(cleaned)) {
+    console.warn(
+      `[ai-env] dev ignores absolute API URL (use Vite proxy): ${cleaned} -> ${devDefault}`
+    )
+    return devDefault
+  }
+  return cleaned
+}
+
+const summaryApiUrl = resolveAiApiUrl(
+  process.env.VUEPRESS_AI_SUMMARY_API,
+  defaultSummaryApi,
+  'https://api.acongm.com/api/ai/summary'
+)
+const chatApiUrl = resolveAiApiUrl(
+  process.env.VUEPRESS_AI_CHAT_API,
+  defaultChatApi,
+  'https://api.acongm.com/api/ai/v1/chat/stream'
+)
+
+if (!isProduction) {
+  console.log('[ai-env] dev summary API:', summaryApiUrl)
+  console.log('[ai-env] dev chat API:', chatApiUrl)
+} else {
+  console.log('[ai-env] summary API:', summaryApiUrl)
+  console.log('[ai-env] chat API:', chatApiUrl)
 }
 
 export default defineUserConfig<DefaultThemeOptions>({
@@ -34,19 +69,25 @@ export default defineUserConfig<DefaultThemeOptions>({
   dest: './vuepress',
   define: {
     __GA_ID__: JSON.stringify(GA_ID),
-    __AI_SUMMARY_API__: JSON.stringify(
-      sanitizeEnvUrl(
-        process.env.VUEPRESS_AI_SUMMARY_API,
-        'https://api.acongm.com/api/ai/summary'
-      )
-    ),
-    __AI_CHAT_API__: JSON.stringify(
-      sanitizeEnvUrl(
-        process.env.VUEPRESS_AI_CHAT_API,
-        'https://api.acongm.com/api/ai/v1/chat/stream'
-      )
-    )
+    __AI_SUMMARY_API__: JSON.stringify(summaryApiUrl),
+    __AI_CHAT_API__: JSON.stringify(chatApiUrl),
+    __PWA_POPUP_LOCALES__: JSON.stringify(PWA_POPUP_LOCALES)
   },
+  bundlerConfig: isProduction
+    ? {}
+    : {
+        viteOptions: {
+          server: {
+            proxy: {
+              '/api': {
+                target: 'https://api.acongm.com',
+                changeOrigin: true,
+                secure: true
+              }
+            }
+          }
+        }
+      },
   bundler: isProduction ? '@vuepress/webpack' : '@vuepress/vite',
   lang: 'zh-CN',
   title: 'acongm',
@@ -636,12 +677,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/plugin-pwa-popup',
       {
-        locales: {
-          '/': {
-            message: '发现新内容可用',
-            buttonText: '刷新'
-          }
-        }
+        locales: PWA_POPUP_LOCALES
       }
     ]
   ]

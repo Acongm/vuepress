@@ -2,13 +2,38 @@
 
 export const DEFAULT_AI_CHAT_V1_STREAM_API =
   'https://api.acongm.com/api/ai/v1/chat/stream'
+export const DEV_AI_CHAT_V1_STREAM_API = '/api/ai/v1/chat/stream'
+
+function prefersDevProxy() {
+  if (typeof window === 'undefined') return false
+  const { hostname } = window.location
+  return (
+    hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]'
+  )
+}
+
+function normalizeChatStreamPath(configured) {
+  if (/\/api\/ai\/v1\/chat\/stream\/?$/.test(configured)) return configured
+  return configured.replace(/\/api\/ai\/chat\/?$/, '/api/ai/v1/chat/stream')
+}
 
 export function getAiChatV1StreamUrl() {
   const configured =
-    typeof __AI_CHAT_API__ !== 'undefined' ? String(__AI_CHAT_API__) : ''
-  if (!/^https?:\/\//i.test(configured)) return DEFAULT_AI_CHAT_V1_STREAM_API
-  if (/\/api\/ai\/v1\/chat\/stream\/?$/.test(configured)) return configured
-  return configured.replace(/\/api\/ai\/chat\/?$/, '/api/ai/v1/chat/stream')
+    typeof __AI_CHAT_API__ !== 'undefined' ? String(__AI_CHAT_API__).trim() : ''
+
+  if (prefersDevProxy() && /^https?:\/\//i.test(configured)) {
+    return DEV_AI_CHAT_V1_STREAM_API
+  }
+
+  if (configured.startsWith('/')) {
+    return normalizeChatStreamPath(configured)
+  }
+  if (!/^https?:\/\//i.test(configured)) {
+    return prefersDevProxy()
+      ? DEV_AI_CHAT_V1_STREAM_API
+      : DEFAULT_AI_CHAT_V1_STREAM_API
+  }
+  return normalizeChatStreamPath(configured)
 }
 
 export async function* parseSseStream(stream) {

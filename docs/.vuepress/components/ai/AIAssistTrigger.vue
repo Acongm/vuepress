@@ -87,7 +87,7 @@ export default {
 <style scoped>
 .ai-assist-fab {
   position: fixed;
-  bottom: 80px;
+  bottom: calc(96px + env(safe-area-inset-bottom));
   right: 24px;
   z-index: 999;
   display: inline-flex;
@@ -150,7 +150,7 @@ export default {
 
 @media (max-width: 768px) {
   .ai-assist-fab {
-    bottom: 60px;
+    bottom: calc(72px + env(safe-area-inset-bottom));
     right: 16px;
   }
 

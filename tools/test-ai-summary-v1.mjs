@@ -54,7 +54,7 @@ test('uses a self-contained versioned snapshot', async () => {
     assert.equal(PROMPT_VERSION, 'summary-v1')
     assert.equal(EXTRACT_VERSION, 'markdown-v1')
     assert.equal(plan.aiCalls, 2)
-    assert.equal(plan.skippedFiles, 1)
+    assert.equal(plan.skippedFiles, 2)
   } finally {
     await rm(root, { recursive: true, force: true })
   }
@@ -261,12 +261,15 @@ test('deployment pipelines use Node 24 and the same incremental v1 build', async
   assert.match(workflow, /restore-summaries-v1\.mjs/)
   assert.match(workflow, /npm run build:ai:v1/)
   assert.match(workflow, /check:ai-v1 -- --strict/)
+  assert.match(workflow, /smoke:summaries-v1/)
   assert.doesNotMatch(workflow, /hashFiles\('docs\/\*\*\/\*\.md'\)/)
   assert.doesNotMatch(workflow, /\|\|\s*echo/)
 
   assert.match(vercel.buildCommand, /restore-summaries-v1\.mjs/)
   assert.match(vercel.buildCommand, /npm run build:ai:v1/)
-  assert.match(vercel.buildCommand, /check:ai-v1 -- --strict/)
+  assert.match(vercel.buildCommand, /npm run check:ai-v1/)
+  assert.doesNotMatch(vercel.buildCommand, /--strict/)
+  assert.match(vercel.buildCommand, /smoke:summaries-v1/)
   assert.doesNotMatch(vercel.buildCommand, /generate-summaries\.mjs/)
   assert.equal(vercel.installCommand, 'npm ci')
   assert.equal(vercel.outputDirectory, 'vuepress')
@@ -274,7 +277,7 @@ test('deployment pipelines use Node 24 and the same incremental v1 build', async
 
 test('coverage reports missing and failed analyzable files exactly', () => {
   const report = analyzeCoverage({
-    expectedPaths: ['/ok.md', '/missing.md', '/failed.md', '/short.md'],
+    expectedPaths: ['/ok.md', '/missing.md', '/failed.md', '/short.md', '/guide/README.md'],
     snapshot: {
       files: {
         '/ok.md': { status: 'success', summary: { summary: 'ok' } },
@@ -284,6 +287,7 @@ test('coverage reports missing and failed analyzable files exactly', () => {
     }
   })
   assert.deepEqual(report.missing, ['/missing.md'])
+  assert.deepEqual(report.indexPending, ['/guide/README.md'])
   assert.deepEqual(report.error, ['/failed.md'])
   assert.deepEqual(report.short, ['/short.md'])
   assert.equal(report.success, 1)

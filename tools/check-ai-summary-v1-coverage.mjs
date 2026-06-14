@@ -5,7 +5,13 @@ import { extname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export function analyzeCoverage({ expectedPaths, snapshot }) {
-  const groups = { missing: [], error: [], excluded: [], short: [] }
+  const groups = {
+    missing: [],
+    indexPending: [],
+    error: [],
+    excluded: [],
+    short: []
+  }
   let success = 0
 
   for (const path of [...expectedPaths].sort()) {
@@ -14,10 +20,15 @@ export function analyzeCoverage({ expectedPaths, snapshot }) {
     else if (entry?.status === 'error') groups.error.push(path)
     else if (entry?.status === 'excluded') groups.excluded.push(path)
     else if (entry?.status === 'short') groups.short.push(path)
+    else if (path.endsWith('/README.md')) groups.indexPending.push(path)
     else groups.missing.push(path)
   }
 
-  const analyzable = expectedPaths.length - groups.excluded.length - groups.short.length
+  const analyzable =
+    expectedPaths.length -
+    groups.excluded.length -
+    groups.short.length -
+    groups.indexPending.length
   return {
     ...groups,
     success,
@@ -38,7 +49,7 @@ function listMarkdown(docsDir) {
       const stat = statSync(fullPath)
       if (stat.isDirectory()) {
         if (!name.startsWith('.')) walk(fullPath)
-      } else if (extname(name) === '.md' && name !== 'README.md') {
+      } else if (extname(name) === '.md') {
         paths.push(`/${relative(docsDir, fullPath).replace(/\\/g, '/')}`)
       }
     }
@@ -67,17 +78,21 @@ function main() {
   })
 
   printGroup('missing', report.missing)
+  printGroup('index-pending', report.indexPending)
   printGroup('error', report.error)
   printGroup('excluded', report.excluded)
   printGroup('short', report.short)
   console.log(
-    `[ai-v1-coverage] success=${report.success}/${report.analyzable} coverage=${(
-      report.coverage * 100
-    ).toFixed(2)}%`
+    `[ai-v1-coverage] success=${report.success}/${
+      report.analyzable
+    } coverage=${(report.coverage * 100).toFixed(2)}%`
   )
 
   const minimum = Number(process.env.AI_SUMMARY_MIN_COVERAGE || 0.6)
-  if (process.argv.includes('--strict') && !coverageMeetsMinimum(report, minimum)) {
+  if (
+    process.argv.includes('--strict') &&
+    !coverageMeetsMinimum(report, minimum)
+  ) {
     process.exitCode = 1
   }
 }

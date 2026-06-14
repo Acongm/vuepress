@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .cache/ai-summaries-v1.json
-          key: ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
+          key: ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-${{ hashFiles('docs/**/*.md', 'tools/ai-summary-v1.mjs') }}
           restore-keys: |
             ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-
             ai-summaries-v1-${{ runner.os }}-
@@ -39,7 +39,7 @@ jobs:
 
       - name: Restore deployed AI v1 snapshot
         env:
-          SUMMARIES_FALLBACK_URL: https://acongm.github.io/vuepress
+          SUMMARIES_FALLBACK_URL: https://www.acongm.com
         run: node tools/restore-summaries-v1.mjs
 
       - name: Analyze changed Markdown only
@@ -57,6 +57,7 @@ jobs:
           node tools/generate-module-index.mjs
           npm run build
           npm run smoke:ai
+          npm run smoke:summaries-v1
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

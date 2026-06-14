@@ -5,6 +5,7 @@
 
 <script>
 import { isDocumentPage } from '../utils/is-document-page.js'
+import { aiPanelState } from '../composables/useAiPanelState.js'
 import {
   cancelPrefetch,
   clearSummarySession,
@@ -24,6 +25,7 @@ export default {
 
   mounted() {
     this.schedulePrefetch()
+    this.syncPanelLayout()
   },
 
   watch: {
@@ -32,6 +34,15 @@ export default {
         const base = this.$site.base || '/'
         clearSummarySession(getPagePath(prevPath, base))
       }
+      if (prevPath && aiPanelState.panelOpen.value) {
+        if (typeof window !== 'undefined' && window.innerWidth < 1180) {
+          aiPanelState.closePanel()
+          aiPanelState.finishPanelClose()
+        } else {
+          this.$nextTick(() => aiPanelState.syncPageSplitClass(true))
+        }
+      }
+      this.syncPanelLayout()
       this.schedulePrefetch()
     }
   },
@@ -40,9 +51,20 @@ export default {
     const base = this.$site.base || '/'
     const pagePath = getPagePath(this.$page.path, base)
     cancelPrefetch(pagePath)
+    document.body.classList.remove('ai-assist-overlay-lock')
+    if (aiPanelState.panelOpen.value) {
+      aiPanelState.closePanel()
+      aiPanelState.finishPanelClose()
+    }
   },
 
   methods: {
+    syncPanelLayout() {
+      if (aiPanelState.panelOpen.value) {
+        this.$nextTick(() => aiPanelState.syncPageSplitClass(true))
+      }
+    },
+
     schedulePrefetch() {
       if (!isDocumentPage(this.$page)) {
         return

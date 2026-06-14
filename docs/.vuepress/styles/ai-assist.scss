@@ -27,7 +27,7 @@
   }
   .page.ai-split-active > .ai-assist-root {
     grid-column: 2;
-    grid-row: 1 / span 30;
+    grid-row: 1 / -1;
     position: sticky;
     top: calc(var(--navbar-height, 3.6rem) + 12px);
   }
@@ -107,5 +107,15 @@ body.ai-assist-overlay-lock {
   .page.ai-split-active,
   .page.ai-split-active > :not(.ai-assist-root) {
     transition-duration: 0.01ms !important;
+  }
+}
+
+html.ai-assist-open .back-to-top {
+  right: calc(clamp(400px, 30vw, 520px) + 24px);
+}
+
+@media (max-width: 1179px) {
+  html.ai-assist-open .back-to-top {
+    display: none;
   }
 }

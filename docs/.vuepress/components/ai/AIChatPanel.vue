@@ -30,7 +30,10 @@
               复制
             </button>
           </div>
-          <p>{{ message.content }}<span v-if="message.streaming" class="ai-chat-cursor" /></p>
+          <p>
+            {{ message.content
+            }}<span v-if="message.streaming" class="ai-chat-cursor" />
+          </p>
         </template>
       </article>
     </div>
@@ -47,7 +50,9 @@
             + {{ tag.label }}
           </button>
         </div>
-        <button type="button" class="ai-chat-clear" @click="clearConversation">清空</button>
+        <button type="button" class="ai-chat-clear" @click="clearConversation">
+          清空
+        </button>
       </div>
 
       <div class="ai-chat-composer__box">
@@ -58,19 +63,42 @@
           placeholder="结合文档提问，快捷选项可继续编辑…"
           @keydown.enter.exact.prevent="sendMessage()"
         />
-        <button v-if="chatLoading" type="button" class="is-stop" @click="stopGeneration">
+        <button
+          v-if="chatLoading"
+          type="button"
+          class="is-stop"
+          @click="stopGeneration"
+        >
           停止
         </button>
-        <button v-else type="button" :disabled="!inputText.trim()" @click="sendMessage()">
+        <button
+          v-else
+          type="button"
+          :disabled="!inputText.trim()"
+          @click="sendMessage()"
+        >
           发送
         </button>
       </div>
 
-      <div v-if="lastFailedQuestion || lastCompletedQuestion" class="ai-chat-composer__actions">
-        <button v-if="lastFailedQuestion" type="button" @click="retryLast">重试</button>
-        <button v-if="lastCompletedQuestion" type="button" @click="regenerateLast">重新生成</button>
+      <div
+        v-if="lastFailedQuestion || lastCompletedQuestion"
+        class="ai-chat-composer__actions"
+      >
+        <button v-if="lastFailedQuestion" type="button" @click="retryLast">
+          重试
+        </button>
+        <button
+          v-if="lastCompletedQuestion"
+          type="button"
+          @click="regenerateLast"
+        >
+          重新生成
+        </button>
       </div>
-      <p class="ai-chat-composer__hint">仅发送消息时调用 AI 接口；页面摘要来自构建缓存。</p>
+      <p class="ai-chat-composer__hint">
+        仅发送消息时调用 AI 接口；页面摘要来自构建缓存。
+      </p>
     </footer>
   </section>
 </template>
@@ -92,13 +120,17 @@ import {
 import { formatSummaryMessage } from '../../utils/format-summary-message.js'
 import {
   getPrefetchedSummary,
+  getPrefetchError,
   isSummaryPrefetching,
   prefetchPageSummary,
   waitForPrefetch
 } from '../../utils/summary-prefetch.js'
 import { getPagePath, sourceLabel } from '../../utils/summary-service.js'
 import { summaryV1StatusText } from '../../utils/summary-v1-service.js'
-import { loadModuleIndex, resolveModuleFromPath } from '../../utils/resolve-module.js'
+import {
+  loadModuleIndex,
+  resolveModuleFromPath
+} from '../../utils/resolve-module.js'
 
 export default {
   name: 'AIChatPanel',
@@ -168,9 +200,12 @@ export default {
         result = await waitForPrefetch(this.pagePath)
       }
       if (!result) result = await prefetchPageSummary(this)
+      const prefetchError = getPrefetchError(this.pagePath)
       const content = result?.summary
         ? formatSummaryMessage(result.summary, sourceLabel('static'))
-        : summaryV1StatusText(result)
+        : result
+        ? summaryV1StatusText(result)
+        : prefetchError || summaryV1StatusText(null, { snapshotMissing: true })
       this.messages.unshift({
         id: `summary-${this.pagePath}`,
         role: 'assistant',
@@ -212,7 +247,9 @@ export default {
       try {
         const events = await streamChatV1(
           {
-            messages: modelHistory(this.messages.filter((item) => item !== answer)),
+            messages: modelHistory(
+              this.messages.filter((item) => item !== answer)
+            ),
             context: {
               scope: tagOptions.scope,
               pagePath: this.pagePath,
@@ -227,7 +264,8 @@ export default {
         )
         for await (const event of events) {
           if (event.type === 'delta') answer.content += event.content || ''
-          if (event.type === 'error') throw new Error(event.message || '回答失败')
+          if (event.type === 'error')
+            throw new Error(event.message || '回答失败')
           this.scrollToBottom()
         }
         answer.streaming = false
@@ -235,12 +273,16 @@ export default {
       } catch (error) {
         answer.streaming = false
         if (!answer.content) {
-          answer.content = error?.name === 'AbortError' ? '已停止生成。' : error?.message || '回答失败，请重试。'
+          answer.content =
+            error?.name === 'AbortError'
+              ? '已停止生成。'
+              : error?.message || '回答失败，请重试。'
         }
         answer.isError = error?.name !== 'AbortError'
         if (answer.isError) this.lastFailedQuestion = question
       } finally {
-        if (this.chatAbortController === controller) this.chatAbortController = null
+        if (this.chatAbortController === controller)
+          this.chatAbortController = null
         this.chatLoading = false
         this.persist()
       }
@@ -290,32 +332,181 @@ export default {
 </script>
 
 <style scoped>
-.ai-chat-panel { display: flex; flex: 1; min-height: 0; flex-direction: column; background: #f8f9fc; }
-.ai-chat-panel__messages { flex: 1; min-height: 0; overflow: auto; padding: 18px; }
-.ai-summary-card, .ai-chat-message { margin: 0 0 14px; border: 1px solid #e4e7ef; border-radius: 16px; background: #fff; box-shadow: 0 8px 24px rgba(24, 32, 56, .05); }
-.ai-summary-card { padding: 18px; background: linear-gradient(145deg, #fff 0%, #f3f1ff 100%); }
-.ai-summary-card__eyebrow { color: #6750a4; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
-.ai-summary-card__content { margin: 10px 0 0; white-space: pre-wrap; line-height: 1.7; }
-.ai-chat-message { max-width: 88%; padding: 12px 14px; }
-.ai-chat-message.is-user { margin-left: auto; background: #6750a4; color: #fff; border-color: transparent; }
-.ai-chat-message.is-error { border-color: #f1b5b5; }
-.ai-chat-message__meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 11px; opacity: .72; }
-.ai-chat-message__meta button, .ai-chat-clear, .ai-chat-composer__actions button { border: 0; background: none; color: inherit; cursor: pointer; }
-.ai-chat-message p { margin: 0; white-space: pre-wrap; line-height: 1.65; }
-.ai-chat-cursor { display: inline-block; width: 7px; height: 1em; margin-left: 3px; background: #6750a4; animation: ai-cursor 1s steps(1) infinite; vertical-align: -2px; }
-.ai-chat-composer { flex: 0 0 auto; padding: 10px 14px max(14px, env(safe-area-inset-bottom)); border-top: 1px solid #e5e7ee; background: rgba(255, 255, 255, .96); }
-.ai-chat-composer__topline { display: flex; align-items: center; gap: 8px; }
-.ai-chat-quick-tags { display: flex; flex: 1; min-width: 0; gap: 7px; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: none; }
-.ai-chat-quick-tags button { flex: 0 0 auto; border: 1px solid #dad4eb; border-radius: 999px; padding: 6px 10px; background: #fff; color: #5f4a8b; cursor: pointer; }
-.ai-chat-clear { flex: 0 0 auto; font-size: 12px; color: #6b7280; }
-.ai-chat-composer__box { display: flex; align-items: flex-end; gap: 8px; border: 1px solid #d9dce5; border-radius: 14px; padding: 8px; background: #fff; }
-.ai-chat-composer textarea { flex: 1; min-width: 0; resize: none; border: 0; outline: 0; font: inherit; line-height: 1.5; }
-.ai-chat-composer__box button { min-width: 58px; border: 0; border-radius: 10px; padding: 9px 12px; background: #6750a4; color: #fff; cursor: pointer; }
-.ai-chat-composer__box button:disabled { opacity: .45; cursor: default; }
-.ai-chat-composer__box button.is-stop { background: #2f3342; }
-.ai-chat-composer__actions { display: flex; gap: 10px; margin-top: 7px; font-size: 12px; color: #6750a4; }
-.ai-chat-composer__hint { margin: 7px 2px 0; color: #8a8f9c; font-size: 10px; }
-@keyframes ai-cursor { 50% { opacity: 0; } }
-@media (max-width: 420px) { .ai-chat-panel__messages { padding: 12px; } .ai-chat-message { max-width: 94%; } }
-@media (prefers-reduced-motion: reduce) { .ai-chat-cursor { animation: none; } }
+.ai-chat-panel {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  background: #f8f9fc;
+}
+.ai-chat-panel__messages {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 18px;
+}
+.ai-summary-card,
+.ai-chat-message {
+  margin: 0 0 14px;
+  border: 1px solid #e4e7ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(24, 32, 56, 0.05);
+}
+.ai-summary-card {
+  padding: 18px;
+  background: linear-gradient(145deg, #fff 0%, #f3f1ff 100%);
+}
+.ai-summary-card__eyebrow {
+  color: #6750a4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.ai-summary-card__content {
+  margin: 10px 0 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+.ai-chat-message {
+  max-width: 88%;
+  padding: 12px 14px;
+}
+.ai-chat-message.is-user {
+  margin-left: auto;
+  background: #6750a4;
+  color: #fff;
+  border-color: transparent;
+}
+.ai-chat-message.is-error {
+  border-color: #f1b5b5;
+}
+.ai-chat-message__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  opacity: 0.72;
+}
+.ai-chat-message__meta button,
+.ai-chat-clear,
+.ai-chat-composer__actions button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+.ai-chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.65;
+}
+.ai-chat-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 3px;
+  background: #6750a4;
+  animation: ai-cursor 1s steps(1) infinite;
+  vertical-align: -2px;
+}
+.ai-chat-composer {
+  flex: 0 0 auto;
+  padding: 10px 14px max(14px, env(safe-area-inset-bottom));
+  border-top: 1px solid #e5e7ee;
+  background: rgba(255, 255, 255, 0.96);
+}
+.ai-chat-composer__topline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ai-chat-quick-tags {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 2px 0 8px;
+  scrollbar-width: none;
+}
+.ai-chat-quick-tags button {
+  flex: 0 0 auto;
+  border: 1px solid #dad4eb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #fff;
+  color: #5f4a8b;
+  cursor: pointer;
+}
+.ai-chat-clear {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: #6b7280;
+}
+.ai-chat-composer__box {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  border: 1px solid #d9dce5;
+  border-radius: 14px;
+  padding: 8px;
+  background: #fff;
+}
+.ai-chat-composer textarea {
+  flex: 1;
+  min-width: 0;
+  resize: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  line-height: 1.5;
+}
+.ai-chat-composer__box button {
+  min-width: 58px;
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: #6750a4;
+  color: #fff;
+  cursor: pointer;
+}
+.ai-chat-composer__box button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ai-chat-composer__box button.is-stop {
+  background: #2f3342;
+}
+.ai-chat-composer__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 7px;
+  font-size: 12px;
+  color: #6750a4;
+}
+.ai-chat-composer__hint {
+  margin: 7px 2px 0;
+  color: #8a8f9c;
+  font-size: 10px;
+}
+@keyframes ai-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+@media (max-width: 420px) {
+  .ai-chat-panel__messages {
+    padding: 12px;
+  }
+  .ai-chat-message {
+    max-width: 94%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-chat-cursor {
+    animation: none;
+  }
+}
 </style>

@@ -41,7 +41,7 @@ function listMarkdownFiles(docsDir) {
         if (!name.startsWith('.') && name !== 'node_modules') walk(fullPath)
         continue
       }
-      if (!stat.isFile() || extname(name) !== '.md' || name === 'README.md') {
+      if (!stat.isFile() || extname(name) !== '.md') {
         continue
       }
       files.push({
