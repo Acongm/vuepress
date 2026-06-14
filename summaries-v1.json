@@ -7,6 +7,38 @@
     "extractVersion": "markdown-v1"
   },
   "files": {
+    "/ai/README.md": {
+      "sourceHash": "sha256:cb1f8ed8f1dea6018331670698520342a2c0de55a0e53cd11c2310b72dfbcf4e",
+      "analysisHash": "sha256:774240c51ef97787e8d186aef947b85d079377f9034285e7073937b5612292e1",
+      "status": "success",
+      "summary": {
+        "summary": "该文档为AI相关内容的索引，涵盖AI工具、工作流、Prompt工程、Agent开发等主题，提供Copilot/Claude使用技巧和LLM应用开发指南。",
+        "keyPoints": [
+          "AI Agent与Skill开发",
+          "Prompt Engineering实践",
+          "Copilot/Claude使用技巧",
+          "AI辅助开发工作流",
+          "LLM应用开发"
+        ],
+        "keywords": [
+          "AI Agent",
+          "Prompt工程",
+          "Copilot",
+          "Claude",
+          "LLM"
+        ],
+        "techStack": [
+          "AI",
+          "LLM",
+          "Copilot",
+          "Claude",
+          "Prompt Engineering"
+        ],
+        "difficulty": "初级",
+        "contentType": "索引/目录"
+      },
+      "processedAt": "2026-06-14T15:29:14.065Z"
+    },
     "/css/README.md": {
       "sourceHash": "sha256:bb03aa7a9615fe419d21c325efe8cb3c3656fb6a937161715efe6eb6f1410f5e",
       "analysisHash": "sha256:83508befebe7ef24d3d967b08547faeb84f4ad5fd1e3596937beb4f5ea1f120c",
@@ -6786,38 +6818,6 @@
         "contentType": "overview"
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
-    },
-    "/ai/README.md": {
-      "sourceHash": "sha256:cb1f8ed8f1dea6018331670698520342a2c0de55a0e53cd11c2310b72dfbcf4e",
-      "analysisHash": "sha256:774240c51ef97787e8d186aef947b85d079377f9034285e7073937b5612292e1",
-      "status": "success",
-      "summary": {
-        "summary": "该文档为AI相关内容的索引，涵盖AI工具、工作流、Prompt工程、Agent开发等主题，提供Copilot/Claude使用技巧和LLM应用开发指南。",
-        "keyPoints": [
-          "AI Agent与Skill开发",
-          "Prompt Engineering实践",
-          "Copilot/Claude使用技巧",
-          "AI辅助开发工作流",
-          "LLM应用开发"
-        ],
-        "keywords": [
-          "AI Agent",
-          "Prompt工程",
-          "Copilot",
-          "Claude",
-          "LLM"
-        ],
-        "techStack": [
-          "AI",
-          "LLM",
-          "Copilot",
-          "Claude",
-          "Prompt Engineering"
-        ],
-        "difficulty": "初级",
-        "contentType": "索引/目录"
-      },
-      "processedAt": "2026-06-14T15:29:14.065Z"
     }
   },
   "stats": {
