@@ -1,194 +1,86 @@
 import { reactive } from 'vue'
-import { extractPageContent } from './ai-context.js'
-import {
-  buildLocalFallbackSummary,
-  shouldTryLiveSummary
-} from './build-local-summary.js'
-import {
-  getCachedSummary,
-  getPagePath,
-  loadLiveSummary,
-  loadStaticSummary,
-  setCachedSummary
-} from './summary-service.js'
+import { getPagePath } from './summary-service.js'
+import { loadSummaryV1, summaryV1StatusText } from './summary-v1-service.js'
 
 const cache = reactive({})
 const loading = reactive({})
 const errors = reactive({})
-const status = reactive({})
 const waiters = reactive({})
 const abortControllers = reactive({})
 const typewriterShown = new Set()
 
-export function hasShownSummaryTypewriter(pagePath) {
-  return typewriterShown.has(pagePath)
+export const hasShownSummaryTypewriter = (path) => typewriterShown.has(path)
+export const markSummaryTypewriterShown = (path) => typewriterShown.add(path)
+export const getPrefetchedSummary = (path) => cache[path] || null
+export const getPrefetchError = (path) => errors[path] || null
+export const isSummaryPrefetching = (path) => Boolean(loading[path])
+
+export function getPrefetchStatus(path) {
+  if (cache[path]) return cache[path].status === 'success' ? 'ready' : 'empty'
+  if (errors[path]) return 'error'
+  return loading[path] ? 'loading' : 'idle'
 }
 
-export function markSummaryTypewriterShown(pagePath) {
-  typewriterShown.add(pagePath)
+export function cancelPrefetch(path) {
+  abortControllers[path]?.abort()
+  delete abortControllers[path]
 }
 
-export function getPrefetchedSummary(pagePath) {
-  return cache[pagePath] || null
+export function clearSummarySession(path) {
+  cancelPrefetch(path)
+  delete cache[path]
+  delete loading[path]
+  delete errors[path]
+  delete waiters[path]
+  typewriterShown.delete(path)
 }
 
-export function getPrefetchStatus(pagePath) {
-  if (cache[pagePath]) {
-    return 'ready'
-  }
-  if (errors[pagePath]) {
-    return 'error'
-  }
-  if (loading[pagePath]) {
-    return 'loading'
-  }
-  return status[pagePath] || 'idle'
-}
-
-export function getPrefetchError(pagePath) {
-  return errors[pagePath] || null
-}
-
-export function isSummaryPrefetching(pagePath) {
-  return Boolean(loading[pagePath])
-}
-
-export function cancelPrefetch(pagePath) {
-  const controller = abortControllers[pagePath]
-  if (controller) {
-    controller.abort()
-    delete abortControllers[pagePath]
-  }
-}
-
-export function clearSummarySession(pagePath) {
-  cancelPrefetch(pagePath)
-  delete cache[pagePath]
-  delete loading[pagePath]
-  delete errors[pagePath]
-  delete status[pagePath]
-  delete waiters[pagePath]
-  typewriterShown.delete(pagePath)
-}
-
-export async function waitForPrefetch(pagePath) {
-  if (cache[pagePath]) {
-    return cache[pagePath]
-  }
-
-  if (!loading[pagePath]) {
-    return null
-  }
-
+export function waitForPrefetch(path) {
+  if (cache[path]) return Promise.resolve(cache[path])
+  if (!loading[path]) return Promise.resolve(null)
   return new Promise((resolve) => {
-    const queue = waiters[pagePath] || []
-    queue.push(resolve)
-    waiters[pagePath] = queue
+    waiters[path] = [...(waiters[path] || []), resolve]
   })
 }
 
-function resolveWaiters(pagePath, result) {
-  const queue = waiters[pagePath] || []
-  queue.forEach((resolve) => resolve(result))
-  delete waiters[pagePath]
-}
-
-async function resolveSummary(ctx, pagePath, signal) {
-  const cached = getCachedSummary(pagePath)
-  if (cached) {
-    return {
-      summary: cached.summary,
-      source: cached.source
-    }
-  }
-
-  const staticSummary = await loadStaticSummary(ctx.$withBase, pagePath, {
-    signal
-  })
-  if (staticSummary) {
-    setCachedSummary(pagePath, staticSummary, 'static')
-    return { summary: staticSummary, source: 'static' }
-  }
-
-  const localSummary = buildLocalFallbackSummary({
-    title: ctx.$page?.title,
-    tags: ctx.$page?.frontmatter?.tags || []
-  })
-  if (localSummary) {
-    setCachedSummary(pagePath, localSummary, 'local')
-    return { summary: localSummary, source: 'local' }
-  }
-
-  if (!shouldTryLiveSummary()) {
-    return null
-  }
-
-  const content = extractPageContent()
-  if (!content || content.length < 50) {
-    return null
-  }
-
-  const liveSummary = await loadLiveSummary({
-    pagePath,
-    title: ctx.$page?.title,
-    content,
-    signal
-  })
-  setCachedSummary(pagePath, liveSummary, 'live')
-  return { summary: liveSummary, source: 'live' }
+function finish(path, result) {
+  for (const resolve of waiters[path] || []) resolve(result)
+  delete waiters[path]
 }
 
 export async function prefetchPageSummary(ctx) {
-  const pagePath = getPagePath(ctx.$page.path, ctx.$site.base || '/')
+  const path = getPagePath(ctx.$page.path, ctx.$site.base || '/')
+  if (cache[path]) return cache[path]
+  if (loading[path]) return waitForPrefetch(path)
 
-  if (cache[pagePath]) {
-    return cache[pagePath]
-  }
-
-  if (loading[pagePath]) {
-    return waitForPrefetch(pagePath)
-  }
-
-  cancelPrefetch(pagePath)
   const controller = new AbortController()
-  abortControllers[pagePath] = controller
-  loading[pagePath] = true
-  delete errors[pagePath]
-  status[pagePath] = 'loading'
-
+  abortControllers[path] = controller
+  loading[path] = true
+  delete errors[path]
   try {
-    const result = await resolveSummary(ctx, pagePath, controller.signal)
-    if (result) {
-      cache[pagePath] = result
-      status[pagePath] = 'ready'
-    } else {
-      errors[pagePath] = '暂无可用摘要'
-      status[pagePath] = 'error'
-    }
-    resolveWaiters(pagePath, result)
+    const result = await loadSummaryV1(ctx.$withBase, path, {
+      signal: controller.signal,
+      base: ctx.$site.base || '/'
+    })
+    cache[path] = result
+    if (result.status !== 'success') errors[path] = summaryV1StatusText(result)
+    finish(path, result)
     return result
-  } catch (err) {
-    if (err?.name === 'AbortError') {
-      resolveWaiters(pagePath, null)
-      return null
+  } catch (error) {
+    if (error?.name !== 'AbortError') {
+      errors[path] = error?.message || '摘要快照加载失败'
     }
-
-    const message = err?.message || '预取摘要失败'
-    console.error('预取摘要失败:', err)
-    errors[pagePath] = message
-    status[pagePath] = 'error'
-    resolveWaiters(pagePath, null)
+    finish(path, null)
     return null
   } finally {
-    loading[pagePath] = false
-    delete abortControllers[pagePath]
+    loading[path] = false
+    delete abortControllers[path]
   }
 }
 
 export function retryPrefetch(ctx) {
-  const pagePath = getPagePath(ctx.$page.path, ctx.$site.base || '/')
-  delete cache[pagePath]
-  delete errors[pagePath]
-  status[pagePath] = 'idle'
+  const path = getPagePath(ctx.$page.path, ctx.$site.base || '/')
+  delete cache[path]
+  delete errors[path]
   return prefetchPageSummary(ctx)
 }

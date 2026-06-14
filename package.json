@@ -14,6 +14,7 @@
     "build:ai-data": "node tools/generate-summaries.mjs && node tools/generate-module-index.mjs",
     "smoke:ai": "node tools/smoke-ai-bundle.mjs",
     "test:ai-v1": "node --test tools/test-ai-summary-v1.mjs",
+    "test:ai-client-v1": "node --test tools/test-summary-v1-client.mjs",
     "lint": "prettier --write **/*.{js,ts,scss,md,json}",
     "lint:lint-staged": "lint-staged",
     "postinstall": "husky install",
