@@ -10,6 +10,8 @@ import { buildAnalysisPlan, generateSnapshot } from './ai-summary-v1.mjs'
 const DEFAULT_MODEL = 'deepseek-v4-pro'
 const DEFAULT_BASE_URL = 'https://api.deepseek.com'
 const MAX_CONTENT_LENGTH = 3000
+const PROVIDER_TIMEOUT_MS = 45000
+const PROVIDER_ATTEMPTS = 2
 
 const SYSTEM_PROMPT = `你是技术文档分析助手。仅返回 JSON：summary（150字以内）、keyPoints（3-5项）、keywords（3-5项）、techStack、difficulty、contentType。`
 
@@ -36,42 +38,55 @@ function completionUrl(baseUrl) {
 
 export function createProviderAnalyzer({ apiKey, baseUrl, model, fetchImpl = fetch }) {
   return async ({ path, content }) => {
-    const response = await fetchImpl(completionUrl(baseUrl), {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model,
-        temperature: 0.2,
-        max_tokens: 700,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          {
-            role: 'user',
-            content: `文档路径：${path}\n\n${content.slice(0, MAX_CONTENT_LENGTH)}`
-          }
-        ]
-      })
-    })
-    if (!response.ok) {
-      throw new Error(`AI provider failed (${response.status}): ${(await response.text()).slice(0, 200)}`)
+    let lastError
+    for (let attempt = 1; attempt <= PROVIDER_ATTEMPTS; attempt += 1) {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS)
+      try {
+        const response = await fetchImpl(completionUrl(baseUrl), {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${apiKey}`
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            model,
+            temperature: 0.2,
+            max_tokens: 700,
+            messages: [
+              { role: 'system', content: SYSTEM_PROMPT },
+              {
+                role: 'user',
+                content: `文档路径：${path}\n\n${content.slice(0, MAX_CONTENT_LENGTH)}`
+              }
+            ]
+          })
+        })
+        if (!response.ok) {
+          throw new Error(`AI provider failed (${response.status}): ${(await response.text()).slice(0, 200)}`)
+        }
+        const data = await response.json()
+        const raw = data.choices?.[0]?.message?.content?.trim()
+        if (!raw) throw new Error('AI provider returned empty content')
+        const json = raw.match(/```(?:json)?\s*([\s\S]*?)```/)?.[1] || raw.match(/\{[\s\S]*\}/)?.[0] || raw
+        const parsed = JSON.parse(json)
+        if (!parsed.summary) throw new Error('AI summary is missing summary')
+        return {
+          summary: parsed.summary,
+          keyPoints: Array.isArray(parsed.keyPoints) ? parsed.keyPoints : [],
+          keywords: Array.isArray(parsed.keywords) ? parsed.keywords : [],
+          techStack: Array.isArray(parsed.techStack) ? parsed.techStack : [],
+          difficulty: parsed.difficulty || '未分级',
+          contentType: parsed.contentType || '综合'
+        }
+      } catch (error) {
+        lastError = error
+      } finally {
+        clearTimeout(timeout)
+      }
     }
-    const data = await response.json()
-    const raw = data.choices?.[0]?.message?.content?.trim()
-    if (!raw) throw new Error('AI provider returned empty content')
-    const json = raw.match(/```(?:json)?\s*([\s\S]*?)```/)?.[1] || raw.match(/\{[\s\S]*\}/)?.[0] || raw
-    const parsed = JSON.parse(json)
-    if (!parsed.summary) throw new Error('AI summary is missing summary')
-    return {
-      summary: parsed.summary,
-      keyPoints: Array.isArray(parsed.keyPoints) ? parsed.keyPoints : [],
-      keywords: Array.isArray(parsed.keywords) ? parsed.keywords : [],
-      techStack: Array.isArray(parsed.techStack) ? parsed.techStack : [],
-      difficulty: parsed.difficulty || '未分级',
-      contentType: parsed.contentType || '综合'
-    }
+    throw lastError
   }
 }
 

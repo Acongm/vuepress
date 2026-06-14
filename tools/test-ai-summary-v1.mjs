@@ -293,3 +293,26 @@ test('module index consumes only successful v1 summaries', async () => {
   assert.match(source, /status === ['"]success['"]/)
   assert.doesNotMatch(source, /public\/summaries\.json/)
 })
+
+test('analyzes pending files with bounded concurrency', async () => {
+  const { root, docsDir } = await createFixture()
+  let active = 0
+  let peak = 0
+  try {
+    await generateSnapshot({
+      docsDir,
+      model: 'model-a',
+      analysisConcurrency: 2,
+      analyze: async ({ path }) => {
+        active += 1
+        peak = Math.max(peak, active)
+        await new Promise((resolve) => setTimeout(resolve, 10))
+        active -= 1
+        return fakeSummary(path)
+      }
+    })
+    assert.equal(peak, 2)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})

@@ -107,7 +107,8 @@ export async function generateSnapshot({
   docsDir,
   model,
   snapshot = null,
-  analyze
+  analyze,
+  analysisConcurrency = 4
 }) {
   if (typeof analyze !== 'function') {
     throw new TypeError('generateSnapshot requires an analyze function')
@@ -132,32 +133,42 @@ export async function generateSnapshot({
     }
   }
 
-  for (const file of plan.toAnalyze) {
-    try {
-      const summary = await analyze({
-        path: file.path,
-        content: file.content,
-        sourceHash: file.sourceHash,
-        analysisHash: file.analysisHash
-      })
-      files[file.path] = {
-        sourceHash: file.sourceHash,
-        analysisHash: file.analysisHash,
-        status: 'success',
-        summary,
-        processedAt: new Date().toISOString()
-      }
-    } catch (error) {
-      failedFiles += 1
-      files[file.path] = {
-        sourceHash: file.sourceHash,
-        analysisHash: file.analysisHash,
-        status: 'error',
-        error: error instanceof Error ? error.message : String(error),
-        processedAt: new Date().toISOString()
+  let nextIndex = 0
+  const workerCount = Math.min(
+    Math.max(1, analysisConcurrency),
+    plan.toAnalyze.length
+  )
+  const workers = Array.from({ length: workerCount }, async () => {
+    while (nextIndex < plan.toAnalyze.length) {
+      const file = plan.toAnalyze[nextIndex]
+      nextIndex += 1
+      try {
+        const summary = await analyze({
+          path: file.path,
+          content: file.content,
+          sourceHash: file.sourceHash,
+          analysisHash: file.analysisHash
+        })
+        files[file.path] = {
+          sourceHash: file.sourceHash,
+          analysisHash: file.analysisHash,
+          status: 'success',
+          summary,
+          processedAt: new Date().toISOString()
+        }
+      } catch (error) {
+        failedFiles += 1
+        files[file.path] = {
+          sourceHash: file.sourceHash,
+          analysisHash: file.analysisHash,
+          status: 'error',
+          error: error instanceof Error ? error.message : String(error),
+          processedAt: new Date().toISOString()
+        }
       }
     }
-  }
+  })
+  await Promise.all(workers)
 
   const totalFiles = plan.files.length
   const reusedFiles = plan.reusable.length
