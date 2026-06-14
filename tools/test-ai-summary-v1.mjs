@@ -13,6 +13,7 @@ import {
 } from './ai-summary-v1.mjs'
 import { runSummaryBuild } from './generate-summaries-v1.mjs'
 import { restoreSnapshot } from './restore-summaries-v1.mjs'
+import { analyzeCoverage } from './check-ai-summary-v1-coverage.mjs'
 
 async function createFixture() {
   const root = await mkdtemp(join(tmpdir(), 'ai-summary-v1-'))
@@ -256,12 +257,39 @@ test('deployment pipelines use Node 24 and the same incremental v1 build', async
   assert.match(workflow, /ai-summaries-v1-/)
   assert.match(workflow, /restore-summaries-v1\.mjs/)
   assert.match(workflow, /npm run build:ai:v1/)
+  assert.match(workflow, /check:ai-v1 -- --strict/)
   assert.doesNotMatch(workflow, /hashFiles\('docs\/\*\*\/\*\.md'\)/)
   assert.doesNotMatch(workflow, /\|\|\s*echo/)
 
   assert.match(vercel.buildCommand, /restore-summaries-v1\.mjs/)
   assert.match(vercel.buildCommand, /npm run build:ai:v1/)
+  assert.match(vercel.buildCommand, /check:ai-v1 -- --strict/)
   assert.doesNotMatch(vercel.buildCommand, /generate-summaries\.mjs/)
   assert.equal(vercel.installCommand, 'npm ci')
   assert.equal(vercel.outputDirectory, 'vuepress')
+})
+
+test('coverage reports missing and failed analyzable files exactly', () => {
+  const report = analyzeCoverage({
+    expectedPaths: ['/ok.md', '/missing.md', '/failed.md', '/short.md'],
+    snapshot: {
+      files: {
+        '/ok.md': { status: 'success', summary: { summary: 'ok' } },
+        '/failed.md': { status: 'error', error: 'timeout' },
+        '/short.md': { status: 'short', reason: 'content-too-short' }
+      }
+    }
+  })
+  assert.deepEqual(report.missing, ['/missing.md'])
+  assert.deepEqual(report.error, ['/failed.md'])
+  assert.deepEqual(report.short, ['/short.md'])
+  assert.equal(report.success, 1)
+  assert.equal(report.coverage, 1 / 3)
+})
+
+test('module index consumes only successful v1 summaries', async () => {
+  const source = await readFile('tools/generate-module-index.mjs', 'utf8')
+  assert.match(source, /summaries-v1\.json/)
+  assert.match(source, /status === ['"]success['"]/)
+  assert.doesNotMatch(source, /public\/summaries\.json/)
 })

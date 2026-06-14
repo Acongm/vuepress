@@ -48,6 +48,9 @@ jobs:
           AI_MODEL: deepseek-v4-pro
         run: npm run build:ai:v1
 
+      - name: Verify AI summary coverage
+        run: npm run check:ai-v1 -- --strict
+
       - name: Build VuePress
         run: |
           node tools/generate-module-index.mjs

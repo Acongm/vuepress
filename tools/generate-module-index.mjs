@@ -17,7 +17,7 @@ const DOCS_INDEX_PATH = resolve(
 )
 const SUMMARIES_PATH = resolve(
   ROOT,
-  'docs/.vuepress/public/summaries.json'
+  'docs/.vuepress/public/summaries-v1.json'
 )
 const OUTPUT_PATH = resolve(ROOT, 'docs/.vuepress/public/module-index.json')
 
@@ -45,8 +45,12 @@ function normalizeSummary(summary) {
 function buildModuleIndex() {
   const knowledgeMap = readJson(KNOWLEDGE_MAP_PATH, { categories: {} })
   const docsIndex = readJson(DOCS_INDEX_PATH, { categories: {} })
-  const summariesData = readJson(SUMMARIES_PATH, { summaries: {} })
-  const summaries = summariesData.summaries || {}
+  const summariesData = readJson(SUMMARIES_PATH, { files: {} })
+  const summaries = Object.fromEntries(
+    Object.entries(summariesData.files || {})
+      .filter(([, entry]) => entry?.status === 'success')
+      .map(([path, entry]) => [path, entry.summary])
+  )
 
   const modules = {}
 

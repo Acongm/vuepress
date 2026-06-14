@@ -11,6 +11,7 @@
     "build": "vuepress build docs",
     "build:github": "cross-env BUILD_ENV=/mm-notes/ npm run build",
     "build:ai:v1": "node tools/generate-summaries-v1.mjs",
+    "check:ai-v1": "node tools/check-ai-summary-v1-coverage.mjs",
     "build:ai-data": "node tools/generate-summaries.mjs && node tools/generate-module-index.mjs",
     "smoke:ai": "node tools/smoke-ai-bundle.mjs",
     "test:ai-v1": "node --test tools/test-ai-summary-v1.mjs",
