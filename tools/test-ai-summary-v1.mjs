@@ -13,7 +13,10 @@ import {
 } from './ai-summary-v1.mjs'
 import { runSummaryBuild } from './generate-summaries-v1.mjs'
 import { restoreSnapshot } from './restore-summaries-v1.mjs'
-import { analyzeCoverage } from './check-ai-summary-v1-coverage.mjs'
+import {
+  analyzeCoverage,
+  coverageMeetsMinimum
+} from './check-ai-summary-v1-coverage.mjs'
 
 async function createFixture() {
   const root = await mkdtemp(join(tmpdir(), 'ai-summary-v1-'))
@@ -285,6 +288,19 @@ test('coverage reports missing and failed analyzable files exactly', () => {
   assert.deepEqual(report.short, ['/short.md'])
   assert.equal(report.success, 1)
   assert.equal(report.coverage, 1 / 3)
+  assert.equal(coverageMeetsMinimum(report, 0.3), false)
+
+  const retryable = analyzeCoverage({
+    expectedPaths: ['/ok-a.md', '/ok-b.md', '/retry.md'],
+    snapshot: {
+      files: {
+        '/ok-a.md': { status: 'success', summary: { summary: 'ok' } },
+        '/ok-b.md': { status: 'success', summary: { summary: 'ok' } },
+        '/retry.md': { status: 'error', error: 'retry later' }
+      }
+    }
+  })
+  assert.equal(coverageMeetsMinimum(retryable, 0.6), true)
 })
 
 test('module index consumes only successful v1 summaries', async () => {

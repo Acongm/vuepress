@@ -32,6 +32,7 @@ jobs:
           restore-keys: |
             ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-
             ai-summaries-v1-${{ runner.os }}-
+          save-always: true
 
       - name: Install dependencies
         run: npm ci

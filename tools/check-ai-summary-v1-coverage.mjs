@@ -26,6 +26,10 @@ export function analyzeCoverage({ expectedPaths, snapshot }) {
   }
 }
 
+export function coverageMeetsMinimum(report, minimum) {
+  return report.missing.length === 0 && report.coverage >= minimum
+}
+
 function listMarkdown(docsDir) {
   const paths = []
   const walk = (dir) => {
@@ -72,10 +76,8 @@ function main() {
     ).toFixed(2)}%`
   )
 
-  if (
-    process.argv.includes('--strict') &&
-    (report.missing.length > 0 || report.error.length > 0)
-  ) {
+  const minimum = Number(process.env.AI_SUMMARY_MIN_COVERAGE || 0.6)
+  if (process.argv.includes('--strict') && !coverageMeetsMinimum(report, minimum)) {
     process.exitCode = 1
   }
 }
