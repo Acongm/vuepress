@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generatedAt": "2026-06-14T02:24:20.037Z",
+    "generatedAt": "2026-06-14T09:11:04.843Z",
     "moduleCount": 17
   },
   "modules": {
@@ -17,55 +17,61 @@
         {
           "path": "/JavaScript/call、apply与bind.md",
           "title": "call、apply与bind",
-          "summary": "本文介绍了 JavaScript 中三个用于控制函数执行上下文和参数的方法：call、apply 和 bind。call 允许一个对象借用另一个对象的方法，立即执行并逐个传入参数；apply 与 call 类似，但参数以数组（或类数组）形式传递；bind 是 ES5 新增的方法，返回一个新函数，不会立即执行，需后续调用。三者常用于改变 this 指向、实现函数柯里化或方法借用。",
+          "summary": "本文介绍了 JavaScript 中 call、apply 和 bind 三个方法的作用与区别。call 用于改变 this 并立即执行函数，参数逐个传递；apply 类似，但参数以数组形式传入；bind 则返回一个绑定了 this 和参数的新函数，不会立即执行。三者常用于借用方法、设置上下文等场景。",
           "keywords": [
             "call",
             "apply",
             "bind",
-            "函数借用",
-            "this 绑定"
+            "this",
+            "函数借用"
           ]
         },
         {
           "path": "/JavaScript/js模拟bind方法.md",
           "title": "js模拟bind方法",
-          "summary": "{\n  \"summary\": \"本文剖析了手动实现 JavaScript 中 Function.prototype.bind 方法的关键步骤。bind 方法用于创建一个新函数，并将原函数的 this 绑定到指定对象，同时可预设部分参数（柯里化）。模拟实现的难点在于：返回的新函数既要作为普通函数调用，又要支持通过 new 操作符构造对象。在普通调用时，需借助闭包把绑定的 this 和参数传给原函数；当通过 new 调用时，绑定的 this 必须被忽略，转而创建一个",
-          "keywords": []
+          "summary": "文档探讨了如何模拟实现JavaScript的bind方法，包括核心功能、new操作符的影响及es5-shim对length的处理，主要用于面试考察this、原型链、闭包等知识点。",
+          "keywords": [
+            "bind",
+            "this",
+            "new",
+            "原型链",
+            "闭包"
+          ]
         },
         {
           "path": "/JavaScript/js模拟new操作.md",
           "title": "js模拟new操作",
-          "summary": "本文探讨如何模拟实现 JavaScript 的 new 操作符。通过使用 Object.create() 创建新对象并手动设置其原型链，再结合函数调用时的 this 绑定来模拟 new 的行为，并提供了针对不支持 ES5 环境的 polyfill 方案。最后总结了 new 操作符的五个关键步骤：创建全新对象、链接原型、绑定 this、连接 prototype 以及自动返回对象。",
+          "summary": "本文探讨如何模拟实现JavaScript的new操作符。通过代码示例展示使用Object.create()创建对象并链接原型，同时提供ES5 polyfill方案以兼容旧浏览器。最后总结new操作符的五个关键步骤：创建新对象、链接原型、绑定this、链接函数的prototype以及自动返回新对象。",
           "keywords": [
-            "new 操作符",
+            "new操作符",
             "模拟实现",
             "Object.create",
-            "prototype",
-            "polyfill"
+            "polyfill",
+            "原型链"
           ]
         },
         {
           "path": "/JavaScript/执行上下文-作用域链-闭包.md",
           "title": "执行上下文-作用域链-闭包",
-          "summary": "本文阐述了JavaScript执行上下文（全局、函数、Eval）及this绑定的规则，强调函数调用方式决定this指向。闭包被比喻为“背包”，内部函数携带外部作用域变量，即使外部函数返回后仍可访问，是实现数据隐私和模块化的关键技术。原型（prototype）用于共享实例属性和方法，实现继承。立即执行函数和闭包常用于创建私有变量、模块化封装。变量提升机制将声明移至作用域顶部，允许先使用后声明。整体内容揭示了JavaScript作用域链、闭包和原型等核心原理及其在实际开发中的应用。",
+          "summary": "本文档深入探讨JavaScript中的执行上下文、作用域链与闭包，涵盖执行上下文类型、this指向、闭包应用（私有变量、模块化）、变量提升、柯里化、apply/call/bind方法、Memoization及函数重载等高级技巧。",
           "keywords": [
             "执行上下文",
             "闭包",
-            "this",
             "作用域链",
-            "变量提升"
+            "变量提升",
+            "模块化"
           ]
         },
         {
           "path": "/JavaScript/经典闭包处理.md",
           "title": "经典闭包处理",
-          "summary": "本文档围绕JavaScript中经典闭包问题展开，主要探讨在循环中使用var声明变量时，由于函数作用域和异步执行导致闭包捕获同一个变量引用的常见陷阱。通过示例逐步展示了多种解决方案，包括使用立即执行函数表达式(IIFE)创建新作用域、利用setTimeout的第三个参数传值、通过函数传参拷贝变量、以及使用ES6的let块级作用域从根本上避免问题。此外还延伸到ES6的Promise和ES7的async/await等异步处理模式，展示了在异步流程中如何可靠地访问循环变量，体现了作用域、闭包与现代异步编程的结合应用。该文档属于典型的闭包理解与实践指南，适合巩固作用域链与异步知识。",
+          "summary": "本文讲解JavaScript经典闭包问题及其多种解决方案，从ES5的IIFE、传值技巧到ES6的let、Promise异步处理，再到ES7的async/await和Generator，逐步展示如何避免循环中异步操作导致的闭包引用错误。通过代码示例阐明不同阶段的处理思路，体现异步编程中变量作用域管理的演变。",
           "keywords": [
             "闭包",
-            "作用域",
-            "let",
             "IIFE",
-            "异步"
+            "setTimeout",
+            "Promise",
+            "async/await"
           ]
         }
       ]
@@ -83,13 +89,13 @@
         {
           "path": "/TypeScript/Study.md",
           "title": "Study",
-          "summary": "本文介绍了TypeScript内置的常用工具类型和高级类型操作，包括Partial、Required、Pick、Omit、Record、Exclude、Extract、NonNullable、ReturnType、InstanceType、Parameters、ConstructorParameters等，以及条件类型extends和类型推断infer。这些工具类型可以灵活地转换已有类型，如将属性变为可选或必选、选取或排除指定属性、构造对象映射类型、过滤联合类型、提取函数返回值或参数类型等，是TypeScript类型编程的核心基础，广泛应用于泛型约束、API类型定义和复杂类型推导场景。",
+          "summary": "本文档是TypeScript学习笔记，重点介绍了高级类型工具（Utility Types），如Partial、Required、Pick、Omit、Record、Exclude、Extract、NonNullable、ReturnType、InstanceType、Parameters和ConstructorParameters的用法示例，并简述了extends条件类型和infer类型推断。内容面向提升类型操作能力，附有技术面试卡链接。",
           "keywords": [
-            "工具类型",
-            "条件类型",
-            "类型推断",
-            "联合类型",
-            "泛型"
+            "TypeScript",
+            "类型工具",
+            "extends",
+            "infer",
+            "条件类型"
           ]
         }
       ]
@@ -107,55 +113,61 @@
         {
           "path": "/react/class-hooks.md",
           "title": "class-hooks",
-          "summary": "本文梳理了React核心机制，涵盖合成事件机制及其优点（跨平台、减少内存消耗、统一管理），详述setState的异步与批量更新原理，结合事务机制解释何时同步/异步以及合并行为。同时解析JSX本质为createElement函数生成虚拟DOM，以及组件更新流程中的reconciliation和commit两阶段，指出复杂组件更新可能带来的性能问题。内容偏向原理剖析，有助于深入理解React内部运作。",
+          "summary": "本文档是React核心概念与面试题总结，涵盖合成事件机制、setState的batchUpdate、JSX与虚拟DOM、组件更新过程与Fiber架构，以及常见面试问题如组件通信、受控组件、性能优化等。",
           "keywords": [
             "React",
             "setState",
-            "batchUpdate",
             "合成事件",
-            "虚拟DOM"
+            "虚拟DOM",
+            "Fiber"
           ]
         },
         {
           "path": "/react/react-render.md",
           "title": "react-render",
-          "summary": "本文从 React 18+ 源码角度，系统讲解 React 使用 createRoot().render(<App />) 到真实 DOM 渲染完成的完整流程。重点剖析了 Fiber 架构下的初始化、调度、Render 阶段（构建 workInProgress Fiber 树和 Effect 链表）与 Commit 阶段（同步操作 DOM 并执行副作用），并介绍了 beginWork、completeWork、commitRoot 等关键函数的时机与作用。整体流程概括为触发更新、创建 Fiber 树、协调生成 Effect 链表、提交更新真实 DOM、执行生命周期/副作用，揭示了 React 异步可中断渲染的核心原理。",
+          "summary": "React 18 采用 Fiber 架构，渲染流程分为可中断的 Render 阶段（构建 workInProgress 树、收集副作用）和同步的 Commit 阶段（操作真实 DOM、执行生命周期）。通过 beginWork 与 completeWork 向下/向上遍历，生成 effectList 链表，最终在 commitRoot 中完成 DOM 插入、更新、删除，并分离 useLayoutEffect 与 useEffect 的执行时机。",
           "keywords": [
-            "React 18",
-            "Fiber 架构",
-            "协调",
+            "Fiber",
             "Render Phase",
-            "Commit Phase"
+            "Commit Phase",
+            "beginWork",
+            "effectList"
           ]
         },
         {
           "path": "/react/react16.md",
           "title": "react16",
-          "summary": "React 16 引入了以 Fiber 架构为核心的革命性升级，解决了 React 15 同步递归调和导致的主线程阻塞问题。Fiber 将渲染过程拆分为可中断、可恢复的工作单元，支持优先级调度和增量渲染，为后续的 Concurrent Mode、Suspense 奠定基础。同时，新增错误边界（Error Boundaries）生命周期 componentDidCatch，防止单个组件错误导致整个应用白屏。这些改进显著提升了大型应用的响应性和稳定性。",
+          "summary": "React 16 带来了革命性的底层重构，核心引入 Fiber 架构实现异步可中断渲染，解决卡顿问题。同时新增错误边界机制防止应用白屏，Portals 支持渲染到任意 DOM 节点，Fragment 允许返回多元素，并调整生命周期方法，为后续并发特性与企业级应用奠定基础。",
           "keywords": [
             "React 16",
-            "Fiber 架构",
-            "错误边界",
-            "优先级调度",
-            "增量渲染"
+            "Fiber",
+            "Error Boundaries",
+            "Portals",
+            "Fragment"
           ]
         },
         {
           "path": "/react/react17.md",
           "title": "react17",
-          "summary": "{\n  \"summary\": \"React 17 被官方称为\"无新特性\"版本，但引入了全新的 JSX 转换机制。旧版 JSX 会被转译为 React.createElement(...) 调用，强制要求开发者手动导入 React，既增加学习成本又限制性能优化。新版通过自动导入运行时辅助函数，实现无需手动导入 React 的 JSX 编译方式，简化了代码结构，带来了潜在的性能提升。这一改变不仅降低了入门门槛，也为 React 后续简化概念模型、实现更多编译期优化奠定了基础。\",\n  \"keyPoints\": [\n    \"React 17 核心变化是全新的 JSX 转换，无需手动导入 React\",\n    \"旧版 JSX 依赖 React.createElement，新版改为自动导入辅助函数\",\n    \"新转换方式提升了性能并降低了学习成本\",\n    \"该变化是 React 简化概念模型和长期优化的关键一步\"\n  ],\n  \"keywords\": [\"React 17\", \"JSX 转换\", \"React.createElement\", \"自动导入\", \"性能优化\"],\n  \"techStack\": [\"React\", \"JavaScript\", \"Babel\", \"JSX\"],\n  \"difficulty\": \"进阶\",\n  \"contentType\": \"原理 + 实践\"\n}",
-          "keywords": []
+          "summary": "React 17 虽然对外宣称无新特性，但内部作了重要调整：全新的 JSX 转换不再依赖手动引入 React，事件委托从 document 移至根容器以支持多版本共存和局部使用，同时事件系统细节如 onScroll 不再冒泡、onFocus/onBlur 改用原生事件等。这些变更为渐进升级和未来优化打下基础。",
+          "keywords": [
+            "React 17",
+            "JSX 转换",
+            "事件委托",
+            "渐进升级",
+            "内部变更"
+          ]
         },
         {
           "path": "/react/react18.md",
           "title": "react18",
-          "summary": "React 18 核心更新为并发渲染（Concurrent Rendering）机制，通过可中断的渲染提升用户交互流畅度。新增 startTransition 用于标记非紧急更新，useDeferredValue 延迟次要内容更新，SuspenseList 控制加载顺序。入口模式简化为 legacy 和 concurrent，后者通过 createRoot 启用所有新功能。自动批处理范围从 React 事件扩展至 Promise、setTimeout 等异步场景，提升性能；同时提供 flushSync 方法可强制退出批处理。这些特性使 React 在保持简单开发模型的同时，能构建更高性能、高响应性的用户界面。",
+          "summary": "React 18 核心引入 Concurrent 渲染机制，通过 startTransition、useDeferredValue 等 API 实现可中断的异步更新，保持交互流畅。同时新增自动批处理，将 Promise、setTimeout 等异步更新默认合并渲染，可通过 flushSync 退出。入口模式推荐 createRoot 开启全部新特性，内部基于31种 Lane 优先级调度，将非紧急更新标记为 transition 避免阻塞。",
           "keywords": [
-            "Concurrent Rendering",
-            "自动批处理",
+            "Concurrent rendering",
             "startTransition",
-            "Suspense",
-            "React 18"
+            "自动批处理",
+            "React 18",
+            "Lane 优先级"
           ]
         }
       ]
@@ -173,61 +185,73 @@
         {
           "path": "/vue/code/Object.defineproperty.md",
           "title": "Object.defineproperty",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/vue/code/Proxy.md",
           "title": "Proxy",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/vue/code/proxy-observe.md",
           "title": "proxy-observe",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/vue/vue-render.md",
           "title": "vue-render",
-          "summary": "本文系统讲解Vue 3从模板到真实DOM的完整渲染流程，包括模板编译、响应式系统、虚拟DOM生成与patch等核心环节。与React的调度优先不同，Vue强调依赖收集与精准更新。流程分为初次渲染（mount）和更新渲染（update）两大阶段：模板先编译为优化的render函数，执行后生成VNode，通过patch挂载到真实DOM，同时响应式数据建立依赖；数据变化时，依赖追踪触发组件精准重渲染，避免全量更新。文中涉及编译时静态提升、事件缓存等优化策略，适合使用Composition API和<script setup>的开发者理解Vue内部机制。",
+          "summary": "本文详解 Vue 3 渲染流程：从模板编译生成 render 函数，到组件实例化与响应式依赖收集，再通过首次 patch 挂载真实 DOM。数据变更触发 setter，基于异步队列精准调度 render，执行新 VNode 的 diff 与 patch 更新，与 React 的调度优先形成鲜明对比。",
           "keywords": [
-            "Vue 3渲染流程",
-            "模板编译",
-            "响应式系统",
-            "虚拟DOM",
-            "patch算法"
+            "Vue 渲染流程",
+            "响应式依赖收集",
+            "虚拟 DOM",
+            "patch 算法",
+            "编译优化"
           ]
         },
         {
           "path": "/vue/vue2.md",
           "title": "vue2",
-          "summary": "{\n  \"summary\": \"本文档系统梳理了 Vue 核心原理，涵盖组件化思想、MVVM 数据驱动视图、基于 Object.defineProperty 的响应式系统及其局限性，以及 Vue3 Proxy 优化。进一步剖析了虚拟 DOM（vdom）与 diff 算法如何提升渲染效率，模板编译为 render 函数的过程，初次渲染与更新的异步机制，以及前端 hash 与 history 路由的实现对比。后半部分以面试真题形式深入应用层，如 v-show/v-if 区别、v-for 中 key 的作用、组件生命周期与通讯、v-model 原理和 computed 计算属性缓存等，是原理与实践结合的进阶学习材料。\",\n  \"keyPoints\": [\n    \"组件化与 MVVM 模式：通过数据驱动视图，将视图、数据、逻辑分层。\",\n    \"Vue2 响应式原理：借助 Object.defineProperty 深度监听对象和数组，但存在新增属性无法监听等局限性。\",\n    \"虚拟 DOM 和 diff 算法：通过 vnode 描述真实 DOM，利用 sameNode 判断（tag 和 key）减少不必要的渲染。\",\n    \"模板编译与渲染流程：模板经 with 语法编译成 render 函数，",
-          "keywords": []
+          "summary": "文档概述Vue2核心原理，包括组件化、基于Object.defineProperty的响应式系统、虚拟DOM与diff算法、模板编译为render函数、渲染过程及前端路由。同时汇总常见面试题，如v-show与v-if区别、key作用、生命周期、组件通讯、v-model实现、computed特点、异步组件、keep-alive、$nextTick用途及性能优化等。",
+          "keywords": [
+            "响应式",
+            "虚拟DOM",
+            "组件通讯",
+            "前端路由",
+            "Vue2原理"
+          ]
         },
         {
           "path": "/vue/vue3.md",
           "title": "vue3",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/vue/vue_interview.md",
           "title": "vue_interview",
-          "summary": "{\n  \"summary\": \"该文档是一份 Vue 面试题提纲，聚焦于 Vue 核心知识点，主要涉及组件间通讯的多种方式（如父子组件 props/emit、兄弟组件事件总线、Vuex 等）以及组件渲染和更新的底层过程（包括响应式数据驱动、虚拟 DOM diff 算法、模板编译等）。虽然内容尚未详细展开，但提纲可以帮助开发者梳理面试重点，涵盖 Vue 基础到进阶概念，适用于准备前端技术面试的学习者。\",\n  \"keyPoints\": [\n    \"Vue 组件通讯：掌握父子、兄弟及跨级组件通讯方案\",\n    \"组件渲染与更新过程：理解响应式原理和虚拟 DOM 机制\",\n    \"面试题覆盖 Vue 核心概念，包含通讯、渲染、",
-          "keywords": []
+          "summary": "本文档是关于Vue核心面试题的片段，列出了“Vue组件如何通讯”和“描述组件渲染和更新的过程”两个主题，但内容仅用“啥啥啥”占位，尚未填充具体解答。",
+          "keywords": [
+            "Vue",
+            "组件通讯",
+            "渲染",
+            "更新",
+            "面试题"
+          ]
         },
         {
           "path": "/vue/vue_theory.md",
           "title": "vue_theory",
-          "summary": "本文介绍了Vue的组件化和响应式原理。组件化部分解释了MVVM模型，即Model-View-ViewModel，通过数据绑定和DOM事件监听实现双向数据绑定，并对比了传统的MVC模式，指出MVVM抽离了视图逻辑以提升代码复用性。同时介绍了数据驱动视图的概念，区别于传统依赖DOM操作的方式。响应式部分深入Vue的核心实现，利用Object.defineProperty进行数据劫持，结合发布订阅模式实现数据和视图的同步更新，并提及对对象和数组的深度监听。",
+          "summary": "本文档深入讲解Vue.js核心原理，涵盖组件化（MVVM）、响应式系统（Object.defineProperty及Proxy）、虚拟DOM与diff算法、模板编译与渲染流程、前端路由（hash/history）及常见面试题，如v-if/v-show区别、v-for中key的作用、生命周期、组件通信等，并附带部分代码示例。",
           "keywords": [
-            "Vue",
-            "MVVM",
-            "Object.defineProperty",
+            "Vue原理",
             "响应式",
-            "数据绑定"
+            "虚拟DOM",
+            "MVVM",
+            "组件通信"
           ]
         }
       ]
@@ -251,109 +275,115 @@
         {
           "path": "/webpack/install/ni.md",
           "title": "ni",
-          "summary": "本文梳理了前端包管理工具的演进，从 npm 到 yarn、pnpm 以及 ni。核心概念是针对传统 npm 嵌套安装导致的路径过长、重复安装，以及扁平安装带来的版本提升不确定性和“幽灵依赖”问题，介绍了后续工具如何优化。关键特性包括 pnpm 利用硬链接和符号链接解决重复存储和幽灵依赖，ni 则统一不同包管理器的命令。应用场景主要是在现代前端项目中，根据项目规模和安全需求选择合适的包管理器，以规避依赖管理痛点。",
+          "summary": "本文对比了从npm到yarn、pnpm、ni等前端包管理工具的演变，重点分析它们解决的问题及依然存在的痛点。文中阐述了嵌套安装、路径过长、重复安装、扁平化带来的不确定性、npm分身、hoist机制和幽灵依赖等现象，并通过代码示例展示不同工具的安装与依赖组织方式。",
           "keywords": [
-            "npm",
-            "yarn",
-            "pnpm",
-            "ni",
-            "包管理"
+            "包管理器",
+            "幽灵依赖",
+            "hoist",
+            "扁平安装",
+            "pnpm"
           ]
         },
         {
           "path": "/webpack/install/npm.md",
           "title": "npm",
-          "summary": "npm v2 采用简单递归安装依赖，将直接依赖和间接依赖嵌套在 node_modules 中，极易形成深层嵌套树和大量重复依赖，导致磁盘空间浪费、安装缓慢，甚至因路径过长在 Windows 下无法删除。文档归纳了这种“嵌套地狱”的成因和危害，并通过实际开发中的常见问题（如直接删除 node_modules、忽视 devDependencies、yarn 与 npm 混用、lockfiles 提交等）引出对安装机制与配置优先级的思考，旨在说明早期 npm 的缺陷和现代包管理优化方向。",
+          "summary": "本文分析了早期npm v2的嵌套依赖问题，即“嵌套地狱”，包括层级过深、重复安装、空间浪费和Windows路径过长等问题。同时提及了npm install的配置优先级及版本一致性的重要性，并引导读者思考依赖管理中的常见实践，如删除node_modules、devDependencies区分及lockfiles提交等。",
           "keywords": [
             "npm",
             "嵌套地狱",
+            "依赖管理",
             "node_modules",
-            "lockfiles",
-            "依赖管理"
+            "lockfiles"
           ]
         },
         {
           "path": "/webpack/install/pnpm.md",
           "title": "pnpm",
-          "summary": "本文分析了传统 node_modules 安装方式的低效问题，包括生成文件多导致 I/O 密集、Node 解析算法通过递归 stat/readdir 查找文件启动缓慢、无法有效去重导致磁盘和内存浪费等。提出 Yarn 已知完整依赖树，应代替 Node 进行包定位，从而引入 Plug'n'Play 等新策略来优化包管理。",
+          "summary": "Yarn的Plug'n'Play（PnP）安装模式用单个.pnp.cjs映射文件替代传统node_modules目录，解决I/O密集、解析缓慢、重复依赖等问题。PnP使安装近乎即时、启动更快、依赖树完美优化，并支持零安装。初始化时自动注册.pnp.cjs，也可手动设置。松散模式利用后备池允许访问未显式声明的依赖，确保兼容性。",
           "keywords": [
+            "Yarn Plug'n'Play",
             "node_modules",
-            "Yarn",
-            "Node Resolution Algorithm",
-            "依赖树",
-            "Plug'n'Play"
+            ".pnp.cjs",
+            "依赖树优化",
+            "零安装"
           ]
         },
         {
           "path": "/webpack/install/yarn.md",
           "title": "yarn",
-          "summary": "本文梳理了前端包管理器从 npm 到 yarn、pnpm 及 ni 的演变历程，深入剖析了安装机制中存在的关键问题。早期 npm 采用嵌套安装导致路径过长和同一依赖重复安装；yarn 的扁平化安装虽减少了层级，却引发依赖提升不确定性、幽灵依赖及 npm 分身等问题。pnpm 通过硬链接与符号链接实现依赖隔离和共享，解决了冗余和安全问题。ni 则提供统一的命令行工具，简化多包管理器项目管理。核心关注点在于安装速度、磁盘效率和依赖安全性。",
+          "summary": "本文对比了前端包管理工具npm、yarn、pnpm、ni的演进，分析了它们解决的嵌套安装、路径过长、依赖提升不确定性、幽灵依赖等问题，并指出各方案在依赖扁平化、hoist机制等方面的差异。",
           "keywords": [
-            "包管理器",
-            "依赖提升",
+            "npm",
+            "yarn",
+            "pnpm",
             "幽灵依赖",
-            "硬链接",
-            "pnpm"
+            "依赖提升"
           ]
         },
         {
           "path": "/webpack/vite-架构及原理.md",
           "title": "vite-架构及原理",
-          "summary": "Vite 是一款基于原生 ES 模块（ESM）的新一代前端构建工具，其核心设计思想是“开发时不打包，生产时再打包”。开发服务器通过 Koa 提供按需编译，利用 esbuild 对依赖进行快速预构建，并结合浏览器原生 ESM 实现极速冷启动和高效 HMR；生产构建则使用 Rollup 进行打包、Tree-shaking 和代码分割。该架构大幅提升了开发体验，尤其适用于现代浏览器环境下的大型项目。",
-          "keywords": [
-            "Vite",
-            "ESM",
-            "esbuild",
-            "Rollup",
-            "HMR"
-          ]
+          "summary": "",
+          "keywords": []
         },
         {
           "path": "/webpack/vite-知识梳理.md",
           "title": "vite-知识梳理",
-          "summary": "Vite 是新一代前端构建工具，由 Vue 作者尤雨溪主导开发。它利用浏览器原生 ES 模块支持，在开发阶段实现按需加载与毫秒级热更新；生产构建则基于 Rollup 打包，输出优化后的静态资源。Vite 框架无关，原生支持 React、Vue 等，并提供 TypeScript、JSX、CSS 预处理器等开箱即用的特性。其核心原理包括开发服务器基于原生 ESM 的模块图解析与按需转换、依赖预构建（使用 esbuild），以及生产阶段用 Rollup 进行 Tree-shaking 和代码分割。常用配置如 root、resolve 等统一在 vite.config.ts 中管理，适合替代 Webpack 开发环境，提升开发体验。",
+          "summary": "Vite是由尤雨溪开发的下一代前端构建工具，基于原生ES模块实现极速冷启动和毫秒级热更新，生产构建采用Rollup，框架无关且开箱即用。本文面向React+Webpack开发者，系统梳理Vite核心原理、配置项、常用插件及与Webpack的对比，并提供学习路径建议。",
           "keywords": [
             "Vite",
             "ESM",
+            "React",
             "Rollup",
-            "esbuild",
             "前端构建工具"
           ]
         },
         {
           "path": "/webpack/webpack-vite-rollup.md",
           "title": "webpack-vite-rollup",
-          "summary": "{\n  \"summary\": \"本文深入对比了前端三大构建工具 Webpack、Rollup 和 Vite 的架构原理、优缺点及适用场景。Webpack 是一个基于依赖图和 Loader/Plugin 体系的通用模块打包器，功能强大但配置复杂，适合大型复杂应用。Rollup 专精于 JavaScript 打包，利用 ESM 静态结构实现完美的 Tree‑shaking，输出更小、更干净的库代码，是构建工具库的首选。Vite 则采用“开发时原生 ESM + 生产时 Rollup 打包”的架构，通过 esbuild 预构建和极速 HMR 提供极致的开发体验，同时保证生产性能，适用于现代 Web 应用的快速迭代。本文为开发者提供了明确的选型矩阵和深度原理分析。\",\n  \"keyPoints\": [\n    \"Webpack 基于依赖图与 Loader/Plugin 体系，可打包任意资源，功能全面但配置复杂，适合大型业务应用。\",\n    \"Rollup 专注 JavaScript 打包，利用 ESM 静态结构实现完美 Tree‑shaking，输出更小的库代码，是构建工具库的首选。\",\n    \"Vite 开发环境利用原生 ESM 和 esbuild 实现极速冷启动与 HMR，生产环境回退到",
-          "keywords": []
+          "summary": "本文深度对比前端构建工具Webpack、Vite和Rollup，从定位、架构原理、优缺点和适用场景进行全面分析。Webpack作为通用应用打包器，功能强但配置复杂；Rollup专注JS库打包，输出干净；Vite结合开发时原生ESM与esbuild预构建，生产用Rollup，实现极速开发体验。文章为开发者提供选型依据。",
+          "keywords": [
+            "Webpack",
+            "Vite",
+            "Rollup",
+            "构建工具",
+            "ESM"
+          ]
         },
         {
           "path": "/webpack/打包工具.md",
           "title": "打包工具",
-          "summary": "{\n  \"summary\": \"本文探讨了 JavaScript 包管理工具从 npm、yarn 到 pnpm 和 ni 的演进过程，重点分析了嵌套安装和扁平安装带来的问题。嵌套安装导致路径过长和同一依赖多次安装，扁平安装虽合并依赖，但引入了依赖提升的不确定性和幽灵依赖（项目能使用未直接安装的包）。pnpm 通过内容寻址存储和符号链接，解耦了依赖间的物理存储与逻辑结构，消除了幽灵依赖并节省磁盘空间。ni 则提供统一的命令接口。这些特性适用于现代前端与 Node.js 项目，帮助开发者选择更稳定、高效的依赖管理方案。\",\n  \"keyPoints\": [\n    \"嵌套安装导致 node_modules 路径过长且同一依赖被重复安装，浪费空间\",\n    \"npm 扁平安装存在依赖提升不确定性，升级包后可能引入意外的版本冲突\",\n    \"幽灵依赖使项目能使用未直接声明的包，造成隐式耦合和升级风险\",\n    \"pnpm 采用硬链接和符号链接，严格隔离依赖，解决幽灵依赖并实现高效存储\",\n    \"ni 提供统一的包管理器命令，简化跨工具的操作体验\"\n  ],\n  \"keywords\": [\"包管理器\", \"幽灵依赖\", \"依赖提升\", \"pnpm\", \"npm\"],\n  \"techStack\": [\"Node.js\", \"npm\", \"Yarn\", \"pnpm\", \"ni\"],\n  \"difficulty\": \"进阶\",\n  \"contentType\": \"概念",
-          "keywords": []
+          "summary": "本文档梳理了JavaScript包管理工具从npm到yarn、pnpm、ni的演进，重点分析了早期工具存在的嵌套安装、路径过长、重复安装等问题，以及flat安装带来的依赖提升不确定、npm分身和幽灵依赖等新挑战，并对比了各工具的解决方案。",
+          "keywords": [
+            "包管理工具",
+            "幽灵依赖",
+            "npm",
+            "pnpm",
+            "扁平安装"
+          ]
         },
         {
           "path": "/webpack/架构及原理.md",
           "title": "架构及原理",
-          "summary": "本文阐述了 Webpack 的架构与运行原理。Webpack 本质上是一个基于插件和加载器的模块打包系统，核心包括入口、输出、模块、插件、加载器及依赖图等部分。初始化时通过 Compiler 控制器管理构建生命周期，并创建 Compilation 对象负责单次构建。通过依赖图递归解析模块，加载器处理非 JavaScript 资源，插件完成优化与扩展，最终输出打包文件。该架构使 Webpack 高度可配置且强大。",
+          "summary": "Webpack是一个基于插件和加载器的模块打包系统，通过入口文件构建依赖图，利用加载器转换资源，插件扩展优化，最终输出打包文件。核心包括Compiler（管理构建生命周期）和Compilation（单次编译实例），支持代码拆分和按需加载。",
           "keywords": [
             "Webpack",
-            "模块打包",
             "Loader",
             "Plugin",
-            "依赖图"
+            "Dependency Graph",
+            "Compiler"
           ]
         },
         {
           "path": "/webpack/知识梳理.md",
           "title": "知识梳理",
-          "summary": "Webpack 是现代前端开发的核心模块打包器，能将 JavaScript、CSS、图片等资源视为模块，通过入口文件构建依赖图，最终输出优化后的打包文件。其基本概念包括打包、模块化、插件（Plugins）和加载器（Loaders），分别用于处理非 JS 资源与扩展功能。核心配置涉及入口（entry）、输出（output）、模块（modules）和依赖关系（dependency graph）。通过 webpack.config.js 可灵活定义打包行为，实现代码压缩、资源转换等自动化构建任务，广泛应用于现代前端工程的性能优化与工程化流程。",
+          "summary": "本文梳理了学习 Webpack 的基本框架，涵盖其作为模块打包器的核心概念（入口、输出、模块、依赖图）、配置文件、常用加载器与插件、Tree Shaking、Code Splitting 等优化策略，以及开发与生产模式的差异，并提供了学习建议。",
           "keywords": [
-            "Webpack",
-            "Bundling",
-            "Modules",
-            "Plugins",
-            "Loaders"
+            "webpack",
+            "模块打包",
+            "加载器",
+            "插件",
+            "Code Splitting"
           ]
         }
       ]
@@ -371,25 +401,25 @@
         {
           "path": "/css/scss.md",
           "title": "scss",
-          "summary": "本文档汇总了三种常用的 SCSS 宏（Mixin），用于快速解决前端开发中的典型样式需求。这些宏包括：单行文本溢出显示省略号、自定义滚动条样式、以及实现元素垂直居中。通过将这些可复用样式封装为 Mixin，开发者可以提升代码组织性和可维护性，减少重复代码。应用场景覆盖列表项文本截断、美化浏览器默认滚动条、模态框或卡片内容的居中对齐等。文档以代码示例形式呈现，适合直接引入项目使用。",
+          "summary": "本文档介绍了三种常用的SCSS宏（mixin），包括显示省略号、自定义滚动条样式和垂直居中布局，并提供了对应的代码示例。",
           "keywords": [
             "SCSS",
-            "Mixin",
+            "宏",
             "省略号",
-            "滚动条样式",
+            "滚动",
             "垂直居中"
           ]
         },
         {
           "path": "/css/skill.md",
           "title": "skill",
-          "summary": "本文介绍了 CSS 的 white-space 属性，该属性用于控制元素内空白字符（如空格、制表符、换行符）的处理方式。通过一张对比表格清晰列出 normal、nowrap、pre、pre-wrap、pre-line、break-spaces 等属性值对换行符、空格与制表符的合并或保留规则，以及文字自动换行的行为。该属性常用于保留代码格式、控制文本换行等场景，是布局与排版中的基础技巧。",
+          "summary": "本文介绍 CSS white-space 属性，用于控制元素内空白字符（如空格、制表符、换行符）的处理方式。通过对比 normal、pre、pre-wrap 等不同属性值的效果，帮助开发者识别并处理 HTML 字符中的换行等空白问题。",
           "keywords": [
-            "CSS",
             "white-space",
-            "空白处理",
-            "换行",
-            "pre"
+            "空白字符",
+            "换行符",
+            "CSS 技巧",
+            "pre-wrap"
           ]
         }
       ]
@@ -407,25 +437,25 @@
         {
           "path": "/node/npm.md",
           "title": "npm",
-          "summary": "本文档介绍了 npm 包管理工具的常用操作，涵盖镜像源管理、依赖查看与定位、缓存清理、npm 页面导航以及脚本命令执行。通过设置淘宝镜像可加速包下载，查看已安装依赖和路径便于项目调试，清除缓存解决安装异常。导航命令可快速打开包的文档、仓库和 issues。脚本命令部分区分了并行执行（&）与继发执行（&&），并提供了通过 process.env.npm_lifecycle_event 获取当前运行脚本名称的方法，适用于前端工程化中的任务编排与脚本调试场景。",
+          "summary": "本文档介绍了 npm 的常用操作，包括设置淘宝镜像、查看已安装依赖包及其路径、清除缓存、导航到 npm 文档和 GitHub 页面，以及脚本命令的并行与继发执行方式。",
           "keywords": [
             "npm",
             "镜像",
+            "依赖包",
             "缓存",
-            "脚本命令",
-            "依赖管理"
+            "脚本命令"
           ]
         },
         {
           "path": "/node/toolkit.md",
           "title": "toolkit",
-          "summary": "本文档介绍了 Node.js 开发中常用的五个工具：nvm 用于管理 Node 版本，支持 Windows 和 Mac；nrm 用于查看和切换 npm registry；nodemon 监视文件变更并自动重启服务；npm-check-updates 可更新 package.json 中的依赖版本；yalc 用于本地 npm 包调试，模拟发布并链接到项目。文档只提供安装方法与常用命令，并附 GitHub 仓库以便深入了解，旨在帮助开发者提升效率，简化环境配置、包管理与调试流程。",
+          "summary": "本文档介绍了Node.js开发中五个常用工具包的安装与基本命令：nvm用于Node版本管理，nrm用于切换npm registry，nodemon监测文件变化自动重启服务，npm-check-updates更新依赖版本，yalc配合nodemon实现本地npm包调试。具体使用方法需查看各工具的GitHub页面。",
           "keywords": [
             "Node.js",
+            "工具包",
+            "nvm",
             "npm",
-            "版本管理",
-            "自动化工具",
-            "本地调试"
+            "调试"
           ]
         }
       ]
@@ -449,25 +479,25 @@
         {
           "path": "/Pattern/BroadcastChannel/BroadcastBridge.md",
           "title": "BroadcastBridge",
-          "summary": "BroadcastBridge 是一个 TypeScript 工具类，封装了浏览器 BroadcastChannel API，用于在同源的不同浏览器上下文（标签页、iframe、Worker）间实现类型安全的事件广播与监听。它支持通过泛型定义事件类型名和负载，提供可配置的通道名称和事件域（domain），自动创建和管理 BroadcastChannel 实例，并暴露 `send` 和 `receive` 方法，简化了跨上下文通信的样板代码，常用于多标签页数据同步、状态共享等场景。",
+          "summary": "本文档说明 BroadcastBridge.ts 的实现，利用 BroadcastChannel API 在同源浏览器上下文（标签页、iframe）间进行广播通信，采用桥接模式封装消息通道，简化跨上下文数据同步。",
           "keywords": [
             "BroadcastChannel",
-            "跨标签页通信",
+            "桥接模式",
+            "跨标签通信",
             "TypeScript",
-            "事件桥接",
-            "类型安全"
+            "消息同步"
           ]
         },
         {
           "path": "/Pattern/BroadcastChannel/BroadcastSingleton.md",
           "title": "BroadcastSingleton",
-          "summary": "本文档展示了一个基于 BroadcastChannel API 的跨标签页广播服务单例实现。通过 createBroadcast 函数获取唯一的 BroadcastService 实例，该实例封装了消息发送（postMessage）和接收（onMessage）功能，并内置了错误监听与自动重连机制。当通道发生错误时，服务会自动重新创建 BroadcastChannel 并重新绑定消息处理器，确保通信的可靠性。适用于需要在多个浏览器标签页间实时同步数据的前端应用场景，如登录状态、配置更新或购物车变更通知。",
+          "summary": "基于BroadcastChannel API实现的单例模式模块，用于在多个浏览器上下文（如不同标签页、iframe、Worker）之间进行低延迟广播通信。封装频道创建、消息收发和生命周期管理，确保应用中仅存在一个共享通信实例，简化跨上下文状态同步与事件通知。",
           "keywords": [
             "BroadcastChannel",
-            "TypeScript",
-            "单例模式",
+            "Singleton",
             "跨标签页通信",
-            "自动重连"
+            "消息广播",
+            "状态同步"
           ]
         },
         {
@@ -479,37 +509,36 @@
         {
           "path": "/Pattern/COMPARISON.md",
           "title": "COMPARISON",
-          "summary": "本文对比了观察者模式和基于 Proxy 的代理模式在状态管理中的实现差异。观察者模式通过手动通知发布变更，适用于事件广播和跨模块通信；代理模式利用 Proxy 拦截属性赋值，自动触发订阅，提供更细粒度的响应式更新和变更历史。两种方案分别映射 Vue3 生态中的事件总线与 reactive/watch 机制，帮助开发者在不同场景下做出选择。",
+          "summary": "本文对比了实现计数器状态监听的两种模式：Observer（手动发布）与ProxyStore（Proxy拦截赋值自动发布）。Observer适合事件广播，订阅者仅获当前值；ProxyStore提供细粒度键级订阅和prevValue，类似Vue3 reactive，适用于状态容器。文中给出使用场景和选型建议。",
           "keywords": [
             "观察者模式",
             "代理模式",
-            "状态管理",
-            "Proxy",
-            "响应式"
+            "状态容器",
+            "发布订阅",
+            "Vue3 reactivity"
           ]
         },
         {
           "path": "/Pattern/CustomEvent/CustomEventBridge.md",
           "title": "CustomEventBridge",
-          "summary": "CustomEventBridge 是一个基于 TypeScript 实现的轻量级自定义事件桥接模块，旨在提供跨组件、跨模块或微前端场景下的松耦合通信机制。它封装了事件的注册、触发、移除及一次性监听等核心能力，支持强类型事件映射，保证类型安全。通过单例或工厂模式创建，可作为全局事件总线，适用于复杂应用中解耦组件交互、插件通信、iframe 或 Web Worker 之间的消息传递等场景。",
+          "summary": "CustomEventBridge 是一个用于跨组件或跨系统事件通信的自定义事件桥接模块，采用发布-订阅模式，支持事件的注册、监听、派发与移除，旨在解耦模块、提升可扩展性。",
           "keywords": [
             "事件桥接",
             "发布订阅",
-            "TypeScript",
-            "微前端通信",
-            "事件总线"
+            "自定义事件",
+            "解耦",
+            "TypeScript"
           ]
         },
         {
           "path": "/Pattern/CustomEvent/CustomEventSingleton.md",
           "title": "CustomEventSingleton",
-          "summary": "CustomEventSingleton.ts 是一个基于 TypeScript 实现的单例模式自定义事件系统。它利用单例模式确保全局唯一的事件中心，提供类型安全的事件订阅与发布能力，通常基于底层的 EventTarget 或自定义事件类封装。该设计适用于模块间解耦通信、全局状态变更通知以及跨组件消息传递等场景，增强了大型应用的可维护性和一致性。",
+          "summary": "本文档介绍了 CustomEventSingleton.ts 模块，该模块实现了一个自定义事件单例管理器。通过单例模式确保全局只有一个事件总线实例，用于跨组件或模块之间的事件通信。它封装了事件的注册、监听和分发逻辑，提供类型安全的接口，并可能包含清理机制以避免内存泄漏，从而提升代码的可维护性和运行效率。",
           "keywords": [
-            "TypeScript",
             "单例模式",
             "自定义事件",
-            "EventTarget",
-            "事件总线"
+            "事件总线",
+            "TypeScript"
           ]
         },
         {
@@ -521,19 +550,19 @@
         {
           "path": "/Pattern/EventBus/EventBus.md",
           "title": "EventBus",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/EventBus/EventBusSingleton.md",
           "title": "EventBusSingleton",
-          "summary": "EventBusSingleton 是一个基于单例模式实现的事件总线模块，用于在应用程序中实现组件间解耦通信。通过全局唯一实例管理事件的订阅、发布与取消，确保事件流的一致性，常用于前端框架或跨模块消息传递场景。",
+          "summary": "实现一个基于单例模式的事件总线（EventBus），用于在TypeScript应用中实现组件间的解耦通信。该文件提供了一个全局唯一的事件总线实例，支持事件的订阅、发布和取消订阅。",
           "keywords": [
             "EventBus",
             "单例模式",
             "TypeScript",
-            "事件管理",
-            "组件通信"
+            "发布订阅",
+            "解耦"
           ]
         },
         {
@@ -545,7 +574,7 @@
         {
           "path": "/Pattern/Observer/ObserverSingleton.md",
           "title": "ObserverSingleton",
-          "summary": "ObserverSingleton.ts 是一个将观察者模式与单例模式结合的 TypeScript 实现示例。它通过单例模式确保全局唯一的观察者管理器实例，并利用观察者模式实现事件驱动的订阅-发布机制。这种组合适用于需要集中管理跨组件通信、全局状态变更通知或事件总线的场景，能够避免重复实例化，保持应用状态一致性。",
+          "summary": "该文档介绍了如何在 TypeScript 中结合观察者模式与单例模式实现 ObserverSingleton，确保全局唯一实例的同时提供订阅/通知机制，用于协调跨组件的事件通信。",
           "keywords": [
             "Observer",
             "Singleton",
@@ -562,25 +591,25 @@
         {
           "path": "/Pattern/Observer/Subject.md",
           "title": "Subject",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/ProxyStore/ProxyStore.md",
           "title": "ProxyStore",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/ProxyStore/ProxyStoreSingleton.md",
           "title": "ProxyStoreSingleton",
-          "summary": "该文档展示了一个 TypeScript 实现的基于 Proxy 的单例存储（Store）。通过 Proxy 对象拦截属性访问，结合单例模式确保全局仅存在一个存储实例，实现响应式数据管理与访问控制。核心设计用于在组件间共享状态、触发更新，适用于需要集中状态管理的现代前端应用，尤其适合结合 React 等框架实现简洁的全局状态层。",
+          "summary": "ProxyStoreSingleton 是一种将代理模式与单例模式结合的设计模式实现，旨在通过代理层统一管理存储实例的创建与访问，确保全局唯一性，并支持懒加载、缓存和逻辑解耦。常用于状态管理或配置存储场景。",
           "keywords": [
             "Proxy",
             "Singleton",
+            "Store",
             "TypeScript",
-            "State Store",
-            "Responsive Data"
+            "Design Pattern"
           ]
         },
         {
@@ -604,38 +633,44 @@
         {
           "path": "/Pattern/ServiceRequest/Registry.md",
           "title": "Registry",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/ServiceRequest/ServiceRequestRegistry.md",
           "title": "ServiceRequestRegistry",
-          "summary": "ServiceRequestRegistry.ts 是一个 TypeScript 模块，用于管理和注册服务请求，提供请求的添加、移除、查找和调度功能。该模块通过强类型定义确保请求处理的安全性和可维护性，常用于微服务架构或事件驱动系统中，作为服务发现、请求路由或依赖注入的核心组件，支持灵活的服务编排与解耦。",
+          "summary": "ServiceRequestRegistry 模式提供一种集中注册和处理服务请求的机制，通过注册表解耦请求发起者与处理器，支持动态添加处理程序并实现请求的路由分发。",
           "keywords": [
-            "Service Registry",
-            "TypeScript",
-            "Request Management",
-            "Microservices",
-            "Event-Driven"
+            "服务请求",
+            "注册表",
+            "处理器",
+            "分发",
+            "解耦"
           ]
         },
         {
           "path": "/Pattern/ServiceRequest/SharedStateBridge.md",
           "title": "SharedStateBridge",
-          "summary": "SharedStateBridge.ts 是一个 TypeScript 实现，旨在微前端或组件化架构中实现跨子应用或跨组件的共享状态管理与通信。它通过定义统一的桥接接口，使不同沙箱环境能安全地读写共享状态，从而解决状态孤岛问题，支持事件订阅与数据同步，常用于大型应用的模块联邦、iframe 通信等场景。",
+          "summary": "SharedStateBridge.ts 是一个 TypeScript 代码示例，展示了在服务请求上下文中使用桥接模式管理共享状态的实现。该模块旨在解耦服务请求的抽象与实现，允许多个服务共享并同步状态变更，提升代码的可维护性和扩展性。",
           "keywords": [
-            "SharedStateBridge",
-            "微前端",
-            "状态管理",
+            "SharedState",
+            "Bridge pattern",
+            "ServiceRequest",
             "TypeScript",
-            "跨应用通信"
+            "状态管理"
           ]
         },
         {
           "path": "/Pattern/ServiceRequest/SharedStateBridgeSingleton.md",
           "title": "SharedStateBridgeSingleton",
-          "summary": "提供的文档内容仅包含文件名 SharedStateBridgeSingleton.ts，未提供实际代码或文档正文，无法进行内容提炼。根据文件名推测，该文件可能实现一个 TypeScript 单例类，用于跨组件或模块的共享状态桥接，常应用于复杂前端应用的状态管理或微前端通信场景。",
-          "keywords": []
+          "summary": "该文档介绍 SharedStateBridgeSingleton 类，采用单例模式实现跨模块或微前端应用的共享状态桥接，确保全局状态一致，提供读写及变更通知机制，便于不同子应用间同步状态。",
+          "keywords": [
+            "单例模式",
+            "状态桥接",
+            "微前端",
+            "共享状态",
+            "TypeScript"
+          ]
         },
         {
           "path": "/Pattern/Store/README.md",
@@ -646,19 +681,19 @@
         {
           "path": "/Pattern/Store/Store.md",
           "title": "Store",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/Store/StoreSingleton.md",
           "title": "StoreSingleton",
-          "summary": "内容太短，暂无摘要",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/Pattern/模式来源与类比.md",
           "title": "模式来源与类比",
-          "summary": "{\n  \"summary\": \"本文总结了跨组件通信中常见的三种经典软件工程模式：事件总线（EventBus）、发布订阅/观察者（Pub/Sub & Observer）以及状态容器（Store），并通过与开发者熟悉的 API（如 on/off/emit、subscribe、setState）进行类比，说明这些模式并非某一框架专有，而是信息传播与状态共享的通用解决方案。文中列举了 Node.js EventEmitter、mitt、RxJS、Redux 等实际应用场景，帮助读者理解差异化封装背后的统一思想，适用于前端与后端各种组件通信与状态管理的设计。\",\n  \"keyPoints\": [\n    \"跨组件通信模式是软件工程中信息传播与状态共享的通用抽象，而非特定框架独有\",\n    \"事件总线模式通过 on/emit 实现松耦合通信，常见于 Node.js EventEmitter 和前端 mitt\",\n    \"发布订阅/观察者模式通过 subscribe 传递变化，典型代表为 RxJS Observable/Subject\",\n    \"状态容器模式通过 setState/getState 集中管理状态，类似 Redux 或 Vuex 的设计思想\",\n    \"理解这些模式有助于在不同框架间迁移设计思路，避免重复造轮子\"\n  ],\n  \"keywords\": [\n    \"跨组件通信\",\n    \"事件总线\",\n    \"发布订阅\",\n    \"状态容器\",\n    \"观察者模式\"\n  ],",
+          "summary": "",
           "keywords": []
         }
       ]
@@ -676,25 +711,25 @@
         {
           "path": "/git/command.md",
           "title": "command",
-          "summary": "该文档是Git常用命令的速查清单，涵盖了从仓库初始化、配置、文件暂存与提交、分支与标签管理，到查看历史、撤销操作和日志输出等核心操作。它面向开发者提供快速参考，适用于日常代码版本控制场景，帮助用户高效掌握Git的基础工作流和常见任务。",
+          "summary": "本文提供了一个常用的 Git 命令清单，涵盖仓库创建、配置、暂存区操作、提交、分支、标签、信息查看、撤销及日志等核心命令，并附有代码示例。原文参考阮一峰的 blog，旨在帮助开发者快速查阅和使用 Git 版本控制工具。",
           "keywords": [
             "Git",
+            "命令清单",
             "版本控制",
-            "分支管理",
-            "暂存区",
-            "命令清单"
+            "分支",
+            "标签"
           ]
         },
         {
           "path": "/git/commit.md",
           "title": "commit",
-          "summary": "本文档介绍了 Git 提交信息的规范化格式，重点阐述了 commit message 的结构，包括必需的 header（含 type、scope、subject）和可选的 body、footer。其中 type 字段定义了七种标准类别：feat（新功能）、fix（修复）、docs（文档）、style（格式）、refactor（重构）、test（测试）、chore（构建或辅助工具），旨在统一团队提交风格，提高版本历史可读性和可维护性。适用于团队协作项目的版本管理场景。",
+          "summary": "该文档详细介绍了 Git commit 规范，包括 commit message 格式（Header、Body、Footer），type 的7种标准类别（feat、fix、docs 等）及其扩展，Header 中 scope 和 subject 的编写规则，Body 和 Footer 的使用场景（如不兼容变动、关闭 Issue、Revert），以及如何通过 Commitizen 工具和 cz-conventional-changelog 实现规范化提交流程。",
           "keywords": [
             "Git",
-            "commit规范",
+            "Commit 规范",
+            "Commitizen",
             "type",
-            "提交信息",
-            "团队协作"
+            "Change log"
           ]
         }
       ]
@@ -712,37 +747,37 @@
         {
           "path": "/utils/function.md",
           "title": "function",
-          "summary": "本文档介绍了一组前端常用工具方法，包括身份证信息提取、运行环境判断以及微信小程序API的Promise化封装。身份证解析可从号码中获取年龄、出生日期和性别；环境判断用于识别当前代码执行在哪种宿主环境；Promise化工具将微信原生回调式API转为Promise链式调用，简化异步逻辑。这些方法适用于需要处理用户身份信息、多端环境适配及提升微信小程序开发体验的场景。",
+          "summary": "该文档介绍了三个常用工具函数：身份证信息提取（计算年龄、格式化生日、识别性别）、运行环境判断（如浏览器或Node等）以及微信API Promise化以支持async/await调用。说明了函数参数、返回值和代码示例。",
           "keywords": [
             "身份证解析",
             "环境判断",
+            "微信API",
             "Promise化",
-            "微信小程序",
             "工具函数"
           ]
         },
         {
           "path": "/utils/library.md",
           "title": "library",
-          "summary": "本文档收集了个人使用过的或常见的JavaScript类库，按功能划分为工具库、时间处理、请求处理、精度处理、本地存储、滚动处理和事件处理等类别。涵盖lodash、ramda、qs等通用工具，moment、dayjs、date-fns等日期处理库，axios HTTP请求库，big.js、number-precision等精度运算库，localForage本地存储方案，better-scroll滚动插件以及hotkeys-js键盘事件库。旨在为开发者提供常用工具参考，提升开发效率，适用于前端与Node.js环境。",
+          "summary": "本文档整理了一份前端开发中常用的JavaScript类库清单，涵盖工具库、时间处理、请求、精度、存储、滚动、事件、文件处理、富文本编辑器、用户引导、Webpack插件及CLI工具等类别，并附有简短说明和链接，便于查阅和选型。",
           "keywords": [
-            "JavaScript",
-            "工具库",
-            "前端开发",
-            "类库推荐",
-            "Node.js"
+            "JavaScript库",
+            "前端工具",
+            "库收集",
+            "Webpack",
+            "CLI工具"
           ]
         },
         {
           "path": "/utils/regexp.md",
           "title": "regexp",
-          "summary": "本文档整理了前端开发中常用的正则表达式，涵盖数据验证和格式处理两大类。验证部分包括金额（精确到分）、手机号、邮箱、QQ号、链接地址和身份证号码的正则模式；格式部分则提供了将手机号格式化为3-4-4分组（支持从左到右和从右到左）以及隐藏中间四位的方法。这些正则表达式可直接应用于表单校验、用户输入格式化等场景，提升开发效率和用户体验。",
+          "summary": "本文档整理常用正则表达式，分为验证和格式两类。验证包括金额、手机号、邮箱、QQ号、链接、身份证等格式校验；格式部分提供344格式手机号（从左到右/从右到左）和隐藏手机号中间4位的正则实现，并附代码示例。",
           "keywords": [
             "正则表达式",
             "验证",
             "格式化",
             "手机号",
-            "金额"
+            "邮箱"
           ]
         }
       ]
@@ -760,25 +795,25 @@
         {
           "path": "/issue/h5.md",
           "title": "h5",
-          "summary": "在 H5 开发中，WebView 返回上一页不刷新是因为浏览器或 WebView 为了提升性能引入了缓存机制，直接从缓存中加载页面。解决方案是监听 pageshow 事件，并通过事件对象的 persisted 属性或 performance.navigation.type 属性来判断当前页面是否来自缓存。若来自缓存则执行必要的刷新逻辑，确保页面内容更新。此方案适用于需要强制刷新页面的场景，如表单提交后返回、动态内容展示等。",
+          "summary": "WebView 返回上一页不刷新问题源于浏览器的缓存机制。解决方案是监听 pageshow 事件，通过事件对象的 persisted 属性或 performance.navigation.type 属性判断页面是否从缓存加载，若为缓存载入则强制刷新页面。",
           "keywords": [
             "WebView",
-            "pageshow",
             "缓存",
-            "性能优化",
+            "pageshow",
+            "刷新",
             "H5"
           ]
         },
         {
           "path": "/issue/pc.md",
           "title": "pc",
-          "summary": "本文档聚焦于 PC 端使用 CSS transform 属性时导致字体模糊的问题。核心原因是 transform 产生的非整数像素值引发了 sub-pixel 渲染，破坏了 Webkit 等浏览器默认的字体平滑处理，导致字体出现模糊或锯齿。文档提供了两种解决方案：方案一通过 JavaScript 动态计算并设置整数像素值来避免模糊；方案二利用 translateZ(0) 或 will-change 等技巧强制 GPU 加速，间接改善字体渲染效果。该知识适用于前端开发中涉及元素位移、动画等场景，帮助开发者解决视觉呈现问题。",
+          "summary": "当CSS transform属性导致元素渲染在非整数像素位置时，会引起WebKit内核浏览器中的字体模糊问题。可通过强制使用整数像素、调整渲染方式或使用替代方案来解决。",
           "keywords": [
-            "CSS transform",
+            "transform",
             "字体模糊",
-            "sub-pixel 渲染",
-            "GPU 加速",
-            "font smoothing"
+            "非整数像素",
+            "CSS",
+            "WebKit"
           ]
         }
       ]
@@ -796,92 +831,92 @@
         {
           "path": "/software/browser.md",
           "title": "browser",
-          "summary": "本文档汇总了浏览器扩展相关的资源，包括扩展商店（如Chrome网上应用店、CrxDL、Extfans）以及一系列用于优化浏览体验的扩展推荐。重点介绍了新标签页定制（Infinity、Momentum、MONKNOW）、二维码生成、广告拦截（uBlock Origin、YouTube广告过滤）和哔哩哔哩辅助工具等实用扩展，旨在帮助用户提升浏览效率与个性化体验。",
+          "summary": "该文档汇总了实用的浏览器扩展资源，包括扩展商店入口、体验优化工具（新标签页定制、广告拦截、翻译、视频控制等）以及前端开发者常用的调试与辅助插件。",
           "keywords": [
             "浏览器扩展",
-            "Chrome",
-            "新标签页",
+            "Chrome插件",
+            "开发工具",
             "广告拦截",
-            "二维码生成"
+            "新标签页"
           ]
         },
         {
           "path": "/software/claude-skills-guide.md",
           "title": "claude-skills-guide",
-          "summary": "Claude Skills 是一种模块化扩展机制，将通用 AI 转化为面向特定任务的专家系统。通过定义专业工作流、工具集成、领域知识和捆绑资源，Skills 实现了任务定制化。核心原理包括三层渐进加载机制以优化上下文空间，以及自由度匹配原则（高自由度文字指令、中自由度伪代码、低自由度具体脚本）以适应不同任务脆弱性。文档还介绍了标准目录结构与资源加载时机，指导开发者如何设计和部署适合项目的 Skill。",
+          "summary": "Claude Skills 是模块化扩展机制，通过渐进加载和自由度匹配原则，为通用 AI 提供专业工作流、工具集成和领域知识。文档介绍其概念、三层加载机制、文件结构、SKILL.md 编写规范与实战示例，帮助开发者为项目创建定制技能包。",
           "keywords": [
-            "Skills",
-            "模块化扩展",
+            "Claude Skills",
             "渐进加载",
             "自由度匹配",
-            "Claude"
+            "SKILL.md",
+            "技能包"
           ]
         },
         {
           "path": "/software/cross-platform.md",
           "title": "cross-platform",
-          "summary": "{\n  \"summary\": \"本文档推荐了五款面向开发者的跨平台效率工具：uTools 通过强大的插件系统和多功能输入框实现快速启动与信息处理；Motrix 是一款基于 Aria2 的清爽下载器，支持 BT、磁力链及 Tracker 自动更新；SwitchHosts 提供语法高亮与快速切换的 Hosts 管理方案；QtScrcpy 可通过 USB 或网络同时显示并控制多达 16 台 Android 设备，无需 root 权限且支持自定义按键映射；PicGo 作为图床工具，支持拖拽、剪贴板等方式上传至 GitHub、七牛云、阿里云 OSS 等主流图床，并提供丰富的插件机制。这些工具覆盖了日常开发中启动",
-          "keywords": []
+          "summary": "文档汇总了多款跨平台实用工具：uTools 效率启动器支持插件化与云端同步；Motrix 基于 Aria2 的下载管理器；SwitchHosts 用于 Hosts 文件管理与快速切换；QtScrcpy 安卓投屏与控制工具；PicGo 图床上传获取链接。各工具均附官网或 GitHub 链接。",
+          "keywords": [
+            "跨平台工具",
+            "效率软件",
+            "下载管理器",
+            "Hosts 管理",
+            "图床"
+          ]
         },
         {
           "path": "/software/mac.md",
           "title": "mac",
-          "summary": "本文档整理了 Mac 平台上多款提升效率的实用工具。Homebrew 是安装命令行程序的首选，支持镜像切换以加速下载；iTerm2 提供子窗口、自动补全等高级终端功能；Alfred 能快速定位文件、搜索及运行 shell 命令；微信功能拓展工具提供消息防撤回、多开等增强特性；IINA 是界面精美、功能强大的视频播放器；eZip 支持多种压缩格式与批量加密；腾讯柠檬清理专注系统及常用开发工具深度清理。整体旨在帮助用户构建更高效的 macOS 工作环境。",
+          "summary": "本文介绍了Mac平台上多款实用工具软件，包括包管理器Homebrew、终端iTerm2、效率工具Alfred、微信增强插件、视频播放器IINA、压缩软件eZip、腾讯柠檬清理、截图工具IShot、右键增强iRightMouse和翻译工具Bob，涵盖功能亮点与获取方式。",
           "keywords": [
-            "Mac 工具",
+            "Mac软件",
+            "效率工具",
             "Homebrew",
-            "iTerm2",
             "Alfred",
-            "效率工具"
+            "终端"
           ]
         },
         {
           "path": "/software/vscode.md",
           "title": "vscode",
-          "summary": "本文档推荐了一系列实用的 Visual Studio Code 扩展。内容涵盖主题美化（如 One Dark Pro、Shades of Purple、Dracula Official）、文件图标优化（Material Icon Theme）及自定义背景，旨在提升编辑器视觉体验。同时介绍了面向 React 开发的 ES7 代码片段扩展和面向 Vue 2 的代码片段扩展，帮助开发者通过快捷代码块加速组件、方法等常用结构的编写，从而提高前端开发效率。",
+          "summary": "本文档列出并分类推荐了VS Code扩展，涵盖主题美化、React/Vue/CSS/小程序支持、Markdown、Git、格式化和调试等多类工具，旨在提升开发效率与体验。",
           "keywords": [
-            "VS Code 扩展",
+            "VS Code扩展",
             "主题美化",
             "代码片段",
-            "React",
-            "Vue"
+            "格式化",
+            "调试工具"
           ]
         },
         {
           "path": "/software/webstorm.md",
           "title": "webstorm",
-          "summary": "本文档提供了 WebStorm 编辑器的配置指南，主要涵盖三个方面：如何通过开源项目免费申请 JetBrains 全家桶开源许可证；三种汉化方法，包括插件市场直接安装、一键安装到 IDE 以及根据版本手动下载安装；以及编辑器美化，推荐安装 Atom Material Icons 图标插件和 Atom OneDark 主题插件。文档面向 WebStorm 用户，旨在帮助快速完成基础环境搭建，提升开发体验，特别适用于初次使用或需要中文化界面的开发者。",
+          "summary": "本文档提供了 WebStorm 编辑器的配置指南，涵盖获取 JetBrains 开源许可证、汉化方式（插件安装、磁盘安装）、编辑器美化（主题、图标、配色方案、自定义背景图）、插件市场、保存时自动格式化设置（Prettier），以及 webpack 项目中识别 alias 的配置方法。",
           "keywords": [
             "WebStorm",
-            "JetBrains",
             "汉化",
-            "许可证",
-            "插件"
+            "主题",
+            "Prettier",
+            "webpack"
           ]
         },
         {
           "path": "/software/windows.md",
           "title": "windows",
-          "summary": "本文档推荐了六款 Windows 平台的高效工具，旨在提升开发者和普通用户的日常工作效率。这些工具覆盖终端增强（Cmder，集成 Git 等命令）、文件极速搜索（Everything，支持正则）、快速启动与扩展（Wox，可调用 Everything 和浏览器书签）、全能本地视频播放（PotPlayer）、纯净强大的压缩管理（Bandizip）以及精细音量控制（EarTrumpet）。各工具强调便携性、自定义能力和轻量高性能，适用于开发、办公和多媒体场景，帮助用户构建更流畅的工作流。",
+          "summary": "文档推荐了一系列Windows平台的实用工具，涵盖终端、搜索、效率、播放、压缩、音量、看图、壁纸、系统优化、隐私、防撤回、任务栏美化、查重、电子书转换及系统增强等类别，强调便携、免费、功能强大，并提供官网或GitHub链接。",
           "keywords": [
-            "Windows 工具",
-            "效率软件",
-            "终端增强",
-            "文件搜索",
-            "本地播放"
+            "Windows",
+            "实用工具",
+            "软件推荐",
+            "免费软件",
+            "效率提升"
           ]
         },
         {
           "path": "/software/zsh.md",
           "title": "zsh",
-          "summary": "本文档介绍了 zsh 的配置框架 oh-my-zsh，涵盖主题和插件管理。重点展示了几个实用插件：autojump 和 z 用于基于历史记录的快速目录跳转，fast-syntax-highlighting 提供终端语法高亮，zsh-autosuggestions 根据历史智能补全命令。同时还详细说明了 powerlevel10k 主题的安装、配置及在 VSCode 终端中修复图标乱码的字体设置，旨在提升命令行终端的美观和操作效率。",
-          "keywords": [
-            "zsh",
-            "oh-my-zsh",
-            "终端插件",
-            "powerlevel10k",
-            "autojump"
-          ]
+          "summary": "",
+          "keywords": []
         }
       ]
     },
@@ -892,120 +927,138 @@
         {
           "path": "/mark/01-React核心原理-补充.md",
           "title": "01-React核心原理-补充",
-          "summary": "本文介绍React 19在2024年发布的重大新特性，核心是React Compiler编译时自动优化，不再需要手动使用memo/useMemo/useCallback；同时涵盖Actions表单处理增强、use() API统一资源读取、ref作为prop简化、内置文档元数据SEO支持、资源预加载及Suspense增强等。文章还深度解析了useMemo和useCallback的必要性，说明其解决JavaScript引用相等与避免不必要渲染的问题。整体面向React开发者，帮助掌握最新性能优化模式和API变革。",
+          "summary": "本文详解React 19新特性，重点介绍React Compiler自动优化、Actions、use() API、ref简化传递、Document Metadata、资源预加载API及Suspense增强等。并深度解析useMemo与useCallback的必要性、使用场景、性能成本及何时不应使用，最终说明React 19编译器将实现自动优化，开发者无需手动处理。",
           "keywords": [
             "React 19",
             "React Compiler",
             "useMemo",
             "useCallback",
-            "Actions"
+            "性能优化"
           ]
         },
         {
           "path": "/mark/01-React核心原理.md",
           "title": "01-React核心原理",
-          "summary": "本文是一组关于 React 核心原理的笔试题与面试题，聚焦 React 16/17/18 版本渲染更新机制的变化、Fiber 架构的设计与实现、协调算法中 key 的作用、并发模式与自动批处理等核心概念。内容旨在考察对 React 内部工作方式的深度理解，包括可中断渲染、render/commit 阶段分离、并发与并行的区别等高级主题，适用于技术面试准备或深入学习。",
+          "summary": "React核心原理笔试题与面试题集，涵盖版本差异、Fiber架构、更新流程、协调算法、并发模式、自动批处理等，深入考察React底层机制与高级特性。",
           "keywords": [
             "React",
             "Fiber",
-            "Concurrent",
-            "Reconciliation",
-            "Automatic Batching"
+            "并发模式",
+            "协调",
+            "自动批处理"
           ]
         },
         {
           "path": "/mark/02-Webpack与构建工具.md",
           "title": "02-Webpack与构建工具",
-          "summary": "本文以笔试题形式，详细阐述了 Webpack 构建流程的关键步骤：entry 作为构建起点建立依赖图，loader 负责将非 JavaScript 文件转换为模块（链式调用），plugin 通过监听生命周期钩子执行打包优化等复杂任务，chunk 作为中间代码块支持代码分割，最终输出 asset 资源文件。内容同时概括了 loader 与 plugin 的本质区别，以及 chunk 的多种生成方式，是 Webpack 架构与核心原理的浓缩讲解。",
+          "summary": "本文档详细解析了Webpack构建流程的关键步骤（entry、loader、plugin、chunk、asset），并深入比较了loader与plugin的本质区别、执行时机和能力边界，通过示例说明各自适用场景，帮助读者理解Webpack核心原理。",
           "keywords": [
             "Webpack",
+            "Loader",
+            "Plugin",
             "构建流程",
-            "loader",
-            "plugin",
-            "chunk"
+            "代码分割"
           ]
         },
         {
           "path": "/mark/03-性能优化.md",
           "title": "03-性能优化",
-          "summary": "{\n  \"summary\": \"本文档系统梳理了从输入URL到页面可交互（TTI）的完整浏览器请求链路，涵盖DNS解析、TCP/TLS连接、HTTP请求/响应、HTML/CSS/JS解析、渲染树构建、布局绘制合成等14个步骤。在每个环节都标注了对应的性能优化手段，包括网络层的DNS预取、HTTP/2多路复用、TLS 1.3会话复用，资源加载层的代码分割、关键CSS内联、图片懒加载与WebP/AVIF格式，以及渲染层的避免强制同步布局、利用transform/opacity实现GPU加速等。通过全链路视角，提供了系统化的前端性能优化指导，帮助开发者理解“为什么这么优化”的底层原理。\",\n  \"keyPoints\": [\n    \"请求全链路分为网络、资源加载、渲染三大阶段，共14个关键步骤\",\n    \"网络层可通过DNS预取、HTTP/2多路复用、TLS 1.3和压缩来减少连接与传输开销\",\n    \"资源加载优化核心在于代码分割、Tree Shaking、非关键资源延迟加载和关键CSS内联\",\n    \"渲染优化应避免强制同步布局、减少重排重绘，并利用transform/opacity触发合成层\",\n    \"TTI即主线程空闲可交互，需要协调加载与执行，避免长任务阻塞\"\n  ],\n  \"keywords\": [\"性能优化\", \"请求链路\", \"TTI\", \"关键渲染路径\", \"HTTP/2\"],\n  \"techStack\": [\"DNS预取\", \"HTTP/2\", \"TLS 1.3\",",
-          "keywords": []
+          "summary": "本文档通过三道笔试题，系统梳理从输入URL到页面可交互的全链路及优化点，解释关键渲染路径（CRP）中CSS/JS的阻塞关系与async/defer区别，对比preconnect、dns-prefetch、preload、prefetch等资源提示的差异与应用场景。",
+          "keywords": [
+            "性能优化",
+            "关键渲染路径",
+            "资源提示",
+            "async/defer",
+            "请求链路"
+          ]
         },
         {
           "path": "/mark/04-微前端.md",
           "title": "04-微前端",
-          "summary": "{\n  \"summary\": \"微前端架构通过将大型前端应用拆分为独立子应用，解决多团队协作、技术栈独立、增量升级和独立部署等痛点，但引入了路由分发、全局状态管理、样式隔离和应用间通信等新复杂度。本文档对比了 iframe、single-spa、qiankun 和 Module Federation 等主流方案的核心差异与优缺点，并深入剖析微前端基础设施（统一登录态、权限、埋点）、部署发布（资源加载、灰度、回滚）以及子应用性能治理与降级机制，为架构选型和落地实践提供系统性指导。\",\n  \"keyPoints\": [\n    \"微前端的核心价值是解耦巨石应用，但引入路由、通信和隔离等新复杂度\",\n    \"主流方案中 iframe 隔离性强但体验差，qiankun/single-spa 灵活性高，Module Federation 实现构建时共享\",\n    \"需要设计统一登录态、权限、埋点和主子应用通信机制等基础设施\",\n    \"部署阶段需关注资源预加载、灰度发布、回滚策略以保障稳定性\",\n    \"子应用性能恶化时应通过沙箱隔离、降级和监控机制防止拖垮主应用\"\n  ],\n  \"keywords\": [\"微前端\", \"方案对比\", \"子应用治理\", \"Module Federation\", \"qiankun\"],\n  \"techStack\": [\"JavaScript\", \"Webpack\",",
-          "keywords": []
+          "summary": "本文档是微前端技术的面试题与笔试题集，涵盖微前端核心问题、主流方案对比（iframe/single-spa/qiankun/Module Federation）、适用性判断、基础设施（登录态/权限/通信）、部署发布（资源加载/灰度/回滚）及子应用性能隔离与治理等工程化实践。",
+          "keywords": [
+            "微前端",
+            "qiankun",
+            "Module Federation",
+            "性能治理",
+            "部署发布"
+          ]
         },
         {
           "path": "/mark/05-低代码.md",
           "title": "05-低代码",
-          "summary": "本文深入解析了低代码平台的核心架构，定义了四大核心抽象：Schema/DSL作为页面结构的JSON数据模型，负责描述组件树、属性和数据绑定；组件物料是可复用的UI库，包含组件实现与配置元信息；引擎是核心执行器，负责Schema解析、数据流、事件系统和性能优化；渲染器则将Schema转换为实际UI，处理插槽、样式和循环渲染。此外，还阐述了搭建态（可视化编辑环境）与运行态（高效渲染环境）的分层设计，搭建态提供拖拽、配置和预览能力，运行态专注于解析Schema并快速渲染。这种分离实现了开发效率与运行时性能的平衡，适用于企业级低代码页面搭建平台。",
+          "summary": "低代码平台核心抽象包括描述页面结构的Schema/DSL、可复用组件物料、解析协调的引擎和输出视图的渲染器。设计分为搭建态（可视化编辑）和运行态（最终渲染），实现递归渲染、插槽、事件绑定、表达式解析。组件物料通过语义化版本管理，应对破坏性变更、迁移脚本和多版本共存，确保兼容性。",
           "keywords": [
             "低代码",
-            "Schema/DSL",
-            "组件物料",
-            "引擎",
-            "渲染器"
+            "Schema",
+            "渲染器",
+            "版本管理",
+            "搭建态"
           ]
         },
         {
           "path": "/mark/06-插件系统.md",
           "title": "06-插件系统",
-          "summary": "本文档深入解析了插件系统的核心架构要素，定义插件系统为一种允许在运行时或编译时动态扩展功能的可扩展架构模式，无需修改核心代码。关键要素包括：生命周期管理（从注册到卸载的完整流程）、扩展点设计（Hook点、命令点、UI扩展点、数据转换点）、上下文提供（系统API、配置、共享状态、依赖注入）、隔离机制（命名空间、资源、错误和沙箱隔离）以及通信方式（事件总线、服务注册、消息传递）。这些要素共同构建了解耦、安全且可组合的插件生态，适用于需要动态扩展的应用场景如构建工具、IDE和微内核系统。",
+          "summary": "文档围绕插件系统，先阐述生命周期、扩展点、上下文、隔离与通信等核心要素，再深入对比 Webpack、Vite、Babel 插件的 hook 模型、执行时机和能力边界，最后分析浏览器运行时热插拔的模块动态加载、卸载与资源清理设计，提供系统性的插件架构实现参考。",
           "keywords": [
             "插件系统",
-            "扩展点",
-            "生命周期",
-            "隔离",
-            "通信"
+            "热插拔",
+            "Webpack 插件",
+            "Vite 插件",
+            "Babel 插件"
           ]
         },
         {
           "path": "/mark/07-NestJS与SSR.md",
           "title": "07-NestJS与SSR",
-          "summary": "{\n  \"summary\": \"本文档阐述了 NestJS 框架的核心概念及其协同工作机制。围绕模块(Module)、控制器(Controller)、服务(Service/Provider)、依赖注入(DI)和装饰器(Decorator)五大支柱展开：模块通过@Module()组织功能单元；控制器用@Controller()处理HTTP请求与响应；服务以@Injectable()封装业务逻辑；依赖注入基于IoC容器实现自动化的构造函数注入；装饰器利用TypeScript元编程能力为路由、模块等提供元信息。文档还详述了启动时构建依赖图、实例化Provider、映射路由，以及请求到达后由控制器注入服务、处理逻辑并返回响应的完整流程。应用场景为NestJS全栈开发，展示了其实现关注点分离、提高可测试性与可维护性的后端架构设计。\",\n  \"keyPoints\": [\n    \"模块通过@Module()组织应用，封装相关功能并形成依赖注入容器作用域\",\n    \"控制器负责HTTP请求路由与响应，不包含业务逻辑\",\n    \"服务以@Injectable()标记，封装可复用的业务逻辑，并被注入到控制器与其他服务中\",\n    \"依赖注入基于IoC容器，通过构造函数自动注入依赖，支持多种生命周期\",\n    \"装饰器提供元数据标记，驱动依赖注入和路由映射，实现关注点分离\"\n  ],\n  \"keywords\": [\"NestJS\", \"依赖注入\", \"装饰器\", \"模块\", \"IoC\"],\n  \"",
+          "summary": "",
           "keywords": []
         },
         {
           "path": "/mark/08-代码规范.md",
           "title": "08-代码规范",
-          "summary": "本文档探讨代码规范的意义，包括提升可读性、降低协作成本、减少 Bug 等核心价值，并详细阐述了规范涵盖的四个维度：格式规范（缩进、引号等）、命名规范（camelCase、PascalCase 等）、架构规范（目录结构、分层设计）以及最佳实践（React Hooks 使用、性能优化、安全防护）。同时，文档提出了平衡规范与效率的实用方法，如借助 ESLint 和 Prettier 自动修复、渐进式推进规则、团队共识决策、灵活豁免和持续优化，旨在帮助团队落地既严格又高效的工程化标准。",
+          "summary": "本文围绕代码规范体系，介绍ESLint工作原理、Umi规范设计、Prettier与ESLint配合、Git Hooks落地及TypeScript类型规范。通过笔试题与面试题形式探讨规范意义、工具链建设和团队推行经验，强调利用业界标准配置高效建立规范并平衡统一性与灵活性。",
           "keywords": [
             "代码规范",
             "ESLint",
             "Prettier",
-            "前端工程化",
-            "最佳实践"
+            "Git Hooks",
+            "TypeScript"
           ]
         },
         {
           "path": "/mark/09-Promise原理.md",
           "title": "09-Promise原理",
-          "summary": "{\n  \"summary\": \"本文深入探讨了 JavaScript 中 Promise 的设计初衷，旨在解决回调地狱、统一错误处理和组合异步操作等痛点。文档围绕笔试题与面试题展开，详细解析了 Promise 的状态管理（三种不可逆状态）、A+ 规范核心（then 链式调用与值穿透）、静态方法（all、race、allSettled、any 的区别与应用），以及手写实现 Promise 的核心逻辑和 Promise.all 的要点。同时对比了回调、Promise 与 async/await 的优劣，阐述了 async/await 基于 Promise 的实现原理，并列举了实际开发中未捕获错误、忘记 return、循环中 Promise 等常见陷阱及规避方式。内容兼顾原理深度与实践指导，适合深入理解异步编程模型。\",\n  \"keyPoints\": [\n    \"Promise 解决回调地狱，通过链式调用和 then 方法统一处理异步流程与错误。\",\n    \"Promise 具有三种不可逆状态：pending、fulfilled、rejected，状态转换后不可更改。\",\n    \"then 方法根据回调返回值（普通值或 promise）决定新 promise 的状态，实现链式调用和值穿透。",
-          "keywords": []
+          "summary": "文档围绕Promise原理展开，包含笔试题6道和面试题4道。内容涵盖Promise设计原因（解决回调地狱、错误处理、组合异步）、状态机机制、Promise A+规范核心、静态方法差异、手写简化版Promise及Promise.all实现、链式调用原理、实践常见坑，并对比回调、Promise与async/await的异步方案选择。",
+          "keywords": [
+            "Promise",
+            "异步编程",
+            "async/await",
+            "链式调用",
+            "Promise.all"
+          ]
         },
         {
           "path": "/mark/10-骨架屏.md",
           "title": "10-骨架屏",
-          "summary": "骨架屏是一种页面加载占位符技术，通过展示页面结构轮廓提前渲染，减少白屏时间，提升感知性能。它通过内联小体积HTML加速FCP，保持布局稳定以避免CLS，并能在心理层面降低用户焦虑，改善加载体验。实现方式包括手写、自动生成、SSR内联和图片占位，各有优劣。",
+          "summary": "文档深入探讨骨架屏如何提升前端性能，包括原理、实现方式和注入时机。骨架屏通过快速渲染小体积占位结构减少白屏时间，改善FCP、LCP，避免CLS，从而提升感知性能和用户体验。涵盖手写、自动生成、SSR内联和图片占位等方案，并分析Puppeteer截图与DOM结构分析的自动生成原理，以及HTML内联与JS动态插入的优劣。",
           "keywords": [
             "骨架屏",
+            "性能优化",
             "FCP",
-            "CLS",
-            "用户体验",
-            "性能优化"
+            "LCP",
+            "CLS"
           ]
         },
         {
           "path": "/mark/11-HTTP与缓存.md",
           "title": "11-HTTP与缓存",
-          "summary": "本文档系统梳理了 HTTP 协议从 1.1 到 2 再到 3 的核心差异，深入讲解 HTTP 缓存机制（强缓存与协商缓存）、Cache-Control 指令、缓存策略设计（含文件指纹）、Service Worker 缓存及其策略，以及缓存失效与更新方案。通过笔试与面试题形式，从前端性能优化角度出发，覆盖浏览器、CDN、服务端多层级缓存组合，分析 HTTP/2 下传统优化手段（文件合并、雪碧图等）的失效原因，并探讨缓存问题排查思路与实际优化经验，是一份理论与实战并重的 HTTP 缓存深度指南。",
+          "summary": "本文档整理了关于HTTP协议版本对比、缓存机制、缓存策略设计及Service Worker缓存的笔试与面试题，涵盖HTTP/1.1至HTTP/3差异、强缓存与协商缓存、Cache-Control指令、资源缓存策略、SW缓存及缓存失效更新等，旨在考察前端性能优化中缓存知识的应用与排查能力。",
           "keywords": [
             "HTTP缓存",
-            "Service Worker",
             "Cache-Control",
-            "HTTP/2",
+            "Service Worker",
+            "协商缓存",
             "文件指纹"
           ]
         },
@@ -1018,13 +1071,13 @@
         {
           "path": "/mark/React更新流程详解.md",
           "title": "React更新流程详解",
-          "summary": "本文详细剖析了React从setState触发到DOM更新的完整流程，涵盖调度、协调、提交和副作用执行四大阶段。调度阶段通过Lane优先级模型和时间切片机制，将任务按优先级异步调度，保障用户交互流畅；协调阶段利用双缓冲架构和Diff算法，高效计算虚拟DOM变化，生成副作用链表（effectList）；提交阶段分三步执行真实DOM操作和生命周期方法；副作用阶段则异步调度useEffect，同步执行useLayoutEffect，确保渲染后逻辑与DOM测量互不阻塞。整体机制体现了React Fiber架构的可中断渲染与优先级调度能力，适用于复杂交互场景的性能优化。",
+          "summary": "本文深入解析React从setState到DOM更新的完整流程，涵盖调度（优先级Lane模型、时间切片）、协调（双缓冲、beginWork、Diff算法、completeWork、effectList）、提交（before mutation/mutation/layout三子阶段）和副作用执行（useEffect异步调度）。并对比useEffect与useLayoutEffect，强调Render可中断、Commit原子性等核心设计，提供调试技巧与最佳实践。",
           "keywords": [
-            "React",
-            "Fiber",
-            "Reconciliation",
-            "Lane模型",
-            "useEffect"
+            "React更新流程",
+            "Fiber架构",
+            "调度与优先级",
+            "协调与Diff",
+            "提交阶段"
           ]
         }
       ]
@@ -1048,25 +1101,25 @@
         {
           "path": "/interview-prep/BLINDSPOTS.md",
           "title": "BLINDSPOTS",
-          "summary": "本文档是一份技术盲区清单，用于跟踪各项目方案中未完成的决策追问（如“为什么选此方案”）和被标记的高风险项（如最大事故/踩坑及回滚方法）。清单覆盖构建工具（Webpack/Vite/Rollup）、表单方案（Formily/RJSF/自研）、Monorepo（Lerna/Nx）、跨平台公告插件系统及大疆DevOps平台等多个领域，旨在推动方案回顾、替代分析、事故复盘和可观测性建设，避免知识断层与历史教训丢失。",
+          "summary": "该文档记录了多个技术决策和项目中的知识盲区，以未完成追问和高风险踩坑项的形式呈现，涵盖构建工具、表单方案、微前端、性能优化等主题。每条盲区都围绕选型原因、事故复盘、替代方案与改进方向展开，暴露出对决策背景、回滚机制和生产环境问题定位的普遍缺失。",
           "keywords": [
-            "盲区清单",
-            "技术选型",
+            "盲区",
+            "选型",
+            "回滚",
             "事故复盘",
-            "决策回顾",
-            "可观测性"
+            "性能治理"
           ]
         },
         {
           "path": "/interview-prep/INDEX.md",
           "title": "INDEX",
-          "summary": "本文档作为面试准备指南的入口索引页面，通过链接提供两个核心资源：README.md 涵盖整体学习路径和建议，BLINDSPOTS.md 则列出常见知识盲区。该入口旨在帮助求职者系统化地组织面试复习，提升技术面试的成功率，并通过站点侧边栏方便导航。",
+          "summary": "该页面作为 /interview-prep/ 的入口索引，被站点侧边栏引用。它引导用户从 README.md 开始准备面试，并提供了盲区清单 BLINDSPOTS.md 的链接，用于梳理薄弱环节。",
           "keywords": [
             "面试准备",
-            "入口索引",
+            "索引",
+            "README",
             "盲区清单",
-            "技术面试",
-            "侧边栏导航"
+            "入口"
           ]
         },
         {
@@ -1078,152 +1131,205 @@
         {
           "path": "/interview-prep/matrix__bundler-webpack-vite-rollup.md",
           "title": "matrix__bundler-webpack-vite-rollup",
-          "summary": "本文档总结了围绕大疆用户中心重构等项目的面试准备大纲，聚焦性能优化方法。从量化排查入手，依次实施骨架屏预渲染以降低LCP、梳理关键渲染路径(CRP)减少阻塞、优化CSS/字体/首图优先级，并削减包体积与无效代码，形成系统化优化体系。同时关联Webpack、Vite、Rollup等构建工具选型，探讨HTTP协议原理与浏览器渲染机制，适用于中后台大存量应用的工程化改造与面试复盘。",
+          "summary": "本文对比了Webpack、Vite、Rollup三种前端构建工具，从开发体验、构建速度、产物体积、生态、迁移成本等维度分析适用场景，并提供面试中的选型逻辑、原理简述和模拟问答，帮助在复杂项目或库构建中做出合理技术选择。",
           "keywords": [
-            "性能优化",
+            "构建工具",
             "Webpack",
-            "关键渲染路径",
-            "HTTP",
-            "工程化"
+            "Vite",
+            "Rollup",
+            "面试准备"
           ]
         },
         {
           "path": "/interview-prep/matrix__cicd-release-strategy.md",
           "title": "matrix__cicd-release-strategy",
-          "summary": "本文档围绕 CI/CD 流水线的核心实践，系统性地拆解了构建、测试、安全扫描、打包、部署等关键阶段，并重点阐述了 Docker 分层缓存优化、质量门禁、安全审计（SAST/依赖漏洞）以及蓝绿、金丝雀、滚动三种发布策略。通过 commit→构建→镜像→发布的完整追溯链，结合健康检查与自动回滚机制，实现多团队并行交付下的质量可控、快速迭代与风险最小化，满足安全合规与高频率发布需求。",
+          "summary": "本文档系统梳理了CI/CD发布策略，将流水线划分为构建、测试、扫描、打包、部署等阶段，强调质量与安全门禁的渐进收敛。通过Docker分层缓存与合理的Dockerfile写法提升构建速度。对比了蓝绿、金丝雀和滚动发布三种策略的风险、成本与适用场景。确保从代码提交到镜像发布全链路可追溯，并配套金丝雀观测指标、自动回滚与配置/密钥治理机制，实现频繁交付下的风险可控与快速恢复。",
           "keywords": [
-            "CI/CD 流水线",
-            "发布策略",
-            "蓝绿部署",
-            "金丝雀部署",
-            "可追溯性"
+            "CI/CD",
+            "蓝绿/金丝雀/滚动发布",
+            "Docker分层缓存",
+            "版本可追溯",
+            "质量与安全门禁"
           ]
         },
         {
           "path": "/interview-prep/matrix__form-formily-rjsf-custom.md",
           "title": "matrix__form-formily-rjsf-custom",
-          "summary": "本文档围绕大疆用户中心重构等系列项目，阐述了前端性能优化的系统方法论，核心思路为“排查→量化→选择→验证”。重点包括利用骨架屏预渲染降低LCP，梳理关键渲染路径（CRP）以消除阻塞资源，通过Webpack架构优化（代码分割、Tree Shaking、缓存策略）减少包体与解析成本，并结合HTTP/2多路复用、资源优先级等协议层技术实现整体加载提速。同时涉及售后RMS系统与公告插件系统，强调中后台复杂表单的Schema驱动平台化设计，兼顾动态渲染、联动校验与可维护性。文档提炼了高频面试考点，体现了从量化指标到落地实施的完整工程化思维。",
+          "summary": "文档对比了Formily、RJSF和自研无依赖表单三种方案，涵盖表达能力、性能体积、迁移成本等维度，并提供了面试模拟问答和选型建议，用于中后台复杂表单场景的面试准备。",
           "keywords": [
-            "性能优化",
-            "骨架屏",
-            "Webpack",
-            "关键渲染路径",
-            "Schema驱动"
+            "Formily",
+            "RJSF",
+            "schema驱动",
+            "表单方案",
+            "性能优化"
           ]
         },
         {
           "path": "/interview-prep/matrix__lowcode-ssr-csr-export.md",
           "title": "matrix__lowcode-ssr-csr-export",
-          "summary": "{\n  \"summary\": \"本文聚焦低代码大屏/报表平台的架构设计，核心是 Schema 驱动的渲染链路：通过可序列化的 UI 描述统一编辑态与运行态，利用 nodeId 索引与局部更新避免全量重渲染。探讨了 CSR、SSR、流式 SSR 三种渲染模式在首屏性能、SEO、鉴权与稳定性上的权衡，并针对导出场景分析服务端离线渲染与客户端截图的",
-          "keywords": []
+          "summary": "本文探讨低代码场景下 Schema 驱动渲染、SSR/CSR/流式 SSR、大屏导出等关键技术选型。围绕自研与开源渲染器、不同渲染模式的首屏与稳定性权衡、导出的一致性与权限隔离展开，并给出物料版本治理、hydration 一致性、流式降级、可观测性等实践建议。",
+          "keywords": [
+            "低代码",
+            "SSR/CSR",
+            "Schema 驱动",
+            "导出一致性",
+            "性能治理"
+          ]
         },
         {
           "path": "/interview-prep/matrix__monorepo-lerna-nx.md",
           "title": "matrix__monorepo-lerna-nx",
-          "summary": "{\n  \"summary\": \"本文档围绕大疆用户中心重构项目，提炼出前端性能优化的系统方法论，涵盖从量化排查到方案落地的完整链路。核心关注点包括基于 HTTP 原理的资源加载优化、Webpack 构建架构与打包策略、关键渲染路径（CRP）梳理等工程化实践。通过骨架屏预渲染直接降低 LCP，再结合 CSS/字体/首图优先级调整减少阻塞，最终通过更小的包体和无效代码消除降低下载与解析成本，形成“排查-定位-选择-验证”的闭环优化思路。此外，还关联了多包管理与 DevOps 平台维护的治理经验，体现了综合工程能力。\",\n  \"keyPoints\": [",
-          "keywords": []
+          "summary": "文档对比 monorepo 工具 Lerna 与 Nx，分析其在多包管理、任务编排、依赖治理、缓存与 CI 加速方面的差异。Nx 侧重工程系统与 affected 构建，适合大型仓库和多团队协作；Lerna 侧重发布管理，需搭配其他工具。提供边界治理、缓存可信及不适合 Nx 的替代方案。",
+          "keywords": [
+            "monorepo",
+            "Nx",
+            "Lerna",
+            "affected",
+            "cache"
+          ]
         },
         {
           "path": "/interview-prep/project__announce-plugin.md",
           "title": "project__announce-plugin",
-          "summary": "生成失败，请稍后重试",
-          "keywords": []
+          "summary": "跨平台公告插件系统，实现可热插拔、可灰度、可回滚的前端公告模块。核心围绕生命周期管理（init、mount、update、unmount）、CSS/JS隔离、依赖治理与宿主通信协议设计，确保插件无冲突加载、干净卸载、不影响宿主核心链路。支持多宿主接入，集成Preact与signals优化体积和更新粒度。",
+          "keywords": [
+            "公告插件",
+            "生命周期",
+            "隔离策略",
+            "灰度发布",
+            "微前端"
+          ]
         },
         {
           "path": "/interview-prep/project__dji-devops.md",
           "title": "project__dji-devops",
-          "summary": "{\n  \"summary\": \"该文档总结了大疆多个核心系统的重构实践，重点包括用户中心性能优化、售后RMS系统、跨平台公告插件及DevOps平台维护。项目以微前端架构（qiankun）实现多团队独立部署与统一治理，并通过Webpack工程化、HTTP/2优化、关键渲染路径梳理、骨架屏预渲染等手段系统性提升加载性能。此外，结合CI/CD流水线提升发布效率，形成可复用的优化方法（排查-定位-选择-验证）。这些经验在面试中常被用于考察HTTP原理、性能指标及工程化架构设计。\",\n  \"keyPoints\": [\n    \"通过微前端(qiankun)实现多团队独立部署和统一治理，解决多模块交付耦合问题\",\n    \"性能优化四板斧：骨架屏预渲染降低LCP、梳理关键渲染路径（CSS/字体/首图）、压缩包体、减少无效代码\",\n    \"借助Webpack工程化手段进行分包、Tree Shaking、资源内联等优化\",\n    \"配合CI/CD流水线实现自动化构建、测试与发布，提升交付效率\",\n    \"项目实践成为面试高频考点，涵盖HTTP原理、性能指标与方法论、技术选型对比\"\n  ],\n  \"keywords\": [\"微前端\", \"性能优化\", \"Webpack\", \"独立部署\", \"CI/CD\"],\n  \"techStack\": [\"",
-          "keywords": []
+          "summary": "该项目为大疆 DevOps 平台维护，核心目标是实现多团队独立部署与统一治理。通过微前端（qiankun）实现子应用自治，搭配 CI/CD 流水线提升发布效率与可追溯性。涉及沙箱隔离、样式隔离、共享依赖管理，以及构建门禁、镜像缓存、金丝雀发布等工程化实践。",
+          "keywords": [
+            "微前端",
+            "qiankun",
+            "CI/CD",
+            "DevOps",
+            "金丝雀发布"
+          ]
         },
         {
           "path": "/interview-prep/project__dji-rms.md",
           "title": "project__dji-rms",
-          "summary": "本材料围绕大疆用户中心重构等项目的面试准备，聚焦性能优化方法论与工程化实践。核心概念包括从量化问题出发的“优化四板斧”：先骨架屏预渲染降低LCP，再梳理关键渲染路径减少CSS/字体/首图阻塞，进而通过Webpack优化包体与代码分割降低下载与解析成本。同时涵盖HTTP原理、多团队协作规范与工程体系建设，服务于面试复盘与技术串联。",
+          "summary": "大疆售后RMS系统重构的前端面试准备文档，涵盖性能优化（LCP/INP/CLS）、模块边界与权限统一、工程化门禁（lint/typecheck/build CI）、稳定性治理（错误边界、上报、灰度）等核心议题，强调从排查、量化基线到方案串联的思路，适合在面试中展示大型系统重构的架构与治理能力。",
           "keywords": [
             "性能优化",
-            "Webpack",
-            "关键渲染路径",
-            "骨架屏",
-            "大疆用户中心重构"
+            "权限控制",
+            "工程化",
+            "模块化重构",
+            "React"
           ]
         },
         {
           "path": "/interview-prep/project__dji-user-center.md",
           "title": "project__dji-user-center",
-          "summary": "{\n  \"summary\": \"该文档是一份面试备战大纲，围绕大疆用户中心重构等项目的性能优化与工程化实践展开。内容提炼了性能优化四板斧方法论，包括排查量化问题、骨架屏预渲染降低LCP、梳理关键渲染路径减少阻塞、优化包体积与下载成本，并关联HTTP原理和Webpack架构，将方案串讲为排查→定位→选择→验证的完整流程。同时预判面试追问，强调项目踩坑与架构调整复盘，展现候选人的技术深度和工程化思维。\",\n  \"keyPoints\": [\n    \"性能优化四板斧：量化排查、可见性优先、阻塞减少、成本降低\",\n    \"关键渲染路径（CRP）与资源优先级优化策略\",\n    \"Webpack工程化架构在加载性能中的应用与常考点\",\n    \"HTTP原理与传输层优化：从“为什么",
-          "keywords": []
+          "summary": "本项目为大疆用户中心前端重构，目标统一 PC/移动端代码，通过性能优化提升登录转化。方案围绕关键渲染路径、资源优先级、传输层与包体积优化，采用骨架屏、预渲染、路由拆包、性能预算与CI门禁等手段，达到首屏加载速度显著提升，降低CLS与长任务影响。",
+          "keywords": [
+            "性能优化",
+            "关键渲染路径",
+            "骨架屏",
+            "Webpack",
+            "LCP/CLS"
+          ]
         },
         {
           "path": "/interview-prep/project__xdr-dashboard-report.md",
           "title": "project__xdr-dashboard-report",
-          "summary": "{\n  \"summary\": \"本文档围绕大疆用户中心重构、售后RMS系统重构及跨平台低代码插件系统等项目，提炼面试与技术复盘大纲。核心聚焦前端性能优化：从建立性能基线、骨架屏预渲染降低LCP，到梳理关键渲染路径（CRP）减少阻塞资源，再通过包体积与代码裁剪进一步降低下载解析成本。同时涵盖HTTP强缓存/协商缓存原理、Webpack架构优化（代码分割、Tree Shaking）等工程化实践。此外介绍了Schema驱动的低代码渲染方案，用于大屏高频刷新治理与报表导出一致性保障，体现跨端交付与组件动态配置能力。\",\n  \"keyPoints\": [\n    \"性能优化四板斧：建立基线→骨架屏预渲染降低LCP→优化关键渲染路径（CSS/字体/首图优先级）→减包与无用代码剔除\",\n    \"HTTP缓存策略：利用强缓存与协商缓存加速资源加载，从“为什么变快”倒推原理\",\n    \"Webpack架构优化：代码分割、Tree Shaking、资源压缩与异步加载，提升工程化效率\",\n    \"Schema驱动低代码渲染：设计可序列化Schema，实现大屏组件动态配置与跨端交付\",\n    \"高频刷新治理与报表导出：保证大屏数据更新性能和导出内容的一致性\"\n  ],\n  \"keywords\": [\"性能优化\", \"Schema驱动\", \"Webpack\", \"低代码\", \"HTTP缓存\"],\n  \"techStack\": [\"React\", \"TypeScript\", \"Web",
-          "keywords": []
+          "summary": "该项目围绕XDR系统大屏与报表模块，实现低代码Schema驱动渲染、实时大屏高频刷新治理及报表导出的一致性。核心采用React+TypeScript构建，涵盖编辑器、渲染器、数据源抽象与事件编排安全控制，服务于大疆用户中心与售后系统重构。",
+          "keywords": [
+            "低代码渲染",
+            "大屏性能治理",
+            "报表导出一致性",
+            "Schema驱动",
+            "事件编排安全"
+          ]
         },
         {
           "path": "/interview-prep/tech__eslint-engineering.md",
           "title": "tech__eslint-engineering",
-          "summary": "本文档阐述了在中大型多人协作前端项目中，通过分工明确的工具链（Prettier负责格式化、ESLint负责语义规则与质量、TypeScript负责类型正确性）实现代码风格统一、隐性Bug预防与架构约束。重点介绍了三者协同避免冲突的方案，以及从IDE到CI的完整执行闭环（保存修复、提交检查、PR/CI阻断）。最后强调了模块边界治理的高收益价值，将架构约束写入工具以降低人工Review成本，使团队聚焦业务正确性。",
+          "summary": "本文档系统阐述ESLint在前端工程化中的实践方案，包括Prettier、ESLint、TypeScript三者的职责划分与协同避免冲突，构建IDE保存修复、pre-commit hook、CI门禁的完整执行闭环，并通过import/no-cycle、no-restricted-imports等规则固化模块边界治理，提升中后台多人协作项目的代码一致性与架构质量。",
           "keywords": [
             "ESLint",
             "Prettier",
             "TypeScript",
-            "代码规范",
-            "自动化约束"
+            "lint-staged",
+            "模块边界治理"
           ]
         },
         {
           "path": "/interview-prep/tech__micro-frontend-qiankun.md",
           "title": "tech__micro-frontend-qiankun",
-          "summary": "本技术文档解析了在大疆多个系统重构中的关键实践，重点聚焦于DevOps平台的微前端架构落地。通过主应用统一提供鉴权、路由、菜单等壳能力，制定子应用接入规范，实现了多团队独立部署与回滚，降低了相互阻塞。同时，针对大疆用户中心等Web项目进行了系统性能优化，综合应用骨架屏预渲染、关键渲染路径梳理、Webpack打包优化等手段提升加载性能。在微前端实践中，着力解决样式隔离、公共依赖共享等难题，平衡隔离与复用，形成一套可复用的工程化方案。整体体现了从架构设计到底层性能优化的全链路技术思考。",
-          "keywords": []
+          "summary": "本文档深入讲解qiankun微前端框架的原理、应用与权衡。核心涵盖基于single-spa的加载、挂载、隔离（JS沙箱/样式隔离）机制，对比iframe与Module Federation的隔离、通信、性能、工程复杂度差异，并提供性能治理、通信规范、回滚策略及模拟问答。",
+          "keywords": [
+            "qiankun",
+            "微前端",
+            "sandbox",
+            "single-spa",
+            "样式隔离"
+          ]
         },
         {
           "path": "/interview-prep/tech__performance.md",
           "title": "tech__performance",
-          "summary": "文档系统梳理了现代前端性能优化的完整体系，涵盖关键性能指标（LCP、FCP、TTI、CLS、INP）和首屏/白屏时间等核心概念的解析，介绍了基于Performance/Network、Lighthouse、Web Vitals上报及Long Task分析的定位方法。重点阐述了关键渲染路径（CRP）优化、渐进式渲染（骨架屏/占位/分片）及资源优先级（preload/prefetch）等策略，并结合C端用户中心与B端RMS项目的实际落地，提出了基线建立、问题拆解（网络/资源/主线程/渲染/接口）及闭环治理（门禁+告警+复盘）的工程化方法论。",
-          "keywords": [
-            "Web Vitals",
-            "关键渲染路径",
-            "性能优化",
-            "LCP",
-            "渐进式渲染"
-          ]
+          "summary": "",
+          "keywords": []
         },
         {
           "path": "/interview-prep/tech__react.md",
           "title": "tech__react",
-          "summary": "{\n  \"summary\": \"本文档围绕大疆多个前端项目的重构与性能优化展开，涵盖用户中心、售后RMS系统、跨平台公告插件、DevOps平台及XDR大屏报表。重点描述了性能优化的'四板斧'方法论：首先通过量化基线排查问题，然后采用骨架屏预渲染降低LCP，梳理关键渲染路径（CRP）减少阻塞资源，最后减小包体与无效代码以降低下载解析成本。同时结合Webpack工程化、HTTP原理及渲染流程，展示了从定位到验证的完整优化链条，并突出面试中常考的性能指标与方案选择逻辑，适用于中后台复杂表单和高频更新大屏等场景。\",\n  \"keyPoints\": [\n    \"性能优化四步闭环：排查量化 → 可见性优化（骨架屏） → 关键渲染路径梳理 → 减少下载与解析成本\",\n    \"Webpack架构与工程化在代码分割、资源优先级与缓存策略中的应用\",\n    \"不同场景针对性优化：中后台关注渲染可维护性，大屏关注高频更新与长任务治理\",\n    \"面试高频考点串联：HTTP优化点、CRP、LCP/CLS等核心Web Vitals指标\",\n    \"事故定位与回滚经验：强调替代方案对比、踩坑复盘及工程化边界调整\"\n  ],",
-          "keywords": []
+          "summary": "本文档是React技术面试准备材料，涵盖大疆用户中心重构等项目的React应用。核心聚焦性能优化与工程化：声明式UI、Fiber架构、并发特性（React 18）、无效渲染定位与治理、组件抽象与边界约束。提供面试常见问答、代码示例与决策口径，强调性能治理体系构建。",
+          "keywords": [
+            "React性能优化",
+            "Fiber架构",
+            "无效渲染",
+            "并发特性",
+            "工程化治理"
+          ]
         },
         {
           "path": "/interview-prep/tech__rollup.md",
           "title": "tech__rollup",
-          "summary": "本文档聚焦于多个企业级前端项目的技术实践，核心为“大疆用户中心重构”的性能优化与工程化方案，通过骨架屏预渲染、关键渲染路径（CRP）梳理、包体瘦身及 Webpack 多产物架构等手段系统性降低 LCP 等核心指标。同时涉及跨平台公告插件系统的设计，强调多格式输出（ESM/CJS/UMD）、Tree-Shaking 友好、外部依赖可控及兼容性矩阵管理。整体体现了从性能排查、定位到验证的完整优化流程，以及面向多集成场景的组件库工程化思路，适用于大型应用性能治理与跨平台 SDK 开发。",
-          "keywords": []
+          "summary": "本文档聚焦 Rollup 在跨平台公告插件/SDK 构建中的应用，阐述其以 ESM 为中心的静态分析、tree-shaking 与多格式输出优势，与 Webpack/Vite 对比，并给出库构建配置、external 控制、常见问题与模拟问答，强调产物质量与体积优化。",
+          "keywords": [
+            "Rollup",
+            "tree-shaking",
+            "库构建",
+            "external",
+            "ESM"
+          ]
         },
         {
           "path": "/interview-prep/tech__typescript.md",
           "title": "tech__typescript",
-          "summary": "本文围绕大疆用户中心重构等大型Web项目，系统梳理了前端性能优化的核心方法论与关键技术。内容涵盖从性能指标（如LCP）的量化排查，到骨架屏预渲染、关键渲染路径（CRP）优化的实战方案，再到通过Webpack工程化手段减少代码包体积与解析成本的具体策略。此外，还涉及HTTP协议（如缓存、连接复用）对加载性能的深层影响，以及如何将优化串联为“排查→定位→选择→验证”的闭环体系，适用于高并发、重交互场景下的性能调优与面试准备。",
+          "summary": "本文档为 TypeScript 面试准备材料，涵盖类型系统核心（结构化类型、推断、联合/交叉、泛型）、工程化落地（tsconfig 分层、类型边界治理、运行时校验）、对比 JSDoc/Flow、渐进迁移策略及常见面试问答与手写代码。",
           "keywords": [
-            "性能优化",
-            "LCP",
-            "骨架屏",
-            "关键渲染路径",
-            "Webpack",
-            "HTTP/2"
+            "TypeScript",
+            "类型系统",
+            "工程化",
+            "渐进迁移",
+            "面试准备"
           ]
         },
         {
           "path": "/interview-prep/tech__vite.md",
           "title": "tech__vite",
-          "summary": "{\n  \"summary\": \"本文档为面试大纲，围绕大疆用户中心重构项目展开，聚焦前端性能优化实践。核心以“优化四板斧”方法论（排查量化、定位瓶颈、选择方案、验证效果）串联优化步骤：首先通过Lighthouse等工具量化性能基线，接着采用骨架屏预渲染降低LCP提升可见性，然后梳理关键渲染路径（CRP）优化CSS/字体/首图优先级减少阻塞，最后通过Webpack拆包、Tree Shaking等手段降低下载与解析成本。内容结合HTTP原理与Webpack架构，展现工程化面试常考问题的答法。\",\n  \"keyPoints\": [\n    \"性能优化四步法：排查量化 -> 定位瓶颈 -> 方案选择 -> 效果验证\",\n    \"骨架屏预渲染直接降低LCP，提升首屏可见性\",\n    \"关键渲染路径（CRP）梳理：优化CSS/字体/首图等阻塞资源的加载\",\n    \"通过Webpack拆包、Tree Shaking、懒加载等减小包体与无效代码\",\n    \"结合HTTP/2、缓存策略等网络层优化提升整体加载体验\"\n  ],\n  \"keywords\": [\"性能优化\", \"LCP\", \"关键渲染路径\", \"骨架屏\", \"Webpack\"],\n  \"techStack\": [\"Webpack\", \"HTTP/2\", \"Lighthouse\", \"CSS Optimization",
-          "keywords": []
+          "summary": "本文是面试技术准备文档，讲解Vite原理与工程化要点。Vite开发期基于原生ESM实现按需加载和快速HMR，配合esbuild预构建依赖以加速启动；生产构建采用Rollup完成Tree-shaking和代码分块。重点包括对比Webpack的优势与权衡、迁移策略（插件生态、依赖兼容、legacy浏览器支持）以及回滚方案。文档还提供了最小Vite插件示例和常见的优化Deps调整信号。",
+          "keywords": [
+            "Vite",
+            "ESM Dev Server",
+            "Rollup 构建",
+            "esbuild 预构建",
+            "HMR 热更新"
+          ]
         },
         {
           "path": "/interview-prep/tech__webpack.md",
           "title": "tech__webpack",
-          "summary": "{\n  \"summary\": \"该文档是一份针对大疆用户中心重构项目的面试备战",
+          "summary": "",
           "keywords": []
         }
       ]
@@ -1241,103 +1347,109 @@
         {
           "path": "/theory/interview-question/2025-04-28-analysis.md",
           "title": "2025-04-28-analysis",
-          "summary": "该文档聚焦于前端面试备考，包含笔试重点预测和技术面试高频考点。笔试部分涵盖框架原理、工程化实战、万级数据表格性能优化方案设计及算法题，强调虚拟滚动、渲染优化和内存管理。技术面试考点深入Vue3响应式原理（Proxy vs Object.defineProperty）、Quasar定制化、微前端沙箱机制（JS/CSS隔离）以及基于JSON Schema的低代码平台设计。整体内容结合原理阐述与实践方案，为面试准备提供系统性指导。",
-          "keywords": [
-            "虚拟滚动",
-            "Proxy响应式",
-            "微前端沙箱",
-            "低代码",
-            "性能优化"
-          ]
+          "summary": "",
+          "keywords": []
         },
         {
           "path": "/theory/interview-question/2025-04-28.md",
           "title": "2025-04-28",
-          "summary": "{\n  \"summary\": \"该文档为JavaScript面试题集，通过多道代码输出题考察核心概念。内容涉及var声明在循环中的全局泄漏与闭包共享变量问题，导致setTimeout输出均为最终值；对象封装中局部变量与this属性的访问区别；利用解构赋值交换变量而无需临时变量；事件循环机制下同步代码、宏任务（setTimeout）与微任务（Promise）的执行顺序；以及使用Promise链式调用确保异步函数按A-B-C顺序执行，强调错误处理与链式调用的实际应用。\",\n  \"keyPoints\": [\n    \"var在循环中声明变量会提升至函数作用域，闭包共享同一变量，异步回调读取循环终止后的值\",\n    \"对象方法内部用var/let声明的局部变量无法通过实例访问，需用this定义实例属性\",\n    \"可使用解构赋值 [a, b] = [b, a] 交换变量值，无需引入第三变量\",\n    \"事件循环中同步代码先执行，宏任务（如setTimeout）与微任务（如Promise.then）交替执行，微任务先于下一次",
-          "keywords": []
+          "summary": "本文档收录了8道JavaScript面试题，重点考察var作用域与闭包导致的异步输出问题、构造函数中局部变量与实例属性的区别、不使用临时变量的值互换方法、事件循环中宏/微任务执行顺序以及Promise顺序调用。题目通过代码示例和解析，帮助理解作用域链、this指向、异步机制等核心概念。",
+          "keywords": [
+            "JavaScript",
+            "作用域",
+            "事件循环",
+            "Promise",
+            "闭包"
+          ]
         },
         {
           "path": "/theory/job-description-lib/01-大疆用户中心重构-面试技术大纲.md",
           "title": "01-大疆用户中心重构-面试技术大纲",
-          "summary": "{\n  \"summary\": \"该文档为大疆用户中心重构项目的面试技术大纲，聚焦前端性能优化、HTTP原理及Webpack工程化。核心围绕性能指标体系（LCP/FCP/TTI等）、定位手段（Lighthouse/Performance面板）及优化策略，包括骨架屏预渲染、代码体积精简、资源优先级、传输层优化与图片优化等。同时深入HTTP协议演进，解析HTTP/1.1/2/3的并发模型与队头阻塞，TLS 1.3握手优化及缓存体系。Webpack部分阐述构建流程与splitChunks、tree-shaking等优化手段。整体旨在帮助面试者从实践与原理层面展现工程化能力。\",\n  \"keyPoints\": [\n    \"建立性能指标体系（LCP、FCP、TTI等）并利用Performance面板、Lighthouse等工具定位瓶颈\",\n    \"采用优化四板斧：骨架屏预渲染、减小代码体积、加快加载渲染速度、传输层与图片优化\",\n    \"深入理解HTTP/1.1到HTTP",
-          "keywords": []
+          "summary": "本文档为大疆用户中心重构面试技术大纲，涵盖性能优化、HTTP原理和Webpack工程化。核心围绕LCP从2.3s降至1.4s，梳理了骨架屏预渲染、关键渲染路径优化、包体积精简、传输层优化及图片格式升级等方案，并探讨HTTP/1.1到HTTP/3演进及Webpack构建优化策略。",
+          "keywords": [
+            "性能优化",
+            "LCP",
+            "骨架屏",
+            "关键渲染路径",
+            "HTTP/2"
+          ]
         },
         {
           "path": "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md",
           "title": "02-大疆售后RMS系统重构-面试技术大纲",
-          "summary": "本文介绍了大疆售后RMS系统重构中的工程化ESLint规范落地实践，旨在提升多人协作项目的代码质量与可维护性。核心内容包括规范维度的制定（区分Prettier格式化与ESLint语义规则、React/TypeScript/import/安全等规则设计）以及Umi项目落地方式（配置策略、IDE辅助、流程约束、技术债治理）。重点阐述了通过husky+lint-staged+commitlint、PR门禁、渐进收敛等手段强制团队执行规范，并结合老代码豁免与清单管理逐步减少技术债，最终形成代码评审、提交校验、CI/CD门禁相配合的质量防线。",
-          "keywords": [
-            "ESLint",
-            "工程化治理",
-            "TypeScript",
-            "React",
-            "代码规范"
-          ]
+          "summary": "",
+          "keywords": []
         },
         {
           "path": "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md",
           "title": "03-跨平台公告插件系统-面试技术大纲",
-          "summary": "本文档概述了一个跨平台公告插件系统的技术架构与实现思路，重点围绕构建工具选型（Rollup极致Tree Shaking）、Preact信号机制与轻量化、热插拔生命周期、多模式植入隔离策略（CDN/Iframe/Web Component）以及多路复用设计展开。系统通过精细的资源回收、CSS/JS隔离、灰度回滚与可观测性，实现一次构建服务多个系统的高效接入方案。核心目标为极低包体积（<15KB）与高可维护的插件化架构。",
+          "summary": "跨平台公告插件系统采用 Rollup 打包与 Preact signals 实现 <15KB 极简内核，支持热插拔、灰度回滚和多路复用，通过 CDN、iframe、Web Component 三种植入模式实现跨系统标准化接入，接入成本低于 0.5 人日。",
           "keywords": [
-            "Rollup",
-            "Preact",
-            "信号机制",
-            "热插拔",
-            "多路复用"
+            "Rollup Tree Shaking",
+            "Preact Signals",
+            "热插拔架构",
+            "跨平台插件",
+            "Web Component"
           ]
         },
         {
           "path": "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md",
           "title": "04-大疆DevOps平台维护-面试技术大纲",
-          "summary": "本文档为面试技术大纲，聚焦大疆 DevOps 平台维护中的核心技术点。涵盖 CI/CD 流水线原理，包括触发方式、多阶段构建、产物管理与环境治理，强调 Docker 镜像分层、缓存优化及蓝绿/金丝雀等发布策略，并涉及质量门禁与安全扫描。同时深入探讨微前端选型理由与 qiankun 的实现原理，包括子应用加载、CSS/JS 隔离、通信机制及与 single-spa、Module Federation 等方案的对比，适用于多团队独立部署、统一权限路由与历史系统整合等场景，体现前端工程化与基础设施的综合实践能力。",
-          "keywords": [
-            "CI/CD",
-            "qiankun",
-            "Docker 部署",
-            "微前端原理",
-            "DevOps 工程化"
-          ]
+          "summary": "",
+          "keywords": []
         },
         {
           "path": "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md",
           "title": "05-XDR系统-魔方大屏+报表-面试技术大纲",
-          "summary": "{\n  \"summary\": \"本文档概述了 XDR 系统的大屏与报表模块面试技术大纲。魔方大屏部分聚焦低代码内部原理，核心是 Schema 驱动的物料体系、渲染器与编辑器，支持拖拽、吸附、撤销重做等能力，数据源支持静态、接口与订阅，并通过事件编排实现组件联动与表达式沙箱；工程化方面涵盖高频刷新局部更新、虚拟化渲染及 Schema 迁移兼容。报表部分以 NestJS 视角解析 SSR 原理，包括 renderToString/stream 渲染、Hydration 同构注水与流式传输的收益与坑点，并结合报表场景实现首屏优化、权限鉴权和直出可下载页面，配合缓存与降级策略。整体面向低代码大屏与 BFF+SSR 报表的架构设计与实践难题。\",\n  \"keyPoints\": [\n    \"Schema 驱动的低代码大屏架构：物料体系（组件元信息）、渲染器（布局系统）与编辑器（拖拽、吸附、撤销重做）。\",\n    \"多源数据与低代码交互：数据源（静态/接口/订阅）、数据加工、组件联动和表达式引擎（安全沙箱）。\",\n    \"运行时性能与稳定性：高频刷新局部更新、虚拟化、渲染降级与节流，以及 Schema 迁移、版本治理与灰度发布。\",\n    \"NestJS SSR 原理与同构：renderToString/stream → HTML，Hydration",
-          "keywords": []
+          "summary": "本文档为XDR系统魔方大屏与报表模块的面试技术大纲，涵盖低代码大屏的内部原理（Schema驱动、物料体系、渲染器、编辑器能力、数据交互与工程化）及NestJS实现服务端渲染（SSR）的流程、水合、流式SSR、缓存策略与典型追问，技术栈为React+ECharts+NestJS+mongoose，侧重新一代大屏与报表的构建能力和稳定性。",
+          "keywords": [
+            "低代码大屏",
+            "Schema驱动",
+            "SSR",
+            "NestJS",
+            "报表"
+          ]
         },
         {
           "path": "/theory/job-description-lib/06-大疆用户中心重构-hard-mode-面试题.md",
           "title": "06-大疆用户中心重构-hard-mode-面试题",
-          "summary": "{\n  \"summary\": \"本文档是一套面向高级前端工程师的面试题集，围绕大疆用户中心重构项目展开深度追问。题目覆盖PC/移动端融合架构、性能优化与监控，要求候选人以“结论+证据链+取舍边界”的方式回答。重点考察多端代码复用率的量化方法（如PR数量、回归工时）、响应式方案选择依据（media query/container query/组件响应式）、移动端适配细节（DPR、rem定位、滚动穿透）、路由层多布局表达方式（layout slot/schema），以及LCP从2.3s优化至1.4s的真实性验证、LCP元素识别与稳定化、性能四板斧的落地指标拆解与瓶颈定位。强调可验证的指标、数据对比、团队能力和浏览器覆盖等边界，旨在测试候选人对复杂架构决策和工程化性能优化的深层次理解。\",\n  \"keyPoints\": [\n    \"多端代码复用的量化方法与『可复用边界』界定，避免为复用而牺牲端侧体验\",\n    \"基于团队能力、浏览器覆盖等约束选择响应式方案（media query / container query / 组件响应式）\",\n    \"移动端适配中处理DPR、1px边框、rem定位冲突及路由层多布局表达（layout slot / schema）\",\n    \"LCP优化从2.3s到1.4s的真实性验证（实验室对齐RUM）、LCP元素稳定化及四板斧的可验证指标分解\",\n    \"将“体感慢”拆解为网络/CPU/渲染/业务逻辑瓶颈，并平衡各项优化，防止CLS/INP劣化\"\n  ],\n  \"keywords\": [",
-          "keywords": []
+          "summary": "本文档是大疆用户中心重构的 Hard-Mode 面试题集，覆盖 Vue3+TS+Vite+Pinia 技术栈下的 PC/移动端融合、核心 Web 指标优化（LCP 2.3s→1.4s）、关键渲染路径、构建产物与传输层优化以及线上治理等六大方向，每道题均要求先给结论再提供数据证据和取舍边界，侧重量化分析与工程实战。",
+          "keywords": [
+            "多端融合",
+            "Core Web Vitals",
+            "关键渲染路径",
+            "Vite",
+            "性能预算"
+          ]
         },
         {
           "path": "/theory/job-description-lib/07-大疆售后RMS系统重构-Hard-Mode-面试题.md",
           "title": "07-大疆售后RMS系统重构-Hard-Mode-面试题",
-          "summary": "本文为某售后RMS系统重构的面试题集，聚焦大型项目多人协作与质量治理、低代码平台架构与可扩展性、以及日均万级工单下的性能稳定性。题目覆盖100+页面协作的质量闭环设计、规则分层治理、CI/CD绑定，低代码Schema设计、组件动态渲染与按需加载、拖拽编辑器数据一致性、扩展点治理，以及前端稳定性指标定义等核心问题。旨在考察候选人在复杂业务场景下的工程化思维、架构设计能力和落地实践经验。",
+          "summary": "本文档为大疆售后RMS系统重构的高难度面试题，围绕100+页面协作治理、低代码平台架构与扩展、日均万级工单的性能稳定性、工程化发布与灰度回滚等核心挑战展开，涵盖代码质量闭环、规则分层、低代码Schema设计、虚拟滚动、质量门禁等深层追问。",
           "keywords": [
-            "大疆RMS系统",
+            "RMS系统重构",
             "低代码平台",
-            "协作治理",
-            "Schema驱动",
-            "前端稳定性"
+            "性能优化",
+            "工程化治理",
+            "面试题"
           ]
         },
         {
           "path": "/theory/job-description-lib/08-跨平台公告插件系统-Hard-Mode-面试题.md",
           "title": "08-跨平台公告插件系统-Hard-Mode-面试题",
-          "summary": "本文探讨构建一个小于15KB的跨平台公告插件系统，采用Rollup进行极致体积治理，利用Tree Shaking和sideEffects声明去除无用代码，并通过Preact signals实现比React Hooks更细粒度的响应式更新，避免整树重渲染。插件架构设计热插拔生命周期（init/mount/update/unmount），确保资源彻底回收，并支持CDN、Iframe、Web Component等多模式植入。核心挑战包括体积门禁的CI控制、依赖链Tree Shaking兼容性、signals隐含依赖的可维护性以及跨宿主环境的状态传递与版本协商，适用于需轻量、高效嵌入多种平台的公告场景。",
+          "summary": "本面试题围绕跨平台公告插件系统展开，要求体积<15KB，采用Rollup极致体积优化、Tree Shaking、Preact signals实现响应式，并支持热插拔架构及CDN/Iframe/Web Component多模式植入。题目深入探讨体积定义与CI门禁、Tree Shaking前提及CJS处理、signals隐式依赖、插件生命周期与资源彻底回收、多模式隔离差异与通信安全、版本治理与异常兜底等硬核问题。",
           "keywords": [
-            "Rollup",
+            "体积优化",
             "Tree Shaking",
             "Preact signals",
-            "热插拔",
-            "跨平台插件"
+            "热插拔架构",
+            "多模式植入"
           ]
         },
         {
           "path": "/theory/job-description-lib/09-DevOps平台-qiankun微前端-Hard-Mode-面试题.md",
           "title": "09-DevOps平台-qiankun微前端-Hard-Mode-面试题",
-          "summary": "该文档是一份针对 qiankun 微前端在 DevOps 平台中应用的高级面试题集，深入探讨了 qiankun 的核心原理、JS/CSS/资源隔离机制、应用间通信与鉴权设计、独立部署与版本兼容策略，以及性能与稳定性治理方案。覆盖了从底层沙箱实现到工程化落地的全链路疑难问题，旨在考察候选人对微前端架构的深度理解与实战应对能力。",
+          "summary": "本文档为 DevOps 平台基于 qiankun 微前端的 Hard-Mode 面试题集，涵盖 qiankun 核心原理、JS/CSS 沙箱隔离、子应用通信、独立部署与版本治理、性能优化、稳定性保障以及 Jira 第三方集成等关键难点，检验候选人对微前端架构设计与落地的深度理解。",
           "keywords": [
             "qiankun",
             "微前端",
@@ -1349,37 +1461,49 @@
         {
           "path": "/theory/job-description-lib/10-XDR系统-NestJS全栈-Hard-Mode-面试题.md",
           "title": "10-XDR系统-NestJS全栈-Hard-Mode-面试题",
-          "summary": "{\n  \"summary\": \"该文档为XDR系统（魔方大屏+报表）的NestJS全栈高级面试题，聚焦真实业务场景下的架构设计与性能优化。核心考察点包括：NestJS模块化架构、依赖注入、中间件/守卫/管道等分层机制；MongoDB/Mongoose的嵌入与引用建模、索引设计与聚合管道性能控制；基于@nestjs/schedule和Bull的定时任务可靠性、分布式锁与队列化重试；异步报表导出的“提交-进度-下载”链路、模板可维护性；以及大屏实时数据推送的性能考量。旨在评估候选人对复杂后端系统的设计能力、数据库优化及任务可靠性保障的实战经验。\",\n  \"keyPoints\": [\n    \"NestJS架构分层：模块边界划分、依赖注入设计与AOP机制（中间件/守卫/拦截器/管道）的实际应用\",\n    \"MongoDB建模与性能：嵌入vs引用取舍、复合/覆盖索引设计、聚合管道资源控制及预计算物化视图\",\n    \"定时任务可靠性：cron分布式锁防重复、Bull队列实现失败重试与幂等、任务堆积与失败监控告警\",\n    \"报表导出异步链路：异步生成模式设计、进度估算、失败补偿及模板引擎选型与版本化\",\n    \"大屏实时性能：实时数据推送方案、查询模式反推Schema设计、高并发下的铺底优化\"\n  ],\n  \"keywords\": [\"NestJS\", \"MongoDB\", \"定时任务\", \"",
-          "keywords": []
+          "summary": "本文档是一套面向NestJS全栈的Hard-Mode面试题，围绕XDR系统的魔方大屏与报表功能，覆盖NestJS架构与依赖注入、MongoDB/Mongoose建模与性能优化、定时任务的可靠性与可观测性、报表异步导出链路设计、以及基于ECharts和WebSocket的实时大屏性能策略五大模块，深入追问工程设计、数据建模、任务队列、模板渲染、渲染性能等进阶问题。",
+          "keywords": [
+            "NestJS",
+            "MongoDB",
+            "报表导出",
+            "实时大屏",
+            "定时任务"
+          ]
         },
         {
           "path": "/theory/job-description-lib/11-frontend-hard-mode-interview-原题提取-基于简历.md",
           "title": "11-frontend-hard-mode-interview-原题提取-基于简历",
-          "summary": "本文介绍了 TCP/IP 协议集的基本分层结构，包括应用层、传输层、网络层和网络访问层，并重点阐述了应用层协议（如 HTTP、TFTP、Telnet、SNMP、DNS）和传输层协议 TLS/SSL。内容强调了理解底层网络通信原理对前端工程师的日常工作与团队协作的益处，并指出 TCP、UDP、TLS 是面试中的常见考点，帮助开发者建立与后端工程师的共同语言，提升沟通效率和对网络通信的整体认知。",
+          "summary": "本文摘自前端高难度面试题库，基于简历关键词匹配，聚焦TCP/IP协议栈。内容涵盖TCP三次握手、四次挥手细节与标志位解释，分析握手对延迟的影响及TCP Fast Open优化方案，并解答常见面试问题（如为什么关闭需要四次握手、TIME_WAIT等待2MSL的原因）。同时简述TCP/IP四层模型及HTTP、TLS、UDP等协议的归属。",
           "keywords": [
-            "TCP/IP",
             "TCP",
-            "UDP",
+            "三次握手",
             "TLS",
-            "网络协议"
+            "网络协议",
+            "面试题"
           ]
         },
         {
           "path": "/theory/job-description-lib/Framework copy.md",
           "title": "Framework copy",
-          "summary": "{\n  \"summary\": \"文档系统梳理了 React 16+ 各版本的关键演进与核心原理，涵盖 Fiber 架构、Hooks、并发渲染、Diff 算法、调度策略和工程实践。重点解析了 React 16 引入的可中断渲染与错误边界，16.8 带来的 Hooks 思想与闭包陷阱，17 的事件委托优化，以及 18 的自动批处理、并发特性和 Suspense 完善。深入讲解了渲染两阶段、Lane 优先级、列表 diff 中 key 的价值、Hooks 链表机制与 useCallback/useMemo 使用场景。同时提供性能优化手段（虚拟列表、memo 边界、transition）与调试工具（React Profiler），适合用于技术面试复习和工程能力提升。\",\n  \"keyPoints\": [\n    \"React 16 引入 Fiber 架构实现可中断渲染，16.8 以 Hooks 变革逻辑复用方式，18 新增并发渲染与自动批处理\",\n    \"渲染分为可中断的 render 阶段和不可中断的 commit 阶段，Scheduler 基于优先级与时间切片调度更新\",\n    \"Diff 算法采用同层比较，key 的稳定性决定列表渲染正确性，避免使用 index 作为 key\",\n    \"Hooks 依赖调用顺序一致的链表机制，闭包陷阱需用 useCallback/useMemo 解决，StrictMode 重复执行 effect 以暴露副作用\",\n    \"工程中通过 React Profiler 定位重渲染，合理使用 Error Boundary 捕获渲染错误并兜底，配合虚拟列表与 memo 优化性能\"\n  ],\n  \"keywords\": [\"React\", \"Fiber\", \"Hooks\", \"并发渲染\", \"Diff算法\"],\n  \"techStack\": [\"React",
-          "keywords": []
+          "summary": "本文档涵盖前端核心框架与工程化技术的进阶知识，包括React 16+版本演进及核心原理（Fiber、Hooks、并发渲染）、Webpack架构及与Rollup/Vite对比、性能优化流程与请求链路、微前端方案对比与沙箱实现，以及低代码核心分层。适合作为面试复习和系统学习的提纲。",
+          "keywords": [
+            "React",
+            "Webpack",
+            "微前端",
+            "性能优化",
+            "低代码"
+          ]
         },
         {
           "path": "/theory/job-description-lib/Framework.md",
           "title": "Framework",
-          "summary": "本文档梳理了 React 16 至 18 的核心演进与原理，涵盖 Fiber 架构引入、Hooks 机制、并发渲染等关键特性。介绍了 Render/Commit 阶段、调度器优先级、Diff 算法及 key 的作用，并深入剖析 Hooks 依赖链表顺序、闭包陷阱、StrictMode 行为。同时给出性能优化、Error Boundary 边界、React Profiler 调试等工程落地要点，是系统掌握 React 现代特性的实践指南。",
+          "summary": "本文档是前端技术面试准备清单，涵盖React 16+各版本差异与核心原理、Webpack架构及与Rollup、Vite对比、性能优化方法论与请求链路分析、微前端方案实现机理、低代码核心分层等内容，以自测题形式引导深入理解。",
           "keywords": [
-            "React Fiber",
-            "Hooks",
-            "Concurrent Rendering",
-            "Diff 算法",
-            "key"
+            "React",
+            "Webpack",
+            "性能优化",
+            "微前端",
+            "低代码"
           ]
         }
       ]
