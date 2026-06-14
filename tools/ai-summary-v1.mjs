@@ -5,7 +5,6 @@ import { extname, join, relative } from 'node:path'
 export const SNAPSHOT_VERSION = 1
 export const PROMPT_VERSION = 'summary-v1'
 export const EXTRACT_VERSION = 'markdown-v1'
-export const MIN_ANALYSIS_LENGTH = 50
 
 function sha256(value) {
   return `sha256:${createHash('sha256').update(value).digest('hex')}`
@@ -64,7 +63,7 @@ function inspectFiles(docsDir, model) {
       content,
       sourceHash,
       analysisHash: createAnalysisHash({ sourceHash, model }),
-      short: content.length < MIN_ANALYSIS_LENGTH
+      short: false
     }
   })
 }
@@ -76,11 +75,6 @@ export function buildAnalysisPlan({ docsDir, snapshot, model }) {
   const short = []
 
   for (const file of files) {
-    if (file.short) {
-      short.push(file)
-      continue
-    }
-
     const cached = snapshot?.files?.[file.path]
     if (
       cached?.status === 'success' &&
@@ -108,7 +102,8 @@ export async function generateSnapshot({
   model,
   snapshot = null,
   analyze,
-  analysisConcurrency = 4
+  analysisConcurrency = 4,
+  onProgress
 }) {
   if (typeof analyze !== 'function') {
     throw new TypeError('generateSnapshot requires an analyze function')
@@ -123,17 +118,33 @@ export async function generateSnapshot({
     files[file.path] = snapshot.files[file.path]
   }
 
-  for (const file of plan.short) {
-    files[file.path] = {
-      sourceHash: file.sourceHash,
-      analysisHash: file.analysisHash,
-      status: 'short',
-      reason: 'content-too-short',
-      processedAt: new Date().toISOString()
+  let nextIndex = 0
+  let processedFiles = 0
+  const createSnapshot = () => {
+    const totalFiles = plan.files.length
+    const reusedFiles = plan.reusable.length
+    return {
+      version: SNAPSHOT_VERSION,
+      generatedAt: new Date().toISOString(),
+      analysis: {
+        model,
+        promptVersion: PROMPT_VERSION,
+        extractVersion: EXTRACT_VERSION
+      },
+      files: { ...files },
+      stats: {
+        totalFiles,
+        reusedFiles,
+        pendingFiles: plan.toAnalyze.length,
+        completedFiles: reusedFiles + processedFiles,
+        skippedFiles: 0,
+        failedFiles,
+        aiCalls: plan.aiCalls,
+        hitRate: totalFiles ? reusedFiles / totalFiles : 1,
+        durationMs: Date.now() - startedAt
+      }
     }
   }
-
-  let nextIndex = 0
   const workerCount = Math.min(
     Math.max(1, analysisConcurrency),
     plan.toAnalyze.length
@@ -166,32 +177,18 @@ export async function generateSnapshot({
           processedAt: new Date().toISOString()
         }
       }
+      processedFiles += 1
+      if (onProgress) {
+        await onProgress({
+          path: file.path,
+          entry: files[file.path],
+          completed: processedFiles,
+          total: plan.toAnalyze.length,
+          snapshot: createSnapshot()
+        })
+      }
     }
   })
   await Promise.all(workers)
-
-  const totalFiles = plan.files.length
-  const reusedFiles = plan.reusable.length
-  const stats = {
-    totalFiles,
-    reusedFiles,
-    pendingFiles: plan.toAnalyze.length,
-    skippedFiles: plan.short.length,
-    failedFiles,
-    aiCalls: plan.aiCalls,
-    hitRate: totalFiles ? reusedFiles / totalFiles : 1,
-    durationMs: Date.now() - startedAt
-  }
-
-  return {
-    version: SNAPSHOT_VERSION,
-    generatedAt: new Date().toISOString(),
-    analysis: {
-      model,
-      promptVersion: PROMPT_VERSION,
-      extractVersion: EXTRACT_VERSION
-    },
-    files,
-    stats
-  }
+  return createSnapshot()
 }

@@ -8,6 +8,7 @@ on:
 
 env:
   TZ: Asia/Shanghai
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build-and-deploy:
@@ -28,7 +29,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .cache/ai-summaries-v1.json
-          key: ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-${{ hashFiles('docs/**/*.md', 'tools/ai-summary-v1.mjs') }}
+          key: ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
             ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-
             ai-summaries-v1-${{ runner.os }}-

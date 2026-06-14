@@ -1,19 +1,30 @@
 #!/usr/bin/env node
 
 import { existsSync } from 'node:fs'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { parseEnv } from 'node:util'
 
 import { buildAnalysisPlan, generateSnapshot } from './ai-summary-v1.mjs'
 
 const DEFAULT_MODEL = 'deepseek-v4-pro'
 const DEFAULT_BASE_URL = 'https://api.deepseek.com'
 const MAX_CONTENT_LENGTH = 3000
-const PROVIDER_TIMEOUT_MS = 45000
-const PROVIDER_ATTEMPTS = 2
+const DEFAULT_PROVIDER_TIMEOUT_MS = 60000
+const DEFAULT_PROVIDER_ATTEMPTS = 3
+const DEFAULT_ANALYSIS_CONCURRENCY = 4
 
-const SYSTEM_PROMPT = `你是技术文档分析助手。仅返回 JSON：summary（150字以内）、keyPoints（3-5项）、keywords（3-5项）、techStack、difficulty、contentType。`
+const SYSTEM_PROMPT = `你是技术文档分析助手。必须仅返回一个合法 JSON 对象，不要 Markdown 代码块，不要解释。字段：summary（150字以内字符串）、keyPoints（3-5项字符串数组）、keywords（3-5项字符串数组）、techStack（字符串数组）、difficulty（字符串）、contentType（字符串）。即使文档很短，也必须根据标题、路径和内容生成有效分析。`
+
+export async function loadEnvironmentFile(path, env = process.env) {
+  if (!existsSync(path)) return false
+  const parsed = parseEnv(await readFile(path, 'utf8'))
+  for (const [key, value] of Object.entries(parsed)) {
+    if (env[key] === undefined || env[key] === '') env[key] = value
+  }
+  return true
+}
 
 async function readSnapshot(path) {
   if (!existsSync(path)) return null
@@ -26,7 +37,39 @@ async function readSnapshot(path) {
 
 async function writeSnapshot(path, snapshot) {
   await mkdir(dirname(path), { recursive: true })
-  await writeFile(path, `${JSON.stringify(snapshot, null, 2)}\n`)
+  const temporary = `${path}.${process.pid}.${Date.now()}.tmp`
+  await writeFile(temporary, `${JSON.stringify(snapshot, null, 2)}\n`)
+  await rename(temporary, path)
+}
+
+function entryRank(entry) {
+  if (entry?.status === 'success' && entry.summary) return 3
+  if (entry?.status === 'error') return 2
+  return entry ? 1 : 0
+}
+
+async function readMergedSnapshot(cachePath, outputPath) {
+  const snapshots = (
+    await Promise.all([readSnapshot(outputPath), readSnapshot(cachePath)])
+  ).filter(Boolean)
+  if (snapshots.length === 0) return null
+  const newest = snapshots.sort((a, b) =>
+    String(a.generatedAt || '').localeCompare(String(b.generatedAt || ''))
+  )[snapshots.length - 1]
+  const files = {}
+  for (const snapshot of snapshots) {
+    for (const [path, entry] of Object.entries(snapshot.files || {})) {
+      const current = files[path]
+      if (
+        entryRank(entry) > entryRank(current) ||
+        (entryRank(entry) === entryRank(current) &&
+          String(entry.processedAt || '') > String(current?.processedAt || ''))
+      ) {
+        files[path] = entry
+      }
+    }
+  }
+  return { ...newest, files }
 }
 
 function completionUrl(baseUrl) {
@@ -36,12 +79,19 @@ function completionUrl(baseUrl) {
     : `${normalized}/v1/chat/completions`
 }
 
-export function createProviderAnalyzer({ apiKey, baseUrl, model, fetchImpl = fetch }) {
+export function createProviderAnalyzer({
+  apiKey,
+  baseUrl,
+  model,
+  fetchImpl = fetch,
+  timeoutMs = DEFAULT_PROVIDER_TIMEOUT_MS,
+  attempts = DEFAULT_PROVIDER_ATTEMPTS
+}) {
   return async ({ path, content }) => {
     let lastError
-    for (let attempt = 1; attempt <= PROVIDER_ATTEMPTS; attempt += 1) {
+    for (let attempt = 1; attempt <= attempts; attempt += 1) {
       const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS)
+      const timeout = setTimeout(() => controller.abort(), timeoutMs)
       try {
         const response = await fetchImpl(completionUrl(baseUrl), {
           method: 'POST',
@@ -52,8 +102,9 @@ export function createProviderAnalyzer({ apiKey, baseUrl, model, fetchImpl = fet
           signal: controller.signal,
           body: JSON.stringify({
             model,
-            temperature: 0.2,
-            max_tokens: 700,
+            temperature: 0,
+            max_tokens: 1200,
+            response_format: { type: 'json_object' },
             messages: [
               { role: 'system', content: SYSTEM_PROMPT },
               {
@@ -68,9 +119,9 @@ export function createProviderAnalyzer({ apiKey, baseUrl, model, fetchImpl = fet
         }
         const data = await response.json()
         const raw = data.choices?.[0]?.message?.content?.trim()
-        if (!raw) throw new Error('AI provider returned empty content')
+        if (!raw) throw new Error(`AI provider returned empty content (attempt ${attempt})`)
         const json = raw.match(/```(?:json)?\s*([\s\S]*?)```/)?.[1] || raw.match(/\{[\s\S]*\}/)?.[0] || raw
-        const parsed = JSON.parse(json)
+        const parsed = JSON.parse(json.trim())
         if (!parsed.summary) throw new Error('AI summary is missing summary')
         return {
           summary: parsed.summary,
@@ -81,7 +132,11 @@ export function createProviderAnalyzer({ apiKey, baseUrl, model, fetchImpl = fet
           contentType: parsed.contentType || '综合'
         }
       } catch (error) {
-        lastError = error
+        lastError = new Error(
+          `${path} attempt ${attempt}/${attempts}: ${
+            error instanceof Error ? error.message : String(error)
+          }`
+        )
       } finally {
         clearTimeout(timeout)
       }
@@ -98,10 +153,17 @@ export async function runSummaryBuild({
   apiKey = '',
   baseUrl = DEFAULT_BASE_URL,
   dryRun = false,
-  analyze
+  full = false,
+  analyze,
+  analysisConcurrency = DEFAULT_ANALYSIS_CONCURRENCY,
+  checkpoint = true
 }) {
-  const existing = await readSnapshot(cachePath)
+  const existing = full ? null : await readMergedSnapshot(cachePath, outputPath)
   const plan = buildAnalysisPlan({ docsDir, snapshot: existing, model })
+
+  console.log(
+    `[ai-v1-plan] total=${plan.files.length} reusable=${plan.reusable.length} analyze=${plan.toAnalyze.length} full=${full}`
+  )
 
   if (dryRun) {
     return {
@@ -119,6 +181,25 @@ export async function runSummaryBuild({
     }
   }
 
+  if (existing && plan.toAnalyze.length === 0) {
+    if (!existsSync(cachePath)) await writeSnapshot(cachePath, existing)
+    if (!existsSync(outputPath)) await writeSnapshot(outputPath, existing)
+    return {
+      ...existing,
+      stats: {
+        ...existing.stats,
+        totalFiles: plan.files.length,
+        reusedFiles: plan.reusable.length,
+        pendingFiles: 0,
+        completedFiles: plan.files.length,
+        skippedFiles: 0,
+        failedFiles: 0,
+        aiCalls: 0,
+        hitRate: 1
+      }
+    }
+  }
+
   if (!apiKey && plan.toAnalyze.length > 0) {
     if (!existing) {
       throw new Error('AI_API_KEY is required because no reusable v1 snapshot exists')
@@ -129,12 +210,27 @@ export async function runSummaryBuild({
 
   const providerAnalyze =
     analyze || createProviderAnalyzer({ apiKey, baseUrl, model })
+  let checkpointQueue = Promise.resolve()
   const snapshot = await generateSnapshot({
     docsDir,
     model,
     snapshot: existing,
-    analyze: providerAnalyze
+    analyze: providerAnalyze,
+    analysisConcurrency,
+    onProgress: checkpoint
+      ? ({ path, entry, completed, total, snapshot: partial }) => {
+          console.log(
+            `[ai-v1-progress] ${completed}/${total} ${entry.status} ${path}`
+          )
+          checkpointQueue = checkpointQueue.then(async () => {
+            await writeSnapshot(cachePath, partial)
+            await writeSnapshot(outputPath, partial)
+          })
+          return checkpointQueue
+        }
+      : undefined
   })
+  await checkpointQueue
   await writeSnapshot(cachePath, snapshot)
   await writeSnapshot(outputPath, snapshot)
   return snapshot
@@ -144,7 +240,9 @@ const isMain = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(imp
 
 if (isMain) {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+  await loadEnvironmentFile(resolve(root, '.env'))
   const dryRun = process.argv.includes('--dry-run') || process.env.AI_SUMMARY_DRY_RUN === '1'
+  const full = process.argv.includes('--full')
   const snapshot = await runSummaryBuild({
     docsDir: resolve(root, 'docs'),
     cachePath: resolve(root, '.cache/ai-summaries-v1.json'),
@@ -152,7 +250,11 @@ if (isMain) {
     model: process.env.AI_MODEL || DEFAULT_MODEL,
     apiKey: process.env.AI_API_KEY || '',
     baseUrl: process.env.AI_BASE_URL || DEFAULT_BASE_URL,
-    dryRun
+    dryRun,
+    full,
+    analysisConcurrency: Number(
+      process.env.AI_SUMMARY_CONCURRENCY || DEFAULT_ANALYSIS_CONCURRENCY
+    )
   })
   console.log(`[ai-v1-stats] ${JSON.stringify(snapshot.stats)}`)
 }

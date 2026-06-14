@@ -40,6 +40,12 @@ export async function restoreSnapshot({
     return { source: 'local', snapshot: local }
   }
 
+  const output = await readSnapshot(outputPath)
+  if (output) {
+    await writeSnapshot(cachePath, output)
+    return { source: 'output', snapshot: output }
+  }
+
   if (fallbackUrl) {
     const url = `${fallbackUrl.replace(/\/$/, '')}/summaries-v1.json`
     try {

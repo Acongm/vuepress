@@ -7,7 +7,6 @@ import { fileURLToPath } from 'node:url'
 export function analyzeCoverage({ expectedPaths, snapshot }) {
   const groups = {
     missing: [],
-    indexPending: [],
     error: [],
     excluded: [],
     short: []
@@ -20,15 +19,10 @@ export function analyzeCoverage({ expectedPaths, snapshot }) {
     else if (entry?.status === 'error') groups.error.push(path)
     else if (entry?.status === 'excluded') groups.excluded.push(path)
     else if (entry?.status === 'short') groups.short.push(path)
-    else if (path.endsWith('/README.md')) groups.indexPending.push(path)
     else groups.missing.push(path)
   }
 
-  const analyzable =
-    expectedPaths.length -
-    groups.excluded.length -
-    groups.short.length -
-    groups.indexPending.length
+  const analyzable = expectedPaths.length
   return {
     ...groups,
     success,
@@ -38,7 +32,13 @@ export function analyzeCoverage({ expectedPaths, snapshot }) {
 }
 
 export function coverageMeetsMinimum(report, minimum) {
-  return report.missing.length === 0 && report.coverage >= minimum
+  return (
+    report.missing.length === 0 &&
+    report.error.length === 0 &&
+    report.short.length === 0 &&
+    report.excluded.length === 0 &&
+    report.coverage >= minimum
+  )
 }
 
 function listMarkdown(docsDir) {
@@ -78,7 +78,6 @@ function main() {
   })
 
   printGroup('missing', report.missing)
-  printGroup('index-pending', report.indexPending)
   printGroup('error', report.error)
   printGroup('excluded', report.excluded)
   printGroup('short', report.short)
@@ -88,7 +87,7 @@ function main() {
     } coverage=${(report.coverage * 100).toFixed(2)}%`
   )
 
-  const minimum = Number(process.env.AI_SUMMARY_MIN_COVERAGE || 0.6)
+  const minimum = Number(process.env.AI_SUMMARY_MIN_COVERAGE || 1)
   if (
     process.argv.includes('--strict') &&
     !coverageMeetsMinimum(report, minimum)

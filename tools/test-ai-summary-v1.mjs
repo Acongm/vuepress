@@ -11,7 +11,10 @@ import {
   buildAnalysisPlan,
   generateSnapshot
 } from './ai-summary-v1.mjs'
-import { runSummaryBuild } from './generate-summaries-v1.mjs'
+import {
+  loadEnvironmentFile,
+  runSummaryBuild
+} from './generate-summaries-v1.mjs'
 import { restoreSnapshot } from './restore-summaries-v1.mjs'
 import {
   analyzeCoverage,
@@ -22,7 +25,7 @@ async function createFixture() {
   const root = await mkdtemp(join(tmpdir(), 'ai-summary-v1-'))
   const docsDir = join(root, 'docs')
   await mkdir(join(docsDir, 'react'), { recursive: true })
-  await writeFile(join(docsDir, 'README.md'), '# Index\nThis is not analyzed.')
+  await writeFile(join(docsDir, 'README.md'), '# Index\nThis index is analyzed.')
   await writeFile(join(docsDir, 'short.md'), '# Short')
   await writeFile(
     join(docsDir, 'a.md'),
@@ -53,8 +56,8 @@ test('uses a self-contained versioned snapshot', async () => {
     assert.equal(SNAPSHOT_VERSION, 1)
     assert.equal(PROMPT_VERSION, 'summary-v1')
     assert.equal(EXTRACT_VERSION, 'markdown-v1')
-    assert.equal(plan.aiCalls, 2)
-    assert.equal(plan.skippedFiles, 2)
+    assert.equal(plan.aiCalls, 4)
+    assert.equal(plan.skippedFiles, 0)
   } finally {
     await rm(root, { recursive: true, force: true })
   }
@@ -70,8 +73,8 @@ test('reuses unchanged files and invalidates only changed analysis', async () =>
 
   try {
     const first = await generateSnapshot({ docsDir, model: 'model-a', analyze })
-    assert.equal(first.stats.aiCalls, 2)
-    assert.equal(calls, 2)
+    assert.equal(first.stats.aiCalls, 4)
+    assert.equal(calls, 4)
 
     const second = await generateSnapshot({
       docsDir,
@@ -80,8 +83,8 @@ test('reuses unchanged files and invalidates only changed analysis', async () =>
       analyze
     })
     assert.equal(second.stats.aiCalls, 0)
-    assert.equal(second.stats.reusedFiles, 2)
-    assert.equal(calls, 2)
+    assert.equal(second.stats.reusedFiles, 4)
+    assert.equal(calls, 4)
 
     await writeFile(
       join(docsDir, 'a.md'),
@@ -94,14 +97,14 @@ test('reuses unchanged files and invalidates only changed analysis', async () =>
       analyze
     })
     assert.equal(changed.stats.aiCalls, 1)
-    assert.equal(calls, 3)
+    assert.equal(calls, 5)
 
     const modelChanged = buildAnalysisPlan({
       docsDir,
       model: 'model-b',
       snapshot: changed
     })
-    assert.equal(modelChanged.aiCalls, 2)
+    assert.equal(modelChanged.aiCalls, 4)
   } finally {
     await rm(root, { recursive: true, force: true })
   }
@@ -203,6 +206,36 @@ test('restores one complete remote snapshot into cache and public output', async
   }
 })
 
+test('restores a committed public snapshot before fetching remote fallback', async () => {
+  const { root, docsDir } = await createFixture()
+  const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
+  const outputPath = join(root, 'public', 'summaries-v1.json')
+  try {
+    const committed = await generateSnapshot({
+      docsDir,
+      model: 'model-a',
+      analyze: async ({ path }) => fakeSummary(path)
+    })
+    await mkdir(join(root, 'public'), { recursive: true })
+    await writeFile(outputPath, JSON.stringify(committed))
+    let fetched = false
+    const restored = await restoreSnapshot({
+      cachePath,
+      outputPath,
+      fallbackUrl: 'https://example.test',
+      fetchImpl: async () => {
+        fetched = true
+        throw new Error('remote should not be called')
+      }
+    })
+    assert.equal(restored.source, 'output')
+    assert.equal(fetched, false)
+    assert.equal(JSON.parse(await readFile(cachePath, 'utf8')).files['/README.md'].status, 'success')
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
 test('dry-run and missing-key builds preserve restored summaries without provider calls', async () => {
   const { root, docsDir } = await createFixture()
   const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
@@ -251,6 +284,88 @@ test('dry-run and missing-key builds preserve restored summaries without provide
   }
 })
 
+test('unchanged builds do not rewrite existing cache or public snapshots', async () => {
+  const { root, docsDir } = await createFixture()
+  const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
+  const outputPath = join(root, 'public', 'summaries-v1.json')
+  try {
+    const existing = await generateSnapshot({
+      docsDir,
+      model: 'model-a',
+      analyze: async ({ path }) => fakeSummary(path)
+    })
+    const serialized = `${JSON.stringify(existing)}\n`
+    await mkdir(join(root, '.cache'), { recursive: true })
+    await mkdir(join(root, 'public'), { recursive: true })
+    await writeFile(cachePath, serialized)
+    await writeFile(outputPath, serialized)
+
+    const rebuilt = await runSummaryBuild({
+      docsDir,
+      cachePath,
+      outputPath,
+      model: 'model-a',
+      apiKey: 'configured',
+      analyze: async () => {
+        throw new Error('unchanged files must not call the analyzer')
+      }
+    })
+
+    assert.equal(rebuilt.stats.aiCalls, 0)
+    assert.equal(await readFile(cachePath, 'utf8'), serialized)
+    assert.equal(await readFile(outputPath, 'utf8'), serialized)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
+test('full build ignores reusable cache and analyzes every Markdown file', async () => {
+  const { root, docsDir } = await createFixture()
+  const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
+  const outputPath = join(root, 'public', 'summaries-v1.json')
+  try {
+    const existing = await generateSnapshot({
+      docsDir,
+      model: 'model-a',
+      analyze: async ({ path }) => fakeSummary(path)
+    })
+    await mkdir(join(root, '.cache'), { recursive: true })
+    await writeFile(cachePath, JSON.stringify(existing))
+    let calls = 0
+    const rebuilt = await runSummaryBuild({
+      docsDir,
+      cachePath,
+      outputPath,
+      model: 'model-a',
+      apiKey: 'configured',
+      full: true,
+      analyze: async ({ path }) => {
+        calls += 1
+        return fakeSummary(path)
+      }
+    })
+    assert.equal(rebuilt.stats.aiCalls, 4)
+    assert.equal(rebuilt.stats.reusedFiles, 0)
+    assert.equal(calls, 4)
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
+test('loads configured AI values from .env without overriding process values', async () => {
+  const { root } = await createFixture()
+  try {
+    const envPath = join(root, '.env')
+    await writeFile(envPath, 'AI_API_KEY=from-file\nAI_MODEL=from-env-file\n')
+    const env = { AI_MODEL: 'already-set' }
+    assert.equal(await loadEnvironmentFile(envPath, env), true)
+    assert.equal(env.AI_API_KEY, 'from-file')
+    assert.equal(env.AI_MODEL, 'already-set')
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+})
+
 test('deployment pipelines use Node 24 and the same incremental v1 build', async () => {
   const workflow = await readFile('.github/workflows/blank.yml', 'utf8')
   const vercel = JSON.parse(await readFile('vercel.json', 'utf8'))
@@ -267,12 +382,12 @@ test('deployment pipelines use Node 24 and the same incremental v1 build', async
 
   assert.match(vercel.buildCommand, /restore-summaries-v1\.mjs/)
   assert.match(vercel.buildCommand, /npm run build:ai:v1/)
-  assert.match(vercel.buildCommand, /npm run check:ai-v1/)
-  assert.doesNotMatch(vercel.buildCommand, /--strict/)
+  assert.match(vercel.buildCommand, /check:ai-v1 -- --strict/)
   assert.match(vercel.buildCommand, /smoke:summaries-v1/)
   assert.doesNotMatch(vercel.buildCommand, /generate-summaries\.mjs/)
   assert.equal(vercel.installCommand, 'npm ci')
   assert.equal(vercel.outputDirectory, 'vuepress')
+  assert.equal(vercel.git.deploymentEnabled['gh-pages'], false)
 })
 
 test('coverage reports missing and failed analyzable files exactly', () => {
@@ -286,12 +401,11 @@ test('coverage reports missing and failed analyzable files exactly', () => {
       }
     }
   })
-  assert.deepEqual(report.missing, ['/missing.md'])
-  assert.deepEqual(report.indexPending, ['/guide/README.md'])
+  assert.deepEqual(report.missing, ['/guide/README.md', '/missing.md'])
   assert.deepEqual(report.error, ['/failed.md'])
   assert.deepEqual(report.short, ['/short.md'])
   assert.equal(report.success, 1)
-  assert.equal(report.coverage, 1 / 3)
+  assert.equal(report.coverage, 1 / 5)
   assert.equal(coverageMeetsMinimum(report, 0.3), false)
 
   const retryable = analyzeCoverage({
@@ -304,7 +418,7 @@ test('coverage reports missing and failed analyzable files exactly', () => {
       }
     }
   })
-  assert.equal(coverageMeetsMinimum(retryable, 0.6), true)
+  assert.equal(coverageMeetsMinimum(retryable, 0.6), false)
 })
 
 test('module index consumes only successful v1 summaries', async () => {
