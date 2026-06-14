@@ -166,6 +166,7 @@ export async function runSummaryBuild({
   analysisConcurrency = DEFAULT_ANALYSIS_CONCURRENCY,
   checkpoint = true
 }) {
+  const startedAt = Date.now()
   const expectedFiles = new Map(
     buildAnalysisPlan({ docsDir, snapshot: null, model }).files.map(file => [
       file.path,
@@ -211,7 +212,8 @@ export async function runSummaryBuild({
         skippedFiles: 0,
         failedFiles: 0,
         aiCalls: 0,
-        hitRate: 1
+        hitRate: 1,
+        durationMs: Date.now() - startedAt
       }
     }
   }
@@ -221,7 +223,14 @@ export async function runSummaryBuild({
       throw new Error('AI_API_KEY is required because no reusable v1 snapshot exists')
     }
     await writeSnapshot(outputPath, existing)
-    return { ...existing, stats: { ...existing.stats, aiCalls: 0 } }
+    return {
+      ...existing,
+      stats: {
+        ...existing.stats,
+        aiCalls: 0,
+        durationMs: Date.now() - startedAt
+      }
+    }
   }
 
   const providerAnalyze =

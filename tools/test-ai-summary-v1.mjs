@@ -411,6 +411,9 @@ test('loads configured AI values from .env without overriding process values', a
 test('deployment pipelines use Node 24 and the same incremental v1 build', async () => {
   const workflow = await readFile('.github/workflows/blank.yml', 'utf8')
   const vercel = JSON.parse(await readFile('vercel.json', 'utf8'))
+  const pagesVercel = JSON.parse(
+    await readFile('docs/.vuepress/public/vercel.json', 'utf8')
+  )
 
   assert.match(workflow, /node-version:\s*['"]?24['"]?/)
   assert.match(workflow, /npm ci/)
@@ -430,6 +433,7 @@ test('deployment pipelines use Node 24 and the same incremental v1 build', async
   assert.equal(vercel.installCommand, 'npm ci')
   assert.equal(vercel.outputDirectory, 'vuepress')
   assert.equal(vercel.git.deploymentEnabled['gh-pages'], false)
+  assert.equal(pagesVercel.git.deploymentEnabled['gh-pages'], false)
 })
 
 test('coverage reports missing and failed analyzable files exactly', () => {
