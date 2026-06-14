@@ -6,6 +6,14 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ASSETS_DIR = resolve(__dirname, '../vuepress/assets/js')
+const CHAT_PANEL = resolve(
+  __dirname,
+  '../docs/.vuepress/components/ai/AIChatPanel.vue'
+)
+const CHAT_TAGS = resolve(
+  __dirname,
+  '../docs/.vuepress/utils/chat-v1-tags.js'
+)
 
 const BAD_PATTERNS = [/fetch\(\s*["']\\"https?:\/\/api\.acongm\.com/]
 
@@ -26,6 +34,33 @@ function collectJsFiles(dir) {
 }
 
 function main() {
+  const panelSource = [CHAT_PANEL, CHAT_TAGS]
+    .map((file) => readFileSync(file, 'utf-8'))
+    .join('\n')
+  const requiredMarkers = [
+    'streamChatV1',
+    '当前文章',
+    '本模块',
+    '联网检索',
+    '停止',
+    '重新生成',
+    '重试',
+    '复制',
+    '清空',
+    'loadChatHistory'
+  ]
+  const missingMarkers = requiredMarkers.filter(
+    (marker) => !panelSource.includes(marker)
+  )
+  if (missingMarkers.length) {
+    console.error('[smoke-ai] missing v1 chat markers:', missingMarkers.join(', '))
+    process.exit(1)
+  }
+  if (panelSource.includes('startTypewriter') || panelSource.includes('setInterval')) {
+    console.error('[smoke-ai] fake answer typewriter is still present')
+    process.exit(1)
+  }
+
   let files = []
   try {
     files = collectJsFiles(ASSETS_DIR)

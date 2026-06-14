@@ -23,7 +23,7 @@ if (isProduction) {
   )
   const chatUrl = sanitizeEnvUrl(
     process.env.VUEPRESS_AI_CHAT_API,
-    'https://api.acongm.com/api/ai/chat'
+    'https://api.acongm.com/api/ai/v1/chat/stream'
   )
   console.log('[ai-env] summary API:', summaryUrl)
   console.log('[ai-env] chat API:', chatUrl)
@@ -43,7 +43,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     __AI_CHAT_API__: JSON.stringify(
       sanitizeEnvUrl(
         process.env.VUEPRESS_AI_CHAT_API,
-        'https://api.acongm.com/api/ai/chat'
+        'https://api.acongm.com/api/ai/v1/chat/stream'
       )
     )
   },

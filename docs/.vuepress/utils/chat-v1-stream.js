@@ -1,5 +1,15 @@
+/* global __AI_CHAT_API__ */
+
 export const DEFAULT_AI_CHAT_V1_STREAM_API =
   'https://api.acongm.com/api/ai/v1/chat/stream'
+
+export function getAiChatV1StreamUrl() {
+  const configured =
+    typeof __AI_CHAT_API__ !== 'undefined' ? String(__AI_CHAT_API__) : ''
+  if (!/^https?:\/\//i.test(configured)) return DEFAULT_AI_CHAT_V1_STREAM_API
+  if (/\/api\/ai\/v1\/chat\/stream\/?$/.test(configured)) return configured
+  return configured.replace(/\/api\/ai\/chat\/?$/, '/api/ai/v1/chat/stream')
+}
 
 export async function* parseSseStream(stream) {
   const reader = stream.getReader()
@@ -29,7 +39,7 @@ export async function* parseSseStream(stream) {
 }
 
 export async function streamChatV1(payload, options = {}) {
-  const response = await fetch(options.url || DEFAULT_AI_CHAT_V1_STREAM_API, {
+  const response = await fetch(options.url || getAiChatV1StreamUrl(), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

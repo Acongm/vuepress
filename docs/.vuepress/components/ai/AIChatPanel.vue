@@ -1,622 +1,288 @@
 <template>
-  <div class="ai-chat-panel">
-    <div class="ai-chat-panel__toolbar">
-      <div class="ai-chat-panel__scope">
-        <button
-          type="button"
-          class="ai-chat-panel__scope-btn"
-          :class="{ 'is-active': scope === 'article' }"
-          @click="scope = 'article'"
-        >
-          当前文章
-        </button>
-        <button
-          type="button"
-          class="ai-chat-panel__scope-btn"
-          :class="{ 'is-active': scope === 'module' }"
-          @click="scope = 'module'"
-        >
-          本模块
-        </button>
-      </div>
+  <section class="ai-chat-panel">
+    <div ref="messagesEl" class="ai-chat-panel__messages" aria-live="polite">
+      <article v-if="summaryLoading" class="ai-summary-card is-loading">
+        <span class="ai-summary-card__eyebrow">构建期 AI 提炼</span>
+        <p>正在读取静态摘要…</p>
+      </article>
 
-      <label class="ai-chat-panel__search">
-        <input v-model="enableWebSearch" type="checkbox" />
-        <span>联网检索</span>
-      </label>
-    </div>
-
-    <div
-      v-if="prefetchError && !summaryLoading"
-      class="ai-chat-panel__alert"
-    >
-      <span>{{ prefetchError }}</span>
-      <button type="button" @click="retrySummary">重试</button>
-    </div>
-
-    <div ref="messagesEl" class="ai-chat-panel__messages">
-      <div
-        v-if="summaryLoading"
-        class="ai-chat-panel__message assistant"
-      >
-        <div class="ai-chat-panel__avatar">AI</div>
-        <div class="ai-chat-panel__bubble typing">
-          <span class="dot" />
-          <span class="dot" />
-          <span class="dot" />
-        </div>
-      </div>
-
-      <div
-        v-for="(message, index) in messages"
+      <article
+        v-for="message in messages"
         :key="message.id"
-        :class="['ai-chat-panel__message', message.role]"
+        :class="[
+          message.isSummary ? 'ai-summary-card' : 'ai-chat-message',
+          `is-${message.role}`,
+          { 'is-error': message.isError }
+        ]"
       >
-        <div class="ai-chat-panel__avatar">
-          {{ message.role === 'user' ? '我' : 'AI' }}
-        </div>
-        <div class="ai-chat-panel__bubble">
-          <p class="ai-chat-panel__text">
-            <template v-if="message.role === 'assistant' && message.typing">
-              {{ message.displayText }}<span class="ai-chat-panel__cursor">|</span>
-            </template>
-            <template v-else>{{ message.content }}</template>
-          </p>
-
-          <div
-            v-if="message.sources?.length"
-            class="ai-chat-panel__sources"
-          >
-            <p>参考来源</p>
-            <a
-              v-for="source in message.sources"
-              :key="source.url || source.title"
-              :href="source.url"
-              target="_blank"
-              rel="noopener noreferrer"
+        <template v-if="message.isSummary">
+          <span class="ai-summary-card__eyebrow">构建期 AI 提炼</span>
+          <p class="ai-summary-card__content">{{ message.content }}</p>
+        </template>
+        <template v-else>
+          <div class="ai-chat-message__meta">
+            <span>{{ message.role === 'user' ? '你' : 'AI' }}</span>
+            <button
+              v-if="message.role === 'assistant' && message.content"
+              type="button"
+              @click="copyMessage(message.content)"
             >
-              {{ source.title || source.url }}
-            </a>
+              复制
+            </button>
           </div>
-        </div>
-      </div>
-
-      <div v-if="chatLoading" class="ai-chat-panel__message assistant">
-        <div class="ai-chat-panel__avatar">AI</div>
-        <div class="ai-chat-panel__bubble typing">
-          <span class="dot" />
-          <span class="dot" />
-          <span class="dot" />
-        </div>
-      </div>
+          <p>{{ message.content }}<span v-if="message.streaming" class="ai-chat-cursor" /></p>
+        </template>
+      </article>
     </div>
 
-    <div class="ai-chat-panel__input">
-      <textarea
-        v-model="inputText"
-        rows="2"
-        :placeholder="inputPlaceholder"
-        :disabled="chatLoading || summaryLoading"
-        @keydown.enter.exact.prevent="sendMessage"
-      />
-      <button type="button" :disabled="!canSend" @click="sendMessage">
-        发送
-      </button>
-    </div>
-  </div>
+    <footer class="ai-chat-composer">
+      <div class="ai-chat-composer__topline">
+        <div class="ai-chat-quick-tags" aria-label="提问快捷选项">
+          <button
+            v-for="tag in quickTags"
+            :key="tag.key"
+            type="button"
+            @click="applyQuickTag(tag.key)"
+          >
+            + {{ tag.label }}
+          </button>
+        </div>
+        <button type="button" class="ai-chat-clear" @click="clearConversation">清空</button>
+      </div>
+
+      <div class="ai-chat-composer__box">
+        <textarea
+          ref="inputEl"
+          v-model="inputText"
+          rows="2"
+          placeholder="结合文档提问，快捷选项可继续编辑…"
+          @keydown.enter.exact.prevent="sendMessage()"
+        />
+        <button v-if="chatLoading" type="button" class="is-stop" @click="stopGeneration">
+          停止
+        </button>
+        <button v-else type="button" :disabled="!inputText.trim()" @click="sendMessage()">
+          发送
+        </button>
+      </div>
+
+      <div v-if="lastFailedQuestion || lastCompletedQuestion" class="ai-chat-composer__actions">
+        <button v-if="lastFailedQuestion" type="button" @click="retryLast">重试</button>
+        <button v-if="lastCompletedQuestion" type="button" @click="regenerateLast">重新生成</button>
+      </div>
+      <p class="ai-chat-composer__hint">仅发送消息时调用 AI 接口；页面摘要来自构建缓存。</p>
+    </footer>
+  </section>
 </template>
 
 <script>
+import { extractPageContent } from '../../utils/ai-context.js'
 import {
-  buildChatContextPayload,
-  buildSystemPrompt,
-  extractPageContent
-} from '../../utils/ai-context.js'
+  clearChatHistory,
+  loadChatHistory,
+  modelHistory,
+  saveChatHistory
+} from '../../utils/chat-v1-history.js'
+import { streamChatV1 } from '../../utils/chat-v1-stream.js'
+import {
+  CHAT_V1_TAGS,
+  deriveTagOptions,
+  insertChatTag
+} from '../../utils/chat-v1-tags.js'
 import { formatSummaryMessage } from '../../utils/format-summary-message.js'
 import {
   getPrefetchedSummary,
-  getPrefetchError,
-  hasShownSummaryTypewriter,
   isSummaryPrefetching,
-  markSummaryTypewriterShown,
   prefetchPageSummary,
-  retryPrefetch,
   waitForPrefetch
 } from '../../utils/summary-prefetch.js'
-import {
-  getAiChatApiUrl,
-  getPagePath,
-  sourceLabel
-} from '../../utils/summary-service.js'
-import {
-  loadModuleIndex,
-  resolveModuleFromPath
-} from '../../utils/resolve-module.js'
-
-const TYPEWRITER_INTERVAL_MS = 16
-const TYPEWRITER_MAX_MS = 8000
-const CHAT_STORAGE_PREFIX = 'ai-chat-messages:'
+import { getPagePath, sourceLabel } from '../../utils/summary-service.js'
+import { summaryV1StatusText } from '../../utils/summary-v1-service.js'
+import { loadModuleIndex, resolveModuleFromPath } from '../../utils/resolve-module.js'
 
 export default {
   name: 'AIChatPanel',
-
-  props: {
-    active: {
-      type: Boolean,
-      default: false
-    }
-  },
-
+  props: { active: { type: Boolean, default: false } },
   data() {
     return {
-      scope: 'article',
-      enableWebSearch: false,
+      quickTags: CHAT_V1_TAGS,
+      messages: [],
+      inputText: '',
       pageContext: '',
       moduleInfo: null,
       moduleDocs: [],
-      messages: [],
-      inputText: '',
-      chatLoading: false,
       summaryLoading: false,
+      chatLoading: false,
       chatAbortController: null,
-      typewriterTimer: null,
-      typewriterIndex: null
+      lastFailedQuestion: '',
+      lastCompletedQuestion: ''
     }
   },
-
   computed: {
-    scopeLabel() {
-      return this.scope === 'module' ? '本模块内容' : '当前文章内容'
+    pagePath() {
+      return getPagePath(this.$page.path, this.$site.base || '/')
     },
-
-    inputPlaceholder() {
-      return this.scope === 'module'
-        ? '基于本模块提问…'
-        : '基于当前文章提问…'
-    },
-
     pageTags() {
-      const tags = this.$page?.frontmatter?.tags
-      return Array.isArray(tags) ? tags : []
-    },
-
-    prefetchError() {
-      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-      return getPrefetchError(pagePath)
-    },
-
-    canSend() {
-      const hasContext =
-        Boolean(this.pageContext) ||
-        (this.scope === 'module' && this.moduleDocs.length > 0) ||
-        this.enableWebSearch
-
-      return (
-        Boolean(this.inputText.trim()) &&
-        !this.chatLoading &&
-        !this.summaryLoading &&
-        hasContext
-      )
+      return Array.isArray(this.$page?.frontmatter?.tags)
+        ? this.$page.frontmatter.tags
+        : []
     }
   },
-
   watch: {
     active: {
       immediate: true,
-      handler(isActive) {
-        if (isActive) {
-          this.bootstrap()
-        }
+      handler(value) {
+        if (value) this.bootstrap()
       }
     },
-
     '$page.path'() {
-      this.abortChatRequest()
-      this.resetConversation()
-      if (this.active) {
-        this.bootstrap()
-      }
-    },
-
-    scope(nextScope, prevScope) {
-      if (prevScope && nextScope !== prevScope) {
-        this.clearChatMessagesKeepSummary()
-      }
-      this.prepareContext()
-    }
-  },
-
-  beforeUnmount() {
-    this.clearTypewriter()
-    this.abortChatRequest()
-  },
-
-  methods: {
-    async bootstrap() {
-      await this.prepareContext()
-      if (this.messages.length === 0) {
-        this.restoreChatMessages()
-      }
-      if (this.messages.length === 0) {
-        await this.loadSummaryAsFirstMessage()
-      }
-    },
-
-    getChatStorageKey() {
-      return `${CHAT_STORAGE_PREFIX}${getPagePath(
-        this.$page.path,
-        this.$site.base || '/'
-      )}`
-    },
-
-    restoreChatMessages() {
-      if (typeof sessionStorage === 'undefined') {
-        return
-      }
-
-      try {
-        const raw = sessionStorage.getItem(this.getChatStorageKey())
-        if (!raw) {
-          return
-        }
-        const saved = JSON.parse(raw)
-        if (Array.isArray(saved) && saved.length) {
-          this.messages = saved
-        }
-      } catch {
-        // ignore
-      }
-    },
-
-    persistChatMessages() {
-      if (typeof sessionStorage === 'undefined') {
-        return
-      }
-
-      try {
-        const storable = this.messages
-          .filter((message) => !message.typing)
-          .map((message) => ({
-            id: message.id,
-            role: message.role,
-            content: message.content,
-            displayText: message.content,
-            typing: false,
-            isSummary: Boolean(message.isSummary),
-            sources: message.sources || []
-          }))
-        sessionStorage.setItem(
-          this.getChatStorageKey(),
-          JSON.stringify(storable)
-        )
-      } catch {
-        // ignore
-      }
-    },
-
-    clearChatStorage() {
-      if (typeof sessionStorage === 'undefined') {
-        return
-      }
-      sessionStorage.removeItem(this.getChatStorageKey())
-    },
-
-    clearChatMessagesKeepSummary() {
-      this.clearTypewriter()
-      this.messages = this.messages.filter((message) => message.isSummary)
-      this.inputText = ''
-      this.persistChatMessages()
-    },
-
-    abortChatRequest() {
-      if (this.chatAbortController) {
-        this.chatAbortController.abort()
-        this.chatAbortController = null
-      }
-    },
-
-    retrySummary() {
-      this.summaryLoading = true
-      retryPrefetch(this)
-        .then((result) => {
-          if (!result?.summary) {
-            return
-          }
-          const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-          const hasSummary = this.messages.some((message) => message.isSummary)
-          if (!hasSummary) {
-            this.presentSummaryMessage(result.summary, pagePath, result.source)
-          }
-        })
-        .finally(() => {
-          this.summaryLoading = false
-        })
-    },
-
-    resetConversation() {
-      this.clearTypewriter()
-      this.abortChatRequest()
+      this.stopGeneration()
       this.messages = []
       this.inputText = ''
-      this.clearChatStorage()
-    },
-
-    async prepareContext() {
+      if (this.active) this.bootstrap()
+    }
+  },
+  beforeUnmount() {
+    this.stopGeneration()
+  },
+  methods: {
+    async bootstrap() {
       this.pageContext = extractPageContent()
-      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-      const moduleIndex = await loadModuleIndex(this.$withBase)
-      this.moduleInfo = resolveModuleFromPath(pagePath, moduleIndex)
-
-      if (moduleIndex?.modules && this.moduleInfo) {
-        this.moduleDocs = moduleIndex.modules[this.moduleInfo.key]?.files || []
-      } else {
-        this.moduleDocs = []
+      const index = await loadModuleIndex(this.$withBase)
+      this.moduleInfo = resolveModuleFromPath(this.pagePath, index)
+      this.moduleDocs = this.moduleInfo
+        ? index?.modules?.[this.moduleInfo.key]?.files || []
+        : []
+      if (!this.messages.length && typeof sessionStorage !== 'undefined') {
+        this.messages = loadChatHistory(sessionStorage, this.pagePath)
       }
+      if (!this.messages.some((message) => message.isSummary)) {
+        await this.loadBuildSummary()
+      }
+      this.scrollToBottom()
     },
-
-    async loadSummaryAsFirstMessage() {
-      if (this.summaryLoading) {
-        return
+    async loadBuildSummary() {
+      this.summaryLoading = true
+      let result = getPrefetchedSummary(this.pagePath)
+      if (!result && isSummaryPrefetching(this.pagePath)) {
+        result = await waitForPrefetch(this.pagePath)
       }
-
-      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-      let result = getPrefetchedSummary(pagePath)
-
-      if (!result) {
-        this.summaryLoading = true
-      }
-
-      try {
-        if (!result && isSummaryPrefetching(pagePath)) {
-          result = await waitForPrefetch(pagePath)
-        }
-
-        if (!result) {
-          result = await prefetchPageSummary(this)
-        }
-
-        if (!result?.summary) {
-          throw new Error('暂无可用摘要，请稍后重试')
-        }
-
-        this.presentSummaryMessage(result.summary, pagePath, result.source)
-      } catch (err) {
-        console.error('加载摘要失败:', err)
-        this.messages.push({
-          id: `summary-error-${Date.now()}`,
-          role: 'assistant',
-          content: err.message || '加载提炼内容失败，请稍后重试',
-          displayText: err.message || '加载提炼内容失败，请稍后重试',
-          typing: false
-        })
-        this.scrollToBottom()
-      } finally {
-        this.summaryLoading = false
-      }
-    },
-
-    presentSummaryMessage(summaryData, pagePath, source) {
-      const text = formatSummaryMessage(summaryData, sourceLabel(source))
-      const showTypewriter =
-        !hasShownSummaryTypewriter(pagePath) &&
-        typeof document !== 'undefined' &&
-        !document.hidden
-      const messageIndex = this.messages.length
-
-      this.messages.push({
-        id: `summary-${pagePath}`,
+      if (!result) result = await prefetchPageSummary(this)
+      const content = result?.summary
+        ? formatSummaryMessage(result.summary, sourceLabel('static'))
+        : summaryV1StatusText(result)
+      this.messages.unshift({
+        id: `summary-${this.pagePath}`,
         role: 'assistant',
-        content: text,
-        displayText: showTypewriter ? '' : text,
-        typing: showTypewriter,
+        content,
         isSummary: true
       })
-
-      if (showTypewriter) {
-        markSummaryTypewriterShown(pagePath)
-        this.$nextTick(() => {
-          this.startTypewriter(messageIndex)
-          this.scrollToBottom()
-        })
-        return
-      }
-
-      this.scrollToBottom()
-      this.persistChatMessages()
+      this.summaryLoading = false
+      this.persist()
     },
-
-    async sendMessage() {
-      const question = this.inputText.trim()
-      if (!question || !this.canSend) {
-        return
+    applyQuickTag(key) {
+      this.inputText = insertChatTag(this.inputText, key)
+      this.$nextTick(() => this.$refs.inputEl?.focus())
+    },
+    async sendMessage(questionOverride = '', options = {}) {
+      const question = String(questionOverride || this.inputText).trim()
+      if (!question || this.chatLoading) return
+      if (!options.reuseUserMessage) {
+        this.messages.push({
+          id: `user-${Date.now()}`,
+          role: 'user',
+          content: question
+        })
       }
-
       this.inputText = ''
-      this.messages.push({
-        id: `user-${Date.now()}`,
-        role: 'user',
-        content: question,
-        displayText: question,
-        typing: false
-      })
-
+      this.lastFailedQuestion = ''
+      const answer = {
+        id: `assistant-${Date.now()}`,
+        role: 'assistant',
+        content: '',
+        streaming: true
+      }
+      this.messages.push(answer)
       this.chatLoading = true
       this.scrollToBottom()
-      this.persistChatMessages()
 
-      try {
-        const reply = await this.askAboutPage(question)
-        const messageIndex = this.messages.length
-        this.messages.push({
-          id: `assistant-${Date.now()}`,
-          role: 'assistant',
-          content: reply.content,
-          displayText: '',
-          typing: true,
-          sources: reply.sources || []
-        })
-
-        this.$nextTick(() => {
-          this.startTypewriter(messageIndex)
-          this.scrollToBottom()
-          this.persistChatMessages()
-        })
-      } catch (err) {
-        this.messages.push({
-          id: `error-${Date.now()}`,
-          role: 'assistant',
-          content: err.message || '回答失败，请稍后重试',
-          displayText: err.message || '回答失败，请稍后重试',
-          typing: false
-        })
-        this.scrollToBottom()
-        this.persistChatMessages()
-      } finally {
-        this.chatLoading = false
-      }
-    },
-
-    async askAboutPage(question) {
-      const history = this.messages
-        .filter(
-          (message) =>
-            !message.typing &&
-            message.content &&
-            !message.isSummary &&
-            !String(message.id).startsWith('summary-') &&
-            !String(message.id).startsWith('error-') &&
-            !String(message.id).startsWith('summary-error-')
-        )
-        .map((message) => ({
-          role: message.role,
-          content: message.content
-        }))
-
-      const pagePath = getPagePath(this.$page.path, this.$site.base || '/')
-      const systemPrompt = buildSystemPrompt({
-        title: this.$page?.title || '当前文档',
-        pagePath,
-        tags: this.pageTags,
-        pageContent: this.pageContext || extractPageContent(),
-        scope: this.scope,
-        moduleInfo: this.moduleInfo,
-        moduleDocs: this.moduleDocs,
-        enableWebSearch: this.enableWebSearch
-      })
-
-      const payload = {
-        messages: [{ role: 'system', content: systemPrompt }, ...history],
-        context: buildChatContextPayload({
-          scope: this.scope,
-          pagePath,
-          moduleInfo: this.moduleInfo,
-          title: this.$page?.title || '当前文档',
-          tags: this.pageTags
-        }),
-        enableWebSearch: this.enableWebSearch
-      }
-
-      this.abortChatRequest()
       const controller = new AbortController()
       this.chatAbortController = controller
-
-      let response
+      const tagOptions = deriveTagOptions(question)
       try {
-        response = await fetch(getAiChatApiUrl(), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          signal: controller.signal
-        })
-      } catch (err) {
-        if (err?.name === 'AbortError') {
-          throw new Error('请求已取消')
+        const events = await streamChatV1(
+          {
+            messages: modelHistory(this.messages.filter((item) => item !== answer)),
+            context: {
+              scope: tagOptions.scope,
+              pagePath: this.pagePath,
+              moduleKey: this.moduleInfo?.key || '',
+              title: this.$page?.title || '当前文档',
+              tags: this.pageTags,
+              content: this.pageContext
+            },
+            enableWebSearch: tagOptions.enableWebSearch
+          },
+          { signal: controller.signal }
+        )
+        for await (const event of events) {
+          if (event.type === 'delta') answer.content += event.content || ''
+          if (event.type === 'error') throw new Error(event.message || '回答失败')
+          this.scrollToBottom()
         }
-        throw new Error('网络请求失败，请刷新页面后重试')
+        answer.streaming = false
+        this.lastCompletedQuestion = question
+      } catch (error) {
+        answer.streaming = false
+        if (!answer.content) {
+          answer.content = error?.name === 'AbortError' ? '已停止生成。' : error?.message || '回答失败，请重试。'
+        }
+        answer.isError = error?.name !== 'AbortError'
+        if (answer.isError) this.lastFailedQuestion = question
       } finally {
-        if (this.chatAbortController === controller) {
-          this.chatAbortController = null
-        }
-      }
-
-      if (!response.ok) {
-        let message = '对话请求失败'
-        try {
-          const errorBody = await response.json()
-          if (errorBody?.message) {
-            message = Array.isArray(errorBody.message)
-              ? errorBody.message.join(', ')
-              : errorBody.message
-          }
-        } catch {
-          // ignore
-        }
-        throw new Error(message)
-      }
-
-      const data = await response.json()
-      return {
-        content:
-          data.message || data.choices?.[0]?.message?.content || '暂无回复',
-        sources: data.sources || []
+        if (this.chatAbortController === controller) this.chatAbortController = null
+        this.chatLoading = false
+        this.persist()
       }
     },
-
-    startTypewriter(messageIndex) {
-      const message = this.messages[messageIndex]
-      if (!message || message.role !== 'assistant') {
-        return
-      }
-
-      this.clearTypewriter()
-      this.typewriterIndex = messageIndex
-      message.typing = true
-      message.displayText = ''
-
-      let cursor = 0
-      const fullText = message.content
-      const startedAt = Date.now()
-
-      this.typewriterTimer = setInterval(() => {
-        if (Date.now() - startedAt > TYPEWRITER_MAX_MS) {
-          this.clearTypewriter()
-          this.persistChatMessages()
-          return
-        }
-
-        cursor += 1
-        message.displayText = fullText.slice(0, cursor)
-        this.scrollToBottom()
-
-        if (cursor >= fullText.length) {
-          this.clearTypewriter()
-          this.persistChatMessages()
-        }
-      }, TYPEWRITER_INTERVAL_MS)
+    stopGeneration() {
+      this.chatAbortController?.abort()
+      this.chatAbortController = null
     },
-
-    clearTypewriter() {
-      if (this.typewriterTimer) {
-        clearInterval(this.typewriterTimer)
-        this.typewriterTimer = null
+    retryLast() {
+      const question = this.lastFailedQuestion
+      const last = this.messages[this.messages.length - 1]
+      if (last?.isError) this.messages.pop()
+      this.sendMessage(question, { reuseUserMessage: true })
+    },
+    regenerateLast() {
+      const question = this.lastCompletedQuestion
+      const last = this.messages[this.messages.length - 1]
+      if (last?.role === 'assistant' && !last.isSummary) this.messages.pop()
+      this.sendMessage(question, { reuseUserMessage: true })
+    },
+    async copyMessage(content) {
+      await navigator.clipboard?.writeText(content)
+    },
+    clearConversation() {
+      this.stopGeneration()
+      this.messages = this.messages.filter((message) => message.isSummary)
+      this.lastFailedQuestion = ''
+      this.lastCompletedQuestion = ''
+      if (typeof sessionStorage !== 'undefined') {
+        clearChatHistory(sessionStorage, this.pagePath)
       }
-
-      if (this.typewriterIndex !== null) {
-        const message = this.messages[this.typewriterIndex]
-        if (message) {
-          message.typing = false
-          message.displayText = message.content
-        }
-        this.typewriterIndex = null
+      this.persist()
+    },
+    persist() {
+      if (typeof sessionStorage !== 'undefined') {
+        saveChatHistory(sessionStorage, this.pagePath, this.messages)
       }
     },
-
     scrollToBottom() {
       this.$nextTick(() => {
-        const container = this.$refs.messagesEl
-        if (container) {
-          container.scrollTop = container.scrollHeight
-        }
+        const element = this.$refs.messagesEl
+        if (element) element.scrollTop = element.scrollHeight
       })
     }
   }
@@ -624,230 +290,32 @@ export default {
 </script>
 
 <style scoped>
-.ai-chat-panel {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  padding: 12px 16px 16px;
-  background: #fff;
-}
-
-.ai-chat-panel__toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-}
-
-.ai-chat-panel__alert {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
-  padding: 8px 10px;
-  border-radius: 4px;
-  background: #fff4f4;
-  border: 1px solid #ffd6d6;
-  color: #b42318;
-  font-size: 12px;
-}
-
-.ai-chat-panel__alert button {
-  border: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  background: #fff;
-  color: #b42318;
-  cursor: pointer;
-}
-
-.ai-chat-panel__scope {
-  display: inline-flex;
-  padding: 2px;
-  border-radius: 4px;
-  background: #f0f2f8;
-}
-
-.ai-chat-panel__scope-btn {
-  border: none;
-  background: transparent;
-  color: #5f6368;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.ai-chat-panel__scope-btn.is-active {
-  background: #fff;
-  color: #4a56a6;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.ai-chat-panel__search {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #5f6368;
-}
-
-.ai-chat-panel__messages {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-right: 4px;
-}
-
-.ai-chat-panel__message {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.ai-chat-panel__message.user {
-  flex-direction: row-reverse;
-}
-
-.ai-chat-panel__avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #667eea;
-  color: #fff;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.ai-chat-panel__message.user .ai-chat-panel__avatar {
-  background: #4caf50;
-}
-
-.ai-chat-panel__bubble {
-  max-width: calc(100% - 40px);
-  padding: 10px 12px;
-  border-radius: 4px;
-  background: #f5f7fb;
-  box-shadow: none;
-  border: 1px solid #e8ecf3;
-}
-
-.ai-chat-panel__message.user .ai-chat-panel__bubble {
-  background: #667eea;
-  color: #fff;
-  border-color: transparent;
-}
-
-.ai-chat-panel__text {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.ai-chat-panel__cursor {
-  animation: ai-blink 0.8s step-end infinite;
-}
-
-.ai-chat-panel__sources {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid #edf0f5;
-  font-size: 12px;
-}
-
-.ai-chat-panel__sources p {
-  margin: 0 0 4px;
-  color: #7b8190;
-}
-
-.ai-chat-panel__sources a {
-  display: block;
-  color: #4a56a6;
-  text-decoration: none;
-  margin-top: 2px;
-}
-
-.ai-chat-panel__bubble.typing {
-  display: flex;
-  gap: 4px;
-}
-
-.ai-chat-panel__bubble.typing .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #667eea;
-  animation: ai-bounce 1.2s infinite ease-in-out;
-}
-
-.ai-chat-panel__bubble.typing .dot:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.ai-chat-panel__bubble.typing .dot:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.ai-chat-panel__input {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-  flex-shrink: 0;
-}
-
-.ai-chat-panel__input textarea {
-  flex: 1;
-  resize: none;
-  border: 1px solid #dfe3eb;
-  border-radius: 4px;
-  padding: 8px 10px;
-  font-size: 13px;
-  font-family: inherit;
-}
-
-.ai-chat-panel__input button {
-  border: none;
-  border-radius: 4px;
-  padding: 0 14px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
-  cursor: pointer;
-}
-
-.ai-chat-panel__input button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-@keyframes ai-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes ai-bounce {
-  0%,
-  80%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-
-  40% {
-    transform: translateY(-4px);
-    opacity: 1;
-  }
-}
+.ai-chat-panel { display: flex; flex: 1; min-height: 0; flex-direction: column; background: #f8f9fc; }
+.ai-chat-panel__messages { flex: 1; min-height: 0; overflow: auto; padding: 18px; }
+.ai-summary-card, .ai-chat-message { margin: 0 0 14px; border: 1px solid #e4e7ef; border-radius: 16px; background: #fff; box-shadow: 0 8px 24px rgba(24, 32, 56, .05); }
+.ai-summary-card { padding: 18px; background: linear-gradient(145deg, #fff 0%, #f3f1ff 100%); }
+.ai-summary-card__eyebrow { color: #6750a4; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.ai-summary-card__content { margin: 10px 0 0; white-space: pre-wrap; line-height: 1.7; }
+.ai-chat-message { max-width: 88%; padding: 12px 14px; }
+.ai-chat-message.is-user { margin-left: auto; background: #6750a4; color: #fff; border-color: transparent; }
+.ai-chat-message.is-error { border-color: #f1b5b5; }
+.ai-chat-message__meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; font-size: 11px; opacity: .72; }
+.ai-chat-message__meta button, .ai-chat-clear, .ai-chat-composer__actions button { border: 0; background: none; color: inherit; cursor: pointer; }
+.ai-chat-message p { margin: 0; white-space: pre-wrap; line-height: 1.65; }
+.ai-chat-cursor { display: inline-block; width: 7px; height: 1em; margin-left: 3px; background: #6750a4; animation: ai-cursor 1s steps(1) infinite; vertical-align: -2px; }
+.ai-chat-composer { flex: 0 0 auto; padding: 10px 14px max(14px, env(safe-area-inset-bottom)); border-top: 1px solid #e5e7ee; background: rgba(255, 255, 255, .96); }
+.ai-chat-composer__topline { display: flex; align-items: center; gap: 8px; }
+.ai-chat-quick-tags { display: flex; flex: 1; min-width: 0; gap: 7px; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: none; }
+.ai-chat-quick-tags button { flex: 0 0 auto; border: 1px solid #dad4eb; border-radius: 999px; padding: 6px 10px; background: #fff; color: #5f4a8b; cursor: pointer; }
+.ai-chat-clear { flex: 0 0 auto; font-size: 12px; color: #6b7280; }
+.ai-chat-composer__box { display: flex; align-items: flex-end; gap: 8px; border: 1px solid #d9dce5; border-radius: 14px; padding: 8px; background: #fff; }
+.ai-chat-composer textarea { flex: 1; min-width: 0; resize: none; border: 0; outline: 0; font: inherit; line-height: 1.5; }
+.ai-chat-composer__box button { min-width: 58px; border: 0; border-radius: 10px; padding: 9px 12px; background: #6750a4; color: #fff; cursor: pointer; }
+.ai-chat-composer__box button:disabled { opacity: .45; cursor: default; }
+.ai-chat-composer__box button.is-stop { background: #2f3342; }
+.ai-chat-composer__actions { display: flex; gap: 10px; margin-top: 7px; font-size: 12px; color: #6750a4; }
+.ai-chat-composer__hint { margin: 7px 2px 0; color: #8a8f9c; font-size: 10px; }
+@keyframes ai-cursor { 50% { opacity: 0; } }
+@media (max-width: 420px) { .ai-chat-panel__messages { padding: 12px; } .ai-chat-message { max-width: 94%; } }
+@media (prefers-reduced-motion: reduce) { .ai-chat-cursor { animation: none; } }
 </style>

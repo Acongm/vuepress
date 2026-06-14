@@ -1,101 +1,54 @@
-# AI Chat API 契约
+# AI Chat v1 API 契约
 
-站点前端通过 `VUEPRESS_AI_CHAT_API` 调用对话接口，默认地址：
+AI 阅读助手只在用户发送消息时调用后端。页面加载和助手展开仅读取构建产物 `summaries-v1.json`。
 
-`https://api.acongm.com/api/ai/chat`
-
-## 请求
+## 流式接口
 
 ```http
-POST /api/ai/chat
+POST /api/ai/v1/chat/stream
 Content-Type: application/json
+Accept: text/event-stream
 ```
 
 ```json
 {
-  "messages": [
-    { "role": "system", "content": "..." },
-    { "role": "user", "content": "..." }
-  ],
+  "messages": [{ "role": "user", "content": "结合当前文章，解释 Fiber" }],
   "context": {
     "scope": "article",
-    "pagePath": "/vue/xxx.md",
-    "moduleKey": "Vue",
-    "title": "文档标题",
-    "tags": ["vue", "响应式"]
+    "pagePath": "/react/react16.md",
+    "moduleKey": "react",
+    "title": "React 16",
+    "tags": ["React"],
+    "content": "裁剪后的当前文章正文"
   },
   "enableWebSearch": false
 }
 ```
 
-### 字段说明
+- 客户端不得发送 `system` 消息；系统提示由服务端统一生成。
+- 前端最多发送最近 12 条 user/assistant 消息，服务端继续执行字符预算裁剪。
+- “当前文章”“本模块”“联网检索”是输入框快捷 Tag，点击后插入可编辑自然语言，再从文本推导请求选项。
 
-| 字段                | 类型                    | 必填 | 说明                                          |
-| ------------------- | ----------------------- | ---- | --------------------------------------------- |
-| `messages`          | array                   | 是   | OpenAI 风格消息列表，首条通常为 system prompt |
-| `context.scope`     | `"article" \| "module"` | 否   | 对话范围，默认 `article`                      |
-| `context.pagePath`  | string                  | 否   | 当前文档路径（`.md`）                         |
-| `context.moduleKey` | string                  | 否   | 知识库模块 key                                |
-| `context.title`     | string                  | 否   | 当前文档标题                                  |
-| `context.tags`      | string[]                | 否   | frontmatter 标签                              |
-| `enableWebSearch`   | boolean                 | 否   | 是否启用联网检索，默认 `false`                |
+## SSE 事件
 
-### 联网检索
+```text
+event: meta
+data: {"type":"meta","provider":"custom","model":"..."}
 
-当 `enableWebSearch: true` 时，服务端应使用配置的 API Key 执行网络检索，将结果注入 LLM 上下文后再生成回答。
+event: delta
+data: {"type":"delta","content":"增量文本"}
 
-前端不传递搜索 API Key。
+event: usage
+data: {"type":"usage","promptTokens":100,"completionTokens":20,"totalTokens":120}
 
-## 响应
-
-### 成功
-
-```json
-{
-  "message": "回答正文",
-  "sources": [
-    {
-      "title": "参考标题",
-      "url": "https://example.com/doc"
-    }
-  ]
-}
+event: done
+data: {"type":"done"}
 ```
 
-兼容旧格式：
+失败事件为 `error`，结构是 `{ "type": "error", "message": "..." }`。客户端可使用 `AbortController` 停止生成。
 
-```json
-{
-  "choices": [
-    {
-      "message": {
-        "content": "回答正文"
-      }
-    }
-  ]
-}
-```
+## JSON 接口
 
-### 失败
+`POST /api/ai/v1/chat` 使用同一请求结构，返回 `{ provider, model, message, sources? }`，用于不支持 SSE 的调用方。
 
-```json
-{
-  "message": "错误说明"
-}
-```
-
-HTTP 状态码为非 2xx。
-
-## 向后兼容
-
-- 旧客户端仅发送 `{ messages }` 时，服务端应继续正常工作。
-- 未识别 `context` / `enableWebSearch` 时忽略即可。
-- 无 `sources` 时前端不展示引用区。
-
-## 前端环境变量
-
-见 [`.env.example`](../.env.example)：
-
-- `VUEPRESS_AI_CHAT_API`
-- `VUEPRESS_AI_SUMMARY_API`
-- 摘要接口详见 [`specs/ai-summary-api.md`](../specs/ai-summary-api.md)
+旧 `/api/ai/chat` 保持兼容，但 AI 阅读助手 v1 不再使用它。
