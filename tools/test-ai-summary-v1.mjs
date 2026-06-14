@@ -246,3 +246,22 @@ test('dry-run and missing-key builds preserve restored summaries without provide
     await rm(root, { recursive: true, force: true })
   }
 })
+
+test('deployment pipelines use Node 24 and the same incremental v1 build', async () => {
+  const workflow = await readFile('.github/workflows/blank.yml', 'utf8')
+  const vercel = JSON.parse(await readFile('vercel.json', 'utf8'))
+
+  assert.match(workflow, /node-version:\s*['"]?24['"]?/)
+  assert.match(workflow, /npm ci/)
+  assert.match(workflow, /ai-summaries-v1-/)
+  assert.match(workflow, /restore-summaries-v1\.mjs/)
+  assert.match(workflow, /npm run build:ai:v1/)
+  assert.doesNotMatch(workflow, /hashFiles\('docs\/\*\*\/\*\.md'\)/)
+  assert.doesNotMatch(workflow, /\|\|\s*echo/)
+
+  assert.match(vercel.buildCommand, /restore-summaries-v1\.mjs/)
+  assert.match(vercel.buildCommand, /npm run build:ai:v1/)
+  assert.doesNotMatch(vercel.buildCommand, /generate-summaries\.mjs/)
+  assert.equal(vercel.installCommand, 'npm ci')
+  assert.equal(vercel.outputDirectory, 'vuepress')
+})

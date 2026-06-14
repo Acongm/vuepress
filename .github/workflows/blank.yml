@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy Demo
+name: Build and deploy VuePress
 
 on:
   push:
@@ -21,30 +21,38 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
-      - name: Restore AI summary cache
+      - name: Restore AI v1 summary snapshot
         uses: actions/cache@v4
         with:
-          path: .cache/ai-summaries
-          key: ai-summaries-${{ runner.os }}-${{ hashFiles('docs/**/*.md') }}
+          path: .cache/ai-summaries-v1.json
+          key: ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
-            ai-summaries-${{ runner.os }}-
+            ai-summaries-v1-${{ runner.os }}-${{ github.ref_name }}-
+            ai-summaries-v1-${{ runner.os }}-
 
-      - name: Install and Build
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Restore deployed AI v1 snapshot
+        env:
+          SUMMARIES_FALLBACK_URL: https://acongm.github.io/vuepress
+        run: node tools/restore-summaries-v1.mjs
+
+      - name: Analyze changed Markdown only
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_BASE_URL: https://api.deepseek.com
           AI_MODEL: deepseek-v4-pro
+        run: npm run build:ai:v1
+
+      - name: Build VuePress
         run: |
-          npm install
-          node tools/log-ai-env.mjs
-          node tools/restore-summary-cache.mjs
-          node tools/generate-summaries.mjs || echo "AI 摘要生成跳过（未配置 AI_API_KEY）"
           node tools/generate-module-index.mjs
           npm run build
-          node tools/smoke-ai-bundle.mjs
+          npm run smoke:ai
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
