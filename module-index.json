@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generatedAt": "2026-06-14T14:04:37.280Z",
+    "generatedAt": "2026-06-14T15:05:28.262Z",
     "moduleCount": 17
   },
   "modules": {
@@ -209,20 +209,37 @@
         {
           "path": "/vue/code/Object.defineproperty.md",
           "title": "Object.defineproperty",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档展示了Object.defineProperty的核心代码及自定义实现示例，常用于理解Vue.js响应式系统的基础原理，通过属性劫持实现数据监听与更新。",
+          "keywords": [
+            "Object.defineProperty",
+            "Vue响应式",
+            "数据劫持",
+            "自定义实现"
+          ]
         },
         {
           "path": "/vue/code/Proxy.md",
           "title": "Proxy",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档提供了Vue中Proxy核心代码的自定义实现示例，用于响应式数据绑定。",
+          "keywords": [
+            "Proxy",
+            "Vue",
+            "响应式",
+            "数据绑定",
+            "自定义实现"
+          ]
         },
         {
           "path": "/vue/code/proxy-observe.md",
           "title": "proxy-observe",
-          "summary": "",
-          "keywords": []
+          "summary": "展示基于Proxy实现数据观察的自定义响应式系统核心代码示例，用于理解Vue等框架的底层原理。",
+          "keywords": [
+            "Proxy",
+            "响应式",
+            "观察",
+            "自定义实现",
+            "代码示例"
+          ]
         },
         {
           "path": "/vue/vue-render.md",
@@ -251,8 +268,14 @@
         {
           "path": "/vue/vue3.md",
           "title": "vue3",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档总结了Vue3的核心原理，包括基于Proxy的响应式系统、组合式API的设计思想、虚拟DOM与编译优化等，配有代码示例帮助理解。",
+          "keywords": [
+            "Vue3",
+            "响应式原理",
+            "组合式API",
+            "Proxy",
+            "虚拟DOM"
+          ]
         },
         {
           "path": "/vue/vue_interview.md",
@@ -622,8 +645,13 @@
         {
           "path": "/Pattern/EventBus/EventBus.md",
           "title": "EventBus",
-          "summary": "",
-          "keywords": []
+          "summary": "EventBus 模式实现，用于组件间松耦合通信，支持事件订阅、发布与取消。基于 TypeScript，提供类型安全的事件处理机制。",
+          "keywords": [
+            "EventBus",
+            "TypeScript",
+            "事件驱动",
+            "发布订阅"
+          ]
         },
         {
           "path": "/Pattern/EventBus/EventBusSingleton.md",
@@ -663,20 +691,38 @@
         {
           "path": "/Pattern/Observer/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "介绍观察者模式，定义对象间一对多依赖关系，当被观察者状态变化时通知所有观察者自动更新。对比发布订阅模式区别，提供核心类Subject、SubjectManager实现及React Hook示例，适用于多依赖通知场景。",
+          "keywords": [
+            "观察者模式",
+            "发布订阅",
+            "设计模式",
+            "TypeScript",
+            "React"
+          ]
         },
         {
           "path": "/Pattern/Observer/Subject.md",
           "title": "Subject",
-          "summary": "",
-          "keywords": []
+          "summary": "Subject.ts文件实现观察者设计模式中的主题角色，负责维护观察者列表并在状态变化时通知它们。",
+          "keywords": [
+            "TypeScript",
+            "Observer Pattern",
+            "Subject",
+            "Design Pattern",
+            "Event Handling"
+          ]
         },
         {
           "path": "/Pattern/ProxyStore/ProxyStore.md",
           "title": "ProxyStore",
-          "summary": "",
-          "keywords": []
+          "summary": "介绍 ProxyStore.ts 文件的实现，展示代理存储模式及其代码示例。",
+          "keywords": [
+            "ProxyStore",
+            "TypeScript",
+            "设计模式",
+            "代理存储",
+            "代码示例"
+          ]
         },
         {
           "path": "/Pattern/ProxyStore/ProxyStoreSingleton.md",
@@ -705,8 +751,14 @@
         {
           "path": "/Pattern/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "本合集包含7种跨组件通信模式的实现，无第三方依赖，涵盖发布订阅、观察者、事件总线、状态容器、广播通道、自定义事件和代理模式。每种模式各有特点，适用于不同场景，并提供对比和选择指南。",
+          "keywords": [
+            "跨组件通信",
+            "设计模式",
+            "发布订阅",
+            "事件总线",
+            "状态管理"
+          ]
         },
         {
           "path": "/Pattern/ServiceRequest/README.md",
@@ -723,8 +775,14 @@
         {
           "path": "/Pattern/ServiceRequest/Registry.md",
           "title": "Registry",
-          "summary": "",
-          "keywords": []
+          "summary": "Registry.ts implements a service registry pattern for managing and discovering services in a distributed system. The file defines a TypeScript module that encapsulates registration and lookup logic.",
+          "keywords": [
+            "registry",
+            "service request",
+            "pattern",
+            "TypeScript",
+            "service discovery"
+          ]
         },
         {
           "path": "/Pattern/ServiceRequest/ServiceRequestRegistry.md",
@@ -765,26 +823,48 @@
         {
           "path": "/Pattern/Store/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "单例状态容器是最简单的全局状态管理方案，通过单一对象存储状态并支持订阅机制。它提供状态快照、批量更新等功能，实现简单且零学习成本，适合小型应用或简单共享场景，但缺少中间件和时间旅行调试。",
+          "keywords": [
+            "单例",
+            "状态管理",
+            "订阅",
+            "全局状态",
+            "Store"
+          ]
         },
         {
           "path": "/Pattern/Store/Store.md",
           "title": "Store",
-          "summary": "",
-          "keywords": []
+          "summary": "该文档简要介绍了一个名为 Store.ts 的 TypeScript 文件，可能实现状态管理或数据存储的设计模式，位于 Pattern/Store 目录下。",
+          "keywords": [
+            "Store",
+            "TypeScript",
+            "状态管理",
+            "设计模式"
+          ]
         },
         {
           "path": "/Pattern/Store/StoreSingleton.md",
           "title": "StoreSingleton",
-          "summary": "",
-          "keywords": []
+          "summary": "StoreSingleton模式实现，确保应用中存储实例的唯一性，常用于全局状态管理。",
+          "keywords": [
+            "Singleton",
+            "Store",
+            "TypeScript",
+            "状态管理"
+          ]
         },
         {
           "path": "/Pattern/模式来源与类比.md",
           "title": "模式来源与类比",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档对比了跨组件通信的六种常见模式：发布订阅、观察者、事件总线、状态容器、BroadcastChannel和CustomEvent，将它们与熟悉的框架API相类比，帮助开发者理解这些模式的工程来源与适用场景。",
+          "keywords": [
+            "跨组件通信",
+            "设计模式",
+            "发布订阅",
+            "事件总线",
+            "状态管理"
+          ]
         }
       ]
     },
@@ -1131,8 +1211,14 @@
         {
           "path": "/mark/07-NestJS与SSR.md",
           "title": "07-NestJS与SSR",
-          "summary": "",
-          "keywords": []
+          "summary": "本文档包含 NestJS 全栈开发及服务端渲染（SSR）的面试题解析，涵盖 NestJS 核心概念、与 Express/Koa 的对比、SSR/CSR/SSG 原理与应用场景，以及 SSR 核心流程，旨在考察候选人对框架和渲染模式的理解。",
+          "keywords": [
+            "NestJS",
+            "SSR",
+            "CSR",
+            "SSG",
+            "面试题"
+          ]
         },
         {
           "path": "/mark/08-代码规范.md",
@@ -1491,8 +1577,13 @@
         {
           "path": "/theory/README.md",
           "title": "README",
-          "summary": "",
-          "keywords": []
+          "summary": "该文件为面试题汇总，当前内容仅有标题，具体题目待补充。",
+          "keywords": [
+            "面试题",
+            "汇总",
+            "理论",
+            "技术面试"
+          ]
         },
         {
           "path": "/theory/interview-question/2025-04-28-analysis.md",

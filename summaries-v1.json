@@ -1,12 +1,66 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T14:04:37.055Z",
+  "generatedAt": "2026-06-14T15:05:28.028Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
     "extractVersion": "markdown-v1"
   },
   "files": {
+    "/ai/README.md": {
+      "sourceHash": "sha256:3381b2eb10e5d5a954a496d418b78900b8ddc0bbd29e58ca71c64c9c70a108e7",
+      "analysisHash": "sha256:4b2564cea65e44c6a0125c126f3ac35acb00a166a49ea2e5c37824c0fb798ecd",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是一个AI主题的索引，涵盖AI Agent开发、Prompt工程、Copilot/Claude使用技巧、AI辅助开发工作流及LLM应用开发等内容，旨在提供相关工具、方法和实践指导。",
+        "keyPoints": [
+          "聚焦AI Agent与Skill开发",
+          "包含Prompt Engineering技术",
+          "介绍Copilot/Claude等工具的使用技巧",
+          "梳理AI辅助开发工作流",
+          "涉及LLM应用开发实践"
+        ],
+        "keywords": [
+          "AI Agent",
+          "Prompt Engineering",
+          "Copilot",
+          "LLM",
+          "开发工作流"
+        ],
+        "techStack": [],
+        "difficulty": "初级",
+        "contentType": "目录/索引"
+      },
+      "processedAt": "2026-06-14T14:01:11.402Z"
+    },
+    "/css/README.md": {
+      "sourceHash": "sha256:bb03aa7a9615fe419d21c325efe8cb3c3656fb6a937161715efe6eb6f1410f5e",
+      "analysisHash": "sha256:83508befebe7ef24d3d967b08547faeb84f4ad5fd1e3596937beb4f5ea1f120c",
+      "status": "success",
+      "summary": {
+        "summary": "本文档简要介绍了CSS中自定义滚动条样式的方法，主要涉及::-webkit-scrollbar伪元素的使用，并提供了相关代码示例和MDN官方参考链接。",
+        "keyPoints": [
+          "通过 ::-webkit-scrollbar 等伪元素自定义滚动条外观",
+          "可以修改滚动条的宽度、颜色、背景等样式",
+          "该方法主要适用于WebKit内核的浏览器",
+          "文档提供了代码示例和MDN参考链接"
+        ],
+        "keywords": [
+          "CSS",
+          "滚动条样式",
+          "::-webkit-scrollbar",
+          "WebKit",
+          "自定义滚动条"
+        ],
+        "techStack": [
+          "CSS",
+          "WebKit"
+        ],
+        "difficulty": "初级",
+        "contentType": "参考"
+      },
+      "processedAt": "2026-06-14T14:01:13.647Z"
+    },
     "/css/scss.md": {
       "sourceHash": "sha256:8fecc06c6c808cf419eb6b60c9ccb240181d58c5c396f75ab1182f23c3acf439",
       "analysisHash": "sha256:3b5fe30988b20ddcf34ac60972e4b522437994a1fcb4bac6c90baf7334450db0",
@@ -217,6 +271,41 @@
       },
       "processedAt": "2026-06-14T09:02:13.337Z"
     },
+    "/daily-news/2026-05-06.md": {
+      "sourceHash": "sha256:3dca34b5f442de92392a5ed4886b8f8e78da1af7d1f264d05d48a19f117db3e5",
+      "analysisHash": "sha256:c4fe315974dc93fea12f2976f599f8e03024d4bd356a1709852fe6758be9a203",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月6日科技动态集中展现平台能力贴近实际开发链路：Chrome 148强化CSS容器查询、媒体懒加载与无障碍调试；GitHub将依赖扫描和代码到云端风险可见性前移至开发现场；OpenAI更新ChatGPT默认模型为GPT-5.5 Instant，并公开低延迟语音架构，整体体验与基础设施同步产品化。",
+        "keyPoints": [
+          "Chrome 148新增name-only容器查询与媒体懒加载，提升运行时体验及资源策略设计空间",
+          "DevTools 148深化无障碍树、投机规则与agent调试，覆盖更复杂工程场景",
+          "GitHub MCP Server依赖扫描公共预览，将漏洞检测提前至编码与PR阶段",
+          "GitHub与Defender for Cloud的code-to-cloud风险可见性正式GA，打通代码到运行环境的安全上下文",
+          "OpenAI将GPT-5.5 Instant设为默认模型并公开低延迟语音架构，优化体验与基础设施"
+        ],
+        "keywords": [
+          "平台能力前移",
+          "浏览器平台升级",
+          "安全扫描左移",
+          "默认模型体验",
+          "低延迟语音架构"
+        ],
+        "techStack": [
+          "Chrome",
+          "CSS",
+          "DevTools",
+          "GitHub MCP Server",
+          "Dependabot",
+          "Microsoft Defender for Cloud",
+          "OpenAI GPT-5.5",
+          "WebRTC"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "技术资讯"
+      },
+      "processedAt": "2026-06-14T14:01:14.017Z"
+    },
     "/daily-news/2026-05-07.md": {
       "sourceHash": "sha256:a2bb4abbb3d0930c482cdf0dc3a7b9f0b4a21adc50070aadd85d87f628483b49",
       "analysisHash": "sha256:a1a6584c3b53d2256c4e4a052a8d0cfbc254f376e97e015b96be9271992c4561",
@@ -281,6 +370,70 @@
         "contentType": "技术动态简报"
       },
       "processedAt": "2026-06-14T09:02:21.028Z"
+    },
+    "/daily-news/2026-05-09.md": {
+      "sourceHash": "sha256:a2d462ee0e8a7eba35713af22a65f12116321f4d08e5efea2cdab0f93d3a637d",
+      "analysisHash": "sha256:38da0df2b7ae9de8c774d780e8becc47f7ce10706de5128625301f4122094820",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月9日科技动态显示，平台厂商正将新能力深度嵌入开发与运营主链路。前端Chrome通过Beta与稳定版并行推进Prompt API、容器查询等能力落地；DevOps领域Kubernetes扩展动态资源分配至通用资源，GitHub推出企业实时迁移预览以降低中断成本；AI方面OpenAI发布实时语音模型API并公开Codex安全运行机制，强调能力与治理打包交付。",
+        "keyPoints": [
+          "Chrome 148稳定版引入Prompt API、name-only容器查询与媒体懒加载，浏览器同时覆盖布局、性能与原生AI交互",
+          "Kubernetes v1.36增强动态资源分配，支持内存/CPU等通用资源及PodGroups，推动调度框架统一",
+          "GitHub企业实时迁移进入公开预览，降低代码托管从Server到Cloud的中断成本",
+          "OpenAI推出新一代实时语音模型API，支持推理、翻译与转录，语音升级为完整交互接口",
+          "OpenAI公开Codex沙盒、审批与遥测等安全机制，促进AI编码代理的企业级安全采用"
+        ],
+        "keywords": [
+          "浏览器能力落地",
+          "Kubernetes动态资源分配",
+          "企业实时迁移",
+          "AI安全治理",
+          "实时语音API"
+        ],
+        "techStack": [
+          "Chrome",
+          "Kubernetes",
+          "GitHub Enterprise",
+          "OpenAI API",
+          "Codex"
+        ],
+        "difficulty": "普通",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-14T14:01:18.823Z"
+    },
+    "/daily-news/2026-05-10.md": {
+      "sourceHash": "sha256:e1d2b8daff439b6f34497204d17e0b7a558547c2d199d616564291ea5c9fcd6f",
+      "analysisHash": "sha256:4fa11ea8022c31b7595a63db8e57fc714ba639f1afc55faeadf904d8a18f8a70",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月10日科技动态显示，新能力正加速融入开发与运维主流程。Chrome 148 强化容器查询、媒体懒加载及浏览器 AI 能力，DevTools 提升无障碍调试与 Agent 支持；Kubernetes v1.36 存储卷组快照 GA，GitHub 为 Copilot cloud agent 提供组织级配置复用；OpenAI 发布实时语音模型并公开 Codex 沙箱化安全运行方法。整体趋势从功能发布转向早期试用、规模化治理与生产可控。",
+        "keyPoints": [
+          "Chrome 148 引入 name-only container queries、媒体懒加载和 Prompt API，同时 DevTools 默认开启完整无障碍树并增强 Agent 调试",
+          "Kubernetes v1.36 将 Volume Group Snapshots 推进到 GA，实现多卷一致性快照，提升有状态工作负载生产可用性",
+          "GitHub 为 Copilot cloud agent 提供独立的“Agents” secrets 与 variables，实现组织级配置复用",
+          "OpenAI 发布新实时语音模型，覆盖推理、翻译与转录，简化语音交互产品设计",
+          "OpenAI 公开 Codex 安全运行机制，包括沙箱、审批、网络策略，强化 Agent 生产可管性"
+        ],
+        "keywords": [
+          "Chrome 148",
+          "Kubernetes v1.36",
+          "Copilot cloud agent",
+          "OpenAI realtime voice",
+          "Codex 安全运行"
+        ],
+        "techStack": [
+          "Chrome",
+          "Kubernetes",
+          "GitHub Actions",
+          "OpenAI API",
+          "Prompt API"
+        ],
+        "difficulty": "中级",
+        "contentType": "技术资讯"
+      },
+      "processedAt": "2026-06-14T14:01:29.550Z"
     },
     "/daily-news/2026-05-11.md": {
       "sourceHash": "sha256:b12dd584e06adcb4097ddc8e197ce562335b44cef0de5b946bcb244ddc8d001a",
@@ -481,6 +634,108 @@
       },
       "processedAt": "2026-06-14T09:03:11.054Z"
     },
+    "/daily-news/2026-05-22.md": {
+      "sourceHash": "sha256:b54bb729d6b5143186b968726bda35aadcb828f30c35dbc48a66fba9d6a98f2d",
+      "analysisHash": "sha256:8ebb14a986e48bd0ed1dfa3c6c7323ae5ed4cda4662b941b35d5760039667c8b",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月22日科技动态围绕开发工作流重构：Chrome以agentic web框架整合浏览器新能力，Safari Technology Preview 244延续高频试验节奏；etcd 3.7首个beta强化可靠性与范围流，GitHub Issue字段公开预览推动协作元数据结构化；OpenAI推进内容溯源并展示医疗落地，AI生态渐重可验证性与行业部署。竞争核心从单点能力转向将新能力嵌入开发、运维与协作主流程。",
+        "keyPoints": [
+          "Chrome以‘agentic web’叙事集中释放新能力，面向AI代理与复杂交互定义浏览器接口路线",
+          "Safari Technology Preview 244作为WebKit高频试验窗口持续提供兼容与实现信号",
+          "etcd 3.7.0-beta.0引入RangeStream、清理遗留组件，提升控制面稳定性与大结果集体验",
+          "GitHub Issue fields公开预览，使优先级、工作量等元数据标准化，推动协作数据结构化",
+          "OpenAI推进内容溯源体系与ChatGPT for Healthcare案例，同步建设可信生态与行业落地"
+        ],
+        "keywords": [
+          "agentic web",
+          "etcd",
+          "content provenance",
+          "browser APIs",
+          "DevOps"
+        ],
+        "techStack": [
+          "Chrome",
+          "Safari/WebKit",
+          "etcd",
+          "Kubernetes",
+          "GitHub",
+          "OpenAI",
+          "Content Credentials",
+          "SynthID"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "daily tech digest"
+      },
+      "processedAt": "2026-06-14T14:01:46.071Z"
+    },
+    "/daily-news/2026-05-23.md": {
+      "sourceHash": "sha256:cb13ad03f948c71a8c73fe648e68f22e2f433a4863f93f86ceeadd39524fc58e",
+      "analysisHash": "sha256:43adcaa276557327b7bfd1ffa2064ceaeb75e746d52864774dee637d0f80dbe0",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月23日科技动态聚焦三大领域：前端方面，Chrome扩展生态更新和Safari Technology Preview 244持续提升浏览器可扩展性与试验速度；DevOps方面，npm推出staged publishing与安装源控制参数增强供应链安全，etcd 3.7 beta引入RangeStream并清理遗留组件；AI方面，OpenAI被Gartner评为企业编码代理领导者，GitHub Copilot for Eclipse开源，推动编码代理赛道成熟与生态扩展。",
+        "keyPoints": [
+          "Chrome扩展生态回顾强化扩展能力路线图",
+          "Safari Technology Preview 244试验新实现与兼容性变化",
+          "npm新增staged publishing与安装源控制参数，提升供应链安全治理",
+          "etcd 3.7.0-beta.0引入RangeStream并重构清理遗留组件",
+          "AI编码代理赛道成熟：OpenAI成为领导者，Copilot for Eclipse开源"
+        ],
+        "keywords": [
+          "浏览器扩展",
+          "供应链安全",
+          "企业编码代理",
+          "etcd",
+          "Copilot开源"
+        ],
+        "techStack": [
+          "Chrome Extensions",
+          "WebKit",
+          "npm",
+          "etcd",
+          "Kubernetes",
+          "OpenAI Codex",
+          "GitHub Copilot",
+          "Eclipse"
+        ],
+        "difficulty": "medium",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-14T14:01:44.976Z"
+    },
+    "/daily-news/2026-05-24.md": {
+      "sourceHash": "sha256:3cabd20ccbdace08ab2ac8bd7f4672a880ac6943a7efffd4bb6cdce0283b1bb4",
+      "analysisHash": "sha256:f5d966ccbc6e1f96e0926983f83e2fe327955a293dda8be4ef13a10e8c8db6c0",
+      "status": "success",
+      "summary": {
+        "summary": "本篇科技动态综述了2026年5月24日前后的重要更新：Chrome强化passkeys身份认证与声明式局部更新能力，npm推出阶段性发布及安装源控制以提升供应链安全，GitHub开放Issue结构化字段，OpenAI发布Codex企业案例，Copilot实现按任务自动路由模型。整体趋势显示浏览器、工程平台与AI编码工具正协同向自动化协作演进。",
+        "keyPoints": [
+          "Chrome推进passkeys与数字凭证，并开放Declarative Partial Updates流式测试能力，奠定身份现代化与动态页面基础",
+          "npm正式推出staged publishing与新的安装源控制参数，将供应链治理前移至发布和安装阶段",
+          "GitHub向所有组织开放Issue fields公共预览，为工程流程提供标准化结构化元数据",
+          "OpenAI发布Virgin Atlantic使用Codex的交付案例，AI编码代理开始承担时限与质量约束的真实任务",
+          "GitHub Copilot引入任务自动路由模型，AI编码工具更深入嵌入研发流水线"
+        ],
+        "keywords": [
+          "passkeys",
+          "staged publishing",
+          "AI编码代理",
+          "供应链安全",
+          "流式更新"
+        ],
+        "techStack": [
+          "Chrome",
+          "npm",
+          "GitHub",
+          "OpenAI Codex",
+          "GitHub Copilot"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态综述"
+      },
+      "processedAt": "2026-06-14T14:02:00.835Z"
+    },
     "/daily-news/2026-05-25.md": {
       "sourceHash": "sha256:3a001fe8feafbbf6d865b4fae9726125655aa132425901ee2bd9f094dcd04a96",
       "analysisHash": "sha256:42937d643fa516b137b7aebe8c4740333d38af89a23650c58dd00783982dc128",
@@ -641,6 +896,32 @@
       },
       "processedAt": "2026-06-14T09:03:40.185Z"
     },
+    "/daily-news/2026-06-04.md": {
+      "sourceHash": "sha256:3dfd45eed01c6b6cf6be386725c942449ebd99874b862c8928039ee5a519f06a",
+      "analysisHash": "sha256:977090c58cdc074f2ea3575f546e180276566f555249a71dd2070893acb258da",
+      "status": "success",
+      "summary": {
+        "summary": "2026年6月4日技术动态强调能力进入真实工作流。前端方面，多项CSS与Web API进入Baseline Newly available，Chrome 149补齐布局、bfcache与国际化细节；DevOps侧Kubernetes Dashboard归档并引导迁移至Headlamp，GitHub Copilot沙箱公测以保障AI执行隔离；AI侧OpenAI为GPT-Rosalind强化生命科学推理，且公开Codex在Wasmer边缘构建的效率收益。整体从可用性向工程落地深化。",
+        "keyPoints": [
+          "web.dev发布Baseline月报，container style queries等进入Newly available，增强前端可依赖能力",
+          "Chrome 149新增gap decorations、WebSocket下bfcache支持及Intl.Locale variants，贴近日常工程场景",
+          "Kubernetes官方解释从Dashboard迁移至Headlamp，强调多集群与插件化可视化入口",
+          "GitHub Copilot沙箱公测，为AI工具执行提供本地/云端隔离环境，将自动化纳入正式运行设计",
+          "OpenAI赋予GPT-Rosalind更强的生物推理、药物化学与基因组分析能力，深化专业场景"
+        ],
+        "keywords": [
+          "Baseline",
+          "Headlamp",
+          "Copilot沙箱",
+          "GPT-Rosalind",
+          "工作流"
+        ],
+        "techStack": [],
+        "difficulty": "中等",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-14T14:01:57.259Z"
+    },
     "/daily-news/2026-06-05.md": {
       "sourceHash": "sha256:9efaec787cd5116effa14f3ac0223b937938b340e22a58a81a6851a2a484a146",
       "analysisHash": "sha256:0b6151aa8df9982fbac94e3105cc8d19ce50c15a589802456d924785591b6a99",
@@ -742,6 +1023,37 @@
       },
       "processedAt": "2026-06-14T09:04:01.015Z"
     },
+    "/daily-news/2026-06-09.md": {
+      "sourceHash": "sha256:2883fe08ab27c5cbf3a7f063f29a7345b5801d1d7a5559027dbbb245964d20d8",
+      "analysisHash": "sha256:4d2847e367f66b99efc8de6e45ad6d4db8bff352e35042a32eda70eee6b30c6c",
+      "status": "success",
+      "summary": {
+        "summary": "WWDC26首日，Safari 27 beta发布，带来58项新特性与525项修复，聚焦已有能力的稳定性打磨。前端领域迎来可自定义<select>、CSS新伪类与条件函数等改进；Chrome 150 beta增加系统强调色支持。DevOps方面，GitHub EMU IP允许列表正式GA，Copilot获得更大上下文窗口与可配置推理级别。AI领域，OpenAI提交机密S-1启动IPO，ChatGPT上线Dreaming长期记忆系统。整体趋势为品质提升与AI商业化加速。",
+        "keyPoints": [
+          "Safari 27 beta以525项修复为重点，可自定义<select>、CSS :open、Wasm JSPI等为前端亮点",
+          "Chrome 150 beta引入AccentColor系统颜色与CSS image()函数",
+          "GitHub EMU IP允许列表GA，Copilot支持百万token上下文与可配置推理",
+          "OpenAI提交S-1启动史上最大科技IPO，ChatGPT推出Dreaming记忆系统"
+        ],
+        "keywords": [
+          "Safari 27 beta",
+          "Chrome 150 beta",
+          "Copilot",
+          "OpenAI S-1",
+          "Dreaming"
+        ],
+        "techStack": [
+          "WebKit",
+          "CSS",
+          "Wasm",
+          "GitHub",
+          "AI"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "daily-news"
+      },
+      "processedAt": "2026-06-14T14:01:57.112Z"
+    },
     "/daily-news/2026-06-10.md": {
       "sourceHash": "sha256:dd7f0882fa947ca4f059e3497c3b7ad0167ef352c3c48d0819a86a78ab9e4e19",
       "analysisHash": "sha256:6bcd38549945c42485e789bc26b371fb830b6b3b0fdac74a1db61af6b01b9ee4",
@@ -774,6 +1086,40 @@
         "contentType": "技术动态"
       },
       "processedAt": "2026-06-14T09:04:16.641Z"
+    },
+    "/daily-news/2026-06-13.md": {
+      "sourceHash": "sha256:e2f867af94e042a317780e558e06823618d34dd5e2e5657b041d49337f88b883",
+      "analysisHash": "sha256:910df510e46a0869edddf9673d7378b2ea56579816b38a133689984c898a5ddb",
+      "status": "success",
+      "summary": {
+        "summary": "本次科技动态聚焦平台稳定性落地：前端方面，Safari 27 beta 强调兼容性修复与可用性提升，WebKit 推出 Grid Lanes 互动指南降低学习门槛；DevOps 方面，GitHub 强化 Copilot code review 组织级控制，并收紧自托管 runner 版本要求以保障大规模作业稳定；AI 方面，OpenAI 推出工作场景培训课程，Anthropic 联合 TCS 将 Claude 推向强监管行业，标志着 AI 采用进入标准化与规模化阶段。",
+        "keyPoints": [
+          "Safari 27 beta 重在修复旧特性边界，提升生产环境兼容性",
+          "WebKit 推出 Grid Lanes 互动 Field Guide，将学习路径产品化",
+          "GitHub Copilot code review 新增组织级 runner 控制与内容排除规则",
+          "GitHub Actions 强制自托管 runner 版本，推动控制面持续升级",
+          "OpenAI 发布工作场景学院课程，推动 AI 使用标准化与复制化"
+        ],
+        "keywords": [
+          "前端兼容性",
+          "组织级自动化",
+          "AI 培训",
+          "自托管 runner",
+          "互动文档"
+        ],
+        "techStack": [
+          "Safari",
+          "WebKit",
+          "GitHub Actions",
+          "Copilot",
+          "Claude",
+          "OpenAI Academy",
+          "CSS Grid"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态摘要"
+      },
+      "processedAt": "2026-06-14T14:02:07.614Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -833,6 +1179,37 @@
         "contentType": "技术规范指南"
       },
       "processedAt": "2026-06-14T09:04:35.413Z"
+    },
+    "/git/README.md": {
+      "sourceHash": "sha256:17b79cebfeb0b4929771f3848cf27958c9f26b0a04ea5ffa967766c665029610",
+      "analysisHash": "sha256:7f0952d0db2c706f96f5f9ebf53c13bc97068ef8d3bcb65e66522360b49c41b0",
+      "status": "success",
+      "summary": {
+        "summary": "本文档提供了Git的常用命令、提交类型规范、删除历史记录、同步fork上游更新、部署到GitHub Pages以及使用GitHub Actions自动部署的指南。内容涵盖从基础使用到持续集成配置，适合开发者参考。",
+        "keyPoints": [
+          "列出常用Git命令及完整版链接",
+          "说明commit message的常见type及其含义",
+          "演示如何删除Git所有提交历史",
+          "介绍同步GitHub fork项目上游更新的方法",
+          "展示将代码部署到gh-pages分支和使用GitHub Actions自动部署"
+        ],
+        "keywords": [
+          "Git",
+          "GitHub",
+          "命令",
+          "提交规范",
+          "GitHub Actions"
+        ],
+        "techStack": [
+          "Git",
+          "GitHub",
+          "GitHub Actions",
+          "gh-pages"
+        ],
+        "difficulty": "中级",
+        "contentType": "教程"
+      },
+      "processedAt": "2026-06-14T14:02:16.570Z"
     },
     "/interview-prep/BLINDSPOTS.md": {
       "sourceHash": "sha256:424fb5f9e374562992077a5e3c8acfed749ecd97164b2249adb3947ed3e69c9f",
@@ -1184,6 +1561,40 @@
       },
       "processedAt": "2026-06-14T09:05:08.659Z"
     },
+    "/interview-prep/README.md": {
+      "sourceHash": "sha256:5ccf782c591ae505d3079e68fb0ac5bca7e2e7c61fa2759814682d577696a0ed",
+      "analysisHash": "sha256:4da5027c8fb9b64ca6ef9e02e1f6fea72842a8d19084567221fdac48dc067066",
+      "status": "success",
+      "summary": {
+        "summary": "该文档为前端面试准备主索引，列出5个项目经历（大疆相关系统）、8个技术专项和5个横向对比矩阵，按优先级和类别组织，支持快速跳转至各卡片详情页。",
+        "keyPoints": [
+          "以优先级队列形式组织所有面试内容，分为项目、技术和矩阵三类",
+          "包含大疆RMS、用户中心、公告插件、DevOps、XDR大屏项目经验",
+          "涵盖Webpack、React、TypeScript、ESLint工程化、微前端、Rollup、Vite、性能优化技术栈",
+          "设置横向对比矩阵（构建工具、Monorepo方案、表单方案、代码导出策略、CI/CD发布策略）",
+          "每个条目均链接至对应的详细卡片文档，支持按原理、对比、问答、手写代码等维度查阅"
+        ],
+        "keywords": [
+          "面试索引",
+          "前端面试准备",
+          "大疆项目",
+          "技术栈梳理",
+          "优先级队列"
+        ],
+        "techStack": [
+          "Webpack",
+          "React",
+          "TypeScript",
+          "ESLint",
+          "Qiankun",
+          "Rollup",
+          "Vite"
+        ],
+        "difficulty": "medium",
+        "contentType": "index"
+      },
+      "processedAt": "2026-06-14T14:02:36.253Z"
+    },
     "/interview-prep/tech__eslint-engineering.md": {
       "sourceHash": "sha256:40bf9c0120c3d7484e17b393faccf255ef54150b3d012d1190745bd1cc09689a",
       "analysisHash": "sha256:e5e6acd52bd159a59c9a3cf89f4c5d6ee5d9c9b1903aa4fa727a9d235dfe8219",
@@ -1245,6 +1656,38 @@
         "contentType": "技术文档/面试准备"
       },
       "processedAt": "2026-06-14T09:05:09.823Z"
+    },
+    "/interview-prep/tech__performance.md": {
+      "sourceHash": "sha256:077c1664660debec46036261bdb28a222af86885a60ad664deaf0f6405b959e9",
+      "analysisHash": "sha256:ddf7041b519b8f4c75b7b4d0dd8fa3dc35f8a2e9a1eb4dc5b7488c5449eeaae4",
+      "status": "success",
+      "summary": {
+        "summary": "从Web Vitals（LCP/INP/CLS）指标入手，讲解前端性能优化方法论。结合骨架屏、preload/prefetch、关键渲染路径等策略提升感知速度；通过Performance面板、Long Task分析与RUM数据定位瓶颈；引入性能预算与CI门禁形成治理闭环，并关联项目落地案例。",
+        "keyPoints": [
+          "以LCP、INP、CLS为核心建立性能指标体系与基线",
+          "利用骨架屏、资源优先级（preload/prefetch）优化首屏感知速度",
+          "通过Long Task分析、Lighthouse和RUM数据定位性能瓶颈",
+          "实施性能预算、CI门禁与监控预警，防止性能回退",
+          "结合项目场景（C端与中后台）阐述分阶段治理策略"
+        ],
+        "keywords": [
+          "Web Vitals",
+          "关键渲染路径",
+          "性能预算",
+          "骨架屏",
+          "LCP/INP/CLS"
+        ],
+        "techStack": [
+          "React",
+          "Webpack",
+          "Performance API",
+          "Lighthouse",
+          "RUM"
+        ],
+        "difficulty": "高级",
+        "contentType": "interview-preparation"
+      },
+      "processedAt": "2026-06-14T14:02:31.989Z"
     },
     "/interview-prep/tech__react.md": {
       "sourceHash": "sha256:e41a3516a637eed1b7787205c2c1b28524c81a22f0e871d924ff481e83b43470",
@@ -1369,6 +1812,72 @@
       },
       "processedAt": "2026-06-14T09:05:37.653Z"
     },
+    "/interview-prep/tech__webpack.md": {
+      "sourceHash": "sha256:b11a4532f35271e9bf29b244cbb68e242d2818f45594ceb71eaf35666f37e4c2",
+      "analysisHash": "sha256:7fac8123616204d339e26d7c5c73c7eb517ec0befcd1d0d29639875e42ae86ae",
+      "status": "success",
+      "summary": {
+        "summary": "本文围绕Webpack在大疆用户中心重构、RMS系统等复杂中后台项目中的应用，介绍了其以模块图为核心的打包原理、Loader与Plugin的职责区分、构建流程优化（拆包、持久化缓存、关键渲染路径）以及与Vite/Rollup的对比。重点阐述了如何通过工程化配置分层、hash策略、懒加载等手段提升性能，并强调在遗留系统与多团队协作中Webpack的稳定可控优势。",
+        "keyPoints": [
+          "Webpack通过Loader转换单文件，Plugin介入编译生命周期，实现代码打包与产物优化",
+          "性能优化围绕关键渲染路径：拆包、懒加载、缓存策略与首屏资源优先级调整",
+          "通过splitChunks与contenthash实现长效缓存，减少业务变更影响范围",
+          "与Vite/Rollup对比，Webpack在复杂中后台与遗留系统中生态最成熟、回滚最稳定",
+          "项目落地强调配置分层（base/dev/prod）、规范化产物与可量化回归门禁"
+        ],
+        "keywords": [
+          "Webpack",
+          "模块打包",
+          "性能优化",
+          "构建优化",
+          "关键渲染路径"
+        ],
+        "techStack": [
+          "Webpack",
+          "Babel",
+          "TypeScript",
+          "SCSS",
+          "Loaders/Plugins"
+        ],
+        "difficulty": "advanced",
+        "contentType": "interview_preparation"
+      },
+      "processedAt": "2026-06-14T14:02:35.188Z"
+    },
+    "/interview/2025-04-28-analysis.md": {
+      "sourceHash": "sha256:686c41564ad82f6d1cdf82426d407fd649ff43646757d34dd6da51c64a77512c",
+      "analysisHash": "sha256:604f48aecf822a4c0fe011611fb70d1a2c08de8ae5fbc77f133654731ae34d9d",
+      "status": "success",
+      "summary": {
+        "summary": "该文档为面试题演练，涵盖笔试重点（框架原理、工程化、性能优化、算法）和技术面试高频考点（框架深度、工程化实践、性能优化体系、架构设计），并给出行为面试应答策略与软实力展现技巧。",
+        "keyPoints": [
+          "笔试包含框架原理、工程化、性能方案设计和算法题，需在60分钟内完成",
+          "技术面试重点考察Vue3响应式、微前端沙箱、低代码平台、构建优化、LCP优化等",
+          "行为面试要求使用STAR法则描述项目难点、团队协作和技术决策冲突",
+          "性能优化体系强调虚拟滚动、内存管理、LCP综合方案及内存泄漏排查",
+          "架构设计能力侧重插件系统选型（Rollup+Preact）和微前端通信方案"
+        ],
+        "keywords": [
+          "面试演练",
+          "性能优化",
+          "框架原理",
+          "工程化实践",
+          "STAR法则"
+        ],
+        "techStack": [
+          "Vue3",
+          "React",
+          "Rollup",
+          "Preact",
+          "Quasar",
+          "Formily",
+          "Pinia"
+        ],
+        "difficulty": "高级",
+        "contentType": "面试题演练"
+      },
+      "processedAt": "2026-06-14T14:02:36.598Z"
+    },
     "/interview/2025-04-28.md": {
       "sourceHash": "sha256:e8205811315a7dbc0e3a0d3846bb4cafdefb9df6feb251f831adbe57ef93b497",
       "analysisHash": "sha256:5d61ff38f0a850a12f57640ad34cf1a2cff182be80027e641f7c405031ea4d27",
@@ -1402,6 +1911,28 @@
         "contentType": "面试准备"
       },
       "processedAt": "2026-06-14T09:05:37.924Z"
+    },
+    "/interview/README.md": {
+      "sourceHash": "sha256:2c68f6f9c21db741639b44e40dba7f7da7b32506b4b9a4e4ad50c734fe33b88b",
+      "analysisHash": "sha256:cf2a5d7bb5f205ee3e9184df77923fe6eb8c5471d3464636f9c40a1c67b9a7a7",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是面试记录的索引页面，包含两个Markdown文件的链接：2025-04-28.md 和 2025-04-28-analysis.md，分别指向某次面试的原始记录与分析总结。",
+        "keyPoints": [
+          "提供面试记录文件的导航链接",
+          "包含原始记录和分析总结两种文档类型"
+        ],
+        "keywords": [
+          "面试",
+          "记录",
+          "索引",
+          "分析"
+        ],
+        "techStack": [],
+        "difficulty": "初级",
+        "contentType": "文档索引"
+      },
+      "processedAt": "2026-06-14T14:02:36.300Z"
     },
     "/issue/h5.md": {
       "sourceHash": "sha256:d8e1dce1ebdab7cd0e3b516a2934a58f259c5c01743001477ee2a817ad664abb",
@@ -1458,6 +1989,30 @@
         "contentType": "issue"
       },
       "processedAt": "2026-06-14T09:05:49.551Z"
+    },
+    "/issue/README.md": {
+      "sourceHash": "sha256:3a6ce7898329417cd6e1d6ef78caa38b144ff22da15c1c45f69a0e74fecd0b6a",
+      "analysisHash": "sha256:f386c1dbaa256e6fa7a8921d5e35d8bc9243244d612acf831a0e0307d57f55d5",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是疑难杂症索引，引导至 h5.md 与 pc.md，分别记录移动端和桌面端的常见问题与解决方案。",
+        "keyPoints": [
+          "提供 H5 和 PC 常见疑难杂症的入口索引",
+          "按平台划分问题文档，便于分类查阅",
+          "简洁目录结构，指向深入的技术记录"
+        ],
+        "keywords": [
+          "疑难杂症",
+          "索引",
+          "H5",
+          "PC",
+          "问题汇总"
+        ],
+        "techStack": [],
+        "difficulty": "低",
+        "contentType": "索引/目录"
+      },
+      "processedAt": "2026-06-14T14:02:40.783Z"
     },
     "/JavaScript/call、apply与bind.md": {
       "sourceHash": "sha256:7bdab3e262a502f98ec0d615f7fa7e76da05b6d4e394adfa3744f0b512e6f362",
@@ -1537,6 +2092,35 @@
         "contentType": "技术教程"
       },
       "processedAt": "2026-06-14T09:05:52.803Z"
+    },
+    "/JavaScript/README.md": {
+      "sourceHash": "sha256:815e4eba6047bd9bfaadd5203a638261ce5cbb1eea01938e28ac91b1f59ca9b0",
+      "analysisHash": "sha256:227932e4ea2d9db7ae1ff1fb81cfbae5042c9e5bde9d2062085e98d917754596",
+      "status": "success",
+      "summary": {
+        "summary": "本文档系统梳理JavaScript核心基础知识，涵盖数据类型、类型判断、this指向、相等运算符、闭包、深浅拷贝、原型链以及ES6+特性（Class、模块化、Proxy、Generator）等常考面试点，适合用于面试准备和基础巩固。",
+        "keyPoints": [
+          "原始类型与对象类型在赋值时复制地址的差异，导致修改对象会互相影响",
+          "typeof与instanceof在类型判断中的适用场景及原型链判断原理",
+          "闭包通过内部函数访问外部变量，实现间接访问函数内部变量",
+          "浅拷贝只解决第一层对象问题，深拷贝需处理循环引用、函数等特殊类型",
+          "原型链通过__proto__连接对象，ES6 Class提供语法糖实现继承"
+        ],
+        "keywords": [
+          "JavaScript",
+          "ES6",
+          "原型链",
+          "闭包",
+          "异步编程"
+        ],
+        "techStack": [
+          "JavaScript",
+          "ES6"
+        ],
+        "difficulty": "中级",
+        "contentType": "教程/面试准备"
+      },
+      "processedAt": "2026-06-14T14:02:45.888Z"
     },
     "/JavaScript/执行上下文-作用域链-闭包.md": {
       "sourceHash": "sha256:316b1175ce0d1e8972fc30c0a06b0e9a261ff0e20cb8297023ec0658a876d6df",
@@ -2154,6 +2738,35 @@
       },
       "processedAt": "2026-06-14T09:07:13.856Z"
     },
+    "/job-description/lib/11-frontend-hard-mode-interview-原题提取-基于简历.md": {
+      "sourceHash": "sha256:f681b57266a7cee8d6d310559514e62243dfde674c7c03929007e91bb097ccae",
+      "analysisHash": "sha256:ade44b4451ff0f14937c972017cd4b4bd7eb3985b09640eb6baa4f9fb4d5220b",
+      "status": "success",
+      "summary": {
+        "summary": "本文档提取了前端高阶面试中网络与协议相关题目，聚焦TCP/IP分层、TCP三次握手与四次挥手流程，分析握手延迟对性能的影响及连接重用优化（如TCP Fast Open），解析常见面试问题如为什么挥手需要四次、TIME_WAIT为何等待2MSL，帮助前端理解底层通信机制。",
+        "keyPoints": [
+          "TCP/IP协议分层模型及传输层主要协议（TCP、UDP、TLS）的作用",
+          "TCP三次握手流程及其对应用性能的影响，强调连接重用与TFO优化",
+          "TCP四次挥手过程及TIME_WAIT状态的设计必要性",
+          "经典面试题解析：为什么挥手比握手多一次、TIME_WAIT等待2MSL的原因"
+        ],
+        "keywords": [
+          "TCP",
+          "三次握手",
+          "四次挥手",
+          "TLS",
+          "网络延时"
+        ],
+        "techStack": [
+          "TCP/IP",
+          "TLS",
+          "网络协议"
+        ],
+        "difficulty": "中等",
+        "contentType": "面试题解析"
+      },
+      "processedAt": "2026-06-14T14:02:54.868Z"
+    },
     "/job-description/lib/Framework.md": {
       "sourceHash": "sha256:aac51bb3b46cadc19602685cc27458539a7508235e9fbe20428fd15a62b28ea4",
       "analysisHash": "sha256:52627a58a7537fcdec91b6fa3d9abb124e51646b375f9fa953fbe426b1c85f2e",
@@ -2185,6 +2798,40 @@
         "contentType": "面试准备框架"
       },
       "processedAt": "2026-06-14T09:07:01.111Z"
+    },
+    "/job-description/README.md": {
+      "sourceHash": "sha256:502bd536988208408c3fbb82237de04d5c5356f9042582beef444e0ccda6f38a",
+      "analysisHash": "sha256:a13a6401598dcab930606648f7343cf326e791069019d35751e9e878f26133b4",
+      "status": "success",
+      "summary": {
+        "summary": "9年经验高级前端工程师，专注复杂系统重构、性能优化与低代码平台建设。主导大疆用户中心及RMS系统重构，日均承载120W+请求，通过响应式架构将维护成本降低50%，LCP优化28.9%。具备全栈开发能力，获低代码大赛特等奖。",
+        "keyPoints": [
+          "主导千万级用户系统重构，日均请求量120W+，实现响应式多端统一，维护成本降低50%",
+          "性能攻坚战绩显著，LCP从2.3s优化至1.4s，首屏加载<1.5s，登录转化率提升18%",
+          "低代码平台落地，页面开发效率提升40%，打造跨系统插件体系，包体积<15KB，接入周期<0.5人日/系统",
+          "全栈能力突出，使用NestJS完成前后端一体化交付，构建自动化报表与CI/CD流水线"
+        ],
+        "keywords": [
+          "低代码",
+          "性能优化",
+          "微前端",
+          "系统重构",
+          "全栈开发"
+        ],
+        "techStack": [
+          "React",
+          "Vue",
+          "TypeScript",
+          "NestJS",
+          "Webpack",
+          "Vite",
+          "Node.js",
+          "qiankun"
+        ],
+        "difficulty": "advanced",
+        "contentType": "job_description"
+      },
+      "processedAt": "2026-06-14T14:03:04.826Z"
     },
     "/job-description/web前端开发工程师-彭聪-面试技术大纲.md": {
       "sourceHash": "sha256:dcd01247a9b610548f5184bf9a4659085f7b89839d8512b9c198c9f3028b8040",
@@ -2736,6 +3383,32 @@
       },
       "processedAt": "2026-06-14T09:08:09.324Z"
     },
+    "/mark/README.md": {
+      "sourceHash": "sha256:0d33e2d8f6a28473633f6a935f49df308f50e16de5518f75db358a0a0de8b2ee",
+      "analysisHash": "sha256:3ca910c209e6db0a24a44b16cc399e2c3063dcd13725adf0cf7da73280f32e34",
+      "status": "success",
+      "summary": {
+        "summary": "文档以STAR法则组织回答，针对前端性能优化、webpack构建、响应式开发、加载渲染速度、骨架屏等面试问题，提供从网络层（TLS 1.3、preconnect）、资源加载（代码分割、WebP）到渲染优化（骨架屏、稳定布局）的完整方案，并补充指标归因、风险控制等追问要点。",
+        "keyPoints": [
+          "性能优化覆盖浏览器请求全链路：网络层（TLS 1.3、预连接）、资源加载（代码分割、图片优化）和渲染优化（骨架屏、防布局抖动）",
+          "响应式融合开发用媒体查询+CSS变量+useResponsive Hook实现一套代码多端适配，维护成本降低50%",
+          "webpack性能配置包括Tree Shaking、长缓存和构建分析，强调contenthash与runtimeChunk",
+          "骨架屏通过内联体积<5KB的HTML快速展示页面结构，减少白屏并降低CLS",
+          "优化需关注指标来源（RUM/Lighthouse）、归因方法和风险控制（如懒加载对CLS的影响）"
+        ],
+        "keywords": [
+          "性能优化",
+          "响应式",
+          "webpack",
+          "STAR法则",
+          "骨架屏"
+        ],
+        "techStack": [],
+        "difficulty": "medium",
+        "contentType": "interview-preparation"
+      },
+      "processedAt": "2026-06-14T14:03:10.094Z"
+    },
     "/node/npm.md": {
       "sourceHash": "sha256:7cea20064e689a9b8065ffa02fc3c48928db8e5056a05a1ac60d10541dd711f7",
       "analysisHash": "sha256:fdb78aa8b52603e77b24b7d883013310318fb0b5f9a1dfb63a60129e9197390b",
@@ -2763,6 +3436,30 @@
         "contentType": "教程/参考"
       },
       "processedAt": "2026-06-14T09:07:57.697Z"
+    },
+    "/node/README.md": {
+      "sourceHash": "sha256:c6b6b423f614cee1eeb88c8ec7f492e86df8605628803d3a12075a1d8c9db73c",
+      "analysisHash": "sha256:e1534cd00e8979705fbe58df0695ef5fb9dd230acb9b70bba3c2cadea42f2233",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是 Node.js 相关技术的索引页面，提供了 npm.md 和 toolkit.md 两个子文档的链接，用于快速导航至 npm 及工具包相关内容。",
+        "keyPoints": [
+          "Node.js 文档入口索引",
+          "链接至 npm 相关文档",
+          "链接至 toolkit 工具包文档"
+        ],
+        "keywords": [
+          "Node.js",
+          "npm",
+          "toolkit",
+          "索引",
+          "文档导航"
+        ],
+        "techStack": [],
+        "difficulty": "beginner",
+        "contentType": "index"
+      },
+      "processedAt": "2026-06-14T14:03:10.607Z"
     },
     "/node/toolkit.md": {
       "sourceHash": "sha256:578535969a37f6730d641a4c0569d39b4dabfd80ee8054610b7cc69a4a3c8c35",
@@ -2824,6 +3521,38 @@
       },
       "processedAt": "2026-06-14T09:08:05.061Z"
     },
+    "/online-tools/README.md": {
+      "sourceHash": "sha256:3deed1e3c9e9d996f099cb6b9e3ba0935564e296c25a32dffe52deb3bdd8cdbe",
+      "analysisHash": "sha256:7fcf2272b82e61995815abb4fde9dd32dbb23c2a989dbb0081c682e3089fc159",
+      "status": "success",
+      "summary": {
+        "summary": "本文档列出了丰富的在线开发工具和资源，涵盖兼容性查询、代码沙箱、正则表达式、代码编译与生成、CSS/SVG图像生成、图片处理与压缩等类别。方便开发者快速查找和使用。",
+        "keyPoints": [
+          "提供了代码运行沙箱（CodeSandbox、Codepen）和正则表达式可视化/测试工具",
+          "包含Babel、TypeScript、Vue模板探索器等代码编译与转换工具",
+          "列出CSS布局、圆角、阴影、渐变等生成器和SVG波浪生成器",
+          "包含remove.bg等图片背景去除和TinyPNG等图片压缩工具"
+        ],
+        "keywords": [
+          "在线工具",
+          "代码沙箱",
+          "正则表达式",
+          "CSS生成器",
+          "图片压缩"
+        ],
+        "techStack": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Vue",
+          "TypeScript",
+          "Sass/Less/Stylus"
+        ],
+        "difficulty": "初级",
+        "contentType": "资源列表"
+      },
+      "processedAt": "2026-06-14T14:03:09.999Z"
+    },
     "/Pattern/BroadcastChannel/BroadcastBridge.md": {
       "sourceHash": "sha256:b7ad2d21741a3069950baef6db370aa9e73aec564a791f065cdf79e875f81978",
       "analysisHash": "sha256:e95dffef34835b4bc52b853942a43d8b60c44716e25901f836f199a72180e9c0",
@@ -2876,6 +3605,36 @@
         "contentType": "code pattern"
       },
       "processedAt": "2026-06-14T09:08:13.629Z"
+    },
+    "/Pattern/BroadcastChannel/README.md": {
+      "sourceHash": "sha256:7e470906f90465d1459d65537a510d12c215e4d44aa9f4fe42db9cbde8903c11",
+      "analysisHash": "sha256:77dbb29d59e22865089473dc3d11797e8e91db7d6e518af47c9e43efe619513b",
+      "status": "success",
+      "summary": {
+        "summary": "本文介绍了基于浏览器原生 Broadcast Channel API 的封装库 BroadcastBridge，提供了状态缓存、自动同步、跨标签页/iframe/Worker 的同源通信能力，并展示了 API 用法、React Hook 集成、自动同步机制及多个应用场景。",
+        "keyPoints": [
+          "基于 Broadcast Channel API 实现同源多上下文（标签页、iframe、Worker）通信",
+          "封装 BroadcastBridge 类，增加数据缓存和自动同步功能",
+          "提供 publish/subscribe/get/unsubscribe/clear 等 API",
+          "支持新标签页自动请求并同步现有数据",
+          "可结合 React Hook 在组件中使用"
+        ],
+        "keywords": [
+          "BroadcastChannel",
+          "跨标签页通信",
+          "同源",
+          "自动同步",
+          "React Hook"
+        ],
+        "techStack": [
+          "Broadcast Channel API",
+          "JavaScript",
+          "React"
+        ],
+        "difficulty": "中等",
+        "contentType": "API文档与使用指南"
+      },
+      "processedAt": "2026-06-14T14:03:16.211Z"
     },
     "/Pattern/COMPARISON.md": {
       "sourceHash": "sha256:2caf6294a501a47aa192567024a301541403a150c10d9246d7aff934d0d5ce44",
@@ -2955,6 +3714,32 @@
       },
       "processedAt": "2026-06-14T09:08:23.469Z"
     },
+    "/Pattern/CustomEvent/README.md": {
+      "sourceHash": "sha256:8054d479b5dd0226828237988d0147b13cbf983a6ece7f4576606dfbe1a9c732",
+      "analysisHash": "sha256:528dc839dfef40196b1788044be76f78383ac95a5cce2d73a4ce588557decb8d",
+      "status": "success",
+      "summary": {
+        "summary": "本文介绍基于浏览器原生 CustomEvent 和 dispatchEvent API 实现的跨组件、跨框架通信方案。通过封装 CustomEventBridge 类，提供缓存、类型安全及便捷的订阅/发布接口（on、off、dispatch、once 等），支持 React Hook 和微前端场景，无需任何依赖，仅限同一页面内使用。",
+        "keyPoints": [
+          "基于原生 CustomEvent 和 dispatchEvent 实现事件通信",
+          "CustomEventBridge 封装缓存和类型安全，提供 get、on、off、clear、once 等 API",
+          "支持 React、Vue、Angular 等框架及微前端子应用间通信",
+          "提供 React Hook 示例和事件名前缀自定义",
+          "仅限同一页面内通信，需手动管理监听器"
+        ],
+        "keywords": [
+          "自定义事件",
+          "跨框架通信",
+          "CustomEvent",
+          "发布订阅",
+          "微前端"
+        ],
+        "techStack": [],
+        "difficulty": "简单",
+        "contentType": "技术文档"
+      },
+      "processedAt": "2026-06-14T14:03:20.039Z"
+    },
     "/Pattern/EventBus/EventBusSingleton.md": {
       "sourceHash": "sha256:00421611ddbb6259d31c9cf5ca43035dc55eed667b0a6a180f5d2647cd4421a1",
       "analysisHash": "sha256:d4767625ac9e4aec02d470f6f756025cfc8aa3d0c4848fb3363e6aed99d6dfba",
@@ -2981,6 +3766,35 @@
         "contentType": "代码实现"
       },
       "processedAt": "2026-06-14T09:08:20.027Z"
+    },
+    "/Pattern/EventBus/README.md": {
+      "sourceHash": "sha256:09f616c5e1f9189b0c3893d84a6884b43a2b4fb9dffcb8df60d5b7ddc7d0f27b",
+      "analysisHash": "sha256:6ef53a6992e9d88fefeee5c2976010b50443bb6090e9efc8a07e59e94b0e0369",
+      "status": "success",
+      "summary": {
+        "summary": "事件总线是一种集中式事件管理机制，通过发布/订阅模式实现组件间松耦合通信。它提供 on、emit、off、once 和 clear 等 API，支持事件缓存和立即触发。文档包括核心类设计、React Hook 示例、命名规范以及适用场景，并指出字符串事件名缺乏类型约束和调试困难等缺点。",
+        "keyPoints": [
+          "采用发布/订阅模式，实现组件间完全解耦，支持多对多通信",
+          "核心 API 包含 on、emit、off、once、clear，支持事件缓存与立即触发",
+          "推荐使用命名空间风格的事件命名，以提高可维护性",
+          "适用于全局通知、模块协调、松耦合通信等场景",
+          "存在事件名为字符串、调试时难以追踪事件流的局限性"
+        ],
+        "keywords": [
+          "事件总线",
+          "发布/订阅",
+          "组件通信",
+          "解耦",
+          "事件管理"
+        ],
+        "techStack": [
+          "JavaScript",
+          "React"
+        ],
+        "difficulty": "beginner",
+        "contentType": "documentation"
+      },
+      "processedAt": "2026-06-14T14:03:20.380Z"
     },
     "/Pattern/Observer/ObserverSingleton.md": {
       "sourceHash": "sha256:94923ddd82a029a5f46f35abf8a261922b29cb25f567e506aa4c9dbb39acc6fe",
@@ -3031,6 +3845,63 @@
         "contentType": "design pattern"
       },
       "processedAt": "2026-06-14T09:08:20.928Z"
+    },
+    "/Pattern/ProxyStore/README.md": {
+      "sourceHash": "sha256:32c68e9deed8f906e2af69c7c0acd6865ff8dc6bb70c787e9816edee97010d3f",
+      "analysisHash": "sha256:af26095e572270afcd174ecefe94d647809582c92c177b0c1c614fecc66fd4e8",
+      "status": "success",
+      "summary": {
+        "summary": "基于 ES6 Proxy 实现的响应式状态容器，可像操作普通对象一样操作状态并自动触发订阅者更新。该方案是 Vue 3 响应式系统和 Valtio 的核心原理，支持透明操作、自动响应、细粒度订阅和批量更新，但不支持 IE 且深层嵌套需额外处理。",
+        "keyPoints": [
+          "借助 ES6 Proxy 实现透明状态操作和自动响应",
+          "提供 watch、watchEffect、computed 等类似 Vue 3 的 API",
+          "包含 React Hook 集成示例，可与 Valtio 对比",
+          "默认只支持一层代理，深层响应式需自定义实现",
+          "不支持 IE 浏览器，适用于现代浏览器环境"
+        ],
+        "keywords": [
+          "Proxy",
+          "响应式状态管理",
+          "Vue 3",
+          "Valtio",
+          "细粒度订阅"
+        ],
+        "techStack": [
+          "JavaScript",
+          "ES6 Proxy",
+          "React",
+          "Vue 3"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术文档"
+      },
+      "processedAt": "2026-06-14T14:03:27.894Z"
+    },
+    "/Pattern/ServiceRequest/README.md": {
+      "sourceHash": "sha256:58752a4c0fb9df8e59026b50abb223e805f1c24961e34a4526568a653ad853ba",
+      "analysisHash": "sha256:6f4b0ff6faaccc0b5f1b86420a36c70fe24c5317234f701375e2c1dfc57b813b",
+      "status": "success",
+      "summary": {
+        "summary": "本文档介绍了基于单例模式和发布订阅模式实现的工单系统状态管理与组件通信模块。详细说明了核心类Registry<T>、SharedStateBridge及SharedStateBridgeSingleton的架构，并提供了缓存、回调、跨组件数据共享等API用法，包含React Hooks集成示例和迁移指南，帮助开发者平稳替换旧模块。",
+        "keyPoints": [
+          "基于单例和发布订阅模式实现跨组件状态共享",
+          "核心类包括通用注册表Registry<T>、发布订阅基类SharedStateBridge及单例封装",
+          "提供工单组件缓存、表单数据回调、资源更新回调和跨工单数据共享API",
+          "附有useFormDataCallback和useSharedData两个React Hooks使用示例",
+          "迁移指南保持所有函数签名不变，可直接替换导入路径"
+        ],
+        "keywords": [
+          "工单系统",
+          "状态管理",
+          "发布订阅",
+          "单例模式",
+          "React Hooks"
+        ],
+        "techStack": [],
+        "difficulty": "中等",
+        "contentType": "技术文档"
+      },
+      "processedAt": "2026-06-14T14:03:28.279Z"
     },
     "/Pattern/ServiceRequest/ServiceRequestRegistry.md": {
       "sourceHash": "sha256:bad15ffb98a2a4ff41f80c20d78ee7375a5aea03e188fea622b8fde866edee28",
@@ -3110,6 +3981,32 @@
         "contentType": "技术设计文档"
       },
       "processedAt": "2026-06-14T09:08:30.277Z"
+    },
+    "/performance/README.md": {
+      "sourceHash": "sha256:907ebeba81a8a30871076c35f88bde097c3402a922cc24c8657b2abbbd9f7321",
+      "analysisHash": "sha256:6b67eae26df2e7f17bd66c0764a86a1d98346ab1b84e86c2cbb5d2dd16b8cfad",
+      "status": "success",
+      "summary": {
+        "summary": "本文针对 Vue2 + Webpack3 单页应用，在限制大幅重构条件下，通过启用 TLS 1.3、DNS 预解析、关键资源预加载、删除未用 CSS、按需引入 Polyfill、取消登录页懒加载、优化字体渲染及添加骨架屏等手段，将首屏 FCP 从 1593ms 降至 1281ms，Lighthouse 评分由 30+ 提升至 70+，实现低风险高收益的性能优化。",
+        "keyPoints": [
+          "启用 TLS 1.3 并将首屏 HTML 压缩至 14KB 以内，减少 RTT 握手耗时",
+          "利用 Preload 和 Preconnect 提升关键资源加载优先级，缩短下载时间",
+          "通过 PurgeCSS 删除未用样式，按需引入 Core-JS Polyfill，减小资源体积",
+          "取消登录页路由懒加载，直接打包进主文件，消除额外请求，加快 FCP",
+          "优化字体渲染（WOFF2、字体子集、font-display: swap）并添加骨架屏提升感知性能"
+        ],
+        "keywords": [
+          "性能优化",
+          "Vue2",
+          "Webpack",
+          "FCP/LCP",
+          "首屏加载"
+        ],
+        "techStack": [],
+        "difficulty": "中等",
+        "contentType": "性能优化实战文档"
+      },
+      "processedAt": "2026-06-14T14:03:58.081Z"
     },
     "/react/class-hooks.md": {
       "sourceHash": "sha256:c32706d3cd67a0c50b750726c3ac2c04490248d4b3ec1d62ad230f05d6731845",
@@ -3242,6 +4139,56 @@
       },
       "processedAt": "2026-06-14T09:08:43.613Z"
     },
+    "/react/README.md": {
+      "sourceHash": "sha256:801c2e841a70fd4b8cc137520c5290535b1651e82e6ce633e6eab197d8de9994",
+      "analysisHash": "sha256:518ab135cb7b556e2fce84f48cb2efe8e63c0e258947082452c55ddc9f048faa",
+      "status": "success",
+      "summary": {
+        "summary": "React 技术文档索引，指引至类组件与 Hooks 对比、React 17 特性及 React 18 新特性的详细说明。",
+        "keyPoints": [
+          "涵盖类组件与 Hooks 的对比文档",
+          "React 17 版本新特性介绍",
+          "React 18 新功能与升级指南",
+          "作为 React 学习路径的目录入口"
+        ],
+        "keywords": [
+          "React",
+          "Hooks",
+          "Class Components",
+          "React 17",
+          "React 18"
+        ],
+        "techStack": [
+          "React"
+        ],
+        "difficulty": "beginner",
+        "contentType": "index"
+      },
+      "processedAt": "2026-06-14T14:03:49.773Z"
+    },
+    "/README.md": {
+      "sourceHash": "sha256:62d4422d15562c446d948072fd54c13bda7c9e93103fddfd6f9fff2c3f070102",
+      "analysisHash": "sha256:2c3fe424f11cadd4e540ed8d8c34a249cee3a58b7e08cf37240e27177bf2b8ef",
+      "status": "success",
+      "summary": {
+        "summary": "该文档包含网站底部版权及ICP备案信息，展示版权归Acongm所有，并链接至工信部备案号粤ICP备16105234号-1。",
+        "keyPoints": [
+          "版权所有声明，2022年至今归Acongm所有",
+          "包含工信部ICP备案号粤ICP备16105234号-1及链接",
+          "内容为典型的网站页脚法律信息"
+        ],
+        "keywords": [
+          "版权",
+          "ICP备案",
+          "Acongm",
+          "粤ICP备16105234号-1"
+        ],
+        "techStack": [],
+        "difficulty": "简单",
+        "contentType": "法律/版权声明"
+      },
+      "processedAt": "2026-06-14T14:03:55.263Z"
+    },
     "/software/browser.md": {
       "sourceHash": "sha256:7c2e393362cdd2aa9fbe79fc380b5ecda382a71fb36713435f5ced7f9a221a31",
       "analysisHash": "sha256:34edb43eaf601ca1321dc32aa09eca03a98902cad1a04843e6413fe98fdfdc0b",
@@ -3351,6 +4298,33 @@
       },
       "processedAt": "2026-06-14T09:09:08.437Z"
     },
+    "/software/README.md": {
+      "sourceHash": "sha256:f6c56940519fe8cfb135c3bf62c4750764d90f4cfda6268bd3b773ad68e512b3",
+      "analysisHash": "sha256:0e7fb979b8559b2ba70a02ee785716991ebbdeeaf968cf531dd96dd83b16edfa",
+      "status": "success",
+      "summary": {
+        "summary": "这是一个软件相关文档索引，汇总了跨平台、macOS、Windows、浏览器、VS Code、WebStorm、Zsh 等多个主题的子文档链接，便于用户快速导航。",
+        "keyPoints": [
+          "提供跨平台软件相关文档",
+          "涵盖特定操作系统（macOS、Windows）的说明",
+          "包含开发工具（VS Code、WebStorm）和Shell（Zsh）的指引",
+          "包含浏览器相关内容"
+        ],
+        "keywords": [
+          "软件",
+          "索引",
+          "跨平台",
+          "开发工具",
+          "Shell"
+        ],
+        "techStack": [
+          "Markdown"
+        ],
+        "difficulty": "初级",
+        "contentType": "文档索引"
+      },
+      "processedAt": "2026-06-14T14:03:55.365Z"
+    },
     "/software/vscode.md": {
       "sourceHash": "sha256:e4a788cd4d2f8e16facb1a7807f40897a56b8204d681298d01b841a34d65d2c1",
       "analysisHash": "sha256:fe1ef2ae6c5d9c584858370841f5b0f7b94eb4f51d9a68f305be2d532c7e61fd",
@@ -3443,6 +4417,96 @@
       },
       "processedAt": "2026-06-14T09:09:04.111Z"
     },
+    "/software/zsh.md": {
+      "sourceHash": "sha256:2b0a08fcac8789056945e26be26a18ce1f1cca86a7d487723dd360e0393aa5ab",
+      "analysisHash": "sha256:5b26bd397b31f32a29a49600e3299a640d09a4dc42b7e7e4710c121cf4ce66d6",
+      "status": "success",
+      "summary": {
+        "summary": "介绍了使用 oh-my-zsh 自定义 Zsh 的配置，包括主题（如 powerlevel10k）和插件（autojump、z、fast-syntax-highlighting、zsh-autosuggestions）的安装与用法，并提供了解决终端图标乱码的方法。",
+        "keyPoints": [
+          "oh-my-zsh 可管理 Zsh 的主题和插件",
+          "autojump 与 z 插件通过历史数据库快速跳转目录",
+          "fast-syntax-highlighting 与 zsh-autosuggestions 增强终端交互体验",
+          "powerlevel10k 主题需安装特定字体以避免乱码"
+        ],
+        "keywords": [
+          "zsh",
+          "oh-my-zsh",
+          "插件",
+          "主题",
+          "powerlevel10k"
+        ],
+        "techStack": [
+          "zsh",
+          "oh-my-zsh"
+        ],
+        "difficulty": "简单",
+        "contentType": "教程"
+      },
+      "processedAt": "2026-06-14T14:04:07.379Z"
+    },
+    "/superpowers/plans/2026-06-14-ai-reading-assistant-optimization.md": {
+      "sourceHash": "sha256:2717ea6efeee306b73c1e064815eb38ff2a68d2d86aabe116bbc360316d0233f",
+      "analysisHash": "sha256:444b62b61f9251d76d173835325152118dadb0254f1e20531fab88077678b104",
+      "status": "success",
+      "summary": {
+        "summary": "本实施计划旨在为AI阅读助手交付真正的流式响应、令牌高效的聊天请求、基于内容寻址的Markdown分析缓存，并借助VuePress前端与NestJS后端的Vercel部署验证。计划通过后端SSE端点、前端SSE解析器及缓存工具实现优化，确保未修改的文档不再调用AI提供商。",
+        "keyPoints": [
+          "在后端添加SSE流式聊天端点并保留现有JSON接口",
+          "前端实现SSE帧解析与有界历史管理，渲染覆盖抽屉",
+          "引入基于版本化内容哈希的Markdown分析缓存，避免重复AI调用",
+          "定义令牌预算策略以优化聊天上下文大小",
+          "集成测试与端到端验证确保流式响应顺序和遗留兼容性"
+        ],
+        "keywords": [
+          "AI阅读助手",
+          "SSE流式响应",
+          "内容寻址缓存",
+          "令牌优化",
+          "VuePress集成"
+        ],
+        "techStack": [],
+        "difficulty": "中等",
+        "contentType": "实施计划"
+      },
+      "processedAt": "2026-06-14T14:04:15.681Z"
+    },
+    "/superpowers/plans/2026-06-14-ai-reading-assistant-v1.md": {
+      "sourceHash": "sha256:5361737d27eea7a64e5c779884d238e4ac37f37cea8302a464e638187bed1ffa",
+      "analysisHash": "sha256:6a1e87fc50794cd77369bb5a95c2c9e3063528c95ee3d7053cc64ff1d9020c76",
+      "status": "success",
+      "summary": {
+        "summary": "该计划旨在构建一个版本化的AI阅读助手，仅在用户主动发送消息时触发AI分析，保持静态构建与响应式布局。利用VuePress生成自描述摘要快照，NestJS提供版本化API，支持桌面、平板和移动端。任务1重点创建自我包含的v1摘要快照：包含测试先行、哈希校验与缓存复用，确保仅处理变更文件。",
+        "keyPoints": [
+          "版本化快照机制：通过源哈希、分析哈希和状态字段实现增量处理与缓存复用",
+          "严格分离构建时分析与运行时AI调用：页面加载与助手打开不触发AI请求",
+          "无单独清单：快照本身即包含所有必要信息，便于CI/CD和部署环境恢复",
+          "响应式UI策略：桌面嵌入文章旁，平板右侧覆盖，移动端底部上滑",
+          "测试驱动实现：先编写失败快照测试，再实现核心逻辑（normalize、hash、cache）"
+        ],
+        "keywords": [
+          "AI阅读助手",
+          "快照缓存",
+          "增量分析",
+          "VuePress",
+          "NestJS"
+        ],
+        "techStack": [
+          "VuePress 2 beta",
+          "Vue 3 Options API",
+          "Node 24 (node:test)",
+          "NestJS 10",
+          "Jest/Supertest",
+          "OpenAI-compatible SSE",
+          "GitHub Actions",
+          "GitHub Pages",
+          "Vercel"
+        ],
+        "difficulty": "中等",
+        "contentType": "implementation_plan"
+      },
+      "processedAt": "2026-06-14T14:04:17.668Z"
+    },
     "/superpowers/specs/2026-06-14-ai-reading-assistant-optimization-design.md": {
       "sourceHash": "sha256:25bc60fc697d0ec06eb699e98076171255d33a23f68cec48cafbef13f354ccd4",
       "analysisHash": "sha256:4d784a2fa08b398df9cf6b7c6a46d38a243ab8ad68e48f076d77e454556e4410",
@@ -3473,6 +4537,78 @@
         "contentType": "设计文档"
       },
       "processedAt": "2026-06-14T09:09:17.724Z"
+    },
+    "/superpowers/specs/2026-06-14-ai-reading-assistant-v1-design.md": {
+      "sourceHash": "sha256:19bc2d6a3b25cb6820042d5b27bcb3de0520d8519220d804ef85b509868db7d3",
+      "analysisHash": "sha256:1a51aad378420dcbde6527fd1f99660d0fffc8a9919b61bc0de31aa8782ca352",
+      "status": "success",
+      "summary": {
+        "summary": "AI 阅读助手 v1 采用静态缓存与内容哈希方案，通过构建时生成 summaries-v1.json 快照实现分析结果复用，确保页面零 API 调用，仅用户提问时触发 v1 Chat 接口。同时定义响应式布局（潜入分栏、覆盖侧栏、底部面板）与交互细节，并规划了 GitHub Pages 和 Vercel 的 CI/CD 流程，以 Node 24 运行，旨在消除冗余 AI 调用，提升构建效率与用户体验。",
+        "keyPoints": [
+          "单一样本 summaries-v1.json 存储所有文章摘要及失效哈希，仅当内容或分析参数变化才调用 AI",
+          "页面加载与助手展开不调用任何 AI 后端，未构建摘要时显示静态空状态",
+          "新增 /api/ai/v1/* 冻结接口，旧接口保留兼容但新前端不再使用",
+          "响应式布局：PC 潜入分栏、平板覆盖侧栏、手机底部全屏面板，适配多种宽度",
+          "CI 使用 Node 24，强制缓存恢复顺序与显式失败策略，保证第二次相同构建零 AI 调用"
+        ],
+        "keywords": [
+          "AI 阅读助手",
+          "静态缓存自举",
+          "内容分析哈希",
+          "响应式布局",
+          "AI API v1"
+        ],
+        "techStack": [
+          "GitHub Actions",
+          "Vercel",
+          "VuePress",
+          "Node 24",
+          "AI API",
+          "SSE"
+        ],
+        "difficulty": "中等",
+        "contentType": "设计文档"
+      },
+      "processedAt": "2026-06-14T14:04:07.371Z"
+    },
+    "/theory/interview-question/2025-04-28-analysis.md": {
+      "sourceHash": "sha256:686c41564ad82f6d1cdf82426d407fd649ff43646757d34dd6da51c64a77512c",
+      "analysisHash": "sha256:604f48aecf822a4c0fe011611fb70d1a2c08de8ae5fbc77f133654731ae34d9d",
+      "status": "success",
+      "summary": {
+        "summary": "本文是一份前端面试演练文档，涵盖笔试预测（框架原理、工程化、性能优化、算法）、技术面试高频考点（Vue3响应式原理、微前端沙箱、低代码设计、构建优化、性能与内存排查）及行为面试应答策略。通过具体代码示例和项目案例，指导准备框架深度追问、工程化实践、架构设计能力，并强调使用STAR法则展现技术成果和软实力。",
+        "keyPoints": [
+          "笔试部分要求60分钟内完成框架原理、工程化、性能方案设计与算法题",
+          "技术面试重点准备Vue3响应式、Quasar定制、微前端沙箱、低代码平台设计",
+          "性能优化体系包含LCP优化、内存泄漏排查与编译时优化",
+          "架构设计需覆盖插件系统、状态管理与微前端通信方案",
+          "行为面试强调STAR法则，结合项目数据展示问题解决、团队协作与决策能力"
+        ],
+        "keywords": [
+          "前端面试",
+          "性能优化",
+          "微前端",
+          "架构设计",
+          "STAR法则"
+        ],
+        "techStack": [
+          "Vue3",
+          "Quasar",
+          "React",
+          "Preact",
+          "Rollup",
+          "Webpack",
+          "Babel",
+          "core-js",
+          "Formily",
+          "antd",
+          "Pinia",
+          "Vuex"
+        ],
+        "difficulty": "困难",
+        "contentType": "面试准备"
+      },
+      "processedAt": "2026-06-14T14:04:16.762Z"
     },
     "/theory/interview-question/2025-04-28.md": {
       "sourceHash": "sha256:47bd4576e9b6ce1d3555c1f7044b98a53feb6ffb534e50214ca8ab4aea5b9e02",
@@ -3532,6 +4668,32 @@
       },
       "processedAt": "2026-06-14T09:09:32.012Z"
     },
+    "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md": {
+      "sourceHash": "sha256:9143f6784677c2c4549ec0035e99944f6672e40539a941e2df36e22b0bc16bf1",
+      "analysisHash": "sha256:307713704854b0f802162a2d39ea7bf5334b77c8fb32deb5b7263dc675126fba",
+      "status": "success",
+      "summary": {
+        "summary": "该文档为大疆售后RMS系统重构的面试技术大纲，聚焦多人协作下的工程化治理。核心包括ESLint规范制定（React/TypeScript/模块化）、Prettier与ESLint分工、Umi落地方式、提交拦截与CI门禁等闭环流程，旨在提升中后台可维护性与团队效率。",
+        "keyPoints": [
+          "ESLint规范覆盖React Hooks、TypeScript类型管控及模块导入边界",
+          "通过husky+lint-staged+commitlint实现提交拦截与Conventional Commits",
+          "PR/CI门禁（lint、类型检查）与老代码豁免策略治理技术债",
+          "利用no-restricted-imports和import/no-cycle强制模块化边界与循环依赖治理",
+          "IDE自动修复、渐进收敛（warning→error）保证规范落地"
+        ],
+        "keywords": [
+          "ESLint规范",
+          "工程化治理",
+          "多人协作",
+          "模块化",
+          "CI门禁"
+        ],
+        "techStack": [],
+        "difficulty": "高级",
+        "contentType": "面试技术大纲"
+      },
+      "processedAt": "2026-06-14T14:04:26.461Z"
+    },
     "/theory/job-description-lib/03-跨平台公告插件系统-面试技术大纲.md": {
       "sourceHash": "sha256:4e8f654dc5ef6d0e9cc5a4b0b80b31735fdf045a1a78f3cd9b9423ce174e6bb4",
       "analysisHash": "sha256:fe48ab69bfce53b560ad6d1a68e6446338390300a09cb9023452c790b8cedfc5",
@@ -3563,6 +4725,37 @@
         "contentType": "面试技术大纲"
       },
       "processedAt": "2026-06-14T09:09:41.449Z"
+    },
+    "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md": {
+      "sourceHash": "sha256:6fad0e94ce9890d2d4eddf99bc8533bd53f505cbfaa3fa2c0ff9e51e386b8e15",
+      "analysisHash": "sha256:75988db353af34ac9d90cde35beb23c57b312533480fe490a5ef45c603edf365",
+      "status": "success",
+      "summary": {
+        "summary": "本文为大疆DevOps平台维护岗位的面试技术大纲，重点涵盖CI/CD流水线原理、Docker部署与发布策略、微前端选型及qiankun核心实现。内容涉及流水线触发、环境管理、镜像优化、质量门禁，以及微前端的隔离机制与通信方式。",
+        "keyPoints": [
+          "CI/CD流水线阶段构建、测试、扫描、打包、部署及多环境策略",
+          "Docker镜像分层、缓存、pnpm优化与蓝绿/金丝雀等发布模式",
+          "qiankun微前端的注册加载、CSS/JS隔离机制与生命周期调度",
+          "微前端方案对比：single-spa、Module Federation、iframe适用场景",
+          "质量与安全门禁：代码扫描、依赖漏洞检测和权限最小化"
+        ],
+        "keywords": [
+          "CI/CD",
+          "Docker",
+          "qiankun",
+          "微前端",
+          "面试大纲"
+        ],
+        "techStack": [
+          "Vue3",
+          "TypeScript",
+          "qiankun",
+          "Docker"
+        ],
+        "difficulty": "高级",
+        "contentType": "技术面试大纲"
+      },
+      "processedAt": "2026-06-14T14:04:25.046Z"
     },
     "/theory/job-description-lib/05-XDR系统-魔方大屏+报表-面试技术大纲.md": {
       "sourceHash": "sha256:b0b6737d1ba772052beef481d01369d2f25303cb2b489bb878f0b74189addab1",
@@ -3840,6 +5033,33 @@
       },
       "processedAt": "2026-06-14T09:10:24.841Z"
     },
+    "/TypeScript/README.md": {
+      "sourceHash": "sha256:71b59a2fe2929f065832f1d153bde3ce042f363187368523c45c70da87304eb8",
+      "analysisHash": "sha256:005cc6edff4695aed88f41994e56cd30951aa5a470cf4a5682c261a8e731abb0",
+      "status": "success",
+      "summary": {
+        "summary": "本文档介绍 TypeScript，它是 JavaScript 的超集，支持强类型、ES6 及面向对象编程。列举了其优点（编译时错误检查、易于学习等）和缺点（编译时间长、第三方库定义文件问题），并详细列出了 12 种基础类型，如 number、string、boolean、any、void 等。",
+        "keyPoints": [
+          "TypeScript 是 JavaScript 超集，需编译为 JS 运行",
+          "优点包括编译时错误检查、支持所有 JS 库、可重用性高",
+          "缺点主要是编译耗时及第三方库定义文件不完善",
+          "基础类型共 12 种，涵盖基本类型、元组、枚举、never 等"
+        ],
+        "keywords": [
+          "TypeScript",
+          "强类型",
+          "基础类型",
+          "编译时检查",
+          "JavaScript超集"
+        ],
+        "techStack": [
+          "TypeScript"
+        ],
+        "difficulty": "beginner",
+        "contentType": "overview"
+      },
+      "processedAt": "2026-06-14T14:04:25.277Z"
+    },
     "/TypeScript/Study.md": {
       "sourceHash": "sha256:0b96de318e61013b546814192cd73192621ca4867056e28244f366e7593869ac",
       "analysisHash": "sha256:66130bf967032905ed8f5870a8a0da1847b1e9046c95dde376f7a03650bea680",
@@ -3921,6 +5141,33 @@
       },
       "processedAt": "2026-06-14T09:10:31.381Z"
     },
+    "/utils/README.md": {
+      "sourceHash": "sha256:53d2ec33a927147ff37e9c414f57c5ba13fabcca284fe8c6e33c3d16eb7b0267",
+      "analysisHash": "sha256:f3f43500b19c363052bf0bfa0519f7ca897032a83058804a5efea57da4149925",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是一个工具方法的索引README，主要列出三个子文档链接：正则表达式（regexp.md）、函数方法（function.md）和库方法（library.md），用于快速导航至对应的工具函数说明。",
+        "keyPoints": [
+          "提供工具方法文档的导航入口",
+          "链接到正则表达式详解",
+          "链接到通用函数方法说明",
+          "链接到第三方库方法介绍"
+        ],
+        "keywords": [
+          "工具方法",
+          "索引",
+          "README",
+          "正则表达式",
+          "函数库"
+        ],
+        "techStack": [
+          "Markdown"
+        ],
+        "difficulty": "初级",
+        "contentType": "索引文档"
+      },
+      "processedAt": "2026-06-14T14:04:21.739Z"
+    },
     "/utils/regexp.md": {
       "sourceHash": "sha256:cd773ad433c5f9c97240b6587e726bc56e1d83b21421dd9d455792ec621e8bb6",
       "analysisHash": "sha256:eb252640c5a34f8383b1f0cc60c22692181e67c89388f6876adc57af350a040a",
@@ -3945,6 +5192,33 @@
         "contentType": "reference"
       },
       "processedAt": "2026-06-14T09:10:27.110Z"
+    },
+    "/vue/README.md": {
+      "sourceHash": "sha256:72691ced37984bc1eb7751a4cfdcc4e26e5a4c9c9c4390f6ebc7372a4c2d5010",
+      "analysisHash": "sha256:fec730af30b1db24e6b5fda7751e906f633cc1b87a3a90921e6a839b11a15077",
+      "status": "success",
+      "summary": {
+        "summary": "该文档介绍了两个Vue.js实用技巧：一是在父组件中监听子组件的生命周期钩子，通过@hook:事件实现；二是在methods中使用debounce或throttle函数，避免频繁触发方法，提升性能。文档提供了代码示例和相关源码链接。",
+        "keyPoints": [
+          "父组件可通过@hook:生命周期在模板中监听子组件钩子",
+          "在methods中集成debounce/throttle优化高频操作",
+          "示例包含v-model与debounce的迁移说明",
+          "链接指向Vue源码及官方迁移指南"
+        ],
+        "keywords": [
+          "Vue",
+          "lifecycle hooks",
+          "debounce",
+          "throttle",
+          "methods"
+        ],
+        "techStack": [
+          "Vue.js"
+        ],
+        "difficulty": "中级",
+        "contentType": "技术文档"
+      },
+      "processedAt": "2026-06-14T14:04:28.500Z"
     },
     "/vue/vue_interview.md": {
       "sourceHash": "sha256:923d6a9cb4d8662d282a11a0664f4ca7140e476612e1d7738255bf21113e79db",
@@ -4144,6 +5418,36 @@
       },
       "processedAt": "2026-06-14T09:10:45.611Z"
     },
+    "/webpack/install/README.md": {
+      "sourceHash": "sha256:217c44944661e2715246cb4847d287b6909f2cebe80ad53cf65f9dc415edfdc9",
+      "analysisHash": "sha256:758c8a74c58a1ebedd9e91e15dcb88d41c04b0e9a1eac5aafcfa86569d368e1f",
+      "status": "success",
+      "summary": {
+        "summary": "文档介绍了Node.js包管理工具的概念与必要性，详细说明了npm和Yarn的特点、组成及优势。npm是全球最大包注册表，包含网站、注册表和CLI三部分；Yarn通过并行安装、离线缓存和lock文件提升了速度和安装统一性，并优化了命令语义。还描述了包安装的完整流程（preinstall、确定首层依赖、递归获取模块、扁平化、安装模块、执行生命周期），以及依赖关系的嵌套与扁平化处理，帮助管理复杂依赖。",
+        "keyPoints": [
+          "包管理器用于自动化管理项目依赖，避免手动下载和维护困难",
+          "npm由网站、注册表和CLI三部分组成，是全球最大的JavaScript包注册表",
+          "Yarn通过并行安装、离线模式和lock文件解决npm的速度与版本一致性问题",
+          "包安装流程包括执行钩子、确定依赖、递归获取、扁平化去重和执行生命周期",
+          "依赖关系有嵌套和扁平两种方式，npm3起默认采用扁平化dedupe减少冗余"
+        ],
+        "keywords": [
+          "npm",
+          "Yarn",
+          "包管理",
+          "依赖",
+          "lock文件"
+        ],
+        "techStack": [
+          "Node.js",
+          "npm",
+          "Yarn"
+        ],
+        "difficulty": "初级",
+        "contentType": "概念介绍"
+      },
+      "processedAt": "2026-06-14T14:04:33.626Z"
+    },
     "/webpack/install/yarn.md": {
       "sourceHash": "sha256:2b8b6cd3ff6cae7ee5a286955f02600e173e31589d62051cdb338052792b23c4",
       "analysisHash": "sha256:c602791d00802c30528a049e0e0737162973c85f6dd85eb207f6dd15276b5151",
@@ -4173,6 +5477,67 @@
         "contentType": "comparison"
       },
       "processedAt": "2026-06-14T09:10:57.744Z"
+    },
+    "/webpack/README.md": {
+      "sourceHash": "sha256:e6c3322cda86ef8995a19ef9a7fa66c6279c2cb63498518415fe1514fc07067f",
+      "analysisHash": "sha256:fb970f465483ee180c65e93ed6fcd60a9cd0352b488e6841a8194da929346038",
+      "status": "success",
+      "summary": {
+        "summary": "该文档是Webpack和Vite相关的知识索引，列出了涵盖Webpack知识梳理、架构原理、打包工具对比（Webpack、Vite、Rollup）以及安装指南等文档的链接，便于快速查阅和学习。",
+        "keyPoints": [
+          "提供Webpack知识梳理和架构原理文档",
+          "包含Webpack、Vite、Rollup的打包工具对比",
+          "涵盖Vite的知识梳理与架构原理",
+          "附带安装相关的指导文档"
+        ],
+        "keywords": [
+          "Webpack",
+          "Vite",
+          "打包工具",
+          "架构",
+          "知识梳理"
+        ],
+        "techStack": [
+          "Webpack",
+          "Vite",
+          "Rollup"
+        ],
+        "difficulty": "初级",
+        "contentType": "文档索引"
+      },
+      "processedAt": "2026-06-14T14:04:32.720Z"
+    },
+    "/webpack/vite-架构及原理.md": {
+      "sourceHash": "sha256:5c32ca0b7c6f002b7da3d160c14cb2d0c612b077bc5c8e3b0dfa6bca7ef5394c",
+      "analysisHash": "sha256:97accde90a80829e6614830e0c516ea3f9e47e1c040538d6ff453887336d1a7d",
+      "status": "success",
+      "summary": {
+        "summary": "Vite 基于原生 ESM，开发时启动 Koa 服务器并利用 esbuild 预构建依赖，按需编译模块，无需打包，实现极速启动和模块级 HMR。生产构建采用 Rollup 完成 Tree-shaking、代码分割等优化。其插件系统扩展自 Rollup，提供统一钩子，兼顾开发与生产，相比 Webpack 配置更简化，适合现代浏览器下的高性能开发体验。",
+        "keyPoints": [
+          "开发时采用原生 ESM 按需加载，不打包整个应用，启动速度极快",
+          "使用 esbuild 预构建 CJS/UMD 依赖并转换为 ESM，大幅提升转换效率",
+          "通过 WebSocket 实现模块级 HMR，仅更新变更模块，状态可保留",
+          "生产构建使用 Rollup，提供 Tree-shaking、代码分割、压缩等完整优化功能",
+          "插件系统基于 Rollup 接口扩展，支持开发与构建全生命周期钩子"
+        ],
+        "keywords": [
+          "Vite",
+          "原生ESM",
+          "esbuild",
+          "Rollup",
+          "HMR"
+        ],
+        "techStack": [
+          "Vite",
+          "ES Modules",
+          "esbuild",
+          "Rollup",
+          "Koa"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "technical_analysis"
+      },
+      "processedAt": "2026-06-14T14:04:37.055Z"
     },
     "/webpack/vite-知识梳理.md": {
       "sourceHash": "sha256:b650c0f085b7b51de82cfbb2860c645844a5cd76c5176c94fc689b0ef8de79f2",
@@ -4330,1569 +5695,834 @@
       },
       "processedAt": "2026-06-14T09:11:04.616Z"
     },
-    "/Pattern/EventBus/EventBus.md": {
-      "sourceHash": "sha256:e6372f5df8db65c702be1c27d8201b87009045b5caf7d223e9d575e59e90a959",
-      "analysisHash": "sha256:0d56e3d0ee1206d0c9735357519a50273a58237d229ec9411f9b5e5c081c685b",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/Pattern/Observer/Subject.md": {
-      "sourceHash": "sha256:87995b7b62af3ecbc6e3f0f59ebbad5092d434f78d0e8d079b63fd4d78e74a15",
-      "analysisHash": "sha256:cabcbf208dc64663e150b79bd3f66b2021b6341262907f4b5e72f7d71be69b5e",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/Pattern/ProxyStore/ProxyStore.md": {
-      "sourceHash": "sha256:645da6b29671c8dd9591e8c662c598bcfbbe7379e93eb5b6234433e9ebd30dee",
-      "analysisHash": "sha256:ef311407814561f4fa8030ddedd63daeb5afb2b77180c6ab9399eb72e94aa627",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/Pattern/ServiceRequest/Registry.md": {
-      "sourceHash": "sha256:4eee1fb324c3a430069d94a90f653776029d66fabdfddba6566e8884eca13390",
-      "analysisHash": "sha256:f1a4f234e879f4826370895b7b6c95bc2b9e03f80b6e21774113d28c21abc8ef",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/Pattern/Store/Store.md": {
-      "sourceHash": "sha256:d470378cafd054d67c0da6070eb02604c2f5b53e9580ebe9fa6fc5fd935af5ca",
-      "analysisHash": "sha256:4b884fb8614cff964a1084dc15c3a70adb6e2350a5fb3c20f6cab6f290230429",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/Pattern/Store/StoreSingleton.md": {
-      "sourceHash": "sha256:0c950679b1cc83c7816126c390001c3228e15a007d3243470d79173f8b006e50",
-      "analysisHash": "sha256:add38ec6f214b333afd9a4035345faf11ef6d905967f65f7259c95c613eaca2c",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/theory/README.md": {
-      "sourceHash": "sha256:622717bcd54fbd9226c6db881e3b71941576f010caad24198df09db75e987f4e",
-      "analysisHash": "sha256:6213201364c5763fb1afb292c90df9d711bc658cfea297ad6dfc083ee540533b",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/vue/code/Object.defineproperty.md": {
-      "sourceHash": "sha256:730b68d0dd07e28f43ed5eeae0bb848e1cc4170c598fcbbee35b6c3fe147ef61",
-      "analysisHash": "sha256:de0f0e635365cfbe23c6b64a17a98c6ac97924284de06f9796537de878f5b193",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/vue/code/proxy-observe.md": {
-      "sourceHash": "sha256:c0c35af7d5934fdb0018988763c90cdaac2b3aa4ce3f7364a89c103cbef6ceb5",
-      "analysisHash": "sha256:30ccf2e8372365bd724e419b649bdcaee6db38ac5c76b6b6e13dfbd2a983ab7f",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/vue/code/Proxy.md": {
-      "sourceHash": "sha256:ec7ac36ad59cc20d15b6d4f32f060224eb6d4094a5aa234227feadc11d9b389b",
-      "analysisHash": "sha256:fea683858703737a067181a2bab222323f2660f58b280932310924de3da45a04",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/vue/vue3.md": {
-      "sourceHash": "sha256:8f1432c1be609328ca1ff643dd7ad10523292f67a7a4ad7dd9c27bf868e489e4",
-      "analysisHash": "sha256:fd9b0d59b4a9cc36a55d3879dd101c892ad86267e4a9d248529588a1f438ae14",
-      "status": "short",
-      "reason": "content-too-short",
-      "processedAt": "2026-06-14T14:01:07.019Z"
-    },
-    "/ai/README.md": {
-      "sourceHash": "sha256:3381b2eb10e5d5a954a496d418b78900b8ddc0bbd29e58ca71c64c9c70a108e7",
-      "analysisHash": "sha256:4b2564cea65e44c6a0125c126f3ac35acb00a166a49ea2e5c37824c0fb798ecd",
-      "status": "success",
-      "summary": {
-        "summary": "该文档是一个AI主题的索引，涵盖AI Agent开发、Prompt工程、Copilot/Claude使用技巧、AI辅助开发工作流及LLM应用开发等内容，旨在提供相关工具、方法和实践指导。",
-        "keyPoints": [
-          "聚焦AI Agent与Skill开发",
-          "包含Prompt Engineering技术",
-          "介绍Copilot/Claude等工具的使用技巧",
-          "梳理AI辅助开发工作流",
-          "涉及LLM应用开发实践"
-        ],
-        "keywords": [
-          "AI Agent",
-          "Prompt Engineering",
-          "Copilot",
-          "LLM",
-          "开发工作流"
-        ],
-        "techStack": [],
-        "difficulty": "初级",
-        "contentType": "目录/索引"
-      },
-      "processedAt": "2026-06-14T14:01:11.402Z"
-    },
-    "/css/README.md": {
-      "sourceHash": "sha256:bb03aa7a9615fe419d21c325efe8cb3c3656fb6a937161715efe6eb6f1410f5e",
-      "analysisHash": "sha256:83508befebe7ef24d3d967b08547faeb84f4ad5fd1e3596937beb4f5ea1f120c",
-      "status": "success",
-      "summary": {
-        "summary": "本文档简要介绍了CSS中自定义滚动条样式的方法，主要涉及::-webkit-scrollbar伪元素的使用，并提供了相关代码示例和MDN官方参考链接。",
-        "keyPoints": [
-          "通过 ::-webkit-scrollbar 等伪元素自定义滚动条外观",
-          "可以修改滚动条的宽度、颜色、背景等样式",
-          "该方法主要适用于WebKit内核的浏览器",
-          "文档提供了代码示例和MDN参考链接"
-        ],
-        "keywords": [
-          "CSS",
-          "滚动条样式",
-          "::-webkit-scrollbar",
-          "WebKit",
-          "自定义滚动条"
-        ],
-        "techStack": [
-          "CSS",
-          "WebKit"
-        ],
-        "difficulty": "初级",
-        "contentType": "参考"
-      },
-      "processedAt": "2026-06-14T14:01:13.647Z"
-    },
-    "/daily-news/2026-05-06.md": {
-      "sourceHash": "sha256:3dca34b5f442de92392a5ed4886b8f8e78da1af7d1f264d05d48a19f117db3e5",
-      "analysisHash": "sha256:c4fe315974dc93fea12f2976f599f8e03024d4bd356a1709852fe6758be9a203",
-      "status": "success",
-      "summary": {
-        "summary": "2026年5月6日科技动态集中展现平台能力贴近实际开发链路：Chrome 148强化CSS容器查询、媒体懒加载与无障碍调试；GitHub将依赖扫描和代码到云端风险可见性前移至开发现场；OpenAI更新ChatGPT默认模型为GPT-5.5 Instant，并公开低延迟语音架构，整体体验与基础设施同步产品化。",
-        "keyPoints": [
-          "Chrome 148新增name-only容器查询与媒体懒加载，提升运行时体验及资源策略设计空间",
-          "DevTools 148深化无障碍树、投机规则与agent调试，覆盖更复杂工程场景",
-          "GitHub MCP Server依赖扫描公共预览，将漏洞检测提前至编码与PR阶段",
-          "GitHub与Defender for Cloud的code-to-cloud风险可见性正式GA，打通代码到运行环境的安全上下文",
-          "OpenAI将GPT-5.5 Instant设为默认模型并公开低延迟语音架构，优化体验与基础设施"
-        ],
-        "keywords": [
-          "平台能力前移",
-          "浏览器平台升级",
-          "安全扫描左移",
-          "默认模型体验",
-          "低延迟语音架构"
-        ],
-        "techStack": [
-          "Chrome",
-          "CSS",
-          "DevTools",
-          "GitHub MCP Server",
-          "Dependabot",
-          "Microsoft Defender for Cloud",
-          "OpenAI GPT-5.5",
-          "WebRTC"
-        ],
-        "difficulty": "intermediate",
-        "contentType": "技术资讯"
-      },
-      "processedAt": "2026-06-14T14:01:14.017Z"
-    },
-    "/daily-news/2026-05-09.md": {
-      "sourceHash": "sha256:a2d462ee0e8a7eba35713af22a65f12116321f4d08e5efea2cdab0f93d3a637d",
-      "analysisHash": "sha256:38da0df2b7ae9de8c774d780e8becc47f7ce10706de5128625301f4122094820",
-      "status": "success",
-      "summary": {
-        "summary": "2026年5月9日科技动态显示，平台厂商正将新能力深度嵌入开发与运营主链路。前端Chrome通过Beta与稳定版并行推进Prompt API、容器查询等能力落地；DevOps领域Kubernetes扩展动态资源分配至通用资源，GitHub推出企业实时迁移预览以降低中断成本；AI方面OpenAI发布实时语音模型API并公开Codex安全运行机制，强调能力与治理打包交付。",
-        "keyPoints": [
-          "Chrome 148稳定版引入Prompt API、name-only容器查询与媒体懒加载，浏览器同时覆盖布局、性能与原生AI交互",
-          "Kubernetes v1.36增强动态资源分配，支持内存/CPU等通用资源及PodGroups，推动调度框架统一",
-          "GitHub企业实时迁移进入公开预览，降低代码托管从Server到Cloud的中断成本",
-          "OpenAI推出新一代实时语音模型API，支持推理、翻译与转录，语音升级为完整交互接口",
-          "OpenAI公开Codex沙盒、审批与遥测等安全机制，促进AI编码代理的企业级安全采用"
-        ],
-        "keywords": [
-          "浏览器能力落地",
-          "Kubernetes动态资源分配",
-          "企业实时迁移",
-          "AI安全治理",
-          "实时语音API"
-        ],
-        "techStack": [
-          "Chrome",
-          "Kubernetes",
-          "GitHub Enterprise",
-          "OpenAI API",
-          "Codex"
-        ],
-        "difficulty": "普通",
-        "contentType": "技术动态"
-      },
-      "processedAt": "2026-06-14T14:01:18.823Z"
-    },
-    "/daily-news/2026-05-10.md": {
-      "sourceHash": "sha256:e1d2b8daff439b6f34497204d17e0b7a558547c2d199d616564291ea5c9fcd6f",
-      "analysisHash": "sha256:4fa11ea8022c31b7595a63db8e57fc714ba639f1afc55faeadf904d8a18f8a70",
-      "status": "success",
-      "summary": {
-        "summary": "2026年5月10日科技动态显示，新能力正加速融入开发与运维主流程。Chrome 148 强化容器查询、媒体懒加载及浏览器 AI 能力，DevTools 提升无障碍调试与 Agent 支持；Kubernetes v1.36 存储卷组快照 GA，GitHub 为 Copilot cloud agent 提供组织级配置复用；OpenAI 发布实时语音模型并公开 Codex 沙箱化安全运行方法。整体趋势从功能发布转向早期试用、规模化治理与生产可控。",
-        "keyPoints": [
-          "Chrome 148 引入 name-only container queries、媒体懒加载和 Prompt API，同时 DevTools 默认开启完整无障碍树并增强 Agent 调试",
-          "Kubernetes v1.36 将 Volume Group Snapshots 推进到 GA，实现多卷一致性快照，提升有状态工作负载生产可用性",
-          "GitHub 为 Copilot cloud agent 提供独立的“Agents” secrets 与 variables，实现组织级配置复用",
-          "OpenAI 发布新实时语音模型，覆盖推理、翻译与转录，简化语音交互产品设计",
-          "OpenAI 公开 Codex 安全运行机制，包括沙箱、审批、网络策略，强化 Agent 生产可管性"
-        ],
-        "keywords": [
-          "Chrome 148",
-          "Kubernetes v1.36",
-          "Copilot cloud agent",
-          "OpenAI realtime voice",
-          "Codex 安全运行"
-        ],
-        "techStack": [
-          "Chrome",
-          "Kubernetes",
-          "GitHub Actions",
-          "OpenAI API",
-          "Prompt API"
-        ],
-        "difficulty": "中级",
-        "contentType": "技术资讯"
-      },
-      "processedAt": "2026-06-14T14:01:29.550Z"
-    },
     "/daily-news/2026-05-15.md": {
       "sourceHash": "sha256:12ca2bc99ffeb136fa4a6a6ce802b4b49f3fd232f7d7d51b094dca7b3d8dcc3a",
       "analysisHash": "sha256:6dbded0ee6d0c3ca320f4544b3b8862ce11f537b521a0f7618b5a9269ce0b0ec",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:01:35.232Z"
-    },
-    "/daily-news/2026-05-13.md": {
-      "sourceHash": "sha256:09d788676570d534bb041798a064da9a5b6506ec8b87a63d15b3e695cc3b0dc6",
-      "analysisHash": "sha256:13fa97c96fd9575c4ff528253e982be491a28ad7c6015a4772129701304edbb5",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 570 (line 8 column 12)",
-      "processedAt": "2026-06-14T14:01:35.347Z"
-    },
-    "/daily-news/2026-05-18.md": {
-      "sourceHash": "sha256:c9a52bb1bec1682e726743946c368a317296ac521f382f6f8b43058f68b7b51a",
-      "analysisHash": "sha256:2b48fba29660ab6bdf7b7acb9c0b6b588a28861983057b7f0a6af159b3dec88c",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 875 (line 19 column 11)",
-      "processedAt": "2026-06-14T14:01:39.973Z"
-    },
-    "/daily-news/2026-05-23.md": {
-      "sourceHash": "sha256:cb13ad03f948c71a8c73fe648e68f22e2f433a4863f93f86ceeadd39524fc58e",
-      "analysisHash": "sha256:43adcaa276557327b7bfd1ffa2064ceaeb75e746d52864774dee637d0f80dbe0",
       "status": "success",
       "summary": {
-        "summary": "2026年5月23日科技动态聚焦三大领域：前端方面，Chrome扩展生态更新和Safari Technology Preview 244持续提升浏览器可扩展性与试验速度；DevOps方面，npm推出staged publishing与安装源控制参数增强供应链安全，etcd 3.7 beta引入RangeStream并清理遗留组件；AI方面，OpenAI被Gartner评为企业编码代理领导者，GitHub Copilot for Eclipse开源，推动编码代理赛道成熟与生态扩展。",
+        "summary": "2026年5月15日科技动态聚焦前端、DevOps和AI：Chrome测试新安装元素并简化登录，Kubernetes优化服务暴露与调度，AI编码工具向跨设备协作和团队度量演进，共同点是能力更易融入生产流程。",
         "keyPoints": [
-          "Chrome扩展生态回顾强化扩展能力路线图",
-          "Safari Technology Preview 244试验新实现与兼容性变化",
-          "npm新增staged publishing与安装源控制参数，提升供应链安全治理",
-          "etcd 3.7.0-beta.0引入RangeStream并重构清理遗留组件",
-          "AI编码代理赛道成熟：OpenAI成为领导者，Copilot for Eclipse开源"
+          "Chrome测试HTML install element标准化Web安装入口",
+          "Chrome 148引入Immediate UI mode简化登录流程",
+          "Kubernetes v1.36移除Service ExternalIPs并推workload-aware调度",
+          "OpenAI Codex支持移动端跨设备协作",
+          "GitHub开放团队级Copilot使用指标API"
         ],
         "keywords": [
-          "浏览器扩展",
-          "供应链安全",
-          "企业编码代理",
-          "etcd",
-          "Copilot开源"
-        ],
-        "techStack": [
-          "Chrome Extensions",
-          "WebKit",
-          "npm",
-          "etcd",
-          "Kubernetes",
-          "OpenAI Codex",
-          "GitHub Copilot",
-          "Eclipse"
-        ],
-        "difficulty": "medium",
-        "contentType": "技术动态"
-      },
-      "processedAt": "2026-06-14T14:01:44.976Z"
-    },
-    "/daily-news/2026-05-22.md": {
-      "sourceHash": "sha256:b54bb729d6b5143186b968726bda35aadcb828f30c35dbc48a66fba9d6a98f2d",
-      "analysisHash": "sha256:8ebb14a986e48bd0ed1dfa3c6c7323ae5ed4cda4662b941b35d5760039667c8b",
-      "status": "success",
-      "summary": {
-        "summary": "2026年5月22日科技动态围绕开发工作流重构：Chrome以agentic web框架整合浏览器新能力，Safari Technology Preview 244延续高频试验节奏；etcd 3.7首个beta强化可靠性与范围流，GitHub Issue字段公开预览推动协作元数据结构化；OpenAI推进内容溯源并展示医疗落地，AI生态渐重可验证性与行业部署。竞争核心从单点能力转向将新能力嵌入开发、运维与协作主流程。",
-        "keyPoints": [
-          "Chrome以‘agentic web’叙事集中释放新能力，面向AI代理与复杂交互定义浏览器接口路线",
-          "Safari Technology Preview 244作为WebKit高频试验窗口持续提供兼容与实现信号",
-          "etcd 3.7.0-beta.0引入RangeStream、清理遗留组件，提升控制面稳定性与大结果集体验",
-          "GitHub Issue fields公开预览，使优先级、工作量等元数据标准化，推动协作数据结构化",
-          "OpenAI推进内容溯源体系与ChatGPT for Healthcare案例，同步建设可信生态与行业落地"
-        ],
-        "keywords": [
-          "agentic web",
-          "etcd",
-          "content provenance",
-          "browser APIs",
-          "DevOps"
+          "科技动态",
+          "前端",
+          "DevOps",
+          "AI",
+          "Kubernetes"
         ],
         "techStack": [
           "Chrome",
-          "Safari/WebKit",
-          "etcd",
           "Kubernetes",
-          "GitHub",
-          "OpenAI",
-          "Content Credentials",
-          "SynthID"
-        ],
-        "difficulty": "intermediate",
-        "contentType": "daily tech digest"
-      },
-      "processedAt": "2026-06-14T14:01:46.071Z"
-    },
-    "/daily-news/2026-05-21.md": {
-      "sourceHash": "sha256:4eef60a9352d86859e0ae9dd397d48d37b1c820f46da31f65f3cb1d5c067f1b2",
-      "analysisHash": "sha256:a1865aeabb2f3529dc83fa478ff561c151e4602a46e9c48a70a3d736c6c2e034",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 32 (line 2 column 31)",
-      "processedAt": "2026-06-14T14:01:50.854Z"
-    },
-    "/daily-news/2026-06-09.md": {
-      "sourceHash": "sha256:2883fe08ab27c5cbf3a7f063f29a7345b5801d1d7a5559027dbbb245964d20d8",
-      "analysisHash": "sha256:4d2847e367f66b99efc8de6e45ad6d4db8bff352e35042a32eda70eee6b30c6c",
-      "status": "success",
-      "summary": {
-        "summary": "WWDC26首日，Safari 27 beta发布，带来58项新特性与525项修复，聚焦已有能力的稳定性打磨。前端领域迎来可自定义<select>、CSS新伪类与条件函数等改进；Chrome 150 beta增加系统强调色支持。DevOps方面，GitHub EMU IP允许列表正式GA，Copilot获得更大上下文窗口与可配置推理级别。AI领域，OpenAI提交机密S-1启动IPO，ChatGPT上线Dreaming长期记忆系统。整体趋势为品质提升与AI商业化加速。",
-        "keyPoints": [
-          "Safari 27 beta以525项修复为重点，可自定义<select>、CSS :open、Wasm JSPI等为前端亮点",
-          "Chrome 150 beta引入AccentColor系统颜色与CSS image()函数",
-          "GitHub EMU IP允许列表GA，Copilot支持百万token上下文与可配置推理",
-          "OpenAI提交S-1启动史上最大科技IPO，ChatGPT推出Dreaming记忆系统"
-        ],
-        "keywords": [
-          "Safari 27 beta",
-          "Chrome 150 beta",
-          "Copilot",
-          "OpenAI S-1",
-          "Dreaming"
-        ],
-        "techStack": [
-          "WebKit",
-          "CSS",
-          "Wasm",
-          "GitHub",
-          "AI"
-        ],
-        "difficulty": "intermediate",
-        "contentType": "daily-news"
-      },
-      "processedAt": "2026-06-14T14:01:57.112Z"
-    },
-    "/daily-news/2026-06-04.md": {
-      "sourceHash": "sha256:3dfd45eed01c6b6cf6be386725c942449ebd99874b862c8928039ee5a519f06a",
-      "analysisHash": "sha256:977090c58cdc074f2ea3575f546e180276566f555249a71dd2070893acb258da",
-      "status": "success",
-      "summary": {
-        "summary": "2026年6月4日技术动态强调能力进入真实工作流。前端方面，多项CSS与Web API进入Baseline Newly available，Chrome 149补齐布局、bfcache与国际化细节；DevOps侧Kubernetes Dashboard归档并引导迁移至Headlamp，GitHub Copilot沙箱公测以保障AI执行隔离；AI侧OpenAI为GPT-Rosalind强化生命科学推理，且公开Codex在Wasmer边缘构建的效率收益。整体从可用性向工程落地深化。",
-        "keyPoints": [
-          "web.dev发布Baseline月报，container style queries等进入Newly available，增强前端可依赖能力",
-          "Chrome 149新增gap decorations、WebSocket下bfcache支持及Intl.Locale variants，贴近日常工程场景",
-          "Kubernetes官方解释从Dashboard迁移至Headlamp，强调多集群与插件化可视化入口",
-          "GitHub Copilot沙箱公测，为AI工具执行提供本地/云端隔离环境，将自动化纳入正式运行设计",
-          "OpenAI赋予GPT-Rosalind更强的生物推理、药物化学与基因组分析能力，深化专业场景"
-        ],
-        "keywords": [
-          "Baseline",
-          "Headlamp",
-          "Copilot沙箱",
-          "GPT-Rosalind",
-          "工作流"
-        ],
-        "techStack": [],
-        "difficulty": "中等",
-        "contentType": "技术动态"
-      },
-      "processedAt": "2026-06-14T14:01:57.259Z"
-    },
-    "/daily-news/2026-05-24.md": {
-      "sourceHash": "sha256:3cabd20ccbdace08ab2ac8bd7f4672a880ac6943a7efffd4bb6cdce0283b1bb4",
-      "analysisHash": "sha256:f5d966ccbc6e1f96e0926983f83e2fe327955a293dda8be4ef13a10e8c8db6c0",
-      "status": "success",
-      "summary": {
-        "summary": "本篇科技动态综述了2026年5月24日前后的重要更新：Chrome强化passkeys身份认证与声明式局部更新能力，npm推出阶段性发布及安装源控制以提升供应链安全，GitHub开放Issue结构化字段，OpenAI发布Codex企业案例，Copilot实现按任务自动路由模型。整体趋势显示浏览器、工程平台与AI编码工具正协同向自动化协作演进。",
-        "keyPoints": [
-          "Chrome推进passkeys与数字凭证，并开放Declarative Partial Updates流式测试能力，奠定身份现代化与动态页面基础",
-          "npm正式推出staged publishing与新的安装源控制参数，将供应链治理前移至发布和安装阶段",
-          "GitHub向所有组织开放Issue fields公共预览，为工程流程提供标准化结构化元数据",
-          "OpenAI发布Virgin Atlantic使用Codex的交付案例，AI编码代理开始承担时限与质量约束的真实任务",
-          "GitHub Copilot引入任务自动路由模型，AI编码工具更深入嵌入研发流水线"
-        ],
-        "keywords": [
-          "passkeys",
-          "staged publishing",
-          "AI编码代理",
-          "供应链安全",
-          "流式更新"
-        ],
-        "techStack": [
-          "Chrome",
-          "npm",
-          "GitHub",
           "OpenAI Codex",
           "GitHub Copilot"
         ],
         "difficulty": "中等",
-        "contentType": "技术动态综述"
+        "contentType": "技术新闻"
       },
-      "processedAt": "2026-06-14T14:02:00.835Z"
+      "processedAt": "2026-06-14T15:04:35.722Z"
     },
-    "/daily-news/2026-06-13.md": {
-      "sourceHash": "sha256:e2f867af94e042a317780e558e06823618d34dd5e2e5657b041d49337f88b883",
-      "analysisHash": "sha256:910df510e46a0869edddf9673d7378b2ea56579816b38a133689984c898a5ddb",
+    "/daily-news/2026-05-18.md": {
+      "sourceHash": "sha256:c9a52bb1bec1682e726743946c368a317296ac521f382f6f8b43058f68b7b51a",
+      "analysisHash": "sha256:2b48fba29660ab6bdf7b7acb9c0b6b588a28861983057b7f0a6af159b3dec88c",
       "status": "success",
       "summary": {
-        "summary": "本次科技动态聚焦平台稳定性落地：前端方面，Safari 27 beta 强调兼容性修复与可用性提升，WebKit 推出 Grid Lanes 互动指南降低学习门槛；DevOps 方面，GitHub 强化 Copilot code review 组织级控制，并收紧自托管 runner 版本要求以保障大规模作业稳定；AI 方面，OpenAI 推出工作场景培训课程，Anthropic 联合 TCS 将 Claude 推向强监管行业，标志着 AI 采用进入标准化与规模化阶段。",
+        "summary": "2026年5月18日科技动态聚焦开发者工具生态，前端侧重浏览器原生能力（CSS gap装饰、HTML install元素）减少工程补丁；DevOps关注Kubernetes v1.36路由指标与GitHub Actions镜像迁移提醒；AI领域OpenAI联合Databricks将GPT-5.5推向企业代理，Copilot Memory支持用户偏好记忆。整体趋势是工具能力从演示层推向日常流程。",
         "keyPoints": [
-          "Safari 27 beta 重在修复旧特性边界，提升生产环境兼容性",
-          "WebKit 推出 Grid Lanes 互动 Field Guide，将学习路径产品化",
-          "GitHub Copilot code review 新增组织级 runner 控制与内容排除规则",
-          "GitHub Actions 强制自托管 runner 版本，推动控制面持续升级",
-          "OpenAI 发布工作场景学院课程，推动 AI 使用标准化与复制化"
+          "Chromium新增CSS gap decorations原生样式能力，简化布局实现",
+          "HTML install element进入试验，标准化PWA安装入口",
+          "Kubernetes v1.36引入路由同步指标，增强可观测性",
+          "GitHub Actions提前通知镜像迁移，影响CI环境升级",
+          "Copilot Memory开始支持用户级偏好，实现长期协作上下文"
         ],
         "keywords": [
-          "前端兼容性",
-          "组织级自动化",
-          "AI 培训",
-          "自托管 runner",
-          "互动文档"
+          "CSS",
+          "Kubernetes",
+          "GitHub Actions",
+          "GPT-5.5",
+          "Copilot Memory"
         ],
         "techStack": [
-          "Safari",
-          "WebKit",
+          "Chromium",
+          "Kubernetes",
           "GitHub Actions",
-          "Copilot",
-          "Claude",
-          "OpenAI Academy",
-          "CSS Grid"
+          "OpenAI",
+          "Databricks",
+          "GitHub Copilot"
         ],
         "difficulty": "中等",
-        "contentType": "技术动态摘要"
+        "contentType": "daily-news"
       },
-      "processedAt": "2026-06-14T14:02:07.614Z"
+      "processedAt": "2026-06-14T15:04:37.868Z"
     },
-    "/daily-news/2026-06-08.md": {
-      "sourceHash": "sha256:8e0686960f55bd4f8321f0cadc4f959dc423b737894b3c6519940952e429b498",
-      "analysisHash": "sha256:802cf007f12734d078c46cffbbcbd5278e6a4febe7a57d0411c2caf80c1b5dd8",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 642 (line 8 column 45)",
-      "processedAt": "2026-06-14T14:02:09.378Z"
-    },
-    "/git/README.md": {
-      "sourceHash": "sha256:17b79cebfeb0b4929771f3848cf27958c9f26b0a04ea5ffa967766c665029610",
-      "analysisHash": "sha256:7f0952d0db2c706f96f5f9ebf53c13bc97068ef8d3bcb65e66522360b49c41b0",
+    "/daily-news/2026-05-21.md": {
+      "sourceHash": "sha256:4eef60a9352d86859e0ae9dd397d48d37b1c820f46da31f65f3cb1d5c067f1b2",
+      "analysisHash": "sha256:a1865aeabb2f3529dc83fa478ff561c151e4602a46e9c48a70a3d736c6c2e034",
       "status": "success",
       "summary": {
-        "summary": "本文档提供了Git的常用命令、提交类型规范、删除历史记录、同步fork上游更新、部署到GitHub Pages以及使用GitHub Actions自动部署的指南。内容涵盖从基础使用到持续集成配置，适合开发者参考。",
+        "summary": "2026年5月21日科技动态聚焦浏览器、DevOps和AI三方向协同推进开发基础设施。Chrome押注agentic web并试验HTML-in-Canvas，etcd发布新版优化大结果集，GitHub Copilot接入流水线失败修复，OpenAI展示模型数学突破与Codex代码评审落地。",
         "keyPoints": [
-          "列出常用Git命令及完整版链接",
-          "说明commit message的常见type及其含义",
-          "演示如何删除Git所有提交历史",
-          "介绍同步GitHub fork项目上游更新的方法",
-          "展示将代码部署到gh-pages分支和使用GitHub Actions自动部署"
+          "Chrome面向agentic web推出15项更新并启动HTML-in-Canvas API试验",
+          "etcd 3.7.0-beta.0发布，引入RangeStream并清理遗留组件",
+          "GitHub Copilot cloud agent为失败的Actions提供一键修复",
+          "OpenAI模型推翻离散几何中的核心猜想",
+          "OpenAI展示Codex在Ramp团队加速代码评审的案例"
         ],
         "keywords": [
-          "Git",
-          "GitHub",
-          "命令",
-          "提交规范",
-          "GitHub Actions"
+          "agentic web",
+          "Chrome更新",
+          "Copilot云代理",
+          "etcd",
+          "OpenAI数学突破"
         ],
         "techStack": [
-          "Git",
-          "GitHub",
+          "Chrome",
+          "HTML-in-Canvas",
+          "etcd",
           "GitHub Actions",
-          "gh-pages"
+          "Copilot",
+          "OpenAI",
+          "Codex"
         ],
-        "difficulty": "中级",
-        "contentType": "教程"
+        "difficulty": "中等",
+        "contentType": "技术动态"
       },
-      "processedAt": "2026-06-14T14:02:16.570Z"
+      "processedAt": "2026-06-14T15:04:40.678Z"
     },
-    "/daily-news/2026-06-11.md": {
-      "sourceHash": "sha256:470165df3caa1218e154d3f8769cdcec08b2c13e2cd9ad4923473dd269719e08",
-      "analysisHash": "sha256:3e2ff23ca8e7f950aa3d4dd99efe1ef71d6d55d893a708b93b955e2cb4fe5200",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:02:20.384Z"
+    "/daily-news/2026-05-13.md": {
+      "sourceHash": "sha256:09d788676570d534bb041798a064da9a5b6506ec8b87a63d15b3e695cc3b0dc6",
+      "analysisHash": "sha256:13fa97c96fd9575c4ff528253e982be491a28ad7c6015a4772129701304edbb5",
+      "status": "success",
+      "summary": {
+        "summary": "2026年5月13日科技动态聚焦前端、DevOps和AI三大领域。Safari 26.5发布:open等新特性，提升跨浏览器一致性；Kubernetes v1.36推进Volume Group Snapshots至GA，并扩展动态资源分配；OpenAI成立DeployCo专注企业部署，GitHub改进Copilot代码审查体验。整体趋势强调能力落地与长期维护。",
+        "keyPoints": [
+          "Safari 26.5新增:open伪类、random()等特性，简化跨浏览器组件与样式开发",
+          "Kubernetes v1.36将Volume Group Snapshots提升至GA，增强有状态应用数据保护",
+          "Kubernetes v1.36扩展Dynamic Resource Allocation，支持GPU等异构资源统一调度",
+          "OpenAI推出DeployCo，将企业AI部署单独产品化",
+          "GitHub优化Copilot code review评论体验，强化AI协作"
+        ],
+        "keywords": [
+          "Safari",
+          "Kubernetes",
+          "Volume Group Snapshots",
+          "Dynamic Resource Allocation",
+          "OpenAI DeployCo"
+        ],
+        "techStack": [
+          "WebKit",
+          "Kubernetes",
+          "OpenAI",
+          "GitHub"
+        ],
+        "difficulty": "medium",
+        "contentType": "news"
+      },
+      "processedAt": "2026-06-14T15:04:42.377Z"
     },
     "/daily-news/2026-06-12.md": {
       "sourceHash": "sha256:f3c03989d5671e21e8ecb2c6aa652e436a865547748c42cf1854c5e07e689f3b",
       "analysisHash": "sha256:705c4c409e99e775e2d6f85a0dd48d8adbffa7cebaa02587eadbc7c5a835754d",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:02:23.190Z"
+      "status": "success",
+      "summary": {
+        "summary": "本日动态聚焦前端、DevOps和AI领域的新发布。WebKit发布MapKit JS 6，通过npm包和标准事件模型提升开发体验；Chrome启动WebMCP试验，为智能体提供网页结构化接口；GitHub Agentic Workflows进入公开预览，并放宽bot触发CI的审批限制；OpenAI收购Ona强化代理执行环境，并支持欧盟AI内容透明度准则，强调工程接入与治理可行性。",
+        "keyPoints": [
+          "WebKit MapKit JS 6引入npm包和现代事件模型，简化地图集成",
+          "Chrome WebMCP origin trial为智能体提供网页结构化交互接口",
+          "GitHub Agentic Workflows公开预览，并在审批后允许bot PR触发CI",
+          "OpenAI收购Ona以构建安全持久的代理执行环境",
+          "OpenAI支持欧盟AI内容透明度，推出C2PA和SynthID验证工具"
+        ],
+        "keywords": [
+          "MapKit JS 6",
+          "WebMCP",
+          "Agentic Workflows",
+          "OpenAI Codex",
+          "AI content transparency"
+        ],
+        "techStack": [
+          "WebKit",
+          "Chrome",
+          "GitHub Actions",
+          "OpenAI",
+          "npm",
+          "TypeScript"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "news summary"
+      },
+      "processedAt": "2026-06-14T15:04:46.529Z"
+    },
+    "/daily-news/2026-06-11.md": {
+      "sourceHash": "sha256:470165df3caa1218e154d3f8769cdcec08b2c13e2cd9ad4923473dd269719e08",
+      "analysisHash": "sha256:3e2ff23ca8e7f950aa3d4dd99efe1ef71d6d55d893a708b93b955e2cb4fe5200",
+      "status": "success",
+      "summary": {
+        "summary": "今日技术动态涵盖前端、DevOps与AI：WebKit发布Grid Lanes交互式指南并汇总WWDC26课程，强化新特性教学与落地；GitHub CLI新增discussion命令组，Copilot CLI推出安全审查，将协作与安全融入终端工作流；OpenAI将模型接入Oracle Cloud承诺额度，并展示Codex在黑洞模拟中的科研辅助能力，推动AI走向企业基础设施与专业研究。",
+        "keyPoints": [
+          "WebKit发布Grid Lanes官方交互式指南，支持直接编辑CSS并观察布局效果，加速新布局能力落地。",
+          "WWDC26六场Web技术课程聚焦Safari 27新特性，包括自定义表单控件、model元素等，转向开发者教育基础设施。",
+          "GitHub CLI新增gh discussion命令，实现在终端内管理讨论区，将讨论纳入命令行工作流。",
+          "Copilot CLI增加/security-review命令，将安全审查前移到提交之前，缩短安全反馈周期。",
+          "OpenAI将模型与Codex接入Oracle Cloud承诺额度，降低企业采购与合规摩擦；同时展示Codex在黑洞模拟中的科研应用。"
+        ],
+        "keywords": [
+          "Grid Lanes",
+          "GitHub CLI",
+          "Copilot CLI",
+          "OpenAI Codex",
+          "WWDC26"
+        ],
+        "techStack": [
+          "WebKit",
+          "Safari 27",
+          "GitHub CLI",
+          "Copilot CLI",
+          "OpenAI",
+          "Codex",
+          "Oracle Cloud"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "news"
+      },
+      "processedAt": "2026-06-14T15:04:48.289Z"
     },
     "/daily-news/2026-06-14.md": {
       "sourceHash": "sha256:d748bb0432abe97e7420d8bc03d6dbe70dafa18618c7a6c0579b78383c242a18",
       "analysisHash": "sha256:41c4fac8eba2449c3a6c637d5dc6679e5e4089662d3828af04863594686617f1",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 1007 (line 22 column 18)",
-      "processedAt": "2026-06-14T14:02:30.279Z"
-    },
-    "/interview-prep/tech__performance.md": {
-      "sourceHash": "sha256:077c1664660debec46036261bdb28a222af86885a60ad664deaf0f6405b959e9",
-      "analysisHash": "sha256:ddf7041b519b8f4c75b7b4d0dd8fa3dc35f8a2e9a1eb4dc5b7488c5449eeaae4",
       "status": "success",
       "summary": {
-        "summary": "从Web Vitals（LCP/INP/CLS）指标入手，讲解前端性能优化方法论。结合骨架屏、preload/prefetch、关键渲染路径等策略提升感知速度；通过Performance面板、Long Task分析与RUM数据定位瓶颈；引入性能预算与CI门禁形成治理闭环，并关联项目落地案例。",
+        "summary": "本文概述了2026年6月中旬前端、DevOps和AI领域的官方更新。前端强调浏览器对AI agent和现代工程链路的显式支持，如Chrome的WebMCP试验和WebKit的MapKit JS 6。DevOps方面，GitHub推出Agentic Workflows公共预览和企业服务器3.21版，强化自动化与治理。AI方面，OpenAI推进生成内容透明度，Anthropic启动Claude Corps计划以在社会组织落地AI。",
         "keyPoints": [
-          "以LCP、INP、CLS为核心建立性能指标体系与基线",
-          "利用骨架屏、资源优先级（preload/prefetch）优化首屏感知速度",
-          "通过Long Task分析、Lighthouse和RUM数据定位性能瓶颈",
-          "实施性能预算、CI门禁与监控预警，防止性能回退",
-          "结合项目场景（C端与中后台）阐述分阶段治理策略"
+          "Chrome通过WebMCP原始试验，让网站显式声明界面能力以更好地与AI agent交互",
+          "WebKit发布MapKit JS 6，提供NPM包和现代构建工具集成，简化地图能力接入",
+          "GitHub Agentic Workflows进入公开预览，支持用自然语言定义自动化并纳入流水线",
+          "GitHub Enterprise Server 3.21正式发布，增强组织治理、元数据和容量规划",
+          "OpenAI支持欧盟AI透明度实践，为生成内容添加C2PA元数据和SynthID水印"
         ],
         "keywords": [
-          "Web Vitals",
-          "关键渲染路径",
-          "性能预算",
-          "骨架屏",
-          "LCP/INP/CLS"
+          "WebMCP",
+          "Agentic Workflows",
+          "AI透明度",
+          "MapKit JS",
+          "Claude Corps"
         ],
         "techStack": [
-          "React",
-          "Webpack",
-          "Performance API",
-          "Lighthouse",
-          "RUM"
-        ],
-        "difficulty": "高级",
-        "contentType": "interview-preparation"
-      },
-      "processedAt": "2026-06-14T14:02:31.989Z"
-    },
-    "/interview-prep/tech__webpack.md": {
-      "sourceHash": "sha256:b11a4532f35271e9bf29b244cbb68e242d2818f45594ceb71eaf35666f37e4c2",
-      "analysisHash": "sha256:7fac8123616204d339e26d7c5c73c7eb517ec0befcd1d0d29639875e42ae86ae",
-      "status": "success",
-      "summary": {
-        "summary": "本文围绕Webpack在大疆用户中心重构、RMS系统等复杂中后台项目中的应用，介绍了其以模块图为核心的打包原理、Loader与Plugin的职责区分、构建流程优化（拆包、持久化缓存、关键渲染路径）以及与Vite/Rollup的对比。重点阐述了如何通过工程化配置分层、hash策略、懒加载等手段提升性能，并强调在遗留系统与多团队协作中Webpack的稳定可控优势。",
-        "keyPoints": [
-          "Webpack通过Loader转换单文件，Plugin介入编译生命周期，实现代码打包与产物优化",
-          "性能优化围绕关键渲染路径：拆包、懒加载、缓存策略与首屏资源优先级调整",
-          "通过splitChunks与contenthash实现长效缓存，减少业务变更影响范围",
-          "与Vite/Rollup对比，Webpack在复杂中后台与遗留系统中生态最成熟、回滚最稳定",
-          "项目落地强调配置分层（base/dev/prod）、规范化产物与可量化回归门禁"
-        ],
-        "keywords": [
-          "Webpack",
-          "模块打包",
-          "性能优化",
-          "构建优化",
-          "关键渲染路径"
-        ],
-        "techStack": [
-          "Webpack",
-          "Babel",
-          "TypeScript",
-          "SCSS",
-          "Loaders/Plugins"
-        ],
-        "difficulty": "advanced",
-        "contentType": "interview_preparation"
-      },
-      "processedAt": "2026-06-14T14:02:35.188Z"
-    },
-    "/interview-prep/README.md": {
-      "sourceHash": "sha256:5ccf782c591ae505d3079e68fb0ac5bca7e2e7c61fa2759814682d577696a0ed",
-      "analysisHash": "sha256:4da5027c8fb9b64ca6ef9e02e1f6fea72842a8d19084567221fdac48dc067066",
-      "status": "success",
-      "summary": {
-        "summary": "该文档为前端面试准备主索引，列出5个项目经历（大疆相关系统）、8个技术专项和5个横向对比矩阵，按优先级和类别组织，支持快速跳转至各卡片详情页。",
-        "keyPoints": [
-          "以优先级队列形式组织所有面试内容，分为项目、技术和矩阵三类",
-          "包含大疆RMS、用户中心、公告插件、DevOps、XDR大屏项目经验",
-          "涵盖Webpack、React、TypeScript、ESLint工程化、微前端、Rollup、Vite、性能优化技术栈",
-          "设置横向对比矩阵（构建工具、Monorepo方案、表单方案、代码导出策略、CI/CD发布策略）",
-          "每个条目均链接至对应的详细卡片文档，支持按原理、对比、问答、手写代码等维度查阅"
-        ],
-        "keywords": [
-          "面试索引",
-          "前端面试准备",
-          "大疆项目",
-          "技术栈梳理",
-          "优先级队列"
-        ],
-        "techStack": [
-          "Webpack",
-          "React",
-          "TypeScript",
-          "ESLint",
-          "Qiankun",
-          "Rollup",
-          "Vite"
-        ],
-        "difficulty": "medium",
-        "contentType": "index"
-      },
-      "processedAt": "2026-06-14T14:02:36.253Z"
-    },
-    "/interview/README.md": {
-      "sourceHash": "sha256:2c68f6f9c21db741639b44e40dba7f7da7b32506b4b9a4e4ad50c734fe33b88b",
-      "analysisHash": "sha256:cf2a5d7bb5f205ee3e9184df77923fe6eb8c5471d3464636f9c40a1c67b9a7a7",
-      "status": "success",
-      "summary": {
-        "summary": "该文档是面试记录的索引页面，包含两个Markdown文件的链接：2025-04-28.md 和 2025-04-28-analysis.md，分别指向某次面试的原始记录与分析总结。",
-        "keyPoints": [
-          "提供面试记录文件的导航链接",
-          "包含原始记录和分析总结两种文档类型"
-        ],
-        "keywords": [
-          "面试",
-          "记录",
-          "索引",
-          "分析"
-        ],
-        "techStack": [],
-        "difficulty": "初级",
-        "contentType": "文档索引"
-      },
-      "processedAt": "2026-06-14T14:02:36.300Z"
-    },
-    "/interview/2025-04-28-analysis.md": {
-      "sourceHash": "sha256:686c41564ad82f6d1cdf82426d407fd649ff43646757d34dd6da51c64a77512c",
-      "analysisHash": "sha256:604f48aecf822a4c0fe011611fb70d1a2c08de8ae5fbc77f133654731ae34d9d",
-      "status": "success",
-      "summary": {
-        "summary": "该文档为面试题演练，涵盖笔试重点（框架原理、工程化、性能优化、算法）和技术面试高频考点（框架深度、工程化实践、性能优化体系、架构设计），并给出行为面试应答策略与软实力展现技巧。",
-        "keyPoints": [
-          "笔试包含框架原理、工程化、性能方案设计和算法题，需在60分钟内完成",
-          "技术面试重点考察Vue3响应式、微前端沙箱、低代码平台、构建优化、LCP优化等",
-          "行为面试要求使用STAR法则描述项目难点、团队协作和技术决策冲突",
-          "性能优化体系强调虚拟滚动、内存管理、LCP综合方案及内存泄漏排查",
-          "架构设计能力侧重插件系统选型（Rollup+Preact）和微前端通信方案"
-        ],
-        "keywords": [
-          "面试演练",
-          "性能优化",
-          "框架原理",
-          "工程化实践",
-          "STAR法则"
-        ],
-        "techStack": [
-          "Vue3",
-          "React",
-          "Rollup",
-          "Preact",
-          "Quasar",
-          "Formily",
-          "Pinia"
-        ],
-        "difficulty": "高级",
-        "contentType": "面试题演练"
-      },
-      "processedAt": "2026-06-14T14:02:36.598Z"
-    },
-    "/issue/README.md": {
-      "sourceHash": "sha256:3a6ce7898329417cd6e1d6ef78caa38b144ff22da15c1c45f69a0e74fecd0b6a",
-      "analysisHash": "sha256:f386c1dbaa256e6fa7a8921d5e35d8bc9243244d612acf831a0e0307d57f55d5",
-      "status": "success",
-      "summary": {
-        "summary": "该文档是疑难杂症索引，引导至 h5.md 与 pc.md，分别记录移动端和桌面端的常见问题与解决方案。",
-        "keyPoints": [
-          "提供 H5 和 PC 常见疑难杂症的入口索引",
-          "按平台划分问题文档，便于分类查阅",
-          "简洁目录结构，指向深入的技术记录"
-        ],
-        "keywords": [
-          "疑难杂症",
-          "索引",
-          "H5",
-          "PC",
-          "问题汇总"
-        ],
-        "techStack": [],
-        "difficulty": "低",
-        "contentType": "索引/目录"
-      },
-      "processedAt": "2026-06-14T14:02:40.783Z"
-    },
-    "/JavaScript/README.md": {
-      "sourceHash": "sha256:815e4eba6047bd9bfaadd5203a638261ce5cbb1eea01938e28ac91b1f59ca9b0",
-      "analysisHash": "sha256:227932e4ea2d9db7ae1ff1fb81cfbae5042c9e5bde9d2062085e98d917754596",
-      "status": "success",
-      "summary": {
-        "summary": "本文档系统梳理JavaScript核心基础知识，涵盖数据类型、类型判断、this指向、相等运算符、闭包、深浅拷贝、原型链以及ES6+特性（Class、模块化、Proxy、Generator）等常考面试点，适合用于面试准备和基础巩固。",
-        "keyPoints": [
-          "原始类型与对象类型在赋值时复制地址的差异，导致修改对象会互相影响",
-          "typeof与instanceof在类型判断中的适用场景及原型链判断原理",
-          "闭包通过内部函数访问外部变量，实现间接访问函数内部变量",
-          "浅拷贝只解决第一层对象问题，深拷贝需处理循环引用、函数等特殊类型",
-          "原型链通过__proto__连接对象，ES6 Class提供语法糖实现继承"
-        ],
-        "keywords": [
-          "JavaScript",
-          "ES6",
-          "原型链",
-          "闭包",
-          "异步编程"
-        ],
-        "techStack": [
-          "JavaScript",
-          "ES6"
-        ],
-        "difficulty": "中级",
-        "contentType": "教程/面试准备"
-      },
-      "processedAt": "2026-06-14T14:02:45.888Z"
-    },
-    "/job-description/lib/11-frontend-hard-mode-interview-原题提取-基于简历.md": {
-      "sourceHash": "sha256:f681b57266a7cee8d6d310559514e62243dfde674c7c03929007e91bb097ccae",
-      "analysisHash": "sha256:ade44b4451ff0f14937c972017cd4b4bd7eb3985b09640eb6baa4f9fb4d5220b",
-      "status": "success",
-      "summary": {
-        "summary": "本文档提取了前端高阶面试中网络与协议相关题目，聚焦TCP/IP分层、TCP三次握手与四次挥手流程，分析握手延迟对性能的影响及连接重用优化（如TCP Fast Open），解析常见面试问题如为什么挥手需要四次、TIME_WAIT为何等待2MSL，帮助前端理解底层通信机制。",
-        "keyPoints": [
-          "TCP/IP协议分层模型及传输层主要协议（TCP、UDP、TLS）的作用",
-          "TCP三次握手流程及其对应用性能的影响，强调连接重用与TFO优化",
-          "TCP四次挥手过程及TIME_WAIT状态的设计必要性",
-          "经典面试题解析：为什么挥手比握手多一次、TIME_WAIT等待2MSL的原因"
-        ],
-        "keywords": [
-          "TCP",
-          "三次握手",
-          "四次挥手",
-          "TLS",
-          "网络延时"
-        ],
-        "techStack": [
-          "TCP/IP",
-          "TLS",
-          "网络协议"
+          "Chrome",
+          "WebKit",
+          "GitHub Actions",
+          "OpenAI API",
+          "Claude"
         ],
         "difficulty": "中等",
-        "contentType": "面试题解析"
+        "contentType": "技术动态总结"
       },
-      "processedAt": "2026-06-14T14:02:54.868Z"
-    },
-    "/job-description/ASK_RECORD_AI.md": {
-      "sourceHash": "sha256:5c6e7262bc61e1a837d5fcd1056f6e65f4bbf9c4c302d950a284f196f1b1d489",
-      "analysisHash": "sha256:5b7e3ce9ef17702281a767b2a868e5dbeaf17fbd11d8f447964251089a059b5d",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:02:59.762Z"
+      "processedAt": "2026-06-14T15:04:51.657Z"
     },
     "/job-description/ASK_RECORD_KEY.md": {
       "sourceHash": "sha256:46923804ca67b025ed0e4c03cea87e1feb49daac90c52d5b73c8d17cf034dc05",
       "analysisHash": "sha256:6a2de5474dbc9e9b2fccff61ed7aab0f218b20ba31b1f911f9976b30740e46e5",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:02:59.775Z"
-    },
-    "/job-description/history/README.md": {
-      "sourceHash": "sha256:e6cbdff78b9dca906a266e1af38a09d607e66d080e58ef244433e23c20f41b86",
-      "analysisHash": "sha256:0eb9d5204024791765501b85c006baf7972e57006e6949aad1ce9194f21c8c59",
-      "status": "error",
-      "error": "AI provider returned empty content",
-      "processedAt": "2026-06-14T14:03:03.306Z"
-    },
-    "/job-description/README.md": {
-      "sourceHash": "sha256:502bd536988208408c3fbb82237de04d5c5356f9042582beef444e0ccda6f38a",
-      "analysisHash": "sha256:a13a6401598dcab930606648f7343cf326e791069019d35751e9e878f26133b4",
       "status": "success",
       "summary": {
-        "summary": "9年经验高级前端工程师，专注复杂系统重构、性能优化与低代码平台建设。主导大疆用户中心及RMS系统重构，日均承载120W+请求，通过响应式架构将维护成本降低50%，LCP优化28.9%。具备全栈开发能力，获低代码大赛特等奖。",
+        "summary": "该文档是大疆用户中心重构项目的面试知识点索引，涵盖骨架屏、core-js polyfill策略、字体压缩、CSS打包优化、JS加载执行控制、TLS 1.3与HTTP/2优化等6个技术主题，每个主题均提供一句话结论、实现步骤、验证方法和常见坑，旨在帮助面试者快速掌握前端性能优化核心要点。",
         "keyPoints": [
-          "主导千万级用户系统重构，日均请求量120W+，实现响应式多端统一，维护成本降低50%",
-          "性能攻坚战绩显著，LCP从2.3s优化至1.4s，首屏加载<1.5s，登录转化率提升18%",
-          "低代码平台落地，页面开发效率提升40%，打造跨系统插件体系，包体积<15KB，接入周期<0.5人日/系统",
-          "全栈能力突出，使用NestJS完成前后端一体化交付，构建自动化报表与CI/CD流水线"
+          "骨架屏解决首屏白屏和CLS，重点在于LCP提前和尺寸稳定",
+          "core-js按浏览器矩阵按需注入，避免全量引入导致包体积膨胀",
+          "字体优化采用woff2格式、子集化、合理加载与font-display策略",
+          "CSS优化侧重于减少阻塞、体积和无效样式，正确配置Tree Shaking",
+          "HTTP/2多路复用提升并发，TLS 1.3减少握手RTT"
         ],
         "keywords": [
-          "低代码",
-          "性能优化",
-          "微前端",
-          "系统重构",
-          "全栈开发"
+          "前端性能优化",
+          "骨架屏",
+          "polyfill",
+          "字体压缩",
+          "HTTP/2"
         ],
         "techStack": [
-          "React",
-          "Vue",
-          "TypeScript",
-          "NestJS",
-          "Webpack",
-          "Vite",
-          "Node.js",
-          "qiankun"
-        ],
-        "difficulty": "advanced",
-        "contentType": "job_description"
-      },
-      "processedAt": "2026-06-14T14:03:04.826Z"
-    },
-    "/online-tools/README.md": {
-      "sourceHash": "sha256:3deed1e3c9e9d996f099cb6b9e3ba0935564e296c25a32dffe52deb3bdd8cdbe",
-      "analysisHash": "sha256:7fcf2272b82e61995815abb4fde9dd32dbb23c2a989dbb0081c682e3089fc159",
-      "status": "success",
-      "summary": {
-        "summary": "本文档列出了丰富的在线开发工具和资源，涵盖兼容性查询、代码沙箱、正则表达式、代码编译与生成、CSS/SVG图像生成、图片处理与压缩等类别。方便开发者快速查找和使用。",
-        "keyPoints": [
-          "提供了代码运行沙箱（CodeSandbox、Codepen）和正则表达式可视化/测试工具",
-          "包含Babel、TypeScript、Vue模板探索器等代码编译与转换工具",
-          "列出CSS布局、圆角、阴影、渐变等生成器和SVG波浪生成器",
-          "包含remove.bg等图片背景去除和TinyPNG等图片压缩工具"
-        ],
-        "keywords": [
-          "在线工具",
-          "代码沙箱",
-          "正则表达式",
-          "CSS生成器",
-          "图片压缩"
-        ],
-        "techStack": [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Vue",
-          "TypeScript",
-          "Sass/Less/Stylus"
-        ],
-        "difficulty": "初级",
-        "contentType": "资源列表"
-      },
-      "processedAt": "2026-06-14T14:03:09.999Z"
-    },
-    "/mark/README.md": {
-      "sourceHash": "sha256:0d33e2d8f6a28473633f6a935f49df308f50e16de5518f75db358a0a0de8b2ee",
-      "analysisHash": "sha256:3ca910c209e6db0a24a44b16cc399e2c3063dcd13725adf0cf7da73280f32e34",
-      "status": "success",
-      "summary": {
-        "summary": "文档以STAR法则组织回答，针对前端性能优化、webpack构建、响应式开发、加载渲染速度、骨架屏等面试问题，提供从网络层（TLS 1.3、preconnect）、资源加载（代码分割、WebP）到渲染优化（骨架屏、稳定布局）的完整方案，并补充指标归因、风险控制等追问要点。",
-        "keyPoints": [
-          "性能优化覆盖浏览器请求全链路：网络层（TLS 1.3、预连接）、资源加载（代码分割、图片优化）和渲染优化（骨架屏、防布局抖动）",
-          "响应式融合开发用媒体查询+CSS变量+useResponsive Hook实现一套代码多端适配，维护成本降低50%",
-          "webpack性能配置包括Tree Shaking、长缓存和构建分析，强调contenthash与runtimeChunk",
-          "骨架屏通过内联体积<5KB的HTML快速展示页面结构，减少白屏并降低CLS",
-          "优化需关注指标来源（RUM/Lighthouse）、归因方法和风险控制（如懒加载对CLS的影响）"
-        ],
-        "keywords": [
-          "性能优化",
-          "响应式",
-          "webpack",
-          "STAR法则",
-          "骨架屏"
-        ],
-        "techStack": [],
-        "difficulty": "medium",
-        "contentType": "interview-preparation"
-      },
-      "processedAt": "2026-06-14T14:03:10.094Z"
-    },
-    "/node/README.md": {
-      "sourceHash": "sha256:c6b6b423f614cee1eeb88c8ec7f492e86df8605628803d3a12075a1d8c9db73c",
-      "analysisHash": "sha256:e1534cd00e8979705fbe58df0695ef5fb9dd230acb9b70bba3c2cadea42f2233",
-      "status": "success",
-      "summary": {
-        "summary": "该文档是 Node.js 相关技术的索引页面，提供了 npm.md 和 toolkit.md 两个子文档的链接，用于快速导航至 npm 及工具包相关内容。",
-        "keyPoints": [
-          "Node.js 文档入口索引",
-          "链接至 npm 相关文档",
-          "链接至 toolkit 工具包文档"
-        ],
-        "keywords": [
-          "Node.js",
-          "npm",
-          "toolkit",
-          "索引",
-          "文档导航"
-        ],
-        "techStack": [],
-        "difficulty": "beginner",
-        "contentType": "index"
-      },
-      "processedAt": "2026-06-14T14:03:10.607Z"
-    },
-    "/Pattern/BroadcastChannel/README.md": {
-      "sourceHash": "sha256:7e470906f90465d1459d65537a510d12c215e4d44aa9f4fe42db9cbde8903c11",
-      "analysisHash": "sha256:77dbb29d59e22865089473dc3d11797e8e91db7d6e518af47c9e43efe619513b",
-      "status": "success",
-      "summary": {
-        "summary": "本文介绍了基于浏览器原生 Broadcast Channel API 的封装库 BroadcastBridge，提供了状态缓存、自动同步、跨标签页/iframe/Worker 的同源通信能力，并展示了 API 用法、React Hook 集成、自动同步机制及多个应用场景。",
-        "keyPoints": [
-          "基于 Broadcast Channel API 实现同源多上下文（标签页、iframe、Worker）通信",
-          "封装 BroadcastBridge 类，增加数据缓存和自动同步功能",
-          "提供 publish/subscribe/get/unsubscribe/clear 等 API",
-          "支持新标签页自动请求并同步现有数据",
-          "可结合 React Hook 在组件中使用"
-        ],
-        "keywords": [
-          "BroadcastChannel",
-          "跨标签页通信",
-          "同源",
-          "自动同步",
-          "React Hook"
-        ],
-        "techStack": [
-          "Broadcast Channel API",
-          "JavaScript",
-          "React"
-        ],
-        "difficulty": "中等",
-        "contentType": "API文档与使用指南"
-      },
-      "processedAt": "2026-06-14T14:03:16.211Z"
-    },
-    "/Pattern/CustomEvent/README.md": {
-      "sourceHash": "sha256:8054d479b5dd0226828237988d0147b13cbf983a6ece7f4576606dfbe1a9c732",
-      "analysisHash": "sha256:528dc839dfef40196b1788044be76f78383ac95a5cce2d73a4ce588557decb8d",
-      "status": "success",
-      "summary": {
-        "summary": "本文介绍基于浏览器原生 CustomEvent 和 dispatchEvent API 实现的跨组件、跨框架通信方案。通过封装 CustomEventBridge 类，提供缓存、类型安全及便捷的订阅/发布接口（on、off、dispatch、once 等），支持 React Hook 和微前端场景，无需任何依赖，仅限同一页面内使用。",
-        "keyPoints": [
-          "基于原生 CustomEvent 和 dispatchEvent 实现事件通信",
-          "CustomEventBridge 封装缓存和类型安全，提供 get、on、off、clear、once 等 API",
-          "支持 React、Vue、Angular 等框架及微前端子应用间通信",
-          "提供 React Hook 示例和事件名前缀自定义",
-          "仅限同一页面内通信，需手动管理监听器"
-        ],
-        "keywords": [
-          "自定义事件",
-          "跨框架通信",
-          "CustomEvent",
-          "发布订阅",
-          "微前端"
-        ],
-        "techStack": [],
-        "difficulty": "简单",
-        "contentType": "技术文档"
-      },
-      "processedAt": "2026-06-14T14:03:20.039Z"
-    },
-    "/Pattern/EventBus/README.md": {
-      "sourceHash": "sha256:09f616c5e1f9189b0c3893d84a6884b43a2b4fb9dffcb8df60d5b7ddc7d0f27b",
-      "analysisHash": "sha256:6ef53a6992e9d88fefeee5c2976010b50443bb6090e9efc8a07e59e94b0e0369",
-      "status": "success",
-      "summary": {
-        "summary": "事件总线是一种集中式事件管理机制，通过发布/订阅模式实现组件间松耦合通信。它提供 on、emit、off、once 和 clear 等 API，支持事件缓存和立即触发。文档包括核心类设计、React Hook 示例、命名规范以及适用场景，并指出字符串事件名缺乏类型约束和调试困难等缺点。",
-        "keyPoints": [
-          "采用发布/订阅模式，实现组件间完全解耦，支持多对多通信",
-          "核心 API 包含 on、emit、off、once、clear，支持事件缓存与立即触发",
-          "推荐使用命名空间风格的事件命名，以提高可维护性",
-          "适用于全局通知、模块协调、松耦合通信等场景",
-          "存在事件名为字符串、调试时难以追踪事件流的局限性"
-        ],
-        "keywords": [
-          "事件总线",
-          "发布/订阅",
-          "组件通信",
-          "解耦",
-          "事件管理"
-        ],
-        "techStack": [
-          "JavaScript",
-          "React"
-        ],
-        "difficulty": "beginner",
-        "contentType": "documentation"
-      },
-      "processedAt": "2026-06-14T14:03:20.380Z"
-    },
-    "/mark/07-NestJS与SSR.md": {
-      "sourceHash": "sha256:bf73e25d527fa2f25994781f8eee0a0948160b863f763e38abbf7ef6496863f0",
-      "analysisHash": "sha256:d7cdd4c75f93a43178164d0ba763ccd8efccfa95110fe0b584bc284355f49aaa",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 315 (line 7 column 9)",
-      "processedAt": "2026-06-14T14:03:20.473Z"
-    },
-    "/Pattern/ProxyStore/README.md": {
-      "sourceHash": "sha256:32c68e9deed8f906e2af69c7c0acd6865ff8dc6bb70c787e9816edee97010d3f",
-      "analysisHash": "sha256:af26095e572270afcd174ecefe94d647809582c92c177b0c1c614fecc66fd4e8",
-      "status": "success",
-      "summary": {
-        "summary": "基于 ES6 Proxy 实现的响应式状态容器，可像操作普通对象一样操作状态并自动触发订阅者更新。该方案是 Vue 3 响应式系统和 Valtio 的核心原理，支持透明操作、自动响应、细粒度订阅和批量更新，但不支持 IE 且深层嵌套需额外处理。",
-        "keyPoints": [
-          "借助 ES6 Proxy 实现透明状态操作和自动响应",
-          "提供 watch、watchEffect、computed 等类似 Vue 3 的 API",
-          "包含 React Hook 集成示例，可与 Valtio 对比",
-          "默认只支持一层代理，深层响应式需自定义实现",
-          "不支持 IE 浏览器，适用于现代浏览器环境"
-        ],
-        "keywords": [
-          "Proxy",
-          "响应式状态管理",
-          "Vue 3",
-          "Valtio",
-          "细粒度订阅"
-        ],
-        "techStack": [
-          "JavaScript",
-          "ES6 Proxy",
-          "React",
-          "Vue 3"
-        ],
-        "difficulty": "中等",
-        "contentType": "技术文档"
-      },
-      "processedAt": "2026-06-14T14:03:27.894Z"
-    },
-    "/Pattern/ServiceRequest/README.md": {
-      "sourceHash": "sha256:58752a4c0fb9df8e59026b50abb223e805f1c24961e34a4526568a653ad853ba",
-      "analysisHash": "sha256:6f4b0ff6faaccc0b5f1b86420a36c70fe24c5317234f701375e2c1dfc57b813b",
-      "status": "success",
-      "summary": {
-        "summary": "本文档介绍了基于单例模式和发布订阅模式实现的工单系统状态管理与组件通信模块。详细说明了核心类Registry<T>、SharedStateBridge及SharedStateBridgeSingleton的架构，并提供了缓存、回调、跨组件数据共享等API用法，包含React Hooks集成示例和迁移指南，帮助开发者平稳替换旧模块。",
-        "keyPoints": [
-          "基于单例和发布订阅模式实现跨组件状态共享",
-          "核心类包括通用注册表Registry<T>、发布订阅基类SharedStateBridge及单例封装",
-          "提供工单组件缓存、表单数据回调、资源更新回调和跨工单数据共享API",
-          "附有useFormDataCallback和useSharedData两个React Hooks使用示例",
-          "迁移指南保持所有函数签名不变，可直接替换导入路径"
-        ],
-        "keywords": [
-          "工单系统",
-          "状态管理",
-          "发布订阅",
-          "单例模式",
-          "React Hooks"
-        ],
-        "techStack": [],
-        "difficulty": "中等",
-        "contentType": "技术文档"
-      },
-      "processedAt": "2026-06-14T14:03:28.279Z"
-    },
-    "/Pattern/Observer/README.md": {
-      "sourceHash": "sha256:99d06f7ceb2c964225c1196c08e12f495a3d66abc17ef121d517c82e29c38692",
-      "analysisHash": "sha256:f6c51e659717f42c8fae02e33487a0b8f7126b6667e2e2705c35549cd9387076",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 323 (line 8 column 24)",
-      "processedAt": "2026-06-14T14:03:36.929Z"
-    },
-    "/Pattern/README.md": {
-      "sourceHash": "sha256:b16800d195bea52b283652143bd10691acf9b97d98dc08629a7b7ece5b364781",
-      "analysisHash": "sha256:b66c2113ef06a455fc4eb4acaced662e898d2d2198a5a2cc78bbe52fe366f010",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 55 (line 2 column 54)",
-      "processedAt": "2026-06-14T14:03:41.433Z"
-    },
-    "/react/README.md": {
-      "sourceHash": "sha256:801c2e841a70fd4b8cc137520c5290535b1651e82e6ce633e6eab197d8de9994",
-      "analysisHash": "sha256:518ab135cb7b556e2fce84f48cb2efe8e63c0e258947082452c55ddc9f048faa",
-      "status": "success",
-      "summary": {
-        "summary": "React 技术文档索引，指引至类组件与 Hooks 对比、React 17 特性及 React 18 新特性的详细说明。",
-        "keyPoints": [
-          "涵盖类组件与 Hooks 的对比文档",
-          "React 17 版本新特性介绍",
-          "React 18 新功能与升级指南",
-          "作为 React 学习路径的目录入口"
-        ],
-        "keywords": [
-          "React",
-          "Hooks",
-          "Class Components",
-          "React 17",
-          "React 18"
-        ],
-        "techStack": [
-          "React"
-        ],
-        "difficulty": "beginner",
-        "contentType": "index"
-      },
-      "processedAt": "2026-06-14T14:03:49.773Z"
-    },
-    "/Pattern/模式来源与类比.md": {
-      "sourceHash": "sha256:6e9755d4d0a7a365816db89d8126eb8c8ed4b8914cbfe642623a47a2076c595a",
-      "analysisHash": "sha256:27d61d94e054deee87fd228cf769b6c441cefe65a2a5fd743ba5353675a242d2",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 216 (line 4 column 26)",
-      "processedAt": "2026-06-14T14:03:51.209Z"
-    },
-    "/Pattern/Store/README.md": {
-      "sourceHash": "sha256:ee4876f338a69913c913e70dfa8134212551933cf0a040db74229bf2f9e3fe2f",
-      "analysisHash": "sha256:0729b9162c5877b3b5aea23546f08e554599afcb712aa0ea587da9d99fb1fabe",
-      "status": "error",
-      "error": "Unterminated string in JSON at position 180 (line 5 column 10)",
-      "processedAt": "2026-06-14T14:03:51.586Z"
-    },
-    "/README.md": {
-      "sourceHash": "sha256:62d4422d15562c446d948072fd54c13bda7c9e93103fddfd6f9fff2c3f070102",
-      "analysisHash": "sha256:2c3fe424f11cadd4e540ed8d8c34a249cee3a58b7e08cf37240e27177bf2b8ef",
-      "status": "success",
-      "summary": {
-        "summary": "该文档包含网站底部版权及ICP备案信息，展示版权归Acongm所有，并链接至工信部备案号粤ICP备16105234号-1。",
-        "keyPoints": [
-          "版权所有声明，2022年至今归Acongm所有",
-          "包含工信部ICP备案号粤ICP备16105234号-1及链接",
-          "内容为典型的网站页脚法律信息"
-        ],
-        "keywords": [
-          "版权",
-          "ICP备案",
-          "Acongm",
-          "粤ICP备16105234号-1"
-        ],
-        "techStack": [],
-        "difficulty": "简单",
-        "contentType": "法律/版权声明"
-      },
-      "processedAt": "2026-06-14T14:03:55.263Z"
-    },
-    "/software/README.md": {
-      "sourceHash": "sha256:f6c56940519fe8cfb135c3bf62c4750764d90f4cfda6268bd3b773ad68e512b3",
-      "analysisHash": "sha256:0e7fb979b8559b2ba70a02ee785716991ebbdeeaf968cf531dd96dd83b16edfa",
-      "status": "success",
-      "summary": {
-        "summary": "这是一个软件相关文档索引，汇总了跨平台、macOS、Windows、浏览器、VS Code、WebStorm、Zsh 等多个主题的子文档链接，便于用户快速导航。",
-        "keyPoints": [
-          "提供跨平台软件相关文档",
-          "涵盖特定操作系统（macOS、Windows）的说明",
-          "包含开发工具（VS Code、WebStorm）和Shell（Zsh）的指引",
-          "包含浏览器相关内容"
-        ],
-        "keywords": [
-          "软件",
-          "索引",
-          "跨平台",
-          "开发工具",
-          "Shell"
-        ],
-        "techStack": [
-          "Markdown"
-        ],
-        "difficulty": "初级",
-        "contentType": "文档索引"
-      },
-      "processedAt": "2026-06-14T14:03:55.365Z"
-    },
-    "/performance/README.md": {
-      "sourceHash": "sha256:907ebeba81a8a30871076c35f88bde097c3402a922cc24c8657b2abbbd9f7321",
-      "analysisHash": "sha256:6b67eae26df2e7f17bd66c0764a86a1d98346ab1b84e86c2cbb5d2dd16b8cfad",
-      "status": "success",
-      "summary": {
-        "summary": "本文针对 Vue2 + Webpack3 单页应用，在限制大幅重构条件下，通过启用 TLS 1.3、DNS 预解析、关键资源预加载、删除未用 CSS、按需引入 Polyfill、取消登录页懒加载、优化字体渲染及添加骨架屏等手段，将首屏 FCP 从 1593ms 降至 1281ms，Lighthouse 评分由 30+ 提升至 70+，实现低风险高收益的性能优化。",
-        "keyPoints": [
-          "启用 TLS 1.3 并将首屏 HTML 压缩至 14KB 以内，减少 RTT 握手耗时",
-          "利用 Preload 和 Preconnect 提升关键资源加载优先级，缩短下载时间",
-          "通过 PurgeCSS 删除未用样式，按需引入 Core-JS Polyfill，减小资源体积",
-          "取消登录页路由懒加载，直接打包进主文件，消除额外请求，加快 FCP",
-          "优化字体渲染（WOFF2、字体子集、font-display: swap）并添加骨架屏提升感知性能"
-        ],
-        "keywords": [
-          "性能优化",
-          "Vue2",
-          "Webpack",
-          "FCP/LCP",
-          "首屏加载"
-        ],
-        "techStack": [],
-        "difficulty": "中等",
-        "contentType": "性能优化实战文档"
-      },
-      "processedAt": "2026-06-14T14:03:58.081Z"
-    },
-    "/superpowers/specs/2026-06-14-ai-reading-assistant-v1-design.md": {
-      "sourceHash": "sha256:19bc2d6a3b25cb6820042d5b27bcb3de0520d8519220d804ef85b509868db7d3",
-      "analysisHash": "sha256:1a51aad378420dcbde6527fd1f99660d0fffc8a9919b61bc0de31aa8782ca352",
-      "status": "success",
-      "summary": {
-        "summary": "AI 阅读助手 v1 采用静态缓存与内容哈希方案，通过构建时生成 summaries-v1.json 快照实现分析结果复用，确保页面零 API 调用，仅用户提问时触发 v1 Chat 接口。同时定义响应式布局（潜入分栏、覆盖侧栏、底部面板）与交互细节，并规划了 GitHub Pages 和 Vercel 的 CI/CD 流程，以 Node 24 运行，旨在消除冗余 AI 调用，提升构建效率与用户体验。",
-        "keyPoints": [
-          "单一样本 summaries-v1.json 存储所有文章摘要及失效哈希，仅当内容或分析参数变化才调用 AI",
-          "页面加载与助手展开不调用任何 AI 后端，未构建摘要时显示静态空状态",
-          "新增 /api/ai/v1/* 冻结接口，旧接口保留兼容但新前端不再使用",
-          "响应式布局：PC 潜入分栏、平板覆盖侧栏、手机底部全屏面板，适配多种宽度",
-          "CI 使用 Node 24，强制缓存恢复顺序与显式失败策略，保证第二次相同构建零 AI 调用"
-        ],
-        "keywords": [
-          "AI 阅读助手",
-          "静态缓存自举",
-          "内容分析哈希",
-          "响应式布局",
-          "AI API v1"
-        ],
-        "techStack": [
-          "GitHub Actions",
-          "Vercel",
-          "VuePress",
-          "Node 24",
-          "AI API",
-          "SSE"
-        ],
-        "difficulty": "中等",
-        "contentType": "设计文档"
-      },
-      "processedAt": "2026-06-14T14:04:07.371Z"
-    },
-    "/software/zsh.md": {
-      "sourceHash": "sha256:2b0a08fcac8789056945e26be26a18ce1f1cca86a7d487723dd360e0393aa5ab",
-      "analysisHash": "sha256:5b26bd397b31f32a29a49600e3299a640d09a4dc42b7e7e4710c121cf4ce66d6",
-      "status": "success",
-      "summary": {
-        "summary": "介绍了使用 oh-my-zsh 自定义 Zsh 的配置，包括主题（如 powerlevel10k）和插件（autojump、z、fast-syntax-highlighting、zsh-autosuggestions）的安装与用法，并提供了解决终端图标乱码的方法。",
-        "keyPoints": [
-          "oh-my-zsh 可管理 Zsh 的主题和插件",
-          "autojump 与 z 插件通过历史数据库快速跳转目录",
-          "fast-syntax-highlighting 与 zsh-autosuggestions 增强终端交互体验",
-          "powerlevel10k 主题需安装特定字体以避免乱码"
-        ],
-        "keywords": [
-          "zsh",
-          "oh-my-zsh",
-          "插件",
-          "主题",
-          "powerlevel10k"
-        ],
-        "techStack": [
-          "zsh",
-          "oh-my-zsh"
-        ],
-        "difficulty": "简单",
-        "contentType": "教程"
-      },
-      "processedAt": "2026-06-14T14:04:07.379Z"
-    },
-    "/superpowers/plans/2026-06-14-ai-reading-assistant-optimization.md": {
-      "sourceHash": "sha256:2717ea6efeee306b73c1e064815eb38ff2a68d2d86aabe116bbc360316d0233f",
-      "analysisHash": "sha256:444b62b61f9251d76d173835325152118dadb0254f1e20531fab88077678b104",
-      "status": "success",
-      "summary": {
-        "summary": "本实施计划旨在为AI阅读助手交付真正的流式响应、令牌高效的聊天请求、基于内容寻址的Markdown分析缓存，并借助VuePress前端与NestJS后端的Vercel部署验证。计划通过后端SSE端点、前端SSE解析器及缓存工具实现优化，确保未修改的文档不再调用AI提供商。",
-        "keyPoints": [
-          "在后端添加SSE流式聊天端点并保留现有JSON接口",
-          "前端实现SSE帧解析与有界历史管理，渲染覆盖抽屉",
-          "引入基于版本化内容哈希的Markdown分析缓存，避免重复AI调用",
-          "定义令牌预算策略以优化聊天上下文大小",
-          "集成测试与端到端验证确保流式响应顺序和遗留兼容性"
-        ],
-        "keywords": [
-          "AI阅读助手",
-          "SSE流式响应",
-          "内容寻址缓存",
-          "令牌优化",
-          "VuePress集成"
-        ],
-        "techStack": [],
-        "difficulty": "中等",
-        "contentType": "实施计划"
-      },
-      "processedAt": "2026-06-14T14:04:15.681Z"
-    },
-    "/theory/interview-question/2025-04-28-analysis.md": {
-      "sourceHash": "sha256:686c41564ad82f6d1cdf82426d407fd649ff43646757d34dd6da51c64a77512c",
-      "analysisHash": "sha256:604f48aecf822a4c0fe011611fb70d1a2c08de8ae5fbc77f133654731ae34d9d",
-      "status": "success",
-      "summary": {
-        "summary": "本文是一份前端面试演练文档，涵盖笔试预测（框架原理、工程化、性能优化、算法）、技术面试高频考点（Vue3响应式原理、微前端沙箱、低代码设计、构建优化、性能与内存排查）及行为面试应答策略。通过具体代码示例和项目案例，指导准备框架深度追问、工程化实践、架构设计能力，并强调使用STAR法则展现技术成果和软实力。",
-        "keyPoints": [
-          "笔试部分要求60分钟内完成框架原理、工程化、性能方案设计与算法题",
-          "技术面试重点准备Vue3响应式、Quasar定制、微前端沙箱、低代码平台设计",
-          "性能优化体系包含LCP优化、内存泄漏排查与编译时优化",
-          "架构设计需覆盖插件系统、状态管理与微前端通信方案",
-          "行为面试强调STAR法则，结合项目数据展示问题解决、团队协作与决策能力"
-        ],
-        "keywords": [
-          "前端面试",
-          "性能优化",
-          "微前端",
-          "架构设计",
-          "STAR法则"
-        ],
-        "techStack": [
-          "Vue3",
-          "Quasar",
-          "React",
-          "Preact",
-          "Rollup",
+          "前端",
           "Webpack",
           "Babel",
           "core-js",
-          "Formily",
-          "antd",
-          "Pinia",
-          "Vuex"
-        ],
-        "difficulty": "困难",
-        "contentType": "面试准备"
-      },
-      "processedAt": "2026-06-14T14:04:16.762Z"
-    },
-    "/superpowers/plans/2026-06-14-ai-reading-assistant-v1.md": {
-      "sourceHash": "sha256:5361737d27eea7a64e5c779884d238e4ac37f37cea8302a464e638187bed1ffa",
-      "analysisHash": "sha256:6a1e87fc50794cd77369bb5a95c2c9e3063528c95ee3d7053cc64ff1d9020c76",
-      "status": "success",
-      "summary": {
-        "summary": "该计划旨在构建一个版本化的AI阅读助手，仅在用户主动发送消息时触发AI分析，保持静态构建与响应式布局。利用VuePress生成自描述摘要快照，NestJS提供版本化API，支持桌面、平板和移动端。任务1重点创建自我包含的v1摘要快照：包含测试先行、哈希校验与缓存复用，确保仅处理变更文件。",
-        "keyPoints": [
-          "版本化快照机制：通过源哈希、分析哈希和状态字段实现增量处理与缓存复用",
-          "严格分离构建时分析与运行时AI调用：页面加载与助手打开不触发AI请求",
-          "无单独清单：快照本身即包含所有必要信息，便于CI/CD和部署环境恢复",
-          "响应式UI策略：桌面嵌入文章旁，平板右侧覆盖，移动端底部上滑",
-          "测试驱动实现：先编写失败快照测试，再实现核心逻辑（normalize、hash、cache）"
-        ],
-        "keywords": [
-          "AI阅读助手",
-          "快照缓存",
-          "增量分析",
-          "VuePress",
-          "NestJS"
-        ],
-        "techStack": [
-          "VuePress 2 beta",
-          "Vue 3 Options API",
-          "Node 24 (node:test)",
-          "NestJS 10",
-          "Jest/Supertest",
-          "OpenAI-compatible SSE",
-          "GitHub Actions",
-          "GitHub Pages",
-          "Vercel"
+          "CSS",
+          "字体子集化",
+          "HTTP/2",
+          "TLS 1.3"
         ],
         "difficulty": "中等",
-        "contentType": "implementation_plan"
+        "contentType": "技术面试准备"
       },
-      "processedAt": "2026-06-14T14:04:17.668Z"
+      "processedAt": "2026-06-14T15:04:56.040Z"
     },
-    "/utils/README.md": {
-      "sourceHash": "sha256:53d2ec33a927147ff37e9c414f57c5ba13fabcca284fe8c6e33c3d16eb7b0267",
-      "analysisHash": "sha256:f3f43500b19c363052bf0bfa0519f7ca897032a83058804a5efea57da4149925",
+    "/daily-news/2026-06-08.md": {
+      "sourceHash": "sha256:8e0686960f55bd4f8321f0cadc4f959dc423b737894b3c6519940952e429b498",
+      "analysisHash": "sha256:802cf007f12734d078c46cffbbcbd5278e6a4febe7a57d0411c2caf80c1b5dd8",
       "status": "success",
       "summary": {
-        "summary": "该文档是一个工具方法的索引README，主要列出三个子文档链接：正则表达式（regexp.md）、函数方法（function.md）和库方法（library.md），用于快速导航至对应的工具函数说明。",
+        "summary": "2026年6月8日科技动态：WWDC开幕，苹果AI路线图待揭晓；GitHub Copilot切换至AI Credits按量计费并停用GPT-5.2；OpenAI全量上线Dreaming V3记忆系统；Chrome 150 Beta引入多项CSS新能力，web.dev发布5月Web平台月度综述。",
         "keyPoints": [
-          "提供工具方法文档的导航入口",
-          "链接到正则表达式详解",
-          "链接到通用函数方法说明",
-          "链接到第三方库方法介绍"
+          "GitHub Copilot全面转为按token消耗的AI Credits计费模型，标志着AI编码工具向云计算资源模式转型。",
+          "OpenAI为ChatGPT推出Dreaming V3分层记忆系统，并扩展到免费用户，提升长期对话上下文质量。",
+          "Chrome 150 Beta带来polygon()圆角、light-dark()图片扩展等CSS新特性，增强设计系统能力。",
+          "WWDC 2026开幕，苹果AI战略成为产业关注焦点。",
+          "web.dev月度综述显示跨引擎容器查询和Web Serial API等Web平台新能力进入Baseline。"
         ],
         "keywords": [
-          "工具方法",
-          "索引",
-          "README",
-          "正则表达式",
-          "函数库"
+          "WWDC 2026",
+          "GitHub Copilot",
+          "AI Credits",
+          "Dreaming V3",
+          "Chrome 150 Beta"
         ],
         "techStack": [
-          "Markdown"
+          "CSS",
+          "Chrome",
+          "GitHub Copilot",
+          "OpenAI",
+          "CodeQL",
+          "Swift"
         ],
-        "difficulty": "初级",
-        "contentType": "索引文档"
+        "difficulty": "中级",
+        "contentType": "新闻汇总"
       },
-      "processedAt": "2026-06-14T14:04:21.739Z"
+      "processedAt": "2026-06-14T15:04:57.601Z"
     },
-    "/theory/job-description-lib/04-大疆DevOps平台维护-面试技术大纲.md": {
-      "sourceHash": "sha256:6fad0e94ce9890d2d4eddf99bc8533bd53f505cbfaa3fa2c0ff9e51e386b8e15",
-      "analysisHash": "sha256:75988db353af34ac9d90cde35beb23c57b312533480fe490a5ef45c603edf365",
+    "/job-description/ASK_RECORD_AI.md": {
+      "sourceHash": "sha256:5c6e7262bc61e1a837d5fcd1056f6e65f4bbf9c4c302d950a284f196f1b1d489",
+      "analysisHash": "sha256:5b7e3ce9ef17702281a767b2a868e5dbeaf17fbd11d8f447964251089a059b5d",
       "status": "success",
       "summary": {
-        "summary": "本文为大疆DevOps平台维护岗位的面试技术大纲，重点涵盖CI/CD流水线原理、Docker部署与发布策略、微前端选型及qiankun核心实现。内容涉及流水线触发、环境管理、镜像优化、质量门禁，以及微前端的隔离机制与通信方式。",
+        "summary": "该文档是彭聪的模拟面试回答稿，提供书面和口语版本，涵盖自我介绍及大疆用户中心重构项目的性能优化方案，包括打包优化、加载优化、JS加载顺序等技术细节。",
         "keyPoints": [
-          "CI/CD流水线阶段构建、测试、扫描、打包、部署及多环境策略",
-          "Docker镜像分层、缓存、pnpm优化与蓝绿/金丝雀等发布模式",
-          "qiankun微前端的注册加载、CSS/JS隔离机制与生命周期调度",
-          "微前端方案对比：single-spa、Module Federation、iframe适用场景",
-          "质量与安全门禁：代码扫描、依赖漏洞检测和权限最小化"
+          "提供书面版和口语版面试回答，用于材料投递和现场表达",
+          "用户中心重构项目应对千万级用户系统的性能与维护挑战",
+          "打包优化包括polyfill策略、拆包、长缓存、CSS处理等",
+          "加载优化涉及HTTP/2、preload/preconnect、关键渲染路径治理",
+          "答案结构化，包含问题原因、项目背景、技术方案等"
         ],
         "keywords": [
-          "CI/CD",
-          "Docker",
-          "qiankun",
-          "微前端",
-          "面试大纲"
+          "面试回答稿",
+          "前端性能优化",
+          "打包优化",
+          "加载优化",
+          "JS加载顺序"
         ],
         "techStack": [
-          "Vue3",
+          "Vue2",
+          "webpack",
           "TypeScript",
-          "qiankun",
-          "Docker"
+          "browserslist",
+          "Babel",
+          "CDN",
+          "HTTP/2",
+          "TLS 1.3",
+          "Resource Hints",
+          "RUM"
         ],
-        "difficulty": "高级",
-        "contentType": "技术面试大纲"
+        "difficulty": "advanced",
+        "contentType": "guide"
       },
-      "processedAt": "2026-06-14T14:04:25.046Z"
+      "processedAt": "2026-06-14T15:04:58.270Z"
     },
-    "/TypeScript/README.md": {
-      "sourceHash": "sha256:71b59a2fe2929f065832f1d153bde3ce042f363187368523c45c70da87304eb8",
-      "analysisHash": "sha256:005cc6edff4695aed88f41994e56cd30951aa5a470cf4a5682c261a8e731abb0",
+    "/Pattern/EventBus/EventBus.md": {
+      "sourceHash": "sha256:e6372f5df8db65c702be1c27d8201b87009045b5caf7d223e9d575e59e90a959",
+      "analysisHash": "sha256:0d56e3d0ee1206d0c9735357519a50273a58237d229ec9411f9b5e5c081c685b",
       "status": "success",
       "summary": {
-        "summary": "本文档介绍 TypeScript，它是 JavaScript 的超集，支持强类型、ES6 及面向对象编程。列举了其优点（编译时错误检查、易于学习等）和缺点（编译时间长、第三方库定义文件问题），并详细列出了 12 种基础类型，如 number、string、boolean、any、void 等。",
+        "summary": "EventBus 模式实现，用于组件间松耦合通信，支持事件订阅、发布与取消。基于 TypeScript，提供类型安全的事件处理机制。",
         "keyPoints": [
-          "TypeScript 是 JavaScript 超集，需编译为 JS 运行",
-          "优点包括编译时错误检查、支持所有 JS 库、可重用性高",
-          "缺点主要是编译耗时及第三方库定义文件不完善",
-          "基础类型共 12 种，涵盖基本类型、元组、枚举、never 等"
+          "实现事件订阅与发布解耦",
+          "支持类型安全的事件定义",
+          "提供取消订阅机制"
         ],
         "keywords": [
+          "EventBus",
           "TypeScript",
-          "强类型",
-          "基础类型",
-          "编译时检查",
-          "JavaScript超集"
+          "事件驱动",
+          "发布订阅"
         ],
         "techStack": [
           "TypeScript"
         ],
-        "difficulty": "beginner",
-        "contentType": "overview"
+        "difficulty": "中等",
+        "contentType": "模式实现"
       },
-      "processedAt": "2026-06-14T14:04:25.277Z"
+      "processedAt": "2026-06-14T15:05:02.596Z"
     },
-    "/theory/job-description-lib/02-大疆售后RMS系统重构-面试技术大纲.md": {
-      "sourceHash": "sha256:9143f6784677c2c4549ec0035e99944f6672e40539a941e2df36e22b0bc16bf1",
-      "analysisHash": "sha256:307713704854b0f802162a2d39ea7bf5334b77c8fb32deb5b7263dc675126fba",
+    "/job-description/history/README.md": {
+      "sourceHash": "sha256:e6cbdff78b9dca906a266e1af38a09d607e66d080e58ef244433e23c20f41b86",
+      "analysisHash": "sha256:0eb9d5204024791765501b85c006baf7972e57006e6949aad1ce9194f21c8c59",
       "status": "success",
       "summary": {
-        "summary": "该文档为大疆售后RMS系统重构的面试技术大纲，聚焦多人协作下的工程化治理。核心包括ESLint规范制定（React/TypeScript/模块化）、Prettier与ESLint分工、Umi落地方式、提交拦截与CI门禁等闭环流程，旨在提升中后台可维护性与团队效率。",
+        "summary": "彭聪，9年前端经验，擅长复杂系统重构、工程化、性能优化和架构设计。主导大疆用户中心（千万级）和RMS系统重构，实现LCP优化28.9%，首屏加载<1.5s，维护成本降低50%。推动低代码平台落地，自研工具链提升效能30%。",
         "keyPoints": [
-          "ESLint规范覆盖React Hooks、TypeScript类型管控及模块导入边界",
-          "通过husky+lint-staged+commitlint实现提交拦截与Conventional Commits",
-          "PR/CI门禁（lint、类型检查）与老代码豁免策略治理技术债",
-          "利用no-restricted-imports和import/no-cycle强制模块化边界与循环依赖治理",
-          "IDE自动修复、渐进收敛（warning→error）保证规范落地"
+          "主导千万级用户系统重构，日均120W+请求",
+          "性能攻坚：LCP优化28.9%，首屏加载<1.5s，万级数据秒开",
+          "低代码平台首批实践者，自研工具链提升效能30%",
+          "跨系统公告插件系统，包体积<15KB，接入周期<0.5人日"
         ],
         "keywords": [
-          "ESLint规范",
-          "工程化治理",
-          "多人协作",
-          "模块化",
-          "CI门禁"
-        ],
-        "techStack": [],
-        "difficulty": "高级",
-        "contentType": "面试技术大纲"
-      },
-      "processedAt": "2026-06-14T14:04:26.461Z"
-    },
-    "/vue/README.md": {
-      "sourceHash": "sha256:72691ced37984bc1eb7751a4cfdcc4e26e5a4c9c9c4390f6ebc7372a4c2d5010",
-      "analysisHash": "sha256:fec730af30b1db24e6b5fda7751e906f633cc1b87a3a90921e6a839b11a15077",
-      "status": "success",
-      "summary": {
-        "summary": "该文档介绍了两个Vue.js实用技巧：一是在父组件中监听子组件的生命周期钩子，通过@hook:事件实现；二是在methods中使用debounce或throttle函数，避免频繁触发方法，提升性能。文档提供了代码示例和相关源码链接。",
-        "keyPoints": [
-          "父组件可通过@hook:生命周期在模板中监听子组件钩子",
-          "在methods中集成debounce/throttle优化高频操作",
-          "示例包含v-model与debounce的迁移说明",
-          "链接指向Vue源码及官方迁移指南"
-        ],
-        "keywords": [
-          "Vue",
-          "lifecycle hooks",
-          "debounce",
-          "throttle",
-          "methods"
+          "前端开发",
+          "系统重构",
+          "性能优化",
+          "低代码",
+          "微前端"
         ],
         "techStack": [
+          "React",
+          "Vue",
+          "Preact",
+          "Rollup",
+          "Webpack",
+          "微前端",
+          "骨架屏",
+          "虚拟滚动",
+          "低代码平台"
+        ],
+        "difficulty": "高级",
+        "contentType": "简历"
+      },
+      "processedAt": "2026-06-14T15:05:02.992Z"
+    },
+    "/mark/07-NestJS与SSR.md": {
+      "sourceHash": "sha256:bf73e25d527fa2f25994781f8eee0a0948160b863f763e38abbf7ef6496863f0",
+      "analysisHash": "sha256:d7cdd4c75f93a43178164d0ba763ccd8efccfa95110fe0b584bc284355f49aaa",
+      "status": "success",
+      "summary": {
+        "summary": "本文档包含 NestJS 全栈开发及服务端渲染（SSR）的面试题解析，涵盖 NestJS 核心概念、与 Express/Koa 的对比、SSR/CSR/SSG 原理与应用场景，以及 SSR 核心流程，旨在考察候选人对框架和渲染模式的理解。",
+        "keyPoints": [
+          "NestJS 核心概念（模块、控制器、服务、依赖注入、装饰器）及协同工作",
+          "NestJS 与 Express/Koa 的优势对比和适用场景分析",
+          "SSR、CSR、SSG 的原理、优缺点和适用场景对比",
+          "SSR 核心流程：请求、数据预取、渲染、hydration 的步骤"
+        ],
+        "keywords": [
+          "NestJS",
+          "SSR",
+          "CSR",
+          "SSG",
+          "面试题"
+        ],
+        "techStack": [
+          "NestJS",
+          "Express",
+          "Koa",
+          "TypeScript",
+          "Node.js",
+          "SSR",
+          "CSR",
+          "SSG"
+        ],
+        "difficulty": "中等",
+        "contentType": "面试题解析"
+      },
+      "processedAt": "2026-06-14T15:05:03.927Z"
+    },
+    "/Pattern/Observer/README.md": {
+      "sourceHash": "sha256:99d06f7ceb2c964225c1196c08e12f495a3d66abc17ef121d517c82e29c38692",
+      "analysisHash": "sha256:f6c51e659717f42c8fae02e33487a0b8f7126b6667e2e2705c35549cd9387076",
+      "status": "success",
+      "summary": {
+        "summary": "介绍观察者模式，定义对象间一对多依赖关系，当被观察者状态变化时通知所有观察者自动更新。对比发布订阅模式区别，提供核心类Subject、SubjectManager实现及React Hook示例，适用于多依赖通知场景。",
+        "keyPoints": [
+          "观察者模式定义一对多依赖，Subject状态变化自动通知Observer",
+          "与发布订阅模式对比：观察者直接调用，发布订阅通过事件中心解耦",
+          "核心类Subject<T>管理观察者，SubjectManager按key管理多主题",
+          "提供React Hook示例，便于在组件中使用观察者模式"
+        ],
+        "keywords": [
+          "观察者模式",
+          "发布订阅",
+          "设计模式",
+          "TypeScript",
+          "React"
+        ],
+        "techStack": [
+          "TypeScript",
+          "React"
+        ],
+        "difficulty": "intermediate",
+        "contentType": "design-pattern"
+      },
+      "processedAt": "2026-06-14T15:05:05.316Z"
+    },
+    "/Pattern/Observer/Subject.md": {
+      "sourceHash": "sha256:87995b7b62af3ecbc6e3f0f59ebbad5092d434f78d0e8d079b63fd4d78e74a15",
+      "analysisHash": "sha256:cabcbf208dc64663e150b79bd3f66b2021b6341262907f4b5e72f7d71be69b5e",
+      "status": "success",
+      "summary": {
+        "summary": "Subject.ts文件实现观察者设计模式中的主题角色，负责维护观察者列表并在状态变化时通知它们。",
+        "keyPoints": [
+          "位于Pattern/Observer目录",
+          "使用TypeScript定义Subject类",
+          "包含注册、移除和通知观察者的方法",
+          "是观察者模式核心组件"
+        ],
+        "keywords": [
+          "TypeScript",
+          "Observer Pattern",
+          "Subject",
+          "Design Pattern",
+          "Event Handling"
+        ],
+        "techStack": [
+          "TypeScript",
+          "Observer Pattern"
+        ],
+        "difficulty": "Intermediate",
+        "contentType": "Code Documentation"
+      },
+      "processedAt": "2026-06-14T15:05:08.358Z"
+    },
+    "/Pattern/ProxyStore/ProxyStore.md": {
+      "sourceHash": "sha256:645da6b29671c8dd9591e8c662c598bcfbbe7379e93eb5b6234433e9ebd30dee",
+      "analysisHash": "sha256:ef311407814561f4fa8030ddedd63daeb5afb2b77180c6ab9399eb72e94aa627",
+      "status": "success",
+      "summary": {
+        "summary": "介绍 ProxyStore.ts 文件的实现，展示代理存储模式及其代码示例。",
+        "keyPoints": [
+          "代理存储模式概念",
+          "TypeScript 实现示例",
+          "代码示例演示",
+          "路径位于 Pattern 目录"
+        ],
+        "keywords": [
+          "ProxyStore",
+          "TypeScript",
+          "设计模式",
+          "代理存储",
+          "代码示例"
+        ],
+        "techStack": [
+          "TypeScript"
+        ],
+        "difficulty": "中级",
+        "contentType": "code-example"
+      },
+      "processedAt": "2026-06-14T15:05:09.088Z"
+    },
+    "/Pattern/README.md": {
+      "sourceHash": "sha256:b16800d195bea52b283652143bd10691acf9b97d98dc08629a7b7ece5b364781",
+      "analysisHash": "sha256:b66c2113ef06a455fc4eb4acaced662e898d2d2198a5a2cc78bbe52fe366f010",
+      "status": "success",
+      "summary": {
+        "summary": "本合集包含7种跨组件通信模式的实现，无第三方依赖，涵盖发布订阅、观察者、事件总线、状态容器、广播通道、自定义事件和代理模式。每种模式各有特点，适用于不同场景，并提供对比和选择指南。",
+        "keyPoints": [
+          "7种无第三方依赖的跨组件通信模式",
+          "每种模式独立实现，API风格各异",
+          "提供功能对比和浏览器兼容性表格",
+          "包含模式选择指南和使用示例",
+          "支持发布订阅、观察者、事件总线等常见模式"
+        ],
+        "keywords": [
+          "跨组件通信",
+          "设计模式",
+          "发布订阅",
+          "事件总线",
+          "状态管理"
+        ],
+        "techStack": [
+          "TypeScript",
+          "BroadcastChannel API",
+          "CustomEvent API",
+          "Proxy API",
+          "设计模式"
+        ],
+        "difficulty": "高级",
+        "contentType": "设计模式文档"
+      },
+      "processedAt": "2026-06-14T15:05:11.651Z"
+    },
+    "/Pattern/ServiceRequest/Registry.md": {
+      "sourceHash": "sha256:4eee1fb324c3a430069d94a90f653776029d66fabdfddba6566e8884eca13390",
+      "analysisHash": "sha256:f1a4f234e879f4826370895b7b6c95bc2b9e03f80b6e21774113d28c21abc8ef",
+      "status": "success",
+      "summary": {
+        "summary": "Registry.ts implements a service registry pattern for managing and discovering services in a distributed system. The file defines a TypeScript module that encapsulates registration and lookup logic.",
+        "keyPoints": [
+          "Implements the service registry pattern",
+          "Written in TypeScript",
+          "Handles service registration and discovery",
+          "Part of the ServiceRequest pattern"
+        ],
+        "keywords": [
+          "registry",
+          "service request",
+          "pattern",
+          "TypeScript",
+          "service discovery"
+        ],
+        "techStack": [
+          "TypeScript"
+        ],
+        "difficulty": "Intermediate",
+        "contentType": "Code"
+      },
+      "processedAt": "2026-06-14T15:05:13.438Z"
+    },
+    "/Pattern/Store/README.md": {
+      "sourceHash": "sha256:ee4876f338a69913c913e70dfa8134212551933cf0a040db74229bf2f9e3fe2f",
+      "analysisHash": "sha256:0729b9162c5877b3b5aea23546f08e554599afcb712aa0ea587da9d99fb1fabe",
+      "status": "success",
+      "summary": {
+        "summary": "单例状态容器是最简单的全局状态管理方案，通过单一对象存储状态并支持订阅机制。它提供状态快照、批量更新等功能，实现简单且零学习成本，适合小型应用或简单共享场景，但缺少中间件和时间旅行调试。",
+        "keyPoints": [
+          "实现简单，零学习成本的全局状态管理",
+          "全局单例，支持任意位置访问",
+          "提供状态快照和批量更新功能",
+          "订阅回调可获取前一个值",
+          "无中间件机制和时间旅行调试"
+        ],
+        "keywords": [
+          "单例",
+          "状态管理",
+          "订阅",
+          "全局状态",
+          "Store"
+        ],
+        "techStack": [
+          "TypeScript",
+          "React"
+        ],
+        "difficulty": "容易",
+        "contentType": "documentation"
+      },
+      "processedAt": "2026-06-14T15:05:14.134Z"
+    },
+    "/Pattern/Store/Store.md": {
+      "sourceHash": "sha256:d470378cafd054d67c0da6070eb02604c2f5b53e9580ebe9fa6fc5fd935af5ca",
+      "analysisHash": "sha256:4b884fb8614cff964a1084dc15c3a70adb6e2350a5fb3c20f6cab6f290230429",
+      "status": "success",
+      "summary": {
+        "summary": "该文档简要介绍了一个名为 Store.ts 的 TypeScript 文件，可能实现状态管理或数据存储的设计模式，位于 Pattern/Store 目录下。",
+        "keyPoints": [
+          "使用 TypeScript 编写的 Store 模块",
+          "可能实现集中式状态管理或存储模式",
+          "文件路径为 Pattern/Store/Store.ts",
+          "仅包含指向代码的链接"
+        ],
+        "keywords": [
+          "Store",
+          "TypeScript",
+          "状态管理",
+          "设计模式"
+        ],
+        "techStack": [
+          "TypeScript"
+        ],
+        "difficulty": "简单",
+        "contentType": "documentation"
+      },
+      "processedAt": "2026-06-14T15:05:14.525Z"
+    },
+    "/Pattern/Store/StoreSingleton.md": {
+      "sourceHash": "sha256:0c950679b1cc83c7816126c390001c3228e15a007d3243470d79173f8b006e50",
+      "analysisHash": "sha256:add38ec6f214b333afd9a4035345faf11ef6d905967f65f7259c95c613eaca2c",
+      "status": "success",
+      "summary": {
+        "summary": "StoreSingleton模式实现，确保应用中存储实例的唯一性，常用于全局状态管理。",
+        "keyPoints": [
+          "使用单例模式创建唯一存储实例",
+          "提供全局访问点以管理应用状态",
+          "TypeScript实现保证类型安全"
+        ],
+        "keywords": [
+          "Singleton",
+          "Store",
+          "TypeScript",
+          "状态管理"
+        ],
+        "techStack": [
+          "TypeScript"
+        ],
+        "difficulty": "简单",
+        "contentType": "设计模式"
+      },
+      "processedAt": "2026-06-14T15:05:16.590Z"
+    },
+    "/vue/code/Object.defineproperty.md": {
+      "sourceHash": "sha256:730b68d0dd07e28f43ed5eeae0bb848e1cc4170c598fcbbee35b6c3fe147ef61",
+      "analysisHash": "sha256:de0f0e635365cfbe23c6b64a17a98c6ac97924284de06f9796537de878f5b193",
+      "status": "success",
+      "summary": {
+        "summary": "本文档展示了Object.defineProperty的核心代码及自定义实现示例，常用于理解Vue.js响应式系统的基础原理，通过属性劫持实现数据监听与更新。",
+        "keyPoints": [
+          "Object.defineProperty的用法与参数说明",
+          "自定义实现数据劫持的基本模式",
+          "结合Vue响应式原理的代码示例",
+          "属性描述符get/set的运用"
+        ],
+        "keywords": [
+          "Object.defineProperty",
+          "Vue响应式",
+          "数据劫持",
+          "自定义实现"
+        ],
+        "techStack": [
+          "JavaScript",
           "Vue.js"
         ],
         "difficulty": "中级",
-        "contentType": "技术文档"
+        "contentType": "代码示例"
       },
-      "processedAt": "2026-06-14T14:04:28.500Z"
+      "processedAt": "2026-06-14T15:05:19.953Z"
     },
-    "/webpack/README.md": {
-      "sourceHash": "sha256:e6c3322cda86ef8995a19ef9a7fa66c6279c2cb63498518415fe1514fc07067f",
-      "analysisHash": "sha256:fb970f465483ee180c65e93ed6fcd60a9cd0352b488e6841a8194da929346038",
+    "/vue/code/proxy-observe.md": {
+      "sourceHash": "sha256:c0c35af7d5934fdb0018988763c90cdaac2b3aa4ce3f7364a89c103cbef6ceb5",
+      "analysisHash": "sha256:30ccf2e8372365bd724e419b649bdcaee6db38ac5c76b6b6e13dfbd2a983ab7f",
       "status": "success",
       "summary": {
-        "summary": "该文档是Webpack和Vite相关的知识索引，列出了涵盖Webpack知识梳理、架构原理、打包工具对比（Webpack、Vite、Rollup）以及安装指南等文档的链接，便于快速查阅和学习。",
+        "summary": "展示基于Proxy实现数据观察的自定义响应式系统核心代码示例，用于理解Vue等框架的底层原理。",
         "keyPoints": [
-          "提供Webpack知识梳理和架构原理文档",
-          "包含Webpack、Vite、Rollup的打包工具对比",
-          "涵盖Vite的知识梳理与架构原理",
-          "附带安装相关的指导文档"
+          "基于Proxy的拦截机制实现数据观察",
+          "自定义依赖收集与派发更新逻辑",
+          "代码示例演示响应式数据创建过程"
         ],
         "keywords": [
-          "Webpack",
-          "Vite",
-          "打包工具",
-          "架构",
-          "知识梳理"
+          "Proxy",
+          "响应式",
+          "观察",
+          "自定义实现",
+          "代码示例"
         ],
         "techStack": [
-          "Webpack",
-          "Vite",
-          "Rollup"
+          "JavaScript",
+          "Proxy",
+          "Vue"
         ],
-        "difficulty": "初级",
-        "contentType": "文档索引"
+        "difficulty": "中级",
+        "contentType": "代码示例"
       },
-      "processedAt": "2026-06-14T14:04:32.720Z"
+      "processedAt": "2026-06-14T15:05:22.216Z"
     },
-    "/webpack/install/README.md": {
-      "sourceHash": "sha256:217c44944661e2715246cb4847d287b6909f2cebe80ad53cf65f9dc415edfdc9",
-      "analysisHash": "sha256:758c8a74c58a1ebedd9e91e15dcb88d41c04b0e9a1eac5aafcfa86569d368e1f",
+    "/theory/README.md": {
+      "sourceHash": "sha256:622717bcd54fbd9226c6db881e3b71941576f010caad24198df09db75e987f4e",
+      "analysisHash": "sha256:6213201364c5763fb1afb292c90df9d711bc658cfea297ad6dfc083ee540533b",
       "status": "success",
       "summary": {
-        "summary": "文档介绍了Node.js包管理工具的概念与必要性，详细说明了npm和Yarn的特点、组成及优势。npm是全球最大包注册表，包含网站、注册表和CLI三部分；Yarn通过并行安装、离线缓存和lock文件提升了速度和安装统一性，并优化了命令语义。还描述了包安装的完整流程（preinstall、确定首层依赖、递归获取模块、扁平化、安装模块、执行生命周期），以及依赖关系的嵌套与扁平化处理，帮助管理复杂依赖。",
+        "summary": "该文件为面试题汇总，当前内容仅有标题，具体题目待补充。",
         "keyPoints": [
-          "包管理器用于自动化管理项目依赖，避免手动下载和维护困难",
-          "npm由网站、注册表和CLI三部分组成，是全球最大的JavaScript包注册表",
-          "Yarn通过并行安装、离线模式和lock文件解决npm的速度与版本一致性问题",
-          "包安装流程包括执行钩子、确定依赖、递归获取、扁平化去重和执行生命周期",
-          "依赖关系有嵌套和扁平两种方式，npm3起默认采用扁平化dedupe减少冗余"
+          "面试题汇总",
+          "内容待完善",
+          "可能涵盖技术理论"
         ],
         "keywords": [
-          "npm",
-          "Yarn",
-          "包管理",
-          "依赖",
-          "lock文件"
+          "面试题",
+          "汇总",
+          "理论",
+          "技术面试"
         ],
-        "techStack": [
-          "Node.js",
-          "npm",
-          "Yarn"
-        ],
-        "difficulty": "初级",
-        "contentType": "概念介绍"
-      },
-      "processedAt": "2026-06-14T14:04:33.626Z"
-    },
-    "/webpack/vite-架构及原理.md": {
-      "sourceHash": "sha256:5c32ca0b7c6f002b7da3d160c14cb2d0c612b077bc5c8e3b0dfa6bca7ef5394c",
-      "analysisHash": "sha256:97accde90a80829e6614830e0c516ea3f9e47e1c040538d6ff453887336d1a7d",
-      "status": "success",
-      "summary": {
-        "summary": "Vite 基于原生 ESM，开发时启动 Koa 服务器并利用 esbuild 预构建依赖，按需编译模块，无需打包，实现极速启动和模块级 HMR。生产构建采用 Rollup 完成 Tree-shaking、代码分割等优化。其插件系统扩展自 Rollup，提供统一钩子，兼顾开发与生产，相比 Webpack 配置更简化，适合现代浏览器下的高性能开发体验。",
-        "keyPoints": [
-          "开发时采用原生 ESM 按需加载，不打包整个应用，启动速度极快",
-          "使用 esbuild 预构建 CJS/UMD 依赖并转换为 ESM，大幅提升转换效率",
-          "通过 WebSocket 实现模块级 HMR，仅更新变更模块，状态可保留",
-          "生产构建使用 Rollup，提供 Tree-shaking、代码分割、压缩等完整优化功能",
-          "插件系统基于 Rollup 接口扩展，支持开发与构建全生命周期钩子"
-        ],
-        "keywords": [
-          "Vite",
-          "原生ESM",
-          "esbuild",
-          "Rollup",
-          "HMR"
-        ],
-        "techStack": [
-          "Vite",
-          "ES Modules",
-          "esbuild",
-          "Rollup",
-          "Koa"
-        ],
+        "techStack": [],
         "difficulty": "intermediate",
-        "contentType": "technical_analysis"
+        "contentType": "reference"
       },
-      "processedAt": "2026-06-14T14:04:37.055Z"
+      "processedAt": "2026-06-14T15:05:22.389Z"
+    },
+    "/Pattern/模式来源与类比.md": {
+      "sourceHash": "sha256:6e9755d4d0a7a365816db89d8126eb8c8ed4b8914cbfe642623a47a2076c595a",
+      "analysisHash": "sha256:27d61d94e054deee87fd228cf769b6c441cefe65a2a5fd743ba5353675a242d2",
+      "status": "success",
+      "summary": {
+        "summary": "本文档对比了跨组件通信的六种常见模式：发布订阅、观察者、事件总线、状态容器、BroadcastChannel和CustomEvent，将它们与熟悉的框架API相类比，帮助开发者理解这些模式的工程来源与适用场景。",
+        "keyPoints": [
+          "跨组件通信模式是软件工程的经典形态，而非框架专属",
+          "发布订阅、观察者、事件总线通过解耦实现灵活通信",
+          "状态容器以数据为中心，适合响应式UI更新",
+          "BroadcastChannel支持同源跨标签页/iframe通信",
+          "CustomEvent利用DOM事件系统，适用于浏览器原生通信"
+        ],
+        "keywords": [
+          "跨组件通信",
+          "设计模式",
+          "发布订阅",
+          "事件总线",
+          "状态管理"
+        ],
+        "techStack": [
+          "EventEmitter",
+          "RxJS",
+          "Zustand",
+          "BroadcastChannel",
+          "CustomEvent"
+        ],
+        "difficulty": "中级",
+        "contentType": "模式对比"
+      },
+      "processedAt": "2026-06-14T15:05:26.640Z"
+    },
+    "/vue/vue3.md": {
+      "sourceHash": "sha256:8f1432c1be609328ca1ff643dd7ad10523292f67a7a4ad7dd9c27bf868e489e4",
+      "analysisHash": "sha256:fd9b0d59b4a9cc36a55d3879dd101c892ad86267e4a9d248529588a1f438ae14",
+      "status": "success",
+      "summary": {
+        "summary": "本文档总结了Vue3的核心原理，包括基于Proxy的响应式系统、组合式API的设计思想、虚拟DOM与编译优化等，配有代码示例帮助理解。",
+        "keyPoints": [
+          "基于Proxy的高效响应式系统",
+          "组合式API提升逻辑复用",
+          "编译时优化与静态提升",
+          "Tree-shaking友好设计",
+          "Fragment、Teleport等新特性"
+        ],
+        "keywords": [
+          "Vue3",
+          "响应式原理",
+          "组合式API",
+          "Proxy",
+          "虚拟DOM"
+        ],
+        "techStack": [
+          "Vue3",
+          "JavaScript",
+          "TypeScript"
+        ],
+        "difficulty": "中等",
+        "contentType": "原理总结"
+      },
+      "processedAt": "2026-06-14T15:05:27.789Z"
+    },
+    "/vue/code/Proxy.md": {
+      "sourceHash": "sha256:ec7ac36ad59cc20d15b6d4f32f060224eb6d4094a5aa234227feadc11d9b389b",
+      "analysisHash": "sha256:fea683858703737a067181a2bab222323f2660f58b280932310924de3da45a04",
+      "status": "success",
+      "summary": {
+        "summary": "本文档提供了Vue中Proxy核心代码的自定义实现示例，用于响应式数据绑定。",
+        "keyPoints": [
+          "展示Proxy的基本用法",
+          "实现响应式数据监听",
+          "自定义get和set陷阱",
+          "代码示例展示"
+        ],
+        "keywords": [
+          "Proxy",
+          "Vue",
+          "响应式",
+          "数据绑定",
+          "自定义实现"
+        ],
+        "techStack": [
+          "JavaScript",
+          "Vue.js",
+          "Proxy"
+        ],
+        "difficulty": "初级",
+        "contentType": "code-example"
+      },
+      "processedAt": "2026-06-14T15:05:28.022Z"
     }
   },
   "stats": {
     "totalFiles": 218,
-    "reusedFiles": 145,
-    "pendingFiles": 62,
-    "skippedFiles": 11,
-    "failedFiles": 16,
-    "aiCalls": 62,
-    "hitRate": 0.6651376146788991,
-    "durationMs": 210064
+    "reusedFiles": 191,
+    "pendingFiles": 27,
+    "completedFiles": 218,
+    "skippedFiles": 0,
+    "failedFiles": 0,
+    "aiCalls": 27,
+    "hitRate": 0.8761467889908257,
+    "durationMs": 59692
   }
 }
