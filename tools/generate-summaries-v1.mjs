@@ -80,6 +80,15 @@ async function readMergedSnapshot(cachePath, outputPath, expectedFiles) {
   return { ...newest, files }
 }
 
+function hasSameAnalysis(left, right) {
+  return (
+    left &&
+    right &&
+    JSON.stringify(left.analysis) === JSON.stringify(right.analysis) &&
+    JSON.stringify(left.files) === JSON.stringify(right.files)
+  )
+}
+
 function completionUrl(baseUrl) {
   const normalized = baseUrl.replace(/\/$/, '')
   return normalized.endsWith('/v1')
@@ -199,8 +208,16 @@ export async function runSummaryBuild({
   }
 
   if (existing && plan.toAnalyze.length === 0) {
-    if (!existsSync(cachePath)) await writeSnapshot(cachePath, existing)
-    if (!existsSync(outputPath)) await writeSnapshot(outputPath, existing)
+    const [cacheSnapshot, outputSnapshot] = await Promise.all([
+      readSnapshot(cachePath),
+      readSnapshot(outputPath)
+    ])
+    if (!hasSameAnalysis(cacheSnapshot, existing)) {
+      await writeSnapshot(cachePath, existing)
+    }
+    if (!hasSameAnalysis(outputSnapshot, existing)) {
+      await writeSnapshot(outputPath, existing)
+    }
     return {
       ...existing,
       stats: {

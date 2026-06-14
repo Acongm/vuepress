@@ -36,16 +36,11 @@ export async function restoreSnapshot({
 }) {
   const local = await readSnapshot(cachePath)
   if (local) {
-    await writeSnapshot(outputPath, local)
+    if (!existsSync(outputPath)) await writeSnapshot(outputPath, local)
     return { source: 'local', snapshot: local }
   }
 
   const output = await readSnapshot(outputPath)
-  if (output) {
-    await writeSnapshot(cachePath, output)
-    return { source: 'output', snapshot: output }
-  }
-
   if (fallbackUrl) {
     const url = `${fallbackUrl.replace(/\/$/, '')}/summaries-v1.json`
     try {
@@ -54,13 +49,18 @@ export async function restoreSnapshot({
         const remote = await response.json()
         if (isValidSnapshot(remote)) {
           await writeSnapshot(cachePath, remote)
-          await writeSnapshot(outputPath, remote)
+          if (!output) await writeSnapshot(outputPath, remote)
           return { source: 'remote', snapshot: remote }
         }
       }
     } catch (error) {
       console.warn('[ai-v1-restore] remote restore failed:', error.message)
     }
+  }
+
+  if (output) {
+    await writeSnapshot(cachePath, output)
+    return { source: 'output', snapshot: output }
   }
 
   return { source: 'empty', snapshot: null }

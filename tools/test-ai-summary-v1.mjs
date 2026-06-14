@@ -206,7 +206,7 @@ test('restores one complete remote snapshot into cache and public output', async
   }
 })
 
-test('restores a committed public snapshot before fetching remote fallback', async () => {
+test('merges a newer remote snapshot without overwriting committed output early', async () => {
   const { root, docsDir } = await createFixture()
   const cachePath = join(root, '.cache', 'ai-summaries-v1.json')
   const outputPath = join(root, 'public', 'summaries-v1.json')
@@ -216,21 +216,43 @@ test('restores a committed public snapshot before fetching remote fallback', asy
       model: 'model-a',
       analyze: async ({ path }) => fakeSummary(path)
     })
+    const remote = structuredClone(committed)
+    remote.generatedAt = '2099-01-01T00:00:00.000Z'
+    remote.files['/a.md'] = {
+      ...remote.files['/a.md'],
+      summary: 'remote-current-summary',
+      processedAt: '2099-01-01T00:00:00.000Z'
+    }
     await mkdir(join(root, 'public'), { recursive: true })
-    await writeFile(outputPath, JSON.stringify(committed))
-    let fetched = false
+    const committedBytes = JSON.stringify(committed)
+    await writeFile(outputPath, committedBytes)
     const restored = await restoreSnapshot({
       cachePath,
       outputPath,
       fallbackUrl: 'https://example.test',
-      fetchImpl: async () => {
-        fetched = true
-        throw new Error('remote should not be called')
+      fetchImpl: async () => ({ ok: true, json: async () => remote })
+    })
+    assert.equal(restored.source, 'remote')
+    assert.equal(await readFile(outputPath, 'utf8'), committedBytes)
+
+    let calls = 0
+    const rebuilt = await runSummaryBuild({
+      docsDir,
+      cachePath,
+      outputPath,
+      model: 'model-a',
+      apiKey: 'configured',
+      analyze: async () => {
+        calls += 1
+        return fakeSummary('unexpected')
       }
     })
-    assert.equal(restored.source, 'output')
-    assert.equal(fetched, false)
-    assert.equal(JSON.parse(await readFile(cachePath, 'utf8')).files['/README.md'].status, 'success')
+    assert.equal(rebuilt.stats.aiCalls, 0)
+    assert.equal(calls, 0)
+    assert.equal(
+      JSON.parse(await readFile(outputPath, 'utf8')).files['/a.md'].summary,
+      'remote-current-summary'
+    )
   } finally {
     await rm(root, { recursive: true, force: true })
   }
