@@ -1,3 +1,9 @@
+<template>
+  <AIAssistTrigger />
+  <AIAssistLayout />
+</template>
+
+<script>
 import { isDocumentPage } from '../utils/is-document-page.js'
 import {
   cancelPrefetch,
@@ -48,3 +54,4 @@ export default {
     }
   }
 }
+</script>
