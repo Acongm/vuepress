@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-14T15:29:14.136Z",
+  "generatedAt": "2026-06-15T01:45:01.177Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -6818,17 +6818,51 @@
         "contentType": "overview"
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
+    },
+    "/daily-news/2026-06-15.md": {
+      "sourceHash": "sha256:bb32c85d664bce063601de5ffd6fea8b6b5b066e254c1309cc454523599d3a56",
+      "analysisHash": "sha256:a3aac3f0054b79ae4473c1b0681487c12825b3b8e1a10e75f81f9015760f4d73",
+      "status": "success",
+      "summary": {
+        "summary": "今日技术动态聚焦三条主线：前端侧Chrome 150将带来多项CSS底层增强，WebKit推出Grid Lanes互动指南；DevOps侧GitHub强化Copilot code review的组织级治理，并恢复自托管runner的最低版本强制；AI侧美国政府以出口管制暂停Anthropic顶级模型访问，OpenAI投资1.5亿美元搭建全球合作网络，反映能力分配与治理成为新焦点。",
+        "keyPoints": [
+          "Chrome 150稳定版即将推送，新增CSS圆角、动画zoom、背景裁切等底层能力，并收紧PWA系统颜色权限",
+          "WebKit发布Grid Lanes互动指南，提供可交互布局演示与完整属性参考，降低新布局模式的采用门槛",
+          "GitHub对Copilot code review增加组织级配置、内容排除与无限自定义指令，推动治理精细化",
+          "美国政府对Anthropic的Fable 5和Mythos 5发出出口管制指令，三天内从发布到叫停，标志AI模型纳入管制物项",
+          "OpenAI投资1.5亿美元构建全球合作伙伴网络，旨在扩大企业级AI服务落地"
+        ],
+        "keywords": [
+          "Chrome 150",
+          "CSS Grid Lanes",
+          "Copilot code review",
+          "出口管制",
+          "OpenAI合作伙伴"
+        ],
+        "techStack": [
+          "Chrome",
+          "WebKit",
+          "CSS",
+          "GitHub Actions",
+          "Copilot",
+          "Claude",
+          "OpenAI"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-15T01:45:01.169Z"
     }
   },
   "stats": {
-    "totalFiles": 218,
-    "reusedFiles": 217,
+    "totalFiles": 219,
+    "reusedFiles": 218,
     "pendingFiles": 1,
-    "completedFiles": 218,
+    "completedFiles": 219,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9954128440366973,
-    "durationMs": 3777
+    "hitRate": 0.9954337899543378,
+    "durationMs": 9818
   }
 }
