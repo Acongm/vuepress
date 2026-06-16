@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T01:45:01.177Z",
+  "generatedAt": "2026-06-16T01:39:23.993Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1421,6 +1421,40 @@
         "contentType": "技术动态总结"
       },
       "processedAt": "2026-06-14T15:04:51.657Z"
+    },
+    "/daily-news/2026-06-15.md": {
+      "sourceHash": "sha256:bb32c85d664bce063601de5ffd6fea8b6b5b066e254c1309cc454523599d3a56",
+      "analysisHash": "sha256:a3aac3f0054b79ae4473c1b0681487c12825b3b8e1a10e75f81f9015760f4d73",
+      "status": "success",
+      "summary": {
+        "summary": "今日技术动态聚焦三条主线：前端侧Chrome 150将带来多项CSS底层增强，WebKit推出Grid Lanes互动指南；DevOps侧GitHub强化Copilot code review的组织级治理，并恢复自托管runner的最低版本强制；AI侧美国政府以出口管制暂停Anthropic顶级模型访问，OpenAI投资1.5亿美元搭建全球合作网络，反映能力分配与治理成为新焦点。",
+        "keyPoints": [
+          "Chrome 150稳定版即将推送，新增CSS圆角、动画zoom、背景裁切等底层能力，并收紧PWA系统颜色权限",
+          "WebKit发布Grid Lanes互动指南，提供可交互布局演示与完整属性参考，降低新布局模式的采用门槛",
+          "GitHub对Copilot code review增加组织级配置、内容排除与无限自定义指令，推动治理精细化",
+          "美国政府对Anthropic的Fable 5和Mythos 5发出出口管制指令，三天内从发布到叫停，标志AI模型纳入管制物项",
+          "OpenAI投资1.5亿美元构建全球合作伙伴网络，旨在扩大企业级AI服务落地"
+        ],
+        "keywords": [
+          "Chrome 150",
+          "CSS Grid Lanes",
+          "Copilot code review",
+          "出口管制",
+          "OpenAI合作伙伴"
+        ],
+        "techStack": [
+          "Chrome",
+          "WebKit",
+          "CSS",
+          "GitHub Actions",
+          "Copilot",
+          "Claude",
+          "OpenAI"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-15T01:45:01.169Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -6819,50 +6853,48 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-06-15.md": {
-      "sourceHash": "sha256:bb32c85d664bce063601de5ffd6fea8b6b5b066e254c1309cc454523599d3a56",
-      "analysisHash": "sha256:a3aac3f0054b79ae4473c1b0681487c12825b3b8e1a10e75f81f9015760f4d73",
+    "/daily-news/2026-06-16.md": {
+      "sourceHash": "sha256:573214eac37c3ac6c7de297999cfd3d666dc4f2ec929a233e8455a758a490bf7",
+      "analysisHash": "sha256:2a74c2b4bebec92ff4fc8ad3ac8f2ece77358dff04c4893c0a8b32194858d838",
       "status": "success",
       "summary": {
-        "summary": "今日技术动态聚焦三条主线：前端侧Chrome 150将带来多项CSS底层增强，WebKit推出Grid Lanes互动指南；DevOps侧GitHub强化Copilot code review的组织级治理，并恢复自托管runner的最低版本强制；AI侧美国政府以出口管制暂停Anthropic顶级模型访问，OpenAI投资1.5亿美元搭建全球合作网络，反映能力分配与治理成为新焦点。",
+        "summary": "本周科技动态显示平台方将控制力前移：Safari 27 推出可定制 select 并强调保留文本；Chrome 推进 WebMCP 让页面可被 AI 代理理解；GitHub Copilot 报表引入服务端遥测提升准确性；GHES 3.21 增强企业治理；Anthropic 与 TCS 合作将 Claude 落地监管行业。趋势是从可用到可声明、可解释、可渐进增强。",
         "keyPoints": [
-          "Chrome 150稳定版即将推送，新增CSS圆角、动画zoom、背景裁切等底层能力，并收紧PWA系统颜色权限",
-          "WebKit发布Grid Lanes互动指南，提供可交互布局演示与完整属性参考，降低新布局模式的采用门槛",
-          "GitHub对Copilot code review增加组织级配置、内容排除与无限自定义指令，推动治理精细化",
-          "美国政府对Anthropic的Fable 5和Mythos 5发出出口管制指令，三天内从发布到叫停，标志AI模型纳入管制物项",
-          "OpenAI投资1.5亿美元构建全球合作伙伴网络，旨在扩大企业级AI服务落地"
+          "Safari 27 支持可定制 <select>，但 WebKit 强调必须保留选项文本标签以保证可用性和渐进增强。",
+          "Chrome 启动 WebMCP origin trial，允许网站向 AI 代理声明结构化操作，减少猜测。",
+          "GitHub Copilot 使用报表纳入服务端遥测，让企业看到更真实的活跃用户数量。",
+          "GitHub Enterprise Server 3.21 正式发布，强化组织自定义属性、规则集和审计等企业治理能力。",
+          "Anthropic 与 TCS 合作推动 Claude 在金融服务、医疗等强监管行业的大规模落地与培训。"
         ],
         "keywords": [
-          "Chrome 150",
-          "CSS Grid Lanes",
-          "Copilot code review",
-          "出口管制",
-          "OpenAI合作伙伴"
+          "可定制 select",
+          "WebMCP",
+          "Copilot 遥测",
+          "GHES 3.21",
+          "Claude 行业落地"
         ],
         "techStack": [
-          "Chrome",
-          "WebKit",
-          "CSS",
-          "GitHub Actions",
-          "Copilot",
-          "Claude",
-          "OpenAI"
+          "Safari/WebKit",
+          "Chrome WebMCP",
+          "GitHub Copilot",
+          "GitHub Enterprise Server",
+          "Anthropic Claude"
         ],
-        "difficulty": "中等",
-        "contentType": "技术动态"
+        "difficulty": "low",
+        "contentType": "news digest"
       },
-      "processedAt": "2026-06-15T01:45:01.169Z"
+      "processedAt": "2026-06-16T01:39:23.985Z"
     }
   },
   "stats": {
-    "totalFiles": 219,
-    "reusedFiles": 218,
+    "totalFiles": 220,
+    "reusedFiles": 219,
     "pendingFiles": 1,
-    "completedFiles": 219,
+    "completedFiles": 220,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9954337899543378,
-    "durationMs": 9818
+    "hitRate": 0.9954545454545455,
+    "durationMs": 14765
   }
 }
