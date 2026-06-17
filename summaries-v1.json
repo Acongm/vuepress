@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-16T01:39:23.993Z",
+  "generatedAt": "2026-06-17T01:38:46.278Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1455,6 +1455,38 @@
         "contentType": "技术动态"
       },
       "processedAt": "2026-06-15T01:45:01.169Z"
+    },
+    "/daily-news/2026-06-16.md": {
+      "sourceHash": "sha256:573214eac37c3ac6c7de297999cfd3d666dc4f2ec929a233e8455a758a490bf7",
+      "analysisHash": "sha256:2a74c2b4bebec92ff4fc8ad3ac8f2ece77358dff04c4893c0a8b32194858d838",
+      "status": "success",
+      "summary": {
+        "summary": "本周科技动态显示平台方将控制力前移：Safari 27 推出可定制 select 并强调保留文本；Chrome 推进 WebMCP 让页面可被 AI 代理理解；GitHub Copilot 报表引入服务端遥测提升准确性；GHES 3.21 增强企业治理；Anthropic 与 TCS 合作将 Claude 落地监管行业。趋势是从可用到可声明、可解释、可渐进增强。",
+        "keyPoints": [
+          "Safari 27 支持可定制 <select>，但 WebKit 强调必须保留选项文本标签以保证可用性和渐进增强。",
+          "Chrome 启动 WebMCP origin trial，允许网站向 AI 代理声明结构化操作，减少猜测。",
+          "GitHub Copilot 使用报表纳入服务端遥测，让企业看到更真实的活跃用户数量。",
+          "GitHub Enterprise Server 3.21 正式发布，强化组织自定义属性、规则集和审计等企业治理能力。",
+          "Anthropic 与 TCS 合作推动 Claude 在金融服务、医疗等强监管行业的大规模落地与培训。"
+        ],
+        "keywords": [
+          "可定制 select",
+          "WebMCP",
+          "Copilot 遥测",
+          "GHES 3.21",
+          "Claude 行业落地"
+        ],
+        "techStack": [
+          "Safari/WebKit",
+          "Chrome WebMCP",
+          "GitHub Copilot",
+          "GitHub Enterprise Server",
+          "Anthropic Claude"
+        ],
+        "difficulty": "low",
+        "contentType": "news digest"
+      },
+      "processedAt": "2026-06-16T01:39:23.985Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -6853,48 +6885,51 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-06-16.md": {
-      "sourceHash": "sha256:573214eac37c3ac6c7de297999cfd3d666dc4f2ec929a233e8455a758a490bf7",
-      "analysisHash": "sha256:2a74c2b4bebec92ff4fc8ad3ac8f2ece77358dff04c4893c0a8b32194858d838",
+    "/daily-news/2026-06-17.md": {
+      "sourceHash": "sha256:5c3ef3fcf3da135f7929fe963789e3fd18750098245056b081c3cd5400c5aa31",
+      "analysisHash": "sha256:0d724ad923b5ac4acde6266bbf89e76d6e2973bdaa523252c9177711cf28341e",
       "status": "success",
       "summary": {
-        "summary": "本周科技动态显示平台方将控制力前移：Safari 27 推出可定制 select 并强调保留文本；Chrome 推进 WebMCP 让页面可被 AI 代理理解；GitHub Copilot 报表引入服务端遥测提升准确性；GHES 3.21 增强企业治理；Anthropic 与 TCS 合作将 Claude 落地监管行业。趋势是从可用到可声明、可解释、可渐进增强。",
+        "summary": "今日科技动态显示平台从可用向可规模化采用推进：Safari 27 beta补强浏览器正确性，WebKit推Grid Lanes交互教程；GitHub Code Quality将商用并提供组织级部署；OpenAI引入部署模拟评估AI风险，Anthropic合作推进企业应用。",
         "keyPoints": [
-          "Safari 27 支持可定制 <select>，但 WebKit 强调必须保留选项文本标签以保证可用性和渐进增强。",
-          "Chrome 启动 WebMCP origin trial，允许网站向 AI 代理声明结构化操作，减少猜测。",
-          "GitHub Copilot 使用报表纳入服务端遥测，让企业看到更真实的活跃用户数量。",
-          "GitHub Enterprise Server 3.21 正式发布，强化组织自定义属性、规则集和审计等企业治理能力。",
-          "Anthropic 与 TCS 合作推动 Claude 在金融服务、医疗等强监管行业的大规模落地与培训。"
+          "Safari 27 beta发布，强调质量提升与Web标准对齐，包含58项新特性和525项修复。",
+          "WebKit推出CSS Grid Lanes交互式Field Guide，降低新布局学习与调试门槛。",
+          "GitHub Code Quality将于2026年7月20日转为商用，每活跃提交者月费10美元。",
+          "GitHub支持组织级一键启停Code Quality，便于企业统一推出质量规则。",
+          "OpenAI提出Deployment Simulation，在模型发布前模拟真实环境评估行为偏差。"
         ],
         "keywords": [
-          "可定制 select",
-          "WebMCP",
-          "Copilot 遥测",
-          "GHES 3.21",
-          "Claude 行业落地"
+          "浏览器兼容性",
+          "代码质量产品化",
+          "AI部署评估",
+          "组织级治理",
+          "布局模型教学"
         ],
         "techStack": [
-          "Safari/WebKit",
-          "Chrome WebMCP",
-          "GitHub Copilot",
-          "GitHub Enterprise Server",
-          "Anthropic Claude"
+          "Safari",
+          "WebKit",
+          "CSS Grid Lanes",
+          "GitHub Code Quality",
+          "CodeQL",
+          "GitHub Actions",
+          "OpenAI GPT-5",
+          "Claude"
         ],
-        "difficulty": "low",
-        "contentType": "news digest"
+        "difficulty": "中等",
+        "contentType": "科技新闻摘要"
       },
-      "processedAt": "2026-06-16T01:39:23.985Z"
+      "processedAt": "2026-06-17T01:38:46.271Z"
     }
   },
   "stats": {
-    "totalFiles": 220,
-    "reusedFiles": 219,
+    "totalFiles": 221,
+    "reusedFiles": 220,
     "pendingFiles": 1,
-    "completedFiles": 220,
+    "completedFiles": 221,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9954545454545455,
-    "durationMs": 14765
+    "hitRate": 0.995475113122172,
+    "durationMs": 10742
   }
 }
