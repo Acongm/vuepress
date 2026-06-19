@@ -1,5 +1,7 @@
 /* global __AI_CHAT_API__ */
 
+import { buildChatHeaders } from './chat-client.js'
+
 export const DEFAULT_AI_CHAT_V1_STREAM_API =
   'https://api.acongm.com/api/ai/v1/chat/stream'
 export const DEV_AI_CHAT_V1_STREAM_API = '/api/ai/v1/chat/stream'
@@ -64,9 +66,14 @@ export async function* parseSseStream(stream) {
 }
 
 export async function streamChatV1(payload, options = {}) {
+  const pagePath = payload?.context?.pagePath ?? '/'
+  const callSource = options.callSource || 'vuepress:reading-assistant'
   const response = await fetch(options.url || getAiChatV1StreamUrl(), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...buildChatHeaders({ pagePath, callSource })
+    },
     body: JSON.stringify(payload),
     signal: options.signal
   })

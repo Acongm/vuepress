@@ -1,5 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import {
+  buildChatHeaders,
+  getClientId,
+  resolveCallSource
+} from '../docs/.vuepress/utils/chat-client.js'
 import { getAiChatV1StreamUrl, parseSseStream } from '../docs/.vuepress/utils/chat-v1-stream.js'
 import {
   loadChatHistory,
@@ -72,4 +77,36 @@ test('inserts editable natural-language tags and derives request options', () =>
     scope: 'module',
     enableWebSearch: true
   })
+})
+
+test('buildChatHeaders attaches client and call source headers', () => {
+  const memory = new Map()
+  global.localStorage = {
+    getItem: (key) => memory.get(key) || null,
+    setItem: (key, value) => memory.set(key, value)
+  }
+  global.sessionStorage = {
+    getItem: (key) => memory.get(key) || null,
+    setItem: (key, value) => memory.set(key, value)
+  }
+
+  memory.set('acongm_client_id', 'client-test-1')
+  memory.set('acongm_conv_/docs/example.md', 'conv-test-1')
+
+  const headers = buildChatHeaders({
+    pagePath: '/docs/example.md',
+    callSource: 'vuepress:article-panel'
+  })
+
+  assert.equal(headers['x-client-id'], 'client-test-1')
+  assert.equal(headers['x-call-source'], 'vuepress:article-panel')
+  assert.equal(headers['x-conversation-id'], 'conv-test-1')
+  assert.equal(getClientId(), 'client-test-1')
+})
+
+test('resolveCallSource distinguishes article, module, and web modes', () => {
+  assert.equal(resolveCallSource('article', false), 'vuepress:article-panel')
+  assert.equal(resolveCallSource('module', false), 'vuepress:module-panel')
+  assert.equal(resolveCallSource('article', true), 'vuepress:article-panel:web')
+  assert.equal(resolveCallSource('module', true), 'vuepress:module-panel:web')
 })

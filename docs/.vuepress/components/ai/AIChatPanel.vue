@@ -105,6 +105,7 @@
 
 <script>
 import { extractPageContent } from '../../utils/ai-context.js'
+import { resolveCallSource } from '../../utils/chat-client.js'
 import {
   clearChatHistory,
   loadChatHistory,
@@ -244,6 +245,10 @@ export default {
       const controller = new AbortController()
       this.chatAbortController = controller
       const tagOptions = deriveTagOptions(question)
+      const callSource = resolveCallSource(
+        tagOptions.scope,
+        tagOptions.enableWebSearch
+      )
       try {
         const events = await streamChatV1(
           {
@@ -260,7 +265,7 @@ export default {
             },
             enableWebSearch: tagOptions.enableWebSearch
           },
-          { signal: controller.signal }
+          { signal: controller.signal, callSource }
         )
         for await (const event of events) {
           if (event.type === 'delta') answer.content += event.content || ''

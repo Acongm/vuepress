@@ -80,7 +80,9 @@ export default defineUserConfig<DefaultThemeOptions>({
           server: {
             proxy: {
               '/api': {
-                target: 'https://api.acongm.com',
+                target:
+                  process.env.VUEPRESS_API_PROXY_TARGET ||
+                  'https://api.acongm.com',
                 changeOrigin: true,
                 secure: true
               }
