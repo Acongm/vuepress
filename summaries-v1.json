@@ -1422,141 +1422,6 @@
       },
       "processedAt": "2026-06-14T15:04:51.657Z"
     },
-    "/daily-news/2026-06-15.md": {
-      "sourceHash": "sha256:bb32c85d664bce063601de5ffd6fea8b6b5b066e254c1309cc454523599d3a56",
-      "analysisHash": "sha256:a3aac3f0054b79ae4473c1b0681487c12825b3b8e1a10e75f81f9015760f4d73",
-      "status": "success",
-      "summary": {
-        "summary": "今日技术动态聚焦三条主线：前端侧Chrome 150将带来多项CSS底层增强，WebKit推出Grid Lanes互动指南；DevOps侧GitHub强化Copilot code review的组织级治理，并恢复自托管runner的最低版本强制；AI侧美国政府以出口管制暂停Anthropic顶级模型访问，OpenAI投资1.5亿美元搭建全球合作网络，反映能力分配与治理成为新焦点。",
-        "keyPoints": [
-          "Chrome 150稳定版即将推送，新增CSS圆角、动画zoom、背景裁切等底层能力，并收紧PWA系统颜色权限",
-          "WebKit发布Grid Lanes互动指南，提供可交互布局演示与完整属性参考，降低新布局模式的采用门槛",
-          "GitHub对Copilot code review增加组织级配置、内容排除与无限自定义指令，推动治理精细化",
-          "美国政府对Anthropic的Fable 5和Mythos 5发出出口管制指令，三天内从发布到叫停，标志AI模型纳入管制物项",
-          "OpenAI投资1.5亿美元构建全球合作伙伴网络，旨在扩大企业级AI服务落地"
-        ],
-        "keywords": [
-          "Chrome 150",
-          "CSS Grid Lanes",
-          "Copilot code review",
-          "出口管制",
-          "OpenAI合作伙伴"
-        ],
-        "techStack": [
-          "Chrome",
-          "WebKit",
-          "CSS",
-          "GitHub Actions",
-          "Copilot",
-          "Claude",
-          "OpenAI"
-        ],
-        "difficulty": "中等",
-        "contentType": "技术动态"
-      },
-      "processedAt": "2026-06-15T01:45:01.169Z"
-    },
-    "/daily-news/2026-06-16.md": {
-      "sourceHash": "sha256:573214eac37c3ac6c7de297999cfd3d666dc4f2ec929a233e8455a758a490bf7",
-      "analysisHash": "sha256:2a74c2b4bebec92ff4fc8ad3ac8f2ece77358dff04c4893c0a8b32194858d838",
-      "status": "success",
-      "summary": {
-        "summary": "本周科技动态显示平台方将控制力前移：Safari 27 推出可定制 select 并强调保留文本；Chrome 推进 WebMCP 让页面可被 AI 代理理解；GitHub Copilot 报表引入服务端遥测提升准确性；GHES 3.21 增强企业治理；Anthropic 与 TCS 合作将 Claude 落地监管行业。趋势是从可用到可声明、可解释、可渐进增强。",
-        "keyPoints": [
-          "Safari 27 支持可定制 <select>，但 WebKit 强调必须保留选项文本标签以保证可用性和渐进增强。",
-          "Chrome 启动 WebMCP origin trial，允许网站向 AI 代理声明结构化操作，减少猜测。",
-          "GitHub Copilot 使用报表纳入服务端遥测，让企业看到更真实的活跃用户数量。",
-          "GitHub Enterprise Server 3.21 正式发布，强化组织自定义属性、规则集和审计等企业治理能力。",
-          "Anthropic 与 TCS 合作推动 Claude 在金融服务、医疗等强监管行业的大规模落地与培训。"
-        ],
-        "keywords": [
-          "可定制 select",
-          "WebMCP",
-          "Copilot 遥测",
-          "GHES 3.21",
-          "Claude 行业落地"
-        ],
-        "techStack": [
-          "Safari/WebKit",
-          "Chrome WebMCP",
-          "GitHub Copilot",
-          "GitHub Enterprise Server",
-          "Anthropic Claude"
-        ],
-        "difficulty": "low",
-        "contentType": "news digest"
-      },
-      "processedAt": "2026-06-16T01:39:23.985Z"
-    },
-    "/daily-news/2026-06-17.md": {
-      "sourceHash": "sha256:5c3ef3fcf3da135f7929fe963789e3fd18750098245056b081c3cd5400c5aa31",
-      "analysisHash": "sha256:0d724ad923b5ac4acde6266bbf89e76d6e2973bdaa523252c9177711cf28341e",
-      "status": "success",
-      "summary": {
-        "summary": "今日科技动态显示平台从可用向可规模化采用推进：Safari 27 beta补强浏览器正确性，WebKit推Grid Lanes交互教程；GitHub Code Quality将商用并提供组织级部署；OpenAI引入部署模拟评估AI风险，Anthropic合作推进企业应用。",
-        "keyPoints": [
-          "Safari 27 beta发布，强调质量提升与Web标准对齐，包含58项新特性和525项修复。",
-          "WebKit推出CSS Grid Lanes交互式Field Guide，降低新布局学习与调试门槛。",
-          "GitHub Code Quality将于2026年7月20日转为商用，每活跃提交者月费10美元。",
-          "GitHub支持组织级一键启停Code Quality，便于企业统一推出质量规则。",
-          "OpenAI提出Deployment Simulation，在模型发布前模拟真实环境评估行为偏差。"
-        ],
-        "keywords": [
-          "浏览器兼容性",
-          "代码质量产品化",
-          "AI部署评估",
-          "组织级治理",
-          "布局模型教学"
-        ],
-        "techStack": [
-          "Safari",
-          "WebKit",
-          "CSS Grid Lanes",
-          "GitHub Code Quality",
-          "CodeQL",
-          "GitHub Actions",
-          "OpenAI GPT-5",
-          "Claude"
-        ],
-        "difficulty": "中等",
-        "contentType": "科技新闻摘要"
-      },
-      "processedAt": "2026-06-17T01:38:46.271Z"
-    },
-    "/daily-news/2026-06-18.md": {
-      "sourceHash": "sha256:1d779545c5022048edf9862f1be1850d9e6cd3445cb7e2a33280e83e21ab7458",
-      "analysisHash": "sha256:9443c1e0995a60ff933de6731b19ba971e19b8c80ce76e578e564f6f4bbcb191",
-      "status": "success",
-      "summary": {
-        "summary": "今日科技动态聚焦前端、DevOps和AI领域：WebKit发布Safari Technology Preview 246与Customizable Select规范；GitHub CLI新增远程仓库文件读取命令，Copilot推出Agent Finder实现工具发现；OpenAI展示近自主AI化学家并推出LifeSciBench基准。整体趋势从能力发布转向加速落地真实工作流。",
-        "keyPoints": [
-          "WebKit通过Safari Technology Preview 246继续预览CSS、HTML和存储等新能力，强化预览版的前置试验场角色",
-          "WebKit发布Customizable Select的“黄金法则”，强调可访问文本是落地的关键",
-          "GitHub CLI新增远程仓库文件读取与目录浏览命令，简化日常仓库检查流程",
-          "GitHub Copilot Agent Finder基于Agentic Resource Discovery规范，实现按需工具发现",
-          "OpenAI展示基于GPT-5.4的近自主AI化学家，推动AI在生命科学实验中的实际改进"
-        ],
-        "keywords": [
-          "Safari Technology Preview",
-          "Customizable Select",
-          "GitHub CLI",
-          "Agent Finder",
-          "AI chemist"
-        ],
-        "techStack": [
-          "WebKit",
-          "Safari",
-          "CSS",
-          "HTML",
-          "GitHub CLI",
-          "Copilot",
-          "GPT-5.4"
-        ],
-        "difficulty": "中等",
-        "contentType": "每日科技动态"
-      },
-      "processedAt": "2026-06-18T01:39:10.013Z"
-    },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
       "analysisHash": "sha256:5b32bcf85abba75b5594be438f2485beaab002b012011b981361a6e6dcccd70e",
@@ -6953,6 +6818,141 @@
         "contentType": "overview"
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
+    },
+    "/daily-news/2026-06-15.md": {
+      "sourceHash": "sha256:bb32c85d664bce063601de5ffd6fea8b6b5b066e254c1309cc454523599d3a56",
+      "analysisHash": "sha256:a3aac3f0054b79ae4473c1b0681487c12825b3b8e1a10e75f81f9015760f4d73",
+      "status": "success",
+      "summary": {
+        "summary": "今日技术动态聚焦三条主线：前端侧Chrome 150将带来多项CSS底层增强，WebKit推出Grid Lanes互动指南；DevOps侧GitHub强化Copilot code review的组织级治理，并恢复自托管runner的最低版本强制；AI侧美国政府以出口管制暂停Anthropic顶级模型访问，OpenAI投资1.5亿美元搭建全球合作网络，反映能力分配与治理成为新焦点。",
+        "keyPoints": [
+          "Chrome 150稳定版即将推送，新增CSS圆角、动画zoom、背景裁切等底层能力，并收紧PWA系统颜色权限",
+          "WebKit发布Grid Lanes互动指南，提供可交互布局演示与完整属性参考，降低新布局模式的采用门槛",
+          "GitHub对Copilot code review增加组织级配置、内容排除与无限自定义指令，推动治理精细化",
+          "美国政府对Anthropic的Fable 5和Mythos 5发出出口管制指令，三天内从发布到叫停，标志AI模型纳入管制物项",
+          "OpenAI投资1.5亿美元构建全球合作伙伴网络，旨在扩大企业级AI服务落地"
+        ],
+        "keywords": [
+          "Chrome 150",
+          "CSS Grid Lanes",
+          "Copilot code review",
+          "出口管制",
+          "OpenAI合作伙伴"
+        ],
+        "techStack": [
+          "Chrome",
+          "WebKit",
+          "CSS",
+          "GitHub Actions",
+          "Copilot",
+          "Claude",
+          "OpenAI"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-15T01:45:01.169Z"
+    },
+    "/daily-news/2026-06-16.md": {
+      "sourceHash": "sha256:573214eac37c3ac6c7de297999cfd3d666dc4f2ec929a233e8455a758a490bf7",
+      "analysisHash": "sha256:2a74c2b4bebec92ff4fc8ad3ac8f2ece77358dff04c4893c0a8b32194858d838",
+      "status": "success",
+      "summary": {
+        "summary": "本周科技动态显示平台方将控制力前移：Safari 27 推出可定制 select 并强调保留文本；Chrome 推进 WebMCP 让页面可被 AI 代理理解；GitHub Copilot 报表引入服务端遥测提升准确性；GHES 3.21 增强企业治理；Anthropic 与 TCS 合作将 Claude 落地监管行业。趋势是从可用到可声明、可解释、可渐进增强。",
+        "keyPoints": [
+          "Safari 27 支持可定制 <select>，但 WebKit 强调必须保留选项文本标签以保证可用性和渐进增强。",
+          "Chrome 启动 WebMCP origin trial，允许网站向 AI 代理声明结构化操作，减少猜测。",
+          "GitHub Copilot 使用报表纳入服务端遥测，让企业看到更真实的活跃用户数量。",
+          "GitHub Enterprise Server 3.21 正式发布，强化组织自定义属性、规则集和审计等企业治理能力。",
+          "Anthropic 与 TCS 合作推动 Claude 在金融服务、医疗等强监管行业的大规模落地与培训。"
+        ],
+        "keywords": [
+          "可定制 select",
+          "WebMCP",
+          "Copilot 遥测",
+          "GHES 3.21",
+          "Claude 行业落地"
+        ],
+        "techStack": [
+          "Safari/WebKit",
+          "Chrome WebMCP",
+          "GitHub Copilot",
+          "GitHub Enterprise Server",
+          "Anthropic Claude"
+        ],
+        "difficulty": "low",
+        "contentType": "news digest"
+      },
+      "processedAt": "2026-06-16T01:39:23.985Z"
+    },
+    "/daily-news/2026-06-17.md": {
+      "sourceHash": "sha256:5c3ef3fcf3da135f7929fe963789e3fd18750098245056b081c3cd5400c5aa31",
+      "analysisHash": "sha256:0d724ad923b5ac4acde6266bbf89e76d6e2973bdaa523252c9177711cf28341e",
+      "status": "success",
+      "summary": {
+        "summary": "今日科技动态显示平台从可用向可规模化采用推进：Safari 27 beta补强浏览器正确性，WebKit推Grid Lanes交互教程；GitHub Code Quality将商用并提供组织级部署；OpenAI引入部署模拟评估AI风险，Anthropic合作推进企业应用。",
+        "keyPoints": [
+          "Safari 27 beta发布，强调质量提升与Web标准对齐，包含58项新特性和525项修复。",
+          "WebKit推出CSS Grid Lanes交互式Field Guide，降低新布局学习与调试门槛。",
+          "GitHub Code Quality将于2026年7月20日转为商用，每活跃提交者月费10美元。",
+          "GitHub支持组织级一键启停Code Quality，便于企业统一推出质量规则。",
+          "OpenAI提出Deployment Simulation，在模型发布前模拟真实环境评估行为偏差。"
+        ],
+        "keywords": [
+          "浏览器兼容性",
+          "代码质量产品化",
+          "AI部署评估",
+          "组织级治理",
+          "布局模型教学"
+        ],
+        "techStack": [
+          "Safari",
+          "WebKit",
+          "CSS Grid Lanes",
+          "GitHub Code Quality",
+          "CodeQL",
+          "GitHub Actions",
+          "OpenAI GPT-5",
+          "Claude"
+        ],
+        "difficulty": "中等",
+        "contentType": "科技新闻摘要"
+      },
+      "processedAt": "2026-06-17T01:38:46.271Z"
+    },
+    "/daily-news/2026-06-18.md": {
+      "sourceHash": "sha256:1d779545c5022048edf9862f1be1850d9e6cd3445cb7e2a33280e83e21ab7458",
+      "analysisHash": "sha256:9443c1e0995a60ff933de6731b19ba971e19b8c80ce76e578e564f6f4bbcb191",
+      "status": "success",
+      "summary": {
+        "summary": "今日科技动态聚焦前端、DevOps和AI领域：WebKit发布Safari Technology Preview 246与Customizable Select规范；GitHub CLI新增远程仓库文件读取命令，Copilot推出Agent Finder实现工具发现；OpenAI展示近自主AI化学家并推出LifeSciBench基准。整体趋势从能力发布转向加速落地真实工作流。",
+        "keyPoints": [
+          "WebKit通过Safari Technology Preview 246继续预览CSS、HTML和存储等新能力，强化预览版的前置试验场角色",
+          "WebKit发布Customizable Select的“黄金法则”，强调可访问文本是落地的关键",
+          "GitHub CLI新增远程仓库文件读取与目录浏览命令，简化日常仓库检查流程",
+          "GitHub Copilot Agent Finder基于Agentic Resource Discovery规范，实现按需工具发现",
+          "OpenAI展示基于GPT-5.4的近自主AI化学家，推动AI在生命科学实验中的实际改进"
+        ],
+        "keywords": [
+          "Safari Technology Preview",
+          "Customizable Select",
+          "GitHub CLI",
+          "Agent Finder",
+          "AI chemist"
+        ],
+        "techStack": [
+          "WebKit",
+          "Safari",
+          "CSS",
+          "HTML",
+          "GitHub CLI",
+          "Copilot",
+          "GPT-5.4"
+        ],
+        "difficulty": "中等",
+        "contentType": "每日科技动态"
+      },
+      "processedAt": "2026-06-18T01:39:10.013Z"
     },
     "/daily-news/2026-06-19.md": {
       "sourceHash": "sha256:eb70bf8a83ff88035c7758f415b3e0244c8dfcca1707a300993849c35375641e",
