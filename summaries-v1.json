@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-20T01:39:34.320Z",
+  "generatedAt": "2026-06-21T01:42:43.066Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1588,6 +1588,38 @@
         "contentType": "技术新闻"
       },
       "processedAt": "2026-06-19T01:48:36.460Z"
+    },
+    "/daily-news/2026-06-20.md": {
+      "sourceHash": "sha256:c56646b9d5bd7576e6df23fee7085a2ba241228e967d9bf30f2c8a4bbb53a20e",
+      "analysisHash": "sha256:87d48ff2d6b6317526ed83e918a52a5b931ac6ec061a8087bb91ed7e2ea1c7f5",
+      "status": "success",
+      "summary": {
+        "summary": "每日科技动态汇总前端、DevOps与AI官方更新。前端Safari预览版引入新CSS特性与可访问性规则；DevOps中GitHub推出Copilot成本度量与代码审查上下文支持；AI方面OpenAI提升健康问答能力并发布科研评测基准。整体强调平台可观测性与落地性。",
+        "keyPoints": [
+          "Safari Technology Preview 246 预览多项CSS新特性，提升跨浏览器兼容性",
+          "WebKit强调可定制select必须保留文本内容以确保可访问性",
+          "GitHub Copilot用量API新增信用消耗字段，支持FinOps成本分析",
+          "GitHub Copilot代码审查支持仓库级AGENTS.md，增强约束合规性",
+          "OpenAI提升ChatGPT健康推理并发布LifeSciBench科研评测基准"
+        ],
+        "keywords": [
+          "前端更新",
+          "DevOps",
+          "AI智能",
+          "可观测性",
+          "成本分析"
+        ],
+        "techStack": [
+          "WebKit",
+          "GitHub Copilot",
+          "OpenAI",
+          "CSS",
+          "Accessibility"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术动态"
+      },
+      "processedAt": "2026-06-20T01:39:34.312Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -6986,48 +7018,47 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-06-20.md": {
-      "sourceHash": "sha256:c56646b9d5bd7576e6df23fee7085a2ba241228e967d9bf30f2c8a4bbb53a20e",
-      "analysisHash": "sha256:87d48ff2d6b6317526ed83e918a52a5b931ac6ec061a8087bb91ed7e2ea1c7f5",
+    "/daily-news/2026-06-21.md": {
+      "sourceHash": "sha256:ef08ee32740b9a3e3c6bf5dc79c8d8f5e167827551641156493d43a5b0280f34",
+      "analysisHash": "sha256:b56a20c27da8b3608d45ec2f2c913aba56494b7a3225c02dc6fdd4b36574044f",
       "status": "success",
       "summary": {
-        "summary": "每日科技动态汇总前端、DevOps与AI官方更新。前端Safari预览版引入新CSS特性与可访问性规则；DevOps中GitHub推出Copilot成本度量与代码审查上下文支持；AI方面OpenAI提升健康问答能力并发布科研评测基准。整体强调平台可观测性与落地性。",
+        "summary": "本文报道2026年6月21日科技动态，涵盖前端、DevOps和AI三大领域。前端方向WebKit推出Grid Lanes交互学习工具，Apple发布Safari 27六场WWDC技术课程；DevOps方向GitHub推出Actions工作流执行保护公开预览，并为pull_request_target添加安全默认值；AI方向Anthropic开设首尔办公室，与韩国政府和企业合作扩展Claude生态。",
         "keyPoints": [
-          "Safari Technology Preview 246 预览多项CSS新特性，提升跨浏览器兼容性",
-          "WebKit强调可定制select必须保留文本内容以确保可访问性",
-          "GitHub Copilot用量API新增信用消耗字段，支持FinOps成本分析",
-          "GitHub Copilot代码审查支持仓库级AGENTS.md，增强约束合规性",
-          "OpenAI提升ChatGPT健康推理并发布LifeSciBench科研评测基准"
+          "WebKit推出Grid Lanes交互学习工具，降低新布局能力采用门槛",
+          "Apple发布Safari 27六场WWDC技术课程，涵盖多项新特性与开发者教育",
+          "GitHub推出Actions工作流执行保护公开预览，集中治理CI触发权限",
+          "GitHub为pull_request_target添加安全默认值，减少供应链攻击风险",
+          "Anthropic设立首尔办公室，与韩国政府和企业合作扩展Claude生态"
         ],
         "keywords": [
-          "前端更新",
-          "DevOps",
-          "AI智能",
-          "可观测性",
-          "成本分析"
+          "WebKit",
+          "GitHub Actions",
+          "CI安全",
+          "Anthropic",
+          "开发者教育"
         ],
         "techStack": [
           "WebKit",
-          "GitHub Copilot",
-          "OpenAI",
-          "CSS",
-          "Accessibility"
+          "GitHub Actions",
+          "Anthropic Claude",
+          "CSS Grid Lanes"
         ],
-        "difficulty": "中等",
-        "contentType": "技术动态"
+        "difficulty": "中级",
+        "contentType": "新闻简报"
       },
-      "processedAt": "2026-06-20T01:39:34.312Z"
+      "processedAt": "2026-06-21T01:42:43.058Z"
     }
   },
   "stats": {
-    "totalFiles": 224,
-    "reusedFiles": 223,
+    "totalFiles": 225,
+    "reusedFiles": 224,
     "pendingFiles": 1,
-    "completedFiles": 224,
+    "completedFiles": 225,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9955357142857143,
-    "durationMs": 20148
+    "hitRate": 0.9955555555555555,
+    "durationMs": 21812
   }
 }
