@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-21T01:42:43.066Z",
+  "generatedAt": "2026-06-22T01:38:55.452Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1620,6 +1620,37 @@
         "contentType": "技术动态"
       },
       "processedAt": "2026-06-20T01:39:34.312Z"
+    },
+    "/daily-news/2026-06-21.md": {
+      "sourceHash": "sha256:ef08ee32740b9a3e3c6bf5dc79c8d8f5e167827551641156493d43a5b0280f34",
+      "analysisHash": "sha256:b56a20c27da8b3608d45ec2f2c913aba56494b7a3225c02dc6fdd4b36574044f",
+      "status": "success",
+      "summary": {
+        "summary": "本文报道2026年6月21日科技动态，涵盖前端、DevOps和AI三大领域。前端方向WebKit推出Grid Lanes交互学习工具，Apple发布Safari 27六场WWDC技术课程；DevOps方向GitHub推出Actions工作流执行保护公开预览，并为pull_request_target添加安全默认值；AI方向Anthropic开设首尔办公室，与韩国政府和企业合作扩展Claude生态。",
+        "keyPoints": [
+          "WebKit推出Grid Lanes交互学习工具，降低新布局能力采用门槛",
+          "Apple发布Safari 27六场WWDC技术课程，涵盖多项新特性与开发者教育",
+          "GitHub推出Actions工作流执行保护公开预览，集中治理CI触发权限",
+          "GitHub为pull_request_target添加安全默认值，减少供应链攻击风险",
+          "Anthropic设立首尔办公室，与韩国政府和企业合作扩展Claude生态"
+        ],
+        "keywords": [
+          "WebKit",
+          "GitHub Actions",
+          "CI安全",
+          "Anthropic",
+          "开发者教育"
+        ],
+        "techStack": [
+          "WebKit",
+          "GitHub Actions",
+          "Anthropic Claude",
+          "CSS Grid Lanes"
+        ],
+        "difficulty": "中级",
+        "contentType": "新闻简报"
+      },
+      "processedAt": "2026-06-21T01:42:43.058Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7018,47 +7049,52 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-06-21.md": {
-      "sourceHash": "sha256:ef08ee32740b9a3e3c6bf5dc79c8d8f5e167827551641156493d43a5b0280f34",
-      "analysisHash": "sha256:b56a20c27da8b3608d45ec2f2c913aba56494b7a3225c02dc6fdd4b36574044f",
+    "/daily-news/2026-06-22.md": {
+      "sourceHash": "sha256:e92352a2046c234d6918a0e70cfe9bfda4bfa092f295b5dbfae2639e200c6421",
+      "analysisHash": "sha256:e628ee689b11ebb1e70c2a5947bc51bddbdf6c79b7b9c1d3b8b4d436ca65713b",
       "status": "success",
       "summary": {
-        "summary": "本文报道2026年6月21日科技动态，涵盖前端、DevOps和AI三大领域。前端方向WebKit推出Grid Lanes交互学习工具，Apple发布Safari 27六场WWDC技术课程；DevOps方向GitHub推出Actions工作流执行保护公开预览，并为pull_request_target添加安全默认值；AI方向Anthropic开设首尔办公室，与韩国政府和企业合作扩展Claude生态。",
+        "summary": "本日科技动态聚焦前端、DevOps与AI最新进展：前端WebKit发布Safari Technology Preview 246，新增CSS颜色混合等功能，并强调可定制选择框的文本保留规则；DevOps方面GitHub将Copilot消耗指标纳入API，并支持分层构建自定义镜像；AI领域OpenAI与三星合作大规模部署ChatGPT与Codex，同时提升GPT-5.5 Instant的健康问答质量。",
         "keyPoints": [
-          "WebKit推出Grid Lanes交互学习工具，降低新布局能力采用门槛",
-          "Apple发布Safari 27六场WWDC技术课程，涵盖多项新特性与开发者教育",
-          "GitHub推出Actions工作流执行保护公开预览，集中治理CI触发权限",
-          "GitHub为pull_request_target添加安全默认值，减少供应链攻击风险",
-          "Anthropic设立首尔办公室，与韩国政府和企业合作扩展Claude生态"
+          "WebKit推出Safari Technology Preview 246，增强CSS颜色系统与样式查询，优化跨浏览器开发体验",
+          "WebKit发布可定制select控件指导原则，强调保留文本以保障可访问性与渐进增强",
+          "GitHub Copilot使用量API新增AI信用消耗字段，实现成本可视化与FinOps整合",
+          "GitHub Actions支持基于现有自定义镜像分层构建，推进CI环境标准化与复用",
+          "OpenAI与三星电子合作，在韩国及全球事业部大规模部署ChatGPT Enterprise与Codex"
         ],
         "keywords": [
+          "前端",
+          "DevOps",
+          "AI",
           "WebKit",
-          "GitHub Actions",
-          "CI安全",
-          "Anthropic",
-          "开发者教育"
+          "GitHub"
         ],
         "techStack": [
           "WebKit",
+          "Safari Technology Preview",
+          "CSS",
+          "GitHub Copilot",
           "GitHub Actions",
-          "Anthropic Claude",
-          "CSS Grid Lanes"
+          "OpenAI",
+          "ChatGPT Enterprise",
+          "Codex",
+          "GPT-5.5 Instant"
         ],
-        "difficulty": "中级",
-        "contentType": "新闻简报"
+        "difficulty": "中等",
+        "contentType": "技术资讯"
       },
-      "processedAt": "2026-06-21T01:42:43.058Z"
+      "processedAt": "2026-06-22T01:38:55.445Z"
     }
   },
   "stats": {
-    "totalFiles": 225,
-    "reusedFiles": 224,
+    "totalFiles": 226,
+    "reusedFiles": 225,
     "pendingFiles": 1,
-    "completedFiles": 225,
+    "completedFiles": 226,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9955555555555555,
-    "durationMs": 21812
+    "hitRate": 0.995575221238938,
+    "durationMs": 7365
   }
 }
