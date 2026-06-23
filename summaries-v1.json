@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-22T01:38:55.452Z",
+  "generatedAt": "2026-06-23T01:42:03.683Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1651,6 +1651,42 @@
         "contentType": "新闻简报"
       },
       "processedAt": "2026-06-21T01:42:43.058Z"
+    },
+    "/daily-news/2026-06-22.md": {
+      "sourceHash": "sha256:e92352a2046c234d6918a0e70cfe9bfda4bfa092f295b5dbfae2639e200c6421",
+      "analysisHash": "sha256:e628ee689b11ebb1e70c2a5947bc51bddbdf6c79b7b9c1d3b8b4d436ca65713b",
+      "status": "success",
+      "summary": {
+        "summary": "本日科技动态聚焦前端、DevOps与AI最新进展：前端WebKit发布Safari Technology Preview 246，新增CSS颜色混合等功能，并强调可定制选择框的文本保留规则；DevOps方面GitHub将Copilot消耗指标纳入API，并支持分层构建自定义镜像；AI领域OpenAI与三星合作大规模部署ChatGPT与Codex，同时提升GPT-5.5 Instant的健康问答质量。",
+        "keyPoints": [
+          "WebKit推出Safari Technology Preview 246，增强CSS颜色系统与样式查询，优化跨浏览器开发体验",
+          "WebKit发布可定制select控件指导原则，强调保留文本以保障可访问性与渐进增强",
+          "GitHub Copilot使用量API新增AI信用消耗字段，实现成本可视化与FinOps整合",
+          "GitHub Actions支持基于现有自定义镜像分层构建，推进CI环境标准化与复用",
+          "OpenAI与三星电子合作，在韩国及全球事业部大规模部署ChatGPT Enterprise与Codex"
+        ],
+        "keywords": [
+          "前端",
+          "DevOps",
+          "AI",
+          "WebKit",
+          "GitHub"
+        ],
+        "techStack": [
+          "WebKit",
+          "Safari Technology Preview",
+          "CSS",
+          "GitHub Copilot",
+          "GitHub Actions",
+          "OpenAI",
+          "ChatGPT Enterprise",
+          "Codex",
+          "GPT-5.5 Instant"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术资讯"
+      },
+      "processedAt": "2026-06-22T01:38:55.445Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7049,52 +7085,49 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-06-22.md": {
-      "sourceHash": "sha256:e92352a2046c234d6918a0e70cfe9bfda4bfa092f295b5dbfae2639e200c6421",
-      "analysisHash": "sha256:e628ee689b11ebb1e70c2a5947bc51bddbdf6c79b7b9c1d3b8b4d436ca65713b",
+    "/daily-news/2026-06-23.md": {
+      "sourceHash": "sha256:41d66a71239405d46a9563d866e3a15a74f4fc404e7b01e39d8f159e41585a98",
+      "analysisHash": "sha256:18374df1ecb5e27796e736a3d194f00df66a4aec8fd85cd2823f9e88e825576b",
       "status": "success",
       "summary": {
-        "summary": "本日科技动态聚焦前端、DevOps与AI最新进展：前端WebKit发布Safari Technology Preview 246，新增CSS颜色混合等功能，并强调可定制选择框的文本保留规则；DevOps方面GitHub将Copilot消耗指标纳入API，并支持分层构建自定义镜像；AI领域OpenAI与三星合作大规模部署ChatGPT与Codex，同时提升GPT-5.5 Instant的健康问答质量。",
+        "summary": "今日科技动态聚焦DevOps与AI：GitHub将智能体工作流和问题治理纳入组织级平台，OpenAI推出Daybreak安全套件与开源维护计划。前端方面，WebKit发布Grid Lanes交互指南，Safari 27 beta带来可定制select等58项新特性。",
         "keyPoints": [
-          "WebKit推出Safari Technology Preview 246，增强CSS颜色系统与样式查询，优化跨浏览器开发体验",
-          "WebKit发布可定制select控件指导原则，强调保留文本以保障可访问性与渐进增强",
-          "GitHub Copilot使用量API新增AI信用消耗字段，实现成本可视化与FinOps整合",
-          "GitHub Actions支持基于现有自定义镜像分层构建，推进CI环境标准化与复用",
-          "OpenAI与三星电子合作，在韩国及全球事业部大规模部署ChatGPT Enterprise与Codex"
+          "GitHub Copilot在JetBrains IDE中支持组织级自定义代理，将智能体工作流从个人配置升级为团队标准化入口",
+          "GitHub Issues新增重复检测和字段MCP支持，实现提单入口的去重与结构化治理",
+          "OpenAI发布Daybreak安全方案，整合漏洞验证、优先级排序、补丁生成等完整防御流程",
+          "OpenAI发起Patch the Planet计划，联合Trail of Bits利用前沿模型助力开源维护者修补漏洞",
+          "WebKit上线Grid Lanes交互式文档，Safari 27 beta推出可定制select等前端期待多年的落地能力"
         ],
         "keywords": [
-          "前端",
-          "DevOps",
-          "AI",
-          "WebKit",
-          "GitHub"
+          "GitHub Copilot",
+          "智能体",
+          "Daybreak安全",
+          "开源安全",
+          "WebKit Grid Lanes"
         ],
         "techStack": [
-          "WebKit",
-          "Safari Technology Preview",
-          "CSS",
           "GitHub Copilot",
-          "GitHub Actions",
-          "OpenAI",
-          "ChatGPT Enterprise",
-          "Codex",
-          "GPT-5.5 Instant"
+          "OpenAI Daybreak",
+          "WebKit",
+          "Safari",
+          "MCP",
+          "CSS Grid"
         ],
-        "difficulty": "中等",
-        "contentType": "技术资讯"
+        "difficulty": "general",
+        "contentType": "科技新闻"
       },
-      "processedAt": "2026-06-22T01:38:55.445Z"
+      "processedAt": "2026-06-23T01:42:03.675Z"
     }
   },
   "stats": {
-    "totalFiles": 226,
-    "reusedFiles": 225,
+    "totalFiles": 227,
+    "reusedFiles": 226,
     "pendingFiles": 1,
-    "completedFiles": 226,
+    "completedFiles": 227,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.995575221238938,
-    "durationMs": 7365
+    "hitRate": 0.9955947136563876,
+    "durationMs": 7651
   }
 }
