@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-24T01:37:07.227Z",
+  "generatedAt": "2026-07-25T01:39:42.797Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1773,6 +1773,38 @@
         "contentType": "技术动态"
       },
       "processedAt": "2026-07-23T01:37:20.531Z"
+    },
+    "/daily-news/2026-07-24.md": {
+      "sourceHash": "sha256:a3a5e6c7aae29af5e9a6df7da1ac5683d472e0af9144f67753481e00e27fc044",
+      "analysisHash": "sha256:a8737e1899cb1504cd3ce26d34f9779c6f234888d04b1d40d881b4b79a7df6a5",
+      "status": "success",
+      "summary": {
+        "summary": "今日动态涵盖前端、DevOps和AI三大领域：Firefox将发布周期从4周缩短至2周，并增强扩展权限控制；GitHub MCP Server转向无状态核心协议，Issue自动化引入置信度与审批机制；OpenAI推出ChatGPT健康功能，同时规划大型数据中心。整体呈现平台同时追求更快迭代与更强治理的趋势。",
+        "keyPoints": [
+          "Firefox发布周期从4周改为2周，扩展权限改为显式授权并新增API",
+          "MCP协议转向无状态核心，GitHub MCP Server提前兼容以支持水平扩展",
+          "GitHub Issues自动化加入置信度、建议模式和审批流程，增强治理",
+          "OpenAI发布Health in ChatGPT，连接医疗数据，强调隐私控制",
+          "OpenAI在佐治亚州启动Project Camellia数据中心建设"
+        ],
+        "keywords": [
+          "Firefox",
+          "GitHub",
+          "OpenAI",
+          "自动化",
+          "隐私"
+        ],
+        "techStack": [
+          "WebExtensions",
+          "MCP",
+          "Go",
+          "REST API",
+          "GraphQL API"
+        ],
+        "difficulty": "medium",
+        "contentType": "news"
+      },
+      "processedAt": "2026-07-24T01:37:07.218Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7170,48 +7202,49 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-24.md": {
-      "sourceHash": "sha256:a3a5e6c7aae29af5e9a6df7da1ac5683d472e0af9144f67753481e00e27fc044",
-      "analysisHash": "sha256:a8737e1899cb1504cd3ce26d34f9779c6f234888d04b1d40d881b4b79a7df6a5",
+    "/daily-news/2026-07-25.md": {
+      "sourceHash": "sha256:b1db3c72b420985958efb74787084ccd5eee71e4e63bb3ce65d1ac369ea0f745",
+      "analysisHash": "sha256:627a5269d11ac499b1404bad4bc0160c75f31e4ebeb1f61f323a2ad0145ed09e",
       "status": "success",
       "summary": {
-        "summary": "今日动态涵盖前端、DevOps和AI三大领域：Firefox将发布周期从4周缩短至2周，并增强扩展权限控制；GitHub MCP Server转向无状态核心协议，Issue自动化引入置信度与审批机制；OpenAI推出ChatGPT健康功能，同时规划大型数据中心。整体呈现平台同时追求更快迭代与更强治理的趋势。",
+        "summary": "今天动态核心是安全性正从附加项转为默认机制：Next.js启动首次月度安全发布修复9个漏洞，Tailwind CSS加固构建工具链稳定性；GitHub Copilot接入Claude Opus 5模型并将云agent延伸至Linear项目管理；Anthropic以Opus 5推高模型能力与安全基线，OpenAI展示新闻机构AI应用。这意味着在快速交付的同时，安全发布、工具链稳定和模型可控正成为区分专业团队的关键。",
         "keyPoints": [
-          "Firefox发布周期从4周改为2周，扩展权限改为显式授权并新增API",
-          "MCP协议转向无状态核心，GitHub MCP Server提前兼容以支持水平扩展",
-          "GitHub Issues自动化加入置信度、建议模式和审批流程，增强治理",
-          "OpenAI发布Health in ChatGPT，连接医疗数据，强调隐私控制",
-          "OpenAI在佐治亚州启动Project Camellia数据中心建设"
+          "Next.js首次月度安全发布修复9个漏洞",
+          "Tailwind CSS v4.3.3加固多运行时兼容性",
+          "GitHub Copilot接入Claude Opus 5并推出Linear云agent",
+          "Anthropic发布Claude Opus 5，高性价比与安全性",
+          "OpenAI展示新闻机构AI应用案例"
         ],
         "keywords": [
-          "Firefox",
-          "GitHub",
-          "OpenAI",
-          "自动化",
-          "隐私"
+          "安全性",
+          "月度安全发布",
+          "Claude Opus 5",
+          "GitHub Copilot",
+          "工具链稳定性"
         ],
         "techStack": [
-          "WebExtensions",
-          "MCP",
-          "Go",
-          "REST API",
-          "GraphQL API"
+          "Next.js",
+          "Tailwind CSS",
+          "GitHub Copilot",
+          "Anthropic Claude",
+          "OpenAI",
+          "Linear"
         ],
-        "difficulty": "medium",
-        "contentType": "news"
+        "difficulty": "中等",
+        "contentType": "科技新闻"
       },
-      "processedAt": "2026-07-24T01:37:07.218Z"
+      "processedAt": "2026-07-25T01:39:42.789Z"
     }
   },
   "stats": {
-    "totalFiles": 230,
-    "reusedFiles": 229,
+    "totalFiles": 231,
+    "reusedFiles": 230,
     "pendingFiles": 1,
-    "completedFiles": 230,
+    "completedFiles": 231,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9956521739130435,
-    "durationMs": 8932
+    "hitRate": 0.9956709956709957,
+    "durationMs": 9282
   }
 }
