@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T01:39:42.797Z",
+  "generatedAt": "2026-07-26T01:38:18.755Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1805,6 +1805,39 @@
         "contentType": "news"
       },
       "processedAt": "2026-07-24T01:37:07.218Z"
+    },
+    "/daily-news/2026-07-25.md": {
+      "sourceHash": "sha256:b1db3c72b420985958efb74787084ccd5eee71e4e63bb3ce65d1ac369ea0f745",
+      "analysisHash": "sha256:627a5269d11ac499b1404bad4bc0160c75f31e4ebeb1f61f323a2ad0145ed09e",
+      "status": "success",
+      "summary": {
+        "summary": "今天动态核心是安全性正从附加项转为默认机制：Next.js启动首次月度安全发布修复9个漏洞，Tailwind CSS加固构建工具链稳定性；GitHub Copilot接入Claude Opus 5模型并将云agent延伸至Linear项目管理；Anthropic以Opus 5推高模型能力与安全基线，OpenAI展示新闻机构AI应用。这意味着在快速交付的同时，安全发布、工具链稳定和模型可控正成为区分专业团队的关键。",
+        "keyPoints": [
+          "Next.js首次月度安全发布修复9个漏洞",
+          "Tailwind CSS v4.3.3加固多运行时兼容性",
+          "GitHub Copilot接入Claude Opus 5并推出Linear云agent",
+          "Anthropic发布Claude Opus 5，高性价比与安全性",
+          "OpenAI展示新闻机构AI应用案例"
+        ],
+        "keywords": [
+          "安全性",
+          "月度安全发布",
+          "Claude Opus 5",
+          "GitHub Copilot",
+          "工具链稳定性"
+        ],
+        "techStack": [
+          "Next.js",
+          "Tailwind CSS",
+          "GitHub Copilot",
+          "Anthropic Claude",
+          "OpenAI",
+          "Linear"
+        ],
+        "difficulty": "中等",
+        "contentType": "科技新闻"
+      },
+      "processedAt": "2026-07-25T01:39:42.789Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7202,49 +7235,48 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-25.md": {
-      "sourceHash": "sha256:b1db3c72b420985958efb74787084ccd5eee71e4e63bb3ce65d1ac369ea0f745",
-      "analysisHash": "sha256:627a5269d11ac499b1404bad4bc0160c75f31e4ebeb1f61f323a2ad0145ed09e",
+    "/daily-news/2026-07-26.md": {
+      "sourceHash": "sha256:f6d952de0aebe5a8fc5e11d334b3749fdb469b7aeb125b83130d3d7f9acb5524",
+      "analysisHash": "sha256:b33824d859c6d950160905db815d173f21b513dbfd5973d91a67edfbdf5b9c2d",
       "status": "success",
       "summary": {
-        "summary": "今天动态核心是安全性正从附加项转为默认机制：Next.js启动首次月度安全发布修复9个漏洞，Tailwind CSS加固构建工具链稳定性；GitHub Copilot接入Claude Opus 5模型并将云agent延伸至Linear项目管理；Anthropic以Opus 5推高模型能力与安全基线，OpenAI展示新闻机构AI应用。这意味着在快速交付的同时，安全发布、工具链稳定和模型可控正成为区分专业团队的关键。",
+        "summary": "近期技术动态强调显式边界：Safari和Firefox更新浏览器权限与API，GitHub MCP Server转向无状态核心，GitHub Issues为agent自动化引入建议、置信度与理由审核机制，OpenAI和Anthropic推动个人健康数据接入与企业级agent标准化。",
         "keyPoints": [
-          "Next.js首次月度安全发布修复9个漏洞",
-          "Tailwind CSS v4.3.3加固多运行时兼容性",
-          "GitHub Copilot接入Claude Opus 5并推出Linear云agent",
-          "Anthropic发布Claude Opus 5，高性价比与安全性",
-          "OpenAI展示新闻机构AI应用案例"
+          "Safari TP 248新增CSS progress() no-clamp与BigInt Math支持，推进Safari端实验特性落地",
+          "Firefox 153修改扩展文件访问权限为显式授权，并增强userScripts和adoptedStyleSheets能力",
+          "GitHub MCP Server提前支持MCP无状态核心规范，提升扩展性与工程化部署",
+          "GitHub Issues公开预览agent自动化控制，提供建议、置信度与理由三层审核机制",
+          "OpenAI在ChatGPT中接入健康数据，拓展个性化AI在高敏感场景的应用"
         ],
         "keywords": [
-          "安全性",
-          "月度安全发布",
-          "Claude Opus 5",
-          "GitHub Copilot",
-          "工具链稳定性"
+          "显式边界",
+          "agent自动化审核",
+          "MCP协议无状态",
+          "健康数据接入",
+          "浏览器扩展权限"
         ],
         "techStack": [
-          "Next.js",
-          "Tailwind CSS",
-          "GitHub Copilot",
-          "Anthropic Claude",
-          "OpenAI",
-          "Linear"
+          "Safari Technology Preview",
+          "Firefox WebExtensions",
+          "GitHub MCP Server",
+          "ChatGPT",
+          "Claude"
         ],
-        "difficulty": "中等",
-        "contentType": "科技新闻"
+        "difficulty": "中级",
+        "contentType": "技术动态"
       },
-      "processedAt": "2026-07-25T01:39:42.789Z"
+      "processedAt": "2026-07-26T01:38:18.748Z"
     }
   },
   "stats": {
-    "totalFiles": 231,
-    "reusedFiles": 230,
+    "totalFiles": 232,
+    "reusedFiles": 231,
     "pendingFiles": 1,
-    "completedFiles": 231,
+    "completedFiles": 232,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9956709956709957,
-    "durationMs": 9282
+    "hitRate": 0.9956896551724138,
+    "durationMs": 16078
   }
 }
