@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-28T01:39:31.051Z",
+  "generatedAt": "2026-07-29T01:41:39.257Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1903,6 +1903,41 @@
         "contentType": "技术新闻摘要"
       },
       "processedAt": "2026-07-27T02:07:20.274Z"
+    },
+    "/daily-news/2026-07-28.md": {
+      "sourceHash": "sha256:482453d8a734c25d1f894642ed5bb44bcbd5b26604cce150bfc3b8da23ac2550",
+      "analysisHash": "sha256:1e1337593ae4b2a106bc4269f30fee614ac49fcd4eb9c28268dfd72f785ba514",
+      "status": "success",
+      "summary": {
+        "summary": "今日科技动态显示平台正将默认能力前移。前端Safari 26.6补齐WebAssembly流式编译并修复8项实现问题，Technology Preview 248推进CSS/JS细节。DevOps端GitHub拆分Copilot app与CLI策略，并统一托管设置。AI侧OpenAI研究揭示AI引发跨岗位任务迁移，Health in ChatGPT开放个人健康数据处理。",
+        "keyPoints": [
+          "Safari 26.6补全WebAssembly流式编译选项并修复多项Web实现问题",
+          "Safari Technology Preview 248增加CSS progress no-clamp和BigInt Math方法，修复布局与调试器问题",
+          "GitHub为Copilot app提供独立访问策略，并与cloud agent统一企业托管设置",
+          "OpenAI研究显示AI导致“任务交叉”，工作内容跨职业迁移",
+          "Health in ChatGPT向美国用户开放，AI助手接入个人健康数据"
+        ],
+        "keywords": [
+          "WebAssembly",
+          "Copilot治理",
+          "任务交叉",
+          "Health in ChatGPT",
+          "Safari"
+        ],
+        "techStack": [
+          "Safari",
+          "WebAssembly",
+          "CSS",
+          "JavaScript",
+          "GitHub Copilot",
+          "OpenAI",
+          "ChatGPT",
+          "WebKit"
+        ],
+        "difficulty": "medium",
+        "contentType": "news"
+      },
+      "processedAt": "2026-07-28T01:39:31.043Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7300,51 +7335,49 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-28.md": {
-      "sourceHash": "sha256:482453d8a734c25d1f894642ed5bb44bcbd5b26604cce150bfc3b8da23ac2550",
-      "analysisHash": "sha256:1e1337593ae4b2a106bc4269f30fee614ac49fcd4eb9c28268dfd72f785ba514",
+    "/daily-news/2026-07-29.md": {
+      "sourceHash": "sha256:3370816c9ec6e858cb24590cb9ac9312533ace7f4022eeeb1353a5e4d805c698",
+      "analysisHash": "sha256:bfd47f73bacddbb2a94ddb9d1a6dbbf12b59a6603bb8c3c0161b5f25ff098baa",
       "status": "success",
       "summary": {
-        "summary": "今日科技动态显示平台正将默认能力前移。前端Safari 26.6补齐WebAssembly流式编译并修复8项实现问题，Technology Preview 248推进CSS/JS细节。DevOps端GitHub拆分Copilot app与CLI策略，并统一托管设置。AI侧OpenAI研究揭示AI引发跨岗位任务迁移，Health in ChatGPT开放个人健康数据处理。",
+        "summary": "7月29日科技动态涵盖前端、DevOps和AI：Lighthouse新增Baseline特性审计，Chrome Android改进通知权限；GitHub Actions拦截可疑工作流，npm增强发布时恶意扫描与双重用途申报；OpenAI发表agent科研软件工程报告，Anthropic明确反对一刀切监管开放权重模型。",
         "keyPoints": [
-          "Safari 26.6补全WebAssembly流式编译选项并修复多项Web实现问题",
-          "Safari Technology Preview 248增加CSS progress no-clamp和BigInt Math方法，修复布局与调试器问题",
-          "GitHub为Copilot app提供独立访问策略，并与cloud agent统一企业托管设置",
-          "OpenAI研究显示AI导致“任务交叉”，工作内容跨职业迁移",
-          "Health in ChatGPT向美国用户开放，AI助手接入个人健康数据"
+          "Lighthouse内置Baseline兼容性审计，自动识别特性状态",
+          "Chrome 155 Android采用轻量通知权限，建议适配订阅流程",
+          "GitHub Actions自动hold可疑工作流，npm发布前强制扫描与申报",
+          "OpenAI报告显示agent能降低科研软件工程成本，形成方法论",
+          "Anthropic主张对开放权重模型按风险精确治理，而非整体封禁"
         ],
         "keywords": [
-          "WebAssembly",
-          "Copilot治理",
-          "任务交叉",
-          "Health in ChatGPT",
-          "Safari"
+          "Lighthouse",
+          "GitHub Actions",
+          "npm",
+          "AI agent",
+          "open-weights"
         ],
         "techStack": [
-          "Safari",
-          "WebAssembly",
-          "CSS",
-          "JavaScript",
-          "GitHub Copilot",
-          "OpenAI",
-          "ChatGPT",
-          "WebKit"
+          "Lighthouse",
+          "Chrome",
+          "GitHub Actions",
+          "npm",
+          "OpenAI Codex",
+          "Claude Code"
         ],
-        "difficulty": "medium",
-        "contentType": "news"
+        "difficulty": "中等",
+        "contentType": "科技动态汇总"
       },
-      "processedAt": "2026-07-28T01:39:31.043Z"
+      "processedAt": "2026-07-29T01:41:39.250Z"
     }
   },
   "stats": {
-    "totalFiles": 234,
-    "reusedFiles": 233,
+    "totalFiles": 235,
+    "reusedFiles": 234,
     "pendingFiles": 1,
-    "completedFiles": 234,
+    "completedFiles": 235,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9957264957264957,
-    "durationMs": 11683
+    "hitRate": 0.9957446808510638,
+    "durationMs": 7097
   }
 }
