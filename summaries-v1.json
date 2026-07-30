@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-29T01:41:39.257Z",
+  "generatedAt": "2026-07-30T01:44:48.097Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1938,6 +1938,39 @@
         "contentType": "news"
       },
       "processedAt": "2026-07-28T01:39:31.043Z"
+    },
+    "/daily-news/2026-07-29.md": {
+      "sourceHash": "sha256:3370816c9ec6e858cb24590cb9ac9312533ace7f4022eeeb1353a5e4d805c698",
+      "analysisHash": "sha256:bfd47f73bacddbb2a94ddb9d1a6dbbf12b59a6603bb8c3c0161b5f25ff098baa",
+      "status": "success",
+      "summary": {
+        "summary": "7月29日科技动态涵盖前端、DevOps和AI：Lighthouse新增Baseline特性审计，Chrome Android改进通知权限；GitHub Actions拦截可疑工作流，npm增强发布时恶意扫描与双重用途申报；OpenAI发表agent科研软件工程报告，Anthropic明确反对一刀切监管开放权重模型。",
+        "keyPoints": [
+          "Lighthouse内置Baseline兼容性审计，自动识别特性状态",
+          "Chrome 155 Android采用轻量通知权限，建议适配订阅流程",
+          "GitHub Actions自动hold可疑工作流，npm发布前强制扫描与申报",
+          "OpenAI报告显示agent能降低科研软件工程成本，形成方法论",
+          "Anthropic主张对开放权重模型按风险精确治理，而非整体封禁"
+        ],
+        "keywords": [
+          "Lighthouse",
+          "GitHub Actions",
+          "npm",
+          "AI agent",
+          "open-weights"
+        ],
+        "techStack": [
+          "Lighthouse",
+          "Chrome",
+          "GitHub Actions",
+          "npm",
+          "OpenAI Codex",
+          "Claude Code"
+        ],
+        "difficulty": "中等",
+        "contentType": "科技动态汇总"
+      },
+      "processedAt": "2026-07-29T01:41:39.250Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7335,49 +7368,49 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-29.md": {
-      "sourceHash": "sha256:3370816c9ec6e858cb24590cb9ac9312533ace7f4022eeeb1353a5e4d805c698",
-      "analysisHash": "sha256:bfd47f73bacddbb2a94ddb9d1a6dbbf12b59a6603bb8c3c0161b5f25ff098baa",
+    "/daily-news/2026-07-30.md": {
+      "sourceHash": "sha256:93c55f8964d70231ddddd25b79cc4890bb26692f28a01bba02e2158e5727ae55",
+      "analysisHash": "sha256:eaa073209141d23c6a2a42f86638dcb78a6d1b6afaf754fea0d0fabd2017d99c",
       "status": "success",
       "summary": {
-        "summary": "7月29日科技动态涵盖前端、DevOps和AI：Lighthouse新增Baseline特性审计，Chrome Android改进通知权限；GitHub Actions拦截可疑工作流，npm增强发布时恶意扫描与双重用途申报；OpenAI发表agent科研软件工程报告，Anthropic明确反对一刀切监管开放权重模型。",
+        "summary": "本文概述了Safari浏览器在CSS布局、WebAssembly流编译等方面的更新，GitHub Issues引入代理自动化控制以提升可审计性，Copilot新增采用深度仪表板优化评估，以及OpenAI发布GPT-5.6强调高效推理与降低系统摩擦。",
         "keyPoints": [
-          "Lighthouse内置Baseline兼容性审计，自动识别特性状态",
-          "Chrome 155 Android采用轻量通知权限，建议适配订阅流程",
-          "GitHub Actions自动hold可疑工作流，npm发布前强制扫描与申报",
-          "OpenAI报告显示agent能降低科研软件工程成本，形成方法论",
-          "Anthropic主张对开放权重模型按风险精确治理，而非整体封禁"
+          "Safari Technology Preview 249修复CSS Grid、clip-path等页面细节，提升跨浏览器一致性",
+          "Safari 26.6为WebAssembly流编译接口增加compileOptions参数，统一API能力",
+          "GitHub Issues公开预览代理自动化控制，提供理由、置信度和审批边界",
+          "Copilot新仪表板基于采用阶段评估团队使用深度，超越简单活跃度指标",
+          "OpenAI GPT-5.6通过投机解码和推理优化实现更高智能每token效率"
         ],
         "keywords": [
-          "Lighthouse",
-          "GitHub Actions",
-          "npm",
-          "AI agent",
-          "open-weights"
+          "Safari",
+          "WebAssembly",
+          "GitHub Issues",
+          "Copilot",
+          "GPT-5.6"
         ],
         "techStack": [
-          "Lighthouse",
-          "Chrome",
-          "GitHub Actions",
-          "npm",
-          "OpenAI Codex",
-          "Claude Code"
+          "WebKit",
+          "WebAssembly",
+          "CSS",
+          "GitHub Issues",
+          "GitHub Copilot",
+          "OpenAI GPT-5.6"
         ],
         "difficulty": "中等",
-        "contentType": "科技动态汇总"
+        "contentType": "技术新闻摘要"
       },
-      "processedAt": "2026-07-29T01:41:39.250Z"
+      "processedAt": "2026-07-30T01:44:48.090Z"
     }
   },
   "stats": {
-    "totalFiles": 235,
-    "reusedFiles": 234,
+    "totalFiles": 236,
+    "reusedFiles": 235,
     "pendingFiles": 1,
-    "completedFiles": 235,
+    "completedFiles": 236,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9957446808510638,
-    "durationMs": 7097
+    "hitRate": 0.9957627118644068,
+    "durationMs": 19822
   }
 }
