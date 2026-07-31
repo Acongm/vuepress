@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-31T01:50:40.542Z",
+  "generatedAt": "2026-07-31T15:24:42.196Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -2004,6 +2004,38 @@
         "contentType": "技术新闻摘要"
       },
       "processedAt": "2026-07-30T01:44:48.090Z"
+    },
+    "/daily-news/2026-07-31.md": {
+      "sourceHash": "sha256:dafbaf63530949f5dd2c844f72f5e0020bdeb19653885548666cbfde4a7ed7fb",
+      "analysisHash": "sha256:d953c2966dae514bd4dfe66cbebb469bc96d3059f991b3c8a898c2d8ca572cab",
+      "status": "success",
+      "summary": {
+        "summary": "本文汇总了2026年7月31日的前端、DevOps和AI动态：Chrome 151引入原生媒体权限管理、Shadow DOM手动slot分配和SPA性能追踪；GitHub推出堆叠PR、自引用Actions和Copilot代码审查Agent技能；OpenAI下调GPT-5.6价格并揭示API设置能大幅提升基准成绩。",
+        "keyPoints": [
+          "Chrome 151新增原生媒体权限管理、声明式Shadow DOM手动slot分配和SPA交互性能追踪。",
+          "GitHub堆叠PR进入公开预览，支持将大型变更分层审查并一键合并。",
+          "GitHub Actions新增自仓库引用语法，简化同仓库工作流并自动锁定SHA。",
+          "Copilot代码审查的agent技能和MCP正式可用，能将团队标准注入每次审查。",
+          "OpenAI下调GPT-5.6价格，并揭示正确的API设置可让基准成绩提升数倍。"
+        ],
+        "keywords": [
+          "Chrome 151",
+          "堆叠PR",
+          "Copilot代码审查",
+          "OpenAI降价"
+        ],
+        "techStack": [
+          "Chrome",
+          "GitHub Actions",
+          "Copilot",
+          "GPT-5.6",
+          "Shadow DOM",
+          "SPA"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术资讯"
+      },
+      "processedAt": "2026-07-31T01:50:40.535Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7401,48 +7433,66 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-31.md": {
-      "sourceHash": "sha256:dafbaf63530949f5dd2c844f72f5e0020bdeb19653885548666cbfde4a7ed7fb",
-      "analysisHash": "sha256:d953c2966dae514bd4dfe66cbebb469bc96d3059f991b3c8a898c2d8ca572cab",
+    "/travel/README.md": {
+      "sourceHash": "sha256:13ffde62774e524beeda31cba9082ebd7007a7c2fe5ecea6c3858cd24ae6b393",
+      "analysisHash": "sha256:c0f7d2f9a5a01b042ee5f724607aec6d8d7b1099010001fa93358eec99295a3c",
       "status": "success",
       "summary": {
-        "summary": "本文汇总了2026年7月31日的前端、DevOps和AI动态：Chrome 151引入原生媒体权限管理、Shadow DOM手动slot分配和SPA性能追踪；GitHub推出堆叠PR、自引用Actions和Copilot代码审查Agent技能；OpenAI下调GPT-5.6价格并揭示API设置能大幅提升基准成绩。",
+        "summary": "本文档为珠海长隆飞船酒店两天一夜亲子行程计划，提供珠海长隆飞船酒店的旅行安排。",
         "keyPoints": [
-          "Chrome 151新增原生媒体权限管理、声明式Shadow DOM手动slot分配和SPA交互性能追踪。",
-          "GitHub堆叠PR进入公开预览，支持将大型变更分层审查并一键合并。",
-          "GitHub Actions新增自仓库引用语法，简化同仓库工作流并自动锁定SHA。",
-          "Copilot代码审查的agent技能和MCP正式可用，能将团队标准注入每次审查。",
-          "OpenAI下调GPT-5.6价格，并揭示正确的API设置可让基准成绩提升数倍。"
+          "两天一夜亲子行程",
+          "目的地为珠海长隆飞船酒店",
+          "包含行程计划文档链接"
         ],
         "keywords": [
-          "Chrome 151",
-          "堆叠PR",
-          "Copilot代码审查",
-          "OpenAI降价"
+          "旅行",
+          "珠海长隆",
+          "亲子",
+          "行程",
+          "酒店"
         ],
-        "techStack": [
-          "Chrome",
-          "GitHub Actions",
-          "Copilot",
-          "GPT-5.6",
-          "Shadow DOM",
-          "SPA"
-        ],
-        "difficulty": "中等",
-        "contentType": "技术资讯"
+        "techStack": [],
+        "difficulty": "低",
+        "contentType": "行程规划"
       },
-      "processedAt": "2026-07-31T01:50:40.535Z"
+      "processedAt": "2026-07-31T15:24:38.853Z"
+    },
+    "/travel/2026-08-zhuhai-chimelong.md": {
+      "sourceHash": "sha256:0e217168317a1271a844b9e8c5932bbc15b03a9cb7cef353601e12a0b0101bd9",
+      "analysisHash": "sha256:e7b70859a3e06aa76edaf5f1ad685858bed0137e229cd24d8f9b5b5e37e01ef0",
+      "status": "success",
+      "summary": {
+        "summary": "这是一份珠海长隆飞船酒店两天一夜亲子行程指南，包含自驾路线、酒店住宿、乐园游玩路线、节目表演时间、餐饮预算、跟拍安排及物品清单，适用于2026年8月两大两小出行。",
+        "keyPoints": [
+          "8月1日上午从深圳出发，下午游览飞船乐园一楼展馆并观看表演",
+          "8月1日晚外出用餐后回酒店游泳",
+          "8月2日提前入园，上午安排跟拍，下午看巡游和虎鲸表演",
+          "提供备用方案应对天气和体力变化",
+          "详细物品清单和餐饮预算控制"
+        ],
+        "keywords": [
+          "珠海长隆",
+          "飞船酒店",
+          "亲子游",
+          "行程规划",
+          "两天一夜"
+        ],
+        "techStack": [],
+        "difficulty": "easy",
+        "contentType": "travel guide"
+      },
+      "processedAt": "2026-07-31T15:24:42.191Z"
     }
   },
   "stats": {
-    "totalFiles": 237,
-    "reusedFiles": 236,
-    "pendingFiles": 1,
-    "completedFiles": 237,
+    "totalFiles": 239,
+    "reusedFiles": 237,
+    "pendingFiles": 2,
+    "completedFiles": 239,
     "skippedFiles": 0,
     "failedFiles": 0,
-    "aiCalls": 1,
-    "hitRate": 0.9957805907172996,
-    "durationMs": 12247
+    "aiCalls": 2,
+    "hitRate": 0.9916317991631799,
+    "durationMs": 10585
   }
 }
