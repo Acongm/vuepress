@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-30T01:44:48.097Z",
+  "generatedAt": "2026-07-31T01:50:40.542Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -1971,6 +1971,39 @@
         "contentType": "科技动态汇总"
       },
       "processedAt": "2026-07-29T01:41:39.250Z"
+    },
+    "/daily-news/2026-07-30.md": {
+      "sourceHash": "sha256:93c55f8964d70231ddddd25b79cc4890bb26692f28a01bba02e2158e5727ae55",
+      "analysisHash": "sha256:eaa073209141d23c6a2a42f86638dcb78a6d1b6afaf754fea0d0fabd2017d99c",
+      "status": "success",
+      "summary": {
+        "summary": "本文概述了Safari浏览器在CSS布局、WebAssembly流编译等方面的更新，GitHub Issues引入代理自动化控制以提升可审计性，Copilot新增采用深度仪表板优化评估，以及OpenAI发布GPT-5.6强调高效推理与降低系统摩擦。",
+        "keyPoints": [
+          "Safari Technology Preview 249修复CSS Grid、clip-path等页面细节，提升跨浏览器一致性",
+          "Safari 26.6为WebAssembly流编译接口增加compileOptions参数，统一API能力",
+          "GitHub Issues公开预览代理自动化控制，提供理由、置信度和审批边界",
+          "Copilot新仪表板基于采用阶段评估团队使用深度，超越简单活跃度指标",
+          "OpenAI GPT-5.6通过投机解码和推理优化实现更高智能每token效率"
+        ],
+        "keywords": [
+          "Safari",
+          "WebAssembly",
+          "GitHub Issues",
+          "Copilot",
+          "GPT-5.6"
+        ],
+        "techStack": [
+          "WebKit",
+          "WebAssembly",
+          "CSS",
+          "GitHub Issues",
+          "GitHub Copilot",
+          "OpenAI GPT-5.6"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术新闻摘要"
+      },
+      "processedAt": "2026-07-30T01:44:48.090Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7368,49 +7401,48 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-07-30.md": {
-      "sourceHash": "sha256:93c55f8964d70231ddddd25b79cc4890bb26692f28a01bba02e2158e5727ae55",
-      "analysisHash": "sha256:eaa073209141d23c6a2a42f86638dcb78a6d1b6afaf754fea0d0fabd2017d99c",
+    "/daily-news/2026-07-31.md": {
+      "sourceHash": "sha256:dafbaf63530949f5dd2c844f72f5e0020bdeb19653885548666cbfde4a7ed7fb",
+      "analysisHash": "sha256:d953c2966dae514bd4dfe66cbebb469bc96d3059f991b3c8a898c2d8ca572cab",
       "status": "success",
       "summary": {
-        "summary": "本文概述了Safari浏览器在CSS布局、WebAssembly流编译等方面的更新，GitHub Issues引入代理自动化控制以提升可审计性，Copilot新增采用深度仪表板优化评估，以及OpenAI发布GPT-5.6强调高效推理与降低系统摩擦。",
+        "summary": "本文汇总了2026年7月31日的前端、DevOps和AI动态：Chrome 151引入原生媒体权限管理、Shadow DOM手动slot分配和SPA性能追踪；GitHub推出堆叠PR、自引用Actions和Copilot代码审查Agent技能；OpenAI下调GPT-5.6价格并揭示API设置能大幅提升基准成绩。",
         "keyPoints": [
-          "Safari Technology Preview 249修复CSS Grid、clip-path等页面细节，提升跨浏览器一致性",
-          "Safari 26.6为WebAssembly流编译接口增加compileOptions参数，统一API能力",
-          "GitHub Issues公开预览代理自动化控制，提供理由、置信度和审批边界",
-          "Copilot新仪表板基于采用阶段评估团队使用深度，超越简单活跃度指标",
-          "OpenAI GPT-5.6通过投机解码和推理优化实现更高智能每token效率"
+          "Chrome 151新增原生媒体权限管理、声明式Shadow DOM手动slot分配和SPA交互性能追踪。",
+          "GitHub堆叠PR进入公开预览，支持将大型变更分层审查并一键合并。",
+          "GitHub Actions新增自仓库引用语法，简化同仓库工作流并自动锁定SHA。",
+          "Copilot代码审查的agent技能和MCP正式可用，能将团队标准注入每次审查。",
+          "OpenAI下调GPT-5.6价格，并揭示正确的API设置可让基准成绩提升数倍。"
         ],
         "keywords": [
-          "Safari",
-          "WebAssembly",
-          "GitHub Issues",
-          "Copilot",
-          "GPT-5.6"
+          "Chrome 151",
+          "堆叠PR",
+          "Copilot代码审查",
+          "OpenAI降价"
         ],
         "techStack": [
-          "WebKit",
-          "WebAssembly",
-          "CSS",
-          "GitHub Issues",
-          "GitHub Copilot",
-          "OpenAI GPT-5.6"
+          "Chrome",
+          "GitHub Actions",
+          "Copilot",
+          "GPT-5.6",
+          "Shadow DOM",
+          "SPA"
         ],
         "difficulty": "中等",
-        "contentType": "技术新闻摘要"
+        "contentType": "技术资讯"
       },
-      "processedAt": "2026-07-30T01:44:48.090Z"
+      "processedAt": "2026-07-31T01:50:40.535Z"
     }
   },
   "stats": {
-    "totalFiles": 236,
-    "reusedFiles": 235,
+    "totalFiles": 237,
+    "reusedFiles": 236,
     "pendingFiles": 1,
-    "completedFiles": 236,
+    "completedFiles": 237,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9957627118644068,
-    "durationMs": 19822
+    "hitRate": 0.9957805907172996,
+    "durationMs": 12247
   }
 }
