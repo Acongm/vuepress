@@ -98,9 +98,41 @@
 |---|------|
 | [#11](https://github.com/Acongm/vuepress/issues/11)–[#14](https://github.com/Acongm/vuepress/issues/14) | 旧测试 / 错误的「改 vuepress」Epic |
 
+## 迁移状态（2026-08-03，cursor[bot] 权限更新后）
+
+| 目标仓 | 有效 Issue | 说明 |
+|--------|------------|------|
+| [portal](https://github.com/Acongm/portal/issues) | **#1–#24** | `Acongm/platform` 实为 portal 仓；指挥类 + portal 类均在此 |
+| [auth](https://github.com/Acongm/auth/issues) | **#1–#5** | 已迁移 |
+| [chat](https://github.com/Acongm/chat/issues) | **#1–#6** | 已迁移 |
+| [node-vercel-starter](https://github.com/Acongm/node-vercel-starter/issues) | **#1–#21** | api 类镜像，未在 vuepress 重复创建 |
+| dochub | — | **仓库尚未创建**（`Acongm/dochub` 404） |
+
+### 需手动关闭的重复 Issue（迁移脚本去重 bug 导致二次创建）
+
+cursor[bot] 无 comment/close 权限，请用 acongm 账号关闭下列较高编号副本：
+
+| 仓库 | 保留 | 关闭（重复） |
+|------|------|--------------|
+| portal | #1–#24 | **#25–#48** |
+| auth | #1–#5 | **#6–#10** |
+| chat | #1–#6 | **#7–#12** |
+
+脚本已修复：`doneKeys` 与检查键统一为 `vuepress#→targetRepo`。
+
+### dochub 待办
+
+1. 在 GitHub 创建 `Acongm/dochub`（或授权 Cursor GitHub App 访问）
+2. 运行：`node platform-v2-issues/migrate-issues-from-vuepress.mjs --target=dochub`
+3. 迁移 vuepress #50–#55
+
+### vuepress 暂存 Issue
+
+迁移完成后可关闭 vuepress **#15–#55**（api #56–#76 仅保留镜像关联）。cursor[bot] 无法 comment/close，需 acongm 手动处理。
+
 ## 迁移到各私有仓（本机执行）
 
-Cloud Agent 使用 **cursor** 机器人账号，无法访问私有仓。请在本机用你的 **acongm** 账号：
+Cloud Agent 使用 **cursor** 机器人账号；**可创建 Issue**，但 **无法 comment/close**。请在本机用你的 **acongm** 账号关闭重复与暂存 Issue：
 
 ```bash
 gh auth login
@@ -108,9 +140,9 @@ git fetch origin platform/v2-issues && git checkout platform/v2-issues
 node platform-v2-issues/migrate-issues-from-vuepress.mjs
 ```
 
-- **41 个** Issue → platform / auth / portal / chat / dochub
+- **35 个** Issue 已迁入 platform(portal) / auth / portal / chat；**6 个** dochub 待仓库创建
 - **21 个** `[api]` → 关联 node-vercel-starter #1–#21（不重复创建）
 - 正文备份：`platform-v2-issues/export/`
 - 结果映射：`platform-v2-issues/migrated-issues.json`
 
-迁移后关闭 vuepress #15–#55；Program 总控在 platform 仓新建后更新 #15 链接。
+迁移后关闭 vuepress #15–#55；Program 总控在 portal #1。
