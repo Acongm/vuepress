@@ -1,95 +1,108 @@
-# Platform v2 Issue 索引
+# Platform v2 Issue 索引（暂存于 Acongm/vuepress）
 
-## 方案边界（已确认）
+> 全部方案 Issue 暂存在本仓，标题前缀 `[目标仓]` 标记迁移目标。  
+> **不改造 vuepress 产品代码**；文档站以 portal 为准。
 
-- **不修改 Acongm/vuepress**（无产品 Issue、无代码改造）
-- 文档站 = **Acongm/portal**（Fumadocs React 重构）
-- 指挥 = **Acongm/platform**
-- 认证 = **Acongm/auth**
-- Chat = **Acongm/chat**
-- DocHub = **Acongm/dochub**
-- API = **Acongm/node-vercel-starter**
-
-## 已创建
-
-### Acongm/node-vercel-starter（21）
+## 总控
 
 | # | 标题 |
 |---|------|
-| [#1](https://github.com/Acongm/node-vercel-starter/issues/1) | [Epic] Platform v2 — API |
-| [#2](https://github.com/Acongm/node-vercel-starter/issues/2) | [P0-07] Supabase migration |
-| [#3](https://github.com/Acongm/node-vercel-starter/issues/3) | [P0-08] auth JWT |
-| [#4](https://github.com/Acongm/node-vercel-starter/issues/4) | [P0-09] site.config |
-| [#5](https://github.com/Acongm/node-vercel-starter/issues/5) | [P1-08] rate limit |
-| [#6](https://github.com/Acongm/node-vercel-starter/issues/6) | [P1-09] 日志 |
-| [#7](https://github.com/Acongm/node-vercel-starter/issues/7) | [P2-01] kb-pipeline 骨架 |
-| [#8](https://github.com/Acongm/node-vercel-starter/issues/8) | [P2-02] ingest/hash |
-| [#9](https://github.com/Acongm/node-vercel-starter/issues/9) | [P2-03] analyze AI 摘要 |
-| [#10](https://github.com/Acongm/node-vercel-starter/issues/10) | [P2-04] docpack index |
-| [#11](https://github.com/Acongm/node-vercel-starter/issues/11) | [P2-05] summaries-v1 |
-| [#12](https://github.com/Acongm/node-vercel-starter/issues/12) | [P2-06] github webhook |
-| [#13](https://github.com/Acongm/node-vercel-starter/issues/13) | [P2-07] /kb/summary retrieve |
-| [#14](https://github.com/Acongm/node-vercel-starter/issues/14) | [P2-08] reconcile cron |
-| [#15](https://github.com/Acongm/node-vercel-starter/issues/15) | [P2-09] git_to_db |
-| [#16](https://github.com/Acongm/node-vercel-starter/issues/16) | [P3-06] dochub CRUD |
-| [#17](https://github.com/Acongm/node-vercel-starter/issues/17) | [P3-07] db_to_git |
-| [#18](https://github.com/Acongm/node-vercel-starter/issues/18) | [P3-08] preview token |
-| [#19](https://github.com/Acongm/node-vercel-starter/issues/19) | [P3-09] 角色校验 |
-| [#20](https://github.com/Acongm/node-vercel-starter/issues/20) | [P5-01] kb/debug |
-| [#21](https://github.com/Acongm/node-vercel-starter/issues/21) | [P5-04] Supabase backup |
+| [#15](https://github.com/Acongm/vuepress/issues/15) | `[platform] [Program] Platform v2 总控看板` |
 
-### Acongm/vuepress（误建，请关闭）
+筛选：在 Issues 搜索 `is:issue [platform]` / `[auth]` / `[portal]` / `[chat]` / `[dochub]` / `[api]`
 
-以下 Issue **不属于方案范围**，请手动 Close as not planned：
+## 按目标仓库
 
-- [#11](https://github.com/Acongm/vuepress/issues/11) 测试
-- [#12](https://github.com/Acongm/vuepress/issues/12) Epic legacy
-- [#13](https://github.com/Acongm/vuepress/issues/13) P2-11 冻结 AI
-- [#14](https://github.com/Acongm/vuepress/issues/14) P4-07 归档
+### platform（#15–#26）指挥仓 Acongm/platform
 
-`create-issues.mjs` 已移除 vuepress 条目。
+| # | 标题 |
+|---|------|
+| 15 | Program 总控看板 |
+| 16 | Epic Phase 0 |
+| 17 | Epic Phase 1 |
+| 18 | Epic Phase 2 |
+| 19 | Epic Phase 3 |
+| 20 | Epic Phase 4 |
+| 21 | Epic Phase 5 |
+| 22 | P0-01 repo-map |
+| 23 | P0-02 sync-protocol |
+| 24 | P4-06 域名 Runbook |
+| 25 | P5-05 openClaw ping |
+| 26 | P5-06 npm 私有化计划 |
 
-## 待创建（当前 Cloud Agent 访问不到这些仓）
+### auth（#27–#31）→ Acongm/auth
 
-`gh repo view` / `git ls-remote` 对下列仓库均返回 **404 Repository not found**：
+| # | 标题 |
+|---|------|
+| 27 | Epic auth |
+| 28 | P0-03 workspace + apps/auth |
+| 29 | P0-04 auth-client |
+| 30 | P0-05 config |
+| 31 | P0-06 部署 auth.acongm.com |
 
-- Acongm/platform
-- Acongm/auth
-- Acongm/portal
-- Acongm/chat
-- Acongm/dochub
+### portal（#32–#43）→ Acongm/portal
 
-可能原因：
+| # | 标题 |
+|---|------|
+| 32 | Epic portal |
+| 33 | P1-01 Fumadocs 骨架 |
+| 34 | P1-02 ui-theme |
+| 35 | P1-03 chat-ui |
+| 36 | P1-04 kb-types |
+| 37 | P1-10 ChatDrawer |
+| 38 | P2-10 摘要双通道 |
+| 39 | P4-01 MD 迁移脚本 |
+| 40 | P4-02 MDX 映射 |
+| 41 | P4-03 响应式 TOC |
+| 42 | P4-04 Drawer context |
+| 43 | P4-05 部署 www |
 
-1. 仓库尚未在 `Acongm` 账号下创建（或名称不同）
-2. 仓库为私有，且 **Cursor Cloud Agent 的 GitHub App 未安装到这些仓库**
-3. 创建在其他 org/账号下
+### chat（#44–#49）→ Acongm/chat
 
-### 授权后执行
+| # | 标题 |
+|---|------|
+| 44 | Epic chat |
+| 45 | P1-05 Next + Vercel |
+| 46 | P1-06 chat-ui 接入 |
+| 47 | P1-07 匿名限额 |
+| 48 | P5-02 Sources/debug |
+| 49 | P5-03 Thread 持久化 |
 
-在本机或已授权环境：
+### dochub（#50–#55）→ Acongm/dochub
 
-```bash
-node platform-v2-issues/create-issues.mjs --repo=Acongm/platform
-node platform-v2-issues/create-issues.mjs --repo=Acongm/auth
-node platform-v2-issues/create-issues.mjs --repo=Acongm/portal
-node platform-v2-issues/create-issues.mjs --repo=Acongm/chat
-node platform-v2-issues/create-issues.mjs --repo=Acongm/dochub
-```
+| # | 标题 |
+|---|------|
+| 50 | Epic dochub |
+| 51 | P3-01 Next + 域名 |
+| 52 | P3-02 文件树 |
+| 53 | P3-03 编辑草稿 |
+| 54 | P3-04 预览 token |
+| 55 | P3-05 发布同步 UI |
 
-将创建：
+### api（#56–#76）→ Acongm/node-vercel-starter
 
-| 仓库 | 数量 |
-|------|------|
-| platform | 12（Program + Phase Epic + P0/P4/P5 文档） |
-| auth | 5 |
-| portal | 12 |
-| chat | 6 |
-| dochub | 6 |
+正文含镜像链接（原仓 #1–#21）。迁移时可合并/关闭重复。
 
-## GitHub App 安装检查清单
+| # | 标题 |
+|---|------|
+| 56 | Epic API |
+| 57–59 | P0-07~09 |
+| 60–61 | P1-08~09 |
+| 62–70 | P2-01~09 |
+| 71–74 | P3-06~09 |
+| 75–76 | P5-01, P5-04 |
 
-1. GitHub → Settings → Applications → Cursor / Cursor Cloud
-2. Repository access 勾选：platform、auth、portal、chat、dochub、node-vercel-starter
-3. 确认仓库存在且 URL 为 `https://github.com/Acongm/<name>`
-4. 重新跑 Cloud Agent 或本地 `gh auth status` 后执行脚本
+## 请关闭的误建 Issue
+
+| # | 原因 |
+|---|------|
+| [#11](https://github.com/Acongm/vuepress/issues/11)–[#14](https://github.com/Acongm/vuepress/issues/14) | 旧测试 / 错误的「改 vuepress」Epic |
+
+## 日后迁移
+
+1. 建好目标仓并授权
+2. 按前缀筛选复制 Issue（或用 `gh issue create` 迁移）
+3. 关闭 vuepress 上对应 Issue，在 Program #15 勾选
+
+脚本：`platform-v2-issues/create-all-on-vuepress.mjs`  
+状态：`platform-v2-issues/vuepress-created.json`
