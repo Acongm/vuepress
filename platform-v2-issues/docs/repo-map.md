@@ -12,7 +12,8 @@
 
 指挥与文档：Acongm/platform（或 vuepress/platform-v2-issues）
 
-Legacy：Acongm/vuepress → portal 上线后归档
+Legacy：Acongm/vuepress — **方案不修改**；内容迁移到 portal 后自行归档
+
 
 ## 包暂存与 pnpm link
 

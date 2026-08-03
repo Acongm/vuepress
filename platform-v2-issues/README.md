@@ -25,9 +25,7 @@ node platform-v2-issues/create-issues.mjs --dry-run
 | Acongm/chat | 6 |
 | Acongm/dochub | 6 |
 | Acongm/node-vercel-starter | 21 |
-| Acongm/vuepress | 3 |
-
-合计 **64** 个 Issue（含 Program + Epic）。
+| ~~Acongm/vuepress~~ | **不建 Issue**（方案不修改） |
 
 ## 新仓库权限
 

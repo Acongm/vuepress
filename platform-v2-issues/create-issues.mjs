@@ -30,7 +30,7 @@ const FOOTER = `
 ## 程序关联
 - 总控: Acongm/platform → [Program] Platform v2 总控看板
 - 分支: platform/v2 → 验收后 merge master
-- 文档: Acongm/vuepress/platform-v2-issues/
+- 方案边界: **不修改 Acongm/vuepress**；文档站以 Acongm/portal 为准
 `
 
 function body(main) {
@@ -441,23 +441,7 @@ supabase/migrations/001_platform_v2.sql
       body: body('GHA pg_dump；保留 7 天。')
     }
   ],
-  'Acongm/vuepress': [
-    {
-      title: '[Epic] Platform v2 — vuepress（legacy 过渡）',
-      labels: ['platform-v2', 'epic'],
-      body: body('过渡维护；不新增 AI；内容源直至 portal P4。')
-    },
-    {
-      title: '[P2-11] 冻结 build:ai:v1 至 portal 切换',
-      labels: ['platform-v2', 'phase-2', 'priority-p2'],
-      body: body('vercel/GHA 移除 AI 调用；改 api webhook。依赖 api P2-03。')
-    },
-    {
-      title: '[P4-07] 标注 legacy + 归档说明',
-      labels: ['platform-v2', 'phase-4', 'priority-p2'],
-      body: body('README legacy 横幅；指向 portal。')
-    }
-  ]
+  // vuepress：方案不修改该仓；内容迁移到 portal，vuepress 仅只读归档（不建 Issue）
 }
 
 function ensureLabels(repo) {

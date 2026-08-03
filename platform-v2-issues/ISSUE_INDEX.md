@@ -1,16 +1,19 @@
 # Platform v2 Issue 索引
 
-## 已创建（Cloud Agent token）
+## 方案边界（已确认）
 
-### Acongm/vuepress
-| Issue | 标题 |
-|-------|------|
-| [#12](https://github.com/Acongm/vuepress/issues/12) | [Epic] Platform v2 — vuepress（legacy 过渡） |
-| [#13](https://github.com/Acongm/vuepress/issues/13) | [P2-11] 冻结 build:ai:v1 至 portal 切换 |
-| [#14](https://github.com/Acongm/vuepress/issues/14) | [P4-07] 标注 legacy + 归档说明 |
-| [#11](https://github.com/Acongm/vuepress/issues/11) | （测试 Issue，可关闭） |
+- **不修改 Acongm/vuepress**（无产品 Issue、无代码改造）
+- 文档站 = **Acongm/portal**（Fumadocs React 重构）
+- 指挥 = **Acongm/platform**
+- 认证 = **Acongm/auth**
+- Chat = **Acongm/chat**
+- DocHub = **Acongm/dochub**
+- API = **Acongm/node-vercel-starter**
 
-### Acongm/node-vercel-starter
+## 已创建
+
+### Acongm/node-vercel-starter（21）
+
 | # | 标题 |
 |---|------|
 | [#1](https://github.com/Acongm/node-vercel-starter/issues/1) | [Epic] Platform v2 — API |
@@ -35,12 +38,38 @@
 | [#20](https://github.com/Acongm/node-vercel-starter/issues/20) | [P5-01] kb/debug |
 | [#21](https://github.com/Acongm/node-vercel-starter/issues/21) | [P5-04] Supabase backup |
 
-## 待创建（需仓库对 token 可见后运行脚本）
+### Acongm/vuepress（误建，请关闭）
 
-仓库：`Acongm/platform`、`Acongm/auth`、`Acongm/portal`、`Acongm/chat`、`Acongm/dochub`
+以下 Issue **不属于方案范围**，请手动 Close as not planned：
+
+- [#11](https://github.com/Acongm/vuepress/issues/11) 测试
+- [#12](https://github.com/Acongm/vuepress/issues/12) Epic legacy
+- [#13](https://github.com/Acongm/vuepress/issues/13) P2-11 冻结 AI
+- [#14](https://github.com/Acongm/vuepress/issues/14) P4-07 归档
+
+`create-issues.mjs` 已移除 vuepress 条目。
+
+## 待创建（当前 Cloud Agent 访问不到这些仓）
+
+`gh repo view` / `git ls-remote` 对下列仓库均返回 **404 Repository not found**：
+
+- Acongm/platform
+- Acongm/auth
+- Acongm/portal
+- Acongm/chat
+- Acongm/dochub
+
+可能原因：
+
+1. 仓库尚未在 `Acongm` 账号下创建（或名称不同）
+2. 仓库为私有，且 **Cursor Cloud Agent 的 GitHub App 未安装到这些仓库**
+3. 创建在其他 org/账号下
+
+### 授权后执行
+
+在本机或已授权环境：
 
 ```bash
-cd vuepress   # 或任意 clone 了本目录的仓
 node platform-v2-issues/create-issues.mjs --repo=Acongm/platform
 node platform-v2-issues/create-issues.mjs --repo=Acongm/auth
 node platform-v2-issues/create-issues.mjs --repo=Acongm/portal
@@ -48,16 +77,19 @@ node platform-v2-issues/create-issues.mjs --repo=Acongm/chat
 node platform-v2-issues/create-issues.mjs --repo=Acongm/dochub
 ```
 
-若仓库为 **私有**，请在 GitHub Settings → Applications 授权 Cursor/gh，或本地 `gh auth login` 后执行。
+将创建：
 
-## 建议手动添加 Labels（token 无 label 权限）
+| 仓库 | 数量 |
+|------|------|
+| platform | 12（Program + Phase Epic + P0/P4/P5 文档） |
+| auth | 5 |
+| portal | 12 |
+| chat | 6 |
+| dochub | 6 |
 
-在各仓库创建：
+## GitHub App 安装检查清单
 
-- platform-v2, epic, phase-0~5, priority-p0/p1/p2
-
-然后为 Issue 批量打标。
-
-## Program 总控 Issue
-
-在 **Acongm/platform** 创建后，将链接回填到各 Epic 描述顶部。
+1. GitHub → Settings → Applications → Cursor / Cursor Cloud
+2. Repository access 勾选：platform、auth、portal、chat、dochub、node-vercel-starter
+3. 确认仓库存在且 URL 为 `https://github.com/Acongm/<name>`
+4. 重新跑 Cloud Agent 或本地 `gh auth status` 后执行脚本
