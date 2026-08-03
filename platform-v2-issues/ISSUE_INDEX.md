@@ -120,7 +120,15 @@ cursor[bot] 无 comment/close 权限，请用 acongm 账号关闭下列较高编
 | auth | #1–#5 | **#6–#10** |
 | chat | #1–#6 | **#7–#12** |
 
-脚本已修复：`doneKeys` 与检查键统一为 `vuepress#→targetRepo`。
+脚本已修复：`doneKeys` 统一为 `vuepress#→Acongm/portal`（`platform` 前缀与 `portal` 前缀同仓）。
+
+一键关闭重复（本机 acongm）：
+
+```bash
+for i in $(seq 25 60); do gh issue close $i -R Acongm/portal; done
+for i in $(seq 6 10); do gh issue close $i -R Acongm/auth; done
+for i in $(seq 7 12); do gh issue close $i -R Acongm/chat; done
+```
 
 ### dochub 待办
 
