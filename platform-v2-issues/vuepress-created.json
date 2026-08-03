@@ -1,0 +1,320 @@
+{
+  "created": [
+    {
+      "target": "platform",
+      "title": "[platform] [Program] Platform v2 总控看板",
+      "url": "https://github.com/Acongm/vuepress/issues/15"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 0] 契约与认证地基",
+      "url": "https://github.com/Acongm/vuepress/issues/16"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 1] Chat 核心",
+      "url": "https://github.com/Acongm/vuepress/issues/17"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 2] KB 管道",
+      "url": "https://github.com/Acongm/vuepress/issues/18"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 3] DocHub",
+      "url": "https://github.com/Acongm/vuepress/issues/19"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 4] Portal 上线",
+      "url": "https://github.com/Acongm/vuepress/issues/20"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [Epic Phase 5] 加固与 npm 私有化",
+      "url": "https://github.com/Acongm/vuepress/issues/21"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [P0-01] 编写 repo-map.md + branch-strategy.md",
+      "url": "https://github.com/Acongm/vuepress/issues/22"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [P0-02] 编写 sync-protocol.md（Git↔DB 状态机）",
+      "url": "https://github.com/Acongm/vuepress/issues/23"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [P4-06] 域名切换 Runbook",
+      "url": "https://github.com/Acongm/vuepress/issues/24"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [P5-05] openClaw 7 天 Supabase ping 文档",
+      "url": "https://github.com/Acongm/vuepress/issues/25"
+    },
+    {
+      "target": "platform",
+      "title": "[platform] [P5-06] @acongm/* 迁 npm 私有包计划",
+      "url": "https://github.com/Acongm/vuepress/issues/26"
+    },
+    {
+      "target": "auth",
+      "title": "[auth] [Epic] Platform v2 — auth",
+      "url": "https://github.com/Acongm/vuepress/issues/27"
+    },
+    {
+      "target": "auth",
+      "title": "[auth] [P0-03] 初始化 pnpm workspace + apps/auth",
+      "url": "https://github.com/Acongm/vuepress/issues/28"
+    },
+    {
+      "target": "auth",
+      "title": "[auth] [P0-04] packages/auth-client（Supabase + .acongm.com cookie）",
+      "url": "https://github.com/Acongm/vuepress/issues/29"
+    },
+    {
+      "target": "auth",
+      "title": "[auth] [P0-05] packages/config + site.config.yaml",
+      "url": "https://github.com/Acongm/vuepress/issues/30"
+    },
+    {
+      "target": "auth",
+      "title": "[auth] [P0-06] 部署 Vercel auth.acongm.com",
+      "url": "https://github.com/Acongm/vuepress/issues/31"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [Epic] Platform v2 — portal",
+      "url": "https://github.com/Acongm/vuepress/issues/32"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P1-01] 初始化 portal + Fumadocs 骨架",
+      "url": "https://github.com/Acongm/vuepress/issues/33"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P1-02] packages/ui-theme（Codex 主题）",
+      "url": "https://github.com/Acongm/vuepress/issues/34"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P1-03] packages/chat-ui（assistant-ui + Drawer/Fullscreen）",
+      "url": "https://github.com/Acongm/vuepress/issues/35"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P1-04] packages/kb-types",
+      "url": "https://github.com/Acongm/vuepress/issues/36"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P1-10] ChatDrawer embed 接入文档页",
+      "url": "https://github.com/Acongm/vuepress/issues/37"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P2-10] 摘要：summaries-v1.json + API 兜底",
+      "url": "https://github.com/Acongm/vuepress/issues/38"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P4-01] 批量迁移 MD + meta.json 脚本",
+      "url": "https://github.com/Acongm/vuepress/issues/39"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P4-02] Vue 自定义块 → MDX 映射表",
+      "url": "https://github.com/Acongm/vuepress/issues/40"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P4-03] 响应式布局 + TOC",
+      "url": "https://github.com/Acongm/vuepress/issues/41"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P4-04] ChatDrawer 绑定文档 context",
+      "url": "https://github.com/Acongm/vuepress/issues/42"
+    },
+    {
+      "target": "portal",
+      "title": "[portal] [P4-05] 部署 www.acongm.com",
+      "url": "https://github.com/Acongm/vuepress/issues/43"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [Epic] Platform v2 — chat",
+      "url": "https://github.com/Acongm/vuepress/issues/44"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [P1-05] Next 脚手架 + Vercel chat.acongm.com",
+      "url": "https://github.com/Acongm/vuepress/issues/45"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [P1-06] 接入 chat-ui + auth-client",
+      "url": "https://github.com/Acongm/vuepress/issues/46"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [P1-07] 匿名限额 + x-client-id",
+      "url": "https://github.com/Acongm/vuepress/issues/47"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [P5-02] Sources + kb/debug 面板",
+      "url": "https://github.com/Acongm/vuepress/issues/48"
+    },
+    {
+      "target": "chat",
+      "title": "[chat] [P5-03] Thread Supabase 持久化",
+      "url": "https://github.com/Acongm/vuepress/issues/49"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [Epic] Platform v2 — dochub",
+      "url": "https://github.com/Acongm/vuepress/issues/50"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [P3-01] Next + dochub.acongm.com",
+      "url": "https://github.com/Acongm/vuepress/issues/51"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [P3-02] 命名空间 + 文件树 UI",
+      "url": "https://github.com/Acongm/vuepress/issues/52"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [P3-03] MDX 编辑 + 草稿自动保存",
+      "url": "https://github.com/Acongm/vuepress/issues/53"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [P3-04] 独立预览 token 页",
+      "url": "https://github.com/Acongm/vuepress/issues/54"
+    },
+    {
+      "target": "dochub",
+      "title": "[dochub] [P3-05] 发布 + 同步状态 UI",
+      "url": "https://github.com/Acongm/vuepress/issues/55"
+    },
+    {
+      "target": "api",
+      "title": "[api] [Epic] Platform v2 — API",
+      "url": "https://github.com/Acongm/vuepress/issues/56"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P0-07] Supabase migration（文档版本化 + 同步表）",
+      "url": "https://github.com/Acongm/vuepress/issues/57"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P0-08] auth 模块 JWT + 角色中间件",
+      "url": "https://github.com/Acongm/vuepress/issues/58"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P0-09] 读取 site.config（分支/域名/限额）",
+      "url": "https://github.com/Acongm/vuepress/issues/59"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P1-08] ai/v1/stream 加固 + rate limit",
+      "url": "https://github.com/Acongm/vuepress/issues/60"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P1-09] 结构化对话日志",
+      "url": "https://github.com/Acongm/vuepress/issues/61"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-01] packages/kb-pipeline 骨架",
+      "url": "https://github.com/Acongm/vuepress/issues/62"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-02] ingest + normalize + hash",
+      "url": "https://github.com/Acongm/vuepress/issues/63"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-03] analyze → internal/ai-forward（AI 摘要）",
+      "url": "https://github.com/Acongm/vuepress/issues/64"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-04] index → docpack + kb_chunks",
+      "url": "https://github.com/Acongm/vuepress/issues/65"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-05] publish → summaries-v1.json",
+      "url": "https://github.com/Acongm/vuepress/issues/66"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-06] webhooks/github → sync_jobs",
+      "url": "https://github.com/Acongm/vuepress/issues/67"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-07] GET /kb/summary、/kb/retrieve",
+      "url": "https://github.com/Acongm/vuepress/issues/68"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-08] cron reconcile 00:00 + sync_failures",
+      "url": "https://github.com/Acongm/vuepress/issues/69"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P2-09] git_to_db（document_versions）",
+      "url": "https://github.com/Acongm/vuepress/issues/70"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P3-06] dochub CRUD + document_versions",
+      "url": "https://github.com/Acongm/vuepress/issues/71"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P3-07] db_to_git（GitHub App 可配置直推）",
+      "url": "https://github.com/Acongm/vuepress/issues/72"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P3-08] preview token API",
+      "url": "https://github.com/Acongm/vuepress/issues/73"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P3-09] editor/admin 角色校验",
+      "url": "https://github.com/Acongm/vuepress/issues/74"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P5-01] GET /kb/debug 参数调试 API",
+      "url": "https://github.com/Acongm/vuepress/issues/75"
+    },
+    {
+      "target": "api",
+      "title": "[api] [P5-04] Supabase nightly backup → GitHub artifact",
+      "url": "https://github.com/Acongm/vuepress/issues/76"
+    }
+  ],
+  "summary": {
+    "ok": 62,
+    "skip": 0,
+    "fail": 0,
+    "total": 62
+  }
+}
