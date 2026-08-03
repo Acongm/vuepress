@@ -13,7 +13,9 @@
 
 ## 按目标仓库
 
-### platform（#15–#26）指挥仓 Acongm/platform
+### portal（#15–#26 指挥 + #32–#43 文档站）→ Acongm/portal
+
+> `[platform]` 前缀 Issue 与 `[portal]` 同属 **Acongm/portal** 仓（portal 即原 platform，作为 MD 内容呈现入口命名更合适）。
 
 | # | 标题 |
 |---|------|
@@ -102,11 +104,11 @@
 
 | 目标仓 | 有效 Issue | 说明 |
 |--------|------------|------|
-| [portal](https://github.com/Acongm/portal/issues) | **#1–#24** | `Acongm/platform` 实为 portal 仓；指挥类 + portal 类均在此 |
+| [portal](https://github.com/Acongm/portal/issues) | **#1–#24** | 指挥类（原 `[platform]`）+ 文档站类（`[portal]`），统一在 portal 仓 |
 | [auth](https://github.com/Acongm/auth/issues) | **#1–#5** | 已迁移 |
 | [chat](https://github.com/Acongm/chat/issues) | **#1–#6** | 已迁移 |
+| [dochub](https://github.com/Acongm/dochub/issues) | **#1–#6** | 已迁移 |
 | [node-vercel-starter](https://github.com/Acongm/node-vercel-starter/issues) | **#1–#21** | api 类镜像，未在 vuepress 重复创建 |
-| dochub | — | **仓库尚未创建**（`Acongm/dochub` 404） |
 
 ### 需手动关闭的重复 Issue（迁移脚本去重 bug 导致二次创建）
 
@@ -114,7 +116,7 @@ cursor[bot] 无 comment/close 权限，请用 acongm 账号关闭下列较高编
 
 | 仓库 | 保留 | 关闭（重复） |
 |------|------|--------------|
-| portal | #1–#24 | **#25–#48** |
+| portal | **#1–#24** | **#25–#60**（两轮重复：#25–#48 全量、#49–#60 指挥类） |
 | auth | #1–#5 | **#6–#10** |
 | chat | #1–#6 | **#7–#12** |
 
@@ -122,9 +124,7 @@ cursor[bot] 无 comment/close 权限，请用 acongm 账号关闭下列较高编
 
 ### dochub 待办
 
-1. 在 GitHub 创建 `Acongm/dochub`（或授权 Cursor GitHub App 访问）
-2. 运行：`node platform-v2-issues/migrate-issues-from-vuepress.mjs --target=dochub`
-3. 迁移 vuepress #50–#55
+~~仓库创建与迁移已完成。~~ vuepress #50–#55 → dochub #1–#6。
 
 ### vuepress 暂存 Issue
 
@@ -140,7 +140,7 @@ git fetch origin platform/v2-issues && git checkout platform/v2-issues
 node platform-v2-issues/migrate-issues-from-vuepress.mjs
 ```
 
-- **35 个** Issue 已迁入 platform(portal) / auth / portal / chat；**6 个** dochub 待仓库创建
+- **41 个** Issue 已迁入 portal / auth / chat / dochub；api 21 个为镜像关联
 - **21 个** `[api]` → 关联 node-vercel-starter #1–#21（不重复创建）
 - 正文备份：`platform-v2-issues/export/`
 - 结果映射：`platform-v2-issues/migrated-issues.json`

@@ -22,8 +22,14 @@ const SOURCE = 'Acongm/vuepress'
 const STATE = join(ROOT, 'migrated-issues.json')
 const EXPORT = join(ROOT, 'export')
 
+/** GitHub 上 Acongm/platform 与 Acongm/portal 为同一仓库 */
+function normalizeRepo(repo) {
+  return repo === 'Acongm/platform' ? 'Acongm/portal' : repo
+}
+
+/** vuepress 标题前缀 [platform] 与 [portal] 均迁入 Acongm/portal（portal 即原 platform 仓） */
 const TARGET_REPO = {
-  platform: 'Acongm/platform',
+  platform: 'Acongm/portal',
   auth: 'Acongm/auth',
   portal: 'Acongm/portal',
   chat: 'Acongm/chat',
@@ -134,10 +140,18 @@ const prior = existsSync(STATE)
   ? JSON.parse(readFileSync(STATE, 'utf8'))
   : { migrated: [], skipped: [], failed: [] }
 const doneKeys = new Set(
-  prior.migrated.map((x) => `${x.source}→${x.targetRepo}`)
+  prior.migrated.map((x) => `${x.source}→${normalizeRepo(x.targetRepo)}`)
 )
 
-const result = { migrated: [...prior.migrated], skipped: [], failed: [], apiLinks: [] }
+const result = {
+  migrated: [...prior.migrated],
+  skipped: [],
+  failed: [],
+  apiLinks: [...(prior.apiLinks || [])]
+}
+const linkedApi = new Set(
+  (prior.apiLinks || []).map((x) => x.vuepress)
+)
 
 for (const issue of issues) {
   const parsed = parseTarget(issue.title)
@@ -146,7 +160,7 @@ for (const issue of issues) {
   if (targetFilter && target !== targetFilter) continue
   if (skipApi && target === 'api') continue
 
-  const targetRepo = TARGET_REPO[target]
+  const targetRepo = normalizeRepo(TARGET_REPO[target])
   if (!targetRepo) {
     result.failed.push({ source: issue.number, reason: `unknown target ${target}` })
     continue
@@ -163,12 +177,15 @@ for (const issue of issues) {
   if (target === 'api' && API_MIRROR[issue.number]) {
     const mirrorNum = API_MIRROR[issue.number]
     const mirrorUrl = `https://github.com/Acongm/node-vercel-starter/issues/${mirrorNum}`
-    result.apiLinks.push({
-      vuepress: issue.number,
-      vuepressUrl: sourceUrl,
-      api: mirrorNum,
-      apiUrl: mirrorUrl
-    })
+    if (!linkedApi.has(issue.number)) {
+      result.apiLinks.push({
+        vuepress: issue.number,
+        vuepressUrl: sourceUrl,
+        api: mirrorNum,
+        apiUrl: mirrorUrl
+      })
+      linkedApi.add(issue.number)
+    }
     if (!dryRun && repoStatus.api) {
       try {
         gh(

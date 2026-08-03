@@ -10,7 +10,7 @@
 | auth.acongm.com | Acongm/auth | apps/auth |
 | api.acongm.com | Acongm/node-vercel-starter | / |
 
-指挥与文档：Acongm/platform（或 vuepress/platform-v2-issues）
+指挥、文档呈现与共享包：Acongm/portal（`www.acongm.com`；原 `Acongm/platform` 已统一为 portal 命名）
 
 Legacy：Acongm/vuepress — **方案不修改**；内容迁移到 portal 后自行归档
 

@@ -19,13 +19,12 @@ node platform-v2-issues/create-issues.mjs --dry-run
 
 | 仓库 | Issues |
 |------|--------|
-| Acongm/platform | 12 |
+| Acongm/portal | 24（指挥 12 + 文档站 12；原 platform 已统一为 portal） |
 | Acongm/auth | 5 |
-| Acongm/portal | 12 |
 | Acongm/chat | 6 |
 | Acongm/dochub | 6 |
 | Acongm/node-vercel-starter | 21 |
-| ~~Acongm/vuepress~~ | **暂存 62 个**（#15–#76），待 migrate 脚本迁出 |
+| ~~Acongm/vuepress~~ | **暂存 62 个**（#15–#76），迁移完成后可关闭 #15–#55 |
 
 ## 迁移脚本
 
