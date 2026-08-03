@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-31T15:24:42.196Z",
+  "generatedAt": "2026-08-03T01:45:12.976Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -6640,6 +6640,56 @@
       },
       "processedAt": "2026-06-14T14:46:52.763Z"
     },
+    "/travel/2026-08-zhuhai-chimelong.md": {
+      "sourceHash": "sha256:0e217168317a1271a844b9e8c5932bbc15b03a9cb7cef353601e12a0b0101bd9",
+      "analysisHash": "sha256:e7b70859a3e06aa76edaf5f1ad685858bed0137e229cd24d8f9b5b5e37e01ef0",
+      "status": "success",
+      "summary": {
+        "summary": "这是一份珠海长隆飞船酒店两天一夜亲子行程指南，包含自驾路线、酒店住宿、乐园游玩路线、节目表演时间、餐饮预算、跟拍安排及物品清单，适用于2026年8月两大两小出行。",
+        "keyPoints": [
+          "8月1日上午从深圳出发，下午游览飞船乐园一楼展馆并观看表演",
+          "8月1日晚外出用餐后回酒店游泳",
+          "8月2日提前入园，上午安排跟拍，下午看巡游和虎鲸表演",
+          "提供备用方案应对天气和体力变化",
+          "详细物品清单和餐饮预算控制"
+        ],
+        "keywords": [
+          "珠海长隆",
+          "飞船酒店",
+          "亲子游",
+          "行程规划",
+          "两天一夜"
+        ],
+        "techStack": [],
+        "difficulty": "easy",
+        "contentType": "travel guide"
+      },
+      "processedAt": "2026-07-31T15:24:42.191Z"
+    },
+    "/travel/README.md": {
+      "sourceHash": "sha256:13ffde62774e524beeda31cba9082ebd7007a7c2fe5ecea6c3858cd24ae6b393",
+      "analysisHash": "sha256:c0f7d2f9a5a01b042ee5f724607aec6d8d7b1099010001fa93358eec99295a3c",
+      "status": "success",
+      "summary": {
+        "summary": "本文档为珠海长隆飞船酒店两天一夜亲子行程计划，提供珠海长隆飞船酒店的旅行安排。",
+        "keyPoints": [
+          "两天一夜亲子行程",
+          "目的地为珠海长隆飞船酒店",
+          "包含行程计划文档链接"
+        ],
+        "keywords": [
+          "旅行",
+          "珠海长隆",
+          "亲子",
+          "行程",
+          "酒店"
+        ],
+        "techStack": [],
+        "difficulty": "低",
+        "contentType": "行程规划"
+      },
+      "processedAt": "2026-07-31T15:24:38.853Z"
+    },
     "/TypeScript/README.md": {
       "sourceHash": "sha256:71b59a2fe2929f065832f1d153bde3ce042f363187368523c45c70da87304eb8",
       "analysisHash": "sha256:005cc6edff4695aed88f41994e56cd30951aa5a470cf4a5682c261a8e731abb0",
@@ -7433,66 +7483,50 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/travel/README.md": {
-      "sourceHash": "sha256:13ffde62774e524beeda31cba9082ebd7007a7c2fe5ecea6c3858cd24ae6b393",
-      "analysisHash": "sha256:c0f7d2f9a5a01b042ee5f724607aec6d8d7b1099010001fa93358eec99295a3c",
+    "/daily-news/2026-08-03.md": {
+      "sourceHash": "sha256:a4a70deb24532a4321bbf2041a69cf2d1ee0ff2c73e9ea56d68c69ea1d2b6507",
+      "analysisHash": "sha256:90f1bf408edde397959550bc88c632e04d503aa8d9c24c134ba1cd503e567af8",
       "status": "success",
       "summary": {
-        "summary": "本文档为珠海长隆飞船酒店两天一夜亲子行程计划，提供珠海长隆飞船酒店的旅行安排。",
+        "summary": "每日科技动态：平台方同步加强开发者基础设施。前端Safari 26.6支持Wasm流式编译compileOptions，Safari TP 249新增CSS attr()、Temporal等；DevOps中GitHub Copilot模型策略下沉至企业团队，npm收紧绕过2FA的访问令牌；OpenAI发布10项数学与理论计算机科学进展。",
         "keyPoints": [
-          "两天一夜亲子行程",
-          "目的地为珠海长隆飞船酒店",
-          "包含行程计划文档链接"
+          "Safari 26.6支持WebAssembly.compileStreaming()接受compileOptions，修复8个问题",
+          "Safari Technology Preview 249新增CSS attr()、if()、Temporal、WebGPU subgroups等能力",
+          "GitHub Copilot企业团队模型策略公开预览，模型授权细分至团队级",
+          "npm限制绕过2FA的granular access tokens，推动迁移至trusted publishing",
+          "OpenAI披露10项数学和理论计算机科学新成果"
         ],
         "keywords": [
-          "旅行",
-          "珠海长隆",
-          "亲子",
-          "行程",
-          "酒店"
+          "WebAssembly",
+          "Safari",
+          "npm 2FA",
+          "GitHub Copilot",
+          "OpenAI"
         ],
-        "techStack": [],
-        "difficulty": "低",
-        "contentType": "行程规划"
+        "techStack": [
+          "WebAssembly",
+          "CSS",
+          "JavaScript Temporal",
+          "WebGPU",
+          "npm",
+          "GitHub Copilot",
+          "OpenAI"
+        ],
+        "difficulty": "medium",
+        "contentType": "tech news digest"
       },
-      "processedAt": "2026-07-31T15:24:38.853Z"
-    },
-    "/travel/2026-08-zhuhai-chimelong.md": {
-      "sourceHash": "sha256:0e217168317a1271a844b9e8c5932bbc15b03a9cb7cef353601e12a0b0101bd9",
-      "analysisHash": "sha256:e7b70859a3e06aa76edaf5f1ad685858bed0137e229cd24d8f9b5b5e37e01ef0",
-      "status": "success",
-      "summary": {
-        "summary": "这是一份珠海长隆飞船酒店两天一夜亲子行程指南，包含自驾路线、酒店住宿、乐园游玩路线、节目表演时间、餐饮预算、跟拍安排及物品清单，适用于2026年8月两大两小出行。",
-        "keyPoints": [
-          "8月1日上午从深圳出发，下午游览飞船乐园一楼展馆并观看表演",
-          "8月1日晚外出用餐后回酒店游泳",
-          "8月2日提前入园，上午安排跟拍，下午看巡游和虎鲸表演",
-          "提供备用方案应对天气和体力变化",
-          "详细物品清单和餐饮预算控制"
-        ],
-        "keywords": [
-          "珠海长隆",
-          "飞船酒店",
-          "亲子游",
-          "行程规划",
-          "两天一夜"
-        ],
-        "techStack": [],
-        "difficulty": "easy",
-        "contentType": "travel guide"
-      },
-      "processedAt": "2026-07-31T15:24:42.191Z"
+      "processedAt": "2026-08-03T01:45:12.969Z"
     }
   },
   "stats": {
-    "totalFiles": 239,
-    "reusedFiles": 237,
-    "pendingFiles": 2,
-    "completedFiles": 239,
+    "totalFiles": 240,
+    "reusedFiles": 239,
+    "pendingFiles": 1,
+    "completedFiles": 240,
     "skippedFiles": 0,
     "failedFiles": 0,
-    "aiCalls": 2,
-    "hitRate": 0.9916317991631799,
-    "durationMs": 10585
+    "aiCalls": 1,
+    "hitRate": 0.9958333333333333,
+    "durationMs": 14352
   }
 }
