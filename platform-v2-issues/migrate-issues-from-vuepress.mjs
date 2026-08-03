@@ -193,7 +193,7 @@ for (const issue of issues) {
     continue
   }
 
-  const key = `${issue.number}→${targetRepo}:${title}`
+  const key = `${issue.number}→${targetRepo}`
   if (doneKeys.has(key)) {
     console.log(`SKIP (already migrated) vuepress#${issue.number}`)
     continue
