@@ -98,11 +98,19 @@
 |---|------|
 | [#11](https://github.com/Acongm/vuepress/issues/11)–[#14](https://github.com/Acongm/vuepress/issues/14) | 旧测试 / 错误的「改 vuepress」Epic |
 
-## 日后迁移
+## 迁移到各私有仓（本机执行）
 
-1. 建好目标仓并授权
-2. 按前缀筛选复制 Issue（或用 `gh issue create` 迁移）
-3. 关闭 vuepress 上对应 Issue，在 Program #15 勾选
+Cloud Agent 使用 **cursor** 机器人账号，无法访问私有仓。请在本机用你的 **acongm** 账号：
 
-脚本：`platform-v2-issues/create-all-on-vuepress.mjs`  
-状态：`platform-v2-issues/vuepress-created.json`
+```bash
+gh auth login
+git fetch origin platform/v2-issues && git checkout platform/v2-issues
+node platform-v2-issues/migrate-issues-from-vuepress.mjs
+```
+
+- **41 个** Issue → platform / auth / portal / chat / dochub
+- **21 个** `[api]` → 关联 node-vercel-starter #1–#21（不重复创建）
+- 正文备份：`platform-v2-issues/export/`
+- 结果映射：`platform-v2-issues/migrated-issues.json`
+
+迁移后关闭 vuepress #15–#55；Program 总控在 platform 仓新建后更新 #15 链接。

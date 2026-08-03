@@ -25,7 +25,15 @@ node platform-v2-issues/create-issues.mjs --dry-run
 | Acongm/chat | 6 |
 | Acongm/dochub | 6 |
 | Acongm/node-vercel-starter | 21 |
-| ~~Acongm/vuepress~~ | **不建 Issue**（方案不修改） |
+| ~~Acongm/vuepress~~ | **暂存 62 个**（#15–#76），待 migrate 脚本迁出 |
+
+## 迁移脚本
+
+```bash
+node platform-v2-issues/migrate-issues-from-vuepress.mjs
+```
+
+需本机 `gh auth login`（个人账号，非 Cloud Agent 的 cursor 账号）。
 
 ## 新仓库权限
 
