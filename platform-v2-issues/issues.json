@@ -1,0 +1,356 @@
+{
+  "labels": [
+    { "name": "platform-v2", "color": "0E8A16", "description": "Platform v2 程序" },
+    { "name": "epic", "color": "5319E7", "description": "阶段/Epic" },
+    { "name": "phase-0", "color": "1D76DB", "description": "Phase 0 认证地基" },
+    { "name": "phase-1", "color": "1D76DB", "description": "Phase 1 Chat" },
+    { "name": "phase-2", "color": "1D76DB", "description": "Phase 2 KB 管道" },
+    { "name": "phase-3", "color": "1D76DB", "description": "Phase 3 DocHub" },
+    { "name": "phase-4", "color": "1D76DB", "description": "Phase 4 Portal 上线" },
+    { "name": "phase-5", "color": "1D76DB", "description": "Phase 5 加固" },
+    { "name": "priority-p0", "color": "B60205", "description": "P0 阻塞" },
+    { "name": "priority-p1", "color": "D93F0B", "description": "P1 高优" },
+    { "name": "priority-p2", "color": "FBCA04", "description": "P2 中优" }
+  ],
+  "repos": {
+    "Acongm/platform": [
+      {
+        "title": "[Program] Platform v2 总控看板",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/platform-program.md"
+      },
+      {
+        "title": "[Epic Phase 0] 契约与认证地基",
+        "labels": ["platform-v2", "epic", "phase-0"],
+        "bodyFile": "bodies/platform-epic-phase0.md"
+      },
+      {
+        "title": "[Epic Phase 1] Chat 核心",
+        "labels": ["platform-v2", "epic", "phase-1"],
+        "bodyFile": "bodies/platform-epic-phase1.md"
+      },
+      {
+        "title": "[Epic Phase 2] KB 管道 kb-pipeline + docpack",
+        "labels": ["platform-v2", "epic", "phase-2"],
+        "bodyFile": "bodies/platform-epic-phase2.md"
+      },
+      {
+        "title": "[Epic Phase 3] DocHub",
+        "labels": ["platform-v2", "epic", "phase-3"],
+        "bodyFile": "bodies/platform-epic-phase3.md"
+      },
+      {
+        "title": "[Epic Phase 4] Portal 迁移上线",
+        "labels": ["platform-v2", "epic", "phase-4"],
+        "bodyFile": "bodies/platform-epic-phase4.md"
+      },
+      {
+        "title": "[Epic Phase 5] 加固与 npm 私有化",
+        "labels": ["platform-v2", "epic", "phase-5"],
+        "bodyFile": "bodies/platform-epic-phase5.md"
+      },
+      {
+        "title": "[P0-01] 编写 repo-map.md 与 branch-strategy.md",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/platform-p0-01.md"
+      },
+      {
+        "title": "[P0-02] 编写 sync-protocol.md（Git↔DB 状态机）",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/platform-p0-02.md"
+      },
+      {
+        "title": "[P4-06] 域名切换 Runbook（并行 / 直接切换）",
+        "labels": ["platform-v2", "phase-4", "priority-p2"],
+        "bodyFile": "bodies/platform-p4-06.md"
+      },
+      {
+        "title": "[P5-05] openClaw 7 天 Supabase ping 操作文档",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/platform-p5-05.md"
+      },
+      {
+        "title": "[P5-06] @acongm/* 迁 npm 私有包计划",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/platform-p5-06.md"
+      }
+    ],
+    "Acongm/auth": [
+      {
+        "title": "[Epic] Platform v2 — auth 仓库",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/auth-epic.md"
+      },
+      {
+        "title": "[P0-03] 初始化 pnpm workspace + apps/auth",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/auth-p0-03.md"
+      },
+      {
+        "title": "[P0-04] packages/auth-client（Supabase SSR + .acongm.com cookie）",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/auth-p0-04.md"
+      },
+      {
+        "title": "[P0-05] packages/config + site.config.yaml 模板",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/auth-p0-05.md"
+      },
+      {
+        "title": "[P0-06] 部署 Vercel auth.acongm.com",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/auth-p0-06.md"
+      }
+    ],
+    "Acongm/portal": [
+      {
+        "title": "[Epic] Platform v2 — portal 仓库",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/portal-epic.md"
+      },
+      {
+        "title": "[P1-01] 初始化 portal 仓 + Fumadocs 骨架",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/portal-p1-01.md"
+      },
+      {
+        "title": "[P1-02] packages/ui-theme（Codex 主题变量）",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/portal-p1-02.md"
+      },
+      {
+        "title": "[P1-03] packages/chat-ui 基础（assistant-ui + Drawer/Fullscreen）",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/portal-p1-03.md"
+      },
+      {
+        "title": "[P1-04] packages/kb-types（chat-v1 + summary 类型）",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/portal-p1-04.md"
+      },
+      {
+        "title": "[P1-10] ChatDrawer embed 模式接入文档页",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/portal-p1-10.md"
+      },
+      {
+        "title": "[P2-10] 摘要读取：静态 summaries-v1 + API 兜底",
+        "labels": ["platform-v2", "phase-2", "priority-p2"],
+        "bodyFile": "bodies/portal-p2-10.md"
+      },
+      {
+        "title": "[P4-01] 批量迁移 MD + meta.json 导航脚本",
+        "labels": ["platform-v2", "phase-4", "priority-p1"],
+        "bodyFile": "bodies/portal-p4-01.md"
+      },
+      {
+        "title": "[P4-02] Vue 自定义块 → MDX 组件映射表",
+        "labels": ["platform-v2", "phase-4", "priority-p2"],
+        "bodyFile": "bodies/portal-p4-02.md"
+      },
+      {
+        "title": "[P4-03] 响应式布局 + TOC（对齐 vuepress 体验）",
+        "labels": ["platform-v2", "phase-4", "priority-p2"],
+        "bodyFile": "bodies/portal-p4-03.md"
+      },
+      {
+        "title": "[P4-04] ChatDrawer 绑定当前文档 context",
+        "labels": ["platform-v2", "phase-4", "priority-p1"],
+        "bodyFile": "bodies/portal-p4-04.md"
+      },
+      {
+        "title": "[P4-05] 生产部署 www.acongm.com",
+        "labels": ["platform-v2", "phase-4", "priority-p1"],
+        "bodyFile": "bodies/portal-p4-05.md"
+      }
+    ],
+    "Acongm/chat": [
+      {
+        "title": "[Epic] Platform v2 — chat 仓库",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/chat-epic.md"
+      },
+      {
+        "title": "[P1-05] Next 脚手架 + Vercel chat.acongm.com",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/chat-p1-05.md"
+      },
+      {
+        "title": "[P1-06] 接入 chat-ui + pnpm link auth-client",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/chat-p1-06.md"
+      },
+      {
+        "title": "[P1-07] 匿名限额 + x-client-id 日志对齐",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/chat-p1-07.md"
+      },
+      {
+        "title": "[P5-02] Sources 面板 + kb/debug API 对接",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/chat-p5-02.md"
+      },
+      {
+        "title": "[P5-03] Thread 持久化 Supabase",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/chat-p5-03.md"
+      }
+    ],
+    "Acongm/dochub": [
+      {
+        "title": "[Epic] Platform v2 — dochub 仓库",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/dochub-epic.md"
+      },
+      {
+        "title": "[P3-01] Next 脚手架 + dochub.acongm.com",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/dochub-p3-01.md"
+      },
+      {
+        "title": "[P3-02] 命名空间 + 文件树 UI",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/dochub-p3-02.md"
+      },
+      {
+        "title": "[P3-03] MDX 编辑 + 草稿自动保存",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/dochub-p3-03.md"
+      },
+      {
+        "title": "[P3-04] 独立预览 token 页",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/dochub-p3-04.md"
+      },
+      {
+        "title": "[P3-05] 发布 + 同步状态 UI（sync_failed/conflict）",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/dochub-p3-05.md"
+      }
+    ],
+    "Acongm/node-vercel-starter": [
+      {
+        "title": "[Epic] Platform v2 — API (node-vercel-starter)",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/api-epic.md"
+      },
+      {
+        "title": "[P0-07] Supabase schema migration（文档版本化 + 同步表）",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/api-p0-07.md"
+      },
+      {
+        "title": "[P0-08] auth 模块 JWT + 角色中间件",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/api-p0-08.md"
+      },
+      {
+        "title": "[P0-09] 读取 site.config（分支/域名/限额）",
+        "labels": ["platform-v2", "phase-0", "priority-p0"],
+        "bodyFile": "bodies/api-p0-09.md"
+      },
+      {
+        "title": "[P1-08] ai/v1/stream 加固 + rate limit",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/api-p1-08.md"
+      },
+      {
+        "title": "[P1-09] 结构化对话日志（user_id/client_id/conversation_id）",
+        "labels": ["platform-v2", "phase-1", "priority-p1"],
+        "bodyFile": "bodies/api-p1-09.md"
+      },
+      {
+        "title": "[P2-01] packages/kb-pipeline 骨架（阶段编排）",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-01.md"
+      },
+      {
+        "title": "[P2-02] ingest + normalize + hash 阶段",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-02.md"
+      },
+      {
+        "title": "[P2-03] analyze 阶段 → internal/ai-forward（AI 摘要）",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-03.md"
+      },
+      {
+        "title": "[P2-04] index 阶段 → docpack + kb_chunks",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-04.md"
+      },
+      {
+        "title": "[P2-05] publish 阶段 → summaries-v1.json",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-05.md"
+      },
+      {
+        "title": "[P2-06] webhooks/github → sync_jobs",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-06.md"
+      },
+      {
+        "title": "[P2-07] GET /kb/summary、/kb/retrieve",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-07.md"
+      },
+      {
+        "title": "[P2-08] cron reconcile 00:00 + sync_failures",
+        "labels": ["platform-v2", "phase-2", "priority-p2"],
+        "bodyFile": "bodies/api-p2-08.md"
+      },
+      {
+        "title": "[P2-09] git_to_db（document_versions）",
+        "labels": ["platform-v2", "phase-2", "priority-p1"],
+        "bodyFile": "bodies/api-p2-09.md"
+      },
+      {
+        "title": "[P3-06] dochub 模块 CRUD + document_versions",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/api-p3-06.md"
+      },
+      {
+        "title": "[P3-07] db_to_git（GitHub App，可配置分支直推）",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/api-p3-07.md"
+      },
+      {
+        "title": "[P3-08] preview token API",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/api-p3-08.md"
+      },
+      {
+        "title": "[P3-09] editor/admin 角色校验",
+        "labels": ["platform-v2", "phase-3", "priority-p1"],
+        "bodyFile": "bodies/api-p3-09.md"
+      },
+      {
+        "title": "[P5-01] GET /kb/debug 参数调试 API",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/api-p5-01.md"
+      },
+      {
+        "title": "[P5-04] Supabase nightly backup → GitHub artifact",
+        "labels": ["platform-v2", "phase-5", "priority-p2"],
+        "bodyFile": "bodies/api-p5-04.md"
+      }
+    ],
+    "Acongm/vuepress": [
+      {
+        "title": "[Epic] Platform v2 — vuepress（legacy 过渡）",
+        "labels": ["platform-v2", "epic"],
+        "bodyFile": "bodies/vuepress-epic.md"
+      },
+      {
+        "title": "[P2-11] 冻结 build:ai:v1 至 portal 切换",
+        "labels": ["platform-v2", "phase-2", "priority-p2"],
+        "bodyFile": "bodies/vuepress-p2-11.md"
+      },
+      {
+        "title": "[P4-07] 标注 legacy + 归档说明",
+        "labels": ["platform-v2", "phase-4", "priority-p2"],
+        "bodyFile": "bodies/vuepress-p4-07.md"
+      }
+    ]
+  }
+}
