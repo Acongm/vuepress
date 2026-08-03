@@ -1,0 +1,8 @@
+{
+  "title": "Pattern/Observer",
+  "pages": [
+    "index",
+    "ObserverSingleton",
+    "Subject"
+  ]
+}

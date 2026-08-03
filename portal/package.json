@@ -1,0 +1,12 @@
+{
+  "name": "@acongm/portal-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @acongm/portal dev",
+    "build": "pnpm --filter @acongm/portal build",
+    "start": "pnpm --filter @acongm/portal start",
+    "migrate:docs": "node scripts/migrate-from-vuepress.mjs --source=../vuepress/docs",
+    "types:check": "pnpm --filter @acongm/portal types:check"
+  },
+  "packageManager": "pnpm@10.33.3"
+}

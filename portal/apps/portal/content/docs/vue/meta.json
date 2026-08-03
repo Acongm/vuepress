@@ -1,0 +1,16 @@
+{
+  "title": "Vue",
+  "pages": [
+    "---Vue---",
+    "index",
+    "vue_theory",
+    "vue_interview",
+    "vue3",
+    "code/Object.defineproperty",
+    "code/Proxy",
+    "code/proxy-observe",
+    "vue-render",
+    "vue2",
+    "code"
+  ]
+}

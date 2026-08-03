@@ -1,0 +1,8 @@
+{
+  "title": "Pattern/EventBus",
+  "pages": [
+    "index",
+    "EventBus",
+    "EventBusSingleton"
+  ]
+}
