@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-03T01:45:12.976Z",
+  "generatedAt": "2026-08-06T01:43:38.184Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -2036,6 +2036,40 @@
         "contentType": "技术资讯"
       },
       "processedAt": "2026-07-31T01:50:40.535Z"
+    },
+    "/daily-news/2026-08-03.md": {
+      "sourceHash": "sha256:a4a70deb24532a4321bbf2041a69cf2d1ee0ff2c73e9ea56d68c69ea1d2b6507",
+      "analysisHash": "sha256:90f1bf408edde397959550bc88c632e04d503aa8d9c24c134ba1cd503e567af8",
+      "status": "success",
+      "summary": {
+        "summary": "每日科技动态：平台方同步加强开发者基础设施。前端Safari 26.6支持Wasm流式编译compileOptions，Safari TP 249新增CSS attr()、Temporal等；DevOps中GitHub Copilot模型策略下沉至企业团队，npm收紧绕过2FA的访问令牌；OpenAI发布10项数学与理论计算机科学进展。",
+        "keyPoints": [
+          "Safari 26.6支持WebAssembly.compileStreaming()接受compileOptions，修复8个问题",
+          "Safari Technology Preview 249新增CSS attr()、if()、Temporal、WebGPU subgroups等能力",
+          "GitHub Copilot企业团队模型策略公开预览，模型授权细分至团队级",
+          "npm限制绕过2FA的granular access tokens，推动迁移至trusted publishing",
+          "OpenAI披露10项数学和理论计算机科学新成果"
+        ],
+        "keywords": [
+          "WebAssembly",
+          "Safari",
+          "npm 2FA",
+          "GitHub Copilot",
+          "OpenAI"
+        ],
+        "techStack": [
+          "WebAssembly",
+          "CSS",
+          "JavaScript Temporal",
+          "WebGPU",
+          "npm",
+          "GitHub Copilot",
+          "OpenAI"
+        ],
+        "difficulty": "medium",
+        "contentType": "tech news digest"
+      },
+      "processedAt": "2026-08-03T01:45:12.969Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7483,50 +7517,50 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-08-03.md": {
-      "sourceHash": "sha256:a4a70deb24532a4321bbf2041a69cf2d1ee0ff2c73e9ea56d68c69ea1d2b6507",
-      "analysisHash": "sha256:90f1bf408edde397959550bc88c632e04d503aa8d9c24c134ba1cd503e567af8",
+    "/daily-news/2026-08-06.md": {
+      "sourceHash": "sha256:e15eebc636b8f51077a1746b9b193199c9ddc6245b947927445b5b5847e77490",
+      "analysisHash": "sha256:8dc7814bc6e51ca6e2ef839752b196ab96cd50bb5965bf5b2e22b3f35a8cac31",
       "status": "success",
       "summary": {
-        "summary": "每日科技动态：平台方同步加强开发者基础设施。前端Safari 26.6支持Wasm流式编译compileOptions，Safari TP 249新增CSS attr()、Temporal等；DevOps中GitHub Copilot模型策略下沉至企业团队，npm收紧绕过2FA的访问令牌；OpenAI发布10项数学与理论计算机科学进展。",
+        "summary": "本期科技动态聚焦平台能力向可控工作流收束：前端浏览器（Chrome、Firefox、Safari）稳定版推进跨浏览器定制，Firefox扩展权限、脚本注入和样式操作规则被重构；DevOps侧GitHub推出批量定制CodeQL扫描配置与企业团队级Copilot治理；AI侧OpenAI强调agent能力增强需前置风险边界与场景封装。",
         "keyPoints": [
-          "Safari 26.6支持WebAssembly.compileStreaming()接受compileOptions，修复8个问题",
-          "Safari Technology Preview 249新增CSS attr()、if()、Temporal、WebGPU subgroups等能力",
-          "GitHub Copilot企业团队模型策略公开预览，模型授权细分至团队级",
-          "npm限制绕过2FA的granular access tokens，推动迁移至trusted publishing",
-          "OpenAI披露10项数学和理论计算机科学新成果"
+          "前端浏览器稳定版推动跨浏览器可定制能力落地，Firefox WebExtensions API更新权限、脚本注入与样式操作规则",
+          "GitHub支持通过仓库属性批量定制CodeQL默认扫描配置，降低安全扫描胶水成本",
+          "GitHub实现企业团队级Copilot托管配置，AI治理从总开关转向分层管理",
+          "OpenAI公开高风险测试边界并产品化教育场景，强调agent能力与风险管控需同步前置"
         ],
         "keywords": [
-          "WebAssembly",
-          "Safari",
-          "npm 2FA",
-          "GitHub Copilot",
-          "OpenAI"
+          "浏览器更新",
+          "WebExtensions",
+          "CodeQL扫描",
+          "企业AI治理",
+          "OpenAI Agent"
         ],
         "techStack": [
-          "WebAssembly",
-          "CSS",
-          "JavaScript Temporal",
-          "WebGPU",
-          "npm",
-          "GitHub Copilot",
+          "Chrome",
+          "Firefox",
+          "Safari",
+          "WebExtensions",
+          "CodeQL",
+          "GitHub",
+          "Copilot",
           "OpenAI"
         ],
-        "difficulty": "medium",
-        "contentType": "tech news digest"
+        "difficulty": "中等",
+        "contentType": "技术新闻摘要"
       },
-      "processedAt": "2026-08-03T01:45:12.969Z"
+      "processedAt": "2026-08-06T01:43:38.176Z"
     }
   },
   "stats": {
-    "totalFiles": 240,
-    "reusedFiles": 239,
+    "totalFiles": 241,
+    "reusedFiles": 240,
     "pendingFiles": 1,
-    "completedFiles": 240,
+    "completedFiles": 241,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9958333333333333,
-    "durationMs": 14352
+    "hitRate": 0.995850622406639,
+    "durationMs": 11925
   }
 }
