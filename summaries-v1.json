@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-06T01:43:38.184Z",
+  "generatedAt": "2026-08-07T01:42:40.221Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -2070,6 +2070,40 @@
         "contentType": "tech news digest"
       },
       "processedAt": "2026-08-03T01:45:12.969Z"
+    },
+    "/daily-news/2026-08-06.md": {
+      "sourceHash": "sha256:e15eebc636b8f51077a1746b9b193199c9ddc6245b947927445b5b5847e77490",
+      "analysisHash": "sha256:8dc7814bc6e51ca6e2ef839752b196ab96cd50bb5965bf5b2e22b3f35a8cac31",
+      "status": "success",
+      "summary": {
+        "summary": "本期科技动态聚焦平台能力向可控工作流收束：前端浏览器（Chrome、Firefox、Safari）稳定版推进跨浏览器定制，Firefox扩展权限、脚本注入和样式操作规则被重构；DevOps侧GitHub推出批量定制CodeQL扫描配置与企业团队级Copilot治理；AI侧OpenAI强调agent能力增强需前置风险边界与场景封装。",
+        "keyPoints": [
+          "前端浏览器稳定版推动跨浏览器可定制能力落地，Firefox WebExtensions API更新权限、脚本注入与样式操作规则",
+          "GitHub支持通过仓库属性批量定制CodeQL默认扫描配置，降低安全扫描胶水成本",
+          "GitHub实现企业团队级Copilot托管配置，AI治理从总开关转向分层管理",
+          "OpenAI公开高风险测试边界并产品化教育场景，强调agent能力与风险管控需同步前置"
+        ],
+        "keywords": [
+          "浏览器更新",
+          "WebExtensions",
+          "CodeQL扫描",
+          "企业AI治理",
+          "OpenAI Agent"
+        ],
+        "techStack": [
+          "Chrome",
+          "Firefox",
+          "Safari",
+          "WebExtensions",
+          "CodeQL",
+          "GitHub",
+          "Copilot",
+          "OpenAI"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术新闻摘要"
+      },
+      "processedAt": "2026-08-06T01:43:38.176Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7517,50 +7551,48 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-08-06.md": {
-      "sourceHash": "sha256:e15eebc636b8f51077a1746b9b193199c9ddc6245b947927445b5b5847e77490",
-      "analysisHash": "sha256:8dc7814bc6e51ca6e2ef839752b196ab96cd50bb5965bf5b2e22b3f35a8cac31",
+    "/daily-news/2026-08-07.md": {
+      "sourceHash": "sha256:59a0e831aeec948925c6716e0bf2e63531f9d1c4cb3f64cce4c385f308f1b07f",
+      "analysisHash": "sha256:15650d0d89105376fd474bf12ed3f4f11f815feb9f8ce0ba97c9bc89334bac18",
       "status": "success",
       "summary": {
-        "summary": "本期科技动态聚焦平台能力向可控工作流收束：前端浏览器（Chrome、Firefox、Safari）稳定版推进跨浏览器定制，Firefox扩展权限、脚本注入和样式操作规则被重构；DevOps侧GitHub推出批量定制CodeQL扫描配置与企业团队级Copilot治理；AI侧OpenAI强调agent能力增强需前置风险边界与场景封装。",
+        "summary": "2026年8月7日技术动态：前端关注浏览器扩展底层能力统一与框架接口收敛，如Firefox publicSuffix API和SvelteKit 3预览；DevOps侧Kubernetes Gateway API v1.6升格TCP/UDP路由至标准，GitHub推出AI自动生成覆盖率工作流。整体趋势是平台方减少胶水代码、标准化入口以降低维护成本。",
         "keyPoints": [
-          "前端浏览器稳定版推动跨浏览器可定制能力落地，Firefox WebExtensions API更新权限、脚本注入与样式操作规则",
-          "GitHub支持通过仓库属性批量定制CodeQL默认扫描配置，降低安全扫描胶水成本",
-          "GitHub实现企业团队级Copilot托管配置，AI治理从总开关转向分层管理",
-          "OpenAI公开高风险测试边界并产品化教育场景，强调agent能力与风险管控需同步前置"
+          "Mozilla发布publicSuffix API，允许扩展直接查询可注册域名，复用浏览器内部列表，减少扩展维护成本。",
+          "SvelteKit 3预览版开始收束接口，如shallow routing并入goto、用refreshAll替代invalidateAll，提前清理隐式行为。",
+          "Kubernetes Gateway API v1.6将TCPRoute和UDPRoute升至标准，并分离实验API组，清晰划分可移植边界。",
+          "GitHub在Code Quality设置中提供AI生成覆盖率工作流，降低团队配置代码覆盖率流水线的门槛。"
         ],
         "keywords": [
-          "浏览器更新",
-          "WebExtensions",
-          "CodeQL扫描",
-          "企业AI治理",
-          "OpenAI Agent"
+          "浏览器扩展",
+          "SvelteKit",
+          "Gateway API",
+          "代码覆盖率",
+          "工作流自动化"
         ],
         "techStack": [
-          "Chrome",
           "Firefox",
-          "Safari",
           "WebExtensions",
-          "CodeQL",
-          "GitHub",
-          "Copilot",
-          "OpenAI"
+          "SvelteKit",
+          "Kubernetes",
+          "Gateway API",
+          "GitHub Actions"
         ],
-        "difficulty": "中等",
-        "contentType": "技术新闻摘要"
+        "difficulty": "中级",
+        "contentType": "技术新闻"
       },
-      "processedAt": "2026-08-06T01:43:38.176Z"
+      "processedAt": "2026-08-07T01:42:40.215Z"
     }
   },
   "stats": {
-    "totalFiles": 241,
-    "reusedFiles": 240,
+    "totalFiles": 242,
+    "reusedFiles": 241,
     "pendingFiles": 1,
-    "completedFiles": 241,
+    "completedFiles": 242,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.995850622406639,
-    "durationMs": 11925
+    "hitRate": 0.9958677685950413,
+    "durationMs": 9494
   }
 }
