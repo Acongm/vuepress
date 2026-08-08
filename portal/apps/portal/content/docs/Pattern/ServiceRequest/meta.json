@@ -1,0 +1,10 @@
+{
+  "title": "Pattern/ServiceRequest",
+  "pages": [
+    "index",
+    "Registry",
+    "ServiceRequestRegistry",
+    "SharedStateBridge",
+    "SharedStateBridgeSingleton"
+  ]
+}

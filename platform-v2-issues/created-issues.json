@@ -1,0 +1,88 @@
+{
+  "Acongm/node-vercel-starter": [
+    {
+      "title": "[Epic] Platform v2 — API (node-vercel-starter)",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/1"
+    },
+    {
+      "title": "[P0-07] Supabase migration（文档版本化 + 同步表）",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/2"
+    },
+    {
+      "title": "[P0-08] auth 模块 JWT + 角色中间件",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/3"
+    },
+    {
+      "title": "[P0-09] 读取 site.config（分支/域名/限额）",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/4"
+    },
+    {
+      "title": "[P1-08] ai/v1/stream 加固 + rate limit",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/5"
+    },
+    {
+      "title": "[P1-09] 结构化对话日志",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/6"
+    },
+    {
+      "title": "[P2-01] packages/kb-pipeline 骨架",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/7"
+    },
+    {
+      "title": "[P2-02] ingest + normalize + hash",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/8"
+    },
+    {
+      "title": "[P2-03] analyze → internal/ai-forward（AI 摘要）",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/9"
+    },
+    {
+      "title": "[P2-04] index → docpack + kb_chunks",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/10"
+    },
+    {
+      "title": "[P2-05] publish → summaries-v1.json",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/11"
+    },
+    {
+      "title": "[P2-06] webhooks/github → sync_jobs",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/12"
+    },
+    {
+      "title": "[P2-07] GET /kb/summary、/kb/retrieve",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/13"
+    },
+    {
+      "title": "[P2-08] cron reconcile 00:00 + sync_failures",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/14"
+    },
+    {
+      "title": "[P2-09] git_to_db（document_versions）",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/15"
+    },
+    {
+      "title": "[P3-06] dochub CRUD + document_versions",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/16"
+    },
+    {
+      "title": "[P3-07] db_to_git（GitHub App 可配置直推）",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/17"
+    },
+    {
+      "title": "[P3-08] preview token API",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/18"
+    },
+    {
+      "title": "[P3-09] editor/admin 角色校验",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/19"
+    },
+    {
+      "title": "[P5-01] GET /kb/debug 参数调试 API",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/20"
+    },
+    {
+      "title": "[P5-04] Supabase nightly backup → GitHub artifact",
+      "url": "https://github.com/Acongm/node-vercel-starter/issues/21"
+    }
+  ]
+}

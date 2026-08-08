@@ -1,0 +1,8 @@
+{
+  "title": "Pattern/Store",
+  "pages": [
+    "index",
+    "Store",
+    "StoreSingleton"
+  ]
+}
