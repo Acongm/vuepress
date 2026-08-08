@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-07T01:42:40.221Z",
+  "generatedAt": "2026-08-08T01:43:45.863Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -2104,6 +2104,38 @@
         "contentType": "技术新闻摘要"
       },
       "processedAt": "2026-08-06T01:43:38.176Z"
+    },
+    "/daily-news/2026-08-07.md": {
+      "sourceHash": "sha256:59a0e831aeec948925c6716e0bf2e63531f9d1c4cb3f64cce4c385f308f1b07f",
+      "analysisHash": "sha256:15650d0d89105376fd474bf12ed3f4f11f815feb9f8ce0ba97c9bc89334bac18",
+      "status": "success",
+      "summary": {
+        "summary": "2026年8月7日技术动态：前端关注浏览器扩展底层能力统一与框架接口收敛，如Firefox publicSuffix API和SvelteKit 3预览；DevOps侧Kubernetes Gateway API v1.6升格TCP/UDP路由至标准，GitHub推出AI自动生成覆盖率工作流。整体趋势是平台方减少胶水代码、标准化入口以降低维护成本。",
+        "keyPoints": [
+          "Mozilla发布publicSuffix API，允许扩展直接查询可注册域名，复用浏览器内部列表，减少扩展维护成本。",
+          "SvelteKit 3预览版开始收束接口，如shallow routing并入goto、用refreshAll替代invalidateAll，提前清理隐式行为。",
+          "Kubernetes Gateway API v1.6将TCPRoute和UDPRoute升至标准，并分离实验API组，清晰划分可移植边界。",
+          "GitHub在Code Quality设置中提供AI生成覆盖率工作流，降低团队配置代码覆盖率流水线的门槛。"
+        ],
+        "keywords": [
+          "浏览器扩展",
+          "SvelteKit",
+          "Gateway API",
+          "代码覆盖率",
+          "工作流自动化"
+        ],
+        "techStack": [
+          "Firefox",
+          "WebExtensions",
+          "SvelteKit",
+          "Kubernetes",
+          "Gateway API",
+          "GitHub Actions"
+        ],
+        "difficulty": "中级",
+        "contentType": "技术新闻"
+      },
+      "processedAt": "2026-08-07T01:42:40.215Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7551,48 +7583,51 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-08-07.md": {
-      "sourceHash": "sha256:59a0e831aeec948925c6716e0bf2e63531f9d1c4cb3f64cce4c385f308f1b07f",
-      "analysisHash": "sha256:15650d0d89105376fd474bf12ed3f4f11f815feb9f8ce0ba97c9bc89334bac18",
+    "/daily-news/2026-08-08.md": {
+      "sourceHash": "sha256:148734885289c3d55439fca2d63a6419a85848c4dfeaac3f609bb57d50485efd",
+      "analysisHash": "sha256:da41ecc8b43e73b7765cd3b71107c9221b16687c18aebb23160a6c1ee908bbbe",
       "status": "success",
       "summary": {
-        "summary": "2026年8月7日技术动态：前端关注浏览器扩展底层能力统一与框架接口收敛，如Firefox publicSuffix API和SvelteKit 3预览；DevOps侧Kubernetes Gateway API v1.6升格TCP/UDP路由至标准，GitHub推出AI自动生成覆盖率工作流。整体趋势是平台方减少胶水代码、标准化入口以降低维护成本。",
+        "summary": "2026年8月8日科技动态：前端Chrome 151原生支持SPA性能观测，WebKit STP 249推进CSS逻辑函数；DevOps侧GitHub推出MCP allowlists强化企业治理，Copilot升级多会话与隔离工作树；AI安全方面OpenAI公开Astra模型网络攻击评估，Anthropic收窄生物学滥用窗口。",
         "keyPoints": [
-          "Mozilla发布publicSuffix API，允许扩展直接查询可注册域名，复用浏览器内部列表，减少扩展维护成本。",
-          "SvelteKit 3预览版开始收束接口，如shallow routing并入goto、用refreshAll替代invalidateAll，提前清理隐式行为。",
-          "Kubernetes Gateway API v1.6将TCPRoute和UDPRoute升至标准，并分离实验API组，清晰划分可移植边界。",
-          "GitHub在Code Quality设置中提供AI生成覆盖率工作流，降低团队配置代码覆盖率流水线的门槛。"
+          "Chrome 151引入PerformanceSoftNavigation等新性能条目，为SPA提供交互驱动的原生性能测量",
+          "WebKit STP 249集中引入attr()、@function、if()、calc-mix()等CSS函数，增强样式逻辑能力",
+          "GitHub新增企业级MCP allowlists，集中管控Copilot可加载的MCP服务器，提升安全治理",
+          "Copilot周更实现多会话、隔离工作树和浏览器元素级反馈，交互模型走向协作式",
+          "OpenAI与Anthropic分别发布前沿模型网络攻击评估和生物学滥用控制措施，AI安全框架深化"
         ],
         "keywords": [
-          "浏览器扩展",
-          "SvelteKit",
-          "Gateway API",
-          "代码覆盖率",
-          "工作流自动化"
+          "SPA性能观测",
+          "CSS函数",
+          "MCP allowlist",
+          "AI安全评估",
+          "Copilot治理"
         ],
         "techStack": [
-          "Firefox",
-          "WebExtensions",
-          "SvelteKit",
-          "Kubernetes",
-          "Gateway API",
-          "GitHub Actions"
+          "Chrome",
+          "WebKit",
+          "CSS",
+          "JavaScript",
+          "GitHub Copilot",
+          "MCP",
+          "OpenAI",
+          "Anthropic"
         ],
-        "difficulty": "中级",
-        "contentType": "技术新闻"
+        "difficulty": "中等",
+        "contentType": "技术新闻/动态摘要"
       },
-      "processedAt": "2026-08-07T01:42:40.215Z"
+      "processedAt": "2026-08-08T01:43:45.856Z"
     }
   },
   "stats": {
-    "totalFiles": 242,
-    "reusedFiles": 241,
+    "totalFiles": 243,
+    "reusedFiles": 242,
     "pendingFiles": 1,
-    "completedFiles": 242,
+    "completedFiles": 243,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9958677685950413,
-    "durationMs": 9494
+    "hitRate": 0.9958847736625515,
+    "durationMs": 10270
   }
 }
