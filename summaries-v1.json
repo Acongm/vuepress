@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-08T01:43:45.863Z",
+  "generatedAt": "2026-08-09T01:49:21.505Z",
   "analysis": {
     "model": "deepseek-v4-pro",
     "promptVersion": "summary-v1",
@@ -2136,6 +2136,41 @@
         "contentType": "技术新闻"
       },
       "processedAt": "2026-08-07T01:42:40.215Z"
+    },
+    "/daily-news/2026-08-08.md": {
+      "sourceHash": "sha256:148734885289c3d55439fca2d63a6419a85848c4dfeaac3f609bb57d50485efd",
+      "analysisHash": "sha256:da41ecc8b43e73b7765cd3b71107c9221b16687c18aebb23160a6c1ee908bbbe",
+      "status": "success",
+      "summary": {
+        "summary": "2026年8月8日科技动态：前端Chrome 151原生支持SPA性能观测，WebKit STP 249推进CSS逻辑函数；DevOps侧GitHub推出MCP allowlists强化企业治理，Copilot升级多会话与隔离工作树；AI安全方面OpenAI公开Astra模型网络攻击评估，Anthropic收窄生物学滥用窗口。",
+        "keyPoints": [
+          "Chrome 151引入PerformanceSoftNavigation等新性能条目，为SPA提供交互驱动的原生性能测量",
+          "WebKit STP 249集中引入attr()、@function、if()、calc-mix()等CSS函数，增强样式逻辑能力",
+          "GitHub新增企业级MCP allowlists，集中管控Copilot可加载的MCP服务器，提升安全治理",
+          "Copilot周更实现多会话、隔离工作树和浏览器元素级反馈，交互模型走向协作式",
+          "OpenAI与Anthropic分别发布前沿模型网络攻击评估和生物学滥用控制措施，AI安全框架深化"
+        ],
+        "keywords": [
+          "SPA性能观测",
+          "CSS函数",
+          "MCP allowlist",
+          "AI安全评估",
+          "Copilot治理"
+        ],
+        "techStack": [
+          "Chrome",
+          "WebKit",
+          "CSS",
+          "JavaScript",
+          "GitHub Copilot",
+          "MCP",
+          "OpenAI",
+          "Anthropic"
+        ],
+        "difficulty": "中等",
+        "contentType": "技术新闻/动态摘要"
+      },
+      "processedAt": "2026-08-08T01:43:45.856Z"
     },
     "/git/command.md": {
       "sourceHash": "sha256:a754a45e05748697bc3cd5c0b1d869ef427233535983bcb6a9985caa46fda9aa",
@@ -7583,51 +7618,48 @@
       },
       "processedAt": "2026-06-14T14:47:50.034Z"
     },
-    "/daily-news/2026-08-08.md": {
-      "sourceHash": "sha256:148734885289c3d55439fca2d63a6419a85848c4dfeaac3f609bb57d50485efd",
-      "analysisHash": "sha256:da41ecc8b43e73b7765cd3b71107c9221b16687c18aebb23160a6c1ee908bbbe",
+    "/daily-news/2026-08-09.md": {
+      "sourceHash": "sha256:98db9e7f6971bb282e0792adf618f0334157213420207e53bd35b7d22f36dd09",
+      "analysisHash": "sha256:9cd54ddfff8d0635a7e3f938676c313c535457ab189c725d0e69def1db48238c",
       "status": "success",
       "summary": {
-        "summary": "2026年8月8日科技动态：前端Chrome 151原生支持SPA性能观测，WebKit STP 249推进CSS逻辑函数；DevOps侧GitHub推出MCP allowlists强化企业治理，Copilot升级多会话与隔离工作树；AI安全方面OpenAI公开Astra模型网络攻击评估，Anthropic收窄生物学滥用窗口。",
+        "summary": "每日科技动态总结了前端、DevOps和AI领域的最新进展：Firefox 153新增publicSuffix API内建域名判断，Next.js 16.3整合即时导航与AI文档，GitHub开放企业级第三方应用安装并增强Copilot度量，OpenAI更新GPT-5.6模型并扩大默认模型覆盖，ChatGPT使用转向直接完成任务。",
         "keyPoints": [
-          "Chrome 151引入PerformanceSoftNavigation等新性能条目，为SPA提供交互驱动的原生性能测量",
-          "WebKit STP 249集中引入attr()、@function、if()、calc-mix()等CSS函数，增强样式逻辑能力",
-          "GitHub新增企业级MCP allowlists，集中管控Copilot可加载的MCP服务器，提升安全治理",
-          "Copilot周更实现多会话、隔离工作树和浏览器元素级反馈，交互模型走向协作式",
-          "OpenAI与Anthropic分别发布前沿模型网络攻击评估和生物学滥用控制措施，AI安全框架深化"
+          "Firefox 153新增publicSuffix API，浏览器内建域名边界查询，减少扩展维护成本",
+          "Next.js 16.3将SPA级导航、性能诊断和AI代理文档打包进框架默认工作流",
+          "GitHub允许企业账户安装第三方Apps，并为Copilot usage metrics新增agent维度拆分",
+          "OpenAI升级GPT-5.6 Sol并扩大GPT-5.6 Luna为免费默认模型，降低事实错误率",
+          "ChatGPT使用方式从提问转向直接完成工作任务"
         ],
         "keywords": [
-          "SPA性能观测",
-          "CSS函数",
-          "MCP allowlist",
-          "AI安全评估",
-          "Copilot治理"
+          "前端框架",
+          "浏览器API",
+          "AI代理",
+          "DevOps治理",
+          "模型更新"
         ],
         "techStack": [
-          "Chrome",
-          "WebKit",
-          "CSS",
-          "JavaScript",
-          "GitHub Copilot",
-          "MCP",
-          "OpenAI",
-          "Anthropic"
+          "Firefox",
+          "Next.js",
+          "GitHub Apps",
+          "OpenAI GPT-5.6",
+          "Copilot"
         ],
         "difficulty": "中等",
-        "contentType": "技术新闻/动态摘要"
+        "contentType": "技术动态"
       },
-      "processedAt": "2026-08-08T01:43:45.856Z"
+      "processedAt": "2026-08-09T01:49:21.497Z"
     }
   },
   "stats": {
-    "totalFiles": 243,
-    "reusedFiles": 242,
+    "totalFiles": 244,
+    "reusedFiles": 243,
     "pendingFiles": 1,
-    "completedFiles": 243,
+    "completedFiles": 244,
     "skippedFiles": 0,
     "failedFiles": 0,
     "aiCalls": 1,
-    "hitRate": 0.9958847736625515,
-    "durationMs": 10270
+    "hitRate": 0.9959016393442623,
+    "durationMs": 23711
   }
 }
