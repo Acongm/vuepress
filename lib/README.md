@@ -195,6 +195,87 @@ node lib/ai-doc-integration.mjs /tmp/new-doc.md \
 
 ---
 
+### 4. web-crawler.mjs - Clawra 网页爬虫库 🆕
+
+**从任何网页抓取内容**并转换为 Markdown 文档。
+
+**功能：**
+- 🕷️ 使用 Node.js 内置 fetch 抓取网页
+- 📄 HTML 转 Markdown（零依赖实现）
+- 🎯 智能内容提取（识别 article、main 等内容区域）
+- 🧹 自动清理（移除导航、页脚、侧边栏）
+- 📋 元数据提取（标题、描述、作者、日期）
+- 🔄 批量抓取支持
+
+**使用示例：**
+
+```bash
+# 直接抓取 URL
+node lib/web-crawler.mjs https://example.com/article
+
+# 保存到文件
+node lib/web-crawler.mjs https://example.com/article -o /tmp/article.md
+
+# 自定义超时
+node lib/web-crawler.mjs https://example.com --timeout 20000
+
+# 包含原始 HTML（调试用）
+node lib/web-crawler.mjs https://example.com --raw
+```
+
+**程序化使用：**
+
+```javascript
+import { crawlUrl, generateDocument, crawlMultiple } from './lib/web-crawler.mjs'
+
+// 抓取单个 URL
+const result = await crawlUrl('https://example.com/article')
+if (result.success) {
+  console.log('标题:', result.metadata.title)
+  console.log('Markdown:', result.markdown)
+  
+  // 生成完整文档（带 frontmatter）
+  const document = generateDocument(result)
+  console.log(document)
+}
+
+// 批量抓取
+const urls = [
+  'https://site1.com/page1',
+  'https://site2.com/page2'
+]
+const results = await crawlMultiple(urls, {
+  concurrency: 3,  // 并发数
+  delay: 1000      // 批次延迟
+})
+```
+
+**与 CLI 工具集成：**
+
+使用 `tools/web-crawler-cli.mjs` 获得完整的知识库集成工作流：
+
+```bash
+# 抓取并自动提交到知识库
+npm run kb:crawl https://react.dev/reference/react/useState
+
+# 查看更多选项
+npm run kb:crawl --help
+```
+
+**HTML 转 Markdown 支持：**
+
+- ✅ 标题（h1-h6）
+- ✅ 段落和文本格式（粗体、斜体）
+- ✅ 链接和图片
+- ✅ 列表（有序和无序）
+- ✅ 代码块（支持语言标记）
+- ✅ 行内代码
+- ✅ 块引用
+- ✅ 水平线
+- ✅ HTML 实体解码
+
+---
+
 ## 集成到工作流
 
 ### AI 文档生成工作流

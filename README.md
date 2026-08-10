@@ -8,6 +8,7 @@
 - 🔍 **前端搜索**：VuePress 内置全文搜索
 - 🤖 **AI 快速检索**：程序化查询 API
 - ✍️ **AI 文档生成**：自动化文档整理工作流
+- 🕷️ **Clawra 网页爬虫**：一键抓取网页内容并转换为知识库文档
 - 🎯 **智能分类推荐**：基于内容的自动分类
 - ✅ **文档质量验证**：自动检查文档规范
 - 🔄 **动态菜单管理**：自动更新导航和侧边栏
@@ -119,6 +120,34 @@ npm run kb:add /tmp/react-hooks-guide.md
 # ✓ Git 提交和推送
 ```
 
+### 🕷️ Clawra 网页爬虫（新增）
+
+从任何网页一键抓取内容并转换为知识库文档：
+
+```bash
+# 抓取网页并自动添加到知识库
+npm run kb:crawl https://react.dev/reference/react/useState
+
+# 指定分类
+npm run kb:crawl https://css-tricks.com/guide-to-flexbox -c css
+
+# 仅预览不提交
+npm run kb:crawl https://example.com/article --dry-run
+
+# 批量抓取
+npm run kb:crawl https://site1.com https://site2.com
+
+# 从文件读取 URL 列表
+npm run kb:crawl urls.txt
+```
+
+**特性：**
+- 🚀 零依赖，纯 Node.js 标准库实现
+- 🎯 智能内容提取（自动识别主要内容区域）
+- 📝 HTML 转 Markdown（支持标题、列表、代码块等）
+- 🤖 自动分类推荐和质量验证
+- 🔄 完整的知识库集成工作流
+
 ## 📚 详细文档
 
 - **快速开始指南**：[QUICK_START.md](./QUICK_START.md)
@@ -177,6 +206,7 @@ npm run kb:add /tmp/react-hooks-guide.md
 | `npm run kb:query <cmd>` | 查询知识库 |
 | `npm run kb:validate <file>` | 验证文档 |
 | `npm run kb:add <file>` | 添加文档 |
+| `npm run kb:crawl <url>` | 爬取网页并添加到知识库 🆕 |
 
 ## 📊 知识库统计
 
