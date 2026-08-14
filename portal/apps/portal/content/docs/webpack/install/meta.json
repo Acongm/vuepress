@@ -1,0 +1,10 @@
+{
+  "title": "webpack/install",
+  "pages": [
+    "index",
+    "ni",
+    "npm",
+    "pnpm",
+    "yarn"
+  ]
+}
